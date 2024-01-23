@@ -1,0 +1,57 @@
+[gd_resource type="Shader" format=3 uid="uid://c0cnr13m4aedk"]
+
+[resource]
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform bool beingLookedAt = false;
+
+uniform float normalScale = 16;
+uniform float UVyScale = 5.0;
+
+uniform sampler2D albedo;
+uniform sampler2D normal;
+
+
+void vertex()
+{
+	if (beingLookedAt)
+		VERTEX += NORMAL * 0.02;
+}
+
+void fragment()
+{
+	if (beingLookedAt)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+}
+
+
+//void fragment()
+//{
+//	vec2 stretchedUV = vec2(UV.x, UV.y * UVyScale);
+//	vec3 albedoTx = texture(albedo, stretchedUV).rgb;
+//	vec3 normalTx = texture(normal, stretchedUV).rgb;
+//
+//	// Scale normal map intensity by adding contrast to red and green channels
+//	normalTx.rg = mix(vec2(0.5), normalTx.rg, normalScale);
+//
+//	ALBEDO = albedoTx;
+//	//NORMAL_MAP = normalTx * vec3(1, 1, 1);
+//	ALBEDO = vec3(0.0, 0.0, 0.0);
+//}
+
+
+void light()
+{
+	if (beingLookedAt)
+	{
+		vec3 light;
+		float scale = 1.0 / 3.0;
+		light.r = sin(TIME * 10.0) * scale + scale;
+		light.g = sin(TIME * 10.0) * scale + scale;
+		light.b = sin(TIME * 10.0) * scale + scale;
+		DIFFUSE_LIGHT = light;
+	}
+	else
+		DIFFUSE_LIGHT += clamp(dot(NORMAL, LIGHT), 0.0, 1.0) * ATTENUATION * ALBEDO;
+}"

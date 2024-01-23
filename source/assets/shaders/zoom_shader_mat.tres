@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b1lrpiy2i5dmj"]
+
+[ext_resource type="Shader" uid="uid://dxqqybmfd8gqf" path="res://source/assets/shaders/zoom_shader.tres" id="1_rm82i"]
+
+[resource]
+shader = ExtResource("1_rm82i")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/multiplier = 0.2
+shader_parameter/softness = 2.0
+shader_parameter/intensity = 0.0

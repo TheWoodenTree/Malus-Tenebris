@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dln1xs4gfd6g1"]
+
+[ext_resource type="Texture2D" uid="uid://bo6blr41an8o7" path="res://source/assets/materials/copper/Metal035_1K_Color.jpg" id="1_c08n6"]
+[ext_resource type="Texture2D" uid="uid://lxbwcsovtppu" path="res://source/assets/materials/copper/Metal035_1K_Metalness.jpg" id="2_6xo3v"]
+[ext_resource type="Texture2D" uid="uid://bbcbbviqqpswa" path="res://source/assets/materials/copper/Metal035_1K_NormalGL.jpg" id="3_qd11n"]
+[ext_resource type="Texture2D" uid="uid://s5wkfvmlcwyf" path="res://source/assets/materials/copper/Metal035_1K_Roughness.jpg" id="4_0mhfq"]
+
+[resource]
+albedo_color = Color(0.827451, 0.827451, 0.827451, 1)
+albedo_texture = ExtResource("1_c08n6")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_6xo3v")
+roughness_texture = ExtResource("4_0mhfq")
+normal_enabled = true
+normal_scale = 8.0
+normal_texture = ExtResource("3_qd11n")

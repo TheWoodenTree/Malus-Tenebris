@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dfxqvxxxhgohp"]
+
+[ext_resource type="Texture2D" uid="uid://l3cleokco4hk" path="res://source/assets/materials/tile_wall/Tiles084_1K_Color.png" id="1_vjoob"]
+[ext_resource type="Texture2D" uid="uid://d3f6f4jdp6d8u" path="res://source/assets/materials/tile_wall/Tiles084_1K_NormalGL.png" id="2_n6clh"]
+[ext_resource type="Texture2D" uid="uid://c37d35y7umhyt" path="res://source/assets/materials/tile_wall/Tiles084_1K_Roughness.png" id="3_6711p"]
+
+[resource]
+albedo_texture = ExtResource("1_vjoob")
+roughness = 0.75
+roughness_texture = ExtResource("3_6711p")
+normal_enabled = true
+normal_scale = 8.0
+normal_texture = ExtResource("2_n6clh")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true

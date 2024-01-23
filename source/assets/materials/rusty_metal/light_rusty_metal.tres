@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cnpevqucwwlt6"]
+
+[ext_resource type="Texture2D" uid="uid://cyyui683xddn1" path="res://source/assets/materials/rusty_metal/Metal025_1K_Color.jpg" id="1_0ja5g"]
+[ext_resource type="Texture2D" uid="uid://cgxmrm78h1dxt" path="res://source/assets/materials/rusty_metal/Metal025_1K_Metalness.jpg" id="2_rstu6"]
+[ext_resource type="Texture2D" uid="uid://bsvnqlxux75tf" path="res://source/assets/materials/rusty_metal/Metal025_1K_NormalGL.jpg" id="3_pac4a"]
+[ext_resource type="Texture2D" uid="uid://3raklkvrq577" path="res://source/assets/materials/rusty_metal/Metal025_1K_Roughness.jpg" id="4_hp2vn"]
+
+[resource]
+albedo_color = Color(0.909804, 0.909804, 0.909804, 1)
+albedo_texture = ExtResource("1_0ja5g")
+metallic = 1.0
+metallic_texture = ExtResource("2_rstu6")
+roughness = 0.8
+roughness_texture = ExtResource("4_hp2vn")
+normal_enabled = true
+normal_texture = ExtResource("3_pac4a")

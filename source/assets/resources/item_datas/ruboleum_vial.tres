@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dq2xpjjilobj"]
+
+[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="1_xobic"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="2_347tu"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="3_g4yff"]
+
+[resource]
+script = ExtResource("2_347tu")
+name = "Ruboleum Vial"
+texture = ExtResource("3_g4yff")
+pickup_sound = ExtResource("1_xobic")
+hold_rotation_offset = Vector3(0, 0, 0)
+hold_scale_multiplier = 1.0

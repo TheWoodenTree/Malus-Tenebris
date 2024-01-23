@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=3 uid="uid://dxqqybmfd8gqf"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform vec4 color : source_color;
+uniform float multiplier = 0.2;
+uniform float softness = 3;
+uniform float intensity = 10.0;
+
+void fragment()
+{
+	float xDist = (abs(UV.x) - 0.5);
+	float yDist = (abs(UV.y) - 0.5);
+	float xOffset = xDist * intensity * SCREEN_PIXEL_SIZE.x;
+	float yOffset = yDist * intensity * SCREEN_PIXEL_SIZE.y;
+	
+	vec4 redChannel = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 greenChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + xOffset, SCREEN_UV.y + yOffset));
+	vec4 blueChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - xOffset, SCREEN_UV.y - yOffset));
+	
+	COLOR = vec4(redChannel.r, greenChannel.g, blueChannel.b, 1.0);
+	//COLOR = vec4(color.rgb, smoothstep(multiplier, softness, val));
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/vignette_shader.tres"

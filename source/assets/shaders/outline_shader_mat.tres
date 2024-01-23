@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnmhob8uonjij"]
+
+[ext_resource type="Shader" uid="uid://dqtv12rd2pdiu" path="res://source/assets/shaders/outline_shader.tres" id="1"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false

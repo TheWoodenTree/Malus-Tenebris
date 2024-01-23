@@ -1,0 +1,19 @@
+[gd_resource type="Shader" format=3 uid="uid://ch3vf65fnccar"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform float offset = 0.0;
+
+void fragment()
+{
+	vec4 redChannel = texture(SCREEN_TEXTURE, SCREEN_UV);
+	//vec4 greenChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + offset * SCREEN_PIXEL_SIZE.x, SCREEN_UV.y));
+	//vec4 blueChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - offset * SCREEN_PIXEL_SIZE.x, SCREEN_UV.y));
+	vec4 greenChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x, SCREEN_UV.y + offset * SCREEN_PIXEL_SIZE.y));
+	vec4 blueChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x, SCREEN_UV.y - offset * SCREEN_PIXEL_SIZE.y));
+	COLOR = vec4(redChannel.r, greenChannel.g, blueChannel.b, 1.0);
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/chrom_abb_shader.tres"

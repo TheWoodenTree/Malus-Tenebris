@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c3rubs6mqbfk4"]
+
+[ext_resource type="Shader" uid="uid://dcvdefho3tn1u" path="res://source/assets/shaders/vignette_shader.tres" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/multiplier = 0.345
+shader_parameter/softness = 3.0
+shader_parameter/intensity = 10.0

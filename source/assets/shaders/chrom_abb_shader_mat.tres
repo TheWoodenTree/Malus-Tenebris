@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://8ry3t1ttx3f4"]
+
+[ext_resource type="Shader" uid="uid://ch3vf65fnccar" path="res://source/assets/shaders/chrom_abb_shader.tres" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/offset = 0.0

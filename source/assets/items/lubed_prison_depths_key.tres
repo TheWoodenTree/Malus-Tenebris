@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dbv6so4rpl7yk"]
+
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="1_lhs2g"]
+[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="1_p0mu2"]
+[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="3_3i2s2"]
+
+[resource]
+script = ExtResource("1_lhs2g")
+name = "Lubricated Prison Depths Key"
+texture = ExtResource("3_3i2s2")
+pickup_sound = ExtResource("1_p0mu2")
+hold_rotation_offset = Vector3(0, 200, 90)
+hold_scale_multiplier = 0.5

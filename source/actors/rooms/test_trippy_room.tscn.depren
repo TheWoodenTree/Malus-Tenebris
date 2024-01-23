@@ -1,0 +1,6 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://source/actors/rooms/test_trippy_room.gd" id="1_h8e4w"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_a0cpb"]
+[ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_p3k26"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="4_miw8d"]

@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bwnfoxerqh6yq"]
+
+[ext_resource type="Texture2D" uid="uid://c5kmfewidj7fc" path="res://source/assets/materials/flagstone/stone_pathway_diff_1k.jpg" id="1_vqbqt"]
+[ext_resource type="Texture2D" uid="uid://def1buvy8jpyh" path="res://source/assets/materials/flagstone/stone_pathway_nor_gl_1k.jpg" id="2_lht2j"]
+[ext_resource type="Texture2D" uid="uid://c0xs6fo85wl7w" path="res://source/assets/materials/flagstone/stone_pathway_rough_1k.jpg" id="3_5hl7u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_curj1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w3yji"]
+
+[resource]
+albedo_color = Color(0.47451, 0.517647, 0.501961, 1)
+albedo_texture = ExtResource("1_vqbqt")
+roughness = 0.75
+roughness_texture = ExtResource("3_5hl7u")
+normal_enabled = true
+normal_scale = 8.0
+normal_texture = ExtResource("2_lht2j")
+ao_texture = SubResource("CompressedTexture2D_curj1")
+heightmap_scale = 16.0
+heightmap_texture = SubResource("CompressedTexture2D_w3yji")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true
+uv1_world_triplanar = true

@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://faq68tr6wo04"]
+
+[ext_resource type="Shader" uid="uid://c00cldsmctvsm" path="res://source/assets/shaders/retro_shader.tres" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/blurAmount = 0.0
+shader_parameter/downScale = 3.75
+shader_parameter/darkestThreshold = 0.06
+shader_parameter/darkThreshold = 0.125
+shader_parameter/lightThreshold = 0.175
+shader_parameter/lighterThreshold = 0.8
+shader_parameter/contrast = 1.05
+shader_parameter/darkestColor = Color(0, 0, 0, 1)
+shader_parameter/darkColor = Color(0.243, 0.067, 0.067, 1)
+shader_parameter/lightColor = Color(0.431, 0.145, 0.078, 1)
+shader_parameter/lighterColor = Color(0.639, 0.235, 0.047, 1)
+shader_parameter/lightestColor = Color(0.811765, 0.517647, 0.294118, 1)

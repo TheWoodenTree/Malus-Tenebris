@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dq0fbwjx1psc"]
+
+[ext_resource type="Texture2D" uid="uid://dkhyvvyy6y5sq" path="res://source/assets/ui/buttons/inventory_slot.png" id="1_hmucw"]
+[ext_resource type="Texture2D" uid="uid://ba41ffjykwftc" path="res://source/assets/ui/buttons/inventory_slot_disabled.png" id="1_k4pyw"]
+[ext_resource type="Texture2D" uid="uid://dhbf76c1uu1jc" path="res://source/assets/ui/buttons/inventory_slot_hover.png" id="2_bbqvu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g65yq"]
+texture = ExtResource("1_k4pyw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kv8xl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rbvh0"]
+texture = ExtResource("2_bbqvu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_buvsn"]
+texture = ExtResource("1_hmucw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aomj4"]
+texture = ExtResource("1_hmucw")
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_g65yq")
+Button/styles/focus = SubResource("StyleBoxEmpty_kv8xl")
+Button/styles/hover = SubResource("StyleBoxTexture_rbvh0")
+Button/styles/normal = SubResource("StyleBoxTexture_buvsn")
+Button/styles/pressed = SubResource("StyleBoxTexture_aomj4")

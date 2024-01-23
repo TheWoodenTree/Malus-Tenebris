@@ -5,6 +5,13 @@
 .import/
 export.cfg
 export_presets.cfg
+source/assets/geometry/
+*.png
+*.jpg
+*.ogg
+*.mp3
+*.tscn
+*.import
 
 # Imported translations (automatically generated from CSV files)
 *.translation

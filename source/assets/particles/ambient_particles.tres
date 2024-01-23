@@ -1,0 +1,22 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://6l1ko2kw0opd"]
+
+[sub_resource type="Curve" id="Curve_jovrq"]
+_data = [Vector2(0, 0.0818181), 0.0, 0.0, 0, 0, Vector2(0.19403, 1), 0.0, 0.0, 0, 0, Vector2(0.78607, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0727272), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_pl6tk"]
+curve = SubResource("Curve_jovrq")
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(45, 30, 45)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.75
+gravity = Vector3(0, 0, 0)
+scale_min = 0.75
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_pl6tk")
+turbulence_enabled = true
+turbulence_noise_scale = 4.0

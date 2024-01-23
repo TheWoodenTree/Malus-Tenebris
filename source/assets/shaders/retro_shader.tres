@@ -1,0 +1,106 @@
+[gd_resource type="Shader" format=3 uid="uid://c00cldsmctvsm"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform float blurAmount = 0.0;
+uniform float downScale = 3.75;
+
+uniform float darkestThreshold = 0.06;
+uniform float darkThreshold = 0.125;
+uniform float lightThreshold = 0.175;
+uniform float lighterThreshold = 0.8;
+
+uniform float contrast;
+
+uniform vec4 darkestColor : source_color = vec4(0.078, 0.024, 0.059, 1.0);
+uniform vec4 darkColor : source_color = vec4(0.243, 0.067, 0.067, 1.0);
+uniform vec4 lightColor : source_color = vec4(0.431, 0.145, 0.078, 1.0);
+uniform vec4 lighterColor : source_color = vec4(0.639, 0.235, 0.047, 1.0);
+uniform vec4 lightestColor : source_color = vec4(0.812, 0.518, 0.294, 1.0);
+
+//varying vec2 worldPos;
+
+//void vertex() {
+//	worldPos = (MODEL_MATRIX * vec4(VERTEX, 1.0, 1.0)).xy;
+//}
+
+
+bool rgb_less_than(vec3 color, float threshold)
+{
+	bool smaller;
+	if (color.r >= threshold)
+		smaller = false;
+	else if (color.g >= threshold)
+		smaller = false;
+	else if (color.b >= threshold)
+		smaller = false;
+	else
+		smaller = true;
+	return smaller;
+}
+
+
+vec3 pixelate(sampler2D sText, vec2 sUV)
+{
+	float xRes = 1920.0 / downScale; // SCREEN_PIXEL_SIZE.x;
+	float yRes = 1080.0 / downScale; // SCREEN_PIXEL_SIZE.y;
+	
+	float grid_uv_x = round(sUV.x * xRes) / xRes;
+	float grid_uv_y = round(sUV.y * yRes) / yRes;
+	
+	vec3 textureColor = textureLod(sText, vec2(grid_uv_x, grid_uv_y), blurAmount).rgb;
+	return textureColor;
+}
+
+
+vec4 retroColor(vec3 textCol)
+{
+	vec4 darkest = darkestColor;// * hueShift;
+	vec4 dark = darkColor;// * hueShift;
+	vec4 light = lightColor;// * hueShift;
+	vec4 lighter = lighterColor;// * hueShift;
+	vec4 lightest = lightestColor;// * hueShift;
+	
+	
+//	if (rgb_less_than(textCol, 0.04))
+//		return darkest;
+	if (rgb_less_than(textCol, darkestThreshold))
+//		if (int(worldPos.x) % 2 == 0 || int(worldPos.y) % 2 == 0)
+//			return darkest;
+//		else if (int(worldPos.x) % 2 == 1 || int(worldPos.y) % 2 == 1)
+//			return dark;
+//		else return darkest;
+		return darkest;
+	else if (rgb_less_than(textCol, darkThreshold))
+		return dark;
+//	else if (rgb_less_than(textCol, 0.14))
+//		if (int(worldPos.x) % 2 == 0 || int(worldPos.y) % 2 == 0)
+//			return light;
+//		else if (int(worldPos.x) % 2 == 1 || int(worldPos.y) % 2 == 1)
+//			return dark;
+//		else return light;
+	else if (rgb_less_than(textCol, lightThreshold))
+		return light;
+//	else if (rgb_less_than(textCol, 0.25))
+//		if (int(worldPos.x) % 2 == 0 || int(worldPos.y) % 2 == 0)
+//			return lighter;
+//		else if (int(worldPos.x) % 2 == 1 || int(worldPos.y) % 2 == 1)
+//			return light;
+//		else return lighter;
+	else if (rgb_less_than(textCol, lighterThreshold))
+		return lighter;
+	else
+		return lightest;
+}
+
+
+void fragment()
+{
+	//vec3 pixelatedTexture = pixelate(SCREEN_TEXTURE, SCREEN_UV);
+	COLOR = retroColor(textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount).rgb);
+	//COLOR = retroColor(pixelatedTexture);
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/retro_shader.tres"

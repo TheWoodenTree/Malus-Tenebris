@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b6e0i363h4lpi"]
+
+[sub_resource type="Shader" id="1"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+
+uniform bool highlightOn = false;
+
+
+void fragment()
+{
+	if (highlightOn) {
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	}
+}
+
+
+void light()
+{
+	if (highlightOn) {
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("1")
+shader_parameter/highlightOn = true

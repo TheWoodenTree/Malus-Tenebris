@@ -1,0 +1,11 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="PackedScene" uid="uid://jnsxt50p5uev" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="1_ptdvc"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_2whjf"]
+[ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="3_oc8j4"]
+[ext_resource type="PackedScene" uid="uid://cs8qy83m2cxvj" path="res://source/actors/rooms/misc/small_cell.tscn" id="4_6smj5"]
+[ext_resource type="PackedScene" uid="uid://dx1dvrbna6x6e" path="res://source/actors/building pieces/basic/water_plane.tscn" id="5_mw4x4"]
+[ext_resource type="PackedScene" uid="uid://c0eq6v4lvkbd6" path="res://source/actors/building pieces/archways/stone_archway.tscn" id="6_mt8gk"]
+[ext_resource type="PackedScene" uid="uid://bbiydbgon8efk" path="res://source/actors/building pieces/archways/archway.tscn" id="7_mmeu5"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="10_egfao"]
+[ext_resource type="PackedScene" uid="uid://uamikv50dio" path="res://source/actors/rooms/misc/stair_connector_room.tscn" id="11_5m8bv"]

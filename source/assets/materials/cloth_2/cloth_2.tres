@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://ch21fjwkqooyb"]
+
+[ext_resource type="Texture2D" uid="uid://cwruudhkem5uc" path="res://source/assets/materials/cloth_2/Fabric032_1K-JPG_Color.jpg" id="1_ojwv2"]
+[ext_resource type="Texture2D" uid="uid://c23qcmfedgdsc" path="res://source/assets/materials/cloth_2/Fabric032_1K-JPG_NormalGL.jpg" id="2_tjbsh"]
+[ext_resource type="Texture2D" uid="uid://covh04xx2wcid" path="res://source/assets/materials/cloth_2/Fabric032_1K-JPG_Roughness.jpg" id="3_n5u4n"]
+
+[resource]
+albedo_color = Color(0.258824, 0.270588, 0.215686, 1)
+albedo_texture = ExtResource("1_ojwv2")
+roughness_texture = ExtResource("3_n5u4n")
+normal_enabled = true
+normal_texture = ExtResource("2_tjbsh")

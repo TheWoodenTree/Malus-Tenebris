@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://f4y45bdj5wjv"]
+
+[ext_resource type="Texture2D" uid="uid://bexgi4lnesvm8" path="res://source/assets/materials/test_floor1/Tiles107_1K_Roughness.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dtlwxqk8snctd" path="res://source/assets/materials/test_floor1/Tiles107_1K_NormalDX.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://boro582vy2g1h" path="res://source/assets/materials/test_floor1/Tiles107_1K_AmbientOcclusion.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("3")
+roughness_texture = ExtResource("1")
+normal_enabled = true
+normal_scale = 8.0
+normal_texture = ExtResource("2")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true

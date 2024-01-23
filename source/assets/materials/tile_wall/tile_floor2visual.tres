@@ -1,0 +1,28 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://cv5naywaeuict"]
+
+[ext_resource type="Texture2D" uid="uid://l3cleokco4hk" path="res://source/assets/materials/tile_wall/Tiles084_1K_Color.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c37d35y7umhyt" path="res://source/assets/materials/tile_wall/Tiles084_1K_Roughness.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c7ptgc8m87sfm" path="res://source/assets/materials/tile_wall/Tiles084_1K_NormalDX.png" id="3"]
+
+[sub_resource type="VisualShaderNodeTexture" id="1"]
+texture = ExtResource("1")
+
+[sub_resource type="VisualShaderNodeTexture" id="2"]
+texture = ExtResource("3")
+
+[sub_resource type="VisualShaderNodeTexture" id="3"]
+texture = ExtResource("2")
+
+[resource]
+code = "shader_type spatial;
+
+
+"
+graph_offset = Vector2(-810, 53)
+nodes/fragment/0/position = Vector2(400, 160)
+nodes/fragment/3/node = SubResource("1")
+nodes/fragment/3/position = Vector2(-320, -20)
+nodes/fragment/4/node = SubResource("2")
+nodes/fragment/4/position = Vector2(-320, 420)
+nodes/fragment/5/node = SubResource("3")
+nodes/fragment/5/position = Vector2(-320, 200)

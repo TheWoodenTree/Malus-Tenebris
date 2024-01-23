@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dhdbecd6sbxmf"]
+
+[ext_resource type="Texture2D" uid="uid://c2dqcvb42hvl4" path="res://source/assets/materials/light_wood/PaintedWood006C_1K_Color.jpg" id="1_evdm3"]
+[ext_resource type="Texture2D" uid="uid://bmmhbbonqnpud" path="res://source/assets/materials/light_wood/PaintedWood006C_1K_NormalGL.jpg" id="2_o3cul"]
+[ext_resource type="Texture2D" uid="uid://c26ytyg5k7e30" path="res://source/assets/materials/light_wood/PaintedWood006C_1K_Roughness.jpg" id="3_wkxh2"]
+
+[resource]
+albedo_color = Color(0.227451, 0.227451, 0.227451, 1)
+albedo_texture = ExtResource("1_evdm3")
+roughness_texture = ExtResource("3_wkxh2")
+normal_enabled = true
+normal_scale = 8.0
+normal_texture = ExtResource("2_o3cul")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dfjeu0d1d4hot"]
+
+[ext_resource type="Texture2D" uid="uid://cke01hgi1spok" path="res://source/assets/materials/painted_plaster/PaintedPlaster006_1K_Color.jpg" id="1"]
+[ext_resource type="Texture2D" uid="uid://sseit0pr8hvk" path="res://source/assets/materials/painted_plaster/PaintedPlaster006_1K_NormalGL.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://dghchhbiyd1g5" path="res://source/assets/materials/painted_plaster/PaintedPlaster006_1K_Roughness.jpg" id="3_w3wca"]
+
+[resource]
+albedo_color = Color(0.32549, 0.32549, 0.32549, 1)
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+roughness_texture = ExtResource("3_w3wca")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2")

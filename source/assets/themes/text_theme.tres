@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://da41v4hs6h8oo"]
+
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_8jtfc"]
+
+[resource]
+Label/colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+Label/colors/font_outline_color = Color(0.0784314, 0.0235294, 0.0588235, 1)
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_8jtfc")

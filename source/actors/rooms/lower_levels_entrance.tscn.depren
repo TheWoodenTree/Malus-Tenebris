@@ -1,0 +1,10 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" uid="uid://dq06hcs0nc8xo" path="res://source/actors/building pieces/basic/stairs.tscn" id="1_bc8cl"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_5125x"]
+[ext_resource type="PackedScene" uid="uid://jnsxt50p5uev" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_ou3us"]
+[ext_resource type="PackedScene" uid="uid://dx1dvrbna6x6e" path="res://source/actors/building pieces/basic/water_plane.tscn" id="5_liqss"]
+[ext_resource type="PackedScene" uid="uid://bbiydbgon8efk" path="res://source/actors/building pieces/archways/archway.tscn" id="6_tlcjw"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="7_uwamw"]
+[ext_resource type="PackedScene" uid="uid://mg8n68f4h55m" path="res://source/actors/building pieces/basic/cobble_floor.tscn" id="8_gjyp3"]
+[ext_resource type="PackedScene" uid="uid://bx5depf8krodx" path="res://source/actors/building pieces/basic/cobble_half_stairs.tscn" id="9_30ln3"]
