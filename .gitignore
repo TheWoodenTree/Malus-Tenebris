@@ -11,7 +11,6 @@ source/assets/geometry/
 *.ogg
 *.mp3
 *.tscn
-*.import
 
 # Imported translations (automatically generated from CSV files)
 *.translation

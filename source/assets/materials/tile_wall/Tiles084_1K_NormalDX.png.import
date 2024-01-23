@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c7ptgc8m87sfm"
+path.s3tc="res://.godot/imported/Tiles084_1K_NormalDX.png-d7a3ca0e77b43e348eb60f466c6056b7.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://source/assets/materials/tile_wall/Tiles084_1K_NormalDX.png"
+dest_files=["res://.godot/imported/Tiles084_1K_NormalDX.png-d7a3ca0e77b43e348eb60f466c6056b7.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
