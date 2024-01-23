@@ -1,0 +1,227 @@
+[gd_scene load_steps=30 format=3 uid="uid://c7jcrmxwgdp31"]
+
+[ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
+[ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
+[ext_resource type="PackedScene" uid="uid://dfwtxh61u4p1w" path="res://source/actors/rooms/room_w_key_1.tscn" id="4_hat6p"]
+[ext_resource type="PackedScene" uid="uid://bd4v75xinikem" path="res://source/actors/rooms/lower_prison_stairway.tscn" id="8_pef6q"]
+[ext_resource type="PackedScene" uid="uid://cqine5hhhqdn4" path="res://source/actors/rooms/warden_chamber.tscn" id="9_xbk25"]
+[ext_resource type="PackedScene" uid="uid://dijlshyjh0vla" path="res://source/actors/rooms/safe_room.tscn" id="12_nytv3"]
+[ext_resource type="PackedScene" uid="uid://c8wfanpg84t0g" path="res://source/actors/rooms/lower_cell_hall_1.tscn" id="13_3dwqw"]
+[ext_resource type="PackedScene" uid="uid://dvj6jlk7qoghi" path="res://source/actors/rooms/prison_depths_stairway_1.tscn" id="19_2i4co"]
+[ext_resource type="PackedScene" uid="uid://c314k8wgwc5sq" path="res://source/actors/rooms/prison_depths_jct_1.tscn" id="20_y3dgs"]
+[ext_resource type="PackedScene" uid="uid://hwt7rtb67g3l" path="res://source/actors/rooms/upper_prison_common_area.tscn" id="21_3ed77"]
+[ext_resource type="PackedScene" uid="uid://cw2eksdigo0cd" path="res://source/actors/rooms/prison_depths_jct_2.tscn" id="21_fhl3g"]
+[ext_resource type="PackedScene" uid="uid://dw4xwroyayfdv" path="res://source/actors/rooms/small_torture_room.tscn" id="22_564cf"]
+[ext_resource type="PackedScene" uid="uid://chgybf6r4j6hi" path="res://source/actors/rooms/barracks.tscn" id="22_gqwdo"]
+[ext_resource type="PackedScene" uid="uid://bsorfnt4nffcx" path="res://source/actors/rooms/misc/lower_prison_t_connector.tscn" id="22_w53ch"]
+[ext_resource type="PackedScene" uid="uid://b1dygbtfbyisi" path="res://source/actors/rooms/large_lower_prison_jtc_1.tscn" id="23_23u2b"]
+[ext_resource type="PackedScene" uid="uid://lh86edrcxvnr" path="res://source/actors/rooms/prison_depths_ash_room.tscn" id="24_5p06j"]
+[ext_resource type="PackedScene" uid="uid://btiqf7ymx77it" path="res://source/actors/rooms/records_room.tscn" id="24_w38t7"]
+[ext_resource type="PackedScene" uid="uid://cv4ajx80ijgv5" path="res://source/actors/rooms/holding_cells.tscn" id="25_47crl"]
+[ext_resource type="PackedScene" uid="uid://dq56ian4bntsp" path="res://source/actors/rooms/bigger_cells_hall.tscn" id="26_mq5sv"]
+[ext_resource type="PackedScene" uid="uid://bb7fcf6hjdsed" path="res://source/actors/rooms/upper_storage_room.tscn" id="30_scntj"]
+[ext_resource type="PackedScene" uid="uid://6740g18km7ny" path="res://source/actors/rooms/lower_cell_hall_3.tscn" id="32_yfpp8"]
+[ext_resource type="PackedScene" uid="uid://dlldeh2el7ay0" path="res://source/actors/rooms/cell_hall_kitchen_connector.tscn" id="33_6f6fg"]
+[ext_resource type="PackedScene" uid="uid://dkywpurj50vjl" path="res://source/actors/rooms/lower_cell_hall_2.tscn" id="33_ysjgv"]
+[ext_resource type="PackedScene" uid="uid://7rhkd1sxw43r" path="res://source/actors/rooms/kitchen.tscn" id="34_2ebpu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlowy"]
+size = Vector3(302.25, 124.25, 454.25)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_q4dpi"]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4294901889
+cell_size = 0.2
+cell_height = 0.2
+agent_height = 2.4
+agent_radius = 0.4
+agent_max_climb = 0.4
+agent_max_slope = 60.0
+region_min_size = 24.0
+region_merge_size = 10.0
+edge_max_error = 1.0
+
+[sub_resource type="Shader" id="Shader_q3gat"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.0.3.rc1's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+varying vec3 uv1_triplanar_pos;
+uniform float uv1_blend_sharpness;
+varying vec3 uv1_power_normal;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	TANGENT = vec3(0.0,0.0,-1.0) * abs(NORMAL.x);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.y);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.z);
+	TANGENT = normalize(TANGENT);
+	BINORMAL = vec3(0.0,1.0,0.0) * abs(NORMAL.x);
+	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(NORMAL.y);
+	BINORMAL+= vec3(0.0,1.0,0.0) * abs(NORMAL.z);
+	BINORMAL = normalize(BINORMAL);
+	uv1_power_normal=pow(abs(NORMAL),vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = VERTEX * uv1_scale + uv1_offset;
+	uv1_power_normal/=dot(uv1_power_normal,vec3(1.0));
+	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
+}
+
+
+
+
+vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
+	vec4 samp=vec4(0.0);
+	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
+	samp+= texture(p_sampler,p_triplanar_pos.xz) * p_weights.y;
+	samp+= texture(p_sampler,p_triplanar_pos.zy * vec2(-1.0,1.0)) * p_weights.x;
+	return samp;
+}
+
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(triplanar_texture(texture_metallic,uv1_power_normal,uv1_triplanar_pos),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness,uv1_power_normal,uv1_triplanar_pos),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxd1l"]
+render_priority = 0
+shader = SubResource("Shader_q3gat")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w1q8a"]
+material = SubResource("ShaderMaterial_xxd1l")
+radius = 0.1
+height = 0.2
+
+[node name="world" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -32.75)
+
+[node name="default_sound" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4339, 0, 28.5)
+priority = 1
+reverb_bus_enabled = true
+reverb_bus_name = &"General (big)"
+reverb_bus_amount = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="default_sound"]
+shape = SubResource("BoxShape3D_jlowy")
+
+[node name="player_spawn_point" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 10, 40.5)
+
+[node name="nav_region" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)
+navigation_mesh = SubResource("NavigationMesh_q4dpi")
+
+[node name="big_cell2" parent="nav_region" instance=ExtResource("2_7yt8k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 111.25, 8, 15.25)
+
+[node name="big_cell3" parent="nav_region" instance=ExtResource("2_7yt8k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 126.75, 8, 15.25)
+
+[node name="big_cell4" parent="nav_region" instance=ExtResource("2_7yt8k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 142.25, 8, 15.25)
+
+[node name="starting_room" parent="nav_region" instance=ExtResource("2_nvqo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.25, 8, 25.25)
+
+[node name="bigger_cells_hall" parent="nav_region" instance=ExtResource("26_mq5sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.25, 8, 20.25)
+
+[node name="room_w_key_1" parent="nav_region" instance=ExtResource("4_hat6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 8, -24.5)
+
+[node name="cells_stairway" parent="nav_region" instance=ExtResource("8_pef6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5, -9, -43.25)
+
+[node name="warden_chamber" parent="nav_region" instance=ExtResource("9_xbk25")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62.5, -9, -44.25)
+
+[node name="safe_room" parent="nav_region" instance=ExtResource("12_nytv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5, -19, -75.75)
+
+[node name="lower_cell_hall_1" parent="nav_region" instance=ExtResource("13_3dwqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -19, -100.75)
+
+[node name="lower_cell_hall_2" parent="nav_region" instance=ExtResource("33_ysjgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4355, -19, -60.75)
+
+[node name="lower_cell_hall_3" parent="nav_region" instance=ExtResource("32_yfpp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -19, -132.75)
+
+[node name="cell_hall_kitchen_connector" parent="nav_region" instance=ExtResource("33_6f6fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -19, -87.75)
+
+[node name="kitchen" parent="nav_region" instance=ExtResource("34_2ebpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5, -19, -78.75)
+
+[node name="lower_prison_staircase_1" parent="nav_region" instance=ExtResource("19_2i4co")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -22.5, -132.75)
+
+[node name="lower_prison_jtc_1" parent="nav_region" instance=ExtResource("20_y3dgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.5, -36, -107.25)
+
+[node name="lower_prison_jtc_2" parent="nav_region" instance=ExtResource("21_fhl3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, -36, -107.25)
+
+[node name="lower_prison_t_connector" parent="nav_region" instance=ExtResource("22_w53ch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.75, -36, -133.75)
+
+[node name="large_lower_prison_jtc_1" parent="nav_region" instance=ExtResource("23_23u2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -36, -160.25)
+
+[node name="lower_prison_ash_room" parent="nav_region" instance=ExtResource("24_5p06j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.5, -36, -148.25)
+
+[node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 8, -10.75)
+
+[node name="upper_prison_common_area" parent="nav_region" instance=ExtResource("21_3ed77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.25, 8.5, 16.75)
+
+[node name="small_torture_room" parent="nav_region" instance=ExtResource("22_564cf")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 83.25, 5, 31.75)
+
+[node name="barracks" parent="nav_region" instance=ExtResource("22_gqwdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 5.5, 8.5)
+
+[node name="upper_storage_room" parent="nav_region" instance=ExtResource("30_scntj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.75, 5, -8.25)
+
+[node name="holding_cells" parent="nav_region" instance=ExtResource("25_47crl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.75, 5.5, 26.75)
+
+[node name="test" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -44.25)
+visible = false
+mesh = SubResource("SphereMesh_w1q8a")

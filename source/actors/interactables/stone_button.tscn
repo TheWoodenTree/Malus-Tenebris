@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://but5ppjmdoelt"]
+
+[ext_resource type="Script" path="res://source/actors/interactables/stone_button.gd" id="1_2lf6x"]
+[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock.tres" id="1_jlbk6"]
+[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_wxhii"]
+[ext_resource type="AudioStream" uid="uid://b1wi20w6l3rp4" path="res://source/assets/sounds/move/short_stone_drag.ogg" id="4_3bgsf"]
+[ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="4_bevxb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_424p5"]
+material = ExtResource("1_jlbk6")
+size = Vector3(0.6, 0.4, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8g88"]
+size = Vector3(1.2, 0.8, 0.4)
+
+[node name="stone_button" type="Node3D"]
+script = ExtResource("1_2lf6x")
+connected_node_name = "CollisionShape3D"
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+material_overlay = ExtResource("2_wxhii")
+mesh = SubResource("BoxMesh_424p5")
+
+[node name="interact_area" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("4_bevxb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+shape = SubResource("BoxShape3D_f8g88")
+
+[node name="push_player" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_3bgsf")

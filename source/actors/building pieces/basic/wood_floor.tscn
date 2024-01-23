@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cffojy8sonot2"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_rr40e"]
+[ext_resource type="Material" uid="uid://t3e18auh2koj" path="res://source/assets/materials/dark_wood_planks/dark_wood_planks_triplanar.tres" id="2_c0wrl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wjwk3"]
+resource_local_to_scene = true
+material = ExtResource("2_c0wrl")
+
+[sub_resource type="BoxShape3D" id="2"]
+resource_local_to_scene = true
+
+[node name="wood_floor" type="StaticBody3D"]
+script = ExtResource("1_rr40e")
+type = 1
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wjwk3")
+
+[node name="collision_box" type="CollisionShape3D" parent="."]
+shape = SubResource("2")

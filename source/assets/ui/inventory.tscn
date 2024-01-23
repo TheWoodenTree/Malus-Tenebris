@@ -1,0 +1,286 @@
+[gd_scene load_steps=18 format=3 uid="uid://daiit8sip3qoj"]
+
+[ext_resource type="Script" path="res://source/assets/ui/inventory.gd" id="1_0pmc3"]
+[ext_resource type="Texture2D" uid="uid://bok3qh5mh0w5o" path="res://source/assets/ui/inventory/inventory_bag.png" id="2_0xxye"]
+[ext_resource type="PackedScene" uid="uid://c6c7xxmin6mg5" path="res://source/assets/ui/inventory_slot.tscn" id="2_7krhi"]
+[ext_resource type="PackedScene" uid="uid://tus3pcbefjaj" path="res://source/assets/ui/buttons/inventory_left_button.tscn" id="3_ggwby"]
+[ext_resource type="Texture2D" uid="uid://1n3030usnmaw" path="res://source/assets/ui/buttons/separator.png" id="4_dgkkr"]
+[ext_resource type="PackedScene" uid="uid://dnhynfku0mctc" path="res://source/assets/ui/buttons/inventory_right_button.tscn" id="5_mw4ew"]
+[ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="7_1ols8"]
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="7_wltyg"]
+[ext_resource type="Texture2D" uid="uid://crcq45hwhctvi" path="res://source/assets/ui/buttons/inventory_slot_selected.png" id="10_kr08j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gq48e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rg58c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kq73y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylphs"]
+
+[sub_resource type="Animation" id="Animation_7vw54"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_eca3f"]
+resource_name = "scroll_left"
+length = 0.151
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cont/slot_cont:theme_override_constants/margin_left")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0, -72]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.151),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"move_slot_to_front"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.151),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pswr1"]
+resource_name = "scroll_right"
+length = 0.151
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cont/slot_cont:theme_override_constants/margin_left")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0, 72]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.151),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"move_slot_to_back"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.151),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xph6x"]
+_data = {
+"RESET": SubResource("Animation_7vw54"),
+"scroll_left": SubResource("Animation_eca3f"),
+"scroll_right": SubResource("Animation_pswr1")
+}
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0pmc3")
+
+[node name="cont" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="sack_texture" type="TextureRect" parent="cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+texture = ExtResource("2_0xxye")
+stretch_mode = 2
+
+[node name="slot_cont" type="MarginContainer" parent="cont"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+
+[node name="slot_grid" type="GridContainer" parent="cont/slot_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 0
+columns = 15
+
+[node name="item_slot1" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot2" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot3" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot4" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot5" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot6" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot7" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot8" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="item_slot9" parent="cont/slot_cont/slot_grid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+layout_mode = 2
+
+[node name="vbox_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="tutorial_label" type="Label" parent="cont/vbox_cont"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("7_wltyg")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="cont/vbox_cont"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gq48e")
+
+[node name="item_name_label" type="Label" parent="cont/vbox_cont"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("7_wltyg")
+text = "Item name"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="hbox_cont" type="HBoxContainer" parent="cont/vbox_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="inventory_left_button" parent="cont/vbox_cont/hbox_cont" instance=ExtResource("3_ggwby")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="separator" type="TextureRect" parent="cont/vbox_cont/hbox_cont"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_dgkkr")
+stretch_mode = 2
+flip_h = true
+
+[node name="spacer1" type="VSeparator" parent="cont/vbox_cont/hbox_cont"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 68
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rg58c")
+
+[node name="select_slot_frame" type="TextureRect" parent="cont/vbox_cont/hbox_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("10_kr08j")
+stretch_mode = 2
+
+[node name="spacer2" type="VSeparator" parent="cont/vbox_cont/hbox_cont"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 68
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kq73y")
+
+[node name="separator2" type="TextureRect" parent="cont/vbox_cont/hbox_cont"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_dgkkr")
+stretch_mode = 2
+
+[node name="inventory_right_button" parent="cont/vbox_cont/hbox_cont" instance=ExtResource("5_mw4ew")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="HSeparator" type="HSeparator" parent="cont/vbox_cont"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ylphs")
+
+[node name="scroll_anim_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xph6x")
+}
+
+[node name="slot_scroll_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1ols8")
+max_polyphony = 16
+
+[node name="item_click_player" type="AudioStreamPlayer" parent="."]
+bus = &"General (lite)"
+
+[connection signal="button_up" from="cont/vbox_cont/hbox_cont/inventory_left_button" to="." method="_on_inventory_left_button_button_up"]
+[connection signal="button_up" from="cont/vbox_cont/hbox_cont/inventory_right_button" to="." method="_on_inventory_left_button_2_button_up"]
+[connection signal="animation_started" from="scroll_anim_player" to="." method="_on_scroll_anim_player_animation_started"]

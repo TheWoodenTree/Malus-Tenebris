@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://coyfxhlkcko0r"]
+
+[ext_resource type="Script" path="res://source/actors/rooms/occluders/occluder_instance.gd" id="1_lm0et"]
+
+[node name="room_template" type="Node3D"]
+
+[node name="walls" type="Node3D" parent="."]
+
+[node name="floors" type="Node3D" parent="."]
+
+[node name="pillars" type="Node3D" parent="."]
+
+[node name="stairs" type="Node3D" parent="."]
+
+[node name="fences" type="Node3D" parent="."]
+
+[node name="cells" type="Node3D" parent="."]
+
+[node name="decor" type="Node3D" parent="."]
+
+[node name="misc" type="Node3D" parent="."]
+
+[node name="occluder_instance" type="OccluderInstance3D" parent="."]
+visible = false
+bake_mask = 4294967283
+script = ExtResource("1_lm0et")

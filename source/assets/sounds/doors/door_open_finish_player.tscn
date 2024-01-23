@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://ogd88gkrpbw5"]
+
+[node name="door_open_finish_player" type="AudioStreamPlayer3D"]
+max_polyphony = 3

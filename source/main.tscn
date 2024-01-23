@@ -1,0 +1,239 @@
+[gd_scene load_steps=23 format=3 uid="uid://cirivl3wn7ipl"]
+
+[ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
+[ext_resource type="Script" path="res://source/main.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://tpexhv33nwtq" path="res://source/assets/ui/how_to_interact.tscn" id="5"]
+[ext_resource type="Script" path="res://source/assets/ui/ui.gd" id="6"]
+[ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
+[ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
+[ext_resource type="Material" uid="uid://faq68tr6wo04" path="res://source/assets/shaders/retro_shader_mat.tres" id="7_768vo"]
+[ext_resource type="AudioStream" uid="uid://brkutqft4kt3q" path="res://source/assets/sounds/misc/heartbeat.ogg" id="8"]
+[ext_resource type="Material" uid="uid://8ry3t1ttx3f4" path="res://source/assets/shaders/chrom_abb_shader_mat.tres" id="8_dshu8"]
+[ext_resource type="Shader" path="res://source/assets/ui/death_screen.gdshader" id="8_meepd"]
+[ext_resource type="PackedScene" uid="uid://c4sfuh7t214ho" path="res://source/assets/prologue/prologue.tscn" id="9"]
+[ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
+[ext_resource type="Texture2D" uid="uid://yxjmx6mnc3wl" path="res://source/assets/ui/interact_icons/interact_eye.png" id="11_c2uy7"]
+[ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
+[ext_resource type="Script" path="res://source/interact_icon.gd" id="12_ifoda"]
+
+[sub_resource type="Animation" id="1"]
+length = 0.001
+
+[sub_resource type="Animation" id="2"]
+resource_name = "chromatic_abberation"
+
+[sub_resource type="Animation" id="3"]
+resource_name = "heartbeat"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:anim_chrom_abb_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.32, 0.56, 0.77),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 10.0, 4.0, 7.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:anim_vignette_softness")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.32, 0.56, 0.77),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.65, 0.8, 0.7, 1.0]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../heartbeat_player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_211kc"]
+_data = {
+"RESET": SubResource("1"),
+"chromatic_abberation": SubResource("2"),
+"heartbeat": SubResource("3")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_153xn"]
+shader = ExtResource("8_meepd")
+shader_parameter/alpha = 1.0
+shader_parameter/vigColor = null
+shader_parameter/vigMultiplier = 0.2
+shader_parameter/vigMultiplierOffset = 0.75
+shader_parameter/vigSoftness = 3.0
+shader_parameter/darkestThreshold = 0.06
+shader_parameter/darkThreshold = 0.125
+shader_parameter/lightThreshold = 0.175
+shader_parameter/lighterThreshold = 0.8
+shader_parameter/contrast = null
+shader_parameter/darkestColor = Color(0.078, 0.024, 0.059, 1)
+shader_parameter/darkColor = Color(0.243, 0.067, 0.067, 1)
+shader_parameter/lightColor = Color(0.431, 0.145, 0.078, 1)
+shader_parameter/lighterColor = Color(0.639, 0.235, 0.047, 1)
+shader_parameter/lightestColor = Color(0.812, 0.518, 0.294, 1)
+
+[sub_resource type="Environment" id="4"]
+background_mode = 1
+ssao_radius = 16.0
+ssao_intensity = 16.0
+adjustment_enabled = true
+adjustment_contrast = 1.05
+
+[node name="main" type="Node"]
+script = ExtResource("4")
+anim_vignette_softness = 1.0
+
+[node name="effects_player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../post_processing")
+libraries = {
+"": SubResource("AnimationLibrary_211kc")
+}
+
+[node name="drone_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qtdgl")
+volume_db = -6.0
+
+[node name="heartbeat_player" type="AudioStreamPlayer" parent="."]
+volume_db = -17.5
+
+[node name="drip_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10")
+volume_db = -16.0
+bus = &"General"
+
+[node name="post_processing" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vignette" type="ColorRect" parent="post_processing"]
+material = ExtResource("6_kj3sd")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[node name="back_buf_copy" type="BackBufferCopy" parent="post_processing"]
+copy_mode = 2
+
+[node name="zoom" type="ColorRect" parent="post_processing"]
+material = ExtResource("6_d62xx")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[node name="back_buf_copy3" type="BackBufferCopy" parent="post_processing"]
+copy_mode = 2
+
+[node name="chromatic_abberation" type="ColorRect" parent="post_processing"]
+visible = false
+material = ExtResource("8_dshu8")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[node name="back_buf_copy1" type="BackBufferCopy" parent="post_processing"]
+visible = false
+copy_mode = 2
+
+[node name="retro_shader" type="ColorRect" parent="post_processing"]
+material = ExtResource("7_768vo")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[node name="blur" type="ColorRect" parent="post_processing"]
+visible = false
+layout_mode = 0
+
+[node name="back_buf_copy4" type="BackBufferCopy" parent="post_processing"]
+visible = false
+copy_mode = 2
+
+[node name="menus" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ui" type="Control" parent="."]
+material = SubResource("ShaderMaterial_153xn")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6")
+
+[node name="background" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 0)
+
+[node name="how_to_interact" parent="ui" instance=ExtResource("5")]
+visible = false
+layout_mode = 1
+
+[node name="Label" type="Label" parent="ui"]
+visible = false
+layout_mode = 0
+offset_left = 73.0
+offset_top = 55.0
+offset_right = 254.0
+offset_bottom = 116.0
+
+[node name="cont" type="MarginContainer" parent="ui"]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="interact_icon" type="TextureRect" parent="ui/cont"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_c2uy7")
+script = ExtResource("12_ifoda")
+
+[node name="prologue" parent="." instance=ExtResource("9")]
+
+[node name="world_environment" type="WorldEnvironment" parent="."]
+environment = SubResource("4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("10_8mkgv")
+theme_override_font_sizes/font_size = 16
+text = "FPS:"
+
+[node name="cursor" parent="." instance=ExtResource("12_7deiu")]

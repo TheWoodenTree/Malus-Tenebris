@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckjf7ifm35jh8"]
+
+[ext_resource type="Script" path="res://source/assets/sounds/impacts/impact_player.gd" id="1"]
+
+[node name="impact_player" type="AudioStreamPlayer3D"]
+unit_db = 5.0
+unit_size = 2.0
+pitch_scale = 0.9
+bus = "General"
+script = ExtResource("1")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://mg8n68f4h55m"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_6fy5c"]
+[ext_resource type="Material" uid="uid://4jhugsae2tr6" path="res://source/assets/materials/cobblestone/cobblestone.tres" id="2_85g4n"]
+
+[sub_resource type="BoxMesh" id="1"]
+resource_local_to_scene = true
+material = ExtResource("2_85g4n")
+
+[sub_resource type="BoxShape3D" id="2"]
+resource_local_to_scene = true
+
+[node name="cobble_floor" type="StaticBody3D"]
+script = ExtResource("1_6fy5c")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
+
+[node name="collision_box" type="CollisionShape3D" parent="."]
+shape = SubResource("2")

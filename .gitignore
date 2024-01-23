@@ -10,7 +10,6 @@ source/assets/geometry/
 *.jpg
 *.ogg
 *.mp3
-*.tscn
 
 # Imported translations (automatically generated from CSV files)
 *.translation

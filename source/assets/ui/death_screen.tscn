@@ -1,0 +1,274 @@
+[gd_scene load_steps=20 format=3 uid="uid://cn2lmv4kxle5o"]
+
+[ext_resource type="Script" path="res://source/assets/ui/death_screen.gd" id="1_5yg6d"]
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_gc5si"]
+[ext_resource type="Shader" path="res://source/assets/ui/death_screen.gdshader" id="2_13v23"]
+
+[sub_resource type="Animation" id="Animation_mi60y"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_j7gsr"]
+resource_name = "death_screen_anim"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:theme_override_constants/margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 0.25, 1),
+"update": 0,
+"values": [125, 125, 90]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_unlock_mouse"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../background:material:shader_parameter/alpha")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.2),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../title_screen_button:theme_override_colors/font_color")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.5),
+"transitions": PackedFloat32Array(1, 0.25, 1),
+"update": 0,
+"values": [Color(0.243137, 0.0666667, 0.0666667, 0), Color(0.243137, 0.0666667, 0.0666667, 0), Color(0.243137, 0.0666667, 0.0666667, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../try_again_button:theme_override_colors/font_color")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.5),
+"transitions": PackedFloat32Array(1, 0.25, 1),
+"update": 0,
+"values": [Color(0.243137, 0.0666667, 0.0666667, 0), Color(0.243137, 0.0666667, 0.0666667, 0), Color(0.243137, 0.0666667, 0.0666667, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../title_screen_button:theme_override_styles/normal:bg_color")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.5),
+"transitions": PackedFloat32Array(1, 0.25, 1),
+"update": 0,
+"values": [Color(0.811765, 0.517647, 0.294118, 0), Color(0.811765, 0.517647, 0.294118, 0), Color(0.811765, 0.517647, 0.294118, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../try_again_button:theme_override_styles/normal:bg_color")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.5),
+"transitions": PackedFloat32Array(1, 0.25, 1),
+"update": 0,
+"values": [Color(0.811765, 0.517647, 0.294118, 0), Color(0.811765, 0.517647, 0.294118, 0), Color(0.811765, 0.517647, 0.294118, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../background:material:shader_parameter/vigMultiplierOffset")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.5),
+"transitions": PackedFloat32Array(1, 0.6, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.7]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:theme_override_colors/font_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 0.6, 0.2),
+"update": 0,
+"values": [Color(0.811765, 0.517647, 0.294118, 0), Color(0.811765, 0.517647, 0.294118, 0), Color(0.811765, 0.517647, 0.294118, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d0481"]
+_data = {
+"RESET": SubResource("Animation_mi60y"),
+"death_screen_anim": SubResource("Animation_j7gsr")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m4tja"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wn3x"]
+seamless = true
+noise = SubResource("FastNoiseLite_m4tja")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2ony"]
+shader = ExtResource("2_13v23")
+shader_parameter/alpha = 1.0
+shader_parameter/vigColor = null
+shader_parameter/vigMultiplier = 0.8
+shader_parameter/vigMultiplierOffset = 0.7
+shader_parameter/vigSoftness = -0.25
+shader_parameter/darkestThreshold = 0.06
+shader_parameter/darkThreshold = 0.125
+shader_parameter/lightThreshold = 0.175
+shader_parameter/lighterThreshold = 0.8
+shader_parameter/contrast = null
+shader_parameter/darkestColor = Color(0.0784314, 0.0235294, 0.0588235, 1)
+shader_parameter/darkColor = Color(0.243137, 0.0666667, 0.0666667, 1)
+shader_parameter/lightColor = Color(0.431, 0.145, 0.078, 1)
+shader_parameter/lighterColor = Color(0.639216, 0.235294, 0.0470588, 1)
+shader_parameter/lightestColor = Color(0.811765, 0.517647, 0.294118, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_1wn3x")
+
+[sub_resource type="Gradient" id="Gradient_hijqr"]
+offsets = PackedFloat32Array(0.0193237, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lj8dq"]
+noise_type = 4
+frequency = 0.0263
+fractal_type = 3
+fractal_gain = 0.883
+domain_warp_enabled = true
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gpv1q"]
+height = 288
+color_ramp = SubResource("Gradient_hijqr")
+noise = SubResource("FastNoiseLite_lj8dq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23coi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umnar"]
+bg_color = Color(0.811765, 0.517647, 0.294118, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8avs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_movsl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htivu"]
+bg_color = Color(0.811765, 0.517647, 0.294118, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3j0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dek7v"]
+
+[node name="death_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yg6d")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../cont/v_box_cont/death_label")
+libraries = {
+"": SubResource("AnimationLibrary_d0481")
+}
+
+[node name="background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n2ony")
+position = Vector2(256, 144)
+texture = SubResource("NoiseTexture2D_gpv1q")
+
+[node name="cont" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+theme_override_constants/margin_top = 90
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="death_label" type="Label" parent="cont/v_box_cont"]
+light_mask = 2
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("1_gc5si")
+theme_override_font_sizes/font_size = 48
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="cont/v_box_cont"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_23coi")
+
+[node name="try_again_button" type="Button" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_fonts/font = ExtResource("1_gc5si")
+theme_override_styles/normal = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p8avs")
+text = "Try Again"
+
+[node name="HSeparator" type="HSeparator" parent="cont/v_box_cont"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_movsl")
+
+[node name="title_screen_button" type="Button" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_fonts/font = ExtResource("1_gc5si")
+theme_override_styles/normal = SubResource("StyleBoxFlat_htivu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c3j0a")
+text = "Title Screen"
+
+[node name="HSeparator3" type="HSeparator" parent="cont/v_box_cont"]
+layout_mode = 2
+theme_override_constants/separation = 70
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dek7v")

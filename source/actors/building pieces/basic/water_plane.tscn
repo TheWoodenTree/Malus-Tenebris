@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx1dvrbna6x6e"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/water_plane.gd" id="1_hakrc"]
+[ext_resource type="PackedScene" uid="uid://4gkb0ey51dtk" path="res://source/actors/decor/misc/puddle.tscn" id="2_m3um1"]
+
+[sub_resource type="Shader" id="Shader_apnm0"]
+code = "shader_type spatial;
+
+uniform int parent_room_global_rot = 0;
+uniform float def_scale = 0.005;
+uniform float metallic : hint_range(0.0, 1.0) = 1.0;
+uniform float specular : hint_range(0.0, 1.0) = 0.0;
+uniform float roughness : hint_range(0.0, 1.0) = 0.5;
+
+uniform vec4 color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec2 speed_scale;
+uniform sampler2D noise;
+
+vec2 pan_uv(vec2 uv, float scale) {
+	return uv + TIME * scale;
+}
+
+void fragment() {
+	vec4 noise_text1 = texture(noise, pan_uv(vec2(UV.x, UV.y), def_scale / speed_scale.x));
+	vec4 noise_text2 = texture(noise, pan_uv(vec2(UV.x + 0.5, UV.y), -def_scale / speed_scale.x));
+	vec4 noise_text3 = texture(noise, pan_uv(vec2(-UV.y, UV.x), def_scale / speed_scale.x));
+	vec4 noise_text4 = texture(noise, pan_uv(vec2(-UV.y + 0.5, UV.x), -def_scale / speed_scale.x));
+	
+	vec4 mixed_noise = noise_text1 * noise_text2 * noise_text3 * noise_text4;
+	mixed_noise = pow(mixed_noise, vec4(0.65)) * 100.0;
+	
+	vec4 final = color + mixed_noise * (color + 0.0);
+	ALBEDO = final.rgb;
+	METALLIC = metallic;
+	SPECULAR = specular;
+	ROUGHNESS = roughness;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a6f68"]
+resource_local_to_scene = true
+noise_type = 2
+fractal_type = 0
+cellular_distance_function = 1
+domain_warp_enabled = true
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kpy5x"]
+resource_local_to_scene = true
+width = 1024
+height = 1024
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_a6f68")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pay6p"]
+render_priority = 0
+shader = SubResource("Shader_apnm0")
+shader_parameter/parent_room_global_rot = 0
+shader_parameter/def_scale = 0.01
+shader_parameter/metallic = 1.0
+shader_parameter/specular = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/color = Color(0.341176, 0.160784, 0.0509804, 1)
+shader_parameter/speed_scale = Vector2(1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_kpy5x")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d5y7h"]
+material = SubResource("ShaderMaterial_pay6p")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8bhbt"]
+resource_local_to_scene = true
+size = Vector3(10, 1, 10)
+
+[node name="water_plane" type="Node3D"]
+script = ExtResource("1_hakrc")
+
+[node name="plane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_d5y7h")
+
+[node name="water_col_area" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="box" type="CollisionShape3D" parent="water_col_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+shape = SubResource("BoxShape3D_8bhbt")
+
+[node name="puddle" parent="." instance=ExtResource("2_m3um1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+visible = false
+lower_fade = 1e+06

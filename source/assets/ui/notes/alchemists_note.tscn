@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://2vla0smwg114"]
+
+[node name="alchemists_note" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+text = "Something something Ruboleum"
+autowrap_mode = 2

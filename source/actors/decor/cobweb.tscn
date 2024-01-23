@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://m6153tv2dy2t"]
+
+[ext_resource type="Material" uid="uid://d4k36ud7eeioj" path="res://source/assets/materials/cobweb/cobweb.tres" id="1"]
+
+[sub_resource type="QuadMesh" id="1"]
+material = ExtResource("1")
+size = Vector2(3, 3)
+
+[node name="cobweb" type="MeshInstance3D"]
+mesh = SubResource("1")
+material/0 = null

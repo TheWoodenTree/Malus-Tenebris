@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://b18kdjhnv6mwa"]
+
+[ext_resource type="Script" path="res://source/actors/antagonists/obunga.gd" id="1_odnd1"]
+[ext_resource type="Texture2D" uid="uid://byin0qlhiarmc" path="res://source/assets/misc/Obunga.png" id="3_4e7ku"]
+[ext_resource type="AudioStream" uid="uid://dps6k12a5cmq" path="res://source/assets/sounds/monster/screetch1.ogg" id="3_8rdjm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjhfc"]
+shading_mode = 0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uv3tb"]
+material = SubResource("StandardMaterial3D_wjhfc")
+radius = 0.25
+height = 2.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pvtq8"]
+radius = 0.25
+height = 2.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6cggd"]
+radius = 0.25
+height = 2.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_npf8i"]
+radius = 0.1
+height = 0.2
+
+[node name="obunga" type="CharacterBody3D" groups=["enemies"]]
+floor_constant_speed = true
+floor_max_angle = 0.872665
+script = ExtResource("1_odnd1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965926, 1.54268e-08, 0.258819, 0, 1, -5.96046e-08, -0.258819, 5.75736e-08, 0.965926, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_uv3tb")
+
+[node name="standing_collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_pvtq8")
+
+[node name="crouching_collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6cggd")
+
+[node name="water_check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+target_position = Vector3(0, -2.65, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="nav_agent" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
+path_height_offset = -0.5
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.6, 0, 0, 0, 0.75, 0, 0.31, 0)
+billboard = 2
+shaded = true
+double_sided = false
+alpha_cut = 1
+alpha_scissor_threshold = 0.75
+alpha_antialiasing_mode = 2
+texture = ExtResource("3_4e7ku")
+
+[node name="screetch_cooldown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="screetch_player" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_8rdjm")
+pitch_scale = 1.25
+bus = &"General (big)"
+
+[node name="test" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_npf8i")
+
+[node name="floor_type_check" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2, 0)

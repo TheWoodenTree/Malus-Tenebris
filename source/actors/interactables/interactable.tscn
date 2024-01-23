@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7bbxdmeobxfs"]
+
+[ext_resource type="Script" path="res://source/actors/interactables/interactable.gd" id="1_088xv"]
+[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_143x3"]
+[ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_3f3on"]
+
+[node name="interactable" type="Node3D"]
+script = ExtResource("1_088xv")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("2_143x3")
+
+[node name="interact_area" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("3_3f3on")
+
+[node name="collision_shape" type="CollisionShape3D" parent="interact_area"]

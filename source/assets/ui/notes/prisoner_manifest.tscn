@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cb8yg3bimqnfx"]
+
+[node name="prisoner_manifest" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+text = "Prisoner Manifest
+XXXI May, MCXVIII
+
+Cell A1: Relatively healthy male, age unknown. Recommended.
+
+Cell A2: Healthy female, age 27. Minor behavioral issues, can be corrected at a later date. Recommended.
+[PAGE]
+Cell A3: Relatively healthy male, age 19. Exceptionally volatile. Futher correction will not prove useful. Disposed of.
+
+Cell A4: Recently aquired healthy male, age unknown, likely 40s. Delayed recommendation until testing can be performed."
+autowrap_mode = 2

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://crwt58uq6ce6y"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v4pqi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qs2h5"]
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_vw2af"]
+material = SubResource("StandardMaterial3D_qs2h5")
+
+[node name="GpuParticles3d" type="GPUParticles3D"]
+process_material = SubResource("ParticleProcessMaterial_v4pqi")
+draw_pass_1 = SubResource("QuadMesh_vw2af")

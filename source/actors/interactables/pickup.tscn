@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://t4bgwd6hxfib"]
+
+[ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_gjmcy"]
+[ext_resource type="Script" path="res://source/actors/interactables/pickup.gd" id="2_8rstg"]
+
+[sub_resource type="Shader" id="Shader_gl7qx"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kuelw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_gl7qx")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+
+[node name="interactable" instance=ExtResource("1_gjmcy")]
+script = ExtResource("2_8rstg")
+item_data = null
+name_override = ""
+highlight_light_on = false
+count = 1
+
+[node name="mesh" parent="." index="0"]
+layers = 4
+material_overlay = SubResource("ShaderMaterial_kuelw")
+
+[node name="pickup_player" type="AudioStreamPlayer3D" parent="." index="2"]
+
+[node name="highlight_light" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102692, 0)
+light_energy = 0.2
+light_size = 3.0
+light_specular = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 8.0
+omni_range = 3.0
+omni_attenuation = 0.2

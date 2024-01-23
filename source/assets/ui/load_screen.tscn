@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dubcm7n1r4qld"]
+
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_44pp3"]
+[ext_resource type="Shader" path="res://source/assets/ui/load_screen_text.gdshader" id="1_bj6y0"]
+[ext_resource type="Texture2D" uid="uid://dss5t2xp3b5qr" path="res://source/assets/ui/image3.png" id="1_f2s44"]
+[ext_resource type="Texture2D" uid="uid://d1mimetup7pkk" path="res://source/assets/ui/title_background.png" id="1_nnobq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3e4t"]
+shader = ExtResource("1_bj6y0")
+
+[node name="load_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(256, 144)
+texture = ExtResource("1_f2s44")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(13, 278)
+scale = Vector2(2, 2)
+energy = 10.13
+texture = ExtResource("1_nnobq")
+texture_scale = 4.9
+
+[node name="cont" type="MarginContainer" parent="."]
+light_mask = 0
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+theme_override_constants/margin_right = 45
+
+[node name="loading_label" type="Label" parent="cont"]
+light_mask = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_q3e4t")
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0235294, 0.0588235, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_44pp3")
+theme_override_font_sizes/font_size = 32
+text = "Loading..."
+horizontal_alignment = 2
+vertical_alignment = 1

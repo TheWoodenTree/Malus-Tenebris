@@ -1,0 +1,216 @@
+[gd_scene load_steps=16 format=3 uid="uid://bcbfemjeghktp"]
+
+[ext_resource type="Texture2D" uid="uid://5v4hxn5osh7k" path="res://source/assets/misc/dust.png" id="1_4mjw5"]
+[ext_resource type="Script" path="res://source/assets/particles/ruboleum_vial_break.gd" id="1_mbcqb"]
+[ext_resource type="AudioStream" uid="uid://crv3nfq3cdhlw" path="res://source/assets/sounds/misc/bottle_break.ogg" id="2_h3bat"]
+[ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3_7d6de"]
+[ext_resource type="AudioStream" uid="uid://br2y5q420gcrf" path="res://source/assets/sounds/misc/sizzle.ogg" id="4_ivlio"]
+
+[sub_resource type="Curve" id="Curve_avevv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 0.75), 0.0, 0.0, 0, 0, Vector2(0.75, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bbqg4"]
+curve = SubResource("Curve_avevv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4pmki"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 0.3
+initial_velocity_max = 0.6
+angular_velocity_min = 10.0
+angular_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.015
+damping_max = 0.045
+alpha_curve = SubResource("CurveTexture_bbqg4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jx02"]
+transparency = 1
+blend_mode = 1
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4mjw5")
+metallic_specular = 0.0
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_4mjw5")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ycau7"]
+material = SubResource("StandardMaterial3D_7jx02")
+orientation = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vli1b"]
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 0.08
+initial_velocity_max = 0.3
+angular_velocity_min = 10.0
+angular_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.2
+alpha_curve = SubResource("CurveTexture_bbqg4")
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbym2"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_7d6de")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_lk2sy"]
+material = SubResource("StandardMaterial3D_sbym2")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Animation" id="Animation_jahv7"]
+resource_name = "break"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("particles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("light:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 5, 12.5),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sound_player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_h3bat")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("particles2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sizzle_player")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_ivlio")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0tjf"]
+_data = {
+"break": SubResource("Animation_jahv7")
+}
+
+[node name="ruboleum_vial_break" type="Node3D"]
+script = ExtResource("1_mbcqb")
+
+[node name="particles" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+custom_aabb = AABB(-1000, -1000, -1000, 2000, 2000, 2000)
+emitting = false
+amount = 32
+lifetime = 15.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4pmki")
+draw_pass_1 = SubResource("PlaneMesh_ycau7")
+
+[node name="particles2" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+custom_aabb = AABB(-1000, -1000, -1000, 2000, 2000, 2000)
+emitting = false
+amount = 32
+lifetime = 20.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_vli1b")
+draw_pass_1 = SubResource("QuadMesh_lk2sy")
+
+[node name="light" type="OmniLight3D" parent="."]
+light_energy = 0.0
+light_specular = 0.01
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="sound_player" type="AudioStreamPlayer3D" parent="."]
+volume_db = 6.0
+max_db = 6.0
+
+[node name="sizzle_player" type="AudioStreamPlayer3D" parent="."]
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u0tjf")
+}

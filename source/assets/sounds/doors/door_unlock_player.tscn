@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba6ttdmamhif6"]
+
+[ext_resource type="AudioStream" uid="uid://b5dmq1pp2nsoi" path="res://source/assets/sounds/doors/wood_door_unlock.ogg" id="1_gfemm"]
+
+[node name="door_unlock_player" type="AudioStreamPlayer3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.71481, 0)
+stream = ExtResource("1_gfemm")

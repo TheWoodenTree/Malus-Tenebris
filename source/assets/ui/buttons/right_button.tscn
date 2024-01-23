@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://cit2neglrfu5o"]
+
+[ext_resource type="Texture2D" uid="uid://dxq23dry54uni" path="res://source/assets/ui/buttons/right_button.png" id="1_1mkna"]
+[ext_resource type="Texture2D" uid="uid://bgi6nq5dd22ds" path="res://source/assets/ui/buttons/right_button_pressed.png" id="1_lyr1o"]
+[ext_resource type="Texture2D" uid="uid://cp3utdx63dyxi" path="res://source/assets/ui/buttons/right_button_disabled.png" id="3_riarv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_deytp"]
+texture = ExtResource("1_1mkna")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b5nqk"]
+texture = ExtResource("1_lyr1o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l71e6"]
+texture = ExtResource("3_riarv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ast0k"]
+
+[node name="right_button" type="Button"]
+custom_minimum_size = Vector2(36, 25)
+offset_right = 36.0
+offset_bottom = 25.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_deytp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_deytp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b5nqk")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_l71e6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ast0k")

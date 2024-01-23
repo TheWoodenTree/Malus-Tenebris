@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://balppusisc6xg"]
+
+[node name="prisoner_note" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+text = "This is a living nightmare. I haven't committed any crime, yet here I am, sitting in darkness and silence only broken up by occasional cries of agony echoing down the corridors.
+
+I've witnessed countless poor souls condemned to death in these tunnels. By what means, I haven't the slightest idea. But there is a certain malevolence surrounding these depths that I cannot describe with words. These are not simply barbaric executions. I can't bring myself to think of what is actually happening.
+[PAGE]
+I don't know what waits for me on the other side of this cell door, and I no longer have any desire to find out. I have come to accept that I will die, rotting in a cold, wet coffin until my time comes. There is nothing left for me on this Earth.
+
+The only thing that waits for me now is through the veil.
+
+Alea iacta est."
+autowrap_mode = 2

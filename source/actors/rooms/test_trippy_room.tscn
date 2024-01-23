@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://source/actors/rooms/test_trippy_room.gd" id="1_h8e4w"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/tone_floor.tscn" id="2_a0cpb"]
+[ext_resource type="PackedScene" uid="uid://jnsxt50p5uev" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_p3k26"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="4_miw8d"]
+ransform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 4.5, 2.86102e-06)
+x_size = 6.0
+y_size = 8.0
+
+[node name="stone_wall2" parent="trick_wall" instance=ExtResource("3_p3k26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 4.5, -1.90735e-06)
+x_size = 6.0
+y_size = 8.0
+
+[node name="hanging_lamp" parent="trick_wall" instance=ExtResource("4_miw8d")]
+transform = Transform3D(4.37115e-08, 0, 1, 0, 1, 0, -1, 0, 4.37115e-08, 2.86102e-06, 1.25, 8.58307e-06)
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5, 2, 5)
+shape = SubResource("BoxShape3D_mygm0")
+
+[node name="stone_wall6" parent="." instance=ExtResource("3_p3k26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4.5, -9)
+y_size = 8.0
+
+[node name="stone_wall7" parent="." instance=ExtResource("3_p3k26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.5, -17)
+y_size = 8.0
+z_size = 15.0
+
+[node name="stone_floor3" parent="." instance=ExtResource("2_a0cpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -17)
+x_size = 8.0
+z_size = 15.0
+
+[node name="stone_floor4" parent="." instance=ExtResource("2_a0cpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 9, -17)
+x_size = 8.0
+z_size = 15.0
+
+[node name="stone_wall8" parent="." instance=ExtResource("3_p3k26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4.5, -17)
+y_size = 8.0
+z_size = 15.0
+
+[node name="stone_wall9" parent="." instance=ExtResource("3_p3k26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 4.5, -9)
+y_size = 8.0
+z_size = 15.0
+
+[node name="stone_floor5" parent="." instance=ExtResource("2_a0cpb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 0, -5.5)
+x_size = 8.0
+z_size = 15.0
+
+[node name="stone_floor6" parent="." instance=ExtResource("2_a0cpb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 9, -5.5)
+x_size = 8.0
+z_size = 15.0
+
+[node name="stone_wall10" parent="." instance=ExtResource("3_p3k26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 4.5, -2)
+y_size = 8.0
+z_size = 15.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

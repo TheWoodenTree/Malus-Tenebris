@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl2gephl8smmv"]
+
+[ext_resource type="Script" path="res://source/assets/sounds/doors/gate_slam_player.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dkr2a2xm4sgmm" path="res://source/assets/sounds/doors/metal_gate_close.ogg" id="2"]
+
+[node name="gate_slam_player" type="AudioStreamPlayer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -14)
+stream = ExtResource("2")
+unit_db = -20.0
+unit_size = 20.0
+pitch_scale = 0.75
+bus = "General"
+script = ExtResource("1")

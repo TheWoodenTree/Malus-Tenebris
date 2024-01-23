@@ -1,0 +1,204 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/tone_floor.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://jnsxt50p5uev" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://c0eq6v4lvkbd6" path="res://source/actors/building pieces/archways/stone_archway.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="7"]
+[ext_resource type="Script" path="res://source/actors/rooms/level.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://bongpq25mn3sw" path="res://source/actors/building pieces/stone_door_wall.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://gl2we4tjxsd8" path="res://source/actors/decor/misc/broken_barrel.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://di1wwxw78n6ba" path="res://source/actors/decor/misc/pots/fat_pot.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bxeqhg7y7wy06" path="res://source/actors/decor/misc/pots/tall_pot.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://c1h40uobsrohx" path="res://source/actors/building pieces/archways/large_stone_archway.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="16"]
+[ext_resource type="AudioStream" uid="uid://b8x3n5ecidyn" path="res://source/assets/sounds/bell/single_ring_1.ogg" id="17"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="18"]
+]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 1.5, 0)
+
+[node name="pillar4" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -14)
+
+[node name="chain_loop4" parent="pillar4" instance=ExtResource("7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+
+[node name="torch_holder" parent="pillar4" instance=ExtResource("6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.76837e-07, 0.75, 0.5)
+lit = false
+
+[node name="pillar5" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -23.5)
+
+[node name="chain_loop3" parent="pillar5" instance=ExtResource("7")]
+transform = Transform3D(1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 0.5, 1.5, 0)
+
+[node name="torch_holder2" parent="pillar5" instance=ExtResource("6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.25, 0.75, 10)
+lit = false
+
+[node name="pillar6" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -23.5)
+
+[node name="chain_loop2" parent="pillar6" instance=ExtResource("7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 1.5, 0)
+
+[node name="stone_wall" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, 4.5, -32.5)
+x_size = 15.0
+y_size = 8.0
+z_size = 3.0
+
+[node name="stone_wall2" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.75, 4.5, -32.5)
+x_size = 21.0
+y_size = 8.0
+
+[node name="cobweb" parent="." instance=ExtResource("15")]
+transform = Transform3D(0.811473, -0.215407, -0.543241, 0.00620803, 0.932712, -0.360568, 0.584356, 0.289219, 0.758208, 6, 7.5, -33)
+skeleton = NodePath("")
+
+[node name="cobweb2" parent="." instance=ExtResource("15")]
+transform = Transform3D(0.351549, -0.887555, 0.297757, 0.749687, 0.457397, 0.478286, -0.560698, 0.0550839, 0.826186, -5.75, 1, -32.75)
+skeleton = NodePath("")
+
+[node name="stone_wall4" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4.5, -5.5)
+y_size = 8.0
+z_size = 22.0
+
+[node name="stone_door_wall" parent="." instance=ExtResource("9")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.75, -34.5)
+
+[node name="stone_wall5" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09278e-08, 8.25, -33)
+x_size = 15.0
+
+[node name="stone_wall3" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.5, -2.75)
+y_size = 8.0
+z_size = 20.0
+
+[node name="stone_wall14" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, 4.5, -17)
+x_size = 5.0
+y_size = 8.0
+
+[node name="pillar7" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.5, -17.75)
+
+[node name="pillar11" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.75, 1.5, -18)
+
+[node name="pillar12" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.75, 1.5, -30.5)
+
+[node name="pillar8" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.75, 1.5, -13)
+
+[node name="pillar9" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.25, 1.5, 4)
+
+[node name="pillar10" parent="." instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, 4)
+
+[node name="stone_wall10" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 7, -17)
+x_size = 5.0
+y_size = 3.0
+
+[node name="stone_wall9" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 4.5, -17)
+x_size = 5.5
+y_size = 8.0
+
+[node name="stone_archway" parent="." instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 0.5, -16.5)
+
+[node name="stone_archway2" parent="." instance=ExtResource("14")]
+transform = Transform3D(-4.37114e-08, 0, 2.5, 0, 1, 0, -1, 0, -1.09278e-07, 29.75, 0.5, -24.25)
+
+[node name="stone_wall8" parent="." instance=ExtResource("4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.75, 4.5, -18.5)
+x_size = 4.0
+y_size = 8.0
+
+[node name="stone_wall12" parent="." instance=ExtResource("4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.75, 4.5, -30.5)
+x_size = 5.0
+y_size = 8.0
+
+[node name="stone_wall11" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 8.25, -24.5)
+x_size = 2.5
+y_size = 0.5
+z_size = 7.5
+
+[node name="tall_pot" parent="." instance=ExtResource("13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71757, 0.500056, -3.71578)
+
+[node name="fat_pot2" parent="." instance=ExtResource("12")]
+transform = Transform3D(-0.104883, 0.699285, -0.707107, -0.988938, -0.148327, 0, -0.104883, 0.699285, 0.707107, -2.5, 1.25, -5)
+
+[node name="fat_pot" parent="." instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0.5, -11)
+
+[node name="tall_pot2" parent="." instance=ExtResource("13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03243, 0.500056, -12.4658)
+
+[node name="barrel2" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, -12.25)
+
+[node name="barrel3" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 1.5, -11.75)
+
+[node name="sm_crate" parent="." instance=ExtResource("10")]
+transform = Transform3D(-0.866026, 0, 0.500001, 0, 1, 0, -0.500001, 0, -0.866026, -7.25, 0.5, -9.75)
+
+[node name="sm_broken_crate2" parent="." instance=ExtResource("3")]
+transform = Transform3D(-0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866026, -5, 0.5, -11)
+
+[node name="broken_barrel" parent="." instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 1.5, -12.75)
+
+[node name="broken_barrel2" parent="." instance=ExtResource("11")]
+transform = Transform3D(-2.18557e-08, 0.5, 0.866025, -1, -4.37114e-08, 0, 3.78552e-08, -0.866025, 0.5, -7.25, 1.25, -14)
+
+[node name="sm_broken_crate" parent="." instance=ExtResource("3")]
+transform = Transform3D(-0.707106, 0.707107, -4.21468e-08, 0, -5.96046e-08, -1, -0.707107, -0.707106, 4.21468e-08, 5.75, 1, -14.25)
+
+[node name="stone_archway4" parent="." instance=ExtResource("14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0.5, 7)
+
+[node name="stone_wall6" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 4.5, 5)
+x_size = 8.0
+y_size = 8.0
+
+[node name="stone_wall7" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 4.5, 5)
+x_size = 8.0
+y_size = 8.0
+
+[node name="stone_wall13" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.25, 5)
+x_size = 7.5
+y_size = 0.5
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18021e-06, 0, -27)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 2.5, -3.25)
+shape = SubResource("1")
+
+[node name="sound_player" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61732e-06, 2.75, -37)
+stream = ExtResource("17")
+bus = &"Behind Wall"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://do60vw7pnfa80"]
+
+[ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="1"]
+
+[node name="sm_stacked_barrels" type="Node3D"]
+
+[node name="barrel" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.812, 0.75, 0)
+
+[node name="barrel2" parent="." instance=ExtResource("1")]
+transform = Transform3D(0.5, 3.78552e-08, 0.866025, 0.866025, -2.18557e-08, -0.5, 0, 1, -4.37114e-08, 0.813, 0.75, 0)
+
+[node name="barrel3" parent="." instance=ExtResource("1")]
+transform = Transform3D(0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, -0.707107, 0, 1, -4.37114e-08, 0, 2.125, 0)

@@ -1,0 +1,101 @@
+[gd_scene load_steps=19 format=3 uid="uid://dw4xwroyayfdv"]
+
+[ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3sot7"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_jlmsx"]
+[ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_ss4ja"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="4_buubx"]
+[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="4_evxrn"]
+[ext_resource type="PackedScene" uid="uid://1utcwmaim5js" path="res://source/actors/decor/furniture/torture_chair.tscn" id="5_eqndu"]
+[ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="6_gfmsw"]
+[ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="7_u0vsv"]
+[ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="8_qyfwj"]
+[ext_resource type="PackedScene" uid="uid://samn2dje0fbg" path="res://source/actors/decor/misc/rope/laying_rope_1.tscn" id="9_nnero"]
+[ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="10_n87qg"]
+[ext_resource type="ArrayOccluder3D" uid="uid://c8da74ump72ny" path="res://source/actors/rooms/occluders/small_torture_room.occ" id="11_e68t4"]
+[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="12_2h3ek"]
+[ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="13_3serb"]
+[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="14_v7eo7"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="15_aqurv"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="16_g0e2e"]
+
+[sub_resource type="Resource" id="Resource_bmwx1"]
+resource_local_to_scene = true
+script = ExtResource("15_aqurv")
+name = "Ruboleum Vial"
+texture = ExtResource("16_g0e2e")
+pickup_sound = ExtResource("14_v7eo7")
+hold_rotation_offset = Vector3(0, 0, 0)
+hold_scale_multiplier = 1.0
+
+[node name="small_torture_room" instance=ExtResource("1_3sot7")]
+
+[node name="stone_wall" parent="walls" index="0" instance=ExtResource("3_ss4ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 4.5)
+size = Vector3(10, 8, 1)
+
+[node name="stone_wall2" parent="walls" index="1" instance=ExtResource("3_ss4ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -4.5)
+size = Vector3(10, 8, 1)
+
+[node name="stone_wall3" parent="walls" index="2" instance=ExtResource("3_ss4ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4.5, 2.5)
+size = Vector3(1, 8, 3)
+
+[node name="stone_wall4" parent="walls" index="3" instance=ExtResource("3_ss4ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.5, 0)
+size = Vector3(1, 8, 8)
+
+[node name="stone_wall5" parent="walls" index="4" instance=ExtResource("3_ss4ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 7, -1.5)
+size = Vector3(1, 3, 5)
+
+[node name="stone_floor" parent="floors" index="0" instance=ExtResource("1_jlmsx")]
+size = Vector3(10, 1, 10)
+
+[node name="stone_floor2" parent="floors" index="1" instance=ExtResource("1_jlmsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+size = Vector3(10, 1, 10)
+
+[node name="hanging_lamp" parent="decor" index="0" instance=ExtResource("4_buubx")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 0)
+default_range = 10.0
+default_energy = 0.5
+interactable = false
+
+[node name="torture_chair" parent="decor" index="1" instance=ExtResource("5_eqndu")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.25, 0.5, 1)
+
+[node name="sm_table" parent="decor" index="2" instance=ExtResource("6_gfmsw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.25, 0.5, -0.75)
+
+[node name="stool" parent="decor" index="3" instance=ExtResource("7_u0vsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, -2)
+
+[node name="chain_loop" parent="decor" index="4" instance=ExtResource("8_qyfwj")]
+transform = Transform3D(0.5, -7.54979e-08, -4.37114e-08, -7.54979e-08, -0.5, 4.37114e-08, -4.37114e-08, -4.37114e-08, -0.5, -0.5, 0.5, 1.5)
+
+[node name="chain_loop2" parent="decor" index="5" instance=ExtResource("8_qyfwj")]
+transform = Transform3D(0.5, -7.54979e-08, -4.37114e-08, -7.54979e-08, -0.5, 4.37114e-08, -4.37114e-08, -4.37114e-08, -0.5, -0.5, 0.5, 0.5)
+
+[node name="laying_rope_1" parent="decor" index="6" instance=ExtResource("9_nnero")]
+transform = Transform3D(0.826324, 0, 0.563194, 0, 1, 0, -0.563194, 0, 0.826324, 0.471727, 2, -0.340258)
+
+[node name="wall_rack" parent="decor" index="7" instance=ExtResource("10_n87qg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 2, 0)
+
+[node name="chain_loop3" parent="decor" index="8" instance=ExtResource("8_qyfwj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.25, -1.25)
+
+[node name="chain_loop4" parent="decor" index="9" instance=ExtResource("8_qyfwj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.25, 1.25)
+
+[node name="stone_archway" parent="misc" index="0" instance=ExtResource("4_evxrn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0.5, -1.5)
+material = ExtResource("12_2h3ek")
+
+[node name="occluder_instance" parent="." index="8"]
+occluder = ExtResource("11_e68t4")
+
+[node name="ruboleum_vial" parent="." index="9" instance=ExtResource("13_3serb")]
+transform = Transform3D(0.584646, 0.811288, 3.54625e-08, 0, -4.37114e-08, 1, 0.811288, -0.584646, -2.55557e-08, -0.5, 2.04474, -1)
+item_data = SubResource("Resource_bmwx1")

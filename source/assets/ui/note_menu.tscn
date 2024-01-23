@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cta7frnp42d7n"]
+
+[ext_resource type="Script" path="res://source/assets/ui/notes/note_menu.gd" id="1_bbb5n"]
+[ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="2_js2xi"]
+[ext_resource type="FontFile" uid="uid://c1wdfxdb26j27" path="res://source/assets/fonts/Quikhand.ttf" id="3_xnjsc"]
+[ext_resource type="PackedScene" uid="uid://tus3pcbefjaj" path="res://source/assets/ui/buttons/inventory_left_button.tscn" id="4_f3ccg"]
+[ext_resource type="PackedScene" uid="uid://dnhynfku0mctc" path="res://source/assets/ui/buttons/inventory_right_button.tscn" id="5_7va5n"]
+
+[node name="note_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_bbb5n")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="cont" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+
+[node name="text" parent="cont/v_box_cont" instance=ExtResource("2_js2xi")]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("3_xnjsc")
+text = "Default
+
+Text"
+
+[node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="left_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("4_f3ccg")]
+layout_mode = 2
+
+[node name="right_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("5_7va5n")]
+layout_mode = 2
+
+[node name="page_number" type="Label" parent="cont/v_box_cont/h_box_cont"]
+custom_minimum_size = Vector2(75, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("3_xnjsc")
+text = "Page 1/2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="cont/v_box_cont/h_box_cont/left_button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="cont/v_box_cont/h_box_cont/right_button" to="." method="_on_right_button_pressed"]

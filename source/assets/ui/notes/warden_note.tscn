@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d8vsesbsx5ns"]
+
+[node name="warden_note" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+text = "Dominus Maximinus Thrax,
+
+The situation in the prison depths has escalated beyond my control since we last exchanged letters. To the effect of safely continuing operation, I have made the decision to seal its doors. 
+
+The prisoners trapped below will likely perish; however, I deem their lives a neccessary sacrifice to ensure the containment of whatever foul miscreant manifests itself in the waters.
+[PAGE]
+I apologize for allowing the situation to deteriorate to this point. The display of human-like intelligence was truely startling. They are more dangerous than we anticipated.
+
+Should the condition continue to worsen, I regret to say that it may be necessary to abandon the project. I can not allow the Senate or any other members of the public to be privy to information regarding our operation.
+
+Brutus"
+autowrap_mode = 2

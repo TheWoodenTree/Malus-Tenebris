@@ -1,0 +1,221 @@
+[gd_scene load_steps=21 format=3 uid="uid://cn620q1tuk8ha"]
+
+[ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
+[ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="4"]
+[ext_resource type="Material" uid="uid://6l1ko2kw0opd" path="res://source/assets/particles/ambient_particles.tres" id="4_sn5wa"]
+[ext_resource type="AudioStream" uid="uid://dbr42td7nxhuf" path="res://source/assets/sounds/rucksack/rucksack_1.ogg" id="5_s032p"]
+[ext_resource type="AudioStream" uid="uid://dgjew80eoo60l" path="res://source/assets/sounds/rucksack/rucksack_2.ogg" id="6_145et"]
+[ext_resource type="AudioStream" uid="uid://dhvhdbjf2vdhf" path="res://source/assets/sounds/rucksack/rucksack_3.ogg" id="7_81gjg"]
+[ext_resource type="AudioStream" uid="uid://dqap21jiqu5gq" path="res://source/assets/sounds/misc/fear.ogg" id="8_ulhip"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8awoy"]
+height = 2.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2fjcf"]
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_nltwu"]
+resource_name = "walk_bob"
+length = 1.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head_controller/camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.55, 0), Vector3(0, 0.55, 0), Vector3(0, 0.55, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w13eb"]
+_data = {
+"walk_bob": SubResource("Animation_nltwu")
+}
+
+[sub_resource type="Animation" id="Animation_q2cha"]
+resource_name = "torch_light_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head_controller/base_light:omni_range")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.0, 12.0, 12.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ha0pu"]
+_data = {
+"torch_light_anim": SubResource("Animation_q2cha")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68otk"]
+shading_mode = 0
+albedo_color = Color(0.109804, 0.109804, 0.109804, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_occu0"]
+material = SubResource("StandardMaterial3D_68otk")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_r5ee3"]
+offsets = PackedFloat32Array(0, 0.165714, 0.822857, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.352941, 1, 1, 1, 0.352941, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dsy65"]
+gradient = SubResource("Gradient_r5ee3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y0bwj"]
+emission_shape = 3
+emission_box_extents = Vector3(30, 30, 30)
+angle_min = -360.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 0.2
+initial_velocity_max = 1.0
+angular_velocity_min = 10.0
+angular_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.75
+color_ramp = SubResource("GradientTexture1D_dsy65")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v4sui"]
+random_volume_offset_db = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("5_s032p")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_145et")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_81gjg")
+stream_2/weight = 1.0
+
+[node name="player" type="CharacterBody3D"]
+collision_layer = 2
+slide_on_ceiling = false
+floor_constant_speed = true
+floor_max_angle = 0.872665
+floor_snap_length = 1.0
+script = ExtResource("1")
+debug_do_tutorials = true
+
+[node name="head_controller" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="cam_starting_pos" type="Marker3D" parent="head_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="cam_look_at_pos" type="Marker3D" parent="head_controller/cam_starting_pos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -86.025)
+
+[node name="look_at_dir" type="RayCast3D" parent="head_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+visible = false
+target_position = Vector3(0, 0, -10)
+collision_mask = 0
+
+[node name="camera" parent="head_controller" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+cull_mask = 1048573
+
+[node name="viewport_cont" type="SubViewportContainer" parent="head_controller/camera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="torch_cam_viewport" type="SubViewport" parent="head_controller/camera/viewport_cont"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(512, 288)
+render_target_update_mode = 4
+
+[node name="torch_cam" type="Camera3D" parent="head_controller/camera/viewport_cont/torch_cam_viewport"]
+cull_mask = 2
+
+[node name="interact_raycast" type="RayCast3D" parent="head_controller/camera"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 32769
+collide_with_areas = true
+
+[node name="torch_pos" type="Marker3D" parent="head_controller/camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252)
+
+[node name="held_item_marker" type="Marker3D" parent="head_controller/camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
+
+[node name="base_light" type="OmniLight3D" parent="head_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.328954, 0)
+layers = 3
+light_energy = 0.75
+omni_range = 3.0
+script = ExtResource("4")
+
+[node name="standing_collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8awoy")
+
+[node name="crouching_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852, 0)
+shape = SubResource("CapsuleShape3D_2fjcf")
+
+[node name="cam_bob_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w13eb")
+}
+
+[node name="torch_light_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ha0pu")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
+cast_shadow = 0
+amount = 2300
+lifetime = 5.0
+process_material = ExtResource("4_sn5wa")
+draw_pass_1 = SubResource("PlaneMesh_occu0")
+
+[node name="floor_type_check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+target_position = Vector3(0, -3, 0)
+
+[node name="water_check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+target_position = Vector3(0, -2.65, 0)
+collision_mask = 5
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
+visible = false
+emitting = false
+amount = 256
+lifetime = 5.0
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_y0bwj")
+draw_pass_1 = SubResource("PlaneMesh_occu0")
+
+[node name="rucksack_player" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
+stream = SubResource("AudioStreamRandomizer_v4sui")
+pitch_scale = 0.8
+max_polyphony = 5
+
+[node name="fear_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ulhip")

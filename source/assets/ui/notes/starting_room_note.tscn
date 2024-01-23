@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cvhwjelug7bvn"]
+
+[node name="text" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+size_flags_horizontal = 4
+text = "Entry 1:
+
+I didn't deserve this. I am not responsible for the heinous crimes I've been accused of. Nothing regarding my situation has been explained to me.
+
+I suppose I am to just believe that I am guilty, and that I will remain here until they find a use for me. My stomach churns at the thought.
+[PAGE]
+Entry 2:
+
+I've seen other prisoners being taken from their cells, though not toward the way we came in. Whatever's being done to them, some aren't returning.
+
+I have a suspicion that the moment I was taken I was as good as dead. My children... I loathe the thought of them losing their father.
+[PAGE]
+Entry 3:
+
+I heard a couple guards speaking of something happening deeper in this prison. I only heard a few words, but they sounded concerned. Perhaps they will let me go. I doubt it.
+
+Behind the shelf in the corner of the room lies a small passage - seemingly the only other way out of this room. If I plan to attempt an escape, this appears to be my only means, but I first need the courage to do so.
+[PAGE]
+Entry 4:
+
+I haven't seen anybody in what feels like days. As far as I can tell, there are no prisoners left in the cells around me. No guards have come through this area in a long while.
+
+Perhaps this is my opportunity.
+"
+autowrap_mode = 2

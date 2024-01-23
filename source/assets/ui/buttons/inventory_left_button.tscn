@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://tus3pcbefjaj"]
+
+[ext_resource type="Texture2D" uid="uid://c53t2tvawvpnu" path="res://source/assets/ui/buttons/inventory_left.png" id="1_7iavb"]
+[ext_resource type="Texture2D" uid="uid://bpk3m81w133m4" path="res://source/assets/ui/buttons/inventory_left_pressed.png" id="2_gqagt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ud5j7"]
+texture = ExtResource("1_7iavb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xqsf"]
+texture = ExtResource("2_gqagt")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fjqp"]
+
+[node name="inventory_left_button" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_ud5j7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ud5j7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5xqsf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ud5j7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0fjqp")

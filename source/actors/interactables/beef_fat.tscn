@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://kixyva1bs3gf"]
+
+[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_wg1mq"]
+[ext_resource type="AudioStream" uid="uid://bw87ir2c7afbs" path="res://source/assets/sounds/misc/fat_pickup.ogg" id="2_l8woq"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_10d7e"]
+[ext_resource type="Texture2D" uid="uid://1bopmhso37fg" path="res://source/assets/ui/inventory/beef_fat.png" id="4_ywort"]
+
+[sub_resource type="Resource" id="Resource_hf70l"]
+script = ExtResource("3_10d7e")
+name = "Beef Fat"
+texture = ExtResource("4_ywort")
+pickup_sound = ExtResource("2_l8woq")
+hold_rotation_offset = Vector3(0, 45, 0)
+hold_scale_multiplier = 1.0
+
+[sub_resource type="Shader" id="Shader_207yu"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2omc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_207yu")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_igp70"]
+size = Vector3(0.15, 0.15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vk7qb"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[node name="beef_fat" instance=ExtResource("1_wg1mq")]
+item_data = SubResource("Resource_hf70l")
+
+[node name="mesh" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+material_overlay = SubResource("ShaderMaterial_e2omc")
+mesh = SubResource("BoxMesh_igp70")
+
+[node name="collision_shape" parent="interact_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+shape = SubResource("BoxShape3D_vk7qb")
+
+[node name="pickup_player" parent="." index="2"]
+stream = ExtResource("2_l8woq")

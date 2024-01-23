@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh7d8ovbkjjvn"]
+
+[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="1_6b4g8"]
+[ext_resource type="PackedScene" uid="uid://dq06hcs0nc8xo" path="res://source/actors/building pieces/basic/stairs.tscn" id="2_cjhx6"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_7kj47"]
+[ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="5_3aie5"]
+
+[node name="double_stair_connector_room" type="Node3D"]
+
+[node name="stone_archway4" parent="." instance=ExtResource("1_6b4g8")]
+transform = Transform3D(1, 0, 1.7683e-07, 0, 1, 0, -1.7683e-07, 0, 1, 0, 3.5, -9)
+
+[node name="stairs" parent="." instance=ExtResource("2_cjhx6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, -0.5, -6)
+
+[node name="stairs2" parent="." instance=ExtResource("2_cjhx6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -0.5, -6)
+
+[node name="stairs5" parent="." instance=ExtResource("2_cjhx6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 1.5, -8)
+
+[node name="stairs6" parent="." instance=ExtResource("2_cjhx6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1.5, -8)
+
+[node name="stone_floor6" parent="." instance=ExtResource("3_7kj47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -2)
+size = Vector3(7, 1, 4)
+
+[node name="stone_archway3" parent="." instance=ExtResource("1_6b4g8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.5, -1)
+
+[node name="stone_wall11" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -5)
+size = Vector3(1, 11, 10)
+
+[node name="stone_wall12" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -5)
+size = Vector3(1, 11, 10)
+
+[node name="stone_wall13" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 2.5, -8)
+size = Vector3(0.5, 2, 2)
+
+[node name="stone_wall14" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 2.5, -7.75)
+size = Vector3(0.5, 2, 2)
+
+[node name="stone_wall15" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0.5, -6)
+size = Vector3(0.5, 2, 2)
+
+[node name="stone_wall16" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0.5, -5.75)
+size = Vector3(0.5, 2, 2)
+
+[node name="stone_wall18" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -1.5, -4)
+size = Vector3(0.5, 2, 2)
+
+[node name="stone_wall19" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -1.5, -3.75)
+size = Vector3(0.5, 2, 2)
+
+[node name="stone_wall17" parent="." instance=ExtResource("5_3aie5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, -0.5)
+size = Vector3(5, 6, 1)
+
+[node name="stone_floor7" parent="." instance=ExtResource("3_7kj47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -5)
+size = Vector3(7, 1, 10)
+
+[node name="stone_floor8" parent="." instance=ExtResource("3_7kj47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -9.5)
+size = Vector3(5, 1, 1)
+
+[node name="stairs3" parent="." instance=ExtResource("2_cjhx6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, -2.5, -4)
+
+[node name="stairs4" parent="." instance=ExtResource("2_cjhx6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -2.5, -4)

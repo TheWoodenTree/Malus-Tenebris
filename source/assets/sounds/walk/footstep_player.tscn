@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://digodl46i84j"]
+
+[ext_resource type="AudioStream" uid="uid://c8fbeslvrimmu" path="res://source/assets/sounds/walk/stone_footstep_1.ogg" id="1_g6bhv"]
+[ext_resource type="Script" path="res://source/assets/sounds/walk/footstep_player.gd" id="2_3wvfs"]
+
+[node name="footstep_sound" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_g6bhv")
+max_db = 6.0
+attenuation_filter_cutoff_hz = 20500.0
+attenuation_filter_db = 0.0
+script = ExtResource("2_3wvfs")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

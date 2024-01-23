@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dts8smidqdm24"]
+
+[ext_resource type="Material" uid="uid://bt6xkrgoo8wd2" path="res://source/assets/particles/fire_particles_mat.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="2_780k0"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_780k0")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uow77"]
+resource_local_to_scene = true
+material = SubResource("1")
+size = Vector2(0.25, 0.25)
+orientation = 2
+
+[node name="fire_particles" type="GPUParticles3D"]
+amount = 64
+lifetime = 0.8
+randomness = 0.2
+fixed_fps = 60
+interpolate = false
+process_material = ExtResource("1")
+draw_pass_1 = SubResource("PlaneMesh_uow77")

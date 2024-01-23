@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7l0lxt4jjg8c"]
+
+[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="1_xqb35"]
+[ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="2_jojgu"]
+
+[node name="draggable" type="Node3D"]
+
+[node name="draggable_body" type="RigidBody3D" parent="."]
+
+[node name="mesh" type="MeshInstance3D" parent="draggable_body"]
+material_overlay = ExtResource("1_xqb35")
+skeleton = NodePath("../..")
+
+[node name="interact_area" type="Area3D" parent="draggable_body"]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("2_jojgu")
+
+[node name="collision_shape" type="CollisionShape3D" parent="draggable_body/interact_area"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://4gkb0ey51dtk"]
+
+[ext_resource type="Texture2D" uid="uid://dcvyav5le6j38" path="res://source/actors/decor/misc/orm.tres" id="1_cq5ri"]
+
+[sub_resource type="Gradient" id="Gradient_xhaap"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d67si"]
+gradient = SubResource("Gradient_xhaap")
+
+[node name="puddle" type="Decal"]
+size = Vector3(10, 2, 10)
+texture_albedo = SubResource("GradientTexture1D_d67si")
+texture_orm = ExtResource("1_cq5ri")
+albedo_mix = 0.0

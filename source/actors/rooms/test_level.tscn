@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ggwp02ade2dw"]
+
+[ext_resource type="PackedScene" uid="uid://cn620q1tuk8ha" path="res://source/actors/player/player.tscn" id="1"]
+[ext_resource type="Material" uid="uid://hlld6gh6yekb" path="res://source/assets/materials/tile_wall/tile_wall.tres" id="2"]
+
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(50, 4, 50)
+
+[node name="test_level" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+mesh = SubResource("1")
+material = ExtResource("2")
+
+[node name="player" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.89908, 0)

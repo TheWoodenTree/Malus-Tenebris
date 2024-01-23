@@ -1,0 +1,167 @@
+[gd_scene load_steps=24 format=3 uid="uid://6obgg8cmtaxr"]
+
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_l7die"]
+[ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="2_glsd3"]
+[ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_og5e7"]
+[ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="5_084s8"]
+[ext_resource type="PackedScene" uid="uid://gl2we4tjxsd8" path="res://source/actors/decor/misc/broken_barrel.tscn" id="6_yvxoa"]
+[ext_resource type="PackedScene" uid="uid://cdwhh8mxom6hc" path="res://source/actors/decor/furniture/shelf.tscn" id="7_l7qku"]
+[ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="8_xofg2"]
+[ext_resource type="PackedScene" uid="uid://bxeqhg7y7wy06" path="res://source/actors/decor/misc/pots/tall_pot.tscn" id="9_w27b8"]
+[ext_resource type="PackedScene" uid="uid://6a4fymsbt6h5" path="res://source/actors/decor/misc/rug.tscn" id="10_o3xif"]
+[ext_resource type="PackedScene" uid="uid://di1wwxw78n6ba" path="res://source/actors/decor/misc/pots/fat_pot.tscn" id="11_cklxu"]
+[ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="12_cuwr1"]
+[ext_resource type="PackedScene" uid="uid://do60vw7pnfa80" path="res://source/actors/decor/groups/sm_stacked_barrels.tscn" id="13_a8er0"]
+[ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="14_iia1b"]
+[ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="15_w8fyg"]
+[ext_resource type="PackedScene" uid="uid://dprey8cgl5ux2" path="res://source/actors/decor/misc/pots/sm_tall_pot.tscn" id="16_js2c1"]
+[ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="17_pj0q1"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="20_lrlwr"]
+[ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="20_reyag"]
+[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="21_6jf3r"]
+[ext_resource type="ArrayOccluder3D" uid="uid://0uhwql6m3bwm" path="res://source/actors/rooms/occluders/big_cell2.occ" id="21_627ev"]
+[ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="21_fclhl"]
+[ext_resource type="PackedScene" uid="uid://c0j1d0qath30j" path="res://source/actors/decor/misc/bucket.tscn" id="25_yli4n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdh84"]
+size = Vector3(13.5, 15, 13.25)
+
+[node name="big_cell2" type="Node3D"]
+
+[node name="stone_floor" parent="." instance=ExtResource("1_l7die")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5)
+size = Vector3(13, 1, 13)
+
+[node name="stone_floor3" parent="." instance=ExtResource("1_l7die")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -17.5)
+size = Vector3(13, 1, 13)
+
+[node name="chain_loop3" parent="." instance=ExtResource("2_glsd3")]
+transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 3.25, 3.5, -12)
+
+[node name="chain_loop4" parent="." instance=ExtResource("2_glsd3")]
+transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.25, 3.5, -12)
+
+[node name="stone_wall10" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.5, -11.5)
+size = Vector3(3, 6, 1)
+
+[node name="stone_wall11" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.5, -11.5)
+size = Vector3(3, 6, 1)
+
+[node name="stone_wall12" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.5, -17.5)
+size = Vector3(1, 6, 13)
+
+[node name="stone_wall13" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -23.5)
+size = Vector3(11, 6, 1)
+
+[node name="stone_wall14" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.5, -17.5)
+size = Vector3(1, 6, 13)
+
+[node name="stone_wall17" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.25, 3.5, -22)
+size = Vector3(1, 6, 2)
+
+[node name="barrel5" parent="." instance=ExtResource("5_084s8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 1.5, -22)
+
+[node name="broken_barrel" parent="." instance=ExtResource("6_yvxoa")]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 0.25, 1.25, -21)
+
+[node name="shelf4" parent="." instance=ExtResource("7_l7qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.625, 0.5, -21.75)
+
+[node name="sm_broken_crate" parent="shelf4" instance=ExtResource("8_xofg2")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -0.249999, 3.25, -0.25)
+
+[node name="tall_pot" parent="shelf4" instance=ExtResource("9_w27b8")]
+transform = Transform3D(-0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, -0.707106, 0.750001, 0.75, 0.25)
+
+[node name="rug" parent="." instance=ExtResource("10_o3xif")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.5, 0.55, -16.75)
+
+[node name="fat_pot" parent="." instance=ExtResource("11_cklxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -19.5)
+
+[node name="cobweb" parent="." instance=ExtResource("12_cuwr1")]
+transform = Transform3D(0.306186, -0.25, 0.306186, 0.176777, 0.433013, 0.176777, -0.353553, 0, 0.353553, -4.75, 1.5, -22.25)
+skeleton = NodePath("../shelf4/tall_pot")
+
+[node name="chain_loop6" parent="." instance=ExtResource("2_glsd3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, -23)
+
+[node name="sm_stacked_barrels" parent="." instance=ExtResource("13_a8er0")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.75, 0.5, -14)
+
+[node name="wall_rack" parent="." instance=ExtResource("14_iia1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, -17.5)
+
+[node name="chain_loop5" parent="wall_rack" instance=ExtResource("2_glsd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.25)
+
+[node name="chain_loop7" parent="wall_rack" instance=ExtResource("2_glsd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.25)
+
+[node name="low_shelf" parent="." instance=ExtResource("15_w8fyg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.25, 0.5, -13.75)
+
+[node name="sm_tall_pot" parent="low_shelf" instance=ExtResource("16_js2c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.75, 0.500001)
+
+[node name="sm_table" parent="." instance=ExtResource("17_pj0q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -17.5)
+
+[node name="hanging_lamp" parent="." instance=ExtResource("20_lrlwr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273764, -0.249982, -19.2397)
+lit = false
+interactable = false
+
+[node name="hanging_lamp2" parent="." instance=ExtResource("20_lrlwr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273764, -0.249982, -14.2781)
+lit = false
+interactable = false
+
+[node name="stool" parent="." instance=ExtResource("21_fclhl")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -3.5, 0.5, -17.75)
+
+[node name="stone_wall" parent="." instance=ExtResource("3_og5e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -11.5)
+size = Vector3(5, 1, 1)
+
+[node name="shelf2" parent="." instance=ExtResource("7_l7qku")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.25, 0.5, -20.75)
+
+[node name="bucket" parent="shelf2" instance=ExtResource("25_yli4n")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -0.75, 0.25, 0.25)
+
+[node name="fat_pot" parent="shelf2" instance=ExtResource("11_cklxu")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.75, 0.25, -0.25)
+
+[node name="sm_broken_crate" parent="shelf2" instance=ExtResource("8_xofg2")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0, 1.75, -0.25)
+
+[node name="archway_w_cell_door" parent="." instance=ExtResource("20_reyag")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.5, -11)
+door_interactable_override = 2
+material = ExtResource("21_6jf3r")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5)
+collision_mask = 0
+monitoring = false
+monitorable = false
+reverb_bus_enabled = true
+reverb_bus_name = &"General"
+reverb_bus_amount = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_mdh84")
+
+[node name="occluder_instance" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("21_627ev")
+bake_mask = 4294967283

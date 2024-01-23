@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuvmh4x1wv8ha"]
+
+[ext_resource type="PackedScene" uid="uid://dxqgvfmrq7k46" path="res://source/actors/misc/chain_link.tscn" id="1"]
+[ext_resource type="Script" path="res://source/actors/misc/hanging_chain.gd" id="1_yqmh7"]
+
+[node name="hanging_chain" type="Node3D"]
+script = ExtResource("1_yqmh7")
+
+[node name="anchor" type="StaticBody3D" parent="."]
+
+[node name="chain_link" parent="." instance=ExtResource("1")]
