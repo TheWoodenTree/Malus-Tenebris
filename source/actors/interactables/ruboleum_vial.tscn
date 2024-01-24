@@ -86,8 +86,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6v3id")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qekfs"]
-radius = 0.158439
-height = 0.591629
+radius = 0.204578
+height = 0.669671
 
 [node name="ruboleum_vial" instance=ExtResource("1_lbm0b")]
 item_data = SubResource("Resource_meejj")

@@ -242,7 +242,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 0
 material = ExtResource("16_2xpxm")
 
 [node name="torch_holder" parent="." index="19" instance=ExtResource("14_k10qd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 16.25)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.5, 2.5, 16.25)
 
 [node name="shelf_2" parent="." index="20" instance=ExtResource("15_3d1r4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 0.5, 8.75)

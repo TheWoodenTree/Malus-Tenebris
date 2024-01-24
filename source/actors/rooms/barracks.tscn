@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_5f83c"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_fh0u2"]
 [ext_resource type="PackedScene" uid="uid://cmau72rodb2cp" path="res://source/actors/building pieces/basic/half_stairs.tscn" id="5_4d151"]
-[ext_resource type="ArrayOccluder3D" uid="uid://cdltahads2vks" path="res://source/actors/rooms/barracks.occ" id="6_ai0c4"]
+[ext_resource type="ArrayOccluder3D" uid="uid://cdltahads2vks" path="res://source/actors/rooms/occluders/barracks.occ" id="6_ai0c4"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="7_savad"]
 [ext_resource type="PackedScene" uid="uid://d347wsia3s4lj" path="res://source/actors/decor/furniture/small_bed.tscn" id="8_undce"]
 [ext_resource type="PackedScene" uid="uid://bpbucejg2mbbm" path="res://source/actors/decor/furniture/stand.tscn" id="9_ak7qk"]
