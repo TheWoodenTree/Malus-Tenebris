@@ -144,7 +144,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -17.5)
 
 [node name="hanging_lamp" parent="." instance=ExtResource("28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273764, -0.249982, -19.2397)
-default_energy = 1.0
 
 [node name="hanging_lamp2" parent="." instance=ExtResource("28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273764, -0.249982, -14.2781)

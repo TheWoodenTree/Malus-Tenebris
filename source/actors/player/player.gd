@@ -370,5 +370,5 @@ func do_caught_sequence(monster_pos: Vector3):
 
 
 func debug_get_torch():
-	Global.world.get_node("nav_region").get_node("room_w_key_1").get_node("sm_table2").get_node("torch").interact()
+	Global.world.get_node("nav_region").get_node("records_room").get_node("sm_table3").get_node("torch").interact()
 	Global.player.torch.light_torch()

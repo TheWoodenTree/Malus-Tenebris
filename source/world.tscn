@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c7jcrmxwgdp31"]
+[gd_scene load_steps=27 format=3 uid="uid://c7jcrmxwgdp31"]
 
 [ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
 [ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
@@ -8,20 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://dijlshyjh0vla" path="res://source/actors/rooms/safe_room.tscn" id="12_nytv3"]
 [ext_resource type="PackedScene" uid="uid://c8wfanpg84t0g" path="res://source/actors/rooms/lower_cell_hall_1.tscn" id="13_3dwqw"]
 [ext_resource type="PackedScene" uid="uid://dvj6jlk7qoghi" path="res://source/actors/rooms/prison_depths_stairway_1.tscn" id="19_2i4co"]
-[ext_resource type="PackedScene" uid="uid://c314k8wgwc5sq" path="res://source/actors/rooms/prison_depths_jct_1.tscn" id="20_y3dgs"]
+[ext_resource type="PackedScene" uid="uid://bs5t47xjs5a4t" path="res://source/actors/rooms/lower_prison_hallway_1.tscn" id="20_2fkcd"]
 [ext_resource type="PackedScene" uid="uid://hwt7rtb67g3l" path="res://source/actors/rooms/upper_prison_common_area.tscn" id="21_3ed77"]
-[ext_resource type="PackedScene" uid="uid://cw2eksdigo0cd" path="res://source/actors/rooms/prison_depths_jct_2.tscn" id="21_fhl3g"]
+[ext_resource type="PackedScene" uid="uid://bjlr1mq4h3we5" path="res://source/actors/rooms/lower_prison_hallway_2.tscn" id="21_t63ha"]
 [ext_resource type="PackedScene" uid="uid://dw4xwroyayfdv" path="res://source/actors/rooms/small_torture_room.tscn" id="22_564cf"]
 [ext_resource type="PackedScene" uid="uid://chgybf6r4j6hi" path="res://source/actors/rooms/barracks.tscn" id="22_gqwdo"]
-[ext_resource type="PackedScene" uid="uid://bsorfnt4nffcx" path="res://source/actors/rooms/misc/lower_prison_t_connector.tscn" id="22_w53ch"]
-[ext_resource type="PackedScene" uid="uid://b1dygbtfbyisi" path="res://source/actors/rooms/large_lower_prison_jtc_1.tscn" id="23_23u2b"]
-[ext_resource type="PackedScene" uid="uid://lh86edrcxvnr" path="res://source/actors/rooms/prison_depths_ash_room.tscn" id="24_5p06j"]
 [ext_resource type="PackedScene" uid="uid://btiqf7ymx77it" path="res://source/actors/rooms/records_room.tscn" id="24_w38t7"]
 [ext_resource type="PackedScene" uid="uid://cv4ajx80ijgv5" path="res://source/actors/rooms/holding_cells.tscn" id="25_47crl"]
+[ext_resource type="PackedScene" uid="uid://c1onovq0nc1xf" path="res://source/actors/rooms/lower_prison_entrance.tscn" id="25_7631t"]
 [ext_resource type="PackedScene" uid="uid://dq56ian4bntsp" path="res://source/actors/rooms/bigger_cells_hall.tscn" id="26_mq5sv"]
 [ext_resource type="PackedScene" uid="uid://bb7fcf6hjdsed" path="res://source/actors/rooms/upper_storage_room.tscn" id="30_scntj"]
 [ext_resource type="PackedScene" uid="uid://6740g18km7ny" path="res://source/actors/rooms/lower_cell_hall_3.tscn" id="32_yfpp8"]
-[ext_resource type="PackedScene" uid="uid://dlldeh2el7ay0" path="res://source/actors/rooms/cell_hall_kitchen_connector.tscn" id="33_6f6fg"]
 [ext_resource type="PackedScene" uid="uid://dkywpurj50vjl" path="res://source/actors/rooms/lower_cell_hall_2.tscn" id="33_ysjgv"]
 [ext_resource type="PackedScene" uid="uid://7rhkd1sxw43r" path="res://source/actors/rooms/kitchen.tscn" id="34_2ebpu"]
 
@@ -137,89 +134,80 @@ reverb_bus_amount = 1.0
 shape = SubResource("BoxShape3D_jlowy")
 
 [node name="player_spawn_point" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 10, 40.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 10, 38.5)
 
 [node name="nav_region" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)
 navigation_mesh = SubResource("NavigationMesh_q4dpi")
 
 [node name="big_cell2" parent="nav_region" instance=ExtResource("2_7yt8k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 111.25, 8, 15.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100.25, 8, 18.25)
 
 [node name="big_cell3" parent="nav_region" instance=ExtResource("2_7yt8k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 126.75, 8, 15.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 115.75, 8, 18.25)
 
 [node name="big_cell4" parent="nav_region" instance=ExtResource("2_7yt8k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 142.25, 8, 15.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 131.25, 8, 18.25)
 
 [node name="starting_room" parent="nav_region" instance=ExtResource("2_nvqo1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.25, 8, 25.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.25, 8, 28.25)
 
 [node name="bigger_cells_hall" parent="nav_region" instance=ExtResource("26_mq5sv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.25, 8, 20.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.25, 8, 23.25)
 
 [node name="room_w_key_1" parent="nav_region" instance=ExtResource("4_hat6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 8, -24.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 8, -21.5)
 
 [node name="cells_stairway" parent="nav_region" instance=ExtResource("8_pef6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5, -9, -43.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -40.25)
 
 [node name="warden_chamber" parent="nav_region" instance=ExtResource("9_xbk25")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62.5, -9, -44.25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 51.5, -9, -41.25)
 
 [node name="safe_room" parent="nav_region" instance=ExtResource("12_nytv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5, -19, -75.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5, -19, -75.25)
 
 [node name="lower_cell_hall_1" parent="nav_region" instance=ExtResource("13_3dwqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -19, -100.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -19, -94.75)
 
 [node name="lower_cell_hall_2" parent="nav_region" instance=ExtResource("33_ysjgv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4355, -19, -60.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5, -19, -57.75)
 
 [node name="lower_cell_hall_3" parent="nav_region" instance=ExtResource("32_yfpp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -19, -132.75)
-
-[node name="cell_hall_kitchen_connector" parent="nav_region" instance=ExtResource("33_6f6fg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -19, -87.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -19, -126.75)
 
 [node name="kitchen" parent="nav_region" instance=ExtResource("34_2ebpu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5, -19, -78.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -19, -75.25)
 
 [node name="lower_prison_staircase_1" parent="nav_region" instance=ExtResource("19_2i4co")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -22.5, -132.75)
-
-[node name="lower_prison_jtc_1" parent="nav_region" instance=ExtResource("20_y3dgs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.5, -36, -107.25)
-
-[node name="lower_prison_jtc_2" parent="nav_region" instance=ExtResource("21_fhl3g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, -36, -107.25)
-
-[node name="lower_prison_t_connector" parent="nav_region" instance=ExtResource("22_w53ch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.75, -36, -133.75)
-
-[node name="large_lower_prison_jtc_1" parent="nav_region" instance=ExtResource("23_23u2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -36, -160.25)
-
-[node name="lower_prison_ash_room" parent="nav_region" instance=ExtResource("24_5p06j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.5, -36, -148.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -22.5, -126.75)
 
 [node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 8, -10.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 8, -7.75)
 
 [node name="upper_prison_common_area" parent="nav_region" instance=ExtResource("21_3ed77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.25, 8.5, 16.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.25, 8.5, 19.75)
 
 [node name="small_torture_room" parent="nav_region" instance=ExtResource("22_564cf")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 83.25, 5, 31.75)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 72.25, 5, 34.75)
 
 [node name="barracks" parent="nav_region" instance=ExtResource("22_gqwdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 5.5, 8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 5.5, 11.5)
 
 [node name="upper_storage_room" parent="nav_region" instance=ExtResource("30_scntj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.75, 5, -8.25)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 47.75, 5, -5.25)
 
 [node name="holding_cells" parent="nav_region" instance=ExtResource("25_47crl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.75, 5.5, 26.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.75, 5.5, 29.75)
+
+[node name="lower_prison_entrance" parent="nav_region" instance=ExtResource("25_7631t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -47.25)
+
+[node name="lower_prison_hallway_1" parent="nav_region" instance=ExtResource("20_2fkcd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -19, -102.75)
+
+[node name="lower_prison_hallway_2" parent="nav_region" instance=ExtResource("21_t63ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -19, -87.25)
 
 [node name="test" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -44.25)
