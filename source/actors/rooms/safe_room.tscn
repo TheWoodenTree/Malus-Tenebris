@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=38 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
@@ -21,7 +21,9 @@
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="22_1fwwt"]
 [ext_resource type="PackedScene" uid="uid://db57xmqhrdyrg" path="res://source/actors/decor/furniture/corner_table.tscn" id="22_5kyhp"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="22_dvdth"]
+[ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="24_g1atn"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="26_rhjbl"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="27_lo8s1"]
 [ext_resource type="PackedScene" uid="uid://ii0e665jma4b" path="res://source/actors/building pieces/archways/small_archway.tscn" id="28_gg6p8"]
 [ext_resource type="AudioStream" uid="uid://hg6l8lqepqcl" path="res://source/assets/sounds/safe.ogg" id="32_6fiiw"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cpyxk2qr6pjkr" path="res://source/actors/rooms/occluders/safe_room.occ" id="32_bdtjo"]
@@ -32,20 +34,20 @@
 [ext_resource type="PackedScene" uid="uid://q3s1hyyrjcrf" path="res://source/actors/interactables/potion_station.tscn" id="34_0lgxr"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="34_e2n1h"]
 
-[sub_resource type="Resource" id="Resource_kcbgp"]
+[sub_resource type="Resource" id="Resource_adbs8"]
 resource_local_to_scene = true
 script = ExtResource("26_rhjbl")
-name = "Visolis"
-texture = ExtResource("33_bg06o")
+name = "Ruboleum Vial"
+texture = ExtResource("27_lo8s1")
 pickup_sound = ExtResource("34_e2n1h")
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 
-[sub_resource type="Resource" id="Resource_le4r8"]
+[sub_resource type="Resource" id="Resource_s0c08"]
 resource_local_to_scene = true
 script = ExtResource("26_rhjbl")
-name = "Visolis"
-texture = ExtResource("33_bg06o")
+name = "Ruboleum Vial"
+texture = ExtResource("27_lo8s1")
 pickup_sound = ExtResource("34_e2n1h")
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
@@ -213,14 +215,15 @@ material = ExtResource("22_1fwwt")
 
 [node name="chest" parent="misc" index="3" instance=ExtResource("32_v6vsh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -3.374)
+open_angle = 100
 
-[node name="pickup" parent="misc/chest" index="6" instance=ExtResource("32_jiuru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25956, 0.16, -0.0164673)
-item_data = SubResource("Resource_kcbgp")
+[node name="ruboleum_vial" parent="misc/chest" index="6" instance=ExtResource("24_g1atn")]
+transform = Transform3D(3.78552e-08, 0.866025, -0.5, 1, -4.37114e-08, 0, -2.18557e-08, -0.5, -0.866025, 0.25, 0.199135, 0.10529)
+item_data = SubResource("Resource_adbs8")
 
-[node name="pickup2" parent="misc/chest" index="7" instance=ExtResource("32_jiuru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255579, 0.16, 0.193779)
-item_data = SubResource("Resource_le4r8")
+[node name="ruboleum_vial2" parent="misc/chest" index="7" instance=ExtResource("24_g1atn")]
+transform = Transform3D(-2.93714e-15, -0.258819, 0.965926, -1, 1.91069e-15, 1.77636e-15, 2.76509e-15, -0.965926, -0.258819, -0.25, 0.218861, 0.126)
+item_data = SubResource("Resource_s0c08")
 
 [node name="visolis_bottle" parent="misc" index="4" instance=ExtResource("32_jiuru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, -3)

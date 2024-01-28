@@ -112,6 +112,7 @@ libraries = {
 [node name="drone_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qtdgl")
 volume_db = -6.0
+bus = &"Global"
 
 [node name="heartbeat_player" type="AudioStreamPlayer" parent="."]
 volume_db = -17.5
@@ -119,7 +120,7 @@ volume_db = -17.5
 [node name="drip_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10")
 volume_db = -16.0
-bus = &"General"
+bus = &"Global"
 
 [node name="post_processing" type="Control" parent="."]
 layout_mode = 3

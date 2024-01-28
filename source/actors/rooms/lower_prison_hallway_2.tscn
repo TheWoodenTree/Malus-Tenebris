@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjlr1mq4h3we5"]
+[gd_scene load_steps=9 format=3 uid="uid://bjlr1mq4h3we5"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ymlyk"]
 [ext_resource type="PackedScene" uid="uid://btbuscvl0caww" path="res://source/actors/building pieces/archways/archway_w_door_no_window.tscn" id="2_6ef1k"]
 [ext_resource type="ArrayOccluder3D" uid="uid://c0st1f5hxjemq" path="res://source/actors/rooms/occluders/lower_prison_hallway_2.occ" id="2_pfyu7"]
-[ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="3_oia53"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="4_blt3u"]
 [ext_resource type="PackedScene" uid="uid://dq06hcs0nc8xo" path="res://source/actors/building pieces/basic/stairs.tscn" id="5_d5fth"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="6_pnqfk"]
@@ -65,19 +64,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3, -12.5)
 size = Vector3(1, 5, 14)
 
 [node name="stone_wall14" parent="walls" index="13" instance=ExtResource("6_pnqfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 12)
-size = Vector3(1, 5, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 10.75)
+size = Vector3(1, 5, 10.5)
 
 [node name="stone_wall15" parent="walls" index="14" instance=ExtResource("6_pnqfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 15.5)
 size = Vector3(10, 5, 1)
 
 [node name="stone_wall16" parent="walls" index="15" instance=ExtResource("6_pnqfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3, 9)
-size = Vector3(1, 5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3, 7.75)
+size = Vector3(1, 5, 4.5)
 
 [node name="stone_wall17" parent="walls" index="16" instance=ExtResource("6_pnqfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, 9.5)
 size = Vector3(4, 5, 1)
 
 [node name="stone_wall18" parent="walls" index="17" instance=ExtResource("6_pnqfk")]
@@ -132,25 +131,25 @@ size = Vector3(7, 1, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, -15.5)
 size = Vector3(7, 1, 20)
 
-[node name="stone_floor7" parent="floors" index="6" instance=ExtResource("4_blt3u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 12)
-size = Vector3(7, 1, 13)
-
-[node name="stone_floor8" parent="floors" index="7" instance=ExtResource("4_blt3u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 15)
+[node name="stone_floor8" parent="floors" index="6" instance=ExtResource("4_blt3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 12.5)
 size = Vector3(4, 1, 7)
 
-[node name="stone_floor9" parent="floors" index="8" instance=ExtResource("4_blt3u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, 12)
-size = Vector3(7, 1, 13)
-
-[node name="stone_floor10" parent="floors" index="9" instance=ExtResource("4_blt3u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 6, 15)
+[node name="stone_floor10" parent="floors" index="7" instance=ExtResource("4_blt3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 6, 12.5)
 size = Vector3(4, 1, 7)
 
-[node name="stone_floor11" parent="floors" index="10" instance=ExtResource("4_blt3u")]
+[node name="stone_floor11" parent="floors" index="8" instance=ExtResource("4_blt3u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7, 0)
 size = Vector3(2, 1, 6)
+
+[node name="stone_floor7" parent="floors" index="9" instance=ExtResource("4_blt3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 10.75)
+size = Vector3(7, 1, 10.5)
+
+[node name="stone_floor9" parent="floors" index="10" instance=ExtResource("4_blt3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, 10.75)
+size = Vector3(7, 1, 10.5)
 
 [node name="stairs2" parent="stairs" index="0" instance=ExtResource("5_d5fth")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, -1.5, -1)
@@ -163,7 +162,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.25, 0)
 
 [node name="archway_w_door_no_window" parent="misc" index="0" instance=ExtResource("2_6ef1k")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0.5, 0)
-material = ExtResource("3_oia53")
 
 [node name="stone_archway" parent="misc" index="1" instance=ExtResource("7_ln6tr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -4.5)
@@ -184,7 +182,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0.
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0.5, -15.5)
 
 [node name="stone_archway7" parent="misc" index="7" instance=ExtResource("7_ln6tr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, 0.5, 15)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, 0.5, 12.5)
 
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("2_pfyu7")

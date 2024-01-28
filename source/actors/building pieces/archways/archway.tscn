@@ -48,7 +48,7 @@ material = ExtResource("2_kvjux")
 mesh = SubResource("ArrayMesh_ao6hq")
 
 [node name="archway_frame" parent="." instance=ExtResource("2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.482)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6740g18km7ny"]
+[gd_scene load_steps=9 format=3 uid="uid://6740g18km7ny"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_f5h4f"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_2appl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="5_vcipg"]
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="6_xmq07"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dycbysm1104uj" path="res://source/actors/rooms/occluders/lower_cell_hall_3.occ" id="7_0yak2"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="8_l28ll"]
 
 [node name="lower_cell_hall_3" instance=ExtResource("1_f5h4f")]
 
@@ -231,6 +232,21 @@ size = Vector3(13, 1, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 4)
 size = Vector3(5, 1, 1)
 
-[node name="occluder_instance" parent="." index="36"]
-visible = false
+[node name="occluder_instance" parent="." index="37"]
 occluder = ExtResource("7_0yak2")
+
+[node name="hanging_lamp" parent="." index="38" instance=ExtResource("8_l28ll")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 1, 0)
+lit = false
+
+[node name="hanging_lamp2" parent="." index="39" instance=ExtResource("8_l28ll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, 0)
+lit = false
+
+[node name="hanging_lamp3" parent="." index="40" instance=ExtResource("8_l28ll")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -21, 1, 0)
+lit = false
+
+[node name="hanging_lamp4" parent="." index="41" instance=ExtResource("8_l28ll")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -39.5, 1, 0)
+default_energy = 1.0

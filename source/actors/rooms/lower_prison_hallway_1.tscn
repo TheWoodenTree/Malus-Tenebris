@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs5t47xjs5a4t"]
+[gd_scene load_steps=8 format=3 uid="uid://bs5t47xjs5a4t"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_7rmgv"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_u2pd7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_n2pfa"]
 [ext_resource type="ArrayOccluder3D" uid="uid://hj2tvfw5jhv6" path="res://source/actors/rooms/occluders/lower_prison_hallway_1.occ" id="5_87n25"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="6_roci5"]
+[ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="7_pkcpv"]
 
 [node name="lower_prison_hallway_1" instance=ExtResource("1_7rmgv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -138,3 +139,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31134e-06, 0.5, -30)
 
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("5_87n25")
+
+[node name="half_wood_support" parent="." index="9" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4.25, 0.5, -23.75)
+
+[node name="half_wood_support2" parent="." index="10" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.25, 0.5, -23.75)
+
+[node name="half_wood_support3" parent="." index="11" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 4.25, 0.5, -15.25)
+
+[node name="half_wood_support4" parent="." index="12" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.25, 0.5, -15.25)
