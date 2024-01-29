@@ -91,15 +91,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.2
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0.5, -1.5)
 material = ExtResource("12_2h3ek")
 
+[node name="ruboleum_vial" parent="misc" index="1" instance=ExtResource("13_3serb")]
+transform = Transform3D(-0.753884, 0.657007, 2.87187e-08, -1.44114e-15, -4.37114e-08, 1, 0.657007, 0.753884, 3.29533e-08, -0.63256, 2.04474, -1.25988)
+item_data = SubResource("Resource_bmwx1")
+
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("11_e68t4")
 
-[node name="ruboleum_vial" parent="." index="9" instance=ExtResource("13_3serb")]
-transform = Transform3D(0.584646, 0.811288, 3.54625e-08, 0, -4.37114e-08, 1, 0.811288, -0.584646, -2.55557e-08, -0.72706, 2.04474, -1.25988)
-item_data = SubResource("Resource_bmwx1")
-
-[node name="saw" parent="." index="10" instance=ExtResource("17_bvf6q")]
+[node name="saw" parent="." index="9" instance=ExtResource("17_bvf6q")]
 transform = Transform3D(-0.932626, 0, 0.360843, 0, 1, 0, -0.360843, 0, -0.932626, -0.143549, 2, -0.385682)
 
-[node name="knife" parent="." index="11" instance=ExtResource("18_y5udt")]
+[node name="knife" parent="." index="10" instance=ExtResource("18_y5udt")]
 transform = Transform3D(-0.788666, 0, 0.614822, 0, 1, 0, -0.614822, 0, -0.788666, -0.0763487, 2, -0.743711)

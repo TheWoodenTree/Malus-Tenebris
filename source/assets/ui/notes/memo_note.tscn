@@ -4,7 +4,7 @@
 custom_minimum_size = Vector2(800, 0)
 text = "Effective immediately: 
 
-Guards in the upper prison block are ordered detach the crank from the winch to the Great Door, place it in storage, and report to the Warden. You have been reassigned to one of the lower prison blocks. Any remaining prisoners within your block not deemed fit for Atonement should be disregarded. Do not hesitate.
+Guards in the upper prison block are ordered to detach the crank from the winch to the Great Door, place it in storage, and report to the Warden. You have been reassigned to one of the lower prison blocks. Any remaining prisoners within your block not deemed fit for Atonement should be disregarded. Do not hesitate.
 
 Gloria Mars Ultor"
 autowrap_mode = 2

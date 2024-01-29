@@ -273,9 +273,11 @@ door_open_angle = -35
 
 [node name="small_cell2" parent="cells" index="1" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 0.5, -3.5)
+door_interactable_override = 2
 
 [node name="small_cell3" parent="cells" index="2" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19, 0.5, 3.5)
+door_open_angle = -20
 
 [node name="small_cell4" parent="cells" index="3" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -32, 0.5, -20.5)
@@ -309,16 +311,17 @@ transform = Transform3D(2.60498e-08, -1.28521e-07, -1, 0.980071, 0.19865, -8.881
 
 [node name="torch_holder" parent="decor" index="8" instance=ExtResource("13_rsr0q")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -38.5, 2.5, 2.5)
+lit = false
 
 [node name="torch_holder2" parent="decor" index="9" instance=ExtResource("13_rsr0q")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -38.5, 2.5, -2.5)
-lit = false
 interactable = false
 
 [node name="hanging_lamp4" parent="decor" index="10" instance=ExtResource("7_wl0yr")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -32.25, 1, 0)
 default_energy = 1.0
 lit = false
+shadow_mode = 1
 
 [node name="stone_archway" parent="misc" index="0" instance=ExtResource("3_ppfry")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 0.5, 0)

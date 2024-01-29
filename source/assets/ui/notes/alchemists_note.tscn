@@ -2,5 +2,13 @@
 
 [node name="alchemists_note" type="Label"]
 custom_minimum_size = Vector2(800, 0)
-text = "Something something Ruboleum"
+text = "The plague which has been ravaging the servants recently is most peculiar. As of one month ago, when reports began to arise, those which showed symptoms had spent a significant amount of time in the depths. 
+
+While my attemps to synthesize a cure have been progressing at a steady rate, more men have recently begun to report symptoms, most notably, those who have not spent any time in the depths. 
+[PAGE]
+I fear the plague will spread faster than I can work to contain it, as even the most recent iteration of the cure is only effective for a short amount of time, after which the symptoms begin to manifest themselves again.
+
+While the source of the ailment has yet to be identified, I am nearly certain it is a result of His Presence in the depths. No other explanation makes sense. Should my intuition be correct, I don't believe I can stop it. Nor should I try.
+
+Gloria Mars Ultor"
 autowrap_mode = 2

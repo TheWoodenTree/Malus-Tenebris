@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://7rhkd1sxw43r"]
+[gd_scene load_steps=60 format=3 uid="uid://7rhkd1sxw43r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_r3ajh"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="2_xlfra"]
@@ -41,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://dgsc3liespcxg" path="res://source/actors/misc/static_chain.tscn" id="40_rkl4y"]
 [ext_resource type="PackedScene" uid="uid://c0pogb4vj133d" path="res://source/actors/interactables/fat_melting_pot.tscn" id="41_njceo"]
 [ext_resource type="PackedScene" uid="uid://btbuscvl0caww" path="res://source/actors/building pieces/archways/archway_w_door_no_window.tscn" id="41_x1mta"]
-[ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="42_cquae"]
 [ext_resource type="PackedScene" uid="uid://di13rc3obkplx" path="res://source/actors/decor/kitchen/plate_1.tscn" id="42_v6nt1"]
 [ext_resource type="PackedScene" uid="uid://i5hrnoctaqf8" path="res://source/actors/decor/kitchen/plate_2.tscn" id="43_srrld"]
 [ext_resource type="PackedScene" uid="uid://dni5omncbt3bp" path="res://source/actors/decor/kitchen/bowl_2.tscn" id="44_y63gc"]
@@ -409,7 +408,6 @@ visible = false
 [node name="archway_w_door_no_window2" parent="." index="90" instance=ExtResource("41_x1mta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, -3)
 door_key_name = "Larder"
-material = ExtResource("42_cquae")
 
 [node name="plate_1" parent="." index="91" instance=ExtResource("42_v6nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1766, 2, -11.138)
@@ -464,12 +462,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84804, 2, -9.33585)
 item_data = SubResource("Resource_n2ew5")
 
 [node name="ruboleum_bottle" parent="." index="109" instance=ExtResource("51_t6um1")]
-transform = Transform3D(1.49817e-08, 0.342742, 0.93943, 1, -4.37114e-08, 0, 4.10638e-08, 0.93943, -0.342742, -8.70914, 2.05028, -10.0972)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.70914, 2.00467, -9.8472)
 item_data = SubResource("Resource_2uba0")
 count = 7
 
 [node name="ruboleum_vial" parent="." index="110" instance=ExtResource("51_t6um1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67869, 2, -10.3796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67869, 2.00644, -10.3796)
 item_data = SubResource("Resource_6ikso")
 count = 3
 
@@ -478,4 +476,3 @@ occluder = ExtResource("49_gii5n")
 
 [node name="archway_w_door_no_window3" parent="." index="112" instance=ExtResource("41_x1mta")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0.5, 0)
-material = ExtResource("42_cquae")

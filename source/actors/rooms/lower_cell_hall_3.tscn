@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6740g18km7ny"]
+[gd_scene load_steps=24 format=3 uid="uid://6740g18km7ny"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_f5h4f"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_2appl"]
@@ -8,6 +8,29 @@
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="6_xmq07"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dycbysm1104uj" path="res://source/actors/rooms/occluders/lower_cell_hall_3.occ" id="7_0yak2"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="8_l28ll"]
+[ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="9_sendj"]
+[ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="10_fcnch"]
+[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="11_quh8y"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="12_oqhdh"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="13_no1ii"]
+[ext_resource type="PackedScene" uid="uid://dafxw7skruo3p" path="res://source/actors/decor/groups/books_9.tscn" id="14_m1n76"]
+[ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="15_sgaa1"]
+[ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="16_vmtff"]
+[ext_resource type="PackedScene" uid="uid://d04entq5n5n3m" path="res://source/actors/decor/groups/books_7.tscn" id="17_a4kke"]
+[ext_resource type="PackedScene" uid="uid://bldplijh1bq7g" path="res://source/actors/decor/groups/books_2.tscn" id="18_mre8t"]
+[ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="19_y07jh"]
+[ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="20_1horx"]
+[ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="21_3fp7l"]
+[ext_resource type="PackedScene" uid="uid://bpw0uieb7ywls" path="res://source/actors/decor/prison/round_cage.tscn" id="22_yywfp"]
+
+[sub_resource type="Resource" id="Resource_gf6xt"]
+resource_local_to_scene = true
+script = ExtResource("12_oqhdh")
+name = "Ruboleum Vial"
+texture = ExtResource("13_no1ii")
+pickup_sound = ExtResource("11_quh8y")
+hold_rotation_offset = Vector3(0, 0, 0)
+hold_scale_multiplier = 1.0
 
 [node name="lower_cell_hall_3" instance=ExtResource("1_f5h4f")]
 
@@ -25,9 +48,11 @@ size = Vector3(49, 1, 7)
 
 [node name="small_cell" parent="cells" index="0" instance=ExtResource("3_4hq1u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0.5, 3.5)
+door_interactable_override = 2
 
 [node name="small_cell2" parent="cells" index="1" instance=ExtResource("3_4hq1u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26.5, 0.5, 3.5)
+door_open_angle = -65
 
 [node name="stone_wall" parent="." index="7" instance=ExtResource("2_2appl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 4.5, -4)
@@ -39,6 +64,7 @@ size = Vector3(13, 8, 1)
 
 [node name="small_cell" parent="." index="9" instance=ExtResource("3_4hq1u")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.5, 0.5, -3.5)
+door_open_angle = -35
 
 [node name="stone_wall2" parent="." index="10" instance=ExtResource("2_2appl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 4.5, 4)
@@ -250,3 +276,49 @@ lit = false
 [node name="hanging_lamp4" parent="." index="41" instance=ExtResource("8_l28ll")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -39.5, 1, 0)
 default_energy = 1.0
+
+[node name="shelf_2" parent="." index="42" instance=ExtResource("9_sendj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.25, 0.5, 0)
+
+[node name="ruboleum_vial" parent="." index="43" instance=ExtResource("10_fcnch")]
+transform = Transform3D(0.567068, 0, 0.823671, 0, 1, 0, -0.823671, 0, 0.567068, -45.9045, 2.4, 0.341764)
+item_data = SubResource("Resource_gf6xt")
+
+[node name="books_6" parent="." index="44" instance=ExtResource("14_m1n76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7523, 0.5, 2.82592)
+
+[node name="books_7" parent="." index="45" instance=ExtResource("15_sgaa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3778, 0.5, -3.5568)
+
+[node name="lg_stacked_barrels" parent="." index="46" instance=ExtResource("16_vmtff")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -38.25, 1.25, 5.5)
+
+[node name="books_8" parent="." index="47" instance=ExtResource("17_a4kke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0.5, -2.5)
+
+[node name="books_2" parent="." index="48" instance=ExtResource("18_mre8t")]
+transform = Transform3D(0.959166, 0, 0.282844, 0, 1, 0, -0.282844, 0, 0.959166, -46.3906, 0.799901, -0.294351)
+
+[node name="shelf_3" parent="." index="49" instance=ExtResource("9_sendj")]
+transform = Transform3D(3.07599e-08, 0.703705, 0.710493, 1, -4.37114e-08, 1.66132e-15, 3.10566e-08, 0.710493, -0.703705, -37.0156, 1.10091, -4.30684)
+
+[node name="rubble_1" parent="." index="50" instance=ExtResource("19_y07jh")]
+transform = Transform3D(0.549358, 0, -0.835587, 0, 1, 0, 0.835587, 0, 0.549358, -13.3156, 0.5, -0.443349)
+
+[node name="rubble_2" parent="." index="51" instance=ExtResource("19_y07jh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8101, 0.5, -0.499709)
+
+[node name="sm_stacked_planks2" parent="." index="52" instance=ExtResource("20_1horx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23344, 0.5, -1.42006)
+
+[node name="sm_stacked_planks" parent="." index="53" instance=ExtResource("21_3fp7l")]
+transform = Transform3D(0.940638, 0, -0.339411, 0, 1, 0, 0.339411, 0, 0.940638, -29.2511, 0.5, 1.64043)
+
+[node name="round_cage" parent="." index="54" instance=ExtResource("22_yywfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9623, 0.5, -2.56226)
+
+[node name="round_cage2" parent="." index="55" instance=ExtResource("22_yywfp")]
+transform = Transform3D(-0.803535, 0, 0.595258, 0, 1, 0, -0.595258, 0, -0.803535, -9.40498, 0.5, 2.46616)
+
+[node name="round_cage3" parent="." index="56" instance=ExtResource("22_yywfp")]
+transform = Transform3D(-0.991248, 0, 0.132014, 0, 1, 0, -0.132014, 0, -0.991248, -42.9567, 0.5, 3.83537)
