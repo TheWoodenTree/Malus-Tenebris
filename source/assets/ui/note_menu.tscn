@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cta7frnp42d7n"]
+[gd_scene load_steps=8 format=3 uid="uid://cta7frnp42d7n"]
 
 [ext_resource type="Script" path="res://source/assets/ui/notes/note_menu.gd" id="1_bbb5n"]
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="2_js2xi"]
+[ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="2_ofy3d"]
+[ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="3_r34b0"]
 [ext_resource type="FontFile" uid="uid://c1wdfxdb26j27" path="res://source/assets/fonts/Quikhand.ttf" id="3_xnjsc"]
 [ext_resource type="PackedScene" uid="uid://tus3pcbefjaj" path="res://source/assets/ui/buttons/inventory_left_button.tscn" id="4_f3ccg"]
 [ext_resource type="PackedScene" uid="uid://dnhynfku0mctc" path="res://source/assets/ui/buttons/inventory_right_button.tscn" id="5_7va5n"]
@@ -15,6 +17,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_bbb5n")
+open_sound = ExtResource("3_r34b0")
+close_sound = ExtResource("2_ofy3d")
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 0

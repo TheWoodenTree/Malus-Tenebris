@@ -1,4 +1,4 @@
-extends Control
+extends Menu
 
 const MAX_QUEUE_SIZE = 4
 const LEFT = 0
@@ -159,7 +159,7 @@ func _handle_drag():
 			var mouse_inside_slot_grid: bool = slot_grid_global_rect.has_point(mouse_pos)
 			if not mouse_inside_slot_grid:
 				Global.player.hold_item(item_on_cursor)
-				Global.ui.set_inventory_open(false)
+				Global.ui.remove_menu()
 		remove_item_from_cursor()
 		if tutorial_on and Global.player.debug_do_tutorials:
 			tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
@@ -223,8 +223,9 @@ func set_tutorial_on(on: bool):
 		tutorial_label.text = ""
 
 
-func remove_from_ui():
-	queue_free()
+func on_close():
+	if is_item_on_cursor:
+		remove_item_from_cursor()
 
 
 func _on_inventory_left_button_button_up():
@@ -237,9 +238,3 @@ func _on_inventory_left_button_2_button_up():
 
 func _on_scroll_anim_player_animation_started(_anim_name):
 	slot_scroll_player.play()
-
-
-func _on_hold_button_button_up():
-	emit_signal("item_used")
-	remove_item(selected_slot.item_data)
-	Global.ui.set_inventory_open(false)

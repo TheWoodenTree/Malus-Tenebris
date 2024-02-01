@@ -7,6 +7,7 @@ render_mode cull_front;
 
 uniform float outlineSize = 0.02;
 uniform bool outlineOn = false;
+uniform bool transparent = false;
 
 void vertex()
 {
@@ -19,6 +20,8 @@ void fragment()
 {
 	if (outlineOn)
 		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
 }
 
 

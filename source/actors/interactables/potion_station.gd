@@ -18,5 +18,4 @@ func _process(_delta):
 
 
 func interact():
-	if Global.player.is_holding_item("Ruboleum Vial"):
-		print("s")
+	Global.ui.hint_popup("(Not implemented)", 3.0)

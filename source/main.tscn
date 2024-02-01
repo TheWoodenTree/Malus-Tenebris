@@ -2,7 +2,6 @@
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
-[ext_resource type="PackedScene" uid="uid://tpexhv33nwtq" path="res://source/assets/ui/how_to_interact.tscn" id="5"]
 [ext_resource type="Script" path="res://source/assets/ui/ui.gd" id="6"]
 [ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://yxjmx6mnc3wl" path="res://source/assets/ui/interact_icons/interact_eye.png" id="11_c2uy7"]
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
 [ext_resource type="Script" path="res://source/interact_icon.gd" id="12_ifoda"]
+[ext_resource type="Script" path="res://source/assets/ui/menus.gd" id="13_by7hf"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -177,12 +177,6 @@ layout_mode = 0
 visible = false
 copy_mode = 2
 
-[node name="menus" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="ui" type="Control" parent="."]
 material = SubResource("ShaderMaterial_153xn")
 layout_mode = 3
@@ -190,24 +184,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6")
-
-[node name="background" type="ColorRect" parent="ui"]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
-color = Color(0, 0, 0, 0)
-
-[node name="how_to_interact" parent="ui" instance=ExtResource("5")]
-visible = false
-layout_mode = 1
-
-[node name="Label" type="Label" parent="ui"]
-visible = false
-layout_mode = 0
-offset_left = 73.0
-offset_top = 55.0
-offset_right = 254.0
-offset_bottom = 116.0
 
 [node name="cont" type="MarginContainer" parent="ui"]
 custom_minimum_size = Vector2(512, 288)
@@ -222,6 +198,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("11_c2uy7")
 script = ExtResource("12_ifoda")
+
+[node name="menus" type="Control" parent="ui"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_by7hf")
+
+[node name="background" type="ColorRect" parent="ui/menus"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 0)
+
+[node name="menu_player" type="AudioStreamPlayer3D" parent="ui/menus"]
+max_polyphony = 5
 
 [node name="prologue" parent="." instance=ExtResource("9")]
 

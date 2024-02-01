@@ -1,5 +1,5 @@
-extends Resource
 class_name ItemData
+extends Resource
 
 # Set by pickup script
 var mesh: MeshInstance3D : set = _set_mesh

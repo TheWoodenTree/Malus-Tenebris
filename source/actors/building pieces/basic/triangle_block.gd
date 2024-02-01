@@ -1,6 +1,6 @@
 @tool
-extends StaticBody3D
 class_name TriangleBlock
+extends StaticBody3D
 
 @export var size: Vector3 = Vector3.ONE : set = _set_size
 #@export var nav_walkable: bool = true : set = _set_nav_walkable

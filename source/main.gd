@@ -4,8 +4,6 @@ extends Node
 const EFFECT_MIN_DIST = 10
 const EFFECT_MAX_DIST = 30
 
-# Base values for heartbeat effects which will be animated and then lerped
-# to an appropriate value based checked distance to creature
 @export var anim_chrom_abb_offset: float
 @export var anim_vignette_softness: float
 
@@ -62,8 +60,7 @@ func _ready() -> void:
 
 	await world.ready
 	
-	obunga = world.get_node("nav_region/obunga")
-	#effects_player.play("heartbeat")
+	#obunga = world.get_node("nav_region/obunga")
 	emit_signal("world_ready")
 	load_screen.queue_free()
 	load_progress_thread.wait_to_finish()
@@ -81,8 +78,6 @@ func _ready() -> void:
 	else:
 		Global.player.in_menu = true
 	
-	#var volume_tween = create_tween()
-	#volume_tween.tween_property(drone_player, "volume_db", -6.0, 0.5).from(-20.0)
 	drone_player.play()
 	drip_player.play()
 	
@@ -98,11 +93,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	$Label.text = str(Engine.get_frames_per_second())
 	if Input.is_action_just_pressed("debug2"):
-	#	if Engine.time_scale > 0.5:
-	#		Engine.time_scale = 0.1
-	#	else:
-	#		Engine.time_scale = 1.0
-	#	Sound.enable_tension(10.0)
 		Global.player.fear_player.play();
 		var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from(-50.0)
@@ -124,17 +114,6 @@ func _process(_delta: float) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-#	if do_prologue and Input.is_action_just_pressed("ui_accept"):
-#		_play_prologue()
-	#if obunga:
-	#	player_dist_to_creature = Global.player.global_position.distance_to(obunga.global_position)
-	#	enable_heartbeat = true
-	#if enable_heartbeat and player_dist_to_creature < EFFECT_MAX_DIST:
-	#	var effects_scale = _calculate_effects_scale()
-	#	_do_heartbeat(effects_scale)
-	#elif effects_player.is_playing():
-	#	await get_tree().create_timer(effects_player.current_animation_length - effects_player.current_animation_position, false).timeout
-	#	effects_player.stop()
 
 
 func _report_load_progress():
@@ -156,30 +135,10 @@ func _report_load_progress():
 			push_error("Error loading world")
 
 
-#func _play_prologue():
-#	var prologue = $prologue
-#	var prologue_anim_player = $prologue/anim_player
-#	prologue_anim_player.play("card1")
-#	prologue_anim_player.queue("card2")
-#	prologue_anim_player.animation_set_next("card2", "card3")
-#	await prologue_anim_player.slam_gate
-#	starting_room.get_node("gate_slam_player").play()
-#	await prologue_anim_player.animation_finished
-#	Global.player.in_menu = false
-#	prologue.queue_free()
-
-
 func _calculate_effects_scale():
-	# Clamp distance to creature so that effect maximizes at certain dist away
 	var clamped_dist = clamp(player_dist_to_creature, EFFECT_MIN_DIST, EFFECT_MAX_DIST)
-	
-	# Normalize distance to creature to scale effects with
 	var scale = (clamped_dist - EFFECT_MIN_DIST) / (EFFECT_MAX_DIST - EFFECT_MIN_DIST)
-	
-	# Get the complement so that effect is at its maximum close to the creature
 	scale = 1 - scale
-	
-	# Return quadratic scale (linear is boring)
 	return scale * scale
 
 

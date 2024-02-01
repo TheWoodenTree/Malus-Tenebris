@@ -1,6 +1,6 @@
 @tool
-extends Node3D
 class_name Archway
+extends Node3D
 
 var archway: MeshInstance3D = null
 var static_body: StaticBody3D = null

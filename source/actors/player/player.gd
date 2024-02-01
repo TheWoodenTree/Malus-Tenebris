@@ -54,6 +54,8 @@ signal equipped_key
 
 
 func _ready() -> void:
+	Global.ui.inventory_opened.connect(stop_holding_item.bind(false))
+	
 	if debug_has_torch:
 		debug_get_torch()
 	
@@ -210,7 +212,8 @@ func delete_held_item():
 
 
 func stop_holding_item(play_sound: bool):
-	remove_child(held_item_mesh)
+	if held_item_mesh:
+		remove_child(held_item_mesh)
 	held_item = null
 	held_item_mesh = null
 	if play_sound:
@@ -366,7 +369,7 @@ func do_caught_sequence(monster_pos: Vector3):
 		cam_tween.tween_property(cam, "rotation", to_rot, 0.35 * anim_dur_scale).as_relative()
 	
 	await get_tree().create_timer(0.35 * anim_dur_scale + 0.25).timeout
-	Global.ui.display_screen(Global.ui.death_screen_res)
+	Global.ui.display_menu(Global.ui.death_screen_res)
 
 
 func debug_get_torch():

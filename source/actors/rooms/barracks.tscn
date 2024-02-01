@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://chgybf6r4j6hi"]
+[gd_scene load_steps=33 format=3 uid="uid://chgybf6r4j6hi"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_qqueh"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_ddact"]
@@ -27,6 +27,19 @@
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="25_l88xq"]
 [ext_resource type="PackedScene" uid="uid://d04entq5n5n3m" path="res://source/actors/decor/groups/books_7.tscn" id="26_x4ssc"]
 [ext_resource type="PackedScene" uid="uid://cid4xuq72t4q7" path="res://source/actors/decor/groups/books_3.tscn" id="27_h6l32"]
+[ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="28_sc6yc"]
+[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="29_r3kf6"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="30_38mxa"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="31_sfuc4"]
+
+[sub_resource type="Resource" id="Resource_hb4h3"]
+resource_local_to_scene = true
+script = ExtResource("30_38mxa")
+name = "Ruboleum Vial"
+texture = ExtResource("31_sfuc4")
+pickup_sound = ExtResource("29_r3kf6")
+hold_rotation_offset = Vector3(0, 0, 0)
+hold_scale_multiplier = 1.0
 
 [node name="barracks" instance=ExtResource("1_qqueh")]
 
@@ -217,3 +230,7 @@ transform = Transform3D(0.52614, 0, -0.850398, 0, 1, 0, 0.850398, 0, 0.52614, -1
 
 [node name="books_3" parent="." index="45" instance=ExtResource("27_h6l32")]
 transform = Transform3D(-0.013683, 0, 0.999906, 0, 1, 0, -0.999906, 0, -0.013683, 1.97449, 2.75, 12.6208)
+
+[node name="ruboleum_vial" parent="." index="46" instance=ExtResource("28_sc6yc")]
+transform = Transform3D(0.743565, 0, 0.668664, 0, 1, 0, -0.668664, 0, 0.743565, -7.71086, 2.5, 5.80208)
+item_data = SubResource("Resource_hb4h3")

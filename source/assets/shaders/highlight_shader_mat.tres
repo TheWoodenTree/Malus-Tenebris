@@ -4,7 +4,7 @@
 resource_local_to_scene = true
 code = "shader_type spatial;
 
-uniform bool highlightOn = false;
+uniform bool highlightOn = true;
 
 
 void fragment()

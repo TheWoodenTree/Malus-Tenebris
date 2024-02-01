@@ -1,4 +1,4 @@
-extends Control
+extends Menu
 
 var note # Set by the note object in-game that summons this note screen
 var note_text: String
@@ -29,10 +29,6 @@ func set_note_text(text):
 func set_page_number_text(text):
 	page_number_text = text
 	$cont/v_box_cont/h_box_cont/page_number.text = page_number_text
-
-
-func remove_from_ui():
-	note.remove_note_screen()
 
 
 func _on_left_button_pressed():

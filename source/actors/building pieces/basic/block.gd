@@ -1,6 +1,6 @@
 @tool
-extends StaticBody3D
 class_name Block
+extends StaticBody3D
 
 enum FloorType {STONE, WOOD}
 

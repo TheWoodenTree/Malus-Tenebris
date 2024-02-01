@@ -1,5 +1,5 @@
-extends Interactable
 class_name Pickup
+extends Interactable
 
 @onready var mesh = $mesh
 @onready var pickup_player = $pickup_player

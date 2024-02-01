@@ -1,5 +1,5 @@
-extends Node3D
 class_name Interactable
+extends Node3D
 
 enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 
@@ -12,6 +12,7 @@ var being_looked_at: bool = false
 var outline_on: bool = false
 
 @export var interactable: bool = true : set = set_interactable
+@export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
 
 
 # Set this interactable's type and connect its interact_area to its interact function

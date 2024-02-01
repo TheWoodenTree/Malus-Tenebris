@@ -2,6 +2,8 @@ extends Control
 
 const BLUR_TIME: float = 0.1
 
+var top_open_menu: Control = null
+
 var inventory_menu: Control
 var curr_popup: Control
 var curr_popup_wr: WeakRef = null
@@ -12,10 +14,13 @@ var block_inventory_open: bool = false
 var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
 var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
+var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instantiate()
 
-@onready var background = $background
+@onready var background = $menus/background
 @onready var interact_icon = $cont/interact_icon
+@onready var menus = $menus
 
+signal inventory_opened
 signal background_changed
 
 
@@ -26,14 +31,15 @@ func _ready():
 
 
 func _process(_delta):
-	$Label.text = str(Engine.get_frames_per_second())
 	if Input.is_action_just_pressed("debug3") and has_node("death_screen"):
 		remove_child(get_node("death_screen"))
 	if Input.is_action_just_pressed("toggle_inventory"):
-		set_inventory_open(not inventory_open)
+		if menus.num_menus == 0:
+			open_inventory()
+		elif menus.back() == inventory_menu:
+			remove_menu()
 	if Input.is_action_just_pressed("ui_accept") and Global.player.in_menu:
-		var remove_idx = get_child_count() - 1
-		get_child(remove_idx).remove_from_ui()
+		remove_menu()
 
 
 func hint_remove():
@@ -55,7 +61,7 @@ func hint_popup(msg: String, dur: float):
 	curr_popup_wr = weakref(popup)
 	popup.appear(msg)
 	
-	# Return is dur is negative to allow popups that will stay on the screen
+	# Return if dur is negative to allow popups that will stay on the screen
 	if dur < 0:
 		return
 	
@@ -67,29 +73,10 @@ func hint_popup(msg: String, dur: float):
 		popup.disappear()
 
 
-func set_inventory_open(is_open: bool):
-	if not block_inventory_open:
-		if is_open:
-			if inventory_menu.is_inside_tree():
-				get_tree().paused = true
-				push_error("Inventory tried to open when it was already open")
-			add_child(inventory_menu)
-			Global.unlock_mouse()
-			set_blur_background(true)
-			if Global.player.held_item:
-				Global.player.stop_holding_item(false)
-		elif not is_open:
-			if not inventory_menu.is_inside_tree():
-				get_tree().paused = true
-				push_error("Inventory tried to close when it was already closed")
-			if inventory_menu.is_item_on_cursor:
-				inventory_menu.remove_item_from_cursor()
-			call_deferred("remove_child", inventory_menu)
-			Global.lock_mouse()
-			set_blur_background(false)
-		Global.player.in_menu = is_open
-		Global.player.rucksack_player.play()
-		inventory_open = is_open
+func open_inventory():
+	if not block_inventory_open and not Global.player.in_menu:
+		display_menu(inventory_menu)
+		emit_signal("inventory_opened")
 
 
 func set_blur_background(on: bool):
@@ -107,6 +94,21 @@ func set_blur_background(on: bool):
 	blur_tween.tween_callback(emit_signal.bind("background_changed"))
 
 
-func display_screen(screen_res: Resource):
-	var screen = screen_res.instantiate()
-	add_child(screen)
+func display_menu(menu: Control):
+	if menus.num_menus == 0 and menus.add_menu(menu):
+		set_blur_background(true)
+		Global.unlock_mouse()
+		Global.player.in_menu = true
+
+
+func remove_menu():
+	var menu_removed: bool = false
+	if menus.num_menus > 0:
+		menus.pop_menu()
+		menu_removed = true
+		
+	if menus.num_menus == 0 and menu_removed:
+		set_blur_background(false)
+		await Global.ui.background_changed
+		Global.lock_mouse()
+		Global.player.in_menu = false
