@@ -11,6 +11,8 @@ var _interact_area: InteractArea # Should  not be accessed by anything but this 
 var being_looked_at: bool = false
 var outline_on: bool = false
 
+var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
+
 @export var interactable: bool = true : set = set_interactable
 @export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
 

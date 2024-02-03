@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dji8r6dqmhn6e"]
+[gd_scene load_steps=33 format=3 uid="uid://dji8r6dqmhn6e"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="25_n1mrg"]
 [ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="26_gvgmg"]
 [ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="26_lu5hf"]
-[ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="27_6xfoe"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b6755w4g5yww7" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="30"]
@@ -213,8 +212,8 @@ bus = &"General"
 
 [node name="archway_w_cell_door" parent="." instance=ExtResource("26_gvgmg")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.5, -11)
+door_interactable_override = 2
 door_locked_message = "It's Locked"
-material = ExtResource("27_6xfoe")
 
 [node name="note" parent="." instance=ExtResource("25_j1bmi")]
 unique_name_in_owner = true

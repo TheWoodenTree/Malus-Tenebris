@@ -2,15 +2,17 @@
 
 [node name="warden_note" type="Label"]
 custom_minimum_size = Vector2(800, 0)
-text = "Dominus Maximinus Thrax,
+text = "Praetor,
 
-The situation in the prison depths has escalated beyond my control since we last exchanged letters. To the effect of safely continuing operation, I have made the decision to seal its doors. 
+I regret to inform you that conditions within the prison have been deteriorating ever since the last rainfall caused much of the depths to flood. Large cracks have seemingly appeared from nowhere in parts of the lower prison and I fear that a collapse may be inevitable.
 
-The prisoners trapped below will likely perish; however, I deem their lives a neccessary sacrifice to ensure the containment of whatever foul miscreant manifests itself in the waters.
+Furthermore, the flood waters in the depths have risen to about one and one half feet. Another harsh rain may render the depths impossible to navigate.
 [PAGE]
-I apologize for allowing the situation to deteriorate to this point. The display of human-like intelligence was truely startling. They are more dangerous than we anticipated.
+Many of my men have also become sick, however this is no illness I have ever seen. It is hard to describe with words; it is as I am watching the life drain from their eyes. Some of them can no longer form coherent sentences.
 
-Should the condition continue to worsen, I regret to say that it may be necessary to abandon the project. I can not allow the Senate or any other members of the public to be privy to information regarding our operation.
+While my apothecary has been working to create a cure, the circumstances surrounding recent events have stirred fear and confusion among much of the Sect. I apologize that I can offer no explanation as to the source of these incidents as of yet.
+[PAGE]
+In the interest of good faith, we have begun to expedite the Atonement rituals despite the current conditions. Perhaps He will reward us.
 
-Brutus"
+Gloria Mars Ultor"
 autowrap_mode = 2

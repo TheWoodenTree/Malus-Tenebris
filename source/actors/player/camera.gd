@@ -48,18 +48,18 @@ func _process(_delta: float) -> void:
 		elif Global.player.global_input_dir == Vector3.ZERO:
 			_reset_bob()
 	
-	if Input.is_action_just_pressed("debug4") and not upside_down_mode:
-		var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-		rot_tween.tween_property(self, "rotation:z", PI, 0.25)
-		#rotation.z = PI
-		Global.main.set_upside_down_sound(true)
-		upside_down_mode = true
-	elif Input.is_action_just_pressed("debug4") and upside_down_mode:
-		var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-		rot_tween.tween_property(self, "rotation:z", 0.0, 0.25)
-		#rotation.z = 0.0
-		Global.main.set_upside_down_sound(false)
-		upside_down_mode = false
+	#if Input.is_action_just_pressed("debug4") and not upside_down_mode:
+	#	var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	#	rot_tween.tween_property(self, "rotation:z", PI, 0.25)
+	#	#rotation.z = PI
+	#	Global.main.set_upside_down_sound(true)
+	#	upside_down_mode = true
+	#elif Input.is_action_just_pressed("debug4") and upside_down_mode:
+	#	var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	#	rot_tween.tween_property(self, "rotation:z", 0.0, 0.25)
+	#	#rotation.z = 0.0
+	#	Global.main.set_upside_down_sound(false)
+	#	upside_down_mode = false
 	
 	mouse_input_received = false
 

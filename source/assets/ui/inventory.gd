@@ -51,6 +51,9 @@ func _ready():
 	
 	for i in range(0, slot_grid.get_child_count()):
 		slot_grid.get_child(i).index = i
+		
+	if Global.player.debug_do_tutorials:
+		tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
 
 
 func _process(_delta):

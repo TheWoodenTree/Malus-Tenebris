@@ -2,9 +2,9 @@
 
 [node name="kitchen_note" type="Label"]
 custom_minimum_size = Vector2(800, 0)
-text = "Brutus,
+text = "Warden Brutus,
 
-The lock to the prison depths has gotten too rusty and has caused problems on more than one occasion. Recently, however, I have become completely unable to turn the key. Yesterday, one of the guards nearly broke the lock entirely trying to open the gate.
+The lock to the prison depths has gotten too rusty and has caused problems on more than one occasion. Recently, however, I have become completely unable to turn the key. Yesterday, one of the servants nearly broke the lock entirely trying to open the gate.
 
 It is my recommendation that some of the beef fat in the larder be rendered and the tallow used as lubricant for the key.
 [PAGE]

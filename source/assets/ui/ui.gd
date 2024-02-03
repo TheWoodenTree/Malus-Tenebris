@@ -9,7 +9,7 @@ var curr_popup: Control
 var curr_popup_wr: WeakRef = null
 
 var inventory_open: bool = false
-var block_inventory_open: bool = false
+var block_inventory_open: bool = true
 
 var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")

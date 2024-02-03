@@ -22,12 +22,6 @@ func _ready():
 	door2_hinge.rotation.y = -deg_to_rad(door2_angle)
 
 
-func _process(_delta):
-	if not Engine.is_editor_hint():
-		if Input.is_action_just_pressed("debug"):
-			open()
-
-
 func _set_door1_angle(rot):
 	door1_angle = rot
 	if door1_hinge:

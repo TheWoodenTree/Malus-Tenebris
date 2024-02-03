@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs5t47xjs5a4t"]
+[gd_scene load_steps=10 format=3 uid="uid://bs5t47xjs5a4t"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_7rmgv"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_u2pd7"]
@@ -7,6 +7,8 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://hj2tvfw5jhv6" path="res://source/actors/rooms/occluders/lower_prison_hallway_1.occ" id="5_87n25"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="6_roci5"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="7_pkcpv"]
+[ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="8_ay0lh"]
+[ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="9_v88pi"]
 
 [node name="lower_prison_hallway_1" instance=ExtResource("1_7rmgv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -107,8 +109,53 @@ size = Vector3(11, 1, 11)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52372e-07, 7, -19.5)
 size = Vector3(11, 1, 11)
 
+[node name="half_wood_support" parent="pillars" index="0" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4.25, 0.5, -23.75)
+
+[node name="half_wood_support2" parent="pillars" index="1" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.25, 0.5, -23.75)
+
+[node name="half_wood_support3" parent="pillars" index="2" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 4.25, 0.5, -15.25)
+
+[node name="half_wood_support4" parent="pillars" index="3" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.25, 0.5, -15.25)
+
+[node name="half_wood_support5" parent="pillars" index="4" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.5, -0.25, -21.75)
+
+[node name="half_wood_support6" parent="pillars" index="5" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.25, -0.5, -17.25)
+
+[node name="half_wood_support7" parent="pillars" index="6" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.75, -0.5, -21.75)
+
+[node name="half_wood_support8" parent="pillars" index="7" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.75, -0.5, -17.25)
+
+[node name="half_wood_support9" parent="pillars" index="8" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -0.5, -8.75)
+
+[node name="half_wood_support10" parent="pillars" index="9" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.25, -0.5, -8.75)
+
+[node name="half_wood_support11" parent="pillars" index="10" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -0.5, -5.25)
+
+[node name="half_wood_support12" parent="pillars" index="11" instance=ExtResource("7_pkcpv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.25, -0.5, -5.25)
+
 [node name="hanging_lamp" parent="decor" index="0" instance=ExtResource("6_roci5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52372e-07, 0.25, -19.5)
+
+[node name="wall_rack" parent="decor" index="1" instance=ExtResource("8_ay0lh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -19.5)
+
+[node name="barrel" parent="decor" index="2" instance=ExtResource("9_v88pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 1.5, -16.25)
+
+[node name="barrel2" parent="decor" index="3" instance=ExtResource("9_v88pi")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -3.25, 1.5, -18.25)
 
 [node name="stone_archway" parent="misc" index="0" instance=ExtResource("2_u2pd7")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.39091e-08, 0.5, -1)
@@ -139,15 +186,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31134e-06, 0.5, -30)
 
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("5_87n25")
-
-[node name="half_wood_support" parent="." index="9" instance=ExtResource("7_pkcpv")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4.25, 0.5, -23.75)
-
-[node name="half_wood_support2" parent="." index="10" instance=ExtResource("7_pkcpv")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.25, 0.5, -23.75)
-
-[node name="half_wood_support3" parent="." index="11" instance=ExtResource("7_pkcpv")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 4.25, 0.5, -15.25)
-
-[node name="half_wood_support4" parent="." index="12" instance=ExtResource("7_pkcpv")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.25, 0.5, -15.25)

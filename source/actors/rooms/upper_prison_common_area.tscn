@@ -299,7 +299,7 @@ size = Vector3(1, 6, 6)
 
 [node name="archway_w_door_no_window2" parent="." index="80" instance=ExtResource("16_rjivn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, -3, -9.5)
-door_open_angle = 50
+door_open_angle = 15
 
 [node name="archway_w_door_no_window3" parent="." index="81" instance=ExtResource("16_rjivn")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.5, -3, -19.5)

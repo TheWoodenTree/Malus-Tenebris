@@ -30,9 +30,9 @@ var unlocked: bool
 var tutorial_popup: bool
 
 @onready var door_body = $door_body
-@onready var highlight_material = $door_body/door.material_overlay
+@onready var door = $door_body/door
 @onready var door_open_player = $door_body/door_open_player
-@onready var door_open_finish_player = $door_body/door_open_finish_player
+@onready var door_full_open_player = $door_body/door_full_open_player
 @onready var door_unlock_player = $door_body/door_unlock_player
 @onready var door_close_player = $door_body/door_close_player
 @onready var door_attempt_player = $door_body/door_attempt_player
@@ -43,7 +43,7 @@ var tutorial_popup: bool
 @onready var hinge = $door_body/hinge
 
 @export var pitch_scale_min: float = 0.8
-@export var pitch_scale_max: float = 1.1
+@export var pitch_scale_max: float = 1.0
 
 #TODO: STOP DOOR DRAGGING WHEN PLAYER IS CERTAIN DISTANCE FROM DOOR
 
@@ -69,7 +69,7 @@ func parent_ready_finished():
 
 func _process(_delta: float) -> void:
 	if being_looked_at and interactable or player_dragging:
-		highlight_material.set_shader_parameter("outlineOn", true)
+		door.material_overlay.set_shader_parameter("outlineOn", true)
 		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
 			Global.player.cam.connect("cam_rotated", add_torque_to_door)
 		outline_on = true
@@ -77,7 +77,7 @@ func _process(_delta: float) -> void:
 			Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
 			tutorial_popup_shown = true
 	elif outline_on:
-		highlight_material.set_shader_parameter("outlineOn", false)
+		door.material_overlay.set_shader_parameter("outlineOn", false)
 		Global.player.cam.disconnect("cam_rotated", add_torque_to_door)
 		outline_on = false
 	
@@ -156,7 +156,7 @@ func interact():
 				if not locked_message.is_empty():
 					message = locked_message
 				elif player_on_openable_side:
-					message = "Need %s Key" % key_name
+					message = "Need %s Key" % key_name.replace("Lubricated ", "")
 				else:
 					message = "Locked from the other side"
 				Global.ui.hint_popup(message, 3.0)
@@ -221,14 +221,15 @@ func attempt_unlock():
 
 
 func open():
-	var door_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(open_tween_trans)
-	var anim_dur = door_open_player.stream.get_length() * (2 - door_open_player.pitch_scale)
-	door_tween.tween_property(self, "rotation:y", deg_to_rad(open_to_angle), anim_dur)
-	door_open_player.play()
-	interact_area.set_collision_layer_value(16, false)
 	set_interactable(false)
+	var door_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(open_tween_trans)
+	var anim_dur = door_full_open_player.stream.get_length() * (2 - door_full_open_player.pitch_scale)
+	door_tween.tween_property(door_body, "rotation:y", deg_to_rad(open_to_angle), anim_dur).from(0.0)
+	door_full_open_player.play()
+	interact_area.set_collision_layer_value(16, false)
 	await door_tween.finished
 	Global.world.get_node("nav_region").bake_navigation_mesh()
+	set_interactable(true)
 
 
 func set_closed(enabled: bool):

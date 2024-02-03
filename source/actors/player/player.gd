@@ -101,6 +101,7 @@ func _physics_process(delta: float) -> void:
 		global_input_dir_last_frame = global_input_dir
 
 
+#TODO: Fix camera bobbing for sprint affecting crouch camera bobbing
 func _handle_input():
 	if Input.is_action_just_pressed("cancel") and held_item and not Global.ui.block_inventory_open:
 		stop_holding_item(true)

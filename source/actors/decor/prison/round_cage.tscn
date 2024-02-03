@@ -38,6 +38,7 @@ points = PackedVector3Array(-0.334831, 2.49985, 0.825145, -0.349734, 2.49985, 0.
 [node name="round_cage" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 8
 mesh = SubResource("ArrayMesh_x8ntd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

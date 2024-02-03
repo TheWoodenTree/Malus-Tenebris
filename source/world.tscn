@@ -134,7 +134,7 @@ reverb_bus_amount = 1.0
 shape = SubResource("BoxShape3D_jlowy")
 
 [node name="player_spawn_point" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 10, 38.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 10, 43)
 
 [node name="nav_region" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)

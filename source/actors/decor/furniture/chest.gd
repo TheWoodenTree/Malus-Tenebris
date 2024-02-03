@@ -17,7 +17,6 @@ var sound_cooldown_timer: Timer = Timer.new()
 @onready var draggable_body = $draggable_body
 @onready var mesh = $draggable_body/mesh
 @onready var interact_area = $draggable_body/interact_area
-@onready var highlight_material = $draggable_body/mesh.material_overlay
 @onready var creak_player = $creak_player
 @onready var close_player = $close_player
 
@@ -36,12 +35,12 @@ func _ready():
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if being_looked_at and interactable or player_dragging:
-			highlight_material.set_shader_parameter("outlineOn", true)
+			mesh.material_overlay.set_shader_parameter("outlineOn", true)
 			if not Global.player.cam.is_connected("cam_rotated", add_torque_to_lid):
 				Global.player.cam.connect("cam_rotated", add_torque_to_lid)
 			outline_on = true
 		elif outline_on:
-			highlight_material.set_shader_parameter("outlineOn", false)
+			mesh.material_overlay.set_shader_parameter("outlineOn", false)
 			Global.player.cam.disconnect("cam_rotated", add_torque_to_lid)
 			outline_on = false
 

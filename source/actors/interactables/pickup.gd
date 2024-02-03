@@ -24,19 +24,26 @@ func _ready():
 	
 	highlight_light.visible = highlight_light_on
 	item_data.count = count
+	
+	if shader_mode == "Highlight":
+		mesh.material_overlay.set_shader_parameter("outlineOn", false)
 
 
 func _process(_delta):
 	if being_looked_at and not Global.player.held_item: # Is the second condition necessary?
 		mesh.material_overlay.set_shader_parameter("outlineOn", true)
 		for child in get_children():
-			if child is MeshInstance3D and child.material_overlay:
+			if child is MeshInstance3D and shader_mode == "Outline" and child.material_overlay:
 				child.material_overlay.set_shader_parameter("outlineOn", true)
+			elif child is MeshInstance3D and shader_mode == "Highlight" and not child.material_override:
+				child.material_override = highlight_material
 		outline_on = true
 	elif outline_on:
 		for child in get_children():
-			if child is MeshInstance3D and child.material_overlay:
+			if child is MeshInstance3D and shader_mode == "Outline" and child.material_overlay:
 				child.material_overlay.set_shader_parameter("outlineOn", false)
+			elif child is MeshInstance3D and shader_mode == "Highlight" and child.material_override:
+				child.material_override = null
 		outline_on = false
 
 

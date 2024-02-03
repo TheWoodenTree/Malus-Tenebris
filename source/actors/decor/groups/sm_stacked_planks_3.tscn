@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqo52g6ow2hah"]
+
+[ext_resource type="PackedScene" uid="uid://b8x6fq3iwrnwh" path="res://source/actors/decor/debris/plank_1.tscn" id="1_qkquq"]
+
+[node name="sm_stacked_planks_3" type="Node3D"]
+
+[node name="plank_1" parent="." instance=ExtResource("1_qkquq")]
+transform = Transform3D(0.714176, 0.0549904, -0.697803, -0.0767712, 0.997049, 0, 0.695744, 0.0535712, 0.71629, 0.20835, 0.100892, -0.43159)
+
+[node name="plank_2" parent="." instance=ExtResource("1_qkquq")]
+transform = Transform3D(0.741906, 0, 0.670504, 0, 1, 0, -0.670504, 0, 0.741906, -1.04604, 0, 1.07294)
+
+[node name="plank_3" parent="." instance=ExtResource("1_qkquq")]
+transform = Transform3D(0.950521, 0, 0.31066, 0, 1, 0, -0.31066, 0, 0.950521, 0, 0, -0.527127)

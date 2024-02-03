@@ -12,7 +12,6 @@ var raw_text: String
 var read: bool = false
 
 var note_menu = preload("res://source/assets/ui/note_menu.tscn").instantiate()
-var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
 
 @export var display_help: bool = false
 @export var label: PackedScene
