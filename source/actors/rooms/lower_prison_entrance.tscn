@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1onovq0nc1xf"]
+[gd_scene load_steps=21 format=3 uid="uid://c1onovq0nc1xf"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_i7tkv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b24yy1t4ft602" path="res://source/actors/rooms/occluders/lower_prison_entrance.occ" id="2_ujbbf"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://da74ovc14qach" path="res://source/actors/building pieces/archways/frameless_archway.tscn" id="16_ebs3t"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="17_5n3dr"]
 [ext_resource type="Script" path="res://source/actors/rooms/door_open_event.gd" id="18_6n6fv"]
+[ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="19_7jmwe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xb64h"]
 size = Vector3(6, 6, 1)
@@ -315,5 +316,21 @@ script = ExtResource("18_6n6fv")
 [node name="collision_shape" type="CollisionShape3D" parent="door_open_event" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.999001)
 shape = SubResource("BoxShape3D_xb64h")
+
+[node name="trim" parent="." index="88" instance=ExtResource("19_7jmwe")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, -9.5, -31.75)
+length = 6.5
+
+[node name="trim2" parent="." index="89" instance=ExtResource("19_7jmwe")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -3, -9.5, -22.25)
+length = 6.5
+
+[node name="trim3" parent="." index="90" instance=ExtResource("19_7jmwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -9.5, -32.75)
+length = 4.5
+
+[node name="trim4" parent="." index="91" instance=ExtResource("19_7jmwe")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, -9.5, -21.25)
+length = 4.5
 
 [connection signal="body_entered" from="door_open_event" to="door_open_event" method="_on_body_entered"]

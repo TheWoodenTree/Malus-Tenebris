@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://h00d3dfjtv0t"
-path.s3tc="res://.godot/imported/Planks024C_1K_NormalGL.jpg-b6d15b1b3d55a0622bea313f439842b7.s3tc.ctex"
+path="res://.godot/imported/Planks024C_1K_NormalGL.jpg-b6d15b1b3d55a0622bea313f439842b7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://source/assets/materials/dark_wood_planks/Planks024C_1K_NormalGL.jpg"
-dest_files=["res://.godot/imported/Planks024C_1K_NormalGL.jpg-b6d15b1b3d55a0622bea313f439842b7.s3tc.ctex"]
+dest_files=["res://.godot/imported/Planks024C_1K_NormalGL.jpg-b6d15b1b3d55a0622bea313f439842b7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

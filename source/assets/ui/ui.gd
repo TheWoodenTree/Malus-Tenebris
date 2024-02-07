@@ -9,7 +9,6 @@ var curr_popup: Control
 var curr_popup_wr: WeakRef = null
 
 var inventory_open: bool = false
-var block_inventory_open: bool = true
 
 var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
@@ -19,6 +18,7 @@ var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instan
 @onready var background = $menus/background
 @onready var interact_icon = $cont/interact_icon
 @onready var menus = $menus
+@onready var block_inventory_open: bool = Global.player.debug_do_tutorials
 
 signal inventory_opened
 signal background_changed

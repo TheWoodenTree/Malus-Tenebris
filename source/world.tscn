@@ -174,7 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -19, -94.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5, -19, -57.75)
 
 [node name="lower_cell_hall_3" parent="nav_region" instance=ExtResource("32_yfpp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -19, -126.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -19, -126.75)
 
 [node name="kitchen" parent="nav_region" instance=ExtResource("34_2ebpu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -19, -75.25)
@@ -204,7 +204,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.75, 5.5, 29.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -47.25)
 
 [node name="lower_prison_hallway_1" parent="nav_region" instance=ExtResource("20_2fkcd")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -19, -102.75)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -19, -105.25)
 
 [node name="lower_prison_hallway_2" parent="nav_region" instance=ExtResource("21_t63ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -19, -87.25)
