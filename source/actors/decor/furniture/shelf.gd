@@ -1,8 +1,6 @@
 @tool
 extends Interactable
 
-var note_read = false
-
 @export var move_to_pos = Vector3.ZERO : set = _set_move_to_pos
 
 @onready var interact_mat = $mesh.material_overlay
@@ -19,7 +17,7 @@ func _ready() -> void:
 		if has_node("interact_area"):
 			interact_area = $interact_area
 		init(Type.MOVEABLE, interact_area)
-		var _err = get_node("%note").was_read.connect(set.bind("note_read", true))
+		var _err = get_node("%note").was_read.connect(set_interactable.bind(true))
 		if interactable:
 			interact_area.monitoring = true
 			interact_area.monitorable = true
@@ -29,13 +27,13 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
-		if interactable and note_read:
+		if interactable:
 			# Enable interaction outline if being looked at
 			interact_mat.set_shader_parameter("outlineOn", being_looked_at)
 
 
 func interact():
-	if interactable and note_read:
+	if interactable:
 		var pos_tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		move_to_collision.disabled = false
 		pos_tween.tween_property(self, "position", move_to_pos, 1.6).as_relative()

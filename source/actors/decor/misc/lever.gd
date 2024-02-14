@@ -2,7 +2,6 @@ extends Interactable
 
 @onready var lever_pull_player = $lever_pull_player
 @onready var interact_area = $interact_area
-@onready var highlight_material = $lever_hinge/lever.material_overlay
 @onready var lever_hinge = $lever_hinge
 
 signal lever_pulled(index)

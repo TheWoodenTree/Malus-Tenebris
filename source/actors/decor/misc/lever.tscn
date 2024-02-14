@@ -11,6 +11,7 @@ render_priority = 0
 shader = ExtResource("5")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o72qs"]
 _surfaces = [{

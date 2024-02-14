@@ -144,8 +144,8 @@ size = Vector2(0.25, 0.25)
 orientation = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lgmx5"]
-radius = 0.4
-height = 1.5
+radius = 0.75
+height = 2.25
 
 [sub_resource type="Curve" id="Curve_1i770"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
@@ -248,3 +248,14 @@ top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
+
+[node name="highlight_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215215, 0)
+top_level = true
+light_energy = 0.2
+light_size = 3.0
+light_specular = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 3.0
+omni_attenuation = 0.2

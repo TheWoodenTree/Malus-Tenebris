@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=24 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
 [ext_resource type="Script" path="res://source/interact_icon.gd" id="12_ifoda"]
 [ext_resource type="Script" path="res://source/assets/ui/menus.gd" id="13_by7hf"]
+[ext_resource type="PackedScene" uid="uid://difwtbkkvagxy" path="res://source/assets/ui/progress_bars/draggable_move_progress_bar.tscn" id="13_twsai"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -198,6 +199,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("11_c2uy7")
 script = ExtResource("12_ifoda")
+
+[node name="draggable_move_progress_bar" parent="ui" instance=ExtResource("13_twsai")]
+visible = false
+layout_mode = 1
 
 [node name="menus" type="Control" parent="ui"]
 anchors_preset = 0

@@ -35,6 +35,7 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 @onready var lit_particles = $lit_fire_particles
 @onready var particle_attractor: GPUParticlesAttractorSphere3D = $particle_attractor
 @onready var interact_area = $interact_area
+@onready var highlight_light = $highlight_light
 
 
 func _ready() -> void:
@@ -84,9 +85,10 @@ func interact():
 	mesh.layers = 2
 	light.visible = false
 	
+	highlight_light.visible = false
 	
 	if not Global.player.debug_has_torch:
-		Global.ui.hint_popup("Find something to light the torch with", 5.0)
+		Global.ui.hint_popup("Find a way to light the torch", 5.0)
 
 
 func calculate_fire_up_dir():

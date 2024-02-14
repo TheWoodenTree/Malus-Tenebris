@@ -22,6 +22,8 @@ var sound_cooldown_timer: Timer = Timer.new()
 
 @export_range(0, 100) var open_angle: int = 0 : set = set_open_angle
 
+signal moved
+
 
 func _ready():
 	if not Engine.is_editor_hint():
@@ -67,13 +69,15 @@ func _physics_process(_delta):
 			elif not player_dragging and draggable_body.rotation_degrees.x > 99.0: # Broken
 				draggable_body.rotation.x = 100.0
 				draggable_body.angular_velocity = Vector3.ZERO
+				
+			emit_signal("moved", draggable_body.rotation_degrees.x, true)
 		else:
 			creak_player.stop()
 
 
 func interact():
 	player_dragging = true
-	Global.player.draggable_being_dragged = self
+	Global.player.set_draggable_being_dragged(self)
 
 
 func get_player_z_dist():
@@ -83,12 +87,12 @@ func get_player_z_dist():
 func set_player_dragging(dragging: bool):
 	player_dragging = dragging
 	if dragging:
-		Global.player.cam.can_rotate = false
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
 		Global.player.door_being_dragged = self
 	else:
 		player_just_stopped_dragging = true
 		await get_tree().create_timer(0.1, false).timeout
-		Global.player.cam.can_rotate = true
+		Global.player.cam.sensitivity_multiplier = 1.0
 
 
 func set_open_angle(open_angle_: int):
@@ -102,5 +106,5 @@ func add_torque_to_lid(offset: Vector2):
 		cam_rot_offset = offset
 		var torque: Vector3 = Vector3.LEFT * cam_rot_offset.x * 1000.0
 		draggable_body.apply_torque(torque.rotated(Vector3.UP, rotation.y))
-		Global.player.cam.can_rotate = false
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
 		last_cam_rot_offset = offset

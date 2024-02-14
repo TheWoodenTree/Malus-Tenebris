@@ -313,7 +313,7 @@ transform = Transform3D(0.940638, 0, -0.339411, 0, 1, 0, 0.339411, 0, 0.940638, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7123, 0.5, -2.56226)
 
 [node name="round_cage2" parent="." index="43" instance=ExtResource("22_yywfp")]
-transform = Transform3D(-0.803535, 0, 0.595258, 0, 1, 0, -0.595258, 0, -0.803535, -9.40498, 0.5, 2.46616)
+transform = Transform3D(-0.803535, 0, 0.595258, 0, 1, 0, -0.595258, 0, -0.803535, -10.405, 0.5, 2.46616)
 
 [node name="round_cage3" parent="." index="44" instance=ExtResource("22_yywfp")]
 transform = Transform3D(-0.991248, 0, 0.132014, 0, 1, 0, -0.132014, 0, -0.991248, -42.9567, 0.5, 3.83537)

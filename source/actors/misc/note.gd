@@ -52,7 +52,8 @@ func _process(_delta: float) -> void:
 			mesh.material_override = highlight_material
 		outline_on = true
 	elif outline_on:
-		Global.ui.hint_remove()
+		if display_help:
+			Global.ui.hint_remove()
 		if shader_mode == "Outline" and mesh.material_overlay:
 			mesh.material_overlay.set_shader_parameter("outlineOn", false)
 		elif shader_mode == "Highlight" and mesh.material_override:

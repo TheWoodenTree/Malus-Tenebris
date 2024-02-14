@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b7xcdnbrbgydc"]
+[gd_scene load_steps=32 format=3 uid="uid://b7xcdnbrbgydc"]
 
 [ext_resource type="Script" path="res://source/actors/building pieces/doors/door.gd" id="1_5erst"]
 [ext_resource type="Script" path="res://source/actors/building pieces/door_body.gd" id="1_mm4xf"]
@@ -253,169 +253,6 @@ _data = {
 "insert_wrong_key": SubResource("Animation_kxxq5")
 }
 
-[sub_resource type="Animation" id="Animation_c6sp1"]
-resource_name = "insert_key"
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("door_body/door_unlock_player")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("13_c3ty3")
-}],
-"times": PackedFloat32Array(0.7)
-}
-tracks/0/use_blend = true
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("door_body/key:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(-2.049, 1.048, -0.22), Vector3(-2.049, 1.048, 0.03)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("door_body/key:rotation")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.95),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_djk22"]
-resource_name = "insert_rusty_key"
-length = 1.9
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("door_body/door_unlock_player")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("14_m84gs")
-}],
-"times": PackedFloat32Array(0.6)
-}
-tracks/0/use_blend = true
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("door_body/key:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6, 1.25, 1.75),
-"transitions": PackedFloat32Array(-2, 1, -2, 1),
-"update": 0,
-"values": [Vector3(-2.049, 1.048, -0.22), Vector3(-2.049, 1.048, 0.03), Vector3(-2.049, 1.048, 0.03), Vector3(-2.049, 1.048, -0.22)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("door_body/key:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.8, 0.9, 1, 1.25),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.309), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.5708)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"key_needs_lube_hint_popup"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_q8u2h"]
-resource_name = "insert_wrong_key"
-length = 1.9
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("door_body/door_unlock_player")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("14_m84gs")
-}],
-"times": PackedFloat32Array(0.6)
-}
-tracks/0/use_blend = true
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("door_body/key:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6, 1.25, 1.75),
-"transitions": PackedFloat32Array(-2, 1, -2, 1),
-"update": 0,
-"values": [Vector3(-2.049, 1.048, -0.22), Vector3(-2.049, 1.048, 0.03), Vector3(-2.049, 1.048, 0.03), Vector3(-2.049, 1.048, -0.22)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("door_body/key:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.8, 0.9, 1, 1.25),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.309), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.5708)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"wrong_key_hint_popup"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yui4"]
-_data = {
-"insert_key": SubResource("Animation_c6sp1"),
-"insert_rusty_key": SubResource("Animation_djk22"),
-"insert_wrong_key": SubResource("Animation_q8u2h")
-}
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q30nu"]
 resource_local_to_scene = true
 render_priority = 0
@@ -527,12 +364,6 @@ stream = ExtResource("12_gohqi")
 [node name="key_anim_player" type="AnimationPlayer" parent="door_body"]
 libraries = {
 "": SubResource("AnimationLibrary_pvi61")
-}
-
-[node name="key_anim_player2" type="AnimationPlayer" parent="door_body"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_7yui4")
 }
 
 [node name="key" type="Node3D" parent="door_body"]

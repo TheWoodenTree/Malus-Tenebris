@@ -10,6 +10,9 @@ var closed_max_drag_angle: float
 var closed: bool
 var tutorial_popup_shown: bool = false
 var effects_scale: float = 0.0
+var player_interact_ray_col_normal: Vector3
+var player_facing_dir_xz: Vector2
+var latch_locked: bool = false
 
 var cam_rot_offset: Vector2 = Vector2.ZERO
 var angular_velocity_last_frame: Vector3 = Vector3.ZERO
@@ -45,6 +48,9 @@ var tutorial_popup: bool
 @export var pitch_scale_min: float = 0.8
 @export var pitch_scale_max: float = 1.0
 
+signal moved
+signal toggled_close
+
 #TODO: STOP DOOR DRAGGING WHEN PLAYER IS CERTAIN DISTANCE FROM DOOR
 
 func _ready():
@@ -73,7 +79,8 @@ func _process(_delta: float) -> void:
 		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
 			Global.player.cam.connect("cam_rotated", add_torque_to_door)
 		outline_on = true
-		if tutorial_popup and not tutorial_popup_shown and Global.player.debug_do_tutorials:
+		if tutorial_popup and not tutorial_popup_shown and Global.player.debug_do_tutorials \
+		and Global.player.has_torch and Global.player.torch.is_lit:
 			Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
 			tutorial_popup_shown = true
 	elif outline_on:
@@ -93,7 +100,6 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta):
 	if not door_body.sleeping and not closed:
-		#print(door_body.rotation_degrees.y)
 		if abs(door_body.angular_velocity.y) > 0.1:
 			var effect_scale: float = clamp(abs(door_body.angular_velocity.y) / PI, 0, 1.0)
 			var large_ang_vel_change: bool = abs(door_body.angular_velocity.y - angular_velocity_last_frame.y) > 0.35
@@ -104,15 +110,11 @@ func _physics_process(_delta):
 					sound_cooldown_timer.start()
 					player_just_started_dragging = false
 					
-			# Set door to closed if it isn't being dragged by player and is within the closed angle
-			if not player_dragging and abs(door_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)):
-				set_closed(true)
-			
 			door_open_player.volume_db = lerp(-30.0, 0.0, pow(effect_scale, 1.0))
 			door_open_player.pitch_scale = lerp(pitch_scale_min, pitch_scale_max, pow(effect_scale, 1.0))
 			
 			angular_velocity_last_frame = door_body.angular_velocity
-		
+			
 		# Increase damp for angular velocity when the door is close to its hinge limit
 		if sign(open_to_angle) == sign(door_body.angular_velocity.y):
 			var min_damp_angle: float = abs(open_to_angle) - 10.0
@@ -122,8 +124,16 @@ func _physics_process(_delta):
 			door_body.angular_damp = clamp(5.0 * damping_scale, 5.0, 50.0)
 		elif not closed:
 			door_body.angular_damp = 5.0
+			
+		# Set door to closed if it isn't being dragged by player and is within the closed angle
+		# and angular velocity is closing door
+		if not player_dragging and abs(door_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)) \
+		and sign(door_body.angular_velocity.y) == -sign(open_to_angle):
+			set_closed(true)
+			
+		emit_signal("moved", door_body.rotation_degrees.y, sign(get_player_z_dist()) == -1)
 		
-	elif player_dragging and unlocked:
+	elif player_dragging and unlocked and abs(door_body.rotation.y) >= deg_to_rad(abs(closed_max_drag_angle)):
 		set_closed(false)
 		
 	if abs(door_body.angular_velocity.y) < 0.05:
@@ -136,17 +146,23 @@ func interact():
 		# the z axis (relative to the door) is positive or negative. If the sign 
 		# of the distance is opposite the sign of the angle that the door opens to, 
 		# the player is on the correct side and can open the door, otherwise not.
-		if one_way:
+		if latch_locked or one_way:
 			var player_z_dist = get_player_z_dist()
-			player_on_openable_side = sign(player_z_dist) != sign(open_to_angle)
-			
+			player_on_openable_side = sign(player_z_dist) == sign(open_to_angle)
+		
+		# Player tries to unlock a locked door
 		if Global.player.is_holding_key() and player_on_openable_side and not unlocked:
 			attempt_unlock()
-		elif (unlocked and player_on_openable_side and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
-			player_dragging = true
-			player_just_started_dragging = true
-			player_just_stopped_dragging = false
-			Global.player.draggable_being_dragged = self
+		
+		# Player tries to open the door in the records room but doesn't have a lit torch
+		elif tutorial_popup and (not Global.player.has_torch or Global.player.has_torch and not Global.player.torch.is_lit):
+			Global.ui.hint_popup("It's too dark; find a light source", 3.0)
+		
+		# Player drags an unlocked door
+		elif (unlocked and player_on_openable_side and locked_message.is_empty() and not latch_locked) or Global.player.is_omnipotent_door_god:
+			set_player_dragging(true)
+		
+		# Player tries to open a locked door
 		else:
 			if not door_shaking:
 				door_shaking = true
@@ -157,16 +173,18 @@ func interact():
 					message = locked_message
 				elif player_on_openable_side:
 					message = "Need %s Key" % key_name.replace("Lubricated ", "")
-				else:
+					if latch_locked:
+						message = "Latch is locked"
+				elif latch_locked:
 					message = "Locked from the other side"
 				Global.ui.hint_popup(message, 3.0)
 
 				var door_tween = get_tree().create_tween()
 
 				if open_to_angle > 0:
-					attempt_open_angle = 0.0138*PI
+					attempt_open_angle = deg_to_rad(0.5)
 				else:
-					attempt_open_angle = -0.0138*PI
+					attempt_open_angle = -deg_to_rad(0.5)
 
 				door_tween.tween_property(door_body, "rotation:y", attempt_open_angle, 0.1)
 				door_tween.tween_property(door_body, "rotation:y", 0, 0.1)
@@ -221,6 +239,7 @@ func attempt_unlock():
 
 
 func open():
+	emit_signal("toggled_close", false)
 	set_interactable(false)
 	var door_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(open_tween_trans)
 	var anim_dur = door_full_open_player.stream.get_length() * (2 - door_full_open_player.pitch_scale)
@@ -232,16 +251,24 @@ func open():
 	set_interactable(true)
 
 
-func set_closed(enabled: bool):
-	if enabled and not closed:
+func on_latch_toggle(latch_locked_: bool):
+	latch_locked = latch_locked_
+	# Fully close door when latch is locked in case door is techincally closed
+	# but open a few degrees
+	if latch_locked:
+		var tween = get_tree().create_tween()
+		tween.tween_property(door_body, "rotation_degrees:y", 0.0, 0.1)
+	set_interactable(not latch_locked)
+
+
+func set_closed(closed_: bool):
+	if closed_ and not closed:
 		door_close_player.play()
-		set_hinge_limits(closed_max_drag_angle)
 		door_open_player.stop()
-		door_body.angular_damp = 200.0
-	else:
-		set_hinge_limits(open_to_angle)
-		door_body.angular_damp = 5.0
-	closed = enabled
+		var tween = get_tree().create_tween()
+		tween.tween_property(door_body, "rotation_degrees:y", 0.0, 0.1)
+	closed = closed_
+	emit_signal("toggled_close", closed)
 
 
 func set_hinge_limits(angle: float):
@@ -256,22 +283,39 @@ func set_hinge_limits(angle: float):
 func add_torque_to_door(offset: Vector2):
 	if player_dragging and (unlocked or Global.player.is_omnipotent_door_god):
 		cam_rot_offset = offset
+		#var force_direction: Vector2 = Vector2(-cam_rot_offset.y, -cam_rot_offset.x)
+		#var test: Vector2 = force_direction.rotated(player_facing_dir_xz.angle_to(Vector2.UP) + PI/2.0)
+		#var body_to_hinge: Vector2 = Vector2(door.global_position.x - hinge.global_position.x, door.global_position.z - hinge.global_position.z)
+		#var dot: float = body_to_hinge.normalized().dot(test.normalized())
+		#var torque: Vector3 = Vector3.UP * dot * 100.0 * force_direction.length()
+		#print(force_direction)
 		var player_z_dist = get_player_z_dist()
 		var torque_sign: int = sign(open_to_angle) * sign(player_z_dist)
-		var torque: Vector3 = Vector3.UP * cam_rot_offset.y * 125.0 * torque_sign
+		var torque: Vector3 = Vector3.UP * (cam_rot_offset.y + cam_rot_offset.x) * 100.0 * torque_sign
 		door_body.apply_torque(torque)
-		Global.player.cam.can_rotate = false
+		if abs(door_body.angular_velocity.y) < 0.075:
+			Global.player.cam.can_rotate = false
+		else:
+			Global.player.cam.can_rotate = true
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
 		last_cam_rot_offset = offset
 
 
 func set_player_dragging(dragging: bool):
 	player_dragging = dragging
 	if dragging:
-		Global.player.cam.can_rotate = false
-		Global.player.door_being_dragged = self
+		var player_facing_dir: Vector3 = Global.player.get_facing_dir()
+		player_facing_dir_xz = Vector2(player_facing_dir.x, player_facing_dir.z).normalized()
+		player_just_started_dragging = true
+		player_just_stopped_dragging = false
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
+		Global.player.set_draggable_being_dragged(self)
 	else:
+		player_just_started_dragging = false
 		player_just_stopped_dragging = true
 		await get_tree().create_timer(0.1, false).timeout
+		Global.player.cam.sensitivity_multiplier = 1.0
+		Global.player.set_draggable_being_dragged(null)
 		Global.player.cam.can_rotate = true
 
 

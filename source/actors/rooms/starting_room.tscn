@@ -174,6 +174,7 @@ shape = SubResource("BoxShape3D_oqavl")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.25, 0.5, -20.75)
 script = ExtResource("20")
 move_to_pos = Vector3(0, 0, 2.8)
+interactable = false
 
 [node name="collision_blocker" type="Area3D" parent="shelf2"]
 collision_mask = 0
@@ -212,7 +213,6 @@ bus = &"General"
 
 [node name="archway_w_cell_door" parent="." instance=ExtResource("26_gvgmg")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.5, -11)
-door_interactable_override = 2
 door_locked_message = "It's Locked"
 
 [node name="note" parent="." instance=ExtResource("25_j1bmi")]

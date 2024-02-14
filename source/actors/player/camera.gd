@@ -7,6 +7,8 @@ const BOB_SPRINT_AMP = 0.1
 const BOB_WALK_FREQ = (1 / 0.65) * TAU
 const BOB_SPRINT_FREQ = BOB_WALK_FREQ#(1 / 0.43) * TAU
 
+const CAM_DRAG_SENS_MULTIPLIER = 0.075
+
 var bob_frequency = BOB_WALK_FREQ
 var bob_amplitude = BOB_WALK_AMP
 var bob_frequency_multiplier: float = 1.0
@@ -48,18 +50,18 @@ func _process(_delta: float) -> void:
 		elif Global.player.global_input_dir == Vector3.ZERO:
 			_reset_bob()
 	
-	#if Input.is_action_just_pressed("debug4") and not upside_down_mode:
-	#	var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-	#	rot_tween.tween_property(self, "rotation:z", PI, 0.25)
-	#	#rotation.z = PI
-	#	Global.main.set_upside_down_sound(true)
-	#	upside_down_mode = true
-	#elif Input.is_action_just_pressed("debug4") and upside_down_mode:
-	#	var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-	#	rot_tween.tween_property(self, "rotation:z", 0.0, 0.25)
-	#	#rotation.z = 0.0
-	#	Global.main.set_upside_down_sound(false)
-	#	upside_down_mode = false
+	if Input.is_action_just_pressed("debug4") and not upside_down_mode:
+		var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+		rot_tween.tween_property(self, "rotation:z", PI, 0.25)
+		#rotation.z = PI
+		Global.main.set_upside_down_sound(true)
+		upside_down_mode = true
+	elif Input.is_action_just_pressed("debug4") and upside_down_mode:
+		var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+		rot_tween.tween_property(self, "rotation:z", 0.0, 0.25)
+		#rotation.z = 0.0
+		Global.main.set_upside_down_sound(false)
+		upside_down_mode = false
 	
 	mouse_input_received = false
 
@@ -89,7 +91,7 @@ func _input(event: InputEvent) -> void:
 				Global.player.cam_starting_pos.rotation.y -= y_rot_offset * rot_sign
 				Global.player.cam_starting_pos.rotation.y = wrapf(rotation.y, 0.0, 2 * PI)
 			
-			emit_signal("cam_rotated", rotation_offset)
+			emit_signal("cam_rotated", rotation_offset / CAM_DRAG_SENS_MULTIPLIER)
 			#emit_signal("cam_rotated", Vector2.ZERO)
 		#	mouse_input_received = true
 

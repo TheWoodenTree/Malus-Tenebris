@@ -51,6 +51,7 @@ signal crouched
 signal looked_at_interactable(interactable_type: Interactable.Type)
 signal looked_away_from_interactable
 signal equipped_key
+signal draggable_interacted
 
 
 func _ready() -> void:
@@ -229,6 +230,15 @@ func set_held_item_global_transform(new_transform: Transform3D):
 	held_item_mesh.global_transform = new_transform
 
 
+func set_draggable_being_dragged(draggable: Object):
+	draggable_being_dragged = draggable
+	if draggable_being_dragged:
+		emit_signal("draggable_interacted", draggable_being_dragged)
+		Global.ui.toggle_draggable_progress_bar(true)
+	else:
+		Global.ui.toggle_draggable_progress_bar(false)
+
+
 func is_holding_item(item_name: String):
 	return held_item and held_item.name == item_name
 
@@ -290,6 +300,10 @@ func get_facing_dir():
 
 func get_forward_dir():
 	return Vector3(0, 0, -1).rotated(Vector3.UP, cam.rotation.y)
+
+
+func get_interact_raycast_collision_normal():
+	return interact_ray.get_collision_normal()
 
 
 func _move(delta):

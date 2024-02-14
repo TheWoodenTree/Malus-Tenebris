@@ -8,8 +8,7 @@ var open_menus: Array[Control]
 
 
 func _process(_delta):
-	# Menu player uses spatial audio so that reverb can be heard with menu actions,
-	# adding a small amount of immersion
+	# Menu player uses spatial audio so that reverb can be heard with menu actions
 	menu_player.global_position = Global.player.global_position
 
 

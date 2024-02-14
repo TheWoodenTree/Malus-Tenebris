@@ -17,6 +17,7 @@ var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instan
 
 @onready var background = $menus/background
 @onready var interact_icon = $cont/interact_icon
+@onready var draggable_move_progress_bar = $draggable_move_progress_bar
 @onready var menus = $menus
 @onready var block_inventory_open: bool = Global.player.debug_do_tutorials
 
@@ -92,6 +93,11 @@ func set_blur_background(on: bool):
 	blur_tween.tween_property(background, "color:a", background_alpha, BLUR_TIME)
 	blur_tween.parallel().tween_property(Global.retro_shader, "shader_parameter/blurAmount", background_blur, BLUR_TIME)
 	blur_tween.tween_callback(emit_signal.bind("background_changed"))
+
+
+func toggle_draggable_progress_bar(_on: bool):
+	#draggable_move_progress_bar.visible = on
+	pass
 
 
 func display_menu(menu: Control):
