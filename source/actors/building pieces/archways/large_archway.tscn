@@ -19,6 +19,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_l680j"]
+resource_local_to_scene = true
 resource_name = "stone_archway_Cube004"
 _surfaces = [{
 "aabb": AABB(-2.5, 0, -1, 5, 5, 1),

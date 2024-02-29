@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://drwr4p6ap1o1u"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_2akav"]
+[ext_resource type="Material" uid="uid://b3lurtsv0c00e" path="res://source/assets/materials/white_bricks/white_bricks_tri.tres" id="2_b62tc"]
+
+[sub_resource type="BoxMesh" id="1"]
+resource_local_to_scene = true
+material = ExtResource("2_b62tc")
+
+[sub_resource type="BoxShape3D" id="2"]
+resource_local_to_scene = true
+
+[node name="tile_wall" type="StaticBody3D"]
+collision_mask = 2
+script = ExtResource("1_2akav")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
+
+[node name="collision_box" type="CollisionShape3D" parent="."]
+shape = SubResource("2")

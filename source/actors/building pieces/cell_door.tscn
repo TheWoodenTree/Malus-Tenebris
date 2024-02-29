@@ -268,18 +268,18 @@ script = ExtResource("1_ib6ef")
 [node name="hinge_attach" type="StaticBody3D" parent="door_body"]
 top_level = true
 
-[node name="hinge" type="HingeJoint3D" parent="door_body"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.45995, 0)
-node_a = NodePath("../hinge_attach")
-node_b = NodePath("..")
-angular_limit/enable = true
-
 [node name="door" type="MeshInstance3D" parent="door_body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 6.55671e-08)
 layers = 8
 material_overlay = ExtResource("2_0vnf6")
 mesh = SubResource("ArrayMesh_kfr2g")
 skeleton = NodePath("")
+
+[node name="hinge" type="HingeJoint3D" parent="door_body"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 1.45995, 0)
+node_a = NodePath("../hinge_attach")
+node_b = NodePath("..")
+angular_limit/enable = true
 
 [node name="collision_shape" type="CollisionShape3D" parent="door_body"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 2, 6.55671e-08)

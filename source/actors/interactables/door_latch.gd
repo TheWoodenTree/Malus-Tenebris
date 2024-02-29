@@ -1,4 +1,3 @@
-@tool
 extends Interactable
 
 const LOCKED_POS_X: float = -0.557
@@ -6,14 +5,12 @@ const UNLOCKED_POS_X: float = -0.385
 
 var locked: bool = false
 
-# Set by doorway script
-var parent_door: Node3D
+# Set by parent doro script
+var parent_door: Door
 
 @onready var mesh = $mesh
 @onready var interact_area = $interact_area
 @onready var anim_player = $anim_player
-
-signal toggled
 
 
 func _ready():
@@ -36,7 +33,7 @@ func _process(_delta):
 
 func interact():
 	if not locked:
-		emit_signal("toggled", true)
+		parent_door.on_latch_toggle(true)
 		set_interactable(false)
 		anim_player.play("lock")
 		await anim_player.animation_finished
@@ -47,7 +44,7 @@ func interact():
 		anim_player.play("unlock")
 		await anim_player.animation_finished
 		set_interactable(true)
-		emit_signal("toggled", false)
+		parent_door.on_latch_toggle(false)
 		locked = false
 
 
@@ -58,7 +55,3 @@ func set_locked(locked_: bool):
 			mesh.position.x = LOCKED_POS_X
 		else:
 			mesh.position.x = UNLOCKED_POS_X
-
-
-func on_door_close_toggle(closed: bool):
-	set_interactable(closed)

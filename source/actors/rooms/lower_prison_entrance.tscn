@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1onovq0nc1xf"]
+[gd_scene load_steps=22 format=3 uid="uid://c1onovq0nc1xf"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_i7tkv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b24yy1t4ft602" path="res://source/actors/rooms/occluders/lower_prison_entrance.occ" id="2_ujbbf"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="17_5n3dr"]
 [ext_resource type="Script" path="res://source/actors/rooms/door_open_event.gd" id="18_6n6fv"]
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="19_7jmwe"]
+[ext_resource type="PackedScene" uid="uid://dsys48hs31nw2" path="res://source/actors/building pieces/archways/archway_w_latched_door.tscn" id="20_w58u7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xb64h"]
 size = Vector3(6, 6, 1)
@@ -303,10 +304,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.75, 
 [node name="half_wood_support4" parent="." index="85" instance=ExtResource("17_5n3dr")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.75, -9.5, -31.75)
 
-[node name="apothecary_doorway" parent="." index="86" instance=ExtResource("11_ih7ax")]
+[node name="apothecary_doorway" parent="." index="86" instance=ExtResource("20_w58u7")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, -9.5, -26)
-door_has_latch = true
 
 [node name="door_open_event" type="Area3D" parent="." index="87"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.5, -22.5)

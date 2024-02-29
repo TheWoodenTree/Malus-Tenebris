@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bcuappouu28jl"]
+
+[ext_resource type="Texture2D" uid="uid://cbtgkvjb867hy" path="res://source/assets/materials/flagstone_2/stone_tiles_02_diff_1k.jpg" id="1_oj73v"]
+[ext_resource type="Texture2D" uid="uid://dpyt0eirwk7qf" path="res://source/assets/materials/flagstone_2/stone_tiles_02_nor_gl_1k.jpg" id="2_2glea"]
+[ext_resource type="Texture2D" uid="uid://cmqapd7x335oa" path="res://source/assets/materials/flagstone_2/stone_tiles_02_rough_1k.jpg" id="3_gbhvt"]
+
+[resource]
+albedo_color = Color(0.654902, 0.552941, 0.407843, 1)
+albedo_texture = ExtResource("1_oj73v")
+roughness_texture = ExtResource("3_gbhvt")
+normal_enabled = true
+normal_scale = 8.0
+normal_texture = ExtResource("2_2glea")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true

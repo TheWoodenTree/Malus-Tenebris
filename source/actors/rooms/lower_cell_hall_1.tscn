@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c8wfanpg84t0g"]
+[gd_scene load_steps=37 format=3 uid="uid://c8wfanpg84t0g"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_eo3ha"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_iohyb"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://citdjndu5i5q4" path="res://source/actors/rooms/misc/small_cell.tscn" id="6_t2xhl"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="7_iemwg"]
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="8_aror5"]
-[ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="9_riq7c"]
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="10_e6tvx"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="11_5hxjo"]
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="12_5y0ku"]
@@ -22,10 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="21_iyld3"]
 [ext_resource type="ArrayOccluder3D" uid="uid://db3tqc48t7ohn" path="res://source/actors/rooms/occluders/lower_cell_hall_1.occ" id="22_4o403"]
 [ext_resource type="PackedScene" uid="uid://bpw0uieb7ywls" path="res://source/actors/decor/prison/round_cage.tscn" id="24_3afo0"]
-[ext_resource type="PackedScene" uid="uid://clhxehvbj2k6m" path="res://source/actors/decor/debris/rubble_2.tscn" id="24_inuen"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="24_nwer3"]
 [ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="25_wr6xu"]
-[ext_resource type="PackedScene" uid="uid://dtgqm415q82gw" path="res://source/actors/decor/debris/rubble_3.tscn" id="28_ldsnv"]
 [ext_resource type="PackedScene" uid="uid://d33ob1n2ahy27" path="res://source/actors/building pieces/ceilings/curved_ceiling_1.tscn" id="28_ysx0h"]
 [ext_resource type="PackedScene" uid="uid://cettbxuc0n7ft" path="res://source/actors/building pieces/archways/hallway_arch.tscn" id="29_1exnm"]
 [ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="29_nvk0o"]
@@ -34,7 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="32_eu2m4"]
 [ext_resource type="PackedScene" uid="uid://dvqmit8sb2byw" path="res://source/actors/building pieces/archways/hallway_end_low_arch.tscn" id="33_fch2v"]
 [ext_resource type="PackedScene" uid="uid://dllcyx3eyuvvv" path="res://source/actors/misc/broken_wood_beam.tscn" id="34_urmer"]
-[ext_resource type="PackedScene" uid="uid://gl2we4tjxsd8" path="res://source/actors/decor/misc/broken_barrel.tscn" id="35_p5vcm"]
 [ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="36_vbkff"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="37_km1ce"]
 [ext_resource type="PackedScene" uid="uid://dwue8yvjv7iog" path="res://source/actors/decor/misc/pots/urn_3.tscn" id="38_4gpvd"]
@@ -290,7 +286,6 @@ shadow_mode = 1
 [node name="hanging_lamp2" parent="decor" index="1" instance=ExtResource("7_iemwg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -10.5)
 default_energy = 1.0
-lit = false
 shadow_mode = 1
 interactable = false
 
@@ -303,86 +298,71 @@ shadow_mode = 1
 [node name="sm_stacked_planks2" parent="decor" index="3" instance=ExtResource("8_aror5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.5, 8.75)
 
-[node name="sm_stacked_planks" parent="decor" index="4" instance=ExtResource("9_riq7c")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -1.5, 0.5, -10.75)
-
-[node name="low_shelf" parent="decor" index="5" instance=ExtResource("10_e6tvx")]
+[node name="low_shelf" parent="decor" index="4" instance=ExtResource("10_e6tvx")]
 transform = Transform3D(-0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707106, 1.25, 0.5, -3)
 
-[node name="barrel" parent="decor" index="6" instance=ExtResource("11_5hxjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 1.5, 3.25)
+[node name="double_crate" parent="decor/low_shelf" index="2" instance=ExtResource("18_ublx5")]
+transform = Transform3D(-0.707107, 0, -0.707108, 0, 1, 0, 0.707108, 0, -0.707107, 0.176777, 1.7534, 0.176777)
 
-[node name="plank2" parent="decor" index="7" instance=ExtResource("12_5y0ku")]
+[node name="plank2" parent="decor" index="5" instance=ExtResource("12_5y0ku")]
 transform = Transform3D(-0.19865, 0.980071, 8.74228e-08, 0.980071, 0.19865, 0, -1.73665e-08, 8.56805e-08, -1, -2.28445, 2.95138, 4.4543)
 
-[node name="hanging_lamp4" parent="decor" index="8" instance=ExtResource("7_iemwg")]
+[node name="hanging_lamp4" parent="decor" index="6" instance=ExtResource("7_iemwg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5, 0, -32)
 
-[node name="lg_stacked_barrels" parent="decor" index="9" instance=ExtResource("14_muo82")]
+[node name="lg_stacked_barrels" parent="decor" index="7" instance=ExtResource("14_muo82")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3.75, 1.25, -35.5)
 
-[node name="shelf" parent="decor" index="10" instance=ExtResource("15_e8263")]
+[node name="shelf" parent="decor" index="8" instance=ExtResource("15_e8263")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1, 0.5, -37.75)
 
-[node name="cobweb" parent="decor" index="11" instance=ExtResource("17_cayli")]
+[node name="cobweb" parent="decor" index="9" instance=ExtResource("17_cayli")]
 transform = Transform3D(0.864994, 0, -0.501782, -0.356007, 0.704721, -0.6137, 0.353617, 0.709485, 0.609579, 14.7317, 5.77974, -34.7972)
 skeleton = NodePath("../..")
 
-[node name="double_crate" parent="decor" index="12" instance=ExtResource("18_ublx5")]
+[node name="double_crate" parent="decor" index="10" instance=ExtResource("18_ublx5")]
 transform = Transform3D(0.992597, 0, -0.121454, 0, 1, 0, 0.121454, 0, 0.992597, 20.2009, 0.5, -33.7283)
 
-[node name="double_crate2" parent="decor" index="13" instance=ExtResource("18_ublx5")]
+[node name="double_crate2" parent="decor" index="11" instance=ExtResource("18_ublx5")]
 transform = Transform3D(0.999795, 0, -0.0202444, 0, 1, 0, 0.0202444, 0, 0.999795, 20.1869, 1.75, -33.7095)
 
-[node name="barrel2" parent="decor" index="14" instance=ExtResource("11_5hxjo")]
+[node name="barrel2" parent="decor" index="12" instance=ExtResource("11_5hxjo")]
 transform = Transform3D(0.774144, 0.395655, -0.494124, -0.455094, 0.890443, 0, 0.439989, 0.224873, 0.869391, 22.5368, 1.5, -30.377)
 
-[node name="chair" parent="decor" index="15" instance=ExtResource("19_16kkc")]
+[node name="chair" parent="decor" index="13" instance=ExtResource("19_16kkc")]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 22.3464, 0.5, -33.75)
 
-[node name="sm_table" parent="decor" index="16" instance=ExtResource("20_b4fgt")]
+[node name="sm_table" parent="decor" index="14" instance=ExtResource("20_b4fgt")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.5, 0.5, -30.25)
 
-[node name="half_wood_support" parent="decor" index="17" instance=ExtResource("21_iyld3")]
+[node name="half_wood_support" parent="decor" index="15" instance=ExtResource("21_iyld3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0.5, -35.25)
 
-[node name="half_wood_support2" parent="decor" index="18" instance=ExtResource("21_iyld3")]
+[node name="half_wood_support2" parent="decor" index="16" instance=ExtResource("21_iyld3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 0.5, -28.75)
 
-[node name="half_wood_support3" parent="decor" index="19" instance=ExtResource("21_iyld3")]
+[node name="half_wood_support3" parent="decor" index="17" instance=ExtResource("21_iyld3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.75, 0.5, -35.25)
 
-[node name="half_wood_support4" parent="decor" index="20" instance=ExtResource("21_iyld3")]
+[node name="half_wood_support4" parent="decor" index="18" instance=ExtResource("21_iyld3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.75, 0.5, -28.75)
 
-[node name="torch_holder" parent="decor" index="21" instance=ExtResource("24_nwer3")]
+[node name="torch_holder" parent="decor" index="19" instance=ExtResource("24_nwer3")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 6.5, 2.5, -34.5)
 lit = false
 
-[node name="torch_holder2" parent="decor" index="22" instance=ExtResource("24_nwer3")]
+[node name="torch_holder2" parent="decor" index="20" instance=ExtResource("24_nwer3")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6.5, 2.5, -29.5)
 lit = false
 
-[node name="round_cage" parent="decor" index="23" instance=ExtResource("24_3afo0")]
+[node name="round_cage" parent="decor" index="21" instance=ExtResource("24_3afo0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0.5, -24)
 
-[node name="round_cage2" parent="decor" index="24" instance=ExtResource("24_3afo0")]
+[node name="round_cage2" parent="decor" index="22" instance=ExtResource("24_3afo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0.5, -36)
 
-[node name="rubble_2" parent="decor" index="25" instance=ExtResource("24_inuen")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -6.5)
-
-[node name="rubble_1" parent="decor" index="26" instance=ExtResource("25_wr6xu")]
+[node name="rubble_1" parent="decor" index="23" instance=ExtResource("25_wr6xu")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5, 0.5, -26.25)
-
-[node name="rubble_3" parent="decor" index="27" instance=ExtResource("24_inuen")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6049, 0.5, -12.7848)
-
-[node name="rubble_4" parent="decor" index="28" instance=ExtResource("28_ldsnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92013, 0.5, -16.6253)
-
-[node name="rubble_5" parent="decor" index="29" instance=ExtResource("25_wr6xu")]
-transform = Transform3D(0.994955, 0, -0.100327, 0, 1, 0, 0.100327, 0, 0.994955, -0.742395, 0.5, -15.9258)
 
 [node name="stone_archway2" parent="misc" index="0" instance=ExtResource("3_dp01o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0.5, -32)
@@ -502,30 +482,42 @@ shadow_mode = 1
 [node name="broken_wood_beam" parent="." index="38" instance=ExtResource("34_urmer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -19.5)
 
-[node name="broken_barrel" parent="." index="39" instance=ExtResource("35_p5vcm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -15.75)
-
-[node name="sm_broken_crate" parent="." index="40" instance=ExtResource("36_vbkff")]
+[node name="sm_broken_crate" parent="." index="39" instance=ExtResource("36_vbkff")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 1, 2.25, -37.25)
 
-[node name="sm_crate" parent="." index="41" instance=ExtResource("37_km1ce")]
+[node name="sm_crate" parent="." index="40" instance=ExtResource("37_km1ce")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.75, 0.5, -35)
 
-[node name="urn_3" parent="." index="42" instance=ExtResource("38_4gpvd")]
+[node name="urn_3" parent="." index="41" instance=ExtResource("38_4gpvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -27)
 
-[node name="urn_2" parent="." index="43" instance=ExtResource("39_j8imi")]
+[node name="urn_2" parent="." index="42" instance=ExtResource("39_j8imi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 0.5, -28)
 ash_visible = false
 
-[node name="plank_3" parent="." index="44" instance=ExtResource("40_mblnu")]
+[node name="plank_3" parent="." index="43" instance=ExtResource("40_mblnu")]
 transform = Transform3D(-0.088112, 0, -0.996111, 0, 1, 0, 0.996111, 0, -0.088112, -0.980536, 6.25, 1)
 
-[node name="wood_beam6" parent="." index="45" instance=ExtResource("30_2b21c")]
+[node name="wood_beam6" parent="." index="44" instance=ExtResource("30_2b21c")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3.5, 2.75, 7.75)
 
-[node name="half_wood_support" parent="." index="46" instance=ExtResource("21_iyld3")]
+[node name="half_wood_support" parent="." index="45" instance=ExtResource("21_iyld3")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -2.5, 0, -7.5)
 
-[node name="half_wood_support2" parent="." index="47" instance=ExtResource("21_iyld3")]
+[node name="half_wood_support2" parent="." index="46" instance=ExtResource("21_iyld3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 0, -7.5)
+
+[node name="rubble_1" parent="." index="47" instance=ExtResource("25_wr6xu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.5, -12.5)
+
+[node name="double_crate" parent="." index="48" instance=ExtResource("18_ublx5")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2.25, 0.5, -9.75)
+
+[node name="double_crate2" parent="." index="49" instance=ExtResource("18_ublx5")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.25, 1.75, -9.75)
+
+[node name="double_crate3" parent="." index="50" instance=ExtResource("18_ublx5")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -2, 0.5, -15.5)
+
+[node name="double_crate4" parent="." index="51" instance=ExtResource("18_ublx5")]
+transform = Transform3D(2.98023e-08, 1, 0, -1, 2.98023e-08, 0, 0, 0, 1, -3, 1.75, 3.25)

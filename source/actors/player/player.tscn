@@ -110,7 +110,6 @@ floor_max_angle = 0.872665
 floor_snap_length = 1.0
 script = ExtResource("1")
 debug_has_torch = true
-debug_do_tutorials = true
 
 [node name="head_controller" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -161,6 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 [node name="base_light" type="OmniLight3D" parent="head_controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.328954, 0)
 layers = 3
+light_color = Color(1, 0.666667, 0.254902, 1)
 light_energy = 0.75
 omni_range = 3.0
 script = ExtResource("4")

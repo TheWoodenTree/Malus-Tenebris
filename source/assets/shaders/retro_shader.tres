@@ -64,32 +64,12 @@ vec4 retroColor(vec3 textCol)
 	vec4 lighter = lighterColor;// * hueShift;
 	vec4 lightest = lightestColor;// * hueShift;
 	
-	
-//	if (rgb_less_than(textCol, 0.04))
-//		return darkest;
 	if (rgb_less_than(textCol, darkestThreshold))
-//		if (int(worldPos.x) % 2 == 0 || int(worldPos.y) % 2 == 0)
-//			return darkest;
-//		else if (int(worldPos.x) % 2 == 1 || int(worldPos.y) % 2 == 1)
-//			return dark;
-//		else return darkest;
 		return darkest;
 	else if (rgb_less_than(textCol, darkThreshold))
 		return dark;
-//	else if (rgb_less_than(textCol, 0.14))
-//		if (int(worldPos.x) % 2 == 0 || int(worldPos.y) % 2 == 0)
-//			return light;
-//		else if (int(worldPos.x) % 2 == 1 || int(worldPos.y) % 2 == 1)
-//			return dark;
-//		else return light;
 	else if (rgb_less_than(textCol, lightThreshold))
 		return light;
-//	else if (rgb_less_than(textCol, 0.25))
-//		if (int(worldPos.x) % 2 == 0 || int(worldPos.y) % 2 == 0)
-//			return lighter;
-//		else if (int(worldPos.x) % 2 == 1 || int(worldPos.y) % 2 == 1)
-//			return light;
-//		else return lighter;
 	else if (rgb_less_than(textCol, lighterThreshold))
 		return lighter;
 	else
@@ -100,6 +80,11 @@ vec4 retroColor(vec3 textCol)
 void fragment()
 {
 	//vec3 pixelatedTexture = pixelate(SCREEN_TEXTURE, SCREEN_UV);
+	//vec4 tex = textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount);
+	//if (rgb_less_than(tex.rgb, darkestThreshold))
+	//	COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+	//else
+	//	COLOR = tex;
 	COLOR = retroColor(textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount).rgb);
 	//COLOR = retroColor(pixelatedTexture);
 }"

@@ -252,6 +252,7 @@ directionality = 1.0
 [node name="highlight_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215215, 0)
 top_level = true
+light_color = Color(1, 0.666667, 0.254902, 1)
 light_energy = 0.2
 light_size = 3.0
 light_specular = 0.0

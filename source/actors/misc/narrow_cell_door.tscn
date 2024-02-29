@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="4_0hmko"]
 [ext_resource type="PackedScene" uid="uid://cxcrhst771t0j" path="res://source/assets/sounds/doors/door_open_player.tscn" id="4_ctpe7"]
 [ext_resource type="AudioStream" uid="uid://bqwq67f2o0pet" path="res://source/assets/sounds/doors/metal_door_open.ogg" id="4_poyu0"]
-[ext_resource type="PackedScene" uid="uid://ogd88gkrpbw5" path="res://source/assets/sounds/doors/door_open_finish_player.tscn" id="6_j2fn5"]
+[ext_resource type="PackedScene" uid="uid://ogd88gkrpbw5" path="res://source/assets/sounds/doors/door_full_open_player.tscn" id="6_j2fn5"]
 [ext_resource type="AudioStream" uid="uid://dunv6btc4xhul" path="res://source/assets/sounds/doors/cell_open_attempt.ogg" id="6_k55t4"]
 [ext_resource type="PackedScene" uid="uid://ba6ttdmamhif6" path="res://source/assets/sounds/doors/door_unlock_player.tscn" id="6_p3s48"]
 [ext_resource type="AudioStream" uid="uid://ca2p8v8poa2f4" path="res://source/assets/sounds/doors/metal_door_close.ogg" id="7_fuylc"]
@@ -54,6 +54,7 @@ size = Vector3(0.5, 3.5, 2.25)
 script = ExtResource("1_ho16k")
 
 [node name="door_body" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, -1.67037e-22, -2.5411e-21, 1, 0, -1.67037e-22, 0, 1, -5.02354e-16, 0, 4.65661e-09)
 collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -65,20 +66,20 @@ script = ExtResource("1_8wx54")
 [node name="hinge_attach" type="StaticBody3D" parent="door_body"]
 top_level = true
 
-[node name="hinge" type="HingeJoint3D" parent="door_body"]
-transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, -1.55294e-22, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 1.25, -0.00999999)
-node_a = NodePath("../hinge_attach")
-node_b = NodePath("..")
-angular_limit/enable = true
-angular_limit/upper = 0.0
-angular_limit/lower = 0.0
-
 [node name="door" type="MeshInstance3D" parent="door_body"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.01)
 layers = 8
 material_overlay = ExtResource("2_yryoy")
 mesh = SubResource("ArrayMesh_klp1h")
 skeleton = NodePath("")
+
+[node name="hinge" type="HingeJoint3D" parent="door_body"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 1.25, -0.00999999)
+node_a = NodePath("../hinge_attach")
+node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/upper = 0.0
+angular_limit/lower = 0.0
 
 [node name="collision_shape" type="CollisionShape3D" parent="door_body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 1.75, -1.01)

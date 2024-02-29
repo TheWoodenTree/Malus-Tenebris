@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhf6uocwy5fwk"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_i8a1q"]
+[ext_resource type="Material" uid="uid://qsa4owr7omuh" path="res://source/assets/materials/tile_floor_2/tile_floor_2.tres" id="2_vkn7x"]
+
+[sub_resource type="BoxMesh" id="1"]
+resource_local_to_scene = true
+material = ExtResource("2_vkn7x")
+
+[sub_resource type="BoxShape3D" id="2"]
+resource_local_to_scene = true
+
+[node name="stone_floor" type="StaticBody3D"]
+script = ExtResource("1_i8a1q")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
+
+[node name="collision_box" type="CollisionShape3D" parent="."]
+shape = SubResource("2")

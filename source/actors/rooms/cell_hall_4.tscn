@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="17_kh1wk"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="19_3xe0r"]
 [ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="19_g1b1v"]
-[ext_resource type="PackedScene" uid="uid://i5hrnoctaqf8" path="res://source/actors/decor/misc/plate.tscn" id="20_7p56b"]
+[ext_resource type="PackedScene" uid="uid://i5hrnoctaqf8" path="res://source/actors/decor/kitchen/plate_2.tscn" id="20_7p56b"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="20_us0w1"]
 [ext_resource type="PackedScene" uid="uid://dprey8cgl5ux2" path="res://source/actors/decor/misc/pots/sm_tall_pot.tscn" id="21_u3b68"]
 [ext_resource type="PackedScene" uid="uid://do60vw7pnfa80" path="res://source/actors/decor/groups/sm_stacked_barrels.tscn" id="22_3wron"]

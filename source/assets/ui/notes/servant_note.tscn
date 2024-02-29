@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d1cgr3gbbj6ni"]
+
+[node name="servant_note" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+text = "Mars Angry"
+autowrap_mode = 2

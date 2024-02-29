@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgyny0355ylji"]
 
-[ext_resource type="Material" uid="uid://4jhugsae2tr6" path="res://source/assets/materials/cobblestone/cobblestone.tres" id="2"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/bricks_2.tres" id="1_hy880"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rsw5"]
 
@@ -40,7 +40,7 @@ data = PackedVector3Array(-1.13, 3.83, -0.6827, -2.5, 3.5, -0.6827, -1.67, 3.18,
 [node name="archway_frame_2" type="Node3D"]
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2")
+material_override = ExtResource("1_hy880")
 mesh = SubResource("ArrayMesh_hx7dl")
 
 [node name="StaticBody3d" type="StaticBody3D" parent="."]

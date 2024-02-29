@@ -1,3 +1,4 @@
+class_name Door
 extends Interactable
 
 var door_shaking: bool = false
@@ -12,7 +13,6 @@ var tutorial_popup_shown: bool = false
 var effects_scale: float = 0.0
 var player_interact_ray_col_normal: Vector3
 var player_facing_dir_xz: Vector2
-var latch_locked: bool = false
 
 var cam_rot_offset: Vector2 = Vector2.ZERO
 var angular_velocity_last_frame: Vector3 = Vector3.ZERO
@@ -32,6 +32,8 @@ var locked_message: String
 var unlocked: bool
 var tutorial_popup: bool
 
+var reverse_z_dist: bool = false
+
 @onready var door_body = $door_body
 @onready var door = $door_body/door
 @onready var door_open_player = $door_body/door_open_player
@@ -49,7 +51,6 @@ var tutorial_popup: bool
 @export var pitch_scale_max: float = 1.0
 
 signal moved
-signal toggled_close
 
 #TODO: STOP DOOR DRAGGING WHEN PLAYER IS CERTAIN DISTANCE FROM DOOR
 
@@ -146,7 +147,7 @@ func interact():
 		# the z axis (relative to the door) is positive or negative. If the sign 
 		# of the distance is opposite the sign of the angle that the door opens to, 
 		# the player is on the correct side and can open the door, otherwise not.
-		if latch_locked or one_way:
+		if one_way:
 			var player_z_dist = get_player_z_dist()
 			player_on_openable_side = sign(player_z_dist) == sign(open_to_angle)
 		
@@ -159,7 +160,7 @@ func interact():
 			Global.ui.hint_popup("It's too dark; find a light source", 3.0)
 		
 		# Player drags an unlocked door
-		elif (unlocked and player_on_openable_side and locked_message.is_empty() and not latch_locked) or Global.player.is_omnipotent_door_god:
+		elif (unlocked and player_on_openable_side and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
 			set_player_dragging(true)
 		
 		# Player tries to open a locked door
@@ -173,10 +174,8 @@ func interact():
 					message = locked_message
 				elif player_on_openable_side:
 					message = "Need %s Key" % key_name.replace("Lubricated ", "")
-					if latch_locked:
-						message = "Latch is locked"
-				elif latch_locked:
-					message = "Locked from the other side"
+				else:
+					message = "Blocked from the other side"
 				Global.ui.hint_popup(message, 3.0)
 
 				var door_tween = get_tree().create_tween()
@@ -239,7 +238,6 @@ func attempt_unlock():
 
 
 func open():
-	emit_signal("toggled_close", false)
 	set_interactable(false)
 	var door_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(open_tween_trans)
 	var anim_dur = door_full_open_player.stream.get_length() * (2 - door_full_open_player.pitch_scale)
@@ -249,16 +247,7 @@ func open():
 	await door_tween.finished
 	Global.world.get_node("nav_region").bake_navigation_mesh()
 	set_interactable(true)
-
-
-func on_latch_toggle(latch_locked_: bool):
-	latch_locked = latch_locked_
-	# Fully close door when latch is locked in case door is techincally closed
-	# but open a few degrees
-	if latch_locked:
-		var tween = get_tree().create_tween()
-		tween.tween_property(door_body, "rotation_degrees:y", 0.0, 0.1)
-	set_interactable(not latch_locked)
+	print(interactable)
 
 
 func set_closed(closed_: bool):
@@ -268,7 +257,6 @@ func set_closed(closed_: bool):
 		var tween = get_tree().create_tween()
 		tween.tween_property(door_body, "rotation_degrees:y", 0.0, 0.1)
 	closed = closed_
-	emit_signal("toggled_close", closed)
 
 
 func set_hinge_limits(angle: float):
@@ -328,4 +316,6 @@ func key_needs_lube_hint_popup():
 
 
 func get_player_z_dist():
-	return door_body.to_local(Global.player.global_position).rotated(Vector3.UP, door_body.rotation.y).z
+	var z_dist: float = door_body.to_local(Global.player.global_position).rotated(Vector3.UP, door_body.rotation.y).z
+	# Reverse z_dist for doors that are rotated
+	return z_dist if not reverse_z_dist else -1 * z_dist

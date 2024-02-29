@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c7jcrmxwgdp31"]
+[gd_scene load_steps=32 format=3 uid="uid://c7jcrmxwgdp31"]
 
 [ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
 [ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
@@ -13,10 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://bjlr1mq4h3we5" path="res://source/actors/rooms/lower_prison_hallway_2.tscn" id="21_t63ha"]
 [ext_resource type="PackedScene" uid="uid://dw4xwroyayfdv" path="res://source/actors/rooms/small_torture_room.tscn" id="22_564cf"]
 [ext_resource type="PackedScene" uid="uid://chgybf6r4j6hi" path="res://source/actors/rooms/barracks.tscn" id="22_gqwdo"]
+[ext_resource type="PackedScene" uid="uid://drlvjfjfl1kgg" path="res://source/actors/rooms/prison_temple_connector.tscn" id="22_sswj8"]
+[ext_resource type="PackedScene" uid="uid://fu1p001b3o4f" path="res://source/actors/rooms/auditorium.tscn" id="23_f001m"]
+[ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/antagonists/obunga.tscn" id="24_qewwn"]
 [ext_resource type="PackedScene" uid="uid://btiqf7ymx77it" path="res://source/actors/rooms/records_room.tscn" id="24_w38t7"]
 [ext_resource type="PackedScene" uid="uid://cv4ajx80ijgv5" path="res://source/actors/rooms/holding_cells.tscn" id="25_47crl"]
 [ext_resource type="PackedScene" uid="uid://c1onovq0nc1xf" path="res://source/actors/rooms/lower_prison_entrance.tscn" id="25_7631t"]
+[ext_resource type="PackedScene" uid="uid://dqppw8pqo3hs" path="res://source/actors/rooms/ritual_chamber_and_quarters_connector.tscn" id="25_g0g0n"]
 [ext_resource type="PackedScene" uid="uid://dq56ian4bntsp" path="res://source/actors/rooms/bigger_cells_hall.tscn" id="26_mq5sv"]
+[ext_resource type="PackedScene" uid="uid://dw8x78dpqdprb" path="res://source/actors/rooms/servants_quarters.tscn" id="26_qdr7n"]
 [ext_resource type="PackedScene" uid="uid://bb7fcf6hjdsed" path="res://source/actors/rooms/upper_storage_room.tscn" id="30_scntj"]
 [ext_resource type="PackedScene" uid="uid://6740g18km7ny" path="res://source/actors/rooms/lower_cell_hall_3.tscn" id="32_yfpp8"]
 [ext_resource type="PackedScene" uid="uid://dkywpurj50vjl" path="res://source/actors/rooms/lower_cell_hall_2.tscn" id="33_ysjgv"]
@@ -209,7 +214,22 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -1
 [node name="lower_prison_hallway_2" parent="nav_region" instance=ExtResource("21_t63ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -19, -87.25)
 
+[node name="prison_temple_connector" parent="nav_region" instance=ExtResource("22_sswj8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.25, -20.5, -88.25)
+
+[node name="auditorium" parent="nav_region" instance=ExtResource("23_f001m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -27, -87.25)
+
+[node name="ritual_chamber_and_quarters_connector" parent="nav_region" instance=ExtResource("25_g0g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -27, -110.25)
+
+[node name="servants_quarters" parent="nav_region" instance=ExtResource("26_qdr7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -19, -147.75)
+
 [node name="test" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -44.25)
 visible = false
 mesh = SubResource("SphereMesh_w1q8a")
+
+[node name="obunga" parent="." instance=ExtResource("24_qewwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -16.75, -97)
