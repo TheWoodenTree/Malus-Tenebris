@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf4bh2k3xe7ct"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/corner_trim.gd" id="1_42ypo"]
+[ext_resource type="Material" uid="uid://b3lurtsv0c00e" path="res://source/assets/materials/white_bricks/white_bricks_tri.tres" id="2_s1vp8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kgmd6"]
+resource_local_to_scene = true
+material = ExtResource("2_s1vp8")
+size = Vector3(0.35, 0.35, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oadgu"]
+resource_local_to_scene = true
+material = ExtResource("2_s1vp8")
+size = Vector3(1, 0.35, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tt5nh"]
+material = ExtResource("2_s1vp8")
+size = Vector3(0.35, 0.35, 0.35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eea4j"]
+resource_local_to_scene = true
+size = Vector3(0.35, 0.35, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffayx"]
+resource_local_to_scene = true
+size = Vector3(1, 0.35, 0.35)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f7iof"]
+points = PackedVector3Array(0.174966, 0.174966, 0.174966, 0.174966, 0.174966, -0.175, -0.175, 0.174966, 0.174966, 0.174966, -0.175, 0.174966, 0.174966, -0.175, -0.175, -0.175, 0.174966, -0.175, -0.175, -0.175, 0.174966, -0.175, -0.175, -0.175)
+
+[node name="corner_trim" type="Node3D"]
+script = ExtResource("1_42ypo")
+
+[node name="node" type="Node3D" parent="."]
+
+[node name="mesh1" type="MeshInstance3D" parent="node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, -0.5)
+mesh = SubResource("BoxMesh_kgmd6")
+skeleton = NodePath("../body")
+
+[node name="mesh2" type="MeshInstance3D" parent="node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.175, 0.175)
+mesh = SubResource("BoxMesh_oadgu")
+skeleton = NodePath("../..")
+
+[node name="mesh3" type="MeshInstance3D" parent="node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, 0.175)
+mesh = SubResource("BoxMesh_tt5nh")
+skeleton = NodePath("../..")
+
+[node name="body" type="StaticBody3D" parent="node"]
+
+[node name="collision_shape1" type="CollisionShape3D" parent="node/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, -0.5)
+shape = SubResource("BoxShape3D_eea4j")
+
+[node name="collision_shape2" type="CollisionShape3D" parent="node/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.175, 0.175)
+shape = SubResource("BoxShape3D_ffayx")
+
+[node name="collision_shape3" type="CollisionShape3D" parent="node/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, 0.175)
+shape = SubResource("ConvexPolygonShape3D_f7iof")

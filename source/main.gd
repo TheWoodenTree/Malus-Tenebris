@@ -142,6 +142,18 @@ func _calculate_effects_scale():
 	return scale * scale
 
 
+func fear_effect_timed(duration: float):
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.parallel().tween_property(zoom.material, "shader_parameter/intensity", 15.0, 1.0).from(0.0)
+	tween.parallel().tween_property(vignette.material, "shader_parameter/softness", 1.0, 1.0).from(3.0)
+	
+	await get_tree().create_timer(duration, false).timeout
+	
+	var tween2 = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween2.parallel().tween_property(zoom.material, "shader_parameter/intensity", 0.0, 3.0).from(15.0)
+	tween2.parallel().tween_property(vignette.material, "shader_parameter/softness", 3.0, 3.0).from(1.0)
+
+
 func set_upside_down_sound(on: bool):
 	var time: float = drip_player.get_playback_position()
 	drip_player.stop()

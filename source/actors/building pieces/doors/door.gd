@@ -247,7 +247,6 @@ func open():
 	await door_tween.finished
 	Global.world.get_node("nav_region").bake_navigation_mesh()
 	set_interactable(true)
-	print(interactable)
 
 
 func set_closed(closed_: bool):

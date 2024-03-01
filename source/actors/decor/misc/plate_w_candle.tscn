@@ -43,6 +43,7 @@ render_priority = 0
 shader = ExtResource("4")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sx8o"]
 albedo_color = Color(0.388235, 0.388235, 0.388235, 1)
@@ -86,6 +87,7 @@ radius = 0.75
 script = ExtResource("3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_l7c7k")
 
 [node name="mesh" type="MeshInstance3D" parent="."]

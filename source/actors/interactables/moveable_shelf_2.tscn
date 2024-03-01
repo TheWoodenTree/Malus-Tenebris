@@ -104,6 +104,9 @@ shape = SubResource("ConcavePolygonShape3D_n5ktp")
 [node name="move_player" parent="static_body" index="1"]
 stream = ExtResource("3_htign")
 
+[node name="collision_shape" parent="moveable_collision_blocker" index="0"]
+shape = SubResource("ConvexPolygonShape3D_8ohk4")
+
 [node name="collision_shape" parent="no_interact_area" index="0"]
 shape = SubResource("ConvexPolygonShape3D_8ohk4")
 

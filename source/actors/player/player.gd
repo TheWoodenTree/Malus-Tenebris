@@ -27,6 +27,7 @@ var first_item_picked_up: bool = false
 var first_item_held: bool = false
 var first_door_unlocked: bool = false
 var noclip_on: bool = false
+var picked_up_larder_key: bool = false
 
 var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn")
 

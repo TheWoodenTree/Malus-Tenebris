@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxv781ctc54hw"]
+
+[ext_resource type="Script" path="res://source/actors/building pieces/basic/trim.gd" id="1_t0w83"]
+[ext_resource type="Material" uid="uid://b3lurtsv0c00e" path="res://source/assets/materials/white_bricks/white_bricks_tri.tres" id="2_0g28m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wr63"]
+resource_local_to_scene = true
+material = ExtResource("2_0g28m")
+size = Vector3(0.35, 0.35, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ia5l"]
+resource_local_to_scene = true
+size = Vector3(0.35, 0.35, 1)
+
+[node name="trim" type="Node3D"]
+script = ExtResource("1_t0w83")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0.175, 0)
+mesh = SubResource("BoxMesh_0wr63")
+skeleton = NodePath("../body")
+
+[node name="body" type="StaticBody3D" parent="."]
+
+[node name="collision_shape" type="CollisionShape3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0.175, 0)
+shape = SubResource("BoxShape3D_3ia5l")

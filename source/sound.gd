@@ -7,16 +7,16 @@ extends Node
 const DEF_DRONE_VOLUME: float = -10.0
 const DEF_DRIP_VOLUME: float = -30.0
 const DEF_FOOTSTEP_VOLUME_OFFSET: float = 0.0
-const DEF_TORCH_BURN_VOLUME: float = -20.0
+const DEF_TORCH_BURN_VOLUME: float = 0.0
 const DEF_FOOTSTEP_REVERB_ROOM_SIZE: float = 0.8
 const DEF_FOOTSTEP_REVERB_WET: float = 0.8
 
 const TENSION_DRONE_VOLUME: float = -80.0
 const TENSION_DRIP_VOLUME: float = -40.0
-const TENSION_FOOTSTEP_VOLUME_OFFSET: float = 5.0
-const TENSION_TORCH_BURN_VOLUME: float = -7.5
-const TENSION_FOOTSTEP_REVERB_ROOM_SIZE: float = 0.4
-const TENSION_FOOTSTEP_REVERB_WET: float = 0.4
+const TENSION_FOOTSTEP_VOLUME_OFFSET: float = 10.0
+const TENSION_TORCH_BURN_VOLUME: float = 6.0
+const TENSION_FOOTSTEP_REVERB_ROOM_SIZE: float = 0.2
+const TENSION_FOOTSTEP_REVERB_WET: float = 0.1
 
 
 # Lower volume of drone, decrease reverb, and increase volume of player footsteps
@@ -32,9 +32,9 @@ func enable_tension(time):
 	if Global.player.has_torch:
 		tween.parallel().tween_property(Global.player.torch.burning_player, "volume_db", \
 			TENSION_TORCH_BURN_VOLUME, time)
-	tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "room_size", \
+	tween.parallel().tween_property(AudioServer.get_bus_effect(7, 0), "room_size", \
 		TENSION_FOOTSTEP_REVERB_ROOM_SIZE, time)
-	tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "wet", \
+	tween.parallel().tween_property(AudioServer.get_bus_effect(7, 0), "wet", \
 		TENSION_FOOTSTEP_REVERB_WET, time)
 
 
