@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cioewsql5kyq" path="res://source/actors/building pieces/fence/fence_end.tscn" id="6_fg862"]
 [ext_resource type="PackedScene" uid="uid://dq06hcs0nc8xo" path="res://source/actors/building pieces/basic/stairs.tscn" id="7_8d6xw"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="8_30neb"]
+[ext_resource type="AudioStream" uid="uid://bux643ngk65sf" path="res://source/assets/sounds/ambience/general/swell_3.ogg" id="8_qw0md"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="9_fci6s"]
 [ext_resource type="PackedScene" uid="uid://bl4ofupmcd1ag" path="res://source/actors/building pieces/archways/large_double_door.tscn" id="10_lk7hs"]
 [ext_resource type="PackedScene" uid="uid://cdwhh8mxom6hc" path="res://source/actors/decor/furniture/shelf.tscn" id="11_ly85r"]
@@ -20,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://jhbugt164s8d" path="res://source/actors/building pieces/basic/triangle_wall.tscn" id="18_seaur"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="19_mb0ej"]
 [ext_resource type="Script" path="res://source/actors/rooms/exposure_area.gd" id="21_wukun"]
-[ext_resource type="AudioStream" uid="uid://f2pmgl0t2y4r" path="res://source/assets/sounds/ambience/general/swell_2.ogg" id="22_1h2rx"]
 [ext_resource type="PackedScene" uid="uid://d1ctp5l8i56d6" path="res://source/actors/interactables/winch.tscn" id="22_kledm"]
 [ext_resource type="ArrayOccluder3D" uid="uid://u2ah3y0s20u3" path="res://source/actors/rooms/occluders/lower_prison_stairway.occ" id="26_k5rsv"]
 
@@ -81,8 +81,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 shape = SubResource("BoxShape3D_h1caw")
 
 [node name="sound_player" type="AudioStreamPlayer" parent="exposure_area"]
-stream = ExtResource("22_1h2rx")
-pitch_scale = 0.8
+stream = ExtResource("8_qw0md")
+volume_db = 10.0
 
 [node name="walls" type="Node3D" parent="."]
 

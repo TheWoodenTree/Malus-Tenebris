@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dji8r6dqmhn6e"]
+[gd_scene load_steps=32 format=3 uid="uid://dji8r6dqmhn6e"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/misc/note.tscn" id="25_j1bmi"]
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="25_n1mrg"]
 [ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="26_gvgmg"]
-[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="26_lu5hf"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b6755w4g5yww7" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="30"]
@@ -90,7 +89,6 @@ size = Vector3(1, 6, 2)
 [node name="stone_archway3" parent="." instance=ExtResource("13")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.5, 0.5, -21.25)
 length = 12.25
-material = ExtResource("26_lu5hf")
 
 [node name="barrel5" parent="." instance=ExtResource("6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 1.5, -22)

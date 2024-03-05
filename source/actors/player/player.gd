@@ -85,7 +85,7 @@ func _process(_delta: float) -> void:
 		held_item_mesh.rotation = cam.rotation + Vector3(rot_offset_x, rot_offset_y, rot_offset_z)
 		held_item_mesh.scale = Vector3.ONE * held_item.hold_scale_multiplier
 	global_input_dir = _get_input_dir()
-
+	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
 		time_when_started_moving = Time.get_ticks_msec()
 	
@@ -127,7 +127,6 @@ func _handle_input():
 		await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
 		await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
 		instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
-		
 
 
 func _handle_physics_input():

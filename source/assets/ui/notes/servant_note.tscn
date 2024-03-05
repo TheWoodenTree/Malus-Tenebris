@@ -2,5 +2,5 @@
 
 [node name="servant_note" type="Label"]
 custom_minimum_size = Vector2(800, 0)
-text = "Mars Angry"
+text = "[Insert text about the cave-in in the lower prison being a result of Mars being angry]"
 autowrap_mode = 2

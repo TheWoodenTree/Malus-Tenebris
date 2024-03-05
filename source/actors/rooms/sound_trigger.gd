@@ -33,7 +33,7 @@ func _ready():
 func _on_body_entered(body):
 	# Optional flag in player script will be checked if player_flag_name is not blank
 	var player_flag_true: bool = Global.player.get(player_flag_name) if player_flag_name else true
-	if body == Global.player and not false and player_flag_true:
+	if body == Global.player and not sound_played and player_flag_true:
 		if use_3d:
 			sound_player_3d.play()
 		else:
@@ -41,7 +41,8 @@ func _on_body_entered(body):
 			
 		if trigger_fear:
 			#Global.main.fear_effect_timed(fear_duration)
-			Sound.enable_tension(3.0)
+			#Sound.enable_tension(3.0)
+			pass
 			
 		sound_played = true
 		emit_signal("triggered")

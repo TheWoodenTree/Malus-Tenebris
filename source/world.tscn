@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c7jcrmxwgdp31"]
+[gd_scene load_steps=31 format=3 uid="uid://c7jcrmxwgdp31"]
 
 [ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
 [ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://chgybf6r4j6hi" path="res://source/actors/rooms/barracks.tscn" id="22_gqwdo"]
 [ext_resource type="PackedScene" uid="uid://drlvjfjfl1kgg" path="res://source/actors/rooms/prison_temple_connector.tscn" id="22_sswj8"]
 [ext_resource type="PackedScene" uid="uid://fu1p001b3o4f" path="res://source/actors/rooms/auditorium.tscn" id="23_f001m"]
-[ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/antagonists/obunga.tscn" id="24_qewwn"]
 [ext_resource type="PackedScene" uid="uid://btiqf7ymx77it" path="res://source/actors/rooms/records_room.tscn" id="24_w38t7"]
 [ext_resource type="PackedScene" uid="uid://cv4ajx80ijgv5" path="res://source/actors/rooms/holding_cells.tscn" id="25_47crl"]
 [ext_resource type="PackedScene" uid="uid://c1onovq0nc1xf" path="res://source/actors/rooms/lower_prison_entrance.tscn" id="25_7631t"]
@@ -230,6 +229,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -19, -147.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -44.25)
 visible = false
 mesh = SubResource("SphereMesh_w1q8a")
-
-[node name="obunga" parent="." instance=ExtResource("24_qewwn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -16.75, -97)
