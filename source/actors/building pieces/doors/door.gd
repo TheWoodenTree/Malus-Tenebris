@@ -229,6 +229,7 @@ func attempt_unlock():
 		set_hinge_limits(open_to_angle)
 		if not Global.player.first_door_unlocked:
 			Global.player.first_door_unlocked = false
+		Global.ui.hint_popup("Unlocked", 2.0)
 	else:
 		Global.player.set_held_item_global_transform(key.global_transform)
 		Global.player.set_held_item_visibility(true)

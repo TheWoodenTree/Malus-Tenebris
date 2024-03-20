@@ -43,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 29.5)
 
 [node name="hanging_lamp2" parent="." instance=ExtResource("9_fci6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.5)
+lit = false
 
 [node name="large_double_door" parent="." instance=ExtResource("10_lk7hs")]
 unique_name_in_owner = true
@@ -470,5 +471,15 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.2
 [node name="occluder_instance" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("26_k5rsv")
 bake_mask = 4294967283
+
+[node name="torch_holder3" parent="." instance=ExtResource("19_mb0ej")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.5, 2.5, 2)
+lit = false
+shadow_mode = 1
+
+[node name="torch_holder4" parent="." instance=ExtResource("19_mb0ej")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.5, 2.5, -4)
+default_energy = 1.0
+shadow_mode = 1
 
 [connection signal="body_entered" from="exposure_area" to="exposure_area" method="_on_body_entered"]

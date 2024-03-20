@@ -125,6 +125,7 @@ size = Vector3(4, 1, 7)
 
 [node name="archway_w_polished_wood_door2" parent="." index="35" instance=ExtResource("2_qeii0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, -3.5, -10)
+door_interactable_override = 2
 
 [node name="tile_wall9" parent="." index="36" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -0.5, -13)

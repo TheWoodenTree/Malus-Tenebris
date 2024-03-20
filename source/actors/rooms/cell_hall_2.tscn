@@ -479,7 +479,6 @@ shape = SubResource("BoxShape3D_6srua")
 
 [node name="lower_entrance" parent="." instance=ExtResource("20_c56xx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -50, 0.5, 0)
-door_interactable = true
 door_one_way = true
 door_open_to_angle = -85
 
@@ -542,7 +541,5 @@ size = Vector3(5, 3, 1)
 
 [node name="archway_w_door" parent="." instance=ExtResource("20_c56xx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 0.5, 0)
-door_interactable = true
-door_open_to_angle = 85
 
 [connection signal="body_entered" from="banging_trigger_area" to="." method="_on_banging_trigger_area_body_entered"]
