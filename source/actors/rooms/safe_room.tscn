@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=40 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
@@ -24,15 +24,17 @@
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="24_g1atn"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="26_rhjbl"]
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="27_lo8s1"]
+[ext_resource type="PackedScene" uid="uid://cwxs7uffbs0wu" path="res://source/assets/ui/notes/distillation_instructions.tscn" id="28_a1a56"]
 [ext_resource type="PackedScene" uid="uid://ii0e665jma4b" path="res://source/actors/building pieces/archways/small_archway.tscn" id="28_gg6p8"]
 [ext_resource type="AudioStream" uid="uid://b041olqq6sucl" path="res://source/assets/sounds/music/safe.ogg" id="29_02vm0"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cpyxk2qr6pjkr" path="res://source/actors/rooms/occluders/safe_room.occ" id="32_bdtjo"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="32_cfv3l"]
 [ext_resource type="PackedScene" uid="uid://2n0p2swjfvtx" path="res://source/actors/decor/furniture/chest.tscn" id="32_v6vsh"]
+[ext_resource type="PackedScene" uid="uid://vvlxaydbk275" path="res://source/actors/interactables/distillation_station.tscn" id="33_7s2y7"]
 [ext_resource type="PackedScene" uid="uid://ijd8uaep4lbk" path="res://source/actors/decor/groups/books_5.tscn" id="33_q6ph1"]
 [ext_resource type="Script" path="res://source/actors/rooms/tutorial_popup_area.gd" id="33_x680n"]
-[ext_resource type="PackedScene" uid="uid://q3s1hyyrjcrf" path="res://source/actors/interactables/potion_station.tscn" id="34_0lgxr"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="34_e2n1h"]
+[ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="34_jabgf"]
 
 [sub_resource type="Resource" id="Resource_yb1eg"]
 resource_local_to_scene = true
@@ -189,6 +191,7 @@ shadow_mode = 1
 [node name="hanging_lamp2" parent="decor" index="13" instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, -0.5, -2.5)
 default_energy = 0.25
+lit = false
 shadow_mode = 1
 
 [node name="corner_table" parent="decor" index="14" instance=ExtResource("22_5kyhp")]
@@ -199,7 +202,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.5
 length = 3.0
 
 [node name="note" parent="misc" index="1" instance=ExtResource("14_bjogf")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 5.5, 2, -2.91496)
+transform = Transform3D(0.604154, 0, -0.796867, 0, 1, 0, 0.796867, 0, 0.604154, 15.9114, 2.40373, 1.32711)
 label = ExtResource("15_3js4e")
 
 [node name="small_archway" parent="misc" index="2" instance=ExtResource("28_gg6p8")]
@@ -213,10 +216,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 [node name="ruboleum_vial" parent="misc/chest" index="6" instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
 item_data = SubResource("Resource_yb1eg")
+count = 15
 
 [node name="ruboleum_vial2" parent="misc/chest" index="7" instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
 item_data = SubResource("Resource_2sw8t")
+
+[node name="note2" parent="misc" index="4" instance=ExtResource("14_bjogf")]
+transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
+label = ExtResource("28_a1a56")
 
 [node name="safe_room_area" type="Area3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 0)
@@ -259,7 +267,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.25,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0.5, -1)
 
 [node name="books_1" parent="." index="17" instance=ExtResource("17_h0h5u")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.25, 2.4, 1.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.25, 0.8, 1.5)
 
 [node name="books_5" parent="." index="18" instance=ExtResource("33_q6ph1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.4, -3)
@@ -273,10 +281,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.25,
 [node name="books_3" parent="." index="21" instance=ExtResource("16_0k3ei")]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 16.25, 4, 1.5)
 
-[node name="potion_station" parent="." index="22" instance=ExtResource("34_0lgxr")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 7.75, 2, -3.5)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="23"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 2.75, 2.5)
 visible = false
 light_energy = 2.0
@@ -284,12 +289,12 @@ light_specular = 0.0
 shadow_enabled = true
 omni_range = 12.0
 
-[node name="torch_holder" parent="." index="24" instance=ExtResource("32_cfv3l")]
+[node name="torch_holder" parent="." index="23" instance=ExtResource("32_cfv3l")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 2.5, 0)
 default_energy = 0.25
 shadow_mode = 1
 
-[node name="lock_door_tutorial" type="Area3D" parent="." index="25"]
+[node name="lock_door_tutorial" type="Area3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2)
 collision_layer = 0
 collision_mask = 2
@@ -300,6 +305,12 @@ duration = 5.0
 [node name="collision_shape" type="CollisionShape3D" parent="lock_door_tutorial" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 shape = SubResource("BoxShape3D_8cncr")
+
+[node name="distillation_station" parent="." index="25" instance=ExtResource("33_7s2y7")]
+transform = Transform3D(0.969497, 0, -0.245104, 0, 1, 0, 0.245104, 0, 0.969497, 6.79792, 2, -3.45364)
+
+[node name="ink_pot_w_pen" parent="." index="26" instance=ExtResource("34_jabgf")]
+transform = Transform3D(-0.999902, 0, 0.0139796, 0, 1, 0, -0.0139796, 0, -0.999902, 4.47109, 2, -3.3232)
 
 [connection signal="body_entered" from="safe_room_area" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="safe_room_area" to="." method="_on_safe_room_area_body_exited"]

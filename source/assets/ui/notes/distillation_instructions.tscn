@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cwxs7uffbs0wu"]
+
+[node name="alchemists_note" type="Label"]
+custom_minimum_size = Vector2(800, 0)
+text = "Trial #13: First Successful Cure
+
+Distill Ruboleum by pouring a substantial amount inside an opaque flask. Heat the flask to an appropriate temperature and wait for the substance to vaporize. When the vapor returns to a purified liquid form and drains into the cup, it should be potent enough to temporarily cure the effects of Mind Rot.
+
+However fast acting the cure is, the amount of time it stays effective is rather insubstantial, only a few minutes. Regardless, this is a breakthrough.
+[PAGE]
+The opaque flask was the key to successful distillation. It appears that when the vapor is exposed to light, the effects of the purified Ruboleum are nullified. As such, the process must be completed in darkness. 
+
+Rather concerning is whatever residue should be left inside the distilling flask after the process is finished is nonexistent, which did not happen in the trials with the clear flask."
+autowrap_mode = 2

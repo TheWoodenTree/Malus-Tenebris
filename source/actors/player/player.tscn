@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=22 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
 [ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="4"]
 [ext_resource type="Material" uid="uid://6l1ko2kw0opd" path="res://source/assets/particles/ambient_particles.tres" id="4_sn5wa"]
+[ext_resource type="AudioStream" uid="uid://c26ecgvwwpjek" path="res://source/assets/sounds/liquid/gulp.ogg" id="5_386p0"]
 [ext_resource type="AudioStream" uid="uid://dbr42td7nxhuf" path="res://source/assets/sounds/rucksack/rucksack_1.ogg" id="5_s032p"]
 [ext_resource type="AudioStream" uid="uid://dgjew80eoo60l" path="res://source/assets/sounds/rucksack/rucksack_2.ogg" id="6_145et"]
 [ext_resource type="AudioStream" uid="uid://dhvhdbjf2vdhf" path="res://source/assets/sounds/rucksack/rucksack_3.ogg" id="7_81gjg"]
@@ -209,6 +210,10 @@ lifetime = 5.0
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_y0bwj")
 draw_pass_1 = SubResource("PlaneMesh_occu0")
+
+[node name="noise_player" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
+stream = ExtResource("5_386p0")
 
 [node name="rucksack_player" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)

@@ -41,6 +41,7 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 @onready var cam_look_at_pos = $head_controller/cam_starting_pos/cam_look_at_pos
 @onready var held_item_marker = $head_controller/camera/held_item_marker
 @onready var look_at_ray = $head_controller/look_at_dir
+@onready var noise_player = $noise_player
 @onready var rucksack_player = $rucksack_player
 @onready var fear_player = $fear_player
 
@@ -346,6 +347,10 @@ func _get_input_dir():
 	dir.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
 	
 	return dir
+
+
+func play_noise_player():
+	noise_player.play()
 
 
 func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):
