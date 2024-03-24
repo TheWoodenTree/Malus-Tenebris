@@ -4,12 +4,16 @@ var num_menus: int = 0
 
 var open_menus: Array[Control]
 
+var inside_tree: bool = false
+
 @onready var menu_player = $menu_player
 
 
 func _process(_delta):
 	# Menu player uses spatial audio so that reverb can be heard with menu actions
-	menu_player.global_position = Global.player.global_position
+	if inside_tree or (menu_player.is_inside_tree() and Global.player.is_inside_tree()):
+		menu_player.global_position = Global.player.global_position
+		inside_tree = true
 
 
 func add_menu(menu: Control):

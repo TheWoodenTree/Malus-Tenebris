@@ -103,8 +103,7 @@ func update_particle_attractor_transform():
 	particle_attractor.global_position = self.global_position
 	if Global.player.global_input_dir != Vector3.ZERO:
 		var norm_player_input_dir = Global.player.global_input_dir.normalized()
-		var law_of_cos = func (a, b, c) -> float:
-			return acos((a*a + b*b - c*c) / (2*a))
+		var law_of_cos = func (a, b, c) -> float: return acos((a*a + b*b - c*c) / (2*a))
 		var angle = 0
 		angle = law_of_cos.call(1, 1, Vector3.FORWARD.distance_to(norm_player_input_dir))
 		if norm_player_input_dir.x > 0:

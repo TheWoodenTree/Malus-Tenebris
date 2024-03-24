@@ -35,6 +35,7 @@ var obunga
 @onready var heartbeat_player = $heartbeat_player
 @onready var ui = $ui
 @onready var nav_update_timer: Timer = Timer.new()
+@onready var debug_affliction_time_left = $timer_label
 
 @export_range(0.0, 2.0) var light_energy_multiplier: float = 1.0
 
@@ -79,7 +80,7 @@ func _ready() -> void:
 		Global.player.in_menu = true
 	
 	drone_player.play()
-	drip_player.play()
+	#drip_player.play()
 	
 	add_child(nav_update_timer)
 	nav_update_timer.wait_time = 0.1

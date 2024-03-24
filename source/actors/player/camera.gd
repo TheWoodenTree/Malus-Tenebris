@@ -7,6 +7,9 @@ const BOB_SPRINT_AMP = 0.1
 const BOB_WALK_FREQ = (1 / 0.65) * TAU
 const BOB_SPRINT_FREQ = BOB_WALK_FREQ#(1 / 0.43) * TAU
 
+const SOFT_MOVEMENT_MIN_WEIGHT: float = 0.025
+const SOFT_MOVEMENT_MAX_WEIGHT: float = 1.0
+
 const CAM_DRAG_SENS_MULTIPLIER = 0.075
 
 var bob_frequency = BOB_WALK_FREQ
@@ -17,12 +20,14 @@ var controller_sens = 1.0
 var controller_offset: Vector2 = Vector2.ZERO
 var rotation_offset: Vector2 = Vector2.ZERO
 var rotation_last_frame: Vector3 = Vector3.ZERO
+var target_rotation: Vector3 = rotation
 
 var upside_down_mode: bool = false
 var mouse_input_received: bool = false
 var can_rotate: bool = true
 
 var sensitivity_multiplier: float = 1.0
+var soft_movement_weight: float = SOFT_MOVEMENT_MAX_WEIGHT
 
 @onready var starting_pos: Vector3 = position
 
@@ -63,6 +68,9 @@ func _process(_delta: float) -> void:
 		Global.main.set_upside_down_sound(false)
 		upside_down_mode = false
 	
+	rotation.x = lerp_angle(rotation.x, target_rotation.x, soft_movement_weight)
+	rotation.y = lerp_angle(rotation.y, target_rotation.y, soft_movement_weight)
+	
 	mouse_input_received = false
 
 
@@ -77,8 +85,8 @@ func _input(event: InputEvent) -> void:
 			var x_rot_offset = deg_to_rad(mouse_y_offset)
 			rotation_offset.x = x_rot_offset
 			if can_rotate:
-				rotation.x -= x_rot_offset * rot_sign
-				rotation.x = clamp(rotation.x, -PI/2, PI/2)
+				target_rotation.x -= x_rot_offset * rot_sign
+				rotation.x = clamp(target_rotation.x, -PI/2, PI/2)
 				Global.player.cam_starting_pos.rotation.x -= x_rot_offset * rot_sign
 				Global.player.cam_starting_pos.rotation.x = clamp(rotation.x, -PI/2, PI/2)
 			
@@ -86,8 +94,8 @@ func _input(event: InputEvent) -> void:
 			var y_rot_offset = deg_to_rad(mouse_x_offset)
 			rotation_offset.y = y_rot_offset
 			if can_rotate:
-				rotation.y -= y_rot_offset * rot_sign
-				rotation.y = wrapf(rotation.y, 0.0, 2 * PI)
+				target_rotation.y -= y_rot_offset * rot_sign
+				rotation.y = wrapf(target_rotation.y, 0.0, 2 * PI)
 				Global.player.cam_starting_pos.rotation.y -= y_rot_offset * rot_sign
 				Global.player.cam_starting_pos.rotation.y = wrapf(rotation.y, 0.0, 2 * PI)
 			

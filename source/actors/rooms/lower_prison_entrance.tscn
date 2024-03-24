@@ -259,7 +259,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -8.5, -16.5)
 
 [node name="hanging_lamp" parent="." index="73" instance=ExtResource("15_13v5q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.25, -28)
-lit = false
+default_range = 8.0
+default_energy = 0.5
+shadow_mode = 1
 
 [node name="stone_archway" parent="." index="74" instance=ExtResource("16_ebs3t")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, -9.5, -28)

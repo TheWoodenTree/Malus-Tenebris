@@ -1,9 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbo03i4tpprsp"]
+[gd_scene load_steps=10 format=3 uid="uid://dbo03i4tpprsp"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_g2huc"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="2_adk2c"]
 [ext_resource type="Script" path="res://source/actors/interactables/distillate_cup.gd" id="2_qq4d4"]
 [ext_resource type="AudioStream" uid="uid://cy0sjl1ckeja8" path="res://source/assets/sounds/liquid/liquid_drip_pour.ogg" id="4_gai3w"]
+
+[sub_resource type="Shader" id="Shader_scvxp"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2hrb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_scvxp")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0dnb3"]
 _surfaces = [{
@@ -45,6 +87,7 @@ script = ExtResource("2_qq4d4")
 
 [node name="mesh" parent="." index="0"]
 layers = 4
+material_overlay = SubResource("ShaderMaterial_p2hrb")
 mesh = SubResource("ArrayMesh_ccb6t")
 
 [node name="collision_shape" parent="interact_area" index="0"]

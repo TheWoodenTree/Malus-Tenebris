@@ -35,6 +35,7 @@ func interact():
 	if first_dose:
 		Global.ui.hint_remove()
 		first_dose = false
+		AfflictionEffectController.first_dose_taken = true
 		
 	if num_doses > 0:
 		num_doses -= 1
@@ -43,7 +44,15 @@ func interact():
 			Global.ui.hint_popup(doses_left_string, -1)
 		else:
 			Global.ui.hint_remove()
+		
 		Global.player.play_noise_player()
+		Global.player.affliction_timer.add_time_mins(5.0)
+		AfflictionEffectController.set_to_min_effect()
+		
+		set_interactable(false)
+		await get_tree().create_timer(0.5, false).timeout
+		set_interactable(true)
+		
 	else:
 		Global.ui.hint_popup("It's empty", 3.0)
 

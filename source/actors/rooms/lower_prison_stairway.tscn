@@ -25,7 +25,7 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://u2ah3y0s20u3" path="res://source/actors/rooms/occluders/lower_prison_stairway.occ" id="26_k5rsv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1caw"]
-size = Vector3(13, 8, 1)
+size = Vector3(13, 16, 1)
 
 [node name="lower_prison_stairway" type="Node3D"]
 
@@ -72,13 +72,13 @@ has_crank = true
 is_broken = true
 
 [node name="exposure_area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, -12.25)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("21_wukun")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="exposure_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
 shape = SubResource("BoxShape3D_h1caw")
 
 [node name="sound_player" type="AudioStreamPlayer" parent="exposure_area"]

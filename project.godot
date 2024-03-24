@@ -26,6 +26,7 @@ mix_rate=48000
 
 Global="*res://source/global.gd"
 Sound="*res://source/sound.gd"
+AfflictionEffectController="*res://source/affliction_effect_controller.gd"
 
 [debug]
 

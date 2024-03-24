@@ -238,7 +238,7 @@ mesh = SubResource("ArrayMesh_0lrdm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146705, 0, 0)
 
 [node name="collision_shape" parent="interact_area" index="0"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.206157, -0.0314052, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.146777, -0.0314052, 0.168546)
 shape = SubResource("CapsuleShape3D_xjqwe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2"]

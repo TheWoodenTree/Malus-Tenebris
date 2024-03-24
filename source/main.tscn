@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=25 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
@@ -75,6 +75,12 @@ _data = {
 "heartbeat": SubResource("3")
 }
 
+[sub_resource type="GDScript" id="GDScript_7dmx0"]
+script/source = "extends Control
+
+
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_153xn"]
 shader = ExtResource("8_meepd")
 shader_parameter/alpha = 1.0
@@ -130,6 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_7dmx0")
 
 [node name="vignette" type="ColorRect" parent="post_processing"]
 material = ExtResource("6_kj3sd")
@@ -232,5 +239,14 @@ offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("10_8mkgv")
 theme_override_font_sizes/font_size = 16
 text = "FPS:"
+
+[node name="timer_label" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 1.0
+offset_right = 164.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("10_8mkgv")
+theme_override_font_sizes/font_size = 16
+text = "Time Left:"
 
 [node name="cursor" parent="." instance=ExtResource("12_7deiu")]
