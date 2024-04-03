@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cof5e1d0v6yb7"]
 
-[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock.tres" id="1_rugkq"]
+[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="1_rugkq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vhyoa"]
 _surfaces = [{

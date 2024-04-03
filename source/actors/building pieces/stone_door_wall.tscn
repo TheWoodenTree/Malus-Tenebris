@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://bongpq25mn3sw"]
 
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="1"]
-[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock.tres" id="2"]
+[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="4"]
 [ext_resource type="Script" path="res://source/actors/building pieces/stone_door_wall.gd" id="5"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwp8olyjrbqor"]
 
 [ext_resource type="Material" uid="uid://bbj8gr5lxr4q8" path="res://source/assets/materials/white_bricks/white_bricks.tres" id="1_4p85a"]
-[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock.tres" id="2_qq885"]
+[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="2_qq885"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o1qe4"]
 _surfaces = [{

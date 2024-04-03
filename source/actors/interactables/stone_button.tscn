@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://but5ppjmdoelt"]
 
 [ext_resource type="Script" path="res://source/actors/interactables/stone_button.gd" id="1_2lf6x"]
-[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock.tres" id="1_jlbk6"]
+[ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="1_jlbk6"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_wxhii"]
 [ext_resource type="AudioStream" uid="uid://b1wi20w6l3rp4" path="res://source/assets/sounds/move/short_stone_drag.ogg" id="4_3bgsf"]
 [ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="4_bevxb"]

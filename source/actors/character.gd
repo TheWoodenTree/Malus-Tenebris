@@ -1,7 +1,7 @@
 class_name Character
 extends CharacterBody3D
 
-const GRAVITY = 20.0
+const GRAVITY = 25.0
 const ACCEL = 0.2
 
 const CROUCH_DIST = -1.35
