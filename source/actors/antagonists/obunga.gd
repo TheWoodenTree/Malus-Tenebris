@@ -1,14 +1,18 @@
 extends Character
 
 
-const SPEED = 5.0
+const SPEED = 3.5
 const JUMP_VELOCITY = 4.5
 
 var do_move = false
 
+var look_at_pos: Vector3
+
 @onready var nav_agent: NavigationAgent3D = $nav_agent
 @onready var player_seek_ray: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
-@onready var skeleton = $skeleton
+@onready var skeleton = $armature/Skeleton3D
+@onready var animation_player = $AnimationPlayer
+@onready var footstep_player = $armature/Skeleton3D/footstep_player
 
 
 func _ready():
@@ -20,6 +24,7 @@ func _ready():
 	footstep_walk_vol += 10
 	footstep_sprint_vol += 10
 	player_seek_ray.collision_mask = 3
+	animation_player.play("Armature_001|mixamo_com|Layer0 Retarget_004")
 
 
 func _process(_delta):
@@ -30,6 +35,9 @@ func _process(_delta):
 	var bone_transform: Transform3D = skeleton.get_bone_global_pose_no_override(5)
 	bone_transform = bone_transform.looking_at(skeleton.to_local(Global.player.cam.global_position), Vector3.UP, true)
 	skeleton.set_bone_global_pose_override(5, bone_transform, 1.0, true)
+	
+	look_at_pos = lerp(look_at_pos, Vector3(velocity.x, $armature.position.y, velocity.z), 0.01)
+	$armature.look_at(to_global(look_at_pos), Vector3.UP, true)
 
 
 func _physics_process(delta):
@@ -58,6 +66,7 @@ func _physics_process(delta):
 					new_velocity = Vector3(-SPEED, velocity.y, 0.0)
 			velocity = new_velocity
 			move_and_slide()
+		
 			
 		# Add the gravity.
 		if not is_on_floor():
@@ -92,8 +101,8 @@ func _physics_process(delta):
 			in_water = true
 		else:
 			in_water = false
-		if footstep_timer.time_left == 0 and moving:
-			_play_footstep_sound()
+		#if footstep_timer.time_left == 0 and moving:
+		#	_play_footstep_sound()
 		
 		if nav_agent.is_target_reached():
 			do_move = false
