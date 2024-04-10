@@ -93,11 +93,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$Label.text = str(Engine.get_frames_per_second())
-	#if Input.is_action_just_pressed("debug2"):
-		#Global.player.fear_player.play();
-		#var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-		#tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from(-50.0)
-		#tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from(20500)
+	if Input.is_action_just_pressed("debug2"):
+		Global.player.fear_player.play();
+		var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from(-50.0)
+		tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from(20500)
+		AfflictionEffectController.set_to_max_effect()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Global.mouse_locked:

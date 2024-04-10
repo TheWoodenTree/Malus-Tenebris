@@ -12,7 +12,6 @@ var look_at_pos: Vector3
 @onready var player_seek_ray: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 @onready var skeleton = $armature/Skeleton3D
 @onready var animation_player = $AnimationPlayer
-@onready var footstep_player = $armature/Skeleton3D/footstep_player
 
 
 func _ready():
