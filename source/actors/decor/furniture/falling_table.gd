@@ -14,6 +14,8 @@ func _ready():
 
 
 func fall_over():
+	Global.monster.global_position = get_parent().get_node("monster_start_point").global_position
+	Global.monster.walk_in_servants_quarters_event(get_parent().get_node("monster_mid_point").global_position)
 	position = FALL_POSITION
 	rotation_degrees = FALL_ROTATION
 	falling_crate.position = CRATE_FALL_POSITION

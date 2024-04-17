@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 	#	offset = mouse_offset
 	#emit_signal("cam_rotated", offset)
 	
-	if not Global.player.in_menu:
+	if not Global.player.in_menu and not Global.player.scripted_event:
 		if Global.player.global_input_dir != Vector3.ZERO:
 			_bob()
 		elif Global.player.global_input_dir == Vector3.ZERO:
@@ -68,14 +68,15 @@ func _process(_delta: float) -> void:
 		Global.main.set_upside_down_sound(false)
 		upside_down_mode = false
 	
-	rotation.x = lerp_angle(rotation.x, target_rotation.x, soft_movement_weight)
-	rotation.y = lerp_angle(rotation.y, target_rotation.y, soft_movement_weight)
+	if not Global.player.scripted_event:
+		rotation.x = lerp_angle(rotation.x, target_rotation.x, soft_movement_weight)
+		rotation.y = lerp_angle(rotation.y, target_rotation.y, soft_movement_weight)
 	
 	mouse_input_received = false
 
 
 func _input(event: InputEvent) -> void:
-	if Global.mouse_locked and not Global.player.in_menu:
+	if Global.mouse_locked and not Global.player.in_menu and not Global.player.scripted_event:
 		if event is InputEventMouseMotion:
 			var rot_sign = 1
 			if upside_down_mode:

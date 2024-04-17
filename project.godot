@@ -178,6 +178,7 @@ noclip={
 3d_render/layer_4="no occlude"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
+3d_physics/layer_3="monster"
 3d_physics/layer_8="nav_block"
 
 [physics]

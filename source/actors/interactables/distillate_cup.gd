@@ -47,7 +47,7 @@ func interact():
 		
 		Global.player.play_noise_player()
 		Global.player.affliction_timer.add_time_mins(5.0)
-		AfflictionEffectController.set_to_min_effect()
+		AfflictionEffectController.set_to_min_effect(4.0)
 		
 		set_interactable(false)
 		await get_tree().create_timer(0.5, false).timeout

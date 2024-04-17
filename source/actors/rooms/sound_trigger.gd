@@ -12,6 +12,7 @@ var sound_played: bool = false
 @export var use_3d: bool = false
 @export var sound_player_3d_position: Vector3 = Vector3.ZERO : set = _set_sound_player_3d_position
 @export var amplify: float = 0.0
+@export_enum("Player", "Monster") var triggered_by: String = "Player"
 @export var player_flag_name: String = ""
 @export var trigger_fear: bool = false
 @export var fear_duration: float = 5.0
@@ -33,7 +34,8 @@ func _ready():
 func _on_body_entered(body):
 	# Optional flag in player script will be checked if player_flag_name is not blank
 	var player_flag_true: bool = Global.player.get(player_flag_name) if player_flag_name else true
-	if body == Global.player and not sound_played and player_flag_true:
+	var required_body: CharacterBody3D = Global.player if triggered_by == "Player" else Global.monster
+	if body == required_body and not sound_played and player_flag_true:
 		if use_3d:
 			sound_player_3d.play()
 		else:

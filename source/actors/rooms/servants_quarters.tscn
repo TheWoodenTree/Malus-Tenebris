@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dw8x78dpqdprb"]
+[gd_scene load_steps=74 format=3 uid="uid://dw8x78dpqdprb"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_4rvkc"]
 [ext_resource type="PackedScene" uid="uid://bhf6uocwy5fwk" path="res://source/actors/building pieces/basic/tile_floor.tscn" id="2_dj88v"]
@@ -67,6 +67,9 @@
 [ext_resource type="PackedScene" uid="uid://d2o05ytbeogcx" path="res://source/actors/misc/sound_trigger.tscn" id="64_1sqkq"]
 [ext_resource type="AudioStream" uid="uid://kqppwmixq365" path="res://source/assets/sounds/impacts/wood_bang.ogg" id="66_nqufd"]
 [ext_resource type="Script" path="res://source/actors/decor/furniture/falling_table.gd" id="67_mmpcx"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="68_8yhho"]
+[ext_resource type="Script" path="res://source/actors/rooms/first_encounter_trigger.gd" id="69_s45mn"]
+[ext_resource type="AudioStream" uid="uid://bk2dxrbam7bvw" path="res://source/assets/sounds/horror_sounds/first_encounter_swell.ogg" id="70_k1kcs"]
 
 [sub_resource type="Resource" id="Resource_75sfm"]
 script = ExtResource("19_b51cc")
@@ -84,6 +87,9 @@ texture = ExtResource("29_1pfam")
 pickup_sound = ExtResource("28_esjvg")
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tgpl"]
+size = Vector3(10.25, 9.5, 1)
 
 [node name="servants_quarters" instance=ExtResource("1_4rvkc")]
 
@@ -376,6 +382,7 @@ shadow_mode = 1
 
 [node name="torch_holder2" parent="." index="86" instance=ExtResource("12_hka4e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.25, 2.5, 10)
+lit = false
 shadow_mode = 1
 
 [node name="torch_holder3" parent="." index="87" instance=ExtResource("12_hka4e")]
@@ -848,6 +855,7 @@ sound = ExtResource("66_nqufd")
 use_3d = true
 sound_player_3d_position = Vector3(8.5, 1, 3.75)
 amplify = 6.0
+triggered_by = null
 player_flag_name = "picked_up_larder_key"
 trigger_fear = true
 fear_duration = 5.0
@@ -859,3 +867,35 @@ script = ExtResource("67_mmpcx")
 [node name="falling_crate" parent="." index="224" instance=ExtResource("52_tjrhi")]
 unique_name_in_owner = true
 transform = Transform3D(2.98023e-08, -7.10543e-15, -1, -1.49012e-08, 1, -1.06581e-14, 1, 0, 2.98023e-08, 21, 2, 26)
+
+[node name="monster_mid_point" type="Marker3D" parent="." index="225"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.25, 0.5, 8.25)
+
+[node name="monster_start_point" type="Marker3D" parent="." index="226"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.5, 25)
+
+[node name="monster_end_point" type="Marker3D" parent="." index="227"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -0.25)
+
+[node name="hanging_lamp" parent="." index="228" instance=ExtResource("68_8yhho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.25, -0.5)
+
+[node name="hanging_lamp2" parent="." index="229" instance=ExtResource("68_8yhho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.25, 38.5)
+lit = false
+
+[node name="first_encounter_trigger" type="Area3D" parent="." index="230"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.75, 0, 35.75)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("69_s45mn")
+
+[node name="collision_shape" type="CollisionShape3D" parent="first_encounter_trigger" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.686739, 5.25, 2.56326)
+shape = SubResource("BoxShape3D_0tgpl")
+
+[node name="sound_player" type="AudioStreamPlayer" parent="first_encounter_trigger" index="1"]
+stream = ExtResource("70_k1kcs")
+volume_db = -2.0
+
+[connection signal="body_entered" from="first_encounter_trigger" to="first_encounter_trigger" method="_on_body_entered"]

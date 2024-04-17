@@ -17,13 +17,15 @@ var cursor: Node2D
 var mouse_sens: float = 0.4
 var mouse_locked: bool
 
+var monster: CharacterBody3D
+
 @onready var main: Node = get_tree().root.get_node("main")
 @onready var player: CharacterBody3D = load("res://source/actors/player/player.tscn").instantiate()
 
 
 #Init Globals
 func _ready() -> void:
-	main.connect("world_ready", func(): world = main.get_node("world"))
+	main.connect("world_ready", func(): world = main.get_node("world"); monster = world.get_node("monster"))
 	world_environment = main.get_node("world_environment")
 	post_processing = main.get_node("post_processing")
 	if post_processing != null:

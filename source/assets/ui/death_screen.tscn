@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cn2lmv4kxle5o"]
+[gd_scene load_steps=18 format=3 uid="uid://cn2lmv4kxle5o"]
 
 [ext_resource type="Script" path="res://source/assets/ui/death_screen.gd" id="1_5yg6d"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_gc5si"]
@@ -38,7 +38,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../../../background:material:shader_parameter/alpha")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
@@ -138,16 +138,16 @@ shader = ExtResource("2_13v23")
 shader_parameter/alpha = 1.0
 shader_parameter/vigColor = null
 shader_parameter/vigMultiplier = 0.8
-shader_parameter/vigMultiplierOffset = 0.7
+shader_parameter/vigMultiplierOffset = 0.0
 shader_parameter/vigSoftness = -0.25
 shader_parameter/darkestThreshold = 0.06
 shader_parameter/darkThreshold = 0.125
 shader_parameter/lightThreshold = 0.175
 shader_parameter/lighterThreshold = 0.8
 shader_parameter/contrast = null
-shader_parameter/darkestColor = Color(0.0784314, 0.0235294, 0.0588235, 1)
+shader_parameter/darkestColor = Color(0, 0, 0, 1)
 shader_parameter/darkColor = Color(0.243137, 0.0666667, 0.0666667, 1)
-shader_parameter/lightColor = Color(0.431, 0.145, 0.078, 1)
+shader_parameter/lightColor = Color(0.431373, 0.145098, 0.0784314, 1)
 shader_parameter/lighterColor = Color(0.639216, 0.235294, 0.0470588, 1)
 shader_parameter/lightestColor = Color(0.811765, 0.517647, 0.294118, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_1wn3x")
@@ -172,24 +172,20 @@ noise = SubResource("FastNoiseLite_lj8dq")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23coi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umnar"]
-bg_color = Color(0.811765, 0.517647, 0.294118, 1)
+bg_color = Color(0.811765, 0.517647, 0.294118, 0)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8avs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_movsl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htivu"]
-bg_color = Color(0.811765, 0.517647, 0.294118, 1)
+bg_color = Color(0.811765, 0.517647, 0.294118, 0)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3j0a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dek7v"]
 
@@ -217,7 +213,7 @@ texture = SubResource("NoiseTexture2D_gpv1q")
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
-theme_override_constants/margin_top = 90
+theme_override_constants/margin_top = 125
 
 [node name="v_box_cont" type="VBoxContainer" parent="cont"]
 layout_mode = 2
@@ -229,10 +225,10 @@ z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
-theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 0)
 theme_override_fonts/font = ExtResource("1_gc5si")
 theme_override_font_sizes/font_size = 48
-text = "You Died"
+text = "End of Demo"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="cont/v_box_cont"]
@@ -246,11 +242,20 @@ custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_color = Color(0.243137, 0.0666667, 0.0666667, 0)
+theme_override_colors/font_pressed_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_hover_color = Color(0.431373, 0.145098, 0.0784314, 1)
+theme_override_colors/font_focus_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_disabled_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_outline_color = Color(0.243137, 0.0666667, 0.0666667, 1)
 theme_override_fonts/font = ExtResource("1_gc5si")
 theme_override_styles/normal = SubResource("StyleBoxFlat_umnar")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p8avs")
-text = "Try Again"
+theme_override_styles/hover = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/focus = SubResource("StyleBoxFlat_umnar")
+text = "Title Screen"
 
 [node name="HSeparator" type="HSeparator" parent="cont/v_box_cont"]
 layout_mode = 2
@@ -262,11 +267,20 @@ custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_color = Color(0.243137, 0.0666667, 0.0666667, 0)
+theme_override_colors/font_pressed_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_hover_color = Color(0.431373, 0.145098, 0.0784314, 1)
+theme_override_colors/font_focus_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_disabled_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+theme_override_colors/font_outline_color = Color(0.243137, 0.0666667, 0.0666667, 1)
 theme_override_fonts/font = ExtResource("1_gc5si")
 theme_override_styles/normal = SubResource("StyleBoxFlat_htivu")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_c3j0a")
-text = "Title Screen"
+theme_override_styles/hover = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_umnar")
+theme_override_styles/focus = SubResource("StyleBoxFlat_umnar")
+text = "Quit"
 
 [node name="HSeparator3" type="HSeparator" parent="cont/v_box_cont"]
 layout_mode = 2

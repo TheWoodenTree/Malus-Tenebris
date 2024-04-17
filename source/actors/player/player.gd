@@ -1,6 +1,6 @@
 extends Character
 
-const NOCLIP_SPEED: float = 10.0
+const NOCLIP_SPEED: float = 20.0
 
 var torch_range = 10.0
 var torch_energy = 0.75
@@ -28,6 +28,7 @@ var first_item_held: bool = false
 var first_door_unlocked: bool = false
 var noclip_on: bool = false
 var picked_up_larder_key: bool = false
+var scripted_event: bool = false
 
 var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn")
 
@@ -97,7 +98,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not in_menu:
+	if not in_menu and not scripted_event:
 		_handle_physics_input()
 		facing_dir = get_facing_dir()
 		_move(delta)
@@ -363,12 +364,10 @@ func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):
 	await pickup_sound_player.finished
 
 
-func do_caught_sequence(monster_pos: Vector3):
-	#in_menu = true
-	
+func cam_look_at_over_time(pos: Vector3, time: float):
 	# Scuffed
 	var initial_rot = cam.rotation
-	cam.look_at(monster_pos)
+	cam.look_at(pos)
 	var after_rot = cam.rotation
 	cam.rotation = initial_rot
 	
@@ -386,11 +385,11 @@ func do_caught_sequence(monster_pos: Vector3):
 	var anim_dur_scale = (abs(to_rot.x) + abs(to_rot.y)) / TAU
 	
 	if abs(to_rot.x) > PI / 6 or abs(to_rot.y) > PI / 3:
-		var cam_tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-		cam_tween.tween_property(cam, "rotation", to_rot, 0.35 * anim_dur_scale).as_relative()
+		var cam_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUINT)
+		cam_tween.tween_property(cam, "rotation", to_rot, time).as_relative()
 	
-	await get_tree().create_timer(0.35 * anim_dur_scale + 0.25).timeout
-	Global.ui.display_menu(Global.ui.death_screen_res)
+	#await get_tree().create_timer(0.35 * anim_dur_scale + 0.25).timeout
+	#Global.ui.display_menu(Global.ui.death_screen_res)
 
 
 func debug_get_torch():

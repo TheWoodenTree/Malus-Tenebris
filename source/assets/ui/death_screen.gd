@@ -1,4 +1,4 @@
-extends Control
+extends Menu
 
 @onready var anim_player: AnimationPlayer = $anim_player
 @onready var background: Sprite2D = $background

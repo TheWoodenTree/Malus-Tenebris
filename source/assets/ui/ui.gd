@@ -5,6 +5,7 @@ const BLUR_TIME: float = 0.1
 var top_open_menu: Control = null
 
 var inventory_menu: Control
+var death_screen: Control
 var curr_popup: Control
 var curr_popup_wr: WeakRef = null
 
@@ -27,6 +28,7 @@ signal background_changed
 
 func _ready():
 	inventory_menu = inventory_menu_res.instantiate()
+	death_screen = death_screen_res.instantiate()
 	add_child(inventory_menu)
 	remove_child(inventory_menu)
 
@@ -98,6 +100,11 @@ func set_blur_background(on: bool):
 func toggle_draggable_progress_bar(_on: bool):
 	#draggable_move_progress_bar.visible = on
 	pass
+
+
+func display_death_screen():
+	if menus.num_menus == 0 and menus.add_menu(death_screen):
+		Global.player.in_menu = true
 
 
 func display_menu(menu: Control):
