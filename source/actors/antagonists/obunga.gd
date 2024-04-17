@@ -16,6 +16,7 @@ var look_at_pos: Vector3 = Vector3(0.0, 0.0, 1.0)
 @onready var animation_player = $anim_player
 @onready var anim_tree = $anim_tree
 @onready var sound_player = $sound_player
+@onready var footstep_player = $footstep_player
 
 
 func _ready():
@@ -155,8 +156,9 @@ func kitchen_encounter_event():
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(anim_tree, "parameters/locomotion/blend_position", Vector2(1.0, 0.0), 0.5)
 	tween.parallel().tween_property(self, "speed_multiplier", 1.0, 0.5).from(0.0)
+	tween.parallel().tween_property(footstep_player, "volume_db", 0, 2.0).from(-15)
 	nav_agent.set_target_position(Global.player.global_position)
-	play_sound_one_shot(load("res://source/assets/sounds/monster/monster_sound_2.ogg"))
+	#play_sound_one_shot(load("res://source/assets/sounds/monster/monster_sound_2.ogg"))
 	await nav_agent.target_reached
 	Global.player.torch.burning_player.playing = false
 	Global.world.remove_child(Global.player)

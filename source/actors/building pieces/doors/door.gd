@@ -227,7 +227,9 @@ func attempt_unlock():
 	
 	if correct_key and key_name == "Larder":
 		get_parent().get_parent().get_parent().get_node("lower_prison_hallway_2/misc/archway_w_door_no_window/door/door_body").rotation_degrees.y = 85.0
-		await get_tree().create_timer(1.0, false).timeout
+		var tween2= get_tree().create_tween()
+		tween2.parallel().tween_property(Global.main.heartbeat_player, "volume_db", 0.0, 1.0)
+		await get_tree().create_timer(2.0, false).timeout
 		Global.monster.global_position = get_parent().get_parent().get_node("monster_start_point").global_position
 		Global.monster.kitchen_encounter_event()
 		await get_tree().create_timer(1.0, false).timeout

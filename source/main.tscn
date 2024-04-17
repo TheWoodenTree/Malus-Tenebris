@@ -52,21 +52,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0, 0.65, 0.8, 0.7, 1.0]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../heartbeat_player")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_211kc"]
 _data = {
@@ -122,7 +107,9 @@ volume_db = -6.0
 bus = &"Global"
 
 [node name="heartbeat_player" type="AudioStreamPlayer" parent="."]
-volume_db = -17.5
+stream = ExtResource("8")
+volume_db = -30.07
+autoplay = true
 
 [node name="drip_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10")

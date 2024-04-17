@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/heartbeat.ogg-78f4abc21a7ae239eff65e4f8bb4ef1
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
