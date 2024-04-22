@@ -235,7 +235,6 @@ stream = ExtResource("10")
 [node name="burning_player" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_75dl0")
 max_db = 6.0
-stream_paused = true
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = 0.0
 

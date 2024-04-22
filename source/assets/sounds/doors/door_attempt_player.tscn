@@ -2,4 +2,5 @@
 
 [node name="door_attempt_player" type="AudioStreamPlayer3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72, 0)
+max_polyphony = 3
 attenuation_filter_db = -8.0

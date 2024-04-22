@@ -1411,9 +1411,6 @@ libraries = {
 }
 
 [node name="anim_tree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nuxdi")
-}
 tree_root = SubResource("AnimationNodeBlendTree_fsgpe")
 anim_player = NodePath("../anim_player")
 parameters/locomotion/blend_position = Vector2(0, 0)

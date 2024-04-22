@@ -103,9 +103,9 @@ func load_title_screen():
 func load_world_and_player():
 	Global.player.scripted_event = true
 	
-	var tween: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 0.0, 6.0).from(2.0)
-	tween.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 1.0, 5.0).from(0.0)
+	var tween1: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween1.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 1.0, 3.0).from(2.0)
+	tween1.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 0.3, 3.0).from(0.0)
 	
 	await get_tree().process_frame
 	
@@ -139,7 +139,14 @@ func load_world_and_player():
 	
 	drone_player.play()
 	
-	await tween.finished
+	await tween1.finished
+	await get_tree().create_timer(3.0, false).timeout
+	
+	var tween2: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween2.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 0.0, 4.0)
+	tween2.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 1.0, 3.0)
+	
+	await tween2.finished
 	
 	Global.player.scripted_event = false
 
