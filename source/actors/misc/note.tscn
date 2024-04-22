@@ -72,5 +72,6 @@ shape = SubResource("3")
 [node name="page_turn_player" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_bdxoe")
 attenuation_model = 3
+max_polyphony = 5
 bus = &"General"
 attenuation_filter_cutoff_hz = 20500.0

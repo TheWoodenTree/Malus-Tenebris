@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=29 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
+[ext_resource type="AudioStream" uid="uid://d157c1hdub448" path="res://source/assets/sounds/horror_sounds/play_sound.ogg" id="5_q5r8v"]
+[ext_resource type="Shader" path="res://source/blackout_blur.gdshader" id="5_r5cia"]
 [ext_resource type="Script" path="res://source/assets/ui/ui.gd" id="6"]
 [ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
@@ -12,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c4sfuh7t214ho" path="res://source/assets/prologue/prologue.tscn" id="9"]
 [ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
+[ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="11_21vnh"]
 [ext_resource type="Texture2D" uid="uid://yxjmx6mnc3wl" path="res://source/assets/ui/interact_icons/interact_eye.png" id="11_c2uy7"]
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
 [ext_resource type="Script" path="res://source/interact_icon.gd" id="12_ifoda"]
@@ -66,6 +69,11 @@ script/source = "extends Control
 
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy6ro"]
+shader = ExtResource("5_r5cia")
+shader_parameter/blurAmount = 0.0
+shader_parameter/colorScale = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_153xn"]
 shader = ExtResource("8_meepd")
 shader_parameter/alpha = 1.0
@@ -103,7 +111,7 @@ libraries = {
 
 [node name="drone_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qtdgl")
-volume_db = -6.0
+volume_db = -3.0
 bus = &"Global"
 
 [node name="heartbeat_player" type="AudioStreamPlayer" parent="."]
@@ -116,6 +124,10 @@ stream = ExtResource("10")
 volume_db = -16.0
 bus = &"Global"
 
+[node name="play_game_sound_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q5r8v")
+volume_db = 5.0
+
 [node name="post_processing" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -124,6 +136,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_7dmx0")
+
+[node name="blackout_blur" type="ColorRect" parent="post_processing"]
+material = SubResource("ShaderMaterial_xy6ro")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+
+[node name="back_buf_copy4" type="BackBufferCopy" parent="post_processing"]
+copy_mode = 2
 
 [node name="vignette" type="ColorRect" parent="post_processing"]
 material = ExtResource("6_kj3sd")
@@ -164,21 +184,26 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="blur" type="ColorRect" parent="post_processing"]
-visible = false
-layout_mode = 0
-
-[node name="back_buf_copy4" type="BackBufferCopy" parent="post_processing"]
-visible = false
-copy_mode = 2
-
 [node name="ui" type="Control" parent="."]
+process_mode = 3
 material = SubResource("ShaderMaterial_153xn")
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6")
+
+[node name="button_hover_player" type="AudioStreamPlayer" parent="ui"]
+stream = ExtResource("11_21vnh")
+volume_db = -5.0
+
+[node name="button_up_player" type="AudioStreamPlayer" parent="ui"]
+stream = ExtResource("11_21vnh")
+pitch_scale = 0.9
+
+[node name="button_down_player" type="AudioStreamPlayer" parent="ui"]
+stream = ExtResource("11_21vnh")
+pitch_scale = 0.8
 
 [node name="cont" type="MarginContainer" parent="ui"]
 custom_minimum_size = Vector2(512, 288)
@@ -239,3 +264,5 @@ theme_override_font_sizes/font_size = 16
 text = "Time Left:"
 
 [node name="cursor" parent="." instance=ExtResource("12_7deiu")]
+process_mode = 3
+top_level = true

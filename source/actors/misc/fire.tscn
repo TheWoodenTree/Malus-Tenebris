@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bybym4b32w5oy"]
+[gd_scene load_steps=17 format=3 uid="uid://bybym4b32w5oy"]
 
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
 [ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3_4ki3m"]
 [ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="4"]
+[ext_resource type="AudioStream" uid="uid://bu5c4a2he6gxl" path="res://source/assets/sounds/misc/burning_low_volume.ogg" id="5_7s1px"]
 
 [sub_resource type="Curve" id="Curve_ea6kp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
@@ -106,3 +107,9 @@ distance_fade_begin = 2.0
 omni_range = 12.0
 omni_shadow_mode = 0
 script = ExtResource("2")
+
+[node name="burning_player" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_7s1px")
+volume_db = 5.0
+max_db = 5.0
+max_distance = 10.0

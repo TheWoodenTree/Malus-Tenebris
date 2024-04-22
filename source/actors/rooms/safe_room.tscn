@@ -216,7 +216,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 [node name="ruboleum_vial" parent="misc/chest" index="6" instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
 item_data = SubResource("Resource_yb1eg")
-count = 15
 
 [node name="ruboleum_vial2" parent="misc/chest" index="7" instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)

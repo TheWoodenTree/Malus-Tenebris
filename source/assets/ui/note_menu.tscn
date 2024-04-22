@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cta7frnp42d7n"]
+[gd_scene load_steps=10 format=3 uid="uid://cta7frnp42d7n"]
 
 [ext_resource type="Script" path="res://source/assets/ui/notes/note_menu.gd" id="1_bbb5n"]
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="2_js2xi"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="2_ofy3d"]
 [ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="3_r34b0"]
 [ext_resource type="FontFile" uid="uid://c1wdfxdb26j27" path="res://source/assets/fonts/Quikhand.ttf" id="3_xnjsc"]
-[ext_resource type="PackedScene" uid="uid://tus3pcbefjaj" path="res://source/assets/ui/buttons/inventory_left_button.tscn" id="4_f3ccg"]
-[ext_resource type="PackedScene" uid="uid://dnhynfku0mctc" path="res://source/assets/ui/buttons/inventory_right_button.tscn" id="5_7va5n"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="6_bopdm"]
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="6_vnv8j"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="7_tpn61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnnfj"]
 
 [node name="note_menu" type="Control"]
 layout_mode = 3
@@ -52,23 +55,45 @@ Text"
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 10
+theme = ExtResource("6_bopdm")
+alignment = 1
 
-[node name="left_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("4_f3ccg")]
+[node name="close_menu_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("7_tpn61")]
 layout_mode = 2
 
-[node name="right_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("5_7va5n")]
+[node name="separator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
+
+[node name="left_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("6_vnv8j")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Prev"
+
+[node name="separator2" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
+
+[node name="right_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("6_vnv8j")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Next"
 
 [node name="page_number" type="Label" parent="cont/v_box_cont/h_box_cont"]
 custom_minimum_size = Vector2(75, 0)
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
-theme_override_fonts/font = ExtResource("3_xnjsc")
 text = "Page 1/2"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
 
 [connection signal="pressed" from="cont/v_box_cont/h_box_cont/left_button" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="cont/v_box_cont/h_box_cont/right_button" to="." method="_on_right_button_pressed"]

@@ -31,6 +31,10 @@ func set_page_number_text(text):
 	$cont/v_box_cont/h_box_cont/page_number.text = page_number_text
 
 
+func _on_close_button_pressed():
+	Global.ui.remove_menu()
+
+
 func _on_left_button_pressed():
 	note.turn_page(note.BACKWARD)
 

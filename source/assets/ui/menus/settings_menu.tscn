@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://dva57wtcmu4p1"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_oy3ig"]
+[ext_resource type="PackedScene" uid="uid://cpt3macrqfk7s" path="res://source/assets/ui/buttons/dropdown_button.tscn" id="2_3txbk"]
+[ext_resource type="Script" path="res://source/assets/ui/menus/settings_menu.gd" id="2_ifcx8"]
+[ext_resource type="Script" path="res://source/assets/ui/buttons/screen_mode_dropdown.gd" id="4_0g71k"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="5_vt8yh"]
+
+[node name="settings_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oy3ig")
+script = ExtResource("2_ifcx8")
+
+[node name="cont" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont/v_box_cont"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="settings" type="Label" parent="cont/v_box_cont/v_box_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Settings
+"
+
+[node name="separator" type="HSeparator" parent="cont/v_box_cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="screen_mode_dropdown" parent="cont/v_box_cont/v_box_cont" instance=ExtResource("2_3txbk")]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Screen Mode"
+script = ExtResource("4_0g71k")
+dropdown_option_names = Array[String](["Windowed", "Fullscreen", "Borderless Fullscreen"])
+
+[node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("5_vt8yh")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8

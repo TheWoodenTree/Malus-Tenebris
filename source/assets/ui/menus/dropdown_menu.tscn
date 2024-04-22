@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds66ib3qesslo"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_n78m5"]
+[ext_resource type="Script" path="res://source/assets/ui/menus/dropdown_menu.gd" id="2_7077d"]
+
+[node name="dropdown_menu" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_n78m5")
+script = ExtResource("2_7077d")
+
+[node name="panel_cont" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 28.0
+offset_bottom = 24.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="v_box_cont" type="VBoxContainer" parent="panel_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

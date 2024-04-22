@@ -1,0 +1,119 @@
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://cuilhrwln20t4"]
+
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_t5wm4"]
+[ext_resource type="Texture2D" uid="uid://b76810yf18n7y" path="res://source/assets/ui/panel_background.png" id="2_det0o"]
+[ext_resource type="Texture2D" uid="uid://d3m2llyvlvssv" path="res://source/assets/ui/buttons/dropdown_arrow.png" id="2_ed23a"]
+[ext_resource type="Texture2D" uid="uid://gskj7mubh3r3" path="res://source/assets/ui/panel_background_simple.png" id="3_4ibrw"]
+[ext_resource type="Texture2D" uid="uid://cylmye8vmdxy8" path="res://source/assets/ui/buttons/dropdown_selected.png" id="4_1h4rs"]
+[ext_resource type="Texture2D" uid="uid://cmt57h8syqfku" path="res://source/assets/ui/buttons/dropdown_unselected.png" id="5_u5h72"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2e2jy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yd3iy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b2vjb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t0ky5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjw62"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjdmr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8awl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t566w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffbwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vibdm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4bq1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxm18"]
+texture = ExtResource("2_det0o")
+texture_margin_left = 16.0
+texture_margin_top = 24.0
+texture_margin_right = 16.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phl61"]
+texture = ExtResource("3_4ibrw")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqqsy"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_457ia"]
+color = Color(0.811765, 0.517647, 0.294118, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_51lkj"]
+color = Color(0.811765, 0.517647, 0.294118, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_son18"]
+texture = ExtResource("3_4ibrw")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2sopl"]
+color = Color(0.811765, 0.517647, 0.294118, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3biay"]
+
+[resource]
+Button/colors/font_color = Color(0.639216, 0.235294, 0.0470588, 1)
+Button/colors/font_disabled_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+Button/colors/font_focus_color = Color(0.639216, 0.235294, 0.0470588, 1)
+Button/colors/font_hover_color = Color(0.811765, 0.517647, 0.294118, 1)
+Button/colors/font_hover_pressed_color = Color(0.431373, 0.145098, 0.0784314, 1)
+Button/colors/font_outline_color = Color(0.639216, 0.235294, 0.0470588, 1)
+Button/colors/font_pressed_color = Color(0.431373, 0.145098, 0.0784314, 1)
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_t5wm4")
+Button/styles/disabled = SubResource("StyleBoxEmpty_2e2jy")
+Button/styles/focus = SubResource("StyleBoxEmpty_yd3iy")
+Button/styles/hover = SubResource("StyleBoxEmpty_b2vjb")
+Button/styles/normal = SubResource("StyleBoxEmpty_t0ky5")
+Button/styles/pressed = SubResource("StyleBoxEmpty_qjw62")
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_wjdmr")
+Label/colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_t5wm4")
+OptionButton/colors/font_color = Color(0.639216, 0.235294, 0.0470588, 1)
+OptionButton/colors/font_disabled_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+OptionButton/colors/font_focus_color = Color(0.639216, 0.235294, 0.0470588, 1)
+OptionButton/colors/font_hover_color = Color(0.811765, 0.517647, 0.294118, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.431373, 0.145098, 0.0784314, 1)
+OptionButton/colors/font_outline_color = Color(0.639216, 0.235294, 0.0470588, 1)
+OptionButton/colors/font_pressed_color = Color(0.431373, 0.145098, 0.0784314, 1)
+OptionButton/constants/arrow_margin = 0
+OptionButton/font_sizes/font_size = 16
+OptionButton/fonts/font = ExtResource("1_t5wm4")
+OptionButton/icons/arrow = ExtResource("2_ed23a")
+OptionButton/styles/disabled = SubResource("StyleBoxEmpty_v8awl")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_t566w")
+OptionButton/styles/hover = SubResource("StyleBoxEmpty_ffbwm")
+OptionButton/styles/normal = SubResource("StyleBoxEmpty_vibdm")
+OptionButton/styles/pressed = SubResource("StyleBoxEmpty_f4bq1")
+Panel/styles/panel = SubResource("StyleBoxTexture_fxm18")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_phl61")
+PopupMenu/colors/font_accelerator_color = Color(0.639216, 0.235294, 0.0470588, 1)
+PopupMenu/colors/font_color = Color(0.639216, 0.235294, 0.0470588, 1)
+PopupMenu/colors/font_disabled_color = Color(0.243137, 0.0666667, 0.0666667, 1)
+PopupMenu/colors/font_hover_color = Color(0.811765, 0.517647, 0.294118, 1)
+PopupMenu/colors/font_outline_color = Color(0.639216, 0.235294, 0.0470588, 1)
+PopupMenu/colors/font_separator_color = Color(0.639216, 0.235294, 0.0470588, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0.639216, 0.235294, 0.0470588, 1)
+PopupMenu/fonts/font = ExtResource("1_t5wm4")
+PopupMenu/fonts/font_separator = ExtResource("1_t5wm4")
+PopupMenu/icons/radio_checked = ExtResource("4_1h4rs")
+PopupMenu/icons/radio_unchecked = ExtResource("5_u5h72")
+PopupMenu/styles/hover = SubResource("StyleBoxEmpty_tqqsy")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_457ia")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_51lkj")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_son18")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_2sopl")
+VSeparator/styles/separator = SubResource("StyleBoxEmpty_3biay")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://daecnp04ebaq3"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_akfvb"]
+[ext_resource type="Script" path="res://source/assets/ui/menus/credits_menu.gd" id="2_cf7bs"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="3_o7c11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sepu1"]
+
+[node name="credits_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_akfvb")
+script = ExtResource("2_cf7bs")
+
+[node name="cont" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="cont/v_box_cont"]
+layout_mode = 2
+text = "A game by ---"
+
+[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sepu1")
+
+[node name="attributions" type="Label" parent="cont/v_box_cont"]
+layout_mode = 2
+text = "Indie games like this wouldn't be possible without generous folks like these who provide free, quality assets:
+	- ZapSplat (sounds)
+	- AmbientCG and Polyhaven (textures)"
+autowrap_mode = 2
+
+[node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sepu1")
+
+[node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("3_o7c11")]
+layout_mode = 2
+size_flags_horizontal = 8

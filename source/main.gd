@@ -6,6 +6,7 @@ const EFFECT_MAX_DIST = 30
 
 @export var anim_chrom_abb_offset: float
 @export var anim_vignette_softness: float
+@export var debug_no_title_screen: bool = false
 
 var player_dist_to_creature: float
 
@@ -14,28 +15,35 @@ var enable_heartbeat = false
 
 var player_preload = preload("res://source/actors/player/player.tscn")
 
-var load_screen_res: Resource = load("res://source/assets/ui/load_screen.tscn")
-var death_screen_res: Resource = load("res://source/assets/ui/death_screen.tscn")
+var load_screen_res: Resource = preload("res://source/assets/ui/load_screen.tscn")
+var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
+var title_screen_res: Resource = preload("res://source/assets/ui/title_screen.tscn")
+var world_res: Resource = preload("res://source/world.tscn")
+var title_screen_room_res: Resource = preload("res://source/actors/rooms/title_screen_room.tscn")
 
 var drip_ambience: Resource = load("res://source/assets/sounds/ambience/general/drip_ambience.ogg")
 var drip_ambience_upside_down: Resource = load("res://source/assets/sounds/ambience/general/drip_ambience_upside_down.ogg")
 
-var world: Node3D
+var title_screen_room: Node3D
+var title_screen: Control
 
 var obunga
 
 @onready var drone_player = $drone_player
 @onready var drip_player = $drip_player
+@onready var play_game_sound_player = $play_game_sound_player
 @onready var retro_shader = $post_processing/retro_shader
 @onready var chromatic_abberation = $post_processing/chromatic_abberation
 @onready var vignette = $post_processing/vignette
 @onready var zoom = $post_processing/zoom
+@onready var blackout_blur = $post_processing/blackout_blur
 @onready var effects_player = $effects_player
 @onready var heartbeat_anim = effects_player.get_animation("heartbeat")
 @onready var heartbeat_player = $heartbeat_player
 @onready var ui = $ui
 @onready var nav_update_timer: Timer = Timer.new()
 @onready var debug_affliction_time_left = $timer_label
+var world: Node3D
 
 @export_range(0.0, 2.0) var light_energy_multiplier: float = 1.0
 
@@ -44,51 +52,15 @@ signal world_ready
 
 
 func _ready() -> void:
-	var load_screen: Control = load_screen_res.instantiate()
-	call_deferred("add_child", load_screen)
-	
-	var err: Error = ResourceLoader.load_threaded_request("res://source/world.tscn", "", true)
-	if err != 0:
-		push_error("Error requesting threaded load of world, error code " + str(err))
-	
-	# Report load progress on separate thread so loading screen doesn't have to be static
-	var load_progress_thread = Thread.new()
-	load_progress_thread.start(_report_load_progress)
-	
-	await world_loaded
-	
-	call_deferred("add_child", world)
-
-	await world.ready
-	
-	#obunga = world.get_node("nav_region/obunga")
-	emit_signal("world_ready")
-	load_screen.queue_free()
-	load_progress_thread.wait_to_finish()
-	
-	Global.lock_mouse()
-	Global.player.position = world.get_node("player_spawn_point").global_position
-	add_child(Global.player)
-	
-	# Make sure the player is rendered before post-processing so torch is affected
-	# by post-processing
-	move_child(Global.player, 0)
-	
+	if debug_no_title_screen:
+		load_world_and_player()
+	else:
+		load_title_screen()
+		
 	if !do_prologue:
 		$prologue.queue_free()
 	else:
 		Global.player.in_menu = true
-	
-	drone_player.play()
-	#drip_player.play()
-	
-	add_child(nav_update_timer)
-	nav_update_timer.wait_time = 0.1
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		nav_update_timer.connect("timeout", enemy.update_target_position)
-	nav_update_timer.start()
-	
-	world.get_node("nav_region").bake_navigation_mesh()
 
 
 func _process(_delta: float) -> void:
@@ -114,6 +86,62 @@ func _process(_delta: float) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	if Input.is_action_just_pressed("pause"):
+		ui.display_menu(ui.pause_menu)
+
+
+func load_title_screen():
+	title_screen = title_screen_res.instantiate()
+	title_screen_room = title_screen_room_res.instantiate()
+	ui.menus.add_menu(title_screen)
+	add_child(title_screen_room)
+	Global.unlock_mouse()
+	title_screen_room.get_node("camera").current = true
+
+
+func load_world_and_player():
+	Global.player.scripted_event = true
+	
+	var tween: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 0.0, 6.0).from(2.0)
+	tween.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 1.0, 5.0).from(0.0)
+	
+	await get_tree().process_frame
+	
+	if title_screen_room:
+		title_screen_room.queue_free()
+	if title_screen:
+		ui.remove_menu()
+	
+	world = world_res.instantiate()
+	add_child(world)
+	emit_signal("world_ready")
+	
+	if not nav_update_timer.is_inside_tree():
+		add_child(nav_update_timer)
+	nav_update_timer.wait_time = 0.1
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		nav_update_timer.connect("timeout", enemy.update_target_position)
+	nav_update_timer.start()
+	world.get_node("nav_region").bake_navigation_mesh()
+	
+	Global.lock_mouse()
+	Global.player.position = world.get_node("player_spawn_point").global_position
+	if not Global.player.is_inside_tree():
+		add_child(Global.player)
+	Global.player.cam.rotation = Vector3.ZERO
+	Global.player.cam.target_rotation = Vector3.ZERO
+	
+	# Make sure the player is rendered before post-processing so torch is affected
+	# by post-processing
+	move_child(Global.player, 0)
+	
+	drone_player.play()
+	
+	await tween.finished
+	
+	Global.player.scripted_event = false
 
 
 func _report_load_progress():

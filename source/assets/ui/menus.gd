@@ -18,6 +18,9 @@ func _process(_delta):
 
 func add_menu(menu: Control):
 	if not open_menus.has(menu):
+		for open_menu in open_menus:
+			open_menu.visible = false
+			
 		open_menus.append(menu)
 		add_child(menu)
 		
@@ -46,8 +49,15 @@ func pop_menu():
 		menu_player.stream = menu.close_sound
 		menu_player.play()
 		
+	if not open_menus.is_empty():
+		open_menus.back().visible = true
+		
 	num_menus -= 1
 
 
+func front():
+	return open_menus.front() if not open_menus.is_empty() else null
+
+
 func back():
-	return open_menus.back()
+	return open_menus.back() if not open_menus.is_empty() else null

@@ -382,7 +382,7 @@ func cam_look_at_over_time(pos: Vector3, time: float):
 	else:
 		to_rot.y = after_rot.y - (initial_rot.y - TAU)
 	
-	var anim_dur_scale = (abs(to_rot.x) + abs(to_rot.y)) / TAU
+	var _anim_dur_scale = (abs(to_rot.x) + abs(to_rot.y)) / TAU
 	
 	if abs(to_rot.x) > PI / 6 or abs(to_rot.y) > PI / 3:
 		var cam_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUINT)

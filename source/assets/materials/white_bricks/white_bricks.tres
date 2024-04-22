@@ -7,7 +7,6 @@
 [resource]
 albedo_color = Color(0.576471, 0.556863, 0.494118, 1)
 albedo_texture = ExtResource("2")
-roughness = 0.9
 roughness_texture = ExtResource("3")
 normal_enabled = true
 normal_scale = 2.0

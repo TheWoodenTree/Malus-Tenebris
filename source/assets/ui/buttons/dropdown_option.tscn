@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwjgvoqwsyxu1"]
+
+[ext_resource type="Script" path="res://source/assets/ui/buttons/dropdown_option.gd" id="1_7v4wr"]
+[ext_resource type="Texture2D" uid="uid://cmt57h8syqfku" path="res://source/assets/ui/buttons/dropdown_unselected.png" id="2_cvbf7"]
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="2_vp3xl"]
+
+[node name="dropdown_option" type="HBoxContainer"]
+size_flags_horizontal = 0
+script = ExtResource("1_7v4wr")
+option_name = "D"
+
+[node name="select_texture" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_cvbf7")
+stretch_mode = 2
+
+[node name="iconless_button" parent="." instance=ExtResource("2_vp3xl")]
+layout_mode = 2
+text = "D"
+
+[connection signal="pressed" from="iconless_button" to="." method="_on_iconless_button_pressed"]

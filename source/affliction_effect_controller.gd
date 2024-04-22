@@ -8,8 +8,8 @@ const CAM_SENS_MULT_HC: float = 0.25
 const CAM_BOB_FREQ_MULT_HC: float = 0.5
 
 # SC = Soft Cap
-const ZOOM_INTENSITY_SC: float = 12.0
-const VIGNETTE_SOFTNESS_SC: float = 0.9
+const ZOOM_INTENSITY_SC: float = 8.0
+const VIGNETTE_SOFTNESS_SC: float = 0.8
 const PLAYER_SPEED_MULT_SC: float = 0.85
 const CAM_SENS_MULT_SC: float = 0.75
 const CAM_BOB_FREQ_MULT_SC: float = 0.85

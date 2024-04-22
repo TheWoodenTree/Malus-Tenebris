@@ -1,6 +1,8 @@
 @tool
 extends Interactable
 
+var burning_player: AudioStreamPlayer3D
+
 @onready var light = $fire/light
 @onready var particles = $fire/fire_particles
 @onready var mesh = $mesh
@@ -22,7 +24,12 @@ func _ready() -> void:
 		light.omni_range = default_range
 		light.default_energy = default_energy
 		light.flicker()
-		set_interactable(lit and Global.player.torch and not Global.player.torch.is_lit)
+		set_interactable(lit and is_instance_valid(Global.player.torch) and not Global.player.torch.is_lit)
+		if has_node("fire/burning_player"):
+			burning_player = $fire/burning_player
+			if lit:
+				burning_player.play()
+				
 	particles.emitting = lit
 	light.visible = lit
 	light.omni_shadow_mode = shadow_mode

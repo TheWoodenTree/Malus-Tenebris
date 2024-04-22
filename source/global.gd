@@ -10,6 +10,7 @@ var retro_shader: Material
 var chromatic_abberation_shader: Material
 var vignette_shader: Material
 var zoom_shader: Material
+var blackout_blur_shader: Material
 var ui: Control
 var inventory: Control
 var cursor: Node2D
@@ -33,6 +34,7 @@ func _ready() -> void:
 		chromatic_abberation_shader = post_processing.get_node("chromatic_abberation").material
 		vignette_shader = post_processing.get_node("vignette").material
 		zoom_shader = post_processing.get_node("zoom").material
+		blackout_blur_shader = post_processing.get_node("blackout_blur").material
 	ui = main.get_node("ui")
 	inventory = ui.inventory_menu
 	cursor = main.get_node("cursor")

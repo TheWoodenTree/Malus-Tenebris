@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bidpmdys2yhso"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ldv47"]
+[ext_resource type="Script" path="res://source/assets/ui/buttons/ui_button.gd" id="2_lm6jl"]
+
+[node name="dropdown_button" type="OptionButton"]
+offset_right = 45.0
+offset_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_ldv47")
+item_count = 3
+selected = 0
+popup/item_0/text = "Screen Mode"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+script = ExtResource("2_lm6jl")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6cjmtln0dues"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_cvp73"]
+[ext_resource type="Script" path="res://source/assets/ui/menus/pause_menu.gd" id="2_x24sp"]
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_q3ba8"]
+
+[node name="pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cvp73")
+script = ExtResource("2_x24sp")
+
+[node name="cont" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="pause_label" type="Label" parent="cont/v_box_cont"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="continue_button" parent="cont/v_box_cont" instance=ExtResource("3_q3ba8")]
+layout_mode = 2
+text = "Continue"
+
+[node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="settings_button" parent="cont/v_box_cont" instance=ExtResource("3_q3ba8")]
+layout_mode = 2
+text = "Settings"
+
+[node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("3_q3ba8")]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="cont/v_box_cont/continue_button" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="cont/v_box_cont/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="cont/v_box_cont/quit_button" to="." method="_on_quit_button_pressed"]

@@ -15,12 +15,18 @@ var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
 var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
 var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instantiate()
+var are_you_sure_popup: Control = preload("res://source/assets/ui/menus/are_you_sure_popup.tscn").instantiate()
+var pause_menu: Control = preload("res://source/assets/ui/menus/pause_menu.tscn").instantiate()
+var settings_menu: Control = preload("res://source/assets/ui/menus/settings_menu.tscn").instantiate()
 
 @onready var background = $menus/background
 @onready var interact_icon = $cont/interact_icon
 @onready var draggable_move_progress_bar = $draggable_move_progress_bar
 @onready var menus = $menus
 @onready var block_inventory_open: bool = Global.player.debug_do_tutorials
+@onready var button_hover_player = $button_hover_player
+@onready var button_up_player = $button_up_player
+@onready var button_down_player = $button_down_player
 
 signal inventory_opened
 signal background_changed
@@ -83,7 +89,7 @@ func open_inventory():
 
 
 func set_blur_background(on: bool):
-	var blur_tween = get_tree().create_tween()
+	var blur_tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	var background_alpha: float
 	var background_blur: float
 	if on:
@@ -108,7 +114,8 @@ func display_death_screen():
 
 
 func display_menu(menu: Control):
-	if menus.num_menus == 0 and menus.add_menu(menu):
+	var success: bool = menus.add_menu(menu)
+	if (menus.num_menus == 1 or menus.front() == Global.main.title_screen) and success:
 		set_blur_background(true)
 		Global.unlock_mouse()
 		Global.player.in_menu = true
@@ -120,8 +127,9 @@ func remove_menu():
 		menus.pop_menu()
 		menu_removed = true
 		
-	if menus.num_menus == 0 and menu_removed:
+	if (menus.num_menus == 0 or menus.front() == Global.main.title_screen) and menu_removed:
 		set_blur_background(false)
 		await Global.ui.background_changed
-		Global.lock_mouse()
+		if not Global.main.title_screen or menus.front() != Global.main.title_screen:
+			Global.lock_mouse()
 		Global.player.in_menu = false

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvf3x4476lapc"]
+[gd_scene load_steps=7 format=3 uid="uid://cvf3x4476lapc"]
 
 [ext_resource type="Script" path="res://source/assets/ui/title_screen.gd" id="1_b237l"]
+[ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="2_efe1t"]
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_da6oj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgk4g"]
+
+[sub_resource type="Theme" id="Theme_5bq6o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi37g"]
 
 [node name="title_screen" type="Control"]
 layout_mode = 3
@@ -10,3 +18,73 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b237l")
+
+[node name="cont" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rgk4g")
+
+[node name="title" type="Label" parent="cont/v_box_cont"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = SubResource("Theme_5bq6o")
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("2_efe1t")
+theme_override_font_sizes/font_size = 32
+text = "Malus Tenebris"
+horizontal_alignment = 1
+
+[node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
+
+[node name="play_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Play"
+
+[node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
+
+[node name="settings_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Settings"
+
+[node name="separator4" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
+
+[node name="credits_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Credits"
+
+[node name="separator5" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
+
+[node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Quit"
+
+[connection signal="pressed" from="cont/v_box_cont/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="cont/v_box_cont/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="cont/v_box_cont/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="cont/v_box_cont/quit_button" to="." method="_on_quit_button_pressed"]
