@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2q47r4lwlqg"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_mhdtq"]
+
+[node name="splash_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mhdtq")
+
+[node name="made_with" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -10.5
+offset_right = 37.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Made with"
+
+[node name="image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = 56.0
+offset_right = 23.5
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Godot"

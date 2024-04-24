@@ -47,9 +47,11 @@ custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
 theme_override_fonts/font = ExtResource("3_xnjsc")
-text = "Default
+text = "Entry 3:
 
-Text"
+Though it's very dark, I've discovered a small passage just big enough for me to fit through behind the shelf in the corner of the room. I don't know what lies on the other side, but the curiosity is eating me alive.
+
+Some of the guards also began speaking about something concerning deeper in the prison. While most of the words escaped my ears, the few I heard make my stomach churn."
 
 [node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont"]
 layout_mode = 2
