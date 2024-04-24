@@ -139,8 +139,6 @@ func first_encounter_event(end_position: Vector3):
 	tween.tween_property(anim_tree, "parameters/locomotion/blend_position", Vector2(1.0, 0.0), 0.5)
 	tween.parallel().tween_property(self, "speed_multiplier", 1.0, 0.5).from(0.0)
 	nav_agent.set_target_position(end_position)
-	await get_tree().create_timer(0.5, false).timeout
-	sound_player.play()
 	await nav_agent.target_reached
 	anim_tree.set("parameters/locomotion/blend_position", Vector2(0.0, 0.0))
 	do_move = false

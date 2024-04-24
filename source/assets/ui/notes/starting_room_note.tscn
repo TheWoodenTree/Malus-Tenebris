@@ -5,7 +5,9 @@ custom_minimum_size = Vector2(800, 0)
 size_flags_horizontal = 4
 text = "Entry 1:
 
-I didn't deserve this. I don't know why I've been imprisoned nor do I know who my captors are. Their strange garb entices my imagination, though some unpleasant thoughts about their true purpose have invaded my mind which leaves me more on edge than I already am.
+I didn't deserve this. I don't know why I've been imprisoned nor do I know who my captors are. They roam the hall, just looking, as if studying me. Expressing my outrage seems pointless as they ignore my attempts to communicate.
+
+Their strange attire has led to many unpleasant thoughts invading my mind as to my purpose here.
 [PAGE]
 Entry 2:
 
