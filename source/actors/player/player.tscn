@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=25 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
+[ext_resource type="Script" path="res://source/actors/player/bob_controller.gd" id="2_n0c15"]
 [ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="4"]
 [ext_resource type="Material" uid="uid://6l1ko2kw0opd" path="res://source/assets/particles/ambient_particles.tres" id="4_sn5wa"]
 [ext_resource type="AudioStream" uid="uid://c26ecgvwwpjek" path="res://source/assets/sounds/liquid/gulp.ogg" id="5_386p0"]
@@ -11,33 +12,38 @@
 [ext_resource type="AudioStream" uid="uid://dqap21jiqu5gq" path="res://source/assets/sounds/misc/fear.ogg" id="8_ulhip"]
 [ext_resource type="Script" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icr8b"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_l7daj"]
+material = SubResource("StandardMaterial3D_icr8b")
+radius = 0.35
+height = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1prn"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gh7fc"]
+material = SubResource("StandardMaterial3D_v1prn")
+radius = 0.25
+height = 0.7
+
+[sub_resource type="Animation" id="Animation_dqclq"]
+resource_name = "timer"
+length = 4.5e+06
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crvps"]
+_data = {
+"timer": SubResource("Animation_dqclq")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8awoy"]
 height = 2.7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2fjcf"]
 height = 1.0
-
-[sub_resource type="Animation" id="Animation_nltwu"]
-resource_name = "walk_bob"
-length = 1.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head_controller/camera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.65, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.55, 0), Vector3(0, 0.55, 0), Vector3(0, 0.55, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w13eb"]
-_data = {
-"walk_bob": SubResource("Animation_nltwu")
-}
 
 [sub_resource type="Animation" id="Animation_q2cha"]
 resource_name = "torch_light_anim"
@@ -90,58 +96,65 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 floor_snap_length = 1.0
 script = ExtResource("1")
-debug_do_tutorials = true
+debug_has_torch = true
 footstep_walk_vol = -25.0
 footstep_sprint_vol = -20.0
 
 [node name="head_controller" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="cam_starting_pos" type="Marker3D" parent="head_controller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+[node name="bob_controller" type="Node3D" parent="head_controller"]
+script = ExtResource("2_n0c15")
 
-[node name="cam_look_at_pos" type="Marker3D" parent="head_controller/cam_starting_pos"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -86.025)
-
-[node name="look_at_dir" type="RayCast3D" parent="head_controller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-visible = false
-target_position = Vector3(0, 0, -10)
-collision_mask = 0
-
-[node name="camera" parent="head_controller" instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+[node name="camera" parent="head_controller/bob_controller" instance=ExtResource("2")]
 cull_mask = 1048573
 
-[node name="viewport_cont" type="SubViewportContainer" parent="head_controller/camera"]
+[node name="viewport_cont" type="SubViewportContainer" parent="head_controller/bob_controller/camera"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="torch_cam_viewport" type="SubViewport" parent="head_controller/camera/viewport_cont"]
+[node name="torch_cam_viewport" type="SubViewport" parent="head_controller/bob_controller/camera/viewport_cont"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(512, 288)
 render_target_update_mode = 4
 
-[node name="torch_cam" type="Camera3D" parent="head_controller/camera/viewport_cont/torch_cam_viewport"]
+[node name="torch_cam" type="Camera3D" parent="head_controller/bob_controller/camera/viewport_cont/torch_cam_viewport"]
 cull_mask = 2
 
-[node name="interact_raycast" type="RayCast3D" parent="head_controller/camera"]
+[node name="interact_raycast" type="RayCast3D" parent="head_controller/bob_controller/camera"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 32769
 collide_with_areas = true
 
-[node name="torch_pos" type="Marker3D" parent="head_controller/camera"]
+[node name="torch_pos" type="Marker3D" parent="head_controller/bob_controller/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252)
 
-[node name="held_item_marker" type="Marker3D" parent="head_controller/camera"]
+[node name="held_item_marker" type="Marker3D" parent="head_controller/bob_controller/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 
+[node name="test" type="MeshInstance3D" parent="head_controller/bob_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+mesh = SubResource("SphereMesh_l7daj")
+skeleton = NodePath("../../..")
+
+[node name="test2" type="MeshInstance3D" parent="head_controller/bob_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+mesh = SubResource("SphereMesh_gh7fc")
+skeleton = NodePath("../../..")
+
+[node name="bob_timer" type="AnimationPlayer" parent="head_controller/bob_controller"]
+libraries = {
+"": SubResource("AnimationLibrary_crvps")
+}
+
 [node name="base_light" type="OmniLight3D" parent="head_controller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.328954, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.805, 0)
 layers = 3
 light_energy = 0.75
 omni_range = 3.0
@@ -153,11 +166,6 @@ shape = SubResource("CapsuleShape3D_8awoy")
 [node name="crouching_collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852, 0)
 shape = SubResource("CapsuleShape3D_2fjcf")
-
-[node name="cam_bob_player" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_w13eb")
-}
 
 [node name="torch_light_player" type="AnimationPlayer" parent="."]
 libraries = {

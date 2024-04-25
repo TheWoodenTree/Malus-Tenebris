@@ -237,4 +237,4 @@ visible = false
 mesh = SubResource("SphereMesh_w1q8a")
 
 [node name="monster" parent="." instance=ExtResource("26_wekw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.25, -18.5, -58.75)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.25, -22.75, -58.75)

@@ -51,7 +51,7 @@ func set_to_beyond_max_effect(time: float):
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", VIGNETTE_SOFTNESS_HC, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", PLAYER_SPEED_MULT_HC, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", CAM_SENS_MULT_HC, time / 2.0)
-	tween.parallel().tween_property(Global.player.cam, "bob_frequency_multiplier", CAM_BOB_FREQ_MULT_HC, time / 2.0)
+	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", CAM_BOB_FREQ_MULT_HC, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "soft_movement_weight", 0.01, time / 2.0)
 	tween.tween_callback(set.bind("being_tweened", false))
 
@@ -63,7 +63,7 @@ func set_to_max_effect(time: float):
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", VIGNETTE_SOFTNESS_SC, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", PLAYER_SPEED_MULT_SC, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", CAM_SENS_MULT_SC, time / 2.0)
-	tween.parallel().tween_property(Global.player.cam, "bob_frequency_multiplier", CAM_BOB_FREQ_MULT_SC, time / 2.0)
+	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", CAM_BOB_FREQ_MULT_SC, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "soft_movement_weight", 0.025, time / 2.0)
 	tween.tween_callback(set.bind("being_tweened", false))
 
@@ -75,7 +75,7 @@ func set_to_min_effect(time: float):
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", VIGNETTE_SOFTNESS_DEF, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", 1.0, time / 2.0)
-	tween.parallel().tween_property(Global.player.cam, "bob_frequency_multiplier", 1.0, time / 2.0)
+	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "soft_movement_weight", 1.0, time / 2.0)
 	tween.tween_callback(set.bind("being_tweened", false))
 
@@ -91,6 +91,6 @@ func release_override(time: float):
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", vignette_softness, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", 1.0, time / 2.0)
-	tween.parallel().tween_property(Global.player.cam, "bob_frequency_multiplier", 1.0, time / 2.0)
+	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "soft_movement_weight", 1.0, time / 2.0)
 	tween.tween_callback(func (): being_tweened = false; override_effect_scale = false)

@@ -1,11 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=35 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_d5ndp"]
 [ext_resource type="PackedScene" uid="uid://bwtgi3d6g0byh" path="res://source/actors/building pieces/archways/archway_w_door.tscn" id="2_t4mc1"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_24mv6"]
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="4_gdnmn"]
-[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="5_141fm"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="5_co5wr"]
 [ext_resource type="PackedScene" uid="uid://d0k38qb725eo3" path="res://source/actors/building pieces/archways/large_archway.tscn" id="8_e1mmp"]
 [ext_resource type="Script" path="res://source/actors/rooms/audio_area.gd" id="9_3ehge"]
@@ -316,14 +315,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29, 0.
 
 [node name="large_stone_arch" parent="." instance=ExtResource("8_e1mmp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.25, 0.5, 0)
-material = ExtResource("5_141fm")
 
 [node name="large_stone_arch3" parent="." instance=ExtResource("8_e1mmp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.25, 0.5, 0)
 
 [node name="large_stone_arch4" parent="." instance=ExtResource("8_e1mmp")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -20.25, 0.5, 0)
-material = ExtResource("5_141fm")
 
 [node name="large_stone_arch2" parent="." instance=ExtResource("8_e1mmp")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 25.25, 0.5, 0)
@@ -379,7 +376,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40.5, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, -4.25)
 size = Vector3(5, 5, 1)
 sound = ExtResource("11_h27ph")
-sound_player_3d_position = Vector3(0, 0, 0)
 amplify = 12.0
 
 [node name="large_table" parent="." instance=ExtResource("12_tfdum")]

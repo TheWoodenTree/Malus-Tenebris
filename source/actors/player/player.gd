@@ -33,15 +33,13 @@ var scripted_event: bool = false
 var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn")
 
 @onready var head = $head_controller
-@onready var cam = $head_controller/camera
-@onready var torch_cam = $head_controller/camera/viewport_cont/torch_cam_viewport/torch_cam
-@onready var interact_ray = $head_controller/camera/interact_raycast
-@onready var torch_pos = $head_controller/camera/torch_pos
+@onready var bob_controller = $head_controller/bob_controller
+@onready var cam = $head_controller/bob_controller/camera
+@onready var torch_cam = $head_controller/bob_controller/camera/viewport_cont/torch_cam_viewport/torch_cam
+@onready var interact_ray = $head_controller/bob_controller/camera/interact_raycast
+@onready var torch_pos = $head_controller/bob_controller/camera/torch_pos
 @onready var light = $head_controller/base_light
-@onready var cam_starting_pos = $head_controller/cam_starting_pos
-@onready var cam_look_at_pos = $head_controller/cam_starting_pos/cam_look_at_pos
-@onready var held_item_marker = $head_controller/camera/held_item_marker
-@onready var look_at_ray = $head_controller/look_at_dir
+@onready var held_item_marker = $head_controller/bob_controller/camera/held_item_marker
 @onready var noise_player = $noise_player
 @onready var rucksack_player = $rucksack_player
 @onready var fear_player = $fear_player
@@ -91,6 +89,8 @@ func _process(_delta: float) -> void:
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
 		time_when_started_moving = Time.get_ticks_msec()
+		bob_controller.bob_timer.seek(0.0)
+		bob_controller.bob_timer.play("timer")
 	
 	if not in_menu:
 		var collider = interact_ray.get_collider()

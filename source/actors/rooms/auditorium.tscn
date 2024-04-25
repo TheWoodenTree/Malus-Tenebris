@@ -248,12 +248,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.25, 1.5, 0)
 
 [node name="standing_lamp" parent="." index="73" instance=ExtResource("13_nk36g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 1.5, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 1.5, 4.5)
 default_range = 15.0
 shadow_mode = 1
 
 [node name="standing_lamp2" parent="." index="74" instance=ExtResource("13_nk36g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 1.5, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 1.5, -4.5)
 default_range = 15.0
 shadow_mode = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cv4ajx80ijgv5"]
+[gd_scene load_steps=20 format=3 uid="uid://cv4ajx80ijgv5"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_xg01o"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_7myfj"]
@@ -12,6 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://ctcrs3lo5h6fa" path="res://source/actors/interactables/scroll_1.tscn" id="10_vxymn"]
 [ext_resource type="PackedScene" uid="uid://cb8yg3bimqnfx" path="res://source/assets/ui/notes/prisoner_manifest.tscn" id="11_606sy"]
 [ext_resource type="ArrayOccluder3D" uid="uid://btm7ywo88m235" path="res://source/actors/rooms/occluders/holding_cells.occ" id="12_m3r45"]
+[ext_resource type="PackedScene" uid="uid://dtgqm415q82gw" path="res://source/actors/decor/debris/rubble_3.tscn" id="13_dksqf"]
+[ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="14_susl1"]
+[ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="15_jqow7"]
+[ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="16_dswjm"]
+[ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="17_0yxfj"]
+[ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="18_ti2bc"]
+[ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="19_l165h"]
 
 [node name="holding_cells" instance=ExtResource("1_xg01o")]
 
@@ -64,9 +71,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1, 1.5)
 
 [node name="small_cell" parent="cells" index="0" instance=ExtResource("5_ngfyn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0, 12)
+door_interactable_override = 2
 
 [node name="small_cell2" parent="cells" index="1" instance=ExtResource("5_ngfyn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, 12)
+door_interactable_override = 2
 
 [node name="chair" parent="decor" index="0" instance=ExtResource("7_wfmr5")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -4.5, 0, 3)
@@ -96,3 +105,33 @@ label = ExtResource("11_606sy")
 
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("12_m3r45")
+
+[node name="rubble_3" parent="." index="9" instance=ExtResource("13_dksqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5.75)
+
+[node name="rubble_1" parent="." index="10" instance=ExtResource("14_susl1")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4.5, 0, 4)
+
+[node name="chain_loop" parent="." index="11" instance=ExtResource("15_jqow7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, 11)
+
+[node name="chain_loop2" parent="." index="12" instance=ExtResource("15_jqow7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.5, 2.5, 11)
+
+[node name="chain_loop3" parent="." index="13" instance=ExtResource("15_jqow7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 2.5, 11)
+
+[node name="ink_pot_w_pen" parent="." index="14" instance=ExtResource("16_dswjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 1.5, 5.5)
+
+[node name="double_crate" parent="." index="15" instance=ExtResource("17_0yxfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 0, 2)
+
+[node name="saw" parent="." index="16" instance=ExtResource("18_ti2bc")]
+transform = Transform3D(-0.927634, 0, -0.37349, 0, 1, 0, 0.37349, 0, -0.927634, 4.48886, 1.25, 2.5)
+
+[node name="double_crate2" parent="." index="17" instance=ExtResource("17_0yxfj")]
+transform = Transform3D(0.995575, 0, -0.0939693, 0, 1, 0, 0.0939693, 0, 0.995575, 3.32343, 0, 10.8781)
+
+[node name="sm_stacked_planks_3" parent="." index="18" instance=ExtResource("19_l165h")]
+transform = Transform3D(0.486793, 0, -0.873517, 0, 1, 0, 0.873517, 0, 0.486793, 4.8216, 0, 8.69923)

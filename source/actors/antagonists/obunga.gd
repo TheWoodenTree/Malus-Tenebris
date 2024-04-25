@@ -17,6 +17,7 @@ var look_at_pos: Vector3 = Vector3(0.0, 0.0, 1.0)
 @onready var anim_tree = $anim_tree
 @onready var sound_player = $sound_player
 @onready var footstep_player = $footstep_player
+@onready var spear = $spear
 
 
 func _ready():
@@ -118,6 +119,7 @@ func play_sound_one_shot(sound: AudioStream):
 
 func walk_in_servants_quarters_event(end_position: Vector3):
 	rotation.y = 0.0
+	spear.visible = false
 	scripted_event = true
 	do_move = true
 	var tween: Tween = get_tree().create_tween()
