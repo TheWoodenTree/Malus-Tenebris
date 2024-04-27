@@ -45,14 +45,38 @@ text = "Settings
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="screen_mode_dropdown" parent="cont/v_box_cont/v_box_cont" instance=ExtResource("2_3txbk")]
+[node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont/v_box_cont"]
 layout_mode = 2
-size_flags_horizontal = 0
+
+[node name="screen_mode_dropdown" parent="cont/v_box_cont/v_box_cont/h_box_cont" instance=ExtResource("2_3txbk")]
+layout_mode = 2
+size_flags_horizontal = 2
 text = "Screen Mode"
 script = ExtResource("4_0g71k")
 dropdown_option_names = Array[String](["Windowed", "Fullscreen", "Borderless Fullscreen"])
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont/v_box_cont/v_box_cont/h_box_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="master_volume" type="Label" parent="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Master Volume"
+
+[node name="volume_slider" type="HSlider" parent="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.25
 
 [node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("5_vt8yh")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[connection signal="value_changed" from="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont/volume_slider" to="." method="_on_volume_slider_value_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://7rhkd1sxw43r"]
+[gd_scene load_steps=52 format=3 uid="uid://7rhkd1sxw43r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_r3ajh"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="2_xlfra"]
@@ -42,26 +42,13 @@
 [ext_resource type="PackedScene" uid="uid://dni5omncbt3bp" path="res://source/actors/decor/kitchen/bowl_2.tscn" id="44_y63gc"]
 [ext_resource type="PackedScene" uid="uid://bctdw41uh664" path="res://source/actors/decor/kitchen/bowl_3.tscn" id="45_61jt3"]
 [ext_resource type="PackedScene" uid="uid://ctah2h6vefugt" path="res://source/actors/decor/kitchen/plate_3.tscn" id="46_5jqbm"]
-[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="46_o7rtg"]
-[ext_resource type="Script" path="res://source/actors/interactables/larder_key.gd" id="47_1bwlj"]
 [ext_resource type="PackedScene" uid="uid://bxeqhg7y7wy06" path="res://source/actors/decor/misc/pots/tall_pot.tscn" id="47_iu47q"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="48_604ch"]
-[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="48_l4m3t"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cl7imk76s8ugw" path="res://source/actors/rooms/occluders/kitchen.occ" id="49_gii5n"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="49_h2ql1"]
-[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="50_dnunh"]
 [ext_resource type="Script" path="res://source/actors/rooms/monster_crouch_area.gd" id="51_qocnc"]
 [ext_resource type="PackedScene" uid="uid://d2o05ytbeogcx" path="res://source/actors/misc/sound_trigger.tscn" id="52_ppil4"]
 [ext_resource type="AudioStream" uid="uid://dky8q3668wlci" path="res://source/assets/sounds/horror_sounds/jumpscare.ogg" id="53_8gr7f"]
 [ext_resource type="Script" path="res://source/actors/rooms/event_trigger.gd" id="54_ffjji"]
-
-[sub_resource type="Resource" id="Resource_mnbri"]
-script = ExtResource("49_h2ql1")
-name = "Larder Key"
-texture = ExtResource("50_dnunh")
-pickup_sound = ExtResource("48_l4m3t")
-hold_rotation_offset = Vector3(0, 200, 90)
-hold_scale_multiplier = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5yokh"]
 size = Vector3(1, 4.25, 3)
@@ -425,12 +412,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0.5
 [node name="monster_start_point" type="Marker3D" parent="." index="108"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.75, 0.5, -1.25)
 
-[node name="key" parent="." index="109" instance=ExtResource("46_o7rtg")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -11.75, 0.75, -6.25)
-script = ExtResource("47_1bwlj")
-item_data = SubResource("Resource_mnbri")
-
-[node name="monster_crouch_area" type="Area3D" parent="." index="110"]
+[node name="monster_crouch_area" type="Area3D" parent="." index="109"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.75, -11.75)
 collision_layer = 0
 collision_mask = 4
@@ -440,7 +422,7 @@ script = ExtResource("51_qocnc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.875, -0.25)
 shape = SubResource("BoxShape3D_5yokh")
 
-[node name="monster_crouch_area2" type="Area3D" parent="." index="111"]
+[node name="monster_crouch_area2" type="Area3D" parent="." index="110"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 0.75, -11.75)
 collision_layer = 0
 collision_mask = 4
@@ -450,16 +432,16 @@ script = ExtResource("51_qocnc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.875, -0.25)
 shape = SubResource("BoxShape3D_5yokh")
 
-[node name="look_at_monster_point" type="Marker3D" parent="." index="112"]
+[node name="look_at_monster_point" type="Marker3D" parent="." index="111"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 3, -10)
 
-[node name="sound_trigger" parent="." index="113" instance=ExtResource("52_ppil4")]
+[node name="sound_trigger" parent="." index="112" instance=ExtResource("52_ppil4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.25, -12)
 size = Vector3(0.1, 5, 3)
 sound = ExtResource("53_8gr7f")
 triggered_by = "Monster"
 
-[node name="event_trigger" type="Area3D" parent="." index="114"]
+[node name="event_trigger" type="Area3D" parent="." index="113"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.5, -12)
 collision_layer = 0
 collision_mask = 4

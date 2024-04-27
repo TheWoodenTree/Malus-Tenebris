@@ -52,6 +52,7 @@ signal world_ready
 
 
 func _ready() -> void:
+	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(0.25) - 5.0
 	if debug_no_title_screen:
 		load_world_and_player()
 	else:
@@ -65,30 +66,33 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$Label.text = str(Engine.get_frames_per_second())
-	if Input.is_action_just_pressed("debug2"):
-		Global.player.fear_player.play();
-		var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from(-50.0)
-		tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from(20500)
-		AfflictionEffectController.set_to_max_effect(4.0)
+	#if Input.is_action_just_pressed("debug2"):
+	#	Global.player.fear_player.play();
+	#	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	#	tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from(-50.0)
+	#	tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from(20500)
+	#	AfflictionEffectController.set_to_max_effect(4.0)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Global.mouse_locked:
-			Global.unlock_mouse()
-		else:
-			Global.lock_mouse()
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#if Global.mouse_locked:
+			#Global.unlock_mouse()
+		#else:
+			#Global.lock_mouse()
 	
 	#if Input.is_action_just_pressed("debug2"):
 	#	get_viewport().get_texture().get_image().save_png("C:\\Users\\Aaron Hall\\Desktop\\image.png")
 			
-	if Input.is_action_just_pressed("tilde"):
-		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	#if Input.is_action_just_pressed("tilde"):
+		#if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		#else:
+			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 	if Input.is_action_just_pressed("pause"):
-		ui.display_menu(ui.pause_menu)
+		if ui.menus.open_menus.size() > 0 and ui.menus.back != title_screen:
+			ui.remove_menu()
+		else:
+			ui.display_menu(ui.pause_menu)
 
 
 func load_title_screen():

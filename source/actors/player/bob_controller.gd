@@ -35,20 +35,6 @@ func _process(_delta):
 		elif Global.player.global_input_dir != Vector3.ZERO:
 			_bob()
 	
-	if Input.is_action_just_pressed("debug"):
-		#var tween: Tween = get_tree().create_tween()
-		#tween.tween_property(Global.player, "position:z", 10.0, 5.0).as_relative()
-		#await get_tree().create_timer(2.5).timeout
-		#print('f')
-		#tween.set_speed_scale(0.25)
-		var tween1 = get_tree().create_tween()
-		tween1.tween_property(bob_timer, "speed_scale", 0.0, 5.0)
-		await tween1.finished
-		print('f')
-		await get_tree().create_timer(2.0, false).timeout
-		var tween2 = get_tree().create_tween()
-		tween2.tween_property(bob_timer, "speed_scale", 1.0, 5.0)
-	
 	#var facing_dir: Vector3 = get_facing_dir()
 	#cam_facing_pos = facing_dir * 3.0 + camera.position
 	#cam_stabilize_pos = cam_facing_pos - self.position
@@ -98,8 +84,10 @@ func get_facing_dir():
 	var dir = xz_dir.rotated(vec, camera.rotation.x)
 	return dir
 
+
 # TURBO SCUFFED: Using an animation player to track time because I can set the speed scale for the
-# time on it. Need to have this so I can slow down the speed of the head bobs.
+# time on it. Need to have this so I can slow down the speed of the head bobs. (Tweening the frequency
+# causes rapid bobbing briefly which is not intended)
 func _set_bob_speed_multiplier(multiplier: float):
 	bob_speed_multiplier = multiplier
 	bob_timer.speed_scale = bob_speed_multiplier

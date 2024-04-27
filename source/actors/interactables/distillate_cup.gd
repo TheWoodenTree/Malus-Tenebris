@@ -23,7 +23,7 @@ func _process(_delta):
 				var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
 				Global.ui.hint_popup(doses_left_string, -1)
 			else:
-				Global.ui.hint_popup("Interact to drink the temporary cure", -1)
+				Global.ui.hint_popup("Contains a dose of the cure for the ailment", -1)
 		outline_on = true
 	elif outline_on:
 		mesh.material_overlay.set_shader_parameter("outlineOn", false)

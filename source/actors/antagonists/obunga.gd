@@ -32,9 +32,9 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("enemy_pathfind"):
-		do_move = !do_move
-		anim_tree.set("parameters/locomotion/blend_position", Vector2(1.0, 0.0))
+	#if Input.is_action_just_pressed("enemy_pathfind"):
+	#	do_move = !do_move
+	#	anim_tree.set("parameters/locomotion/blend_position", Vector2(1.0, 0.0))
 	if look_at_player:
 		var bone_transform: Transform3D = skeleton.get_bone_global_pose_no_override(5)
 		bone_transform = bone_transform.looking_at(skeleton.to_local(Global.player.cam.global_position), Vector3.UP, true)
@@ -77,8 +77,8 @@ func _physics_process(delta):
 		#if not is_on_floor():
 		velocity.y -= gravity * delta
 			
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+		#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#	velocity.y = JUMP_VELOCITY
 			
 		if abs(velocity.x) > 0 or abs(velocity.z) > 0:
 			if footstep_timer.time_left > footstep_walk_interval:
