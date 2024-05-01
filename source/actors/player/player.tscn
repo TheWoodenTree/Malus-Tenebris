@@ -96,7 +96,7 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 floor_snap_length = 1.0
 script = ExtResource("1")
-debug_do_tutorials = true
+debug_has_torch = true
 footstep_walk_vol = -25.0
 footstep_sprint_vol = -20.0
 

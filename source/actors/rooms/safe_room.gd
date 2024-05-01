@@ -5,7 +5,7 @@ extends Node3D
 
 
 func _ready():
-	add_to_group("player_detection_areas")
+	safe_room_area.add_to_group("player_detection_areas")
 
 
 func _on_safe_room_area_body_entered(body):

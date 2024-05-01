@@ -26,6 +26,7 @@ var drip_ambience_upside_down: Resource = load("res://source/assets/sounds/ambie
 
 var title_screen_room: Node3D
 var title_screen: Control
+var world: Node3D
 
 var obunga
 
@@ -43,7 +44,6 @@ var obunga
 @onready var ui = $ui
 @onready var nav_update_timer: Timer = Timer.new()
 @onready var debug_affliction_time_left = $timer_label
-var world: Node3D
 
 @export_range(0.0, 2.0) var light_energy_multiplier: float = 1.0
 

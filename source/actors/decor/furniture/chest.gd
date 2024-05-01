@@ -1,10 +1,11 @@
 @tool
 extends Interactable
 
+@export_range(0, 100) var open_angle: int = 0 : set = set_open_angle
+
 var player_dragging: bool = false
 var player_just_started_dragging: bool = false
 var player_just_stopped_dragging: bool = false
-var debug: bool = false
 
 var cam_rot_offset: Vector2 = Vector2.ZERO
 var angular_velocity_last_frame: Vector3 = Vector3.ZERO
@@ -23,8 +24,6 @@ var sound_cooldown_timer: Timer = Timer.new()
 @onready var creak_player = $creak_player
 @onready var close_player = $close_player
 
-@export_range(0, 100) var open_angle: int = 0 : set = set_open_angle
-
 signal moved
 
 
@@ -39,10 +38,6 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
-		if Input.is_action_just_pressed("chest_glitch"):
-			debug = true
-		#if get_parent().get_parent().name == "safe_room":
-		#	print([draggable_body.global_position])
 		if being_looked_at and interactable or player_dragging:
 			mesh.material_overlay.set_shader_parameter("outlineOn", true)
 			if not Global.player.cam.is_connected("cam_rotated", add_torque_to_lid):
@@ -71,11 +66,9 @@ func _physics_process(_delta):
 			creak_player.pitch_scale = lerp(pitch_scale_min, pitch_scale_max, pow(effect_scale, 1.0))
 			if not player_dragging and draggable_body.rotation_degrees.x < 1.0:
 				creak_player.stop()
-				# TODO: Fix
-				if not debug:
-					close_player.play()
+				close_player.play()
 				draggable_body.rotation.x = 0.0
-				draggable_body.sleeping = true
+				#draggable_body.sleeping = true
 			elif not player_dragging and draggable_body.rotation_degrees.x > 99.0: # Broken
 				draggable_body.rotation.x = 100.0
 				draggable_body.angular_velocity = Vector3.ZERO
@@ -117,8 +110,6 @@ func get_draggable_body_angle():
 
 func add_torque_to_lid(offset: Vector2):
 	if player_dragging:
-		offset.x = clamp(offset.x, -0.3, 0.3)
-		offset.y = clamp(offset.y, -0.3, 0.3)
 		cam_rot_offset = offset
 		var torque: Vector3 = Vector3.LEFT * cam_rot_offset.x * 1000.0
 		draggable_body.apply_torque(torque.rotated(Vector3.UP, rotation.y))
