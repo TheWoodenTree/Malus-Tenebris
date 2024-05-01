@@ -2,6 +2,7 @@ extends Menu
 
 
 func _enter_tree():
+	await get_tree().process_frame
 	get_tree().paused = true
 
 

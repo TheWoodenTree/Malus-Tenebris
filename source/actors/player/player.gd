@@ -101,9 +101,9 @@ func _process(_delta: float) -> void:
 	if is_instance_valid(draggable_being_dragged):
 		# Comically long line of code:
 		#var dist_from_touch_point: float = cam.global_position.distance_to(draggable_being_dragged.draggable_body.to_global(draggable_being_dragged.draggable_body.to_local(draggable_touch_position).rotated(draggable_being_dragged.rotation_axis, draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch)))
-		var angle_difference: float = draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch
 		var local_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_local(draggable_touch_position)
-		var rotated_touch_point: Vector3 = local_touch_point.rotated(draggable_being_dragged.rotation_axis, angle_difference)
+		var angle_diff: float = draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch
+		var rotated_touch_point: Vector3 = local_touch_point.rotated(draggable_being_dragged.rotation_axis, angle_diff)
 		var global_rotated_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_global(rotated_touch_point)
 		var dist_from_touch_point: float = cam.global_position.distance_to(global_rotated_touch_point)
 		if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
@@ -338,6 +338,8 @@ func _move(delta):
 	else:
 		velocity = facing_dir * NOCLIP_SPEED * input_dir.length()
 	
+	print(velocity.length())
+	
 	if not noclip_on:
 		velocity.y -= gravity * delta
 	
@@ -365,7 +367,7 @@ func _get_input_dir():
 	dir.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	dir.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
 	
-	return dir
+	return dir.normalized()
 
 
 func play_noise_player():
