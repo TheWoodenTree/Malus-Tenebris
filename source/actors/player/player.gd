@@ -110,7 +110,6 @@ func _process(_delta: float) -> void:
 		var global_rotated_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_global(rotated_touch_point)
 		var dist_from_touch_point: float = cam.global_position.distance_to(global_rotated_touch_point)
 		if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
-			print('g')
 			draggable_being_dragged.set_player_dragging(false)
 			draggable_being_dragged = null
 
@@ -129,10 +128,10 @@ func _handle_input():
 	if Input.is_action_just_pressed("cancel") and held_item and not Global.ui.block_inventory_open:
 		stop_holding_item(true)
 	
-	#if Input.is_action_just_pressed("noclip"):
-	#	noclip_on = !noclip_on
-	#	set_collision_layer_value(2, !noclip_on)
-	#	set_collision_mask_value(1, !noclip_on)
+	if Input.is_action_just_pressed("noclip"):
+		noclip_on = !noclip_on
+		set_collision_layer_value(2, !noclip_on)
+		set_collision_mask_value(1, !noclip_on)
 	
 	if Input.is_action_just_released("interact"):
 		if is_instance_valid(draggable_being_dragged):

@@ -57,6 +57,7 @@ func _input(event: InputEvent) -> void:
 			if upside_down_mode:
 				rot_sign = -1
 			
+			# TODO: FIX THIS
 			if Global.player.draggable_being_dragged:
 				sensitivity_multiplier = CAM_DRAG_SENS_MULTIPLIER
 			
