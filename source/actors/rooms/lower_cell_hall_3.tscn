@@ -277,6 +277,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.25, 0.5, 0)
 [node name="ruboleum_vial" parent="." index="31" instance=ExtResource("10_fcnch")]
 transform = Transform3D(0.567068, 0, 0.823671, 0, 1, 0, -0.823671, 0, 0.567068, -45.9045, 2.4, 0.341764)
 item_data = SubResource("Resource_gf6xt")
+highlight_light_on = true
 
 [node name="books_6" parent="." index="32" instance=ExtResource("14_m1n76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7523, 0.5, 2.82592)

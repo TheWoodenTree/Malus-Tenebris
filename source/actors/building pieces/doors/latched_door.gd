@@ -26,5 +26,5 @@ func on_latch_toggle(latch_locked_: bool):
 	# but open a few degrees
 	if latch_locked:
 		var tween = get_tree().create_tween()
-		tween.tween_property(door_body, "rotation_degrees:y", 0.0, 0.1)
+		tween.tween_property(draggable_body, "rotation_degrees:y", 0.0, 0.1)
 	set_interactable(not latch_locked)

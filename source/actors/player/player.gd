@@ -1,6 +1,7 @@
 extends Character
 
 const NOCLIP_SPEED: float = 20.0
+const MAX_DIST_FROM_DRAGGABLE: float = 5.0
 
 var torch_range = 10.0
 var torch_energy = 0.75
@@ -11,6 +12,9 @@ var input_dir = Vector3.ZERO
 var global_input_dir = Vector3.ZERO
 var global_input_dir_last_frame = Vector3.ZERO
 var max_speed = walk_speed
+
+var draggable_touch_position := Vector3.ZERO
+var draggable_angle_on_touch: float
 
 var torch: Object
 var looking_at: Interactable
@@ -92,6 +96,19 @@ func _process(_delta: float) -> void:
 	if not in_menu:
 		var collider = interact_ray.get_collider()
 		_handle_look_at(collider)
+	
+	# Stop dragging if too far from draggable
+	if is_instance_valid(draggable_being_dragged):
+		# Comically long line of code:
+		#var dist_from_touch_point: float = cam.global_position.distance_to(draggable_being_dragged.draggable_body.to_global(draggable_being_dragged.draggable_body.to_local(draggable_touch_position).rotated(draggable_being_dragged.rotation_axis, draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch)))
+		var angle_difference: float = draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch
+		var local_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_local(draggable_touch_position)
+		var rotated_touch_point: Vector3 = local_touch_point.rotated(draggable_being_dragged.rotation_axis, angle_difference)
+		var global_rotated_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_global(rotated_touch_point)
+		var dist_from_touch_point: float = cam.global_position.distance_to(global_rotated_touch_point)
+		if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
+			draggable_being_dragged.set_player_dragging(false)
+			draggable_being_dragged = null
 
 
 func _physics_process(delta: float) -> void:
@@ -118,15 +135,15 @@ func _handle_input():
 			draggable_being_dragged.set_player_dragging(false)
 			draggable_being_dragged = null
 	
-	if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
-		var instance: RigidBody3D = thrown_item.instantiate()
-		#instance.get_node("mesh").mesh = held_item_mesh
-		Global.world.add_child(instance)
-		instance.global_transform = held_item_mesh.global_transform
-		delete_held_item()
-		await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
-		await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
-		instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
+	#if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
+	#	var instance: RigidBody3D = thrown_item.instantiate()
+	#	#instance.get_node("mesh").mesh = held_item_mesh
+	#	Global.world.add_child(instance)
+	#	instance.global_transform = held_item_mesh.global_transform
+	#	delete_held_item()
+	#	await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
+	#	await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
+	#	instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
 
 
 func _handle_physics_input():
@@ -146,7 +163,7 @@ func _handle_physics_input():
 			if footstep_timer.time_left > footstep_walk_interval / speed_multiplier:
 				footstep_timer.start(footstep_walk_interval)
 	
-	# Turbo scuffed crouching logic (refactor and use state machine instead please)
+	# Turbo scuffed crouching logic (refactor in favor of state machine please)
 	if not Input.is_action_pressed("crouch") and not crouch_trans:
 		if crouching and _can_stand():
 			var crouch_tween = create_tween()
@@ -234,8 +251,11 @@ func set_draggable_being_dragged(draggable: Object):
 	draggable_being_dragged = draggable
 	if draggable_being_dragged:
 		emit_signal("draggable_interacted", draggable_being_dragged)
+		draggable_touch_position = interact_ray.get_collision_point()
+		draggable_angle_on_touch = draggable.get_draggable_body_angle()
 		Global.ui.toggle_draggable_progress_bar(true)
 	else:
+		draggable_touch_position = Vector3.ZERO
 		Global.ui.toggle_draggable_progress_bar(false)
 
 
