@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://btiqf7ymx77it"]
+[gd_scene load_steps=41 format=3 uid="uid://btiqf7ymx77it"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_m44oj"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_118qf"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dxilow4owel0j" path="res://source/actors/building pieces/archways/crawlway.tscn" id="13_me86h"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="14_k10qd"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="15_3d1r4"]
-[ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="16_2xpxm"]
 [ext_resource type="PackedScene" uid="uid://cdwhh8mxom6hc" path="res://source/actors/decor/furniture/shelf.tscn" id="16_agrh4"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="17_fj6dw"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="18_i1ehj"]
@@ -240,7 +239,6 @@ door_tutorial_popup = true
 
 [node name="crawlway2" parent="." index="18" instance=ExtResource("13_me86h")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 0.5, 14.75)
-material = ExtResource("16_2xpxm")
 
 [node name="torch_holder" parent="." index="19" instance=ExtResource("14_k10qd")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.5, 2.5, 16.25)
@@ -289,6 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -14.75)
 
 [node name="torch" parent="sm_table3" index="2" instance=ExtResource("19_3whah")]
 transform = Transform3D(-1.81615e-08, 0.415487, -0.909599, -1, -4.37114e-08, 0, -3.97598e-08, 0.909599, 0.415487, 0, 1.5562, 0)
+enable_highlight_light = true
 
 [node name="sm_table4" parent="." index="34" instance=ExtResource("18_i1ehj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0.5, -13)

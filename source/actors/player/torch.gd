@@ -35,10 +35,10 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 @onready var lit_particles = $lit_fire_particles
 @onready var particle_attractor: GPUParticlesAttractorSphere3D = $particle_attractor
 @onready var interact_area = $interact_area
-@onready var highlight_light = $highlight_light
 
 
 func _ready() -> void:
+	super()
 	init(Type.PICKUP, interact_area)
 	mesh.mesh.surface_get_material(0).albedo_color = Color.WHITE
 	light.omni_range = default_range

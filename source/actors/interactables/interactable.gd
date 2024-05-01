@@ -3,6 +3,10 @@ extends Node3D
 
 enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 
+@export var interactable: bool = true : set = set_interactable
+@export var enable_highlight_light: bool = false: set = _set_enable_highlight_light
+@export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
+
 # Set by child script
 var interactable_type: Type
 
@@ -13,8 +17,11 @@ var outline_on: bool = false
 
 var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
 
-@export var interactable: bool = true : set = set_interactable
-@export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
+@onready var highlight_light = $highlight_light if has_node("highlight_light") else null
+
+
+func _ready():
+	highlight_light.visible = enable_highlight_light
 
 
 # Set this interactable's type and connect its interact_area to its interact function
@@ -38,3 +45,9 @@ func set_interactable(interactable_: bool):
 
 func get_interactable_type():
 	return interactable_type
+
+
+func _set_enable_highlight_light(enable: bool):
+	enable_highlight_light = enable
+	if highlight_light:
+		highlight_light.visible = enable_highlight_light

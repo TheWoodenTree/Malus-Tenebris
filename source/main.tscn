@@ -102,7 +102,6 @@ adjustment_contrast = 1.05
 [node name="main" type="Node"]
 script = ExtResource("4")
 anim_vignette_softness = 1.0
-debug_no_title_screen = true
 
 [node name="effects_player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../post_processing")
@@ -117,7 +116,7 @@ bus = &"Global"
 
 [node name="heartbeat_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8")
-volume_db = -30.07
+volume_db = -30.0
 autoplay = true
 
 [node name="drip_player" type="AudioStreamPlayer" parent="."]

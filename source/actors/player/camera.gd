@@ -57,6 +57,9 @@ func _input(event: InputEvent) -> void:
 			if upside_down_mode:
 				rot_sign = -1
 			
+			if Global.player.draggable_being_dragged:
+				sensitivity_multiplier = CAM_DRAG_SENS_MULTIPLIER
+			
 			var mouse_y_offset = event.relative.y * Global.mouse_sens * sensitivity_multiplier
 			var x_rot_offset = deg_to_rad(mouse_y_offset)
 			rotation_offset.x = x_rot_offset

@@ -45,7 +45,6 @@ shader_parameter/outlineOn = false
 script = ExtResource("2_8rstg")
 item_data = null
 name_override = ""
-highlight_light_on = false
 count = 1
 
 [node name="mesh" parent="." index="0"]
@@ -53,13 +52,3 @@ layers = 4
 material_overlay = SubResource("ShaderMaterial_kuelw")
 
 [node name="pickup_player" type="AudioStreamPlayer3D" parent="." index="2"]
-
-[node name="highlight_light" type="OmniLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102692, 0)
-light_energy = 0.2
-light_size = 3.0
-light_specular = 0.0
-distance_fade_enabled = true
-distance_fade_begin = 8.0
-omni_range = 3.0
-omni_attenuation = 0.2

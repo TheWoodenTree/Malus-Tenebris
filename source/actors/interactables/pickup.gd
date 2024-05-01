@@ -4,15 +4,14 @@ extends Interactable
 @onready var mesh = $mesh
 @onready var pickup_player = $pickup_player
 @onready var interact_area = $interact_area
-@onready var highlight_light = $highlight_light
 
 @export var item_data: ItemData
 @export var name_override: String = ""
-@export var highlight_light_on: bool = false
 @export_range(0, 99) var count: int = 1
 
 
 func _ready():
+	super()
 	init(Type.PICKUP, interact_area)
 	if item_data:
 		item_data.mesh = mesh.duplicate()
@@ -22,7 +21,6 @@ func _ready():
 	if name_override:
 		item_data.name = name_override
 	
-	highlight_light.visible = highlight_light_on
 	item_data.count = count
 	
 	if shader_mode == "Highlight":

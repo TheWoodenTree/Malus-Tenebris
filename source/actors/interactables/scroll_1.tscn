@@ -16,6 +16,7 @@ render_priority = 0
 shader = ExtResource("2_bloqp")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c44fu"]
 _surfaces = [{

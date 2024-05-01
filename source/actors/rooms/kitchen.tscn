@@ -258,7 +258,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.5, -15.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -10.25)
 
 [node name="scroll_3" parent="." index="60" instance=ExtResource("28_5dbn1")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -8.99389, 2, -11.4264)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.99389, 2, -9.1764)
 label = ExtResource("29_r0ce2")
 
 [node name="torch_holder" parent="." index="61" instance=ExtResource("22_12ae0")]

@@ -54,7 +54,6 @@ var reverse_z_dist: bool = false
 
 signal moved
 
-#TODO: STOP DOOR DRAGGING WHEN PLAYER IS CERTAIN DISTANCE FROM DOOR
 
 func _ready():
 	init(Type.DRAGGABLE, interact_area)
@@ -227,9 +226,10 @@ func attempt_unlock():
 	key.get_node("mesh").layers = 1
 	key_anim_player.play(anim_name)
 	
+	# TODO: Remove
 	if correct_key and key_name == "Larder":
-		get_parent().get_parent().get_parent().get_node("lower_prison_hallway_2/misc/archway_w_door_no_window/door/draggable_body").rotation_degrees.y = 85.0
-		await get_tree().create_timer(2.0, false).timeout
+		get_parent().get_parent().get_parent().get_node("lower_prison_hallway_2/misc/archway_w_door_no_window/door/door_body").rotation_degrees.y = 85.0
+		await get_tree().create_timer(1.0, false).timeout
 		Global.monster.global_position = get_parent().get_parent().get_node("monster_start_point").global_position
 		Global.monster.kitchen_encounter_event()
 		await get_tree().create_timer(1.0, false).timeout
@@ -242,6 +242,7 @@ func attempt_unlock():
 		set_hinge_limits(open_to_angle)
 		if not Global.player.first_door_unlocked:
 			Global.player.first_door_unlocked = false
+		# TODO: Remove
 		if not key_name == "Larder":
 			Global.ui.hint_popup("Unlocked", 2.0)
 	else:

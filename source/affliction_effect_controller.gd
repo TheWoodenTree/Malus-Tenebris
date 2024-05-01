@@ -49,6 +49,7 @@ func set_to_beyond_max_effect(time: float):
 	being_tweened = true
 	tween.tween_property(Global.zoom_shader, "shader_parameter/intensity", ZOOM_INTENSITY_HC, time)
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", VIGNETTE_SOFTNESS_HC, time)
+	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/variationIntensity", 1.0, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", PLAYER_SPEED_MULT_HC, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", CAM_SENS_MULT_HC, time / 2.0)
 	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", CAM_BOB_FREQ_MULT_HC, time / 2.0)
@@ -61,6 +62,7 @@ func set_to_max_effect(time: float):
 	being_tweened = true
 	tween.tween_property(Global.zoom_shader, "shader_parameter/intensity", ZOOM_INTENSITY_SC, time)
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", VIGNETTE_SOFTNESS_SC, time)
+	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/variationIntensity", 0.8, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", PLAYER_SPEED_MULT_SC, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", CAM_SENS_MULT_SC, time / 2.0)
 	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", CAM_BOB_FREQ_MULT_SC, time / 2.0)
@@ -73,6 +75,7 @@ func set_to_min_effect(time: float):
 	being_tweened = true
 	tween.tween_property(Global.zoom_shader, "shader_parameter/intensity", ZOOM_INTENSITY_DEF, time)
 	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", VIGNETTE_SOFTNESS_DEF, time)
+	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/variationIntensity", 0.0, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.player.cam, "sensitivity_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.player.bob_controller, "bob_speed_multiplier", 1.0, time / 2.0)

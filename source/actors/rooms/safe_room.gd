@@ -1,6 +1,11 @@
 extends Node3D
 
 @onready var music_player = $music_player
+@onready var safe_room_area = $safe_room_area
+
+
+func _ready():
+	add_to_group("player_detection_areas")
 
 
 func _on_safe_room_area_body_entered(body):

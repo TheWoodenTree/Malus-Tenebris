@@ -16,3 +16,14 @@ collision_mask = 0
 script = ExtResource("3_3f3on")
 
 [node name="collision_shape" type="CollisionShape3D" parent="interact_area"]
+
+[node name="highlight_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102692, 0)
+visible = false
+light_energy = 0.2
+light_size = 3.0
+light_specular = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 3.0
+omni_attenuation = 0.2

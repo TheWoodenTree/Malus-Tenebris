@@ -7,12 +7,20 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 uniform vec4 color : source_color;
 uniform float multiplier = 0.2;
-uniform float softness = 3;
+uniform float softness = 2;
 uniform float intensity = 10.0;
+uniform float variationIntensity = 0.0;
+
+float calculateOffset() {
+	float offset = atan(2.0 * sin(TIME * 3.0)) / (atan(2.0) * 5.0);
+	return offset * variationIntensity;
+}
 
 void fragment()
 {
 	float val = distance(UV, vec2(0.5));
-	COLOR = vec4(color.rgb, smoothstep(multiplier, softness, val));
+	float softness_final = softness;// - calculateOffset();
+	float multiplier_final = multiplier;// - calculateOffset();
+	COLOR = vec4(color.rgb, smoothstep(multiplier, softness_final, val));
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/vignette_shader.tres"

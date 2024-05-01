@@ -2,6 +2,7 @@ extends Character
 
 const NOCLIP_SPEED: float = 20.0
 const MAX_DIST_FROM_DRAGGABLE: float = 5.0
+const MAX_AFFLICTION_TIMER_ALLOW_DRINK: float = 700.0
 
 var torch_range = 10.0
 var torch_energy = 0.75
@@ -34,6 +35,8 @@ var noclip_on: bool = false
 var picked_up_larder_key: bool = false
 var scripted_event: bool = false
 
+var gulp_sound: AudioStream = preload("res://source/assets/sounds/liquid/gulp.ogg")
+var sigh_of_relief_sound: AudioStream = preload("res://source/assets/sounds/player_character/sigh_of_relief.ogg")
 var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn")
 
 @onready var head = $head_controller
@@ -107,6 +110,7 @@ func _process(_delta: float) -> void:
 		var global_rotated_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_global(rotated_touch_point)
 		var dist_from_touch_point: float = cam.global_position.distance_to(global_rotated_touch_point)
 		if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
+			print('g')
 			draggable_being_dragged.set_player_dragging(false)
 			draggable_being_dragged = null
 
@@ -125,10 +129,10 @@ func _handle_input():
 	if Input.is_action_just_pressed("cancel") and held_item and not Global.ui.block_inventory_open:
 		stop_holding_item(true)
 	
-	if Input.is_action_just_pressed("noclip"):
-		noclip_on = !noclip_on
-		set_collision_layer_value(2, !noclip_on)
-		set_collision_mask_value(1, !noclip_on)
+	#if Input.is_action_just_pressed("noclip"):
+	#	noclip_on = !noclip_on
+	#	set_collision_layer_value(2, !noclip_on)
+	#	set_collision_mask_value(1, !noclip_on)
 	
 	if Input.is_action_just_released("interact"):
 		if is_instance_valid(draggable_being_dragged):
@@ -175,8 +179,10 @@ func _handle_physics_input():
 			
 			crouching = false
 			crouch_trans = true
+			get_tree().call_group("player_detection_areas", "set_process_mode", Node.PROCESS_MODE_DISABLED)
 			standing_collision.disabled = false
 			crouching_collision.disabled = true
+			get_tree().call_group("player_detection_areas", "set_process_mode", Node.PROCESS_MODE_INHERIT)
 			crouch_tween.tween_callback(Callable(self, "set").bind("crouch_trans", false))
 	
 	elif Input.is_action_pressed("crouch") and not crouch_trans:
@@ -190,8 +196,10 @@ func _handle_physics_input():
 			
 			crouching = true
 			crouch_trans = true
-			standing_collision.disabled = true
+			get_tree().call_group("player_detection_areas", "set_process_mode", Node.PROCESS_MODE_DISABLED)
 			crouching_collision.disabled = false
+			standing_collision.disabled = true
+			get_tree().call_group("player_detection_areas", "set_process_mode", Node.PROCESS_MODE_INHERIT)
 			crouch_tween.tween_callback(Callable(self,"set").bind("crouch_trans", false))
 			emit_signal("crouched")
 	
@@ -257,6 +265,11 @@ func set_draggable_being_dragged(draggable: Object):
 	else:
 		draggable_touch_position = Vector3.ZERO
 		Global.ui.toggle_draggable_progress_bar(false)
+
+
+func play_sound_one_shot(sound: AudioStream):
+	noise_player.stream = sound
+	noise_player.play()
 
 
 func is_holding_item(item_name: String):
@@ -338,8 +351,6 @@ func _move(delta):
 	else:
 		velocity = facing_dir * NOCLIP_SPEED * input_dir.length()
 	
-	print(velocity.length())
-	
 	if not noclip_on:
 		velocity.y -= gravity * delta
 	
@@ -368,10 +379,6 @@ func _get_input_dir():
 	dir.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
 	
 	return dir.normalized()
-
-
-func play_noise_player():
-	noise_player.play()
 
 
 func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):

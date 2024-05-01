@@ -31,7 +31,7 @@ layout_mode = 2
 
 [node name="name" type="Label" parent="cont/v_box_cont"]
 layout_mode = 2
-text = "A game by ---"
+text = "A game by Aaron Hall"
 
 [node name="separator" type="HSeparator" parent="cont/v_box_cont"]
 custom_minimum_size = Vector2(0, 16)
