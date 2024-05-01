@@ -21,10 +21,10 @@ custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="v_box_cont" type="VBoxContainer" parent="cont"]
 layout_mode = 2
@@ -49,6 +49,11 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_sepu1")
+
+[node name="thanks_dr_ware" type="Label" parent="cont/v_box_cont"]
+layout_mode = 2
+text = "Special thanks to Dr. Stephen Ware for helping guide development of this project toward this first demo build"
+autowrap_mode = 2
 
 [node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("3_o7c11")]
 layout_mode = 2
