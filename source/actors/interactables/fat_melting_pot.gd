@@ -4,18 +4,19 @@ var fat_being_melted: bool = false
 var fat_melted: bool = false
 var key_dipped: bool = false
 
-@onready var mesh = $mesh
 @onready var fat = $fat
 @onready var key = $key
 @onready var key_pickup_player = $key_pickup_player
 @onready var anim_player = $anim_player
 @onready var interact_area = $interact_area
+@onready var mesh = $mesh
 
 @export var key_item_data: ItemData
 
 
 func _ready():
-	init(Type.MISC, interact_area)
+	super()
+	init(Type.MISC, interact_area, [mesh])
 	key_item_data.mesh = key.get_node("mesh").duplicate()
 
 

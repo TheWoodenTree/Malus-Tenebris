@@ -25,7 +25,6 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 
 @onready var flicker_low = default_energy / flicker_intensity
 @onready var flicker_high = default_energy * flicker_intensity
-@onready var mesh = $mesh
 @onready var material = $mesh.material_overlay
 @onready var particles = $fire_particles
 @onready var light = $fire_particles/light
@@ -35,11 +34,12 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 @onready var lit_particles = $lit_fire_particles
 @onready var particle_attractor: GPUParticlesAttractorSphere3D = $particle_attractor
 @onready var interact_area = $interact_area
+@onready var mesh = $mesh
 
 
 func _ready() -> void:
 	super()
-	init(Type.PICKUP, interact_area)
+	init(Type.PICKUP, interact_area, [mesh])
 	mesh.mesh.surface_get_material(0).albedo_color = Color.WHITE
 	light.omni_range = default_range
 	light.light_energy = default_energy

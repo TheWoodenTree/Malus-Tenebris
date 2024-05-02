@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqlc1s8bbnegp"]
+[gd_scene load_steps=10 format=3 uid="uid://dqlc1s8bbnegp"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_wh2hv"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="2"]
@@ -14,44 +14,6 @@ texture = ExtResource("4_hhjbt")
 pickup_sound = ExtResource("2")
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
-
-[sub_resource type="Shader" id="Shader_j84tw"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2j1c"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_j84tw")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_p2g6y"]
 _surfaces = [{
@@ -92,7 +54,6 @@ height = 1.5
 item_data = SubResource("Resource_53vmw")
 
 [node name="mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_n2j1c")
 mesh = SubResource("ArrayMesh_bith5")
 
 [node name="collision_shape" parent="interact_area" index="0"]

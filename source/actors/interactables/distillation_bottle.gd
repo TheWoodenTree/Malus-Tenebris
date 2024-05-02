@@ -1,16 +1,17 @@
 extends Interactable
 
-@onready var mesh = $mesh
 @onready var interact_area = $interact_area
 @onready var pour_particles = $pour_particles
 @onready var pour_anim_player = $pour_anim_player
 @onready var vial = $vial
+@onready var mesh = $mesh
 
 signal vial_used
 
 
 func _ready():
-	init(Type.MISC, interact_area)
+	super()
+	init(Type.MISC, interact_area, [mesh])
 
 
 func _process(_delta):

@@ -16,6 +16,7 @@ render_priority = 0
 shader = ExtResource("2_cn402")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rj4hj"]
 _surfaces = [{
@@ -89,6 +90,7 @@ stream_2/weight = 1.0
 
 [node name="scroll_1" type="Node3D"]
 script = ExtResource("1_leclr")
+enable_highlight_sheen = true
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.137109)

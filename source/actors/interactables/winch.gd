@@ -34,7 +34,7 @@ func _enter_tree():
 
 
 func _ready():
-	init(Type.MISC, interact_area)
+	init(Type.MISC, interact_area, [wheel, chains, support])
 	crank.visible = has_crank
 	if has_crank:
 		crank.position.x = -0.15

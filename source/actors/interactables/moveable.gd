@@ -8,18 +8,19 @@ extends Interactable
 # to still be off
 var _interactable: bool = interactable
 
-@onready var mesh = $mesh
 @onready var interact_area = $interact_area
 @onready var static_body = $static_body
 @onready var moveable_collision_blocker = $moveable_collision_blocker
 @onready var moveable_collision_blocker_shape = $moveable_collision_blocker/collision_shape
 @onready var no_interact_area = $no_interact_area
 @onready var move_player = $static_body/move_player
+@onready var mesh = $mesh
 
 
 func _ready():
+	super()
 	if not Engine.is_editor_hint():
-		init(Type.MISC, interact_area)
+		init(Type.MISC, interact_area, [mesh])
 	update_move_to_collision()
 
 

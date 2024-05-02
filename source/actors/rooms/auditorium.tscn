@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://fu1p001b3o4f"]
+[gd_scene load_steps=25 format=3 uid="uid://fu1p001b3o4f"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_nk2qw"]
 [ext_resource type="PackedScene" uid="uid://cx5obigsawn47" path="res://source/actors/building pieces/basic/clean_tile_floor.tscn" id="1_srpsl"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="20_kfnwf"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="21_glvh1"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="22_nuspq"]
+[ext_resource type="PackedScene" uid="uid://d2o05ytbeogcx" path="res://source/actors/misc/sound_trigger.tscn" id="23_vmmtl"]
+[ext_resource type="AudioStream" uid="uid://dynat251k3dmd" path="res://source/assets/sounds/ambience/drones/drone_hits.ogg" id="24_orkkv"]
 
 [node name="auditorium" instance=ExtResource("1_nk2qw")]
 
@@ -337,3 +339,8 @@ size = Vector3(5, 5, 1)
 
 [node name="reg_archway" parent="." index="99" instance=ExtResource("22_nuspq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.5, 0.5, -14.5)
+
+[node name="sound_trigger" parent="." index="100" instance=ExtResource("23_vmmtl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0)
+size = Vector3(1, 5, 5)
+sound = ExtResource("24_orkkv")

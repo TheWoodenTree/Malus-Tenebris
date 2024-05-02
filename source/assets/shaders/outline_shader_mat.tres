@@ -1,10 +1,12 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnmhob8uonjij"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cnmhob8uonjij"]
 
 [ext_resource type="Shader" uid="uid://dqtv12rd2pdiu" path="res://source/assets/shaders/outline_shader.tres" id="1"]
+[ext_resource type="Material" uid="uid://13gbugw7ytck" path="res://source/assets/shaders/highlight_sheen_mat.tres" id="1_ktwvr"]
 
 [resource]
 resource_local_to_scene = true
 render_priority = 0
+next_pass = ExtResource("1_ktwvr")
 shader = ExtResource("1")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false

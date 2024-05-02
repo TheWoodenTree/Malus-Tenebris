@@ -48,6 +48,7 @@ var reverse_z_dist: bool = false
 @onready var key = $door_body/key # Parent necessary because of a bug relating to scale when setting global_rotation
 @onready var collision_shape = $door_body/collision_shape
 @onready var hinge = $door_body/hinge
+@onready var mesh = $door_body/door
 
 @export var pitch_scale_min: float = 0.8
 @export var pitch_scale_max: float = 1.0
@@ -56,7 +57,7 @@ signal moved
 
 
 func _ready():
-	init(Type.DRAGGABLE, interact_area)
+	init(Type.DRAGGABLE, interact_area, [mesh])
 	sound_cooldown_timer.one_shot = true
 	sound_cooldown_timer.wait_time = 0.3
 	add_child(sound_cooldown_timer)

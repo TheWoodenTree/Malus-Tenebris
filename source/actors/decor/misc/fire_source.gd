@@ -5,8 +5,8 @@ var burning_player: AudioStreamPlayer3D
 
 @onready var light = $fire/light
 @onready var particles = $fire/fire_particles
-@onready var mesh = $mesh
 @onready var interact_area = $interact_area
+@onready var mesh = $mesh
 
 @export var default_range: float = 12.0
 @export var default_energy: float = 0.75
@@ -15,11 +15,12 @@ var burning_player: AudioStreamPlayer3D
 
 
 func _ready() -> void:
+	super()
 	if not Engine.is_editor_hint():
 		if has_node("interact_area"):
 			interact_area = $interact_area
 		add_to_group("fire_sources")
-		init(Type.FIRE, interact_area)
+		init(Type.FIRE, interact_area, [mesh])
 		light.default_range = default_range
 		light.omni_range = default_range
 		light.default_energy = default_energy

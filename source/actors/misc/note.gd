@@ -16,19 +16,19 @@ var note_menu = preload("res://source/assets/ui/note_menu.tscn").instantiate()
 @export var display_help: bool = false
 @export var label: PackedScene
 
-@onready var mesh = $mesh
 @onready var interact_area = $interact_area
 @onready var page_turn_player = $page_turn_player
-@onready var note_mat = mesh.mesh.surface_get_material(0)
-@onready var base_color = note_mat.albedo_color
+@onready var mesh = $mesh
 
 signal was_read
 
 
 func _ready() -> void:
-	init(Type.NOTE, interact_area)
+	super()
+	init(Type.NOTE, interact_area, [mesh])
 	# I shouldn't have to wonder why I have to do this when resource_local_to_scene
 	# is checked for the material :)
+	var note_mat = mesh.mesh.surface_get_material(0)
 	mesh.mesh.surface_set_material(0, note_mat.duplicate())
 	note_mat = mesh.mesh.surface_get_material(0)
 	
@@ -64,6 +64,7 @@ func _process(_delta: float) -> void:
 func interact():
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
 	if interactable and not Global.player.in_menu:
+		super()
 		Global.ui.display_menu(note_menu)
 	
 		read = true

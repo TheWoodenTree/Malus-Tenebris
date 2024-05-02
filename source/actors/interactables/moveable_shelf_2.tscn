@@ -88,6 +88,7 @@ data = PackedVector3Array(-0.6033, 0.2999, -1.2, -0.6033, 0.2, 1.2, -0.6033, 0.2
 points = PackedVector3Array(0.521726, 4.25, 1.39973, 0.521726, 4.25, -1.4, -0.603274, 4.25, 1.39973, 0.521726, 0, 1.39973, -0.603274, 4.25, -1.4, 0.521726, 0, -1.4, -0.603274, 0, 1.39973, -0.603274, 0, -1.4)
 
 [node name="moveable_shelf_2" instance=ExtResource("1_a5v7j")]
+enable_highlight_sheen = false
 
 [node name="mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_pv4t5")

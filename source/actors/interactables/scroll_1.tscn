@@ -1,22 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctcrs3lo5h6fa"]
+[gd_scene load_steps=14 format=3 uid="uid://ctcrs3lo5h6fa"]
 
 [ext_resource type="Material" uid="uid://pgdmoo3yb500" path="res://source/assets/materials/old_paper/old_paper.tres" id="1_jt28r"]
 [ext_resource type="Script" path="res://source/actors/misc/note.gd" id="1_tnm4v"]
-[ext_resource type="Shader" uid="uid://dqtv12rd2pdiu" path="res://source/assets/shaders/outline_shader.tres" id="2_bloqp"]
+[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_uxljp"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="4_fc0x2"]
 [ext_resource type="Material" uid="uid://dln1xs4gfd6g1" path="res://source/assets/materials/copper/copper.tres" id="4_x6eeo"]
 [ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="5_oew24"]
 [ext_resource type="AudioStream" uid="uid://doo8csxbtqqq3" path="res://source/assets/sounds/paper/page_turn2.ogg" id="5_olnei"]
 [ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="6_n05dm"]
 [ext_resource type="Texture2D" uid="uid://b6fq7waqo01nx" path="res://source/assets/misc/scroll_text.png" id="8_mgug2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl33u"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_bloqp")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c44fu"]
 _surfaces = [{
@@ -88,10 +80,11 @@ stream_2/weight = 1.0
 
 [node name="scroll_3" type="Node3D"]
 script = ExtResource("1_tnm4v")
+enable_highlight_sheen = true
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 layers = 8
-material_overlay = SubResource("ShaderMaterial_sl33u")
+material_overlay = ExtResource("2_uxljp")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_xr41v")
 

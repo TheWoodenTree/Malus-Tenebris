@@ -1,18 +1,18 @@
 class_name Pickup
 extends Interactable
 
-@onready var mesh = $mesh
-@onready var pickup_player = $pickup_player
-@onready var interact_area = $interact_area
-
 @export var item_data: ItemData
 @export var name_override: String = ""
 @export_range(0, 99) var count: int = 1
 
+@onready var pickup_player = $pickup_player
+@onready var interact_area = $interact_area
+@onready var mesh = $mesh
+
 
 func _ready():
 	super()
-	init(Type.PICKUP, interact_area)
+	init(Type.PICKUP, interact_area, [mesh])
 	if item_data:
 		item_data.mesh = mesh.duplicate()
 	else:

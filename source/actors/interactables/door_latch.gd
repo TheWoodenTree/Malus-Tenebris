@@ -8,13 +8,14 @@ var locked: bool = false
 # Set by parent doro script
 var parent_door: Door
 
-@onready var mesh = $mesh
 @onready var interact_area = $interact_area
 @onready var anim_player = $anim_player
+@onready var mesh = $mesh
 
 
 func _ready():
-	init(Type.MISC, interact_area)
+	super()
+	init(Type.MISC, interact_area, [mesh])
 	if locked:
 		mesh.position.x = LOCKED_POS_X
 	else:

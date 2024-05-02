@@ -1,19 +1,35 @@
-[gd_scene load_steps=15 format=3 uid="uid://2n0p2swjfvtx"]
+[gd_scene load_steps=19 format=3 uid="uid://2n0p2swjfvtx"]
 
 [ext_resource type="PackedScene" uid="uid://c7l0lxt4jjg8c" path="res://source/actors/interactables/draggable.tscn" id="1_etywi"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_g2k8u"]
 [ext_resource type="Script" path="res://source/actors/decor/furniture/chest.gd" id="2_ml8md"]
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_0lga1"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="3_4hw1h"]
 [ext_resource type="AudioStream" uid="uid://be631gjyel76q" path="res://source/assets/sounds/doors/wood_door_open_finish.ogg" id="5_aimeu"]
 [ext_resource type="AudioStream" uid="uid://djpaxbkieo8pc" path="res://source/assets/sounds/misc/chest_close.ogg" id="6_20ssm"]
 
-[sub_resource type="Shader" id="Shader_28jtu"]
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2abkv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_0lga1")
+shader_parameter/enableSheen = false
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_qrc4x"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
 
 uniform float outlineSize = 0.02;
 uniform bool outlineOn = false;
+uniform bool transparent = false;
 
 void vertex()
 {
@@ -26,6 +42,8 @@ void fragment()
 {
 	if (outlineOn)
 		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
 }
 
 
@@ -38,12 +56,14 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63v2w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3tjb"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("Shader_28jtu")
+next_pass = SubResource("ShaderMaterial_2abkv")
+shader = SubResource("Shader_qrc4x")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_p4ugi"]
 _surfaces = [{
@@ -172,7 +192,7 @@ center_of_mass = Vector3(0, 0.15, -0.53)
 
 [node name="mesh" parent="draggable_body" index="0"]
 layers = 4
-material_overlay = SubResource("ShaderMaterial_63v2w")
+material_overlay = SubResource("ShaderMaterial_x3tjb")
 mesh = SubResource("ArrayMesh_3wugu")
 
 [node name="collision_shape" parent="draggable_body/interact_area" index="0"]

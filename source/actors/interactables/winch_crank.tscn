@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3rxkp6vaovuq"]
+[gd_scene load_steps=16 format=3 uid="uid://c3rxkp6vaovuq"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_lf2j4"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="1_uebo4"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_imk6i"]
 [ext_resource type="AudioStream" uid="uid://dcb0ks2xkb46f" path="res://source/assets/sounds/misc/metal_scrape.ogg" id="4_82x00"]
 [ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="4_ftnpv"]
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_wt67n"]
 
 [sub_resource type="Resource" id="Resource_my8ss"]
 script = ExtResource("3_imk6i")
@@ -14,13 +15,28 @@ pickup_sound = ExtResource("4_82x00")
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 
-[sub_resource type="Shader" id="Shader_bmy0k"]
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlrlv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_wt67n")
+shader_parameter/enableSheen = false
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_s3ke0"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
 
 uniform float outlineSize = 0.02;
 uniform bool outlineOn = false;
+uniform bool transparent = false;
 
 void vertex()
 {
@@ -33,6 +49,8 @@ void fragment()
 {
 	if (outlineOn)
 		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
 }
 
 
@@ -45,12 +63,14 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyrty"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jotu1"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("Shader_bmy0k")
+next_pass = SubResource("ShaderMaterial_vlrlv")
+shader = SubResource("Shader_s3ke0")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h6ebl"]
 _surfaces = [{
@@ -88,11 +108,10 @@ shadow_mesh = SubResource("ArrayMesh_h6ebl")
 
 [node name="winch_crank" instance=ExtResource("1_lf2j4")]
 item_data = SubResource("Resource_my8ss")
-enable_highlight_light = true
 
 [node name="mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.540983, 0.068, 0.115531)
-material_overlay = SubResource("ShaderMaterial_tyrty")
+material_overlay = SubResource("ShaderMaterial_jotu1")
 mesh = SubResource("ArrayMesh_q3oai")
 
 [node name="collision_shape" parent="interact_area" index="0"]

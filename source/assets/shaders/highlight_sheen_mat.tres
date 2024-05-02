@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://13gbugw7ytck"]
+
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="1_adblc"]
+
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_adblc")
+shader_parameter/enableSheen = false
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")

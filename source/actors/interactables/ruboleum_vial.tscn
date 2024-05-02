@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cykavwbds5y1f"]
+[gd_scene load_steps=10 format=3 uid="uid://cykavwbds5y1f"]
 
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_55ctl"]
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_lbm0b"]
@@ -14,44 +14,6 @@ texture = ExtResource("4_elrw2")
 pickup_sound = ExtResource("2_oxcjt")
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
-
-[sub_resource type="Shader" id="Shader_gkice"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5aq61"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_gkice")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6v3id"]
 _surfaces = [{
@@ -94,7 +56,6 @@ item_data = SubResource("Resource_meejj")
 
 [node name="mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.152624, 0.0491482, 0)
-material_overlay = SubResource("ShaderMaterial_5aq61")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_77jp7")
 

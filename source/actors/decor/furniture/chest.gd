@@ -19,17 +19,18 @@ var pitch_scale_max: float = 1.5
 var sound_cooldown_timer: Timer = Timer.new()
 
 @onready var draggable_body = $draggable_body
-@onready var mesh = $draggable_body/mesh
 @onready var interact_area = $draggable_body/interact_area
 @onready var creak_player = $creak_player
 @onready var close_player = $close_player
+@onready var mesh = $draggable_body/mesh
 
 signal moved
 
 
 func _ready():
+	super()
 	if not Engine.is_editor_hint():
-		init(Type.DRAGGABLE, interact_area)
+		init(Type.DRAGGABLE, interact_area, [mesh])
 		sound_cooldown_timer.one_shot = true
 		sound_cooldown_timer.wait_time = 0.3
 		add_child(sound_cooldown_timer)

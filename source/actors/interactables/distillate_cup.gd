@@ -3,16 +3,17 @@ extends Interactable
 var num_doses: int = 1
 var first_dose: bool = true
 
-@onready var mesh = $mesh
 @onready var interact_area = $interact_area
 @onready var pour_player = $pour_player
+@onready var mesh = $mesh
 
 
 signal done_pouring
 
 
 func _ready():
-	init(Type.MISC, interact_area)
+	super()
+	init(Type.MISC, interact_area, [mesh])
 
 
 func _process(_delta):

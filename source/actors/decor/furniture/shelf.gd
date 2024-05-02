@@ -8,6 +8,7 @@ extends Interactable
 @onready var interact_area = $interact_area
 @onready var blocking_body = $blocking_body
 @onready var move_to_collision = $blocking_body/move_to_collision
+@onready var mesh = $mesh
 
 
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _ready() -> void:
 	else:
 		if has_node("interact_area"):
 			interact_area = $interact_area
-		init(Type.MOVEABLE, interact_area)
+		init(Type.MOVEABLE, interact_area, [mesh])
 		var _err = get_node("%note").was_read.connect(set_interactable.bind(true))
 		if interactable:
 			interact_area.monitoring = true
