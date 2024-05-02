@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cykavwbds5y1f"]
+[gd_scene load_steps=16 format=3 uid="uid://cykavwbds5y1f"]
 
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_55ctl"]
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_lbm0b"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="2_oxcjt"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_g3uyu"]
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="4_elrw2"]
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_ejaji"]
 
 [sub_resource type="Resource" id="Resource_meejj"]
 resource_local_to_scene = true
@@ -14,6 +15,64 @@ texture = ExtResource("4_elrw2")
 pickup_sound = ExtResource("2_oxcjt")
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
+
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_465vg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_ejaji")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_0ujnu"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27ogq"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_465vg")
+shader = SubResource("Shader_0ujnu")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6v3id"]
 _surfaces = [{
@@ -56,6 +115,7 @@ item_data = SubResource("Resource_meejj")
 
 [node name="mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.152624, 0.0491482, 0)
+material_overlay = SubResource("ShaderMaterial_27ogq")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_77jp7")
 

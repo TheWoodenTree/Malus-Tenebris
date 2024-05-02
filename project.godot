@@ -189,6 +189,7 @@ chest_glitch={
 3d_physics/layer_2="player"
 3d_physics/layer_3="monster"
 3d_physics/layer_8="nav_block"
+3d_physics/layer_16="interact_area"
 
 [physics]
 

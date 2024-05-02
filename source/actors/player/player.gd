@@ -420,3 +420,13 @@ func cam_look_at_over_time(pos: Vector3, time: float):
 func debug_get_torch():
 	Global.world.get_node("nav_region").get_node("records_room").get_node("sm_table3").get_node("torch").interact()
 	Global.player.torch.light_torch()
+
+
+func _on_allow_interactable_sheen_area_area_entered(area):
+	if area.interactable_ancestor.enable_highlight_sheen:
+		area.interactable_ancestor.enable_sheen()
+
+
+func _on_allow_interactable_sheen_area_area_exited(area):
+	if area.interactable_ancestor.enable_highlight_sheen:
+		area.interactable_ancestor.disable_sheen()

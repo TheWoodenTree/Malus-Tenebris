@@ -47,10 +47,22 @@ func init(type: Type, interact_area: Area3D, meshes_: Array[MeshInstance3D]):
 				mesh.material_overlay.next_pass.set_shader_parameter("enableSheen", enable_highlight_sheen)
 
 
-func interact():
+func enable_sheen():
+	if enable_highlight_sheen:
+		for mesh in meshes:
+			if mesh and mesh.material_overlay and mesh.material_overlay.next_pass:
+				mesh.material_overlay.next_pass.set_shader_parameter("enableSheen", true)
+
+
+func disable_sheen():
 	for mesh in meshes:
 		if mesh and mesh.material_overlay and mesh.material_overlay.next_pass:
 			mesh.material_overlay.next_pass.set_shader_parameter("enableSheen", false)
+
+
+func interact():
+	enable_highlight_sheen = false
+	disable_sheen()
 
 
 func set_interactable(interactable_: bool):

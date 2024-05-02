@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=26 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
@@ -88,6 +88,9 @@ stream_1/stream = ExtResource("6_145et")
 stream_1/weight = 1.0
 stream_2/stream = ExtResource("7_81gjg")
 stream_2/weight = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_helq8"]
+radius = 6.0
 
 [node name="player" type="CharacterBody3D"]
 collision_layer = 2
@@ -208,3 +211,14 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 script = ExtResource("10_iw64y")
+
+[node name="allow_interactable_sheen_area" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32768
+monitorable = false
+
+[node name="collision_shape" type="CollisionShape3D" parent="allow_interactable_sheen_area"]
+shape = SubResource("SphereShape3D_helq8")
+
+[connection signal="area_entered" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_entered"]
+[connection signal="area_exited" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_exited"]
