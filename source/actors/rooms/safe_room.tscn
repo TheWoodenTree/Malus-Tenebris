@@ -289,8 +289,8 @@ shadow_enabled = true
 omni_range = 12.0
 
 [node name="torch_holder" parent="." index="23" instance=ExtResource("32_cfv3l")]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 2.5, 0)
-default_energy = 0.25
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 2.25, 0)
+default_energy = 0.5
 shadow_mode = 1
 
 [node name="lock_door_tutorial" type="Area3D" parent="." index="24"]

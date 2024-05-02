@@ -34,7 +34,7 @@ func _process(_delta):
 
 
 func interact():
-	moveable_collision_blocker.position = move_to_offset
+	moveable_collision_blocker.position = move_to_offset.rotated(Vector3.UP, rotation.y)
 	moveable_collision_blocker_shape.disabled = false
 	moveable_collision_blocker.top_level = true
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
@@ -52,7 +52,7 @@ func _set_move_to_offset(offset: Vector3):
 
 func update_move_to_collision():
 	if no_interact_area:
-		no_interact_area.position = move_to_offset
+		no_interact_area.position = move_to_offset.rotated(Vector3.UP, rotation.y)
 
 
 func _on_no_interact_area_body_entered(body):

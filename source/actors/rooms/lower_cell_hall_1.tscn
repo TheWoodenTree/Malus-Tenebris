@@ -473,6 +473,7 @@ size = Vector3(7, 1, 14.5)
 
 [node name="torch_holder" parent="." index="36" instance=ExtResource("24_nwer3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.75, 2.5, 4.5)
+lit = false
 shadow_mode = 1
 
 [node name="torch_holder2" parent="." index="37" instance=ExtResource("24_nwer3")]

@@ -109,6 +109,3 @@ shape = SubResource("ConvexPolygonShape3D_8ohk4")
 
 [node name="collision_shape" parent="no_interact_area" index="0"]
 shape = SubResource("ConvexPolygonShape3D_8ohk4")
-
-[connection signal="body_entered" from="no_interact_area" to="." method="_on_no_interact_area_body_entered"]
-[connection signal="body_exited" from="no_interact_area" to="." method="_on_no_interact_area_body_exited"]

@@ -83,7 +83,7 @@ has_crank = true
 is_broken = true
 
 [node name="exposure_area" type="Area3D" parent="." index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, -12.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, -9.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("21_wukun")
