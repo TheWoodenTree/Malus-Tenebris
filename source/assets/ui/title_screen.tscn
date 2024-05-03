@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvf3x4476lapc"]
+[gd_scene load_steps=8 format=3 uid="uid://cvf3x4476lapc"]
 
 [ext_resource type="Script" path="res://source/assets/ui/title_screen.gd" id="1_b237l"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="2_efe1t"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_da6oj"]
+[ext_resource type="AudioStream" uid="uid://csgylt88o41se" path="res://source/assets/sounds/music/title.ogg" id="4_u22f8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgk4g"]
 
@@ -83,6 +84,10 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
 layout_mode = 2
 size_flags_vertical = 1
 text = "Quit"
+
+[node name="music_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_u22f8")
+volume_db = -30.0
 
 [connection signal="pressed" from="cont/v_box_cont/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="cont/v_box_cont/settings_button" to="." method="_on_settings_button_pressed"]

@@ -50,6 +50,7 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 @onready var noise_player = $noise_player
 @onready var rucksack_player = $rucksack_player
 @onready var fear_player = $fear_player
+@onready var fear_pulse_player = $fear_pulse_player
 @onready var affliction_timer = $affliction_timer
 
 @export var debug_has_torch: bool = false

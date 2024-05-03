@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=28 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dhvhdbjf2vdhf" path="res://source/assets/sounds/rucksack/rucksack_3.ogg" id="7_81gjg"]
 [ext_resource type="AudioStream" uid="uid://dqap21jiqu5gq" path="res://source/assets/sounds/misc/fear.ogg" id="8_ulhip"]
 [ext_resource type="Script" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
+[ext_resource type="AudioStream" uid="uid://c7bxvp10bg6g2" path="res://source/assets/sounds/horror_sounds/fear_pulse_loop.ogg" id="11_nxucy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icr8b"]
 shading_mode = 0
@@ -208,6 +209,10 @@ max_polyphony = 5
 
 [node name="fear_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ulhip")
+
+[node name="fear_pulse_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_nxucy")
+volume_db = 10.0
 
 [node name="affliction_timer" type="Timer" parent="."]
 wait_time = 0.05

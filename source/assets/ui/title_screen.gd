@@ -7,14 +7,23 @@ extends Menu
 @onready var quit_button = $cont/v_box_cont/quit_button
 @onready var title_screen_room = Global.main.title_screen_room
 @onready var credits_menu = preload("res://source/assets/ui/menus/credits_menu.tscn").instantiate()
+@onready var music_player = $music_player
 
 
 func _enter_tree():
 	Global.main.drone_player.stop()
 
 
+func _ready():
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(music_player, 'volume_db', 0.0, 2.0).from(-30.0)
+	music_player.play()
+
+
 func _on_play_button_pressed():
 	Global.main.play_game_sound_player.play()
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(music_player, 'volume_db', -80, 5.0)
 	title_screen_room.move_camera_forward()
 	hide_ui()
 	await title_screen_room.camera_moved
