@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1onovq0nc1xf"]
+[gd_scene load_steps=27 format=3 uid="uid://c1onovq0nc1xf"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_i7tkv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b24yy1t4ft602" path="res://source/actors/rooms/occluders/lower_prison_entrance.occ" id="2_ujbbf"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="22_xxynh"]
 [ext_resource type="PackedScene" uid="uid://dtoh5ycnqnbpi" path="res://source/actors/interactables/moveable_shelf_1.tscn" id="24_u5saf"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="24_x0inx"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="25_84ikb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xb64h"]
 size = Vector3(6, 6, 1)
@@ -297,16 +298,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -17)
 size = Vector3(11, 1, 2)
 
 [node name="half_wood_support" parent="." index="81" instance=ExtResource("17_5n3dr")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.75, -9.5, -22.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.75, -9.5, -21.75)
 
 [node name="half_wood_support2" parent="." index="82" instance=ExtResource("17_5n3dr")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.75, -9.5, -22.25)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.75, -9.5, -21.75)
 
 [node name="half_wood_support3" parent="." index="83" instance=ExtResource("17_5n3dr")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.75, -9.5, -31.75)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.75, -9.5, -32.25)
 
 [node name="half_wood_support4" parent="." index="84" instance=ExtResource("17_5n3dr")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.75, -9.5, -31.75)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.75, -9.5, -32.25)
 
 [node name="apothecary_doorway" parent="." index="85" instance=ExtResource("20_w58u7")]
 unique_name_in_owner = true
@@ -366,5 +367,23 @@ transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 1.25, -9.5
 [node name="moveable_shelf_1" parent="." index="97" instance=ExtResource("24_u5saf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, -9.5, -27.75)
 move_to_offset = Vector3(0, 0, -3)
+
+[node name="sign" parent="." index="98" instance=ExtResource("25_84ikb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -6, -26)
+text = "Apothecary"
+enable_highlight_sheen = true
+
+[node name="sign4" parent="." index="99" instance=ExtResource("25_84ikb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.5, -7.5, -7)
+text = "West Cell Hall"
+chain_length = 0
+
+[node name="sign2" parent="." index="100" instance=ExtResource("25_84ikb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -6, -28)
+text = "Kitchen"
+
+[node name="sign3" parent="." index="101" instance=ExtResource("25_84ikb")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, -6, -34.5)
+text = "South Cell Hall"
 
 [connection signal="body_entered" from="door_open_event" to="door_open_event" method="_on_body_entered"]

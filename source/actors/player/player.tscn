@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=27 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
@@ -91,6 +91,9 @@ stream_2/weight = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_helq8"]
 radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6dsv4"]
+radius = 10.0
 
 [node name="player" type="CharacterBody3D"]
 collision_layer = 2
@@ -220,5 +223,14 @@ monitorable = false
 [node name="collision_shape" type="CollisionShape3D" parent="allow_interactable_sheen_area"]
 shape = SubResource("SphereShape3D_helq8")
 
+[node name="fire_burning_sound_area" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16384
+
+[node name="collision_shape" type="CollisionShape3D" parent="fire_burning_sound_area"]
+shape = SubResource("SphereShape3D_6dsv4")
+
 [connection signal="area_entered" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_entered"]
 [connection signal="area_exited" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_exited"]
+[connection signal="area_entered" from="fire_burning_sound_area" to="." method="_on_fire_burning_sound_area_area_entered"]
+[connection signal="area_exited" from="fire_burning_sound_area" to="." method="_on_fire_burning_sound_area_area_exited"]

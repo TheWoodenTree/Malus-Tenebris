@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bd4v75xinikem"]
+[gd_scene load_steps=34 format=3 uid="uid://bd4v75xinikem"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_rvtpb"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_sx5ry"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dkjbo1lmsiv60" path="res://source/actors/decor/misc/pots/urn_2.tscn" id="29_q8p76"]
 [ext_resource type="PackedScene" uid="uid://cvw5hi4ridgw" path="res://source/actors/decor/misc/pots/urn_1.tscn" id="30_wjiuc"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="31_kmqvv"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="32_7v3yc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fyh3i"]
 size = Vector3(13, 16, 1)
@@ -524,5 +525,10 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="double_crate2" parent="." index="39" instance=ExtResource("31_kmqvv")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 5, 1.75, -2.5)
+
+[node name="sign" parent="." index="40" instance=ExtResource("32_7v3yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4, -1)
+text = "Warden's Chamber"
+chain_length = 4
 
 [connection signal="body_entered" from="exposure_area" to="exposure_area" method="_on_body_entered"]

@@ -14,4 +14,5 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_adblc")
 shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")

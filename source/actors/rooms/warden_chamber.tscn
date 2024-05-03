@@ -59,8 +59,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75)
 size = Vector3(10, 1, 11.5)
 
 [node name="stone_floor2" parent="." index="10" instance=ExtResource("1_n8rhg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 1.5)
-size = Vector3(10, 1, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 2)
+size = Vector3(10, 1, 11)
 
 [node name="stone_wall" parent="." index="11" instance=ExtResource("2_82v06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 1.5)
@@ -114,8 +114,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, -5)
 size = Vector3(2, 8, 1)
 
 [node name="stone_wall12" parent="." index="24" instance=ExtResource("2_82v06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -4)
-size = Vector3(8, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -4)
+size = Vector3(10, 3, 1)
 
 [node name="stone_wall13" parent="." index="25" instance=ExtResource("2_82v06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -5)
@@ -204,9 +204,13 @@ door_open_angle = 20
 
 [node name="standing_lamp" parent="." index="48" instance=ExtResource("10_20fdr")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3.75, 0.5, -14.5)
+shadow_mode = 1
+audio_fade_in_on_ready = null
 
 [node name="standing_lamp2" parent="." index="49" instance=ExtResource("10_20fdr")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.5, 0.5, -12)
+shadow_mode = 1
+audio_fade_in_on_ready = null
 
 [node name="large_table" parent="." index="50" instance=ExtResource("10_m581c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -13.25)
@@ -294,6 +298,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -15.5)
 [node name="torch_holder" parent="." index="73" instance=ExtResource("30_yxp60")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 2.5, 1.5)
 shadow_mode = 1
+audio_fade_in_on_ready = null
 
 [node name="key" parent="." index="74" instance=ExtResource("31_4l2yx")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 1, 2, -12)
@@ -307,16 +312,16 @@ size = Vector3(15, 1, 15.5)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0.5, -17.75)
 
 [node name="books_3" parent="shelf_2" index="2" instance=ExtResource("35_5at0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
 [node name="shelf_3" parent="." index="77" instance=ExtResource("33_cstxe")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0.5, -17.75)
 
 [node name="books_1" parent="shelf_3" index="2" instance=ExtResource("34_agt8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
 [node name="books_6" parent="shelf_3" index="3" instance=ExtResource("36_ngbtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.5)
 
 [node name="tall_pot" parent="shelf_3" index="4" instance=ExtResource("16_1r3fu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, 0.5)

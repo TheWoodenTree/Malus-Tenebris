@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=36 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_d5ndp"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://c34gumwigw2jh" path="res://source/actors/building pieces/archways/archway_L_bend.tscn" id="28_0dj71"]
 [ext_resource type="PackedScene" uid="uid://da74ovc14qach" path="res://source/actors/building pieces/archways/frameless_archway.tscn" id="29_61occ"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="31_fjb78"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="31_hcaqw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ecr6o"]
 size = Vector3(6.25, 9.75, 8)
@@ -482,5 +483,25 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 0
 [node name="stone_archway6" parent="." instance=ExtResource("29_61occ")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.5, 0.5, 0)
 material = ExtResource("31_fjb78")
+
+[node name="sign" parent="." instance=ExtResource("31_hcaqw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.5, 2.5, -5)
+text = "Cell A4"
+chain_length = 0
+
+[node name="sign2" parent="." instance=ExtResource("31_hcaqw")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 14.5, 2.5, 5)
+text = "Cell A1"
+chain_length = 0
+
+[node name="sign3" parent="." instance=ExtResource("31_hcaqw")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1, 2.5, 5)
+text = "Cell A2"
+chain_length = 0
+
+[node name="sign4" parent="." instance=ExtResource("31_hcaqw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.5, 2.5, 5)
+text = "Cell A3"
+chain_length = 0
 
 [connection signal="body_entered" from="sprint_tutorial" to="sprint_tutorial" method="_on_body_entered"]

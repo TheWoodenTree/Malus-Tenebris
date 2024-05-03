@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjlr1mq4h3we5"]
+[gd_scene load_steps=16 format=3 uid="uid://bjlr1mq4h3we5"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ymlyk"]
 [ext_resource type="PackedScene" uid="uid://btbuscvl0caww" path="res://source/actors/building pieces/archways/archway_w_door_no_window.tscn" id="2_6ef1k"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="12_wcgft"]
 [ext_resource type="PackedScene" uid="uid://epec6fc3bp60" path="res://source/actors/building pieces/wood_support.tscn" id="13_4qtsm"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="13_7fy0w"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="15_wcx2h"]
 
 [node name="lower_prison_hallway_2" instance=ExtResource("1_ymlyk")]
 
@@ -309,3 +310,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.25
 
 [node name="wood_support4" parent="." index="36" instance=ExtResource("13_4qtsm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.75, 0.5, -19.75)
+
+[node name="sign" parent="." index="37" instance=ExtResource("15_wcx2h")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.5, 4, 0)
+text = "Kitchen"
+
+[node name="sign2" parent="." index="38" instance=ExtResource("15_wcx2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 4, 0)
+text = "Ritual Chamber"
+
+[node name="sign3" parent="." index="39" instance=ExtResource("15_wcx2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -18.5)
+text = "Servant's Quarters"
+chain_length = 0
+enable_highlight_sheen = true

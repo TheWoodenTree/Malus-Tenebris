@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://6740g18km7ny"]
+[gd_scene load_steps=48 format=3 uid="uid://6740g18km7ny"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_f5h4f"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_2appl"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://dni5omncbt3bp" path="res://source/actors/decor/kitchen/bowl_2.tscn" id="44_jf8wn"]
 [ext_resource type="PackedScene" uid="uid://dgsc3liespcxg" path="res://source/actors/misc/static_chain.tscn" id="45_241bd"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="45_ef02d"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="46_ayus7"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="46_kwjv8"]
 
 [sub_resource type="Resource" id="Resource_gf6xt"]
@@ -277,7 +278,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.25, 0.5, 0)
 [node name="ruboleum_vial" parent="." index="31" instance=ExtResource("10_fcnch")]
 transform = Transform3D(0.567068, 0, 0.823671, 0, 1, 0, -0.823671, 0, 0.567068, -45.9045, 2.4, 0.341764)
 item_data = SubResource("Resource_gf6xt")
-highlight_light_on = true
 
 [node name="books_6" parent="." index="32" instance=ExtResource("14_m1n76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7523, 0.5, 2.82592)
@@ -479,3 +479,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 2.5)
 
 [node name="barrel3" parent="." index="94" instance=ExtResource("45_ef02d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.25, 1.5, 2.25)
+
+[node name="sign" parent="." index="95" instance=ExtResource("46_ayus7")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 3, 2.5, 2.75)
+text = "< Warden's Chamber <
+< Apothecary <
+< Kitchen <"
+chain_length = 0

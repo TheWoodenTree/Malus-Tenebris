@@ -10,9 +10,7 @@ enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 
 # Set by child script
 var interactable_type: Type
-
 var _interact_area: InteractArea # Should  not be accessed by anything but this script
-
 var meshes: Array[MeshInstance3D] # Meshes used by child interactable
 
 var being_looked_at: bool = false
@@ -39,12 +37,7 @@ func init(type: Type, interact_area: Area3D, meshes_: Array[MeshInstance3D]):
 	_interact_area.connect("interacted", Callable(self, "interact"))
 	_interact_area.interactable_ancestor = self
 	_interact_area.set_collision_layer_value(16, interactable)
-	
 	meshes = meshes_
-	if interactable:
-		for mesh in meshes:
-			if mesh and mesh.material_overlay and mesh.material_overlay.next_pass:
-				mesh.material_overlay.next_pass.set_shader_parameter("enableSheen", enable_highlight_sheen)
 
 
 func enable_sheen():

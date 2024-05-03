@@ -37,6 +37,7 @@ settings/fps/force_fps=500
 
 window/size/viewport_width=512
 window/size/viewport_height=288
+window/size/always_on_top=true
 window/size/window_width_override=1366
 window/size/window_height_override=768
 window/stretch/mode="viewport"
@@ -189,6 +190,7 @@ chest_glitch={
 3d_physics/layer_2="player"
 3d_physics/layer_3="monster"
 3d_physics/layer_8="nav_block"
+3d_physics/layer_15="fire_area"
 3d_physics/layer_16="interact_area"
 
 [physics]

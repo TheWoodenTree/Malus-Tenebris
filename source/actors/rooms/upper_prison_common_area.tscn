@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://hwt7rtb67g3l"]
+[gd_scene load_steps=52 format=3 uid="uid://hwt7rtb67g3l"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_8uxo2"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b0xmooxcv7hfy" path="res://source/actors/rooms/occluders/upper_prison_common_area.occ" id="2_8xk5f"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="48_8frpn"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="49_lk6kt"]
 [ext_resource type="PackedScene" uid="uid://c0j1d0qath30j" path="res://source/actors/decor/misc/bucket.tscn" id="50_8q6u0"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="51_1gadi"]
 
 [node name="upper_prison_common_area" instance=ExtResource("1_8uxo2")]
 
@@ -498,68 +499,81 @@ ash_visible = false
 [node name="laying_rope_1" parent="." index="133" instance=ExtResource("41_gng2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1.5, 5.5)
 
-[node name="chain_loop" parent="." index="134" instance=ExtResource("43_ln1jb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, -0.75, 9)
-
-[node name="chain_loop2" parent="." index="135" instance=ExtResource("43_ln1jb")]
+[node name="chain_loop2" parent="." index="134" instance=ExtResource("43_ln1jb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.25, -0.5, -5.25)
 
-[node name="chain_loop3" parent="." index="136" instance=ExtResource("43_ln1jb")]
+[node name="chain_loop3" parent="." index="135" instance=ExtResource("43_ln1jb")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -14.25, -0.5, 0)
 
-[node name="wall_rack3" parent="." index="137" instance=ExtResource("31_57v7u")]
+[node name="wall_rack3" parent="." index="136" instance=ExtResource("31_57v7u")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.625, -1.75, -3)
 
-[node name="chain_loop4" parent="." index="138" instance=ExtResource("43_ln1jb")]
+[node name="chain_loop4" parent="." index="137" instance=ExtResource("43_ln1jb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.75, 0, -3)
 
-[node name="chain_loop5" parent="." index="139" instance=ExtResource("43_ln1jb")]
+[node name="chain_loop5" parent="." index="138" instance=ExtResource("43_ln1jb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.5, 0, -3)
 
-[node name="sm_stacked_barrels" parent="." index="140" instance=ExtResource("43_ghels")]
+[node name="sm_stacked_barrels" parent="." index="139" instance=ExtResource("43_ghels")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, -3, 5.75)
 
-[node name="sm_stacked_barrels2" parent="." index="141" instance=ExtResource("43_ghels")]
+[node name="sm_stacked_barrels2" parent="." index="140" instance=ExtResource("43_ghels")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, -3, 0.25)
 
-[node name="torch_holder3" parent="." index="142" instance=ExtResource("23_qffuj")]
+[node name="torch_holder3" parent="." index="141" instance=ExtResource("23_qffuj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -37, -1.25, -11)
 lit = false
 
-[node name="torch_holder4" parent="." index="143" instance=ExtResource("23_qffuj")]
+[node name="torch_holder4" parent="." index="142" instance=ExtResource("23_qffuj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -37, -1.25, -18)
 lit = false
 
-[node name="fat_pot" parent="." index="144" instance=ExtResource("44_bgt0s")]
+[node name="fat_pot" parent="." index="143" instance=ExtResource("44_bgt0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, -3, -11)
 
-[node name="tall_pot" parent="." index="145" instance=ExtResource("45_qj6mx")]
+[node name="tall_pot" parent="." index="144" instance=ExtResource("45_qj6mx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, -2.5, -18.25)
 
-[node name="wall_rack4" parent="." index="146" instance=ExtResource("31_57v7u")]
+[node name="wall_rack4" parent="." index="145" instance=ExtResource("31_57v7u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, -1.75, -4)
 
-[node name="barrel2" parent="." index="147" instance=ExtResource("32_t8cim")]
+[node name="barrel2" parent="." index="146" instance=ExtResource("32_t8cim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -2, -11)
 
-[node name="broken_barrel" parent="." index="148" instance=ExtResource("46_ehdng")]
+[node name="broken_barrel" parent="." index="147" instance=ExtResource("46_ehdng")]
 transform = Transform3D(0.866025, 0.5, 2.18557e-08, 0, -4.37114e-08, 1, 0.5, -0.866025, -3.78552e-08, -26.75, -2.25, -5.5)
 
-[node name="barrel3" parent="." index="149" instance=ExtResource("32_t8cim")]
+[node name="barrel3" parent="." index="148" instance=ExtResource("32_t8cim")]
 transform = Transform3D(0.5, 0.866025, -3.78552e-08, 0, -4.37114e-08, -1, -0.866025, 0.5, -2.18557e-08, -14.75, -2.25, -7.75)
 
-[node name="sm_stacked_planks_3" parent="." index="150" instance=ExtResource("47_a3n4n")]
+[node name="sm_stacked_planks_3" parent="." index="149" instance=ExtResource("47_a3n4n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, -3, -0.5)
 
-[node name="sm_stacked_planks2" parent="." index="151" instance=ExtResource("48_8frpn")]
+[node name="sm_stacked_planks2" parent="." index="150" instance=ExtResource("48_8frpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, -3, 6.75)
 
-[node name="sm_stacked_planks" parent="." index="152" instance=ExtResource("49_lk6kt")]
+[node name="sm_stacked_planks" parent="." index="151" instance=ExtResource("49_lk6kt")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -23.5, -3, -0.75)
 
-[node name="torch_holder5" parent="." index="153" instance=ExtResource("23_qffuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -1.25, 9)
-lit = false
-
-[node name="bucket" parent="." index="154" instance=ExtResource("50_8q6u0")]
+[node name="bucket" parent="." index="152" instance=ExtResource("50_8q6u0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, -3, -10)
+
+[node name="sign" parent="." index="153" instance=ExtResource("51_1gadi")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17, -1, -14)
+text = "Lower Prison"
+chain_length = 0
+
+[node name="sign2" parent="." index="154" instance=ExtResource("51_1gadi")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -20, -1, 8)
+text = "Holding Cells"
+chain_length = 0
+
+[node name="sign3" parent="." index="155" instance=ExtResource("51_1gadi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 2, -2)
+text = "Main Cell Hall"
+chain_length = 0
+
+[node name="sign4" parent="." index="156" instance=ExtResource("51_1gadi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, -1, 9)
+text = "Experimentation"
+chain_length = 0

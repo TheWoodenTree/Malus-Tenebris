@@ -1,7 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://t4bgwd6hxfib"]
+[gd_scene load_steps=9 format=3 uid="uid://t4bgwd6hxfib"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_gjmcy"]
 [ext_resource type="Script" path="res://source/actors/interactables/pickup.gd" id="2_8rstg"]
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_b3lvj"]
+
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx132"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_b3lvj")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_y7nkm"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ii0sb"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qx132")
+shader = SubResource("Shader_y7nkm")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [node name="interactable" instance=ExtResource("1_gjmcy")]
 script = ExtResource("2_8rstg")
@@ -12,5 +71,6 @@ enable_highlight_sheen = true
 
 [node name="mesh" parent="." index="0"]
 layers = 4
+material_overlay = SubResource("ShaderMaterial_ii0sb")
 
 [node name="pickup_player" type="AudioStreamPlayer3D" parent="." index="2"]

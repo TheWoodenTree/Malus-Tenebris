@@ -73,11 +73,11 @@ func _process(_delta: float) -> void:
 	#	tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from(20500)
 	#	AfflictionEffectController.set_to_max_effect(4.0)
 	
-	#if Input.is_action_just_pressed("ui_cancel"):
-		#if Global.mouse_locked:
-			#Global.unlock_mouse()
-		#else:
-			#Global.lock_mouse()
+	if Input.is_action_just_pressed("debug"):
+		if Global.mouse_locked:
+			Global.unlock_mouse()
+		else:
+			Global.lock_mouse()
 	
 	#if Input.is_action_just_pressed("debug2"):
 	#	get_viewport().get_texture().get_image().save_png("C:\\Users\\Aaron Hall\\Desktop\\image.png")

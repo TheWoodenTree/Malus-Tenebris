@@ -14,6 +14,7 @@ var blackout_blur_shader: Material
 var ui: Control
 var inventory: Control
 var cursor: Node2D
+var torch: Interactable
 
 var mouse_sens: float = 0.4
 var mouse_locked: bool

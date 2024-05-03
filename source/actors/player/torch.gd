@@ -39,6 +39,12 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 
 func _ready() -> void:
 	super()
+	
+	Global.torch = self
+	# All fire burning sound players are synced off the playback position of the player torch
+	# so it must be playing at all times rather than be paused
+	burning_player.volume_db = -80.0
+	
 	init(Type.PICKUP, interact_area, [mesh])
 	mesh.mesh.surface_get_material(0).albedo_color = Color.WHITE
 	light.omni_range = default_range
@@ -134,7 +140,7 @@ func _flicker():
 func light_torch():
 	var player_light = Global.player.light
 	torch_light_player.play()
-	burning_player.play()
+	burning_player.volume_db = -5.0
 	player_light.default_range = default_range
 	player_light.default_energy = default_energy
 	player_light.omni_range = default_range

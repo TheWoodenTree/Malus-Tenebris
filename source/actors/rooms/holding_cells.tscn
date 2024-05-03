@@ -90,11 +90,11 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.5, 0, 4
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.75, 1.75, 6.25)
 default_range = 15.0
 default_energy = 1.0
+lit = false
 shadow_mode = 1
 
 [node name="torch_holder4" parent="decor" index="4" instance=ExtResource("9_im54r")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1.75, 6.25)
-lit = false
 
 [node name="stone_archway4" parent="misc" index="0" instance=ExtResource("2_7myfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

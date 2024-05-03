@@ -80,7 +80,7 @@ mesh = SubResource("ArrayMesh_7jgj4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989, -0.623769)
 
 [node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
+collision_layer = 49152
 collision_mask = 0
 script = ExtResource("6_v67go")
 

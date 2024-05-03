@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://cuvmh4x1wv8ha"]
+
+[ext_resource type="PackedScene" uid="uid://dxqgvfmrq7k46" path="res://source/actors/misc/chain_link.tscn" id="1"]
+[ext_resource type="Script" path="res://source/actors/misc/hanging_chain.gd" id="1_yqmh7"]
+[ext_resource type="Texture2D" uid="uid://dvg251dkxu8my" path="res://source/assets/materials/chain_link/chain.png" id="3_abrco"]
+[ext_resource type="Texture2D" uid="uid://ckwxf7cathw34" path="res://source/assets/materials/metal_bar/Metal001_2K_NormalGL.jpg" id="4_j3rdc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ru8e"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_abrco")
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.8
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = ExtResource("4_j3rdc")
+uv1_offset = Vector3(0, 1.06, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tdqvs"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4ru8e")
+size = Vector2(0.2, 1)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sufg"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_abrco")
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.8
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = ExtResource("4_j3rdc")
+uv1_offset = Vector3(0, 1.06, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c6xlo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_7sufg")
+size = Vector2(0.2, 1)
+orientation = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_c3cho"]
+size = Vector3(1.75, 1, 0.1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48kpg"]
+points = PackedVector3Array(0.875, 0.5, 0.05, 0.875, 0.5, -0.05, -0.875, 0.5, 0.05, 0.875, -0.5, 0.05, 0.875, -0.5, -0.05, -0.875, 0.5, -0.05, -0.875, -0.5, 0.05, -0.875, -0.5, -0.05)
+
+[node name="hanging_chain" type="Node3D"]
+script = ExtResource("1_yqmh7")
+
+[node name="anchor_1" type="StaticBody3D" parent="."]
+
+[node name="anchor_2" type="StaticBody3D" parent="."]
+
+[node name="chain_1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="chain_link_1" parent="chain_1" instance=ExtResource("1")]
+
+[node name="joint" parent="chain_1/chain_link_1" index="0"]
+node_a = NodePath("../../../anchor_1")
+
+[node name="mesh" parent="chain_1/chain_link_1" index="1"]
+mesh = SubResource("PlaneMesh_tdqvs")
+
+[node name="chain_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="chain_link_1" parent="chain_2" instance=ExtResource("1")]
+
+[node name="joint" parent="chain_2/chain_link_1" index="0"]
+node_a = NodePath("../../../anchor_2")
+
+[node name="mesh" parent="chain_2/chain_link_1" index="1"]
+mesh = SubResource("PlaneMesh_c6xlo")
+
+[node name="joint_1" type="ConeTwistJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, -1, 0)
+node_b = NodePath("../sign")
+
+[node name="joint_2" type="ConeTwistJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, -1, 0)
+node_b = NodePath("../sign")
+
+[node name="sign" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+collision_layer = 0
+collision_mask = 3
+mass = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sign"]
+mesh = SubResource("BoxMesh_c3cho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign"]
+shape = SubResource("ConvexPolygonShape3D_48kpg")
+
+[editable path="chain_1/chain_link_1"]
+[editable path="chain_2/chain_link_1"]

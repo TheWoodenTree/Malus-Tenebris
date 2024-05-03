@@ -1,17 +1,21 @@
 @tool
+class_name FireSource
 extends Interactable
-
-var burning_player: AudioStreamPlayer3D
-
-@onready var light = $fire/light
-@onready var particles = $fire/fire_particles
-@onready var interact_area = $interact_area
-@onready var mesh = $mesh
 
 @export var default_range: float = 12.0
 @export var default_energy: float = 0.75
 @export var lit: bool = true : set = set_lit
 @export var shadow_mode: OmniLight3D.ShadowMode = OmniLight3D.ShadowMode.SHADOW_DUAL_PARABOLOID : set = set_shadow_mode
+@export var audio_fade_in_on_ready: bool = false
+
+var burning_player: AudioStreamPlayer3D
+
+@onready var fire = $fire
+@onready var light = $fire/light
+@onready var particles = $fire/fire_particles
+@onready var interact_area = $interact_area
+@onready var mesh = $mesh
+@onready var detection_area = Area3D.new()
 
 
 func _ready() -> void:
@@ -26,11 +30,11 @@ func _ready() -> void:
 		light.default_energy = default_energy
 		light.flicker()
 		set_interactable(lit and is_instance_valid(Global.player.torch) and not Global.player.torch.is_lit)
-		if has_node("fire/burning_player"):
-			burning_player = $fire/burning_player
-			if lit:
-				burning_player.play()
-				
+		
+		if audio_fade_in_on_ready:
+			var tween = get_tree().create_tween()
+			tween.tween_property(fire.burning_player, 'volume_db', 6.0, 5.0).from(-15.0)
+		
 	particles.emitting = lit
 	light.visible = lit
 	light.omni_shadow_mode = shadow_mode

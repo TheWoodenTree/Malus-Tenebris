@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://source/actors/rooms/sound_trigger.gd" id="1_5xfuy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khlmy"]
-size = Vector3(1, 2, 2)
+resource_local_to_scene = true
 
 [node name="sound_trigger" type="Area3D"]
 collision_layer = 0

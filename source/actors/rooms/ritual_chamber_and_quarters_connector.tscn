@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqppw8pqo3hs"]
+[gd_scene load_steps=15 format=3 uid="uid://dqppw8pqo3hs"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3f26d"]
 [ext_resource type="PackedScene" uid="uid://bhf6uocwy5fwk" path="res://source/actors/building pieces/basic/tile_floor.tscn" id="2_0i0gp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="12_2kxkj"]
 [ext_resource type="PackedScene" uid="uid://c1kffo1qignb8" path="res://source/actors/building pieces/basic/corner_trim.tscn" id="13_bygml"]
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="14_dsgq6"]
+[ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="14_lheut"]
 
 [node name="ritual_chamber_and_quarters_connector" instance=ExtResource("1_3f26d")]
 
@@ -29,6 +30,7 @@ occluder = ExtResource("3_8ro5t")
 
 [node name="archway_w_polished_wood_door" parent="." index="9" instance=ExtResource("2_qeii0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
+door_open_angle = 85
 
 [node name="tile_wall" parent="." index="10" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.5, 4.5)
@@ -325,3 +327,11 @@ length = 24.0
 [node name="tile_wall6" parent="." index="86" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.5, -10)
 size = Vector3(1, 6, 22)
+
+[node name="sign" parent="." index="87" instance=ExtResource("14_lheut")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14, 4, -10)
+text = "Crematorium"
+
+[node name="sign2" parent="." index="88" instance=ExtResource("14_lheut")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -26.5)
+text = "Servant's Quarters"

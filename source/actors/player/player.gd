@@ -430,3 +430,14 @@ func _on_allow_interactable_sheen_area_area_entered(area):
 func _on_allow_interactable_sheen_area_area_exited(area):
 	if area.interactable_ancestor.enable_highlight_sheen:
 		area.interactable_ancestor.disable_sheen()
+
+
+func _on_fire_burning_sound_area_area_entered(area):
+	if area.interactable_ancestor.lit:
+		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
+		start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
+		area.interactable_ancestor.fire.burning_player.play(start_time)
+
+
+func _on_fire_burning_sound_area_area_exited(area):
+	area.interactable_ancestor.fire.burning_player.stop()

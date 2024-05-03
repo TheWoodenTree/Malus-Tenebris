@@ -82,11 +82,10 @@ mesh = SubResource("ArrayMesh_dyem4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83312, 0)
 
 [node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
+collision_layer = 49152
 collision_mask = 0
 script = ExtResource("6_5o5cu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.17951, 0)
 shape = SubResource("SphereShape3D_1o0hv")
-disabled = true

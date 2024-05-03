@@ -247,6 +247,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0.5, -16.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0841, 1, -17.25)
 default_range = 14.0
 default_energy = 1.0
+audio_fade_in_on_ready = null
 
 [node name="large_table" parent="." index="57" instance=ExtResource("25_mmlfl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75, 0.5, -15.5)
@@ -263,6 +264,7 @@ label = ExtResource("29_r0ce2")
 
 [node name="torch_holder" parent="." index="61" instance=ExtResource("22_12ae0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89023, 2, -3.70009)
+audio_fade_in_on_ready = null
 
 [node name="sm_tall_pot" parent="." index="62" instance=ExtResource("31_upow3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2, -10)
