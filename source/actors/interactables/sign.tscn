@@ -147,7 +147,7 @@ length = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -0.4)
 length = 2
 
-[node name="Decal" type="Decal" parent="." index="5"]
+[node name="decal" type="Decal" parent="." index="5"]
 transform = Transform3D(-5.46392e-08, 1.25, -5.46392e-08, 0, -5.46392e-08, -1.25, -1.25, -5.46392e-08, 2.38836e-15, 0, 0.375, 0)
 size = Vector3(0.603, 0.1, 0.5)
 texture_albedo = ExtResource("7_wcmxp")

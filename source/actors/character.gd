@@ -65,7 +65,7 @@ var speed_multiplier: float = 1.0
 
 func _load_footsteps():
 	for i in range(1, 4):
-		var file_path = "res://source/assets/sounds/walk/stone_footstep_%d.ogg" % i
+		var file_path = "res://source/assets/sounds/walk/stone_footstep_2_%d.ogg" % i
 		var sound = load(file_path)
 		stone_footstep_sounds.append(sound)
 	for i in range(1, 4):

@@ -317,7 +317,7 @@ text = "Kitchen"
 
 [node name="sign2" parent="." index="38" instance=ExtResource("15_wcx2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 4, 0)
-text = "Ritual Chamber"
+text = "Atonement Chamber"
 
 [node name="sign3" parent="." index="39" instance=ExtResource("15_wcx2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -18.5)

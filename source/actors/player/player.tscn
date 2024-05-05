@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=24 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
@@ -12,23 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://dqap21jiqu5gq" path="res://source/assets/sounds/misc/fear.ogg" id="8_ulhip"]
 [ext_resource type="Script" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
 [ext_resource type="AudioStream" uid="uid://c7bxvp10bg6g2" path="res://source/assets/sounds/horror_sounds/fear_pulse_loop.ogg" id="11_nxucy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icr8b"]
-shading_mode = 0
-
-[sub_resource type="SphereMesh" id="SphereMesh_l7daj"]
-material = SubResource("StandardMaterial3D_icr8b")
-radius = 0.35
-height = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1prn"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_gh7fc"]
-material = SubResource("StandardMaterial3D_v1prn")
-radius = 0.25
-height = 0.7
 
 [sub_resource type="Animation" id="Animation_dqclq"]
 resource_name = "timer"
@@ -104,8 +87,7 @@ floor_max_angle = 0.872665
 floor_snap_length = 1.0
 script = ExtResource("1")
 debug_has_torch = true
-footstep_walk_vol = -25.0
-footstep_sprint_vol = -20.0
+footstep_walk_vol = -21.0
 
 [node name="head_controller" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
@@ -142,18 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252
 
 [node name="held_item_marker" type="Marker3D" parent="head_controller/bob_controller/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
-
-[node name="test" type="MeshInstance3D" parent="head_controller/bob_controller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-visible = false
-mesh = SubResource("SphereMesh_l7daj")
-skeleton = NodePath("../../..")
-
-[node name="test2" type="MeshInstance3D" parent="head_controller/bob_controller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-visible = false
-mesh = SubResource("SphereMesh_gh7fc")
-skeleton = NodePath("../../..")
 
 [node name="bob_timer" type="AnimationPlayer" parent="head_controller/bob_controller"]
 libraries = {

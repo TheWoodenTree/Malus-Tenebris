@@ -311,12 +311,12 @@ type = "Convex"
 [node name="corner_trim3" parent="." index="83" instance=ExtResource("13_bygml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.5, 0.5, 7)
 length1 = 12.0
-length2 = 13.5
+length2 = 14.5
 type = "Convex"
 
 [node name="corner_trim4" parent="." index="84" instance=ExtResource("13_bygml")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.5, 0.5, -27)
-length1 = 13.5
+length1 = 14.5
 length2 = 12.0
 type = "Convex"
 
@@ -329,9 +329,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.5, -10)
 size = Vector3(1, 6, 22)
 
 [node name="sign" parent="." index="87" instance=ExtResource("14_lheut")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14, 4, -10)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.5, 2.5, -6.5)
 text = "Crematorium"
+chain_length = 0
 
 [node name="sign2" parent="." index="88" instance=ExtResource("14_lheut")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -26.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 2.5, -27)
 text = "Servant's Quarters"
+chain_length = 0

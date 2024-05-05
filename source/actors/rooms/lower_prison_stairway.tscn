@@ -483,52 +483,47 @@ transform = Transform3D(-2.18557e-08, 3.78552e-08, 1, 0.825123, 0.564953, -3.352
 [node name="wall_rack" parent="decor2" index="5" instance=ExtResource("15_aut1w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.25, -17)
 
-[node name="torch_holder3" parent="." index="27" instance=ExtResource("19_mb0ej")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.5, 2.5, 2)
-lit = false
-shadow_mode = 1
-
-[node name="torch_holder4" parent="." index="28" instance=ExtResource("19_mb0ej")]
+[node name="torch_holder4" parent="." index="27" instance=ExtResource("19_mb0ej")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.5, 2.5, -4)
 default_energy = 1.0
 shadow_mode = 1
 
-[node name="wall_rack" parent="." index="29" instance=ExtResource("15_aut1w")]
+[node name="wall_rack" parent="." index="28" instance=ExtResource("15_aut1w")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.5, 1.75, 0.75)
 
-[node name="sm_stacked_planks2" parent="." index="30" instance=ExtResource("25_6vxl6")]
+[node name="sm_stacked_planks2" parent="." index="29" instance=ExtResource("25_6vxl6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0.5, 2.75)
 
-[node name="rubble_1" parent="." index="31" instance=ExtResource("26_0x21u")]
+[node name="rubble_1" parent="." index="30" instance=ExtResource("26_0x21u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 12.25)
 
-[node name="rubble_3" parent="." index="32" instance=ExtResource("27_f42cs")]
+[node name="rubble_3" parent="." index="31" instance=ExtResource("27_f42cs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 16.5)
 
-[node name="rubble_2" parent="." index="33" instance=ExtResource("26_0x21u")]
+[node name="rubble_2" parent="." index="32" instance=ExtResource("26_0x21u")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3.5, 0.5, 0.5)
 
-[node name="rubble_4" parent="." index="34" instance=ExtResource("28_gxb6r")]
+[node name="rubble_4" parent="." index="33" instance=ExtResource("28_gxb6r")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -1.75, 0.5, -3)
 
-[node name="urn_2" parent="." index="35" instance=ExtResource("29_q8p76")]
+[node name="urn_2" parent="." index="34" instance=ExtResource("29_q8p76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0.5, -4.5)
 
-[node name="urn_1" parent="." index="36" instance=ExtResource("30_wjiuc")]
+[node name="urn_1" parent="." index="35" instance=ExtResource("30_wjiuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0.5, -5.5)
 
-[node name="fat_pot" parent="." index="37" instance=ExtResource("14_o5tvj")]
+[node name="fat_pot" parent="." index="36" instance=ExtResource("14_o5tvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, 4)
 
-[node name="double_crate" parent="." index="38" instance=ExtResource("31_kmqvv")]
+[node name="double_crate" parent="." index="37" instance=ExtResource("31_kmqvv")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 5.25, 0.5, -2.25)
 
-[node name="double_crate2" parent="." index="39" instance=ExtResource("31_kmqvv")]
+[node name="double_crate2" parent="." index="38" instance=ExtResource("31_kmqvv")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 5, 1.75, -2.5)
 
-[node name="sign" parent="." index="40" instance=ExtResource("32_7v3yc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4, -1)
+[node name="sign" parent="." index="39" instance=ExtResource("32_7v3yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 2.5)
 text = "Warden's Chamber"
-chain_length = 4
+chain_length = 0
 
 [connection signal="body_entered" from="exposure_area" to="exposure_area" method="_on_body_entered"]
