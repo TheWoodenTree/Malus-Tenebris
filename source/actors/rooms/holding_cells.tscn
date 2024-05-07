@@ -1,7 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cv4ajx80ijgv5"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_xg01o"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_7myfj"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_1vynf"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="4_ppvc1"]
 [ext_resource type="PackedScene" uid="uid://citdjndu5i5q4" path="res://source/actors/rooms/misc/small_cell.tscn" id="5_ngfyn"]
@@ -18,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="16_dswjm"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="17_0yxfj"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="18_ti2bc"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="19_46bmj"]
 [ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="19_l165h"]
 
 [node name="holding_cells" instance=ExtResource("1_xg01o")]
@@ -96,10 +96,7 @@ shadow_mode = 1
 [node name="torch_holder4" parent="decor" index="4" instance=ExtResource("9_im54r")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1.75, 6.25)
 
-[node name="stone_archway4" parent="misc" index="0" instance=ExtResource("2_7myfj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="scroll_3" parent="misc" index="1" instance=ExtResource("10_vxymn")]
+[node name="scroll_3" parent="misc" index="0" instance=ExtResource("10_vxymn")]
 transform = Transform3D(0.960741, 0, 0.277449, 0, 1, 0, -0.277449, 0, 0.960741, -2.30662, 1.5, 4.03093)
 label = ExtResource("11_606sy")
 
@@ -135,3 +132,6 @@ transform = Transform3D(0.995575, 0, -0.0939693, 0, 1, 0, 0.0939693, 0, 0.995575
 
 [node name="sm_stacked_planks_3" parent="." index="18" instance=ExtResource("19_l165h")]
 transform = Transform3D(0.486793, 0, -0.873517, 0, 1, 0, 0.873517, 0, 0.486793, 4.8216, 0, 8.69923)
+
+[node name="reg_archway" parent="." index="19" instance=ExtResource("19_46bmj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

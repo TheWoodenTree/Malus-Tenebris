@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://crk28bh4d7n6g"]
 
 [ext_resource type="Script" path="res://source/actors/building pieces/basic/trim.gd" id="1_l31eg"]
-[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/bricks_2.tres" id="2_6lb1d"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/rough_bricks.tres" id="2_6lb1d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wr63"]
 resource_local_to_scene = true
@@ -21,6 +21,8 @@ mesh = SubResource("BoxMesh_0wr63")
 skeleton = NodePath("../body")
 
 [node name="body" type="StaticBody3D" parent="."]
+collision_layer = 8193
+collision_mask = 2
 
 [node name="collision_shape" type="CollisionShape3D" parent="body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0.175, 0)

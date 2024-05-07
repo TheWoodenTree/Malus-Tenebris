@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://drlvjfjfl1kgg"]
+[gd_scene load_steps=10 format=3 uid="uid://drlvjfjfl1kgg"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ku4fq"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bnb6mx6gl2osh" path="res://source/actors/rooms/occluders/prison_temple_connector.occ" id="2_21qyh"]
 [ext_resource type="PackedScene" uid="uid://8foqmd7s8uhv" path="res://source/actors/building pieces/basic/tile_stairs.tscn" id="2_iwasx"]
 [ext_resource type="PackedScene" uid="uid://bwlelyi72q35" path="res://source/actors/building pieces/basic/tile_wall.tscn" id="3_5bck0"]
 [ext_resource type="PackedScene" uid="uid://bhf6uocwy5fwk" path="res://source/actors/building pieces/basic/tile_floor.tscn" id="4_tjht3"]
-[ext_resource type="Material" uid="uid://t2en08h4s72k" path="res://source/assets/materials/bricks_2/bricks_2.tres" id="7_xfjkf"]
 [ext_resource type="PackedScene" uid="uid://ctgpyuh7gpi1d" path="res://source/actors/building pieces/archways/archway_w_double_door.tscn" id="8_gok11"]
-[ext_resource type="PackedScene" uid="uid://mlg3ebam37o5" path="res://source/actors/building pieces/archways/archway_w_polished_wood_door.tscn" id="10_44dxy"]
+[ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="10_3hmsf"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="10_motfl"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="10_tao02"]
 
@@ -95,7 +94,6 @@ size = Vector3(1, 6, 1.5)
 
 [node name="archway_w_double_door" parent="." index="30" instance=ExtResource("8_gok11")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.75, -6, -1)
-material = ExtResource("7_xfjkf")
 
 [node name="tile_wall8" parent="." index="31" instance=ExtResource("3_5bck0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.75, -3, -3.75)
@@ -147,12 +145,16 @@ default_range = 10.0
 default_energy = 0.5
 shadow_mode = 1
 
-[node name="archway_w_polished_wood_door" parent="." index="43" instance=ExtResource("10_44dxy")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.75, -6, -4.5)
+[node name="reg_archway" parent="." index="43" instance=ExtResource("10_tao02")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.75, -6, -1)
+style = "Polished"
+
+[node name="reg_archway2" parent="." index="44" instance=ExtResource("10_tao02")]
+transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, 22.75, -6, -1)
+style = "Polished"
+
+[node name="reg_doorway" parent="." index="45" instance=ExtResource("10_3hmsf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.75, -6, -4.5)
+door_style = "Polished"
 door_interactable_override = 2
-
-[node name="reg_archway" parent="." index="44" instance=ExtResource("10_tao02")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.25, -6, -1)
-
-[node name="reg_archway2" parent="." index="45" instance=ExtResource("10_tao02")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 22.25, -6, -1)
+style = "Polished"

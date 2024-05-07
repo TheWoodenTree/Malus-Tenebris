@@ -8,10 +8,12 @@ resource_local_to_scene = true
 material = ExtResource("2_onesj")
 left_to_right = 1.0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bbl0g"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4lulv"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="triangle_wall" type="StaticBody3D"]
+collision_layer = 8193
+collision_mask = 2
 script = ExtResource("1_2y32v")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
@@ -19,4 +21,4 @@ mesh = SubResource("PrismMesh_vncwr")
 skeleton = NodePath("")
 
 [node name="collision_box" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_bbl0g")
+shape = SubResource("ConvexPolygonShape3D_4lulv")

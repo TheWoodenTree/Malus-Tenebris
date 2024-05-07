@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtgqm415q82gw"]
+[gd_scene load_steps=5 format=3 uid="uid://dtgqm415q82gw"]
 
 [ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="1_32p27"]
+[ext_resource type="PackedScene" uid="uid://elrnx31akyj6" path="res://source/actors/misc/footstep_sound_area.tscn" id="2_xtfnl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ouolm"]
 _surfaces = [{
@@ -38,3 +39,11 @@ shadow_mesh = SubResource("ArrayMesh_ouolm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723328, 0.0843531, -0.306855)
 layers = 8
 mesh = SubResource("ArrayMesh_d6dg5")
+
+[node name="area" parent="." instance=ExtResource("2_xtfnl")]
+
+[node name="collision_shape" parent="area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0747403, 0, 0.33167)
+visible = false
+
+[editable path="area"]

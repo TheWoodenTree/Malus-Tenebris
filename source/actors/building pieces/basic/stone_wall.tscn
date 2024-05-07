@@ -11,6 +11,7 @@ material = ExtResource("2_qoiac")
 resource_local_to_scene = true
 
 [node name="stone_wall" type="StaticBody3D"]
+collision_layer = 8193
 collision_mask = 2
 script = ExtResource("1")
 

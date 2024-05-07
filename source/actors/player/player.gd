@@ -419,7 +419,7 @@ func cam_look_at_over_time(pos: Vector3, time: float):
 
 
 func debug_get_torch():
-	Global.world.get_node("nav_region").get_node("records_room").get_node("sm_table3").get_node("torch").interact()
+	Global.torch.interact()
 	Global.player.torch.light_torch()
 
 
@@ -433,6 +433,7 @@ func _on_allow_interactable_sheen_area_area_exited(area):
 		area.interactable_ancestor.disable_sheen()
 
 
+# Only play fire burning audio from nearby fire sources since there's a lot of them
 func _on_fire_burning_sound_area_area_entered(area):
 	if area.interactable_ancestor.lit:
 		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0

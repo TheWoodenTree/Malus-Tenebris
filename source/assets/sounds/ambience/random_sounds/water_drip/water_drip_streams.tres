@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://xurvk1cricmw"]
+
+[ext_resource type="AudioStream" uid="uid://chvaacpvovi4l" path="res://source/assets/sounds/ambience/random_sounds/water_drip/water_drop_1.ogg" id="1_ff3sm"]
+[ext_resource type="AudioStream" uid="uid://y5emk5a2sq24" path="res://source/assets/sounds/ambience/random_sounds/water_drip/water_drop_2.ogg" id="2_nj20k"]
+[ext_resource type="AudioStream" uid="uid://mda364hmi4oe" path="res://source/assets/sounds/ambience/random_sounds/water_drip/water_drop_3.ogg" id="3_gxshq"]
+[ext_resource type="AudioStream" uid="uid://bnqjet86p33or" path="res://source/assets/sounds/ambience/random_sounds/water_drip/water_drop_4.ogg" id="4_afnde"]
+[ext_resource type="AudioStream" uid="uid://c61b7ml57xkt5" path="res://source/assets/sounds/ambience/random_sounds/water_drip/water_drop_5.ogg" id="5_4jtl6"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 5
+stream_0/stream = ExtResource("1_ff3sm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_nj20k")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_gxshq")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_afnde")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_4jtl6")
+stream_4/weight = 1.0

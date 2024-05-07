@@ -11,6 +11,8 @@ material = ExtResource("2_vkn7x")
 resource_local_to_scene = true
 
 [node name="stone_floor" type="StaticBody3D"]
+collision_layer = 8193
+collision_mask = 2
 script = ExtResource("1_i8a1q")
 
 [node name="mesh" type="MeshInstance3D" parent="."]

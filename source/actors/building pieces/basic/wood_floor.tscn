@@ -11,6 +11,8 @@ material = ExtResource("2_c0wrl")
 resource_local_to_scene = true
 
 [node name="wood_floor" type="StaticBody3D"]
+collision_layer = 8193
+collision_mask = 2
 script = ExtResource("1_rr40e")
 type = 1
 

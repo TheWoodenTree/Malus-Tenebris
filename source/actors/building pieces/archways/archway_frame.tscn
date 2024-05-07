@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgyny0355ylji"]
 
-[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/bricks_2.tres" id="1_hy880"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/rough_bricks.tres" id="1_hy880"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rsw5"]
 

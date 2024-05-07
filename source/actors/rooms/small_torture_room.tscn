@@ -1,22 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://dw4xwroyayfdv"]
+[gd_scene load_steps=19 format=3 uid="uid://dw4xwroyayfdv"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3sot7"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_jlmsx"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_ss4ja"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="4_buubx"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="4_evxrn"]
 [ext_resource type="PackedScene" uid="uid://1utcwmaim5js" path="res://source/actors/decor/furniture/torture_chair.tscn" id="5_eqndu"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="6_gfmsw"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="7_u0vsv"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="8_qyfwj"]
 [ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="10_n87qg"]
 [ext_resource type="ArrayOccluder3D" uid="uid://c8da74ump72ny" path="res://source/actors/rooms/occluders/small_torture_room.occ" id="11_e68t4"]
-[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="12_2h3ek"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="13_3serb"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="14_v7eo7"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="15_aqurv"]
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="16_g0e2e"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="17_bvf6q"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="17_nsor2"]
 [ext_resource type="PackedScene" uid="uid://1f7kquwbkp1q" path="res://source/actors/decor/tools/knife.tscn" id="18_y5udt"]
 
 [sub_resource type="Resource" id="Resource_bmwx1"]
@@ -85,11 +84,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.2
 [node name="chain_loop4" parent="decor" index="8" instance=ExtResource("8_qyfwj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.25, 1.25)
 
-[node name="stone_archway" parent="misc" index="0" instance=ExtResource("4_evxrn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0.5, -1.5)
-material = ExtResource("12_2h3ek")
-
-[node name="ruboleum_vial" parent="misc" index="1" instance=ExtResource("13_3serb")]
+[node name="ruboleum_vial" parent="misc" index="0" instance=ExtResource("13_3serb")]
 transform = Transform3D(-0.753884, 0.657007, 2.87187e-08, -1.44114e-15, -4.37114e-08, 1, 0.657007, 0.753884, 3.29533e-08, -0.63256, 2.04474, -1.25988)
 item_data = SubResource("Resource_bmwx1")
 
@@ -101,3 +96,6 @@ transform = Transform3D(-0.932626, 0, 0.360843, 0, 1, 0, -0.360843, 0, -0.932626
 
 [node name="knife" parent="." index="10" instance=ExtResource("18_y5udt")]
 transform = Transform3D(-0.788666, 0, 0.614822, 0, 1, 0, -0.614822, 0, -0.788666, -0.0763487, 2, -0.743711)
+
+[node name="reg_archway" parent="." index="11" instance=ExtResource("17_nsor2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0.5, -1.5)

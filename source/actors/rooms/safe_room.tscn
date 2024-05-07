@@ -1,9 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=39 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ntfkh"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_pki5p"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_tctxl"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="7_s44qe"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="9_r1pjc"]
@@ -18,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://crsbreiuabhvi" path="res://source/actors/decor/groups/books_6.tscn" id="19_0wdpu"]
 [ext_resource type="PackedScene" uid="uid://co8wmy3bgkhpy" path="res://source/actors/decor/groups/books_4.tscn" id="20_c6t8m"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="21_mju78"]
-[ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="22_1fwwt"]
 [ext_resource type="PackedScene" uid="uid://db57xmqhrdyrg" path="res://source/actors/decor/furniture/corner_table.tscn" id="22_5kyhp"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="22_dvdth"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="24_g1atn"]
@@ -33,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://vvlxaydbk275" path="res://source/actors/interactables/distillation_station.tscn" id="33_7s2y7"]
 [ext_resource type="PackedScene" uid="uid://ijd8uaep4lbk" path="res://source/actors/decor/groups/books_5.tscn" id="33_q6ph1"]
 [ext_resource type="Script" path="res://source/actors/rooms/tutorial_popup_area.gd" id="33_x680n"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="34_6pa4g"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="34_e2n1h"]
 [ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="34_jabgf"]
 
@@ -169,7 +168,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25, 2, -3.25)
 default_energy = 0.25
 lit = false
 shadow_mode = 1
-audio_fade_in_on_ready = null
 
 [node name="shelf_2" parent="decor" index="9" instance=ExtResource("16_83156")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6923, 0.5, -3.01924)
@@ -188,32 +186,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 default_energy = 0.25
 lit = false
 shadow_mode = 1
-audio_fade_in_on_ready = null
 
 [node name="hanging_lamp2" parent="decor" index="13" instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, -0.5, -2.5)
 default_energy = 0.25
 lit = false
 shadow_mode = 1
-audio_fade_in_on_ready = null
 
 [node name="corner_table" parent="decor" index="14" instance=ExtResource("22_5kyhp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.75, 2, -3.5)
 
-[node name="stone_archway3" parent="misc" index="0" instance=ExtResource("2_pki5p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.5, 2)
-length = 3.0
-
-[node name="note" parent="misc" index="1" instance=ExtResource("14_bjogf")]
+[node name="note" parent="misc" index="0" instance=ExtResource("14_bjogf")]
 transform = Transform3D(-0.680746, 0, 0.732519, 0, 1, 0, -0.732519, 0, -0.680746, 12.5822, 0.801072, -2.33667)
 label = ExtResource("15_3js4e")
 
-[node name="small_archway" parent="misc" index="2" instance=ExtResource("28_gg6p8")]
+[node name="small_archway" parent="misc" index="1" instance=ExtResource("28_gg6p8")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.5, 0.5, -0.5)
 length = 4.0
-material = ExtResource("22_1fwwt")
 
-[node name="chest" parent="misc" index="3" instance=ExtResource("32_v6vsh")]
+[node name="chest" parent="misc" index="2" instance=ExtResource("32_v6vsh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -3.374)
 
 [node name="ruboleum_vial" parent="misc/chest" index="6" instance=ExtResource("24_g1atn")]
@@ -224,7 +215,7 @@ item_data = SubResource("Resource_yb1eg")
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
 item_data = SubResource("Resource_2sw8t")
 
-[node name="note2" parent="misc" index="4" instance=ExtResource("14_bjogf")]
+[node name="note2" parent="misc" index="3" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
 label = ExtResource("28_a1a56")
 
@@ -252,7 +243,6 @@ default_range = 8.0
 default_energy = 0.25
 lit = false
 shadow_mode = 1
-audio_fade_in_on_ready = null
 
 [node name="shelf_2" parent="." index="12" instance=ExtResource("16_83156")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0.5, -3)
@@ -296,7 +286,6 @@ omni_range = 12.0
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 2.25, 0)
 default_energy = 0.5
 shadow_mode = 1
-audio_fade_in_on_ready = null
 
 [node name="lock_door_tutorial" type="Area3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2)
@@ -315,6 +304,10 @@ transform = Transform3D(0.969497, 0, -0.245104, 0, 1, 0, 0.245104, 0, 0.969497, 
 
 [node name="ink_pot_w_pen" parent="." index="26" instance=ExtResource("34_jabgf")]
 transform = Transform3D(-0.999902, 0, 0.0139796, 0, 1, 0, -0.0139796, 0, -0.999902, 4.47109, 2, -3.3232)
+
+[node name="reg_archway" parent="." index="27" instance=ExtResource("34_6pa4g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.5, 2)
+length = 3.0
 
 [connection signal="body_entered" from="safe_room_area" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="safe_room_area" to="." method="_on_safe_room_area_body_exited"]

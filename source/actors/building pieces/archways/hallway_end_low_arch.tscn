@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvqmit8sb2byw"]
 
-[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/bricks_2.tres" id="1_rgnrg"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/rough_bricks.tres" id="1_rgnrg"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wrumm"]
 _surfaces = [{

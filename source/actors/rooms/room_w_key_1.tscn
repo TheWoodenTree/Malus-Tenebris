@@ -37,9 +37,9 @@
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="33"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="34"]
 [ext_resource type="PackedScene" uid="uid://gl2we4tjxsd8" path="res://source/actors/decor/misc/broken_barrel.tscn" id="35"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="35_xxav6"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cotjy07gwms15" path="res://source/actors/rooms/occluders/room_w_key_1.occ" id="41_j7hgg"]
 [ext_resource type="PackedScene" uid="uid://2n0p2swjfvtx" path="res://source/actors/decor/furniture/chest.tscn" id="42_0wkdq"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="42_gscoh"]
 [ext_resource type="PackedScene" uid="uid://dwue8yvjv7iog" path="res://source/actors/decor/misc/pots/urn_3.tscn" id="42_uw42v"]
 [ext_resource type="PackedScene" uid="uid://dkjbo1lmsiv60" path="res://source/actors/decor/misc/pots/urn_2.tscn" id="43_ptoiv"]
 
@@ -354,17 +354,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1.5, -14.5)
 [node name="broken_barrel2" parent="decor" index="53" instance=ExtResource("35")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -17, 1.5, -14.25)
 
-[node name="stone_archway" parent="decor" index="54" instance=ExtResource("35_xxav6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0.5, -1.25)
-length = 2.5
-
-[node name="urn_3" parent="decor" index="55" instance=ExtResource("42_uw42v")]
+[node name="urn_3" parent="decor" index="54" instance=ExtResource("42_uw42v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 0.5, -2.75)
 
-[node name="urn_2" parent="decor" index="56" instance=ExtResource("43_ptoiv")]
+[node name="urn_2" parent="decor" index="55" instance=ExtResource("43_ptoiv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0.5, -2.5)
 
-[node name="chest" parent="decor" index="57" instance=ExtResource("42_0wkdq")]
+[node name="chest" parent="decor" index="56" instance=ExtResource("42_0wkdq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.5, 0.5, -5.5)
 
 [node name="key" parent="decor/chest" index="6" instance=ExtResource("6")]
@@ -374,3 +370,6 @@ enable_highlight_light = true
 
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("41_j7hgg")
+
+[node name="reg_archway" parent="." index="9" instance=ExtResource("42_gscoh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0.5, -1.25)

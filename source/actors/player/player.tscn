@@ -1,16 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=25 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
 [ext_resource type="Script" path="res://source/actors/player/bob_controller.gd" id="2_n0c15"]
 [ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="4"]
 [ext_resource type="Material" uid="uid://6l1ko2kw0opd" path="res://source/assets/particles/ambient_particles.tres" id="4_sn5wa"]
+[ext_resource type="PackedScene" uid="uid://lyhy6lr0j6hy" path="res://source/actors/player/random_sound_manager.tscn" id="5_8g41b"]
 [ext_resource type="AudioStream" uid="uid://c26ecgvwwpjek" path="res://source/assets/sounds/liquid/gulp.ogg" id="5_386p0"]
-[ext_resource type="AudioStream" uid="uid://dbr42td7nxhuf" path="res://source/assets/sounds/rucksack/rucksack_1.ogg" id="5_s032p"]
-[ext_resource type="AudioStream" uid="uid://dgjew80eoo60l" path="res://source/assets/sounds/rucksack/rucksack_2.ogg" id="6_145et"]
-[ext_resource type="AudioStream" uid="uid://dhvhdbjf2vdhf" path="res://source/assets/sounds/rucksack/rucksack_3.ogg" id="7_81gjg"]
+[ext_resource type="AudioStream" uid="uid://dcxxknwjj7cqk" path="res://source/assets/sounds/rucksack/rucksack_4.ogg" id="8_7f7qv"]
 [ext_resource type="AudioStream" uid="uid://dqap21jiqu5gq" path="res://source/assets/sounds/misc/fear.ogg" id="8_ulhip"]
+[ext_resource type="AudioStream" uid="uid://bq7tbm4dgtm2j" path="res://source/assets/sounds/rucksack/rucksack_5.ogg" id="9_un0ps"]
 [ext_resource type="Script" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
+[ext_resource type="AudioStream" uid="uid://d3pakvmqmjlr0" path="res://source/assets/sounds/rucksack/rucksack_6.ogg" id="10_vyll3"]
 [ext_resource type="AudioStream" uid="uid://c7bxvp10bg6g2" path="res://source/assets/sounds/horror_sounds/fear_pulse_loop.ogg" id="11_nxucy"]
 
 [sub_resource type="Animation" id="Animation_dqclq"]
@@ -65,16 +66,17 @@ size = Vector2(0.1, 0.1)
 orientation = 2
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v4sui"]
+random_pitch = 1.1
 streams_count = 3
-stream_0/stream = ExtResource("5_s032p")
+stream_0/stream = ExtResource("8_7f7qv")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("6_145et")
+stream_1/stream = ExtResource("9_un0ps")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("7_81gjg")
+stream_2/stream = ExtResource("10_vyll3")
 stream_2/weight = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_helq8"]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6dsv4"]
 radius = 10.0
@@ -86,8 +88,6 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 floor_snap_length = 1.0
 script = ExtResource("1")
-debug_has_torch = true
-footstep_walk_vol = -21.0
 
 [node name="head_controller" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
@@ -137,6 +137,8 @@ light_energy = 0.75
 omni_range = 3.0
 script = ExtResource("4")
 
+[node name="random_sound_manager" parent="head_controller" instance=ExtResource("5_8g41b")]
+
 [node name="standing_collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8awoy")
 
@@ -160,6 +162,9 @@ draw_pass_1 = SubResource("PlaneMesh_occu0")
 [node name="floor_type_check" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 target_position = Vector3(0, -3, 0)
+collision_mask = 8192
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="water_check" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)

@@ -26,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://dcb0ks2xkb46f" path="res://source/assets/sounds/misc/metal_scrape.ogg" id="26_j7fcr"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="27_4qxhj"]
 [ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="28_32h2w"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="28_836nc"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_c6mxc"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="29_jsc7q"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bttg30gnl2j20" path="res://source/actors/rooms/occluders/upper_storage_room.occ" id="30_gitko"]
 
@@ -215,9 +215,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -4.25)
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.75, 2.25, 13.5)
 item_data = SubResource("Resource_ykjm6")
 
-[node name="stone_archway" parent="misc" index="1" instance=ExtResource("28_836nc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.5, 0)
-
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("30_gitko")
 
@@ -226,3 +223,6 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="half_wood_support2" parent="." index="10" instance=ExtResource("29_jsc7q")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0.5, 7)
+
+[node name="reg_archway" parent="." index="11" instance=ExtResource("29_c6mxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.5, 0)

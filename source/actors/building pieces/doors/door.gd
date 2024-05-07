@@ -128,9 +128,9 @@ func _physics_process(_delta):
 		elif not closed:
 			draggable_body.angular_damp = 5.0
 			
-		# Set door to closed if it isn't being dragged by player and is within the closed angle
+		# Set door to closed if it is within the closed angle
 		# and angular velocity is closing door
-		if not player_dragging and abs(draggable_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)) \
+		if abs(draggable_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)) \
 		and sign(draggable_body.angular_velocity.y) == -sign(open_to_angle):
 			set_closed(true)
 			
@@ -170,7 +170,7 @@ func interact():
 			if not door_shaking:
 				door_shaking = true
 				door_attempt_player.play()
-
+				
 				var message: String
 				if not locked_message.is_empty():
 					message = locked_message
@@ -196,7 +196,7 @@ func attempt_unlock():
 	var correct_key: bool = Global.player.is_holding_item(key_name + " Key")
 	var is_prison_depths_key: bool = Global.player.is_holding_item("Prison Depths Key")
 	var anim_name: String
-	if is_prison_depths_key:
+	if is_prison_depths_key and key_name == "Prison Depths":
 		anim_name = "insert_rusty_key"
 	elif correct_key:
 		anim_name = "insert_key"

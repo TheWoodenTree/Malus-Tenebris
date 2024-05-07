@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://bodl3dra0txeu"]
+
+[ext_resource type="AudioStream" uid="uid://bhwguqed5ai0k" path="res://source/assets/sounds/ambience/random_sounds/wood_creak_2.ogg" id="2_exn8n"]
+[ext_resource type="AudioStream" uid="uid://b68ul08n18paa" path="res://source/assets/sounds/ambience/random_sounds/wood_creak_1.ogg" id="2_iesk3"]
+[ext_resource type="AudioStream" uid="uid://bldoaxurne4k4" path="res://source/assets/sounds/ambience/random_sounds/wood_creak_3.ogg" id="3_q4jb0"]
+[ext_resource type="AudioStream" uid="uid://dtxf3qaxlmr8n" path="res://source/assets/sounds/ambience/random_sounds/wood_creak_4.ogg" id="4_sp83s"]
+[ext_resource type="AudioStream" uid="uid://ckfo0505v5fqp" path="res://source/assets/sounds/ambience/random_sounds/wood_creak_5.ogg" id="5_deb3h"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 5
+stream_0/stream = ExtResource("2_iesk3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_exn8n")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_q4jb0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_sp83s")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_deb3h")
+stream_4/weight = 1.0

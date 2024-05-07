@@ -11,6 +11,7 @@ material = ExtResource("2_85g4n")
 resource_local_to_scene = true
 
 [node name="cobble_floor" type="StaticBody3D"]
+collision_layer = 8193
 script = ExtResource("1_6fy5c")
 
 [node name="mesh" type="MeshInstance3D" parent="."]

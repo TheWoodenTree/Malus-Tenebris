@@ -339,6 +339,7 @@ size = Vector3(5, 5, 1)
 
 [node name="reg_archway" parent="." index="99" instance=ExtResource("22_nuspq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.5, 0.5, -14.5)
+style = "Polished"
 
 [node name="sound_trigger" parent="." index="100" instance=ExtResource("23_vmmtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0)

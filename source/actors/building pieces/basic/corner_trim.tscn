@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1kffo1qignb8"]
 
 [ext_resource type="Script" path="res://source/actors/building pieces/basic/corner_trim.gd" id="1_01o70"]
-[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/bricks_2.tres" id="2_jqt1v"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/rough_bricks.tres" id="2_jqt1v"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kgmd6"]
 resource_local_to_scene = true
@@ -49,6 +49,8 @@ mesh = SubResource("BoxMesh_tt5nh")
 skeleton = NodePath("../..")
 
 [node name="body" type="StaticBody3D" parent="node"]
+collision_layer = 8193
+collision_mask = 2
 
 [node name="collision_shape1" type="CollisionShape3D" parent="node/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, -0.5)

@@ -2,33 +2,35 @@
 
 [ext_resource type="Script" path="res://source/assets/ui/inventory.gd" id="1_0pmc3"]
 [ext_resource type="Texture2D" uid="uid://bok3qh5mh0w5o" path="res://source/assets/ui/inventory/inventory_bag.png" id="2_0xxye"]
-[ext_resource type="AudioStream" uid="uid://dbr42td7nxhuf" path="res://source/assets/sounds/rucksack/rucksack_1.ogg" id="2_4xi1y"]
 [ext_resource type="PackedScene" uid="uid://c6c7xxmin6mg5" path="res://source/assets/ui/inventory_slot.tscn" id="2_7krhi"]
-[ext_resource type="AudioStream" uid="uid://dgjew80eoo60l" path="res://source/assets/sounds/rucksack/rucksack_2.ogg" id="3_50r0f"]
+[ext_resource type="AudioStream" uid="uid://dcxxknwjj7cqk" path="res://source/assets/sounds/rucksack/rucksack_4.ogg" id="2_nn852"]
+[ext_resource type="AudioStream" uid="uid://bq7tbm4dgtm2j" path="res://source/assets/sounds/rucksack/rucksack_5.ogg" id="3_4tmw0"]
 [ext_resource type="PackedScene" uid="uid://tus3pcbefjaj" path="res://source/assets/ui/buttons/inventory_left_button.tscn" id="3_ggwby"]
-[ext_resource type="AudioStream" uid="uid://dhvhdbjf2vdhf" path="res://source/assets/sounds/rucksack/rucksack_3.ogg" id="4_63rx8"]
 [ext_resource type="Texture2D" uid="uid://1n3030usnmaw" path="res://source/assets/ui/buttons/separator.png" id="4_dgkkr"]
+[ext_resource type="AudioStream" uid="uid://d3pakvmqmjlr0" path="res://source/assets/sounds/rucksack/rucksack_6.ogg" id="4_eojqe"]
 [ext_resource type="PackedScene" uid="uid://dnhynfku0mctc" path="res://source/assets/ui/buttons/inventory_right_button.tscn" id="5_mw4ew"]
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="7_1ols8"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="7_wltyg"]
 [ext_resource type="Texture2D" uid="uid://crcq45hwhctvi" path="res://source/assets/ui/buttons/inventory_slot_selected.png" id="10_kr08j"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_du65b"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0gcld"]
+random_pitch = 1.1
 streams_count = 3
-stream_0/stream = ExtResource("2_4xi1y")
+stream_0/stream = ExtResource("2_nn852")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("3_50r0f")
+stream_1/stream = ExtResource("3_4tmw0")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("4_63rx8")
+stream_2/stream = ExtResource("4_eojqe")
 stream_2/weight = 1.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kt42f"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_crqe2"]
+random_pitch = 1.1
 streams_count = 3
-stream_0/stream = ExtResource("2_4xi1y")
+stream_0/stream = ExtResource("2_nn852")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("3_50r0f")
+stream_1/stream = ExtResource("3_4tmw0")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("4_63rx8")
+stream_2/stream = ExtResource("4_eojqe")
 stream_2/weight = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gq48e"]
@@ -147,8 +149,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0pmc3")
-open_sound = SubResource("AudioStreamRandomizer_du65b")
-close_sound = SubResource("AudioStreamRandomizer_kt42f")
+open_sound = SubResource("AudioStreamRandomizer_0gcld")
+close_sound = SubResource("AudioStreamRandomizer_crqe2")
 
 [node name="cont" type="MarginContainer" parent="."]
 layout_mode = 0

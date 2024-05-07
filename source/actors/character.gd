@@ -49,6 +49,7 @@ var rng = RandomNumberGenerator.new()
 
 var footstep_player_preload = preload("res://source/assets/sounds/walk/footstep_player.tscn")
 var stone_footstep_sounds: Array
+var stone_crunchy_footstep_sounds: Array
 var wood_footstep_sounds: Array
 var water_footstep_sounds: Array
 var heavy_water_footstep_sounds: Array
@@ -69,6 +70,10 @@ func _load_footsteps():
 		var sound = load(file_path)
 		stone_footstep_sounds.append(sound)
 	for i in range(1, 4):
+		var file_path = "res://source/assets/sounds/walk/stone_footstep_crunchy_%d.ogg" % i
+		var sound = load(file_path)
+		stone_crunchy_footstep_sounds.append(sound)
+	for i in range(1, 4):
 		var file_path = "res://source/assets/sounds/walk/wood_footstep_%d.ogg" % i
 		var sound = load(file_path)
 		wood_footstep_sounds.append(sound)
@@ -87,13 +92,16 @@ func _play_footstep_sound():
 	var footstep_sounds: Array
 	if in_water:
 		footstep_sounds = heavy_water_footstep_sounds
-	elif floor_type_check.get_collider() is Block:
+	elif floor_type_check.get_collider() is Block or floor_type_check.get_collider() is FootstepSoundArea:
 		floor_type = floor_type_check.get_collider().type
 		if floor_type == Block.FloorType.STONE:
 			footstep_sounds = stone_footstep_sounds
 			footstep_vol_offset = 0.0
 		elif floor_type == Block.FloorType.WOOD:
 			footstep_sounds = wood_footstep_sounds
+			footstep_vol_offset = 0.0
+		elif floor_type == Block.FloorType.DEBRIS_STONE:
+			footstep_sounds = stone_crunchy_footstep_sounds
 			footstep_vol_offset = 0.0
 	else:
 		footstep_sounds = stone_footstep_sounds
@@ -112,7 +120,7 @@ func _play_footstep_sound():
 		
 	if not in_water:
 		footstep_player.stream = footstep_sounds[rng.randi_range(0, 2)]
-		footstep_player.pitch_scale = randf_range(0.8, 1.2)
+		footstep_player.pitch_scale = randf_range(0.9, 1.1)
 	else:
 		footstep_player.volume_db -= 5
 		footstep_player.stream = heavy_water_footstep_sounds[rng.randi_range(0, 2)]

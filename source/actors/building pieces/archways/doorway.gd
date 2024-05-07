@@ -1,4 +1,5 @@
 @tool
+class_name Doorway
 extends Archway
 
 @export_enum("Do Not Override", "Override True", "Override False") var door_interactable_override: int = 0
@@ -11,30 +12,31 @@ extends Archway
 @export var door_locked_message: String = ""
 @export var door_tutorial_popup: bool = false
 
-@onready var door = $door
+@onready var door = $door if has_node("door") else null
 
 
 func _ready() -> void:
 	super()
-	if not Engine.is_editor_hint():
-		# Override interactable script attached to door
-		match door_interactable_override:
-			1:
-				door.set_interactable(true)
-			2:
-				door.set_interactable(false)
-		door.one_way = door_one_way
-		door.open_angle = door_open_angle + door_angle_offset
-		door.open_to_angle = door_open_to_angle
-		door.open_tween_trans = door_open_tween_trans
-		door.angle_offset = door_angle_offset
-		door.key_name = door_key_name
-		door.locked_message = door_locked_message
-		door.unlocked = door_key_name.is_empty()
-		door.tutorial_popup = door_tutorial_popup
-		door.parent_ready_finished()
-	else:
-		door.rotation.y = deg_to_rad(door_open_angle + door_angle_offset)
+	if door:
+		if not Engine.is_editor_hint():
+			# Override interactable script attached to door
+			match door_interactable_override:
+				1:
+					door.set_interactable(true)
+				2:
+					door.set_interactable(false)
+			door.one_way = door_one_way
+			door.open_angle = door_open_angle + door_angle_offset
+			door.open_to_angle = door_open_to_angle
+			door.open_tween_trans = door_open_tween_trans
+			door.angle_offset = door_angle_offset
+			door.key_name = door_key_name
+			door.locked_message = door_locked_message
+			door.unlocked = door_key_name.is_empty()
+			door.tutorial_popup = door_tutorial_popup
+			door.parent_ready_finished()
+		else:
+			door.rotation.y = deg_to_rad(door_open_angle + door_angle_offset)
 
 
 func _set_door_rotation(new_state):

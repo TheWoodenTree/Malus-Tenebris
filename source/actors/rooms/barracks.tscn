@@ -1,7 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://chgybf6r4j6hi"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_qqueh"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_ddact"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_5f83c"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_fh0u2"]
 [ext_resource type="PackedScene" uid="uid://cmau72rodb2cp" path="res://source/actors/building pieces/basic/half_stairs.tscn" id="5_4d151"]
@@ -30,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="28_sc6yc"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="29_r3kf6"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="30_38mxa"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="31_m76su"]
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="31_sfuc4"]
 
 [sub_resource type="Resource" id="Resource_hb4h3"]
@@ -108,9 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 12.25)
 
 [node name="half_stairs2" parent="stairs" index="1" instance=ExtResource("5_4d151")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 10.25)
-
-[node name="stone_archway" parent="misc" index="0" instance=ExtResource("2_ddact")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0.25)
 
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("6_ai0c4")
@@ -234,3 +231,6 @@ transform = Transform3D(-0.013683, 0, 0.999906, 0, 1, 0, -0.999906, 0, -0.013683
 [node name="ruboleum_vial" parent="." index="46" instance=ExtResource("28_sc6yc")]
 transform = Transform3D(0.743565, 0, 0.668664, 0, 1, 0, -0.668664, 0, 0.743565, -7.71086, 2.5, 5.80208)
 item_data = SubResource("Resource_hb4h3")
+
+[node name="reg_archway" parent="." index="47" instance=ExtResource("31_m76su")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0.25)

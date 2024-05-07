@@ -11,6 +11,7 @@ material = ExtResource("2_qxr2j")
 resource_local_to_scene = true
 
 [node name="tile_wall" type="StaticBody3D"]
+collision_layer = 8193
 collision_mask = 2
 script = ExtResource("1_mwxld")
 
