@@ -42,14 +42,13 @@ data = PackedVector3Array(-1.5, 3.1, -1, -2.5, 0, -1, -1.5, 0, -1, -1.5, 3.1, -1
 [node name="crawlway2" type="Node3D"]
 script = ExtResource("1_6ma83")
 xy_scale = Vector2(0.5, 0.5)
-material = ExtResource("2_mx2v8")
 
 [node name="archway" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0ksbp")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="static_body" type="StaticBody3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="static_body"]
 shape = SubResource("ConcavePolygonShape3D_6oaiq")

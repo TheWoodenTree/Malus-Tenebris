@@ -336,6 +336,7 @@ chain_length = 0
 [node name="reg_doorway" parent="." index="87" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
 door_style = "Polished"
+door_open_angle = 85
 style = "Polished"
 
 [node name="reg_doorway2" parent="." index="88" instance=ExtResource("15_wcw6n")]
