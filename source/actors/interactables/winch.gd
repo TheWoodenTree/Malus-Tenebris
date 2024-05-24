@@ -74,6 +74,7 @@ func _physics_process(_delta):
 
 func interact():
 	if interactable:
+		super()
 		if Global.player.is_holding_item("Winch Crank") and not has_crank:
 			var initial_rot: Vector3 = crank.global_rotation
 			var initial_pos: Vector3 = crank_anim_player.get_animation("insert_crank").track_get_key_value(0, 0)

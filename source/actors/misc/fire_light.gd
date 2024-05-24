@@ -31,4 +31,4 @@ func flicker():
 	var flicker_tween = get_tree().create_tween()
 	flicker_tween.tween_property(self, "light_energy", \
 		energy_flicker, flicker_duration).from_current()
-	flicker_tween.tween_callback(Callable(self,"flicker"))
+	flicker_tween.tween_callback(flicker)

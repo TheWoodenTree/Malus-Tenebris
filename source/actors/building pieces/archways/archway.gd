@@ -56,7 +56,7 @@ func update_style():
 	match style:
 		"Prison":
 			archway_mat = prison_bricks_mat
-			frame_mat = prison_frame_mat
+			frame_mat = polished_frame_mat#prison_frame_mat
 		"Polished":
 			archway_mat = polished_bricks_mat
 			frame_mat = polished_frame_mat

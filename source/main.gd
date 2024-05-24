@@ -76,11 +76,11 @@ func _process(_delta: float) -> void:
 	#	tween.parallel().tween_property(Global.zoom_shader, "shader_parameter/intensity", 15.0, 1.5)
 	#	tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", 0.75, 1.5)
 	
-	#if Input.is_action_just_pressed("debug"):
-	#	if Global.mouse_locked:
-	#		Global.unlock_mouse()
-	#	else:
-	#		Global.lock_mouse()
+	if Input.is_action_just_pressed("tilde"):
+		if Global.mouse_locked:
+			Global.unlock_mouse()
+		else:
+			Global.lock_mouse()
 			
 	#if Input.is_action_just_pressed("tilde"):
 		#if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
