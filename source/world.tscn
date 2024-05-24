@@ -93,25 +93,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 6, -16.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -38.25)
 
 [node name="warden_chamber" parent="nav_region" instance=ExtResource("9_xbk25")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 51.5, -9, -39.25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 51, -9, -37.25)
 
 [node name="safe_room" parent="nav_region" instance=ExtResource("12_nytv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5, -19, -75.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5, -15, -77.75)
 
 [node name="lower_cell_hall_1" parent="nav_region" instance=ExtResource("13_3dwqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -19, -94.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -15, -97.25)
 
 [node name="lower_cell_hall_2" parent="nav_region" instance=ExtResource("33_ysjgv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5, -19, -57.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5, -15, -60.25)
 
 [node name="lower_cell_hall_3" parent="nav_region" instance=ExtResource("32_yfpp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -19, -126.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -15, -129.25)
 
 [node name="kitchen" parent="nav_region" instance=ExtResource("34_2ebpu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -19, -75.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -15, -77.75)
 
 [node name="lower_prison_staircase_1" parent="nav_region" instance=ExtResource("19_2i4co")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -22.5, -126.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -18.5, -129.25)
 
 [node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 6, -2.75)
@@ -132,33 +132,33 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 47.75,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.75, 3.5, 34.75)
 
 [node name="lower_prison_entrance" parent="nav_region" instance=ExtResource("25_7631t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -47.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -5, -49.75)
 
 [node name="lower_prison_hallway_1" parent="nav_region" instance=ExtResource("20_2fkcd")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -19, -105.25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -15, -107.75)
 
 [node name="lower_prison_hallway_2" parent="nav_region" instance=ExtResource("21_t63ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -19, -87.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -15, -89.75)
 
 [node name="prison_temple_connector" parent="nav_region" instance=ExtResource("22_sswj8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.25, -20.5, -88.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.25, -16.5, -90.75)
 
 [node name="auditorium" parent="nav_region" instance=ExtResource("23_f001m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -27, -87.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -23, -89.75)
 
 [node name="ritual_chamber_and_quarters_connector" parent="nav_region" instance=ExtResource("25_g0g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -27, -110.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -23, -112.75)
 
 [node name="servants_quarters" parent="nav_region" instance=ExtResource("26_qdr7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -19, -147.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -15, -150.25)
 
 [node name="itch_background_room" parent="nav_region" instance=ExtResource("27_7hdn1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 126, 3.25, -80.75)
 visible = false
 
 [node name="test" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -44.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -46.75)
 mesh = SubResource("SphereMesh_w1q8a")
 
 [node name="monster" parent="." instance=ExtResource("26_wekw4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.25, -22.75, -58.75)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.25, -18.75, -61.25)
