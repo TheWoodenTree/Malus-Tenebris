@@ -555,7 +555,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2165, 1.75, 41.1702)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.75, 1.75, 35.75)
 
 [node name="broken_barrel2" parent="." index="134" instance=ExtResource("37_0wre4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5364, 1.75, 39.2903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5364, 1.5, 39.2903)
 
 [node name="sm_broken_crate" parent="." index="135" instance=ExtResource("38_3rr8j")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 26.25, 2.25, 38.5)
