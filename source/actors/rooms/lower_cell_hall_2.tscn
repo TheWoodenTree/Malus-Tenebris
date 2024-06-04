@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cettbxuc0n7ft" path="res://source/actors/building pieces/archways/hallway_arch.tscn" id="30_0y41g"]
 [ext_resource type="PackedScene" uid="uid://6qj5fntegvyw" path="res://source/actors/misc/wood_beam.tscn" id="33_0kitc"]
 [ext_resource type="PackedScene" uid="uid://dvqmit8sb2byw" path="res://source/actors/building pieces/archways/hallway_end_low_arch.tscn" id="33_p3wb8"]
-[ext_resource type="PackedScene" uid="uid://btbuscvl0caww" path="res://source/actors/building pieces/archways/archway_w_door_no_window.tscn" id="34_l54un"]
+[ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="34_q8lsn"]
 [ext_resource type="PackedScene" uid="uid://dllcyx3eyuvvv" path="res://source/actors/misc/broken_wood_beam.tscn" id="34_se554"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="35_0fiar"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="35_yjjvg"]
@@ -463,12 +463,11 @@ length = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 5.75, 1.5)
 length = 2
 
-[node name="archway_w_door_no_window" parent="." index="54" instance=ExtResource("34_l54un")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 0.5, 0)
-door_interactable_override = 2
-
-[node name="reg_archway" parent="." index="55" instance=ExtResource("35_0fiar")]
+[node name="reg_archway" parent="." index="54" instance=ExtResource("35_0fiar")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 0.5, 0)
 
-[node name="reg_archway2" parent="." index="56" instance=ExtResource("35_0fiar")]
+[node name="reg_archway2" parent="." index="55" instance=ExtResource("35_0fiar")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.5, 0.5, -15.25)
+
+[node name="reg_doorway" parent="." index="56" instance=ExtResource("34_q8lsn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 0.5, 0)

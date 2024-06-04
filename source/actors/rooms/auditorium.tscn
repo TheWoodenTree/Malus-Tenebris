@@ -224,6 +224,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.5,
 
 [node name="big_archway" parent="." index="64" instance=ExtResource("14_b3v8d")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
+style = "Polished"
 
 [node name="pillar_3_short" parent="." index="65" instance=ExtResource("15_fb244")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 1.5, 6.5)

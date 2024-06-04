@@ -52,7 +52,7 @@ signal world_ready
 
 
 func _ready() -> void:
-	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(0.25) - 5.0
+	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(0.25) - 10.0
 	if debug_no_title_screen:
 		load_world_and_player()
 	else:

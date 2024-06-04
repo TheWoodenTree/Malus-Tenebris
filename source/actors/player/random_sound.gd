@@ -1,11 +1,11 @@
 extends Node3D
 
+@export var stream: AudioStream
 @export var max_sound_distance: float = 15.0
 @export var min_sound_distance: float = 7.5
 @export var max_sound_y_distance: float = 4.0
 @export var mean_sound_interval: float = 20.0
 @export var sound_interval_variance: float = 5.0
-@export var stream: AudioStream
 
 @onready var sound_player = $sound_player
 @onready var sound_timer = $sound_timer
