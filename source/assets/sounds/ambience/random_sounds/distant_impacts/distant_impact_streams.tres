@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://dd6u11rvnpa6s"]
+
+[ext_resource type="AudioStream" uid="uid://btthh4kr6258r" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_1.ogg" id="1_cli5u"]
+[ext_resource type="AudioStream" uid="uid://hlgyhjorpvnc" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_2.ogg" id="2_wnn4w"]
+[ext_resource type="AudioStream" uid="uid://btr1hmsqdljei" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_3.ogg" id="3_rr2xk"]
+[ext_resource type="AudioStream" uid="uid://blod8b8pjgouk" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_4.ogg" id="4_n4a6g"]
+[ext_resource type="AudioStream" uid="uid://bopntl8yfu3st" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_5.ogg" id="5_tobfq"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 5
+stream_0/stream = ExtResource("1_cli5u")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_wnn4w")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_rr2xk")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_n4a6g")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_tobfq")
+stream_4/weight = 1.0

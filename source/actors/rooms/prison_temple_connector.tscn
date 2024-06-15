@@ -94,6 +94,7 @@ size = Vector3(1, 6, 1.5)
 
 [node name="archway_w_double_door" parent="." index="30" instance=ExtResource("8_gok11")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.75, -6, -1)
+style = "Polished"
 
 [node name="tile_wall8" parent="." index="31" instance=ExtResource("3_5bck0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.75, -3, -3.75)

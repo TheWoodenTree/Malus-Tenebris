@@ -373,3 +373,4 @@ occluder = ExtResource("41_j7hgg")
 
 [node name="reg_archway" parent="." index="9" instance=ExtResource("42_gscoh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 0.5, -1.25)
+length = 2.5

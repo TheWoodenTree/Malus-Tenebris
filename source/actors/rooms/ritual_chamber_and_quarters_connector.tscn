@@ -85,7 +85,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.5, 
 style = "Polished"
 
 [node name="reg_archway3" parent="." index="23" instance=ExtResource("2_irwa6")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.5, 8.5, -38)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 8.5, -38)
 style = "Polished"
 
 [node name="reg_archway2" parent="." index="24" instance=ExtResource("2_irwa6")]
