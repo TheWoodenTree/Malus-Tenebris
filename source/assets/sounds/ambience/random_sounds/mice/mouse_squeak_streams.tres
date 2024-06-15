@@ -1,0 +1,18 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://b1oi667x753yu"]
+
+[ext_resource type="AudioStream" uid="uid://dq8dqfcr4bpb2" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_1.ogg" id="1_0s0lw"]
+[ext_resource type="AudioStream" uid="uid://plm2ahvwohkj" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_2.ogg" id="2_3hf3i"]
+[ext_resource type="AudioStream" uid="uid://bxhvan8j8a0eh" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_3.ogg" id="3_s7j2c"]
+[ext_resource type="AudioStream" uid="uid://b0k5r2s6v5ow4" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_4.ogg" id="3_sqdhj"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("1_0s0lw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_3hf3i")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_s7j2c")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("3_sqdhj")
+stream_3/weight = 1.0

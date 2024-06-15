@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lyhy6lr0j6hy"]
+[gd_scene load_steps=5 format=3 uid="uid://lyhy6lr0j6hy"]
 
 [ext_resource type="PackedScene" uid="uid://dr7pgcagqkatr" path="res://source/actors/player/random_sound.tscn" id="1_m88es"]
 [ext_resource type="AudioStream" uid="uid://bodl3dra0txeu" path="res://source/assets/sounds/ambience/random_sounds/wood_creak_streams.tres" id="2_tuyx7"]
 [ext_resource type="AudioStream" uid="uid://dd6u11rvnpa6s" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_streams.tres" id="3_icr7q"]
+[ext_resource type="AudioStream" uid="uid://b1oi667x753yu" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_streams.tres" id="4_xxnts"]
 
 [node name="random_sound_manager" type="Node3D"]
 
@@ -11,5 +12,11 @@ stream = ExtResource("2_tuyx7")
 
 [node name="distant_impacts" parent="." instance=ExtResource("1_m88es")]
 stream = ExtResource("3_icr7q")
-mean_sound_interval = 90.0
+mean_sound_interval = 120.0
+sound_interval_variance = 20.0
+
+[node name="mice" parent="." instance=ExtResource("1_m88es")]
+stream = ExtResource("4_xxnts")
+max_sound_y_distance = 1.0
+mean_sound_interval = 60.0
 sound_interval_variance = 20.0

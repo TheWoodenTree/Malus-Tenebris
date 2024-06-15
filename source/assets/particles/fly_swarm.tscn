@@ -39,7 +39,7 @@ size = Vector2(0.05, 0.05)
 orientation = 2
 
 [node name="fly_swarm" type="GPUParticles3D"]
-amount = 25
+amount = 40
 lifetime = 7.5
 preprocess = 5.0
 process_material = SubResource("ParticleProcessMaterial_yka0p")
