@@ -9,6 +9,7 @@
 
 [node name="wood_creak" parent="." instance=ExtResource("1_m88es")]
 stream = ExtResource("2_tuyx7")
+mean_sound_interval = 30.0
 
 [node name="distant_impacts" parent="." instance=ExtResource("1_m88es")]
 stream = ExtResource("3_icr7q")

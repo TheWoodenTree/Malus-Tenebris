@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tsi8m4phrp8d"]
+
+[ext_resource type="Texture2D" uid="uid://5v4hxn5osh7k" path="res://source/assets/misc/dust.png" id="1_7w1ap"]
+
+[node name="blood_stain" type="Decal"]
+texture_albedo = ExtResource("1_7w1ap")

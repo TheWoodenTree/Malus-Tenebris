@@ -1,0 +1,115 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://beffa4opadc3f"]
+
+[ext_resource type="Texture2D" uid="uid://c5kmfewidj7fc" path="res://source/assets/materials/flagstone/stone_pathway_diff_1k.jpg" id="1_2b4b8"]
+[ext_resource type="Texture2D" uid="uid://def1buvy8jpyh" path="res://source/assets/materials/flagstone/stone_pathway_nor_gl_1k.jpg" id="2_oee5k"]
+[ext_resource type="Texture2D" uid="uid://ovu2c574cuma" path="res://source/assets/materials/flagstone/stone_pathway_disp_1k.jpg" id="2_tabip"]
+[ext_resource type="Texture2D" uid="uid://c0xs6fo85wl7w" path="res://source/assets/materials/flagstone/stone_pathway_rough_1k.jpg" id="3_v5hw2"]
+
+[sub_resource type="Shader" id="Shader_li6h0"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform bool is_wet = false;
+uniform float most_wetness_height = 0.25;
+uniform float least_wetness_height = 0.5;
+uniform vec4 water_color: source_color;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_linear_mipmap,repeat_enable;
+uniform sampler2D texture_displace : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+varying vec3 uv1_triplanar_pos;
+uniform float uv1_blend_sharpness;
+varying vec3 uv1_power_normal;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
+	TANGENT = vec3(0.0,0.0,-1.0) * abs(normal.x);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(normal.y);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(normal.z);
+	TANGENT = inverse(MODEL_NORMAL_MATRIX) * normalize(TANGENT);
+	BINORMAL = vec3(0.0,1.0,0.0) * abs(normal.x);
+	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(normal.y);
+	BINORMAL+= vec3(0.0,1.0,0.0) * abs(normal.z);
+	BINORMAL = inverse(MODEL_NORMAL_MATRIX) * normalize(BINORMAL);
+	uv1_power_normal=pow(abs(normal),vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0f)).xyz * uv1_scale + uv1_offset;
+	uv1_power_normal/=dot(uv1_power_normal,vec3(1.0));
+	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
+}
+
+
+
+
+vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
+	vec4 samp=vec4(0.0);
+	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
+	samp+= texture(p_sampler,p_triplanar_pos.xz) * p_weights.y;
+	samp+= texture(p_sampler,p_triplanar_pos.zy * vec2(-1.0,1.0)) * p_weights.x;
+	return samp;
+}
+
+
+void fragment() {
+	float displace_tex = 1.0;
+	if (is_wet) {
+		displace_tex = triplanar_texture(texture_displace,uv1_power_normal,uv1_triplanar_pos).r;
+		bool is_pixel_wet = displace_tex < least_wetness_height;
+		if (is_pixel_wet) {
+			displace_tex = (displace_tex - most_wetness_height) / (least_wetness_height - most_wetness_height);
+			displace_tex = pow(displace_tex, 3.0);
+		}
+		else
+			displace_tex = 1.0;
+	}
+	
+	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
+	//ALBEDO = vec3(displace_tex);
+	ALBEDO = mix(water_color.rgb, albedo.rgb * albedo_tex.rgb, vec3(displace_tex));
+	float metallic_tex = dot(triplanar_texture(texture_metallic,uv1_power_normal,uv1_triplanar_pos),metallic_texture_channel);
+	METALLIC = mix(1.0 ,metallic_tex * metallic, displace_tex);
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness,uv1_power_normal,uv1_triplanar_pos),roughness_texture_channel);
+	ROUGHNESS = mix(0.2, roughness_tex * roughness, displace_tex);
+	SPECULAR = specular;
+	NORMAL_MAP = mix(vec3(0.5, 0.5, 1.0), triplanar_texture(texture_normal,uv1_power_normal,uv1_triplanar_pos).rgb, displace_tex);
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_li6h0")
+shader_parameter/is_wet = false
+shader_parameter/most_wetness_height = 0.25
+shader_parameter/least_wetness_height = 0.5
+shader_parameter/water_color = Color(0.06, 0.05826, 0.0252, 1)
+shader_parameter/albedo = Color(0.47451, 0.517647, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.75
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 8.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.15, 0.15, 0.15)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("1_2b4b8")
+shader_parameter/texture_roughness = ExtResource("3_v5hw2")
+shader_parameter/texture_normal = ExtResource("2_oee5k")
+shader_parameter/texture_displace = ExtResource("2_tabip")

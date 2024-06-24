@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://csjrgcxhntrg"]
 
 [ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1"]
-[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="2_1kv21"]
+[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="2_l7hhi"]
 
 [sub_resource type="BoxMesh" id="1"]
 resource_local_to_scene = true
-material = ExtResource("2_1kv21")
+material = ExtResource("2_l7hhi")
 
 [sub_resource type="BoxShape3D" id="2"]
 resource_local_to_scene = true

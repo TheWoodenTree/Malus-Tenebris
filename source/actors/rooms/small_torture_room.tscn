@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dw4xwroyayfdv"]
+[gd_scene load_steps=20 format=3 uid="uid://dw4xwroyayfdv"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3sot7"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_jlmsx"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="16_g0e2e"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="17_bvf6q"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="17_nsor2"]
+[ext_resource type="PackedScene" uid="uid://jvnfjk0l83vw" path="res://source/assets/particles/fly_swarm.tscn" id="18_ctpme"]
 [ext_resource type="PackedScene" uid="uid://1f7kquwbkp1q" path="res://source/actors/decor/tools/knife.tscn" id="18_y5udt"]
 
 [sub_resource type="Resource" id="Resource_bmwx1"]
@@ -99,3 +100,6 @@ transform = Transform3D(-0.788666, 0, 0.614822, 0, 1, 0, -0.614822, 0, -0.788666
 
 [node name="reg_archway" parent="." index="11" instance=ExtResource("17_nsor2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0.5, -1.5)
+
+[node name="fly_swarm" parent="." index="12" instance=ExtResource("18_ctpme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.75, 1)

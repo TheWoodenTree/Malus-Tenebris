@@ -6,7 +6,6 @@
 noise_type = 2
 fractal_type = 0
 cellular_distance_function = 1
-cellular_jitter = 1.0
 domain_warp_enabled = true
 domain_warp_type = 2
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1onovq0nc1xf"]
+[gd_scene load_steps=21 format=3 uid="uid://c1onovq0nc1xf"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_i7tkv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b24yy1t4ft602" path="res://source/actors/rooms/occluders/lower_prison_entrance.occ" id="2_ujbbf"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cde0mlew1cmil" path="res://source/actors/building pieces/archways/big_tall_archway.tscn" id="17_4de7j"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="17_5n3dr"]
 [ext_resource type="Script" path="res://source/actors/rooms/door_open_event.gd" id="18_6n6fv"]
+[ext_resource type="PackedScene" uid="uid://dgn84cdkpu41o" path="res://source/actors/decor/furniture/bench.tscn" id="18_jl7fd"]
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="19_7jmwe"]
+[ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="19_7rxe7"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="21_k08mp"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="22_onmv6"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="22_xxynh"]
@@ -285,5 +287,14 @@ size = Vector3(3, 8, 1)
 [node name="stone_wall11" parent="." index="73" instance=ExtResource("3_6e4iy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5.5, -5.5)
 size = Vector3(3, 8, 1)
+
+[node name="bench" parent="." index="74" instance=ExtResource("18_jl7fd")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 5.5, -9.5, -12.25)
+
+[node name="barrel2" parent="." index="75" instance=ExtResource("22_xxynh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -8.5, -10.25)
+
+[node name="sm_crate" parent="." index="76" instance=ExtResource("19_7rxe7")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 5.5, -7.5, -10.25)
 
 [connection signal="body_entered" from="door_open_event" to="door_open_event" method="_on_body_entered"]
