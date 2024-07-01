@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daiit8sip3qoj"]
+[gd_scene load_steps=24 format=3 uid="uid://daiit8sip3qoj"]
 
 [ext_resource type="Script" path="res://source/assets/ui/inventory.gd" id="1_0pmc3"]
 [ext_resource type="Texture2D" uid="uid://bok3qh5mh0w5o" path="res://source/assets/ui/inventory/inventory_bag.png" id="2_0xxye"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="7_1ols8"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="7_wltyg"]
 [ext_resource type="Texture2D" uid="uid://crcq45hwhctvi" path="res://source/assets/ui/buttons/inventory_slot_selected.png" id="10_kr08j"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="12_gp61h"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0gcld"]
 random_pitch = 1.1
@@ -293,6 +294,11 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 100
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ylphs")
+
+[node name="close_menu_button" parent="cont" instance=ExtResource("12_gp61h")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="scroll_anim_player" type="AnimationPlayer" parent="."]
 libraries = {
