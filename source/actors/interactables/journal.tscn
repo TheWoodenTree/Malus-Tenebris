@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjcdhkttl3bub"]
+[gd_scene load_steps=18 format=3 uid="uid://bjcdhkttl3bub"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_fhkke"]
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="2_22kfu"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_ei3df"]
 [ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="4_c611v"]
+[ext_resource type="Script" path="res://source/actors/interactables/held_journal.gd" id="4_pfpxu"]
 [ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_llwg8"]
 [ext_resource type="Material" uid="uid://b5r5gddichoqf" path="res://source/assets/materials/leather/leather.tres" id="6_owwqv"]
 [ext_resource type="Material" uid="uid://fiek73taac83" path="res://source/assets/materials/pages/pages.tres" id="7_p6hbf"]
@@ -14,6 +15,7 @@ name = "Tattered Journal"
 texture = ExtResource("4_c611v")
 pickup_sound = ExtResource("2_22kfu")
 self_useable = true
+self_useable_script = ExtResource("4_pfpxu")
 hold_rotation_offset = Vector3(-25, 180, 0)
 hold_scale_multiplier = 1.0
 

@@ -210,8 +210,8 @@ func attempt_unlock():
 		Global.ui.inventory_menu.set_tutorial_on(false)
 	
 	var initial_rot: Vector3 = key.global_rotation
-	key.global_position = Global.player.held_item_mesh.global_position
-	key.global_rotation = Global.player.held_item_mesh.global_rotation
+	key.global_position = Global.player.held_item.global_position
+	key.global_rotation = Global.player.held_item.global_rotation
 	var initial_pos: Vector3 = key_anim_player.get_animation(anim_name).track_get_key_value(1, 0)
 	
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)

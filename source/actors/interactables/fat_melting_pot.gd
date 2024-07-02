@@ -31,8 +31,8 @@ func _process(_delta):
 
 func _melt_fat():
 	var initial_rot: Vector3 = fat.global_rotation
-	fat.global_position = Global.player.held_item_mesh.global_position
-	fat.global_rotation = Global.player.held_item_mesh.global_rotation
+	fat.global_position = Global.player.held_item.global_position
+	fat.global_rotation = Global.player.held_item.global_rotation
 	var initial_pos: Vector3 = anim_player.get_animation("melt_fat").track_get_key_value(0, 0)
 	Global.player.delete_held_item()
 	
@@ -55,8 +55,8 @@ func _melt_fat():
 
 func _lube_key():
 	var initial_rot: Vector3 = key.global_rotation
-	key.global_position = Global.player.held_item_mesh.global_position
-	key.global_rotation = Global.player.held_item_mesh.global_rotation
+	key.global_position = Global.player.held_item.global_position
+	key.global_rotation = Global.player.held_item.global_rotation
 	var initial_pos: Vector3 = anim_player.get_animation("dip_key").track_get_key_value(0, 0)
 	Global.player.delete_held_item()
 	
@@ -90,7 +90,7 @@ func interact():
 			if Global.player.is_holding_item("Prison Depths Key"):
 				_lube_key()
 			else:
-				if Global.player.held_item:
+				if Global.player.held_item_data:
 					Global.ui.hint_popup("There's no point to dipping that in the tallow", 3.0)
 				else:
 					Global.ui.hint_popup("Not holding anything to dip in the tallow", 3.0)

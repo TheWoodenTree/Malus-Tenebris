@@ -9,6 +9,7 @@ var count: int = 1
 @export var texture: CompressedTexture2D = null
 @export var pickup_sound: AudioStream = null
 @export var self_useable: bool = false # Item can be used when not looking at another interactable
+@export var self_useable_script: Script = null
 @export var hold_rotation_offset: Vector3 = Vector3.ZERO
 @export var hold_scale_multiplier: float = 1.0
 
@@ -18,6 +19,7 @@ func _set_mesh(new_mesh: MeshInstance3D):
 	if mesh.material_overlay:
 		mesh.material_overlay.set_shader_parameter("outlineOn", false)
 	mesh.layers = 3
+	mesh.set_script(self_useable_script)
 
 
 func reset():

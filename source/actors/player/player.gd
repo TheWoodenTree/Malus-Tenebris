@@ -21,8 +21,8 @@ var torch: Object
 var looking_at: Interactable
 var looking_at_last_frame: Interactable
 var last_looked_at: Object = null
-var held_item: ItemData = null
-var held_item_mesh: MeshInstance3D = null
+var held_item_data: ItemData = null
+var held_item: MeshInstance3D = null
 var draggable_being_dragged: Object = null # Set by door script
 
 var has_torch: bool = false
@@ -84,13 +84,13 @@ func _process(_delta: float) -> void:
 	_handle_input()
 	
 	torch_cam.global_transform = cam.global_transform
-	if held_item_mesh:
-		held_item_mesh.global_position = lerp(held_item_mesh.global_position, held_item_marker.global_position, 0.025)
-		var rot_offset_x: float = deg_to_rad(held_item.hold_rotation_offset.x)
-		var rot_offset_y: float = deg_to_rad(held_item.hold_rotation_offset.y)
-		var rot_offset_z: float = deg_to_rad(held_item.hold_rotation_offset.z)
-		held_item_mesh.rotation = cam.rotation + Vector3(rot_offset_x, rot_offset_y, rot_offset_z)
-		held_item_mesh.scale = Vector3.ONE * held_item.hold_scale_multiplier
+	if held_item:
+		held_item.global_position = lerp(held_item.global_position, held_item_marker.global_position, 0.025)
+		var rot_offset_x: float = deg_to_rad(held_item_data.hold_rotation_offset.x)
+		var rot_offset_y: float = deg_to_rad(held_item_data.hold_rotation_offset.y)
+		var rot_offset_z: float = deg_to_rad(held_item_data.hold_rotation_offset.z)
+		held_item.rotation = cam.rotation + Vector3(rot_offset_x, rot_offset_y, rot_offset_z)
+		held_item.scale = Vector3.ONE * held_item_data.hold_scale_multiplier
 	global_input_dir = _get_input_dir()
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
@@ -127,7 +127,7 @@ func _physics_process(delta: float) -> void:
 
 #TODO: Fix camera bobbing for sprint affecting crouch camera bobbing
 func _handle_input():
-	if Input.is_action_just_pressed("cancel") and held_item and not Global.ui.block_inventory_open:
+	if Input.is_action_just_pressed("cancel") and held_item_data and not Global.ui.block_inventory_open:
 		stop_holding_item(true)
 	
 	if Input.is_action_just_pressed("noclip"):
@@ -135,8 +135,12 @@ func _handle_input():
 		set_collision_layer_value(2, !noclip_on)
 		set_collision_mask_value(1, !noclip_on)
 	
-	if Input.is_action_just_pressed("interact") and held_item and held_item.self_useable and not looking_at:
-		print('g')
+	var can_self_use: bool = held_item_data and held_item_data.self_useable and not looking_at and not draggable_being_dragged
+	if Input.is_action_just_pressed("interact") and can_self_use:
+		if held_item_data.self_useable_script:
+			held_item.use()
+		else:
+			push_error("Self-useable has no attached script")
 	
 	if Input.is_action_just_released("interact"):
 		if is_instance_valid(draggable_being_dragged):
@@ -145,9 +149,9 @@ func _handle_input():
 	
 	#if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
 	#	var instance: RigidBody3D = thrown_item.instantiate()
-	#	#instance.get_node("mesh").mesh = held_item_mesh
+	#	#instance.get_node("mesh").mesh = held_item
 	#	Global.world.add_child(instance)
-	#	instance.global_transform = held_item_mesh.global_transform
+	#	instance.global_transform = held_item.global_transform
 	#	delete_held_item()
 	#	await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
 	#	await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
@@ -225,16 +229,16 @@ func inventory_remove_item(item_data: ItemData):
 
 
 func hold_item(item_data: ItemData):
-	held_item = item_data
-	held_item_mesh = item_data.mesh
-	add_child(held_item_mesh)
-	held_item_mesh.position = Vector3.ZERO
-	held_item_mesh.scale *= item_data.hold_scale_multiplier
-	if held_item.self_useable:
-		held_item_mesh.material_overlay.set_shader_parameter("outlineOn", true)
+	held_item_data = item_data
+	held_item = item_data.mesh
+	add_child(held_item)
+	held_item.position = Vector3.ZERO
+	held_item.scale *= item_data.hold_scale_multiplier
+	if held_item_data.self_useable:
+		held_item.material_overlay.set_shader_parameter("outlineOn", true)
 		holding_self_useable.emit(Interactable.Type.NOTE)
 	else:
-		held_item_mesh.material_overlay.set_shader_parameter("outlineOn", false)
+		held_item.material_overlay.set_shader_parameter("outlineOn", false)
 		
 	if not first_item_held and is_holding_key() and debug_do_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
@@ -242,27 +246,27 @@ func hold_item(item_data: ItemData):
 
 
 func delete_held_item():
-	remove_child(held_item_mesh)
-	inventory_remove_item(held_item)
+	remove_child(held_item)
+	inventory_remove_item(held_item_data)
+	held_item_data = null
 	held_item = null
-	held_item_mesh = null
 
 
 func stop_holding_item(play_sound: bool):
-	if held_item_mesh:
-		remove_child(held_item_mesh)
+	if held_item:
+		remove_child(held_item)
+	held_item_data = null
 	held_item = null
-	held_item_mesh = null
 	if play_sound:
 		rucksack_player.play()
 
 
 func set_held_item_visibility(new_visibility: bool):
-	held_item_mesh.visible = new_visibility
+	held_item.visible = new_visibility
 
 
 func set_held_item_global_transform(new_transform: Transform3D):
-	held_item_mesh.global_transform = new_transform
+	held_item.global_transform = new_transform
 
 
 func set_draggable_being_dragged(draggable: Object):
@@ -283,11 +287,11 @@ func play_sound_one_shot(sound: AudioStream):
 
 
 func is_holding_item(item_name: String):
-	return held_item and held_item.name == item_name
+	return held_item_data and held_item_data.name == item_name
 
 
 func is_holding_key():
-	return held_item and held_item.name.contains("Key")
+	return held_item_data and held_item_data.name.contains("Key")
 
 
 # Check if the standing collision shape collides with the world
@@ -317,18 +321,18 @@ func _handle_look_at(collider):
 		looking_at.being_looked_at = true
 		if looking_at.interactable:
 			emit_signal("looked_at_interactable", looking_at.get_interactable_type())
-			if held_item_mesh:
-				held_item_mesh.material_overlay.set_shader_parameter("outlineOn", false)
+			if held_item:
+				held_item.material_overlay.set_shader_parameter("outlineOn", false)
 		if Input.is_action_just_pressed("interact"):
 			looking_at.interact()
 	else:
 		looking_at = null
-		if held_item_mesh and held_item.self_useable and not draggable_being_dragged:
-			held_item_mesh.material_overlay.set_shader_parameter("outlineOn", true)
+		if held_item and held_item_data.self_useable and not draggable_being_dragged:
+			held_item.material_overlay.set_shader_parameter("outlineOn", true)
 	
 	var hide_interact_icon: bool = not looking_at or looking_at and not looking_at.interactable
 	if not draggable_being_dragged and hide_interact_icon and Global.ui.interact_icon.visible:
-		var is_holding_self_useable: bool = held_item and held_item.self_useable
+		var is_holding_self_useable: bool = held_item_data and held_item_data.self_useable
 		emit_signal("looked_away_from_interactable", is_holding_self_useable)
 	
 	# Let the last interactable looked at know (if it isn't null or hasn't been freed) 

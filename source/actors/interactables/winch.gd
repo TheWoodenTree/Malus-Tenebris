@@ -78,7 +78,7 @@ func interact():
 		if Global.player.is_holding_item("Winch Crank") and not has_crank:
 			var initial_rot: Vector3 = crank.global_rotation
 			var initial_pos: Vector3 = crank_anim_player.get_animation("insert_crank").track_get_key_value(0, 0)
-			crank.global_transform = Global.player.held_item_mesh.global_transform
+			crank.global_transform = Global.player.held_item.global_transform
 			
 			var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 			tween.tween_property(crank, "global_position", rotating_body.to_global(initial_pos), 0.5)
