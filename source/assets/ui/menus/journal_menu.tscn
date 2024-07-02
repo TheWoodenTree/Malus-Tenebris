@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://be0iw55afdwry"]
+
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_04k3r"]
+[ext_resource type="Script" path="res://source/assets/ui/menus/journal_menu.gd" id="2_js0g1"]
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_5lwqh"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="4_eysq1"]
+
+[node name="journal_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_04k3r")
+script = ExtResource("2_js0g1")
+
+[node name="cont" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="journal_label" type="Label" parent="cont/v_box_cont"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Journal"
+horizontal_alignment = 1
+
+[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="objectives_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
+layout_mode = 2
+text = "Objectives"
+
+[node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="hints_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
+layout_mode = 2
+text = "Hints"
+
+[node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
+layout_mode = 2
+text = "Notes"
+
+[node name="separator4" type="HSeparator" parent="cont/v_box_cont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("4_eysq1")]
+layout_mode = 2

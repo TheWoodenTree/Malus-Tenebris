@@ -1,8 +1,8 @@
 extends Menu
 
-const MAX_QUEUE_SIZE = 4
-const LEFT = 0
-const RIGHT = 1
+const MAX_QUEUE_SIZE: int = 4
+const LEFT: int = 0
+const RIGHT: int = 1
 
 var item_list: Array[ItemData] = []
 var num_slots: int = 9
@@ -43,7 +43,7 @@ func _enter_tree():
 			item_name_label.text = ""
 
 func _ready():
-	# Make first slot middle slot up first opening inventory
+	# Make first slot middle slot upon first opening inventory
 	move_slot_to_back()
 	move_slot_to_back()
 	move_slot_to_back()

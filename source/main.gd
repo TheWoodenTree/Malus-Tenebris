@@ -87,12 +87,6 @@ func _process(_delta: float) -> void:
 			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		#else:
 			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
-	if Input.is_action_just_pressed("pause"):
-		if ui.menus.open_menus.size() > 0 and ui.menus.back != title_screen:
-			ui.remove_menu()
-		else:
-			ui.display_menu(ui.pause_menu)
 
 
 func load_title_screen():

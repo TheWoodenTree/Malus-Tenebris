@@ -42,19 +42,10 @@ theme_override_constants/margin_bottom = 25
 [node name="v_box_cont" type="VBoxContainer" parent="cont"]
 layout_mode = 2
 
-[node name="text" parent="cont/v_box_cont" instance=ExtResource("2_js2xi")]
-custom_minimum_size = Vector2(450, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
-theme_override_fonts/font = ExtResource("3_xnjsc")
-text = "The plague which has been ravaging the servants recently is most concerning. As of one month ago, when reports began to arise, those who showed symptoms had spent a significant amount of time in the depths, while many of the recent reports have come from men who have not spent any time in the depths.
-
-Though my attempts to synthesize a cure have been progressing at a steady rate, the number of reports of similar symptoms has begun to rapidly."
-
 [node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 10
+size_flags_vertical = 0
 theme = ExtResource("6_bopdm")
 alignment = 1
 
@@ -94,6 +85,16 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
+
+[node name="text" parent="cont/v_box_cont" instance=ExtResource("2_js2xi")]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("3_xnjsc")
+text = "The plague which has been ravaging the servants recently is most concerning. As of one month ago, when reports began to arise, those who showed symptoms had spent a significant amount of time in the depths, while many of the recent reports have come from men who have not spent any time in the depths.
+
+Though my attempts to synthesize a cure have been progressing at a steady rate, the number of reports of similar symptoms has begun to rapidly."
 
 [connection signal="pressed" from="cont/v_box_cont/h_box_cont/left_button" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="cont/v_box_cont/h_box_cont/right_button" to="." method="_on_right_button_pressed"]

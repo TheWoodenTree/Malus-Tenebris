@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dji8r6dqmhn6e"]
+[gd_scene load_steps=33 format=3 uid="uid://dji8r6dqmhn6e"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="26_gvgmg"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b6755w4g5yww7" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
+[ext_resource type="PackedScene" uid="uid://bjcdhkttl3bub" path="res://source/actors/interactables/journal.tscn" id="29_daem3"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oqavl"]
@@ -223,5 +224,8 @@ label = ExtResource("25_n1mrg")
 [node name="occluder_instance" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("28_6h45y")
 bake_mask = 4294967283
+
+[node name="journal" parent="." instance=ExtResource("29_daem3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.25, -17)
 
 [connection signal="body_entered" from="crouch_tutorial" to="crouch_tutorial" method="_on_body_entered"]

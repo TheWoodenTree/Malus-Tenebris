@@ -47,8 +47,14 @@ func _process(_delta):
 			open_inventory()
 		elif menus.back() == inventory_menu:
 			remove_menu()
-	if Input.is_action_just_pressed("ui_accept") and Global.player.in_menu:
-		remove_menu()
+	
+	if Input.is_action_just_pressed("pause"):
+		if menus.open_menus.size() > 0 and menus.back() != Global.main.title_screen:
+			if menus.back() == pause_menu:
+				get_tree().paused = false
+			remove_menu()
+		else:
+			display_menu(pause_menu)
 
 
 func hint_remove():
