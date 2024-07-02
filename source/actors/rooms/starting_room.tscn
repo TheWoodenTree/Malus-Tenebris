@@ -226,6 +226,6 @@ occluder = ExtResource("28_6h45y")
 bake_mask = 4294967283
 
 [node name="journal" parent="." instance=ExtResource("29_daem3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.25, -17)
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -4.25, 2, -17)
 
 [connection signal="body_entered" from="crouch_tutorial" to="crouch_tutorial" method="_on_body_entered"]

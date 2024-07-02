@@ -15,7 +15,7 @@ var count: int = 1
 func _set_mesh(new_mesh: MeshInstance3D):
 	mesh = new_mesh
 	mesh.material_overlay = null
-	mesh.layers = 2
+	mesh.layers = 3
 
 
 func reset():

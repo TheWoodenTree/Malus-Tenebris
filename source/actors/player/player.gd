@@ -223,6 +223,7 @@ func inventory_remove_item(item_data: ItemData):
 func hold_item(item_data: ItemData):
 	held_item = item_data
 	held_item_mesh = item_data.mesh
+	print(held_item_mesh.layers)
 	add_child(held_item_mesh)
 	held_item_mesh.position = Vector3.ZERO
 	held_item_mesh.scale *= item_data.hold_scale_multiplier

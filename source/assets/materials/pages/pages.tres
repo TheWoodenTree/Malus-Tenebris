@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://fiek73taac83"]
+
+[ext_resource type="Texture2D" uid="uid://b1fjv3obenoj" path="res://source/assets/materials/pages/fabrizio-conti-C_ldv5csD-U-unsplash.jpg" id="1_3y8nk"]
+
+[resource]
+albedo_color = Color(0.43134, 0.43134, 0.43134, 1)
+albedo_texture = ExtResource("1_3y8nk")
+metallic_specular = 0.0

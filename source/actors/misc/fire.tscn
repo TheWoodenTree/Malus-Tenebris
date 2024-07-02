@@ -102,6 +102,7 @@ process_material = SubResource("ParticleProcessMaterial_w4tfn")
 draw_pass_1 = SubResource("PlaneMesh_vle7t")
 
 [node name="light" type="OmniLight3D" parent="."]
+layers = 3
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 shadow_enabled = true
