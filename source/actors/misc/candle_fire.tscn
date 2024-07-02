@@ -92,6 +92,5 @@ process_material = SubResource("ParticleProcessMaterial_86l80")
 draw_pass_1 = SubResource("PlaneMesh_vddtw")
 
 [node name="light" type="OmniLight3D" parent="."]
-layers = 3
 shadow_enabled = true
 script = ExtResource("2")

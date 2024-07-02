@@ -19,13 +19,18 @@ var icons_dict: Dictionary = {Interactable.Type.DOOR: grabbing_hand_icon,
 
 func _ready():
 	Global.player.looked_at_interactable.connect(update_icon)
-	Global.player.looked_away_from_interactable.connect(icon_visible_off)
+	Global.player.holding_self_useable.connect(update_icon)
+	Global.player.looked_away_from_interactable.connect(set_icon_visible)
 
 
-func icon_visible_off():
-	visible = false
+func set_icon_visible(player_holding_self_useable: bool = false):
+	if not player_holding_self_useable:
+		visible = false
+	else:
+		visible = true
+		update_icon(Interactable.Type.NOTE)
 
 
-func update_icon(icon_visible: bool, interactable_type: Interactable.Type):
+func update_icon(interactable_type: Interactable.Type):
 	texture = icons_dict[interactable_type]
-	visible = icon_visible
+	visible = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjcdhkttl3bub"]
+[gd_scene load_steps=17 format=3 uid="uid://bjcdhkttl3bub"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_fhkke"]
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="2_22kfu"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_ei3df"]
 [ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="4_c611v"]
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_llwg8"]
 [ext_resource type="Material" uid="uid://b5r5gddichoqf" path="res://source/assets/materials/leather/leather.tres" id="6_owwqv"]
 [ext_resource type="Material" uid="uid://fiek73taac83" path="res://source/assets/materials/pages/pages.tres" id="7_p6hbf"]
 
@@ -12,8 +13,67 @@ script = ExtResource("3_ei3df")
 name = "Tattered Journal"
 texture = ExtResource("4_c611v")
 pickup_sound = ExtResource("2_22kfu")
+self_useable = true
 hold_rotation_offset = Vector3(-25, 180, 0)
 hold_scale_multiplier = 1.0
+
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxvwi"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_llwg8")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_n2yhu"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74ykf"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_kxvwi")
+shader = SubResource("Shader_n2yhu")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a8aic"]
 _surfaces = [{
@@ -80,6 +140,7 @@ size = Vector3(0.58058, 0.335449, 0.679123)
 item_data = SubResource("Resource_ytw0o")
 
 [node name="mesh" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_74ykf")
 mesh = SubResource("ArrayMesh_ckoxl")
 
 [node name="collision_shape" parent="interact_area" index="0"]

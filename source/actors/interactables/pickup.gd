@@ -28,7 +28,7 @@ func _ready():
 
 
 func _process(_delta):
-	if being_looked_at and not Global.player.held_item: # Is the second condition necessary?
+	if being_looked_at:
 		mesh.material_overlay.set_shader_parameter("outlineOn", true)
 		for child in get_children():
 			if child is MeshInstance3D and shader_mode == "Outline" and child.material_overlay:
@@ -46,7 +46,7 @@ func _process(_delta):
 
 
 func interact():
-	if interactable and not Global.player.held_item: # Is the second condition necessary?
+	if interactable:
 		Global.player.inventory_add_item(item_data)
 		var pickup_string: String = "Picked up %s" % item_data.name
 		if item_data.count > 1:

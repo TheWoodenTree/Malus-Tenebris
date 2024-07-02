@@ -60,6 +60,7 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 signal crouched
 signal looked_at_interactable(interactable_type: Interactable.Type)
 signal looked_away_from_interactable
+signal holding_self_useable(interactable_type: Interactable.Type)
 signal equipped_key
 signal draggable_interacted
 
@@ -133,6 +134,9 @@ func _handle_input():
 		noclip_on = !noclip_on
 		set_collision_layer_value(2, !noclip_on)
 		set_collision_mask_value(1, !noclip_on)
+	
+	if Input.is_action_just_pressed("interact") and held_item and held_item.self_useable and not looking_at:
+		print('g')
 	
 	if Input.is_action_just_released("interact"):
 		if is_instance_valid(draggable_being_dragged):
@@ -223,10 +227,15 @@ func inventory_remove_item(item_data: ItemData):
 func hold_item(item_data: ItemData):
 	held_item = item_data
 	held_item_mesh = item_data.mesh
-	print(held_item_mesh.layers)
 	add_child(held_item_mesh)
 	held_item_mesh.position = Vector3.ZERO
 	held_item_mesh.scale *= item_data.hold_scale_multiplier
+	if held_item.self_useable:
+		held_item_mesh.material_overlay.set_shader_parameter("outlineOn", true)
+		holding_self_useable.emit(Interactable.Type.NOTE)
+	else:
+		held_item_mesh.material_overlay.set_shader_parameter("outlineOn", false)
+		
 	if not first_item_held and is_holding_key() and debug_do_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
 		first_item_held = true
@@ -307,15 +316,20 @@ func _handle_look_at(collider):
 		last_looked_at = looking_at
 		looking_at.being_looked_at = true
 		if looking_at.interactable:
-			emit_signal("looked_at_interactable", true, looking_at.get_interactable_type())
+			emit_signal("looked_at_interactable", looking_at.get_interactable_type())
+			if held_item_mesh:
+				held_item_mesh.material_overlay.set_shader_parameter("outlineOn", false)
 		if Input.is_action_just_pressed("interact"):
 			looking_at.interact()
 	else:
 		looking_at = null
+		if held_item_mesh and held_item.self_useable and not draggable_being_dragged:
+			held_item_mesh.material_overlay.set_shader_parameter("outlineOn", true)
 	
 	var hide_interact_icon: bool = not looking_at or looking_at and not looking_at.interactable
 	if not draggable_being_dragged and hide_interact_icon and Global.ui.interact_icon.visible:
-		emit_signal("looked_away_from_interactable")
+		var is_holding_self_useable: bool = held_item and held_item.self_useable
+		emit_signal("looked_away_from_interactable", is_holding_self_useable)
 	
 	# Let the last interactable looked at know (if it isn't null or hasn't been freed) 
 	# it's not being looked at anymore
@@ -440,7 +454,11 @@ func _on_fire_burning_sound_area_area_entered(area):
 		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
 		start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
 		area.interactable_ancestor.fire.burning_player.play(start_time)
+		# Only render nearby lights on the second layer for performance
+		# Second layer is for held items so they don't clip into walls
+		area.interactable_ancestor.fire.light.set_layer_mask_value(2, true)
 
 
 func _on_fire_burning_sound_area_area_exited(area):
 	area.interactable_ancestor.fire.burning_player.stop()
+	area.interactable_ancestor.fire.light.set_layer_mask_value(2, false)

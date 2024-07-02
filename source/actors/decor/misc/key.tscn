@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqlc1s8bbnegp"]
+[gd_scene load_steps=16 format=3 uid="uid://dqlc1s8bbnegp"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_wh2hv"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="2"]
 [ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_fvu66"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="4_hhjbt"]
+[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_2d77b"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="5_mnwov"]
 
 [sub_resource type="Resource" id="Resource_53vmw"]
@@ -12,8 +13,67 @@ script = ExtResource("3_fvu66")
 name = "Key"
 texture = ExtResource("4_hhjbt")
 pickup_sound = ExtResource("2")
+self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
+
+[sub_resource type="Gradient" id="Gradient_rxqmh"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rxqmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_va3a6"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_2d77b")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_56n7j"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7oo3d"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_va3a6")
+shader = SubResource("Shader_56n7j")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_p2g6y"]
 _surfaces = [{
@@ -54,6 +114,7 @@ height = 1.5
 item_data = SubResource("Resource_53vmw")
 
 [node name="mesh" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_7oo3d")
 mesh = SubResource("ArrayMesh_bith5")
 
 [node name="collision_shape" parent="interact_area" index="0"]
