@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://be0iw55afdwry"]
+[gd_scene load_steps=7 format=3 uid="uid://be0iw55afdwry"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_04k3r"]
 [ext_resource type="Script" path="res://source/assets/ui/menus/journal_menu.gd" id="2_js0g1"]
+[ext_resource type="AudioStream" uid="uid://svuwpgc2blcw" path="res://source/assets/sounds/ui/journal_open.ogg" id="3_2t6h2"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_5lwqh"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="4_eysq1"]
+[ext_resource type="AudioStream" uid="uid://btkdnefp2h41d" path="res://source/assets/sounds/ui/journal_close.ogg" id="4_hgs1l"]
 
 [node name="journal_menu" type="Control"]
 layout_mode = 3
@@ -14,6 +16,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_04k3r")
 script = ExtResource("2_js0g1")
+open_sound = ExtResource("3_2t6h2")
+close_sound = ExtResource("4_hgs1l")
 
 [node name="cont" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(512, 288)
@@ -33,30 +37,21 @@ text = "Journal"
 horizontal_alignment = 1
 
 [node name="separator" type="HSeparator" parent="cont/v_box_cont"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="objectives_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
+[node name="log_entries_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
 layout_mode = 2
-text = "Objectives"
+text = "Log Entries"
 
 [node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="hints_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
-layout_mode = 2
-text = "Hints"
-
-[node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
-visible = false
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-
 [node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("3_5lwqh")]
 layout_mode = 2
-text = "Notes"
+text = "Found Notes"
 
 [node name="separator4" type="HSeparator" parent="cont/v_box_cont"]
 visible = false
@@ -65,3 +60,5 @@ layout_mode = 2
 
 [node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("4_eysq1")]
 layout_mode = 2
+
+[connection signal="pressed" from="cont/v_box_cont/log_entries_button" to="." method="_on_log_entries_button_pressed"]

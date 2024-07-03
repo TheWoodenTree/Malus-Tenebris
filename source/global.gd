@@ -1,8 +1,8 @@
 extends Node
 
-####################
-# GLOBAL VARIABLES #
-####################
+######################
+## GLOBAL VARIABLES ##
+######################
 var world: Node3D
 var world_environment: WorldEnvironment
 var post_processing: Control
@@ -13,6 +13,7 @@ var zoom_shader: Material
 var blackout_blur_shader: Material
 var ui: Control
 var inventory: Control
+var journal_log: Control
 var cursor: Node2D
 var torch: Interactable
 
@@ -38,6 +39,7 @@ func _ready() -> void:
 		blackout_blur_shader = post_processing.get_node("blackout_blur").material
 	ui = main.get_node("ui")
 	inventory = ui.inventory_menu
+	journal_log = ui.log_entries_menu
 	cursor = main.get_node("cursor")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 

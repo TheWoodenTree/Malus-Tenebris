@@ -160,6 +160,7 @@ func interact():
 		# Player tries to open the door in the records room but doesn't have a lit torch
 		elif tutorial_popup and (not Global.player.has_torch or Global.player.has_torch and not Global.player.torch.is_lit):
 			Global.ui.hint_popup("It's too dark; find a light source", 3.0)
+			Global.journal_log.add_entry(LogEntry.LogEntryName.FIND_TORCH)
 		
 		# Player drags an unlocked door
 		elif (unlocked and player_on_openable_side and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:

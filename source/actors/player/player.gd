@@ -136,7 +136,7 @@ func _handle_input():
 		set_collision_mask_value(1, !noclip_on)
 	
 	var can_self_use: bool = held_item_data and held_item_data.self_useable and not looking_at and not draggable_being_dragged
-	if Input.is_action_just_pressed("interact") and can_self_use:
+	if Input.is_action_just_pressed("interact") and can_self_use and not in_menu:
 		if held_item_data.self_useable_script:
 			held_item.use()
 		else:
@@ -161,6 +161,8 @@ func _handle_input():
 func _handle_physics_input():
 	if not crouching:
 		if Input.is_action_pressed("sprint"):
+			if not sprinting:
+				Global.journal_log.add_entry(LogEntry.LogEntryName.SPRINT)
 			sprinting = true
 			max_speed = sprint_speed
 			footstep_timer.wait_time = footstep_sprint_interval / speed_multiplier

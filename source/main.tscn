@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=30 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://source/interact_icon.gd" id="12_ifoda"]
 [ext_resource type="Script" path="res://source/assets/ui/menus.gd" id="13_by7hf"]
 [ext_resource type="PackedScene" uid="uid://difwtbkkvagxy" path="res://source/assets/ui/progress_bars/draggable_move_progress_bar.tscn" id="13_twsai"]
+[ext_resource type="AudioStream" uid="uid://dfyvv6qq4h5hi" path="res://source/assets/sounds/book/new_log_entry.ogg" id="13_yps3l"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -193,6 +194,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6")
+
+[node name="generic_audio_player" type="AudioStreamPlayer" parent="ui"]
+stream = ExtResource("13_yps3l")
 
 [node name="button_hover_player" type="AudioStreamPlayer" parent="ui"]
 stream = ExtResource("11_21vnh")

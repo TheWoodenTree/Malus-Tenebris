@@ -18,12 +18,15 @@ var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instan
 var are_you_sure_popup: Control = preload("res://source/assets/ui/menus/are_you_sure_popup.tscn").instantiate()
 var pause_menu: Control = preload("res://source/assets/ui/menus/pause_menu.tscn").instantiate()
 var settings_menu: Control = preload("res://source/assets/ui/menus/settings_menu.tscn").instantiate()
+var journal_menu: Control = preload("res://source/assets/ui/menus/journal_menu.tscn").instantiate()
+var log_entries_menu: Control = preload("res://source/assets/ui/menus/log_entries_menu.tscn").instantiate()
 
 @onready var background = $menus/background
 @onready var interact_icon = $cont/interact_icon
 @onready var draggable_move_progress_bar = $draggable_move_progress_bar
 @onready var menus = $menus
-@onready var block_inventory_open: bool = Global.player.debug_do_tutorials
+@onready var block_inventory_open: bool = false#Global.player.debug_do_tutorials
+@onready var generic_audio_player = $generic_audio_player
 @onready var button_hover_player = $button_hover_player
 @onready var button_up_player = $button_up_player
 @onready var button_down_player = $button_down_player

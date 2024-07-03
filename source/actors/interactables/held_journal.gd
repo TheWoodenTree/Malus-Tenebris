@@ -3,4 +3,4 @@ extends SelfUseable
 
 func use():
 	used = true
-	print("Opened!")
+	Global.ui.display_menu(Global.ui.journal_menu)

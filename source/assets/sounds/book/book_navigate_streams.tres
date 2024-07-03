@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cwnnau2y01356"]
+
+[ext_resource type="AudioStream" uid="uid://ctqvc2pihrx5w" path="res://source/assets/sounds/book/navigate_1.ogg" id="1_rpja7"]
+[ext_resource type="AudioStream" uid="uid://b751ydphb7hyt" path="res://source/assets/sounds/book/navigate_2.ogg" id="2_h7h3c"]
+[ext_resource type="AudioStream" uid="uid://ne23ocr1spt5" path="res://source/assets/sounds/book/navigate_3.ogg" id="3_wsmof"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("1_rpja7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_h7h3c")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_wsmof")
+stream_2/weight = 1.0
