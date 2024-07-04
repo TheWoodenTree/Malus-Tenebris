@@ -14,6 +14,7 @@ var blackout_blur_shader: Material
 var ui: Control
 var inventory: Control
 var journal_log: Control
+var found_notes: Control
 var cursor: Node2D
 var torch: Interactable
 
@@ -40,6 +41,7 @@ func _ready() -> void:
 	ui = main.get_node("ui")
 	inventory = ui.inventory_menu
 	journal_log = ui.log_entries_menu
+	found_notes = ui.found_notes_menu
 	cursor = main.get_node("cursor")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 

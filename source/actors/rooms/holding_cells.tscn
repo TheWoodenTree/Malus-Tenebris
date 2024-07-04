@@ -98,6 +98,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1.
 
 [node name="scroll_3" parent="misc" index="0" instance=ExtResource("10_vxymn")]
 transform = Transform3D(0.960741, 0, 0.277449, 0, 1, 0, -0.277449, 0, 0.960741, -2.30662, 1.5, 4.03093)
+note_name = "Prisoner Manifest"
 label = ExtResource("11_606sy")
 
 [node name="occluder_instance" parent="." index="8"]

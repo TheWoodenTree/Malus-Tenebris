@@ -37,6 +37,7 @@ func interact():
 		Global.ui.hint_remove()
 		first_dose = false
 		AfflictionEffectController.first_dose_taken = true
+		do_log_entry()
 		
 	if num_doses > 0:
 		if Global.player.affliction_timer.time_left < Global.player.MAX_AFFLICTION_TIMER_ALLOW_DRINK:
@@ -73,3 +74,8 @@ func distillation_started():
 	emit_signal("done_pouring")
 	num_doses += 1
 	set_interactable(true)
+
+
+func do_log_entry():
+	await get_tree().create_timer(2.0, false).timeout
+	Global.journal_log.add_entry(LogEntry.LogEntryName.FIRST_DOSE)

@@ -14,12 +14,14 @@ var inventory_open: bool = false
 var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
 var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
-var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instantiate()
 var are_you_sure_popup: Control = preload("res://source/assets/ui/menus/are_you_sure_popup.tscn").instantiate()
 var pause_menu: Control = preload("res://source/assets/ui/menus/pause_menu.tscn").instantiate()
 var settings_menu: Control = preload("res://source/assets/ui/menus/settings_menu.tscn").instantiate()
 var journal_menu: Control = preload("res://source/assets/ui/menus/journal_menu.tscn").instantiate()
 var log_entries_menu: Control = preload("res://source/assets/ui/menus/log_entries_menu.tscn").instantiate()
+var found_notes_menu: Control = preload("res://source/assets/ui/menus/found_notes_menu.tscn").instantiate()
+var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instantiate()
+var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_journal_note_menu.tscn").instantiate()
 
 @onready var background = $menus/background
 @onready var interact_icon = $cont/interact_icon

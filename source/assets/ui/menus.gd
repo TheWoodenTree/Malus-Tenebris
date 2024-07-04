@@ -61,3 +61,8 @@ func front():
 
 func back():
 	return open_menus.back() if not open_menus.is_empty() else null
+
+
+func play_sound_one_shot(stream: AudioStream):
+	menu_player.stream = stream
+	menu_player.play()

@@ -41,6 +41,7 @@ script = ExtResource("26_rhjbl")
 name = "Ruboleum Vial"
 texture = ExtResource("27_lo8s1")
 pickup_sound = ExtResource("34_e2n1h")
+self_useable = false
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 
@@ -50,6 +51,7 @@ script = ExtResource("26_rhjbl")
 name = "Ruboleum Vial"
 texture = ExtResource("27_lo8s1")
 pickup_sound = ExtResource("34_e2n1h")
+self_useable = false
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 
@@ -198,6 +200,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.75, 
 
 [node name="note" parent="misc" index="0" instance=ExtResource("14_bjogf")]
 transform = Transform3D(-0.680746, 0, 0.732519, 0, 1, 0, -0.732519, 0, -0.680746, 12.5822, 0.801072, -2.33667)
+note_name = "The Plague Spreads"
 label = ExtResource("15_3js4e")
 
 [node name="small_archway" parent="misc" index="1" instance=ExtResource("28_gg6p8")]
@@ -217,6 +220,7 @@ item_data = SubResource("Resource_2sw8t")
 
 [node name="note2" parent="misc" index="3" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
+note_name = "Ruboleum Distillation Instructions"
 label = ExtResource("28_a1a56")
 
 [node name="safe_room_area" type="Area3D" parent="." index="8"]

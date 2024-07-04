@@ -190,9 +190,11 @@ offset_bottom = 288.0
 process_mode = 3
 material = SubResource("ShaderMaterial_153xn")
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("6")
 
 [node name="generic_audio_player" type="AudioStreamPlayer" parent="ui"]
@@ -229,9 +231,12 @@ visible = false
 layout_mode = 1
 
 [node name="menus" type="Control" parent="ui"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("13_by7hf")
 
 [node name="background" type="ColorRect" parent="ui/menus"]

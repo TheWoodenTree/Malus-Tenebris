@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6cjmtln0dues"]
+[gd_scene load_steps=5 format=3 uid="uid://c6cjmtln0dues"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_cvp73"]
 [ext_resource type="Script" path="res://source/assets/ui/menus/pause_menu.gd" id="2_x24sp"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_q3ba8"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="4_g4plg"]
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -53,6 +54,14 @@ layout_mode = 2
 text = "Settings"
 
 [node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("4_g4plg")]
+layout_mode = 2
+
+[node name="separator4" type="HSeparator" parent="cont/v_box_cont"]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2

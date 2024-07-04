@@ -1,0 +1,10 @@
+class_name FoundNoteButton
+extends IconlessButton
+
+
+var note_text: String
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.

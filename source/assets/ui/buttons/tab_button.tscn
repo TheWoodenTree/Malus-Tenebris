@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://1hcg08j1wd6k"]
+
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="1_al1gv"]
+[ext_resource type="Script" path="res://source/assets/ui/buttons/tab_button.gd" id="2_3i42s"]
+
+[node name="tab_button" instance=ExtResource("1_al1gv")]
+script = ExtResource("2_3i42s")
+select_color = Color(0.811765, 0.517647, 0.294118, 1)

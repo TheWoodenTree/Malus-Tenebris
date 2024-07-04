@@ -256,6 +256,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -10.25)
 
 [node name="scroll_3" parent="." index="59" instance=ExtResource("28_5dbn1")]
 transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -8.99389, 2, -11.1764)
+note_name = "Rusted Lock"
 label = ExtResource("29_r0ce2")
 
 [node name="torch_holder" parent="." index="60" instance=ExtResource("22_12ae0")]

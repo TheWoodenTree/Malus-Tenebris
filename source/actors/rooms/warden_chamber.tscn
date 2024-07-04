@@ -46,6 +46,7 @@ script = ExtResource("33_xtbsr")
 name = "Prison Depths Key"
 texture = ExtResource("34_ho68n")
 pickup_sound = ExtResource("32_2l4ou")
+self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 
@@ -263,6 +264,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2, -13.75)
 
 [node name="scroll_1" parent="." index="63" instance=ExtResource("20_38yva")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.81549, 2, -12.5819)
+note_name = "Letter to the Praetor"
 label = ExtResource("10_l0rlp")
 
 [node name="scroll_2" parent="." index="64" instance=ExtResource("21_hc1k4")]

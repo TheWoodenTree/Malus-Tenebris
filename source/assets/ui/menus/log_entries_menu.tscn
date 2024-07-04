@@ -2,9 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ncdi8"]
 [ext_resource type="Script" path="res://source/assets/ui/menus/log_entries_menu.gd" id="2_fo4c7"]
-[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="3_3617s"]
 [ext_resource type="AudioStream" uid="uid://b751ydphb7hyt" path="res://source/assets/sounds/book/navigate_2.ogg" id="3_po68e"]
 [ext_resource type="AudioStream" uid="uid://ne23ocr1spt5" path="res://source/assets/sounds/book/navigate_3.ogg" id="4_bssaf"]
+[ext_resource type="PackedScene" uid="uid://do8t7q7gsv76g" path="res://source/assets/ui/misc/log_entry.tscn" id="5_g6wi5"]
 
 [node name="log_entries_menu" type="Control"]
 layout_mode = 3
@@ -19,10 +19,12 @@ open_sound = ExtResource("3_po68e")
 close_sound = ExtResource("4_bssaf")
 
 [node name="cont" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -31,21 +33,14 @@ theme_override_constants/margin_bottom = 16
 [node name="v_box_cont" type="VBoxContainer" parent="cont"]
 layout_mode = 2
 
-[node name="log_entries_label" type="Label" parent="cont/v_box_cont"]
+[node name="scroll_cont" type="ScrollContainer" parent="cont/v_box_cont"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Log Entries"
-horizontal_alignment = 1
+size_flags_vertical = 3
 
-[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+[node name="entries_cont" type="VBoxContainer" parent="cont/v_box_cont/scroll_cont"]
 layout_mode = 2
-theme_override_constants/separation = 16
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
 
-[node name="entries_cont" type="VBoxContainer" parent="cont/v_box_cont"]
+[node name="log_entry" parent="cont/v_box_cont/scroll_cont/entries_cont" instance=ExtResource("5_g6wi5")]
 layout_mode = 2
-
-[node name="close_menu_button" parent="cont" instance=ExtResource("3_3617s")]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "Back"

@@ -385,6 +385,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -37, -
 
 [node name="scroll_4" parent="." index="98" instance=ExtResource("34_ytya3")]
 transform = Transform3D(-0.616706, 0, -0.787193, 0, 1, 0, 0.787193, 0, -0.616706, -27.1709, -1.5, -13.7199)
+note_name = "Guard Relocation Memo"
 label = ExtResource("36_dfrjr")
 
 [node name="stone_wall4" parent="." index="99" instance=ExtResource("4_chcy4")]

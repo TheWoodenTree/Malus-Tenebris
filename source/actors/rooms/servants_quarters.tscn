@@ -75,6 +75,7 @@ script = ExtResource("19_b51cc")
 name = "Larder Key"
 texture = ExtResource("20_omi13")
 pickup_sound = ExtResource("18_c3yq7")
+self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 
@@ -84,6 +85,7 @@ script = ExtResource("19_b51cc")
 name = "Ruboleum Vial"
 texture = ExtResource("29_1pfam")
 pickup_sound = ExtResource("28_esjvg")
+self_useable = false
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 
@@ -508,6 +510,7 @@ transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 8.5, 0.5
 
 [node name="note" parent="." index="120" instance=ExtResource("31_nynm0")]
 transform = Transform3D(-0.630175, 0, -0.776453, 0, 1, 0, 0.776453, 0, -0.630175, 7.25, 2, 16.4438)
+note_name = "Collapsed Ceiling"
 label = ExtResource("32_e7uj6")
 
 [node name="stone_floor3" parent="." index="121" instance=ExtResource("2_dj88v")]

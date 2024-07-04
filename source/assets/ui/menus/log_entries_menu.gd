@@ -5,7 +5,7 @@ var entries: Array[Control]
 var queued_method_calls: Array[Callable]
 var entry_res: Resource = preload("res://source/assets/ui/misc/log_entry.tscn")
 
-@onready var entries_cont = $cont/v_box_cont/entries_cont
+@onready var entries_cont = $cont/v_box_cont/scroll_cont/entries_cont
 
 
 func _enter_tree():

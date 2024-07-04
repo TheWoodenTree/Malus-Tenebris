@@ -93,8 +93,6 @@ func interact():
 	
 	highlight_light.visible = false
 	
-	Global.journal_log.remove_entry(LogEntry.LogEntryName.FIND_TORCH)
-	
 	if not Global.player.debug_has_torch:
 		Global.ui.hint_popup("Find a way to light the torch", 5.0)
 

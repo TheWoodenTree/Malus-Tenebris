@@ -4,17 +4,16 @@ const BLUR_TIME = 0.1
 const BACKWARD = 0
 const FORWARD = 1
 
+@export var display_help: bool = false
+@export var note_name: String = "Note"
+@export var label: PackedScene
+
 var pages: Array
 var num_pages: int
 var curr_page: int
 var raw_text: String
 
 var read: bool = false
-
-var note_menu = preload("res://source/assets/ui/note_menu.tscn").instantiate()
-
-@export var display_help: bool = false
-@export var label: PackedScene
 
 @onready var interact_area = $interact_area
 @onready var page_turn_player = $page_turn_player
@@ -32,13 +31,11 @@ func _ready() -> void:
 	mesh.mesh.surface_set_material(0, note_mat.duplicate())
 	note_mat = mesh.mesh.surface_get_material(0)
 	
-	note_menu.note = self
+	Global.ui.note_menu.note = self
 	raw_text = label.instantiate().text
 	pages = raw_text.split("\n[PAGE]\n")
 	num_pages = pages.size()
 	curr_page = 0
-	note_menu.set_note_text(pages[curr_page])
-	note_menu.set_page_number_text("Page 1/" + str(num_pages))
 
 
 func _process(_delta: float) -> void:
@@ -65,12 +62,20 @@ func interact():
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
 	if interactable and not Global.player.in_menu:
 		super()
-		Global.ui.display_menu(note_menu)
+		
+		Global.ui.note_menu.set_note_text(raw_text.replacen("[PAGE]", ""))#pages[curr_page])
+		Global.ui.note_menu.note_name = note_name
+		Global.ui.note_menu.set_page_number_text("Page 1/" + str(num_pages))
+		Global.ui.display_menu(Global.ui.note_menu)
 	
-		read = true
 		emit_signal("was_read")
 		if display_help:
 			Global.ui.hint_remove()
+		
+		if not read:
+			Global.found_notes.add_note(note_name, raw_text.replacen("[PAGE]", ""))
+		
+		read = true
 
 
 func turn_page(direction):
@@ -82,15 +87,15 @@ func turn_page(direction):
 		return
 		
 	if curr_page < (num_pages - 1):
-		note_menu.right_button.disabled = false
+		Global.ui.note_menu.right_button.disabled = false
 	else:
-		note_menu.right_button.disabled = true
+		Global.ui.note_menu.right_button.disabled = true
 		
 	if curr_page > 0: 
-		note_menu.left_button.disabled = false
+		Global.ui.note_menu.left_button.disabled = false
 	else:
-		note_menu.left_button.disabled = true
+		Global.ui.note_menu.left_button.disabled = true
 		
 	page_turn_player.play()
-	note_menu.set_note_text(pages[curr_page])
-	note_menu.set_page_number_text("Page %d/" % (curr_page + 1) + str(num_pages))
+	Global.ui.note_menu.set_note_text(pages[curr_page])
+	Global.ui.note_menu.set_page_number_text("Page %d/" % (curr_page + 1) + str(num_pages))

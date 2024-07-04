@@ -1,11 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://do8t7q7gsv76g"]
+[gd_scene load_steps=4 format=3 uid="uid://do8t7q7gsv76g"]
 
+[ext_resource type="Texture2D" uid="uid://baqveak4oh8f3" path="res://source/assets/ui/accents/bullet_point.png" id="1_4j4lj"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_8av5c"]
 [ext_resource type="Script" path="res://source/assets/ui/misc/log_entry.gd" id="1_coh86"]
 
-[node name="log_entry" type="Label"]
-offset_right = 220.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Find a way to escape the cell"
+[node name="log_entry" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme = ExtResource("1_8av5c")
 script = ExtResource("1_coh86")
+hint_name = 3
+
+[node name="v_box_cont" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="v_box_cont"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="bullet" type="TextureRect" parent="v_box_cont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_4j4lj")
+stretch_mode = 2
+
+[node name="text_label" type="Label" parent="."]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "You've sprinted for the very first time in your life, congratulations on your achievement"
+autowrap_mode = 3
