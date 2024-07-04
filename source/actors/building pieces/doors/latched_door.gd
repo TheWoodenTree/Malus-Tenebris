@@ -8,6 +8,7 @@ var latch_locked: bool = false
 func _ready():
 	super()
 	latch.parent_door = self
+	latch.set_interactable(open_angle < closed_max_drag_angle)
 
 
 func open():
