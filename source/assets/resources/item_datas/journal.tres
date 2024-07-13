@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://bqtcwaf610b65"]
+
+[ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="1_hffmc"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="2_u53a7"]
+[ext_resource type="Script" path="res://source/actors/interactables/held_journal.gd" id="3_cupsm"]
+[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="4_a0ous"]
+
+[resource]
+script = ExtResource("2_u53a7")
+name = "Old Journal"
+texture = ExtResource("4_a0ous")
+pickup_sound = ExtResource("1_hffmc")
+self_useable = true
+self_useable_script = ExtResource("3_cupsm")
+hold_rotation_offset = Vector3(0, 0, 180)
+hold_scale_multiplier = 1.0

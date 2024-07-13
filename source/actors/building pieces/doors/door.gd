@@ -1,6 +1,9 @@
 class_name Door
 extends Interactable
 
+@export var pitch_scale_min: float = 0.8
+@export var pitch_scale_max: float = 1.0
+
 var door_shaking: bool = false
 var attempt_open_angle: float
 var player_on_openable_side: bool = true
@@ -33,6 +36,7 @@ var key_name: String
 var locked_message: String
 var unlocked: bool
 var tutorial_popup: bool
+var need_journal: bool
 
 var reverse_z_dist: bool = false
 
@@ -49,9 +53,6 @@ var reverse_z_dist: bool = false
 @onready var collision_shape = $door_body/collision_shape
 @onready var hinge = $door_body/hinge
 @onready var mesh = $door_body/door
-
-@export var pitch_scale_min: float = 0.8
-@export var pitch_scale_max: float = 1.0
 
 signal moved
 
@@ -82,7 +83,7 @@ func _process(_delta: float) -> void:
 		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
 			Global.player.cam.connect("cam_rotated", add_torque_to_door)
 		outline_on = true
-		if tutorial_popup and not tutorial_popup_shown and Global.player.debug_do_tutorials \
+		if tutorial_popup and not tutorial_popup_shown and not Global.player.debug_no_tutorials \
 		and Global.player.has_torch and Global.player.torch.is_lit:
 			Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
 			tutorial_popup_shown = true
@@ -160,7 +161,6 @@ func interact():
 		# Player tries to open the door in the records room but doesn't have a lit torch
 		elif tutorial_popup and (not Global.player.has_torch or Global.player.has_torch and not Global.player.torch.is_lit):
 			Global.ui.hint_popup("It's too dark; find a light source", 3.0)
-			Global.journal_log.add_entry(LogEntry.LogEntryName.FIND_TORCH)
 		
 		# Player drags an unlocked door
 		elif (unlocked and player_on_openable_side and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
@@ -180,14 +180,14 @@ func interact():
 				else:
 					message = "Blocked from the other side"
 				Global.ui.hint_popup(message, 3.0)
-
+				
 				var door_tween = get_tree().create_tween()
-
+				
 				if open_to_angle > 0:
 					attempt_open_angle = deg_to_rad(0.5)
 				else:
 					attempt_open_angle = -deg_to_rad(0.5)
-
+				
 				door_tween.tween_property(draggable_body, "rotation:y", attempt_open_angle, 0.1)
 				door_tween.tween_property(draggable_body, "rotation:y", 0, 0.1)
 				door_tween.tween_callback(Callable(self,"set").bind("door_shaking", false))

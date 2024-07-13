@@ -3,14 +3,18 @@ extends Menu
 @export var navigation_sound: AudioStream
 
 @onready var log_entries_button = $cont/v_box_cont/cont/panel_cont/h_box_cont/log_entries_button
+@onready var v_sep_1 = $cont/v_box_cont/cont/panel_cont/h_box_cont/v_sep_1
 @onready var found_notes_button = $cont/v_box_cont/cont/panel_cont/h_box_cont/found_notes_button
 @onready var submenu_cont = $cont/v_box_cont/submenu_cont
 
 
 func _ready():
-	submenu_cont.add_child(Global.ui.log_entries_menu)
 	Global.ui.found_notes_menu.new_note_added.connect(connect_note_button)
 	Global.ui.in_journal_note_menu.back_button_pressed.connect(change_menu.bind(Global.ui.found_notes_menu))
+	log_entries_button.visible = Global.player.debug_no_tutorials
+	v_sep_1.visible = Global.player.debug_no_tutorials
+	submenu_cont.add_child(Global.ui.found_notes_menu)
+	found_notes_button.select()
 
 
 func _exit_tree():

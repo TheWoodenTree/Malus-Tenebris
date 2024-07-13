@@ -40,5 +40,7 @@ func update_door():
 			_set_style("Prison")
 	new_door.position = DOOR_POSITION
 	new_door.name = "door"
+	if door_custom_script:
+		new_door.set_script(door_custom_script)
 	door = new_door
 	add_child(door)

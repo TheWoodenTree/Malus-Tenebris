@@ -6,6 +6,6 @@ extends Area3D
 var triggered: bool = false
 
 func _on_body_entered(body):
-	if body == Global.player and not triggered and Global.player.debug_do_tutorials:
+	if body == Global.player and not triggered and not Global.player.debug_no_tutorials:
 		Global.ui.hint_popup(message, duration)
 		triggered = true

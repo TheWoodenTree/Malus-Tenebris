@@ -38,6 +38,7 @@ script = ExtResource("30_38mxa")
 name = "Ruboleum Vial"
 texture = ExtResource("31_sfuc4")
 pickup_sound = ExtResource("29_r3kf6")
+self_useable = false
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 

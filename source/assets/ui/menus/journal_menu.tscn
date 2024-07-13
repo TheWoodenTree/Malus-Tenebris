@@ -51,7 +51,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 text = "Log Entries"
 
-[node name="VSeparator" type="VSeparator" parent="cont/v_box_cont/cont/panel_cont/h_box_cont"]
+[node name="v_sep_1" type="VSeparator" parent="cont/v_box_cont/cont/panel_cont/h_box_cont"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
@@ -59,7 +59,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Found Notes"
 
-[node name="VSeparator2" type="VSeparator" parent="cont/v_box_cont/cont/panel_cont/h_box_cont"]
+[node name="v_sep_2" type="VSeparator" parent="cont/v_box_cont/cont/panel_cont/h_box_cont"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 

@@ -11,8 +11,15 @@ extends Archway
 @export var door_key_name: String = ""
 @export var door_locked_message: String = ""
 @export var door_tutorial_popup: bool = false
+@export var door_custom_script: Script
 
 @onready var door = $door if has_node("door") else null
+
+
+# Set door custom script before ready so its on_ready vars can be initialized
+func _enter_tree():
+	if door_custom_script:
+		get_node("door").set_script(door_custom_script)
 
 
 func _ready() -> void:

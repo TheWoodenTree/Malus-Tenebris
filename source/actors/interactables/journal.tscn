@@ -1,30 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjcdhkttl3bub"]
+[gd_scene load_steps=16 format=3 uid="uid://bjcdhkttl3bub"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_fhkke"]
+[ext_resource type="Script" path="res://source/actors/interactables/journal.gd" id="2_6rghn"]
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="2_22kfu"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="3_ei3df"]
-[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="4_c611v"]
-[ext_resource type="Script" path="res://source/actors/interactables/held_journal.gd" id="4_pfpxu"]
+[ext_resource type="Resource" uid="uid://bqtcwaf610b65" path="res://source/assets/resources/item_datas/journal.tres" id="3_50jo0"]
 [ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_llwg8"]
 [ext_resource type="Material" uid="uid://b5r5gddichoqf" path="res://source/assets/materials/leather/leather.tres" id="6_owwqv"]
 [ext_resource type="Material" uid="uid://fiek73taac83" path="res://source/assets/materials/pages/pages.tres" id="7_p6hbf"]
 
-[sub_resource type="Resource" id="Resource_ytw0o"]
-script = ExtResource("3_ei3df")
-name = "Old Journal"
-texture = ExtResource("4_c611v")
-pickup_sound = ExtResource("2_22kfu")
-self_useable = true
-self_useable_script = ExtResource("4_pfpxu")
-hold_rotation_offset = Vector3(-25, 180, 0)
-hold_scale_multiplier = 1.0
-
-[sub_resource type="Gradient" id="Gradient_rxqmh"]
+[sub_resource type="Gradient" id="Gradient_i2vlv"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rxqmh")
+gradient = SubResource("Gradient_i2vlv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kxvwi"]
 resource_local_to_scene = true
@@ -136,17 +125,19 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a8aic")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j77l4"]
-size = Vector3(0.58058, 0.335449, 0.679123)
+size = Vector3(1, 0.75, 1.1)
 
 [node name="journal" instance=ExtResource("1_fhkke")]
-item_data = SubResource("Resource_ytw0o")
+script = ExtResource("2_6rghn")
+item_data = ExtResource("3_50jo0")
+enable_highlight_sheen = false
 
 [node name="mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_74ykf")
 mesh = SubResource("ArrayMesh_ckoxl")
 
 [node name="collision_shape" parent="interact_area" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00960064, 0.0910523, -0.00366974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_j77l4")
 
 [node name="pickup_player" parent="." index="2"]

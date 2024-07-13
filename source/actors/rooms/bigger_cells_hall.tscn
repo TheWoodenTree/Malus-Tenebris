@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=37 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ok18y"]
@@ -26,7 +26,9 @@
 [ext_resource type="Script" path="res://source/actors/rooms/sprint_tutorial.gd" id="26_p45ll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://1sb83i8d2g" path="res://source/actors/rooms/occluders/bigger_cells_hall.occ" id="27_mmdhw"]
 [ext_resource type="PackedScene" uid="uid://c34gumwigw2jh" path="res://source/actors/building pieces/archways/archway_L_bend.tscn" id="28_0dj71"]
+[ext_resource type="Script" path="res://source/actors/building pieces/doors/upper_cell_hall_door.gd" id="29_cexpk"]
 [ext_resource type="PackedScene" uid="uid://cde0mlew1cmil" path="res://source/actors/building pieces/archways/big_tall_archway.tscn" id="30_42i3c"]
+[ext_resource type="PackedScene" uid="uid://bjcdhkttl3bub" path="res://source/actors/interactables/journal.tscn" id="31_f5jcr"]
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="31_hcaqw"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="32_c2run"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="32_osmw1"]
@@ -53,6 +55,7 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -5.25, 1, 
 
 [node name="hanging_lamp3" parent="." index="10" instance=ExtResource("5_co5wr")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.25, 1, 0)
+lit = false
 
 [node name="hanging_lamp2" parent="." index="11" instance=ExtResource("5_co5wr")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -23.75, 1, 0)
@@ -457,6 +460,7 @@ door_locked_message = "It's completely blocked"
 [node name="reg_doorway2" parent="." index="116" instance=ExtResource("32_c2run")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 0.5, 0)
 door_style = "Regular With Window"
+door_custom_script = ExtResource("29_cexpk")
 
 [node name="reg_archway" parent="." index="117" instance=ExtResource("32_osmw1")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18, 0.5, 5)
@@ -489,5 +493,10 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 24.5, 0.
 
 [node name="big_archway4" parent="." index="126" instance=ExtResource("30_42i3c")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 26.5, 0.5, 0)
+
+[node name="journal" parent="." index="127" instance=ExtResource("31_f5jcr")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12.25, 0.5, 2)
+enable_highlight_light = true
+enable_highlight_sheen = true
 
 [connection signal="body_entered" from="sprint_tutorial" to="sprint_tutorial" method="_on_body_entered"]

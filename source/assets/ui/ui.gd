@@ -27,7 +27,7 @@ var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_jou
 @onready var interact_icon = $cont/interact_icon
 @onready var draggable_move_progress_bar = $draggable_move_progress_bar
 @onready var menus = $menus
-@onready var block_inventory_open: bool = false#Global.player.debug_do_tutorials
+@onready var block_inventory_open: bool = false
 @onready var generic_audio_player = $generic_audio_player
 @onready var button_hover_player = $button_hover_player
 @onready var button_up_player = $button_up_player
@@ -53,13 +53,17 @@ func _process(_delta):
 		elif menus.back() == inventory_menu:
 			remove_menu()
 	
-	if Input.is_action_just_pressed("pause"):
+	elif Input.is_action_just_pressed("pause"):
 		if menus.open_menus.size() > 0 and menus.back() != Global.main.title_screen:
 			if menus.back() == pause_menu:
 				get_tree().paused = false
 			remove_menu()
 		else:
 			display_menu(pause_menu)
+	
+	
+	#elif Input.is_action_just_pressed("journal"):
+	#	display_menu(journal_menu)
 
 
 func hint_remove():
@@ -135,6 +139,8 @@ func display_menu(menu: Control):
 func remove_menu():
 	var menu_removed: bool = false
 	if menus.num_menus > 0:
+		if menus.back() == pause_menu:
+			get_tree().paused = false
 		menus.pop_menu()
 		menu_removed = true
 		
@@ -144,3 +150,4 @@ func remove_menu():
 		if not Global.main.title_screen or menus.front() != Global.main.title_screen:
 			Global.lock_mouse()
 		Global.player.in_menu = false
+		

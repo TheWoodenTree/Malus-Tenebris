@@ -2,12 +2,12 @@
 
 [ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="1_adblc"]
 
-[sub_resource type="Gradient" id="Gradient_v3oam"]
+[sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_v3oam")
+gradient = SubResource("Gradient_rddky")
 
 [resource]
 resource_local_to_scene = true

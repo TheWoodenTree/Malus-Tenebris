@@ -1,6 +1,8 @@
 class_name Pickup
 extends Interactable
 
+signal picked_up
+
 @export var item_data: ItemData
 @export var name_override: String = ""
 @export_range(0, 99) var count: int = 1
@@ -56,5 +58,6 @@ func interact():
 		mesh.visible = false
 		highlight_light.visible = false
 		interact_area.set_collision_layer_value(16, false)
+		picked_up.emit()
 		await Global.player.play_pickup_sound(pickup_player)
 		queue_free()

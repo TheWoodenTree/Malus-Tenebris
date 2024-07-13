@@ -52,7 +52,7 @@ func _ready():
 	for i in range(0, slot_grid.get_child_count()):
 		slot_grid.get_child(i).index = i
 		
-	if Global.player.debug_do_tutorials:
+	if not Global.player.debug_no_tutorials:
 		tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
 
 
@@ -153,7 +153,7 @@ func remove_item_from_cursor():
 func _handle_drag():
 	if Input.is_action_just_pressed("interact"):
 		block_scroll = true
-		if tutorial_on and Global.player.debug_do_tutorials:
+		if tutorial_on and not Global.player.debug_no_tutorials:
 			tutorial_label.text = "Drag and drop the selected item out of your inventory to hold it"
 	if Input.is_action_just_released("interact") or Input.is_action_just_pressed("cancel"):
 		if Input.is_action_just_released("interact"): # Scuffed redundant if statement
@@ -164,7 +164,7 @@ func _handle_drag():
 				Global.player.hold_item(item_on_cursor)
 				Global.ui.remove_menu()
 		remove_item_from_cursor()
-		if tutorial_on and Global.player.debug_do_tutorials:
+		if tutorial_on and not Global.player.debug_no_tutorials:
 			tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
 
 

@@ -7,7 +7,6 @@ var connected_node: Node3D
 var last_cam_offset: Vector2 = Vector2.ZERO
 var last_3_mouse_positions: Array[Vector2] = []
 var local_mouse_position: Vector2 = Vector2.ZERO
-var test = false
 
 @onready var interact_area = $interact_area
 @onready var crank_anim_player = $crank_anim_player
@@ -57,9 +56,9 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	if not rotating_body.sleeping and can_crank:
-		if not test and player_dragging:
-			chain_player.play()
-			test = true
+		#if not test and player_dragging:
+		#	chain_player.play()
+		#	test = true
 		rotating_body.angular_velocity.z = clampf(rotating_body.angular_velocity.z, -PI, PI)
 		var uv_offset: float = rotating_body.angular_velocity.length() * 0.01
 		static_chain_1_mat.uv1_offset.y += uv_offset

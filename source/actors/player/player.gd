@@ -54,7 +54,7 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 @onready var affliction_timer = $affliction_timer
 
 @export var debug_has_torch: bool = false
-@export var debug_do_tutorials: bool = false
+@export var debug_no_tutorials: bool = false
 @export var is_omnipotent_door_god: bool = false
 
 signal crouched
@@ -161,8 +161,6 @@ func _handle_input():
 func _handle_physics_input():
 	if not crouching:
 		if Input.is_action_pressed("sprint"):
-			if not sprinting:
-				Global.journal_log.add_entry(LogEntry.LogEntryName.SPRINT)
 			sprinting = true
 			max_speed = sprint_speed
 			footstep_timer.wait_time = footstep_sprint_interval / speed_multiplier
@@ -242,7 +240,7 @@ func hold_item(item_data: ItemData):
 	else:
 		held_item.material_overlay.set_shader_parameter("outlineOn", false)
 		
-	if not first_item_held and is_holding_key() and debug_do_tutorials:
+	if not first_item_held and is_holding_key() and not debug_no_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
 		first_item_held = true
 
