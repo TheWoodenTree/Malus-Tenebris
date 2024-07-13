@@ -3,10 +3,11 @@ class_name LogEntry
 extends HBoxContainer
 
 enum LogEntryName {
-	ESCAPE_START_CELL, FIND_TORCH, TEST, SPRINT, FIRST_DOSE
+	PICKED_UP_JOURNAL, ESCAPE_START_CELL, FIND_TORCH, TEST, SPRINT, FIRST_DOSE
 }
 
 var log_entry_dict: Dictionary = {
+	LogEntryName.PICKED_UP_JOURNAL: "Useful information will be written here and notes found throughout the prison will be kept in the Found Notes tab",
 	LogEntryName.ESCAPE_START_CELL: "Find a way to escape the cell",
 	LogEntryName.FIND_TORCH: "Find a torch",
 	LogEntryName.TEST: "This is a test log entry",

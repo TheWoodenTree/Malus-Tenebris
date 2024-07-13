@@ -17,10 +17,6 @@ func _enter_tree():
 		callable.call()
 
 
-func _ready():
-	add_entry(LogEntry.LogEntryName.ESCAPE_START_CELL)
-
-
 func add_entry(log_entry_name: LogEntry.LogEntryName, delayed_call: bool = false):
 	if is_inside_tree():
 		var new_entry: LogEntry = entry_res.instantiate()

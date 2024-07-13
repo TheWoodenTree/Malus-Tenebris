@@ -28,3 +28,9 @@ layout_mode = 2
 
 [node name="buttons_cont" type="VBoxContainer" parent="cont/scroll_cont"]
 layout_mode = 2
+
+[node name="tutorial_label" type="Label" parent="cont"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Click on the title of a note to read it"
+horizontal_alignment = 1

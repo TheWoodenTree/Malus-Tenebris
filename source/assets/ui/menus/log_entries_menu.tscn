@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckwdbh3i30u43"]
+[gd_scene load_steps=5 format=3 uid="uid://ckwdbh3i30u43"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ncdi8"]
 [ext_resource type="Script" path="res://source/assets/ui/menus/log_entries_menu.gd" id="2_fo4c7"]
 [ext_resource type="AudioStream" uid="uid://b751ydphb7hyt" path="res://source/assets/sounds/book/navigate_2.ogg" id="3_po68e"]
 [ext_resource type="AudioStream" uid="uid://ne23ocr1spt5" path="res://source/assets/sounds/book/navigate_3.ogg" id="4_bssaf"]
-[ext_resource type="PackedScene" uid="uid://do8t7q7gsv76g" path="res://source/assets/ui/misc/log_entry.tscn" id="5_g6wi5"]
 
 [node name="log_entries_menu" type="Control"]
 layout_mode = 3
@@ -41,6 +40,3 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
-
-[node name="log_entry" parent="cont/v_box_cont/scroll_cont/entries_cont" instance=ExtResource("5_g6wi5")]
-layout_mode = 2

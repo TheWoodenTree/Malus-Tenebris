@@ -222,7 +222,7 @@ door_locked_message = "It's Locked"
 unique_name_in_owner = true
 transform = Transform3D(-0.971916, 0, 0.235329, 0, 1, 0, -0.235329, 0, -0.971916, -3.8907, 2, -18.2456)
 display_help = true
-note_name = "To whom it may concern"
+note_name = "My Last Days"
 label = ExtResource("25_n1mrg")
 
 [connection signal="body_entered" from="crouch_tutorial" to="crouch_tutorial" method="_on_body_entered"]

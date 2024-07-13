@@ -11,10 +11,8 @@ extends Menu
 func _ready():
 	Global.ui.found_notes_menu.new_note_added.connect(connect_note_button)
 	Global.ui.in_journal_note_menu.back_button_pressed.connect(change_menu.bind(Global.ui.found_notes_menu))
-	log_entries_button.visible = Global.player.debug_no_tutorials
-	v_sep_1.visible = Global.player.debug_no_tutorials
-	submenu_cont.add_child(Global.ui.found_notes_menu)
-	found_notes_button.select()
+	submenu_cont.add_child(Global.ui.log_entries_menu)
+	log_entries_button.select()
 
 
 func _exit_tree():
