@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
 [ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
-[ext_resource type="PackedScene" uid="uid://dfwtxh61u4p1w" path="res://source/actors/rooms/room_w_key_1.tscn" id="4_hat6p"]
 [ext_resource type="PackedScene" uid="uid://bd4v75xinikem" path="res://source/actors/rooms/lower_prison_stairway.tscn" id="8_pef6q"]
 [ext_resource type="PackedScene" uid="uid://cqine5hhhqdn4" path="res://source/actors/rooms/warden_chamber.tscn" id="9_xbk25"]
 [ext_resource type="PackedScene" uid="uid://dijlshyjh0vla" path="res://source/actors/rooms/safe_room.tscn" id="12_nytv3"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dw8x78dpqdprb" path="res://source/actors/rooms/servants_quarters.tscn" id="26_qdr7n"]
 [ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/antagonists/obunga.tscn" id="26_wekw4"]
 [ext_resource type="PackedScene" uid="uid://cqcgnrdsde7ui" path="res://source/actors/rooms/itch_background_room.tscn" id="27_7hdn1"]
+[ext_resource type="PackedScene" uid="uid://45cjxiqxw67l" path="res://source/actors/rooms/records_room_storage.tscn" id="27_xk6td"]
 [ext_resource type="PackedScene" uid="uid://bb7fcf6hjdsed" path="res://source/actors/rooms/upper_storage_room.tscn" id="30_scntj"]
 [ext_resource type="PackedScene" uid="uid://6740g18km7ny" path="res://source/actors/rooms/lower_cell_hall_3.tscn" id="32_yfpp8"]
 [ext_resource type="PackedScene" uid="uid://dkywpurj50vjl" path="res://source/actors/rooms/lower_cell_hall_2.tscn" id="33_ysjgv"]
@@ -65,7 +65,7 @@ reverb_bus_amount = 1.0
 shape = SubResource("BoxShape3D_jlowy")
 
 [node name="player_spawn_point" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 7.85, 46.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 7.85, 46.25)
 
 [node name="nav_region" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)
@@ -74,6 +74,9 @@ navigation_mesh = SubResource("NavigationMesh_q4dpi")
 [node name="big_cell2" parent="nav_region" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100.25, 6, 23.25)
 
+[node name="big_cell5" parent="nav_region" instance=ExtResource("2_7yt8k")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 100.25, 6, 33.25)
+
 [node name="big_cell3" parent="nav_region" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 115.75, 6, 23.25)
 
@@ -81,13 +84,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 115.75
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 131.25, 6, 23.25)
 
 [node name="starting_room" parent="nav_region" instance=ExtResource("2_nvqo1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.25, 6, 33.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.75, 6, 33.25)
 
 [node name="bigger_cells_hall" parent="nav_region" instance=ExtResource("26_mq5sv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.25, 6, 28.25)
-
-[node name="room_w_key_1" parent="nav_region" instance=ExtResource("4_hat6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 6, -16.5)
 
 [node name="cells_stairway" parent="nav_region" instance=ExtResource("8_pef6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -38.25)
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -15, -77.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -18.5, -129.25)
 
 [node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 6, -2.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 6, -3)
 
 [node name="upper_prison_common_area" parent="nav_region" instance=ExtResource("21_3ed77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.25, 6.5, 24.75)
@@ -162,3 +162,6 @@ mesh = SubResource("SphereMesh_w1q8a")
 
 [node name="monster" parent="." instance=ExtResource("26_wekw4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.25, -18.75, -61.25)
+
+[node name="records_room_storage" parent="." instance=ExtResource("27_xk6td")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 6.5, 16.25)

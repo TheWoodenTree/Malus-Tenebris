@@ -1,0 +1,222 @@
+[gd_scene load_steps=29 format=3 uid="uid://45cjxiqxw67l"]
+
+[ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_opylq"]
+[ext_resource type="ArrayOccluder3D" uid="uid://hixdfjo6xncv" path="res://source/actors/rooms/occluders/records_room_storage.occ" id="2_sw0tk"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="2_txrce"]
+[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_aey0u"]
+[ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_0rq04"]
+[ext_resource type="PackedScene" uid="uid://2n0p2swjfvtx" path="res://source/actors/decor/furniture/chest.tscn" id="5_k4ms5"]
+[ext_resource type="PackedScene" uid="uid://do60vw7pnfa80" path="res://source/actors/decor/groups/sm_stacked_barrels.tscn" id="6_0206u"]
+[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="7_5geft"]
+[ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="7_ex7hr"]
+[ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="8_i52jy"]
+[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="8_x4muf"]
+[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="9_440qv"]
+[ext_resource type="PackedScene" uid="uid://b7xuqil3lfc14" path="res://source/actors/decor/furniture/large_half_table.tscn" id="9_niu4p"]
+[ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="10_gis0h"]
+[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="10_lpqka"]
+[ext_resource type="PackedScene" uid="uid://dafxw7skruo3p" path="res://source/actors/decor/groups/books_9.tscn" id="11_i5dfl"]
+[ext_resource type="PackedScene" uid="uid://d04entq5n5n3m" path="res://source/actors/decor/groups/books_7.tscn" id="12_rdl6s"]
+[ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="13_morru"]
+[ext_resource type="PackedScene" uid="uid://bldplijh1bq7g" path="res://source/actors/decor/groups/books_2.tscn" id="14_1t7bs"]
+[ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="15_jkemq"]
+[ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="16_tk585"]
+[ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="17_evbc5"]
+[ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="18_b7s2v"]
+[ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="19_okw0u"]
+[ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="20_imf5o"]
+[ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="22_d5r6w"]
+[ext_resource type="PackedScene" uid="uid://co8wmy3bgkhpy" path="res://source/actors/decor/groups/books_4.tscn" id="23_eh08h"]
+
+[sub_resource type="Resource" id="Resource_s084f"]
+script = ExtResource("9_440qv")
+name = "Cell Hall Key"
+texture = ExtResource("10_lpqka")
+pickup_sound = ExtResource("8_x4muf")
+self_useable = false
+hold_rotation_offset = Vector3(0, 200, 90)
+hold_scale_multiplier = 0.5
+
+[node name="records_room_storage" instance=ExtResource("1_opylq")]
+
+[node name="occluder_instance" parent="." index="8"]
+occluder = ExtResource("2_sw0tk")
+
+[node name="reg_archway" parent="." index="9" instance=ExtResource("2_txrce")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, 0)
+
+[node name="stone_floor" parent="." index="10" instance=ExtResource("3_aey0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -2.5)
+size = Vector3(7, 1, 12)
+
+[node name="stone_floor2" parent="." index="11" instance=ExtResource("3_aey0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -0.5, -5)
+size = Vector3(9, 1, 7)
+
+[node name="stone_floor3" parent="." index="12" instance=ExtResource("3_aey0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 5.5, -2.5)
+size = Vector3(7, 1, 12)
+
+[node name="stone_floor4" parent="." index="13" instance=ExtResource("3_aey0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 5.5, -5)
+size = Vector3(9, 1, 7)
+
+[node name="stone_wall" parent="." index="14" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.5, 3)
+size = Vector3(7, 5, 1)
+
+[node name="stone_wall2" parent="." index="15" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, -2)
+size = Vector3(3, 5, 1)
+
+[node name="stone_wall3" parent="." index="16" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, -4.5)
+size = Vector3(1, 5, 6)
+
+[node name="stone_wall4" parent="." index="17" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -8)
+size = Vector3(16, 5, 1)
+
+[node name="stone_wall5" parent="." index="18" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, -5)
+size = Vector3(1, 5, 5)
+
+[node name="stone_wall6" parent="." index="19" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 0.5)
+size = Vector3(1, 5, 4)
+
+[node name="stone_floor5" parent="." index="20" instance=ExtResource("3_aey0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.5, 0)
+size = Vector3(8, 1, 3)
+
+[node name="stone_floor6" parent="." index="21" instance=ExtResource("3_aey0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5.5, 0)
+size = Vector3(8, 1, 3)
+
+[node name="stone_wall7" parent="." index="22" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.5, 0)
+size = Vector3(1, 5, 3)
+
+[node name="stone_wall8" parent="." index="23" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 0)
+size = Vector3(1, 5, 3)
+
+[node name="stone_wall9" parent="." index="24" instance=ExtResource("4_0rq04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, 1)
+size = Vector3(6, 5, 1)
+
+[node name="chest" parent="." index="25" instance=ExtResource("5_k4ms5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -0.75)
+
+[node name="key" parent="chest" index="6" instance=ExtResource("7_5geft")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0.25, 0.25, 0)
+item_data = SubResource("Resource_s084f")
+enable_highlight_light = true
+
+[node name="sm_stacked_barrels" parent="." index="26" instance=ExtResource("6_0206u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, -6.25)
+
+[node name="double_crate" parent="." index="27" instance=ExtResource("7_ex7hr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 1.5)
+
+[node name="double_crate2" parent="." index="28" instance=ExtResource("7_ex7hr")]
+transform = Transform3D(0.995059, 0, -0.099285, 0, 1, 0, 0.099285, 0, 0.995059, -4.44749, 1.25, 1.36369)
+
+[node name="half_wood_support" parent="." index="29" instance=ExtResource("8_i52jy")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -1.25, -1, 2.5)
+
+[node name="half_wood_support2" parent="." index="30" instance=ExtResource("8_i52jy")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, 1, -6, -1, 2.5)
+
+[node name="half_wood_support3" parent="." index="31" instance=ExtResource("8_i52jy")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -1.25, -1, -7.5)
+
+[node name="half_wood_support4" parent="." index="32" instance=ExtResource("8_i52jy")]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, 1, -14.75, -1, -7.5)
+
+[node name="half_wood_support5" parent="." index="33" instance=ExtResource("8_i52jy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, -1, -2.5)
+
+[node name="half_wood_support6" parent="." index="34" instance=ExtResource("8_i52jy")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6, -1, -2.5)
+
+[node name="half_wood_support7" parent="." index="35" instance=ExtResource("8_i52jy")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9, -1, -2.5)
+
+[node name="half_wood_support8" parent="." index="36" instance=ExtResource("8_i52jy")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.25, -1, 0.5)
+
+[node name="half_wood_support9" parent="." index="37" instance=ExtResource("8_i52jy")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -15, -1, 0.5)
+
+[node name="large_half" parent="." index="38" instance=ExtResource("9_niu4p")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.75, 0, -7.5)
+
+[node name="books_6" parent="." index="39" instance=ExtResource("10_gis0h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.5, 1.5, -6.75)
+
+[node name="books_7" parent="." index="40" instance=ExtResource("11_i5dfl")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -12.25, 1.5, -6.5)
+
+[node name="books_8" parent="." index="41" instance=ExtResource("12_rdl6s")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -10, 1.5, -6.75)
+
+[node name="books_9" parent="." index="42" instance=ExtResource("12_rdl6s")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -14, 0, -5.25)
+
+[node name="books_10" parent="." index="43" instance=ExtResource("10_gis0h")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -14.25, 0, -4.25)
+
+[node name="sm_crate" parent="." index="44" instance=ExtResource("13_morru")]
+transform = Transform3D(0.989427, 0, 0.14503, 0, 1, 0, -0.14503, 0, 0.989427, -12.2083, 0, -6)
+
+[node name="books_8" parent="sm_crate" index="2" instance=ExtResource("10_gis0h")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0.253283, 0.124111, 0.0206609)
+
+[node name="books_2" parent="." index="45" instance=ExtResource("14_1t7bs")]
+transform = Transform3D(0.571373, 0, -0.820691, 0, 1, 0, 0.820691, 0, 0.571373, -10, 0, -6.5)
+
+[node name="sm_broken_crate" parent="." index="46" instance=ExtResource("15_jkemq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92356, 0, -6.54514)
+
+[node name="books_11" parent="." index="47" instance=ExtResource("10_gis0h")]
+transform = Transform3D(0.545327, 0, 0.838224, 0, 1, 0, -0.838224, 0, 0.545327, -9.52907, 0, -0.385811)
+
+[node name="books_12" parent="." index="48" instance=ExtResource("12_rdl6s")]
+transform = Transform3D(-0.997754, 0, 0.0669879, 0, 1, 0, -0.0669879, 0, -0.997754, -10.4619, 0, -0.367373)
+
+[node name="sm_stacked_planks_3" parent="." index="49" instance=ExtResource("16_tk585")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2126, 2.38419e-07, -3.23468)
+
+[node name="wall_rack" parent="." index="50" instance=ExtResource("17_evbc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.990052, -3.52331)
+
+[node name="scroll_2" parent="." index="51" instance=ExtResource("18_b7s2v")]
+transform = Transform3D(0.666454, 0, -0.745546, 0, 1, 0, 0.745546, 0, 0.666454, -11.1021, 1.5, -6.4602)
+
+[node name="scroll_3" parent="." index="52" instance=ExtResource("18_b7s2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1697, 1.5, -6.1977)
+
+[node name="scroll_4" parent="." index="53" instance=ExtResource("18_b7s2v")]
+transform = Transform3D(-0.625937, 0, 0.779873, 0, 1, 0, -0.779873, 0, -0.625937, -13.5344, 2.26136, -6.60729)
+
+[node name="scroll_5" parent="." index="54" instance=ExtResource("18_b7s2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1465, 0.761357, -4.25176)
+
+[node name="scroll_6" parent="." index="55" instance=ExtResource("18_b7s2v")]
+transform = Transform3D(0.884971, 0, 0.465645, 0, 1, 0, -0.465645, 0, 0.884971, -10.1948, 0, -5.43743)
+
+[node name="barrel" parent="." index="56" instance=ExtResource("19_okw0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38272, 1, -6.70736)
+
+[node name="double_crate3" parent="." index="57" instance=ExtResource("7_ex7hr")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.5, 0, -4)
+
+[node name="rubble_1" parent="." index="58" instance=ExtResource("20_imf5o")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3, 0, -1.5)
+
+[node name="wall_shelf" parent="." index="59" instance=ExtResource("22_d5r6w")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 2.75, -2.5)
+
+[node name="books_4" parent="." index="60" instance=ExtResource("23_eh08h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.75, 2.75, -3)

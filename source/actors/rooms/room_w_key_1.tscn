@@ -48,6 +48,7 @@ script = ExtResource("28_8h402")
 name = "Cell Hall Key"
 texture = ExtResource("29_w3wd6")
 pickup_sound = ExtResource("28_420m3")
+self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 
