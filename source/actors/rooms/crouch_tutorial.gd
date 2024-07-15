@@ -11,13 +11,13 @@ func _ready():
 func _on_body_entered(body):
 	if body == Global.player:
 		if not player_entered_area:
+			player_entered_area = true
 			Global.ui.hint_popup("Press and hold 'Left Control' to crouch", -1)
 			if Global.player.crouching:
 				Global.player.crouched.disconnect(remove_tutorial)
 				await get_tree().create_timer(3.0, false).timeout
 				player_crouched = true
 				Global.ui.hint_remove()
-		player_entered_area = true
 
 
 func remove_tutorial():

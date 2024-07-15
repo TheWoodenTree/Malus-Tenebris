@@ -41,6 +41,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# Enable interaction outline if being looked at
 	if being_looked_at:
+		if display_help and not read and not outline_on:
+			Global.ui.hint_popup("Press 'Left Click' to interact with highlighted objects", -1)
 		if shader_mode == "Outline" and mesh.material_overlay and not outline_on:
 			mesh.material_overlay.set_shader_parameter("outlineOn", true)
 		elif shader_mode == "Highlight" and not mesh.material_override:
