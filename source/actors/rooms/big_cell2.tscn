@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://6obgg8cmtaxr"]
+[gd_scene load_steps=23 format=3 uid="uid://6obgg8cmtaxr"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_l7die"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="2_glsd3"]
@@ -17,8 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dprey8cgl5ux2" path="res://source/actors/decor/misc/pots/sm_tall_pot.tscn" id="16_js2c1"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="17_pj0q1"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="20_lrlwr"]
-[ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="20_reyag"]
-[ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="21_6jf3r"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="21_08umi"]
 [ext_resource type="ArrayOccluder3D" uid="uid://0uhwql6m3bwm" path="res://source/actors/rooms/occluders/big_cell2.occ" id="21_627ev"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="21_fclhl"]
 [ext_resource type="PackedScene" uid="uid://c0j1d0qath30j" path="res://source/actors/decor/misc/bucket.tscn" id="25_yli4n"]
@@ -144,11 +143,6 @@ transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.75, 0.
 [node name="sm_broken_crate" parent="shelf2" instance=ExtResource("8_xofg2")]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0, 1.75, -0.25)
 
-[node name="archway_w_cell_door" parent="." instance=ExtResource("20_reyag")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.5, -11)
-door_interactable_override = 2
-material = ExtResource("21_6jf3r")
-
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5)
 collision_mask = 0
@@ -165,3 +159,6 @@ shape = SubResource("BoxShape3D_mdh84")
 [node name="occluder_instance" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("21_627ev")
 bake_mask = 4294967283
+
+[node name="reg_archway" parent="." instance=ExtResource("21_08umi")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, -12)

@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="14_78crk"]
 [ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="15_5ir0k"]
 [ext_resource type="PackedScene" uid="uid://bxeqhg7y7wy06" path="res://source/actors/decor/misc/pots/tall_pot.tscn" id="16_1r3fu"]
-[ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="16_2s80m"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="16_ilq7p"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="17_5ub5k"]
 [ext_resource type="PackedScene" uid="uid://q5i8ptdyqmxg" path="res://source/actors/decor/misc/rope/laying_rope_2.tscn" id="18_8d0j1"]
@@ -40,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="39_h2g0q"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="40_3p52f"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="40_r25ax"]
+[ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="40_slg03"]
 
 [sub_resource type="Resource" id="Resource_wwn82"]
 script = ExtResource("33_xtbsr")
@@ -237,76 +237,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
 [node name="double_crate" parent="." index="54" instance=ExtResource("16_ilq7p")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.25, 0.5, -10.5)
 
-[node name="archway_w_cell_door" parent="." index="55" instance=ExtResource("16_2s80m")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0.5, -11)
-door_open_angle = -85
-
-[node name="chain_loop" parent="." index="56" instance=ExtResource("17_5ub5k")]
+[node name="chain_loop" parent="." index="55" instance=ExtResource("17_5ub5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -11)
 
-[node name="chain_loop2" parent="." index="57" instance=ExtResource("17_5ub5k")]
+[node name="chain_loop2" parent="." index="56" instance=ExtResource("17_5ub5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -12.75)
 
-[node name="plate2" parent="." index="58" instance=ExtResource("12_2q1xt")]
+[node name="plate2" parent="." index="57" instance=ExtResource("12_2q1xt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -12.25)
 
-[node name="laying_rope_2" parent="." index="59" instance=ExtResource("18_8d0j1")]
+[node name="laying_rope_2" parent="." index="58" instance=ExtResource("18_8d0j1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0.5, -10.5)
 
-[node name="chain_loop3" parent="." index="60" instance=ExtResource("17_5ub5k")]
+[node name="chain_loop3" parent="." index="59" instance=ExtResource("17_5ub5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -7.75)
 
-[node name="chain_loop4" parent="." index="61" instance=ExtResource("17_5ub5k")]
+[node name="chain_loop4" parent="." index="60" instance=ExtResource("17_5ub5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -14.25)
 
-[node name="ink_pot_w_pen" parent="." index="62" instance=ExtResource("19_wsbel")]
+[node name="ink_pot_w_pen" parent="." index="61" instance=ExtResource("19_wsbel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2, -13.75)
 
-[node name="scroll_1" parent="." index="63" instance=ExtResource("20_38yva")]
+[node name="scroll_1" parent="." index="62" instance=ExtResource("20_38yva")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.81549, 2, -12.5819)
 note_name = "Letter to the Praetor"
 label = ExtResource("10_l0rlp")
 
-[node name="scroll_2" parent="." index="64" instance=ExtResource("21_hc1k4")]
+[node name="scroll_2" parent="." index="63" instance=ExtResource("21_hc1k4")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 0.5, 2, -13.25)
 
-[node name="scroll_3" parent="." index="65" instance=ExtResource("21_hc1k4")]
+[node name="scroll_3" parent="." index="64" instance=ExtResource("21_hc1k4")]
 transform = Transform3D(-0.108884, 0, -0.994054, 0, 1, 0, 0.994054, 0, -0.108884, 1, 2, -13.3656)
 
-[node name="sm_stacked_barrels" parent="." index="66" instance=ExtResource("21_6n2yr")]
+[node name="sm_stacked_barrels" parent="." index="65" instance=ExtResource("21_6n2yr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03496, 0.5, -6.73096)
 
-[node name="torture_chair" parent="." index="67" instance=ExtResource("26_ytxxv")]
+[node name="torture_chair" parent="." index="66" instance=ExtResource("26_ytxxv")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4, 0.5, -7.5)
 
-[node name="sm_table" parent="." index="68" instance=ExtResource("7_2fqkl")]
+[node name="sm_table" parent="." index="67" instance=ExtResource("7_2fqkl")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.5, 0.5, -6.5)
 
-[node name="laying_rope_1" parent="." index="69" instance=ExtResource("28_fmbn5")]
+[node name="laying_rope_1" parent="." index="68" instance=ExtResource("28_fmbn5")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 8.15857, 4, -14.25)
 
-[node name="barrel" parent="." index="70" instance=ExtResource("29_6nf2q")]
+[node name="barrel" parent="." index="69" instance=ExtResource("29_6nf2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -15.5)
 
-[node name="torch_holder" parent="." index="71" instance=ExtResource("30_yxp60")]
+[node name="torch_holder" parent="." index="70" instance=ExtResource("30_yxp60")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 2.5, 1.5)
 shadow_mode = 1
 
-[node name="key" parent="." index="72" instance=ExtResource("31_4l2yx")]
+[node name="key" parent="." index="71" instance=ExtResource("31_4l2yx")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 1, 2, -12)
 item_data = SubResource("Resource_wwn82")
 
-[node name="wood_floor2" parent="." index="73" instance=ExtResource("35_l61dk")]
+[node name="wood_floor2" parent="." index="72" instance=ExtResource("35_l61dk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -11.75)
 size = Vector3(15, 1, 15.5)
 
-[node name="shelf_2" parent="." index="74" instance=ExtResource("33_cstxe")]
+[node name="shelf_2" parent="." index="73" instance=ExtResource("33_cstxe")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 0.5, -17.75)
 
 [node name="books_3" parent="shelf_2" index="2" instance=ExtResource("35_5at0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
-[node name="shelf_3" parent="." index="75" instance=ExtResource("33_cstxe")]
+[node name="shelf_3" parent="." index="74" instance=ExtResource("33_cstxe")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0.5, -17.75)
 
 [node name="books_1" parent="shelf_3" index="2" instance=ExtResource("34_agt8x")]
@@ -318,24 +314,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.5)
 [node name="tall_pot" parent="shelf_3" index="4" instance=ExtResource("16_1r3fu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, 0.5)
 
-[node name="large_half" parent="." index="76" instance=ExtResource("38_i3oer")]
+[node name="large_half" parent="." index="75" instance=ExtResource("38_i3oer")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.95, 0.5, 1.7)
 
-[node name="chair2" parent="." index="77" instance=ExtResource("11_lk0u3")]
+[node name="chair2" parent="." index="76" instance=ExtResource("11_lk0u3")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.45, 0.5, 3.2)
 
-[node name="half_wood_support" parent="." index="78" instance=ExtResource("39_h2g0q")]
+[node name="half_wood_support" parent="." index="77" instance=ExtResource("39_h2g0q")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.75, -0.5, -0.5)
 
-[node name="half_wood_support2" parent="." index="79" instance=ExtResource("39_h2g0q")]
+[node name="half_wood_support2" parent="." index="78" instance=ExtResource("39_h2g0q")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.75, -0.5, 3.5)
 
-[node name="barrel2" parent="." index="80" instance=ExtResource("29_6nf2q")]
+[node name="barrel2" parent="." index="79" instance=ExtResource("29_6nf2q")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.95, 1.5, -2.3)
 
-[node name="reg_doorway" parent="." index="81" instance=ExtResource("40_r25ax")]
+[node name="reg_doorway" parent="." index="80" instance=ExtResource("40_r25ax")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -4)
 door_open_angle = 85
 
-[node name="reg_archway" parent="." index="82" instance=ExtResource("40_3p52f")]
+[node name="reg_archway" parent="." index="81" instance=ExtResource("40_3p52f")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 6.5)
+
+[node name="square_doorway" parent="." index="82" instance=ExtResource("40_slg03")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0.5, -11)
+door_open_angle = 45

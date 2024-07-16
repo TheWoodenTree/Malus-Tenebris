@@ -16,6 +16,7 @@ static var prison_bricks_mat: StandardMaterial3D = load("res://source/assets/mat
 static var prison_frame_mat: StandardMaterial3D = load("res://source/assets/materials/bricks/rough_bricks.tres")
 static var polished_bricks_mat: StandardMaterial3D = load("res://source/assets/materials/bricks_2/bricks_2.tres")
 static var polished_frame_mat: StandardMaterial3D = load("res://source/assets/materials/white_bricks/white_bricks.tres")
+static var test = load("res://source/assets/materials/white_bricks/white_bricks_tri.tres")
 
 
 func _ready() -> void:

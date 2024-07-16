@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://citdjndu5i5q4"]
+[gd_scene load_steps=6 format=3 uid="uid://citdjndu5i5q4"]
 
-[ext_resource type="PackedScene" uid="uid://bqmuk6hmgo8rk" path="res://source/actors/building pieces/cell_door.tscn" id="1_1g2ca"]
 [ext_resource type="Script" path="res://source/actors/building pieces/archways/doorway.gd" id="1_rbmkw"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_57k8v"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_dudqu"]
 [ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="5_cp0rh"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="7_4p6e1"]
-[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="7_b7bbh"]
 
 [node name="small_cell" type="Node3D"]
 script = ExtResource("1_rbmkw")
@@ -28,9 +26,6 @@ size = Vector3(1, 5, 1)
 [node name="stone_wall2" parent="." instance=ExtResource("4_dudqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, -3)
 size = Vector3(1, 5, 1)
-
-[node name="door" parent="." instance=ExtResource("1_1g2ca")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.25, 0, 1.5)
 
 [node name="wall_shelf" parent="." instance=ExtResource("5_cp0rh")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -5, 1, 0.75)
@@ -58,6 +53,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5.5, 0)
 size = Vector3(1, 1, 7)
 
 [node name="Node3D" type="Node3D" parent="."]
-
-[node name="reg_archway" parent="." instance=ExtResource("7_b7bbh")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

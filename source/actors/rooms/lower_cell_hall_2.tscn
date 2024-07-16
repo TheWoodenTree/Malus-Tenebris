@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dkywpurj50vjl"]
+[gd_scene load_steps=36 format=3 uid="uid://dkywpurj50vjl"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_ltnrp"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_v1sb6"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="34_q8lsn"]
 [ext_resource type="PackedScene" uid="uid://dllcyx3eyuvvv" path="res://source/actors/misc/broken_wood_beam.tscn" id="34_se554"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="35_0fiar"]
+[ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="35_mf3lc"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="35_yjjvg"]
 [ext_resource type="PackedScene" uid="uid://dgsc3liespcxg" path="res://source/actors/misc/static_chain.tscn" id="36_ot000"]
 
@@ -235,7 +236,7 @@ door_open_angle = -35
 
 [node name="small_cell2" parent="cells" index="1" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.5, 0.5, -3.5)
-door_open_angle = -75
+door_interactable_override = 2
 
 [node name="small_cell3" parent="cells" index="2" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5, 0.5, 3.5)
@@ -471,3 +472,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.5,
 
 [node name="reg_doorway" parent="." index="56" instance=ExtResource("34_q8lsn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 0.5, 0)
+
+[node name="square_doorway" parent="." index="57" instance=ExtResource("35_mf3lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 3.5)
+door_open_angle = 45
+
+[node name="square_doorway2" parent="." index="58" instance=ExtResource("35_mf3lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.5, 3.5)
+door_open_angle = 65
+
+[node name="square_doorway3" parent="." index="59" instance=ExtResource("35_mf3lc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.5, 0.5, -3.5)

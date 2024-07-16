@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=27 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ok18y"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="15_aggkp"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="17_txavf"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="18_le25o"]
+[ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="23_jgj6y"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25_tn2h1"]
 [ext_resource type="Script" path="res://source/actors/rooms/sprint_tutorial.gd" id="26_p45ll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://1sb83i8d2g" path="res://source/actors/rooms/occluders/bigger_cells_hall.occ" id="27_mmdhw"]
@@ -380,49 +381,54 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 0
 door_style = "Regular With Window"
 door_custom_script = ExtResource("29_cexpk")
 
-[node name="reg_archway" parent="." index="98" instance=ExtResource("32_osmw1")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18, 0.5, 5)
-
-[node name="reg_archway2" parent="." index="99" instance=ExtResource("32_osmw1")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.5, 0.5, 5)
-
-[node name="reg_archway7" parent="." index="100" instance=ExtResource("32_osmw1")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.5, 0.5, -5)
-
-[node name="reg_archway3" parent="." index="101" instance=ExtResource("32_osmw1")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, 0.5, 5)
-
-[node name="reg_archway4" parent="." index="102" instance=ExtResource("32_osmw1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, -5)
-
-[node name="reg_archway5" parent="." index="103" instance=ExtResource("32_osmw1")]
+[node name="reg_archway5" parent="." index="98" instance=ExtResource("32_osmw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.5, -5)
 length = 8.0
 
-[node name="reg_archway6" parent="." index="104" instance=ExtResource("32_osmw1")]
+[node name="reg_archway6" parent="." index="99" instance=ExtResource("32_osmw1")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -27.5, 0.5, 0)
 has_frame = false
 
-[node name="big_archway" parent="." index="105" instance=ExtResource("30_42i3c")]
+[node name="big_archway" parent="." index="100" instance=ExtResource("30_42i3c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.5, 0.5, 0)
 
-[node name="big_archway3" parent="." index="106" instance=ExtResource("30_42i3c")]
+[node name="big_archway3" parent="." index="101" instance=ExtResource("30_42i3c")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -21.5, 0.5, 0)
 
-[node name="big_archway2" parent="." index="107" instance=ExtResource("30_42i3c")]
+[node name="big_archway2" parent="." index="102" instance=ExtResource("30_42i3c")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 24.5, 0.5, 0)
 
-[node name="big_archway4" parent="." index="108" instance=ExtResource("30_42i3c")]
+[node name="big_archway4" parent="." index="103" instance=ExtResource("30_42i3c")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 26.5, 0.5, 0)
 
-[node name="journal" parent="." index="109" instance=ExtResource("31_f5jcr")]
+[node name="journal" parent="." index="104" instance=ExtResource("31_f5jcr")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12.25, 0.5, 2)
 enable_highlight_light = true
 enable_highlight_sheen = true
 
-[node name="sign5" parent="." index="110" instance=ExtResource("31_hcaqw")]
+[node name="sign5" parent="." index="105" instance=ExtResource("31_hcaqw")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 2.5, -5)
 text = "Cell A2"
 chain_length = 0
+
+[node name="square_doorway" parent="." index="106" instance=ExtResource("23_jgj6y")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, 0.5, -5)
+door_interactable_override = 2
+
+[node name="square_doorway2" parent="." index="107" instance=ExtResource("23_jgj6y")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.5, 0.5, -5)
+door_locked_message = "It's Locked"
+
+[node name="square_doorway3" parent="." index="108" instance=ExtResource("23_jgj6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, 5)
+door_interactable_override = 2
+
+[node name="square_doorway5" parent="." index="109" instance=ExtResource("23_jgj6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.5, 5)
+door_interactable_override = 2
+
+[node name="square_doorway4" parent="." index="110" instance=ExtResource("23_jgj6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 5)
+door_interactable_override = 2
 
 [connection signal="body_entered" from="sprint_tutorial" to="sprint_tutorial" method="_on_body_entered"]

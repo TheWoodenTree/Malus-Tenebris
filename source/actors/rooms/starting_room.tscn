@@ -25,9 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25"]
 [ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/misc/note.tscn" id="25_j1bmi"]
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="25_n1mrg"]
-[ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="26_gvgmg"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dpuxvodfnon0f" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_8j33o"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1tr0"]
@@ -209,15 +209,14 @@ transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0, 0.25,
 stream = ExtResource("23")
 bus = &"General"
 
-[node name="archway_w_cell_door" parent="." index="39" instance=ExtResource("26_gvgmg")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.5, -11)
-door_locked_message = "It's Locked"
-
-[node name="note" parent="." index="40" instance=ExtResource("25_j1bmi")]
+[node name="note" parent="." index="39" instance=ExtResource("25_j1bmi")]
 unique_name_in_owner = true
 transform = Transform3D(-0.971916, 0, 0.235329, 0, 1, 0, -0.235329, 0, -0.971916, -3.8907, 2, -18.2456)
 display_help = true
 note_name = "My Last Days"
 label = ExtResource("25_n1mrg")
+
+[node name="reg_archway" parent="." index="40" instance=ExtResource("29_8j33o")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, -12)
 
 [connection signal="body_entered" from="crouch_tutorial" to="crouch_tutorial" method="_on_body_entered"]

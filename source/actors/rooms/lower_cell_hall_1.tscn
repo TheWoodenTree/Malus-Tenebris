@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="10_e6tvx"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="11_5hxjo"]
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="12_5y0ku"]
-[ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="13_raaen"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="14_muo82"]
 [ext_resource type="PackedScene" uid="uid://cdwhh8mxom6hc" path="res://source/actors/decor/furniture/shelf.tscn" id="15_e8263"]
 [ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="17_cayli"]
@@ -34,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="37_ih5p0"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="37_km1ce"]
 [ext_resource type="PackedScene" uid="uid://dwue8yvjv7iog" path="res://source/actors/decor/misc/pots/urn_3.tscn" id="38_4gpvd"]
+[ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="38_dk7gp"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="38_i4mvh"]
 [ext_resource type="PackedScene" uid="uid://dkjbo1lmsiv60" path="res://source/actors/decor/misc/pots/urn_2.tscn" id="39_j8imi"]
 [ext_resource type="PackedScene" uid="uid://ctq38sap0lhcv" path="res://source/actors/decor/debris/plank_3.tscn" id="40_mblnu"]
@@ -365,10 +365,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0.5, -36)
 [node name="rubble_1" parent="decor" index="23" instance=ExtResource("25_wr6xu")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5, 0.5, -26.25)
 
-[node name="archway_w_cell_door" parent="misc" index="0" instance=ExtResource("13_raaen")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5, 0.5, -32)
-door_key_name = "Lubricated Prison Depths"
-
 [node name="occluder_instance" parent="." index="8"]
 occluder = ExtResource("22_4o403")
 
@@ -527,3 +523,15 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0
 
 [node name="reg_archway4" parent="." index="56" instance=ExtResource("38_i4mvh")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.5, 0.5, -32)
+
+[node name="square_doorway" parent="." index="57" instance=ExtResource("38_dk7gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0.5, -22.5)
+door_interactable_override = 2
+
+[node name="square_doorway2" parent="." index="58" instance=ExtResource("38_dk7gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0.5, 1.5)
+door_open_angle = 45
+
+[node name="square_doorway3" parent="." index="59" instance=ExtResource("38_dk7gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.5, 0.5, -32)
+door_key_name = "Lubricated Prison Depths"
