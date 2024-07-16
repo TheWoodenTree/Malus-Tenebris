@@ -80,7 +80,6 @@ script = ExtResource("1_ox1ge")
 door_open_to_angle = 85
 
 [node name="archway" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148866, 0.0286702, 0.00502276)
 mesh = SubResource("ArrayMesh_6uv57")
 
 [node name="frame" type="MeshInstance3D" parent="."]
@@ -101,4 +100,4 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_f7xpp")
 
 [node name="door" parent="." instance=ExtResource("3_1gb8w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14, 0.05, 0.597)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12502, 0.05, 0.591895)
