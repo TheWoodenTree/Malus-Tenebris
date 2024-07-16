@@ -65,7 +65,7 @@ reverb_bus_amount = 1.0
 shape = SubResource("BoxShape3D_jlowy")
 
 [node name="player_spawn_point" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 7.85, 46.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 7.85, 46.25)
 
 [node name="nav_region" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)
@@ -78,13 +78,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 100.25
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 100.25, 6, 33.25)
 
 [node name="big_cell3" parent="nav_region" instance=ExtResource("2_7yt8k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 115.75, 6, 23.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 115.25, 6, 23.25)
 
 [node name="big_cell4" parent="nav_region" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 131.25, 6, 23.25)
 
 [node name="starting_room" parent="nav_region" instance=ExtResource("2_nvqo1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.75, 6, 33.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.25, 6, 33.25)
 
 [node name="bigger_cells_hall" parent="nav_region" instance=ExtResource("26_mq5sv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.25, 6, 28.25)
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -15, -77.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -18.5, -129.25)
 
 [node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 6, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 6, -3)
 
 [node name="upper_prison_common_area" parent="nav_region" instance=ExtResource("21_3ed77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.25, 6.5, 24.75)
@@ -164,4 +164,4 @@ mesh = SubResource("SphereMesh_w1q8a")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.25, -18.75, -61.25)
 
 [node name="records_room_storage" parent="." instance=ExtResource("27_xk6td")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 6.5, 16.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25, 6.5, 16.25)
