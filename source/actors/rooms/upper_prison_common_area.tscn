@@ -58,8 +58,8 @@
 occluder = ExtResource("2_8xk5f")
 
 [node name="stone_floor" parent="." index="9" instance=ExtResource("3_js25h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.5, -6.5)
-size = Vector3(7.5, 1, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.5, -6)
+size = Vector3(7.5, 1, 14)
 
 [node name="stone_floor3" parent="." index="10" instance=ExtResource("3_js25h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 5.5, -6.5)
@@ -565,7 +565,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, -3, -9.5)
 
 [node name="reg_archway" parent="." index="152" instance=ExtResource("51_ho4s3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -2)
-length = 2.0
+length = 3.0
 
 [node name="reg_archway2" parent="." index="153" instance=ExtResource("51_ho4s3")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -20, -3, -7.5)

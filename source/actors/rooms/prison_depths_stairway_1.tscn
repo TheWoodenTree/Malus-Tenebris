@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvj6jlk7qoghi"]
+[gd_scene load_steps=15 format=3 uid="uid://dvj6jlk7qoghi"]
 
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="1_ixv6x"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_0bmsq"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="11_5mwuc"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="11_8x04r"]
 [ext_resource type="ArrayOccluder3D" uid="uid://chrqurie50ind" path="res://source/actors/rooms/occluders/prison_depths_stairway_1.occ" id="12_admbv"]
+[ext_resource type="PackedScene" uid="uid://dxilow4owel0j" path="res://source/actors/building pieces/archways/crawlway.tscn" id="13_e8v6d"]
+[ext_resource type="PackedScene" uid="uid://c4jlpyi64xals" path="res://source/actors/building pieces/archways/crawlway_L_bend.tscn" id="14_tbt4x"]
 
 [node name="prison_depths_staircase_1" type="Node3D"]
 
@@ -19,8 +21,8 @@
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="stone_wall" parent="walls" instance=ExtResource("1_ixv6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -5, 4.5)
-size = Vector3(6, 16, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 4.5)
+size = Vector3(6, 14, 1)
 
 [node name="stone_wall2" parent="walls" instance=ExtResource("1_ixv6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -5.5, 5.5)
@@ -70,8 +72,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -9.5, 0.5)
 size = Vector3(1, 5, 15)
 
 [node name="stone_wall13" parent="walls" instance=ExtResource("1_ixv6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -5, 7.25)
-size = Vector3(11, 14, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -4.5, 7.25)
+size = Vector3(11, 13, 0.5)
 
 [node name="stone_wall14" parent="walls" instance=ExtResource("1_ixv6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 2)
@@ -198,6 +200,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="water_plane2" parent="water" instance=ExtResource("6_jhafq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, 0.25)
 
+[node name="water_plane5" parent="water" instance=ExtResource("6_jhafq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, 10.25)
+
+[node name="water_plane6" parent="water" instance=ExtResource("6_jhafq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, -12.625, 10.25)
+
 [node name="water_plane3" parent="water" instance=ExtResource("6_jhafq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, -9.75)
 
@@ -229,3 +237,21 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -1
 [node name="stone_archway2" parent="." instance=ExtResource("11_8x04r")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -15, -13, 3)
 length = 7.0
+
+[node name="crawlway" parent="." instance=ExtResource("13_e8v6d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -13, 3)
+
+[node name="crawlway_L_bend" parent="." instance=ExtResource("14_tbt4x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.5, -13, 1.5)
+
+[node name="crawlway2" parent="." instance=ExtResource("13_e8v6d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -13, 1.5)
+length = 5.0
+
+[node name="stone_wall2" parent="." instance=ExtResource("1_ixv6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -12, 5.5)
+size = Vector3(1, 2, 3)
+
+[node name="stone_wall3" parent="." instance=ExtResource("1_ixv6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -12, 1.5)
+size = Vector3(1, 2, 1)

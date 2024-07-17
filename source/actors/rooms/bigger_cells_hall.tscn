@@ -46,7 +46,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 lit = false
 
 [node name="hanging_lamp2" parent="." index="11" instance=ExtResource("5_co5wr")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -23.75, 1, 0)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -24, 1, 0)
 
 [node name="hanging_lamp4" parent="." index="12" instance=ExtResource("5_co5wr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28, 0.75, 0)
@@ -125,7 +125,7 @@ script = ExtResource("26_p45ll")
 shape = SubResource("BoxShape3D_jf8do")
 
 [node name="archway_L_bend" parent="." index="28" instance=ExtResource("28_0dj71")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0.5, -2.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.5, 0.5, 0)
 
 [node name="sign" parent="." index="29" instance=ExtResource("31_hcaqw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.5, 2.5, -5)
@@ -276,8 +276,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 4.5, 2.5)
 size = Vector3(10, 8, 1)
 
 [node name="stone_floor" parent="." index="65" instance=ExtResource("1_e2mqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, -0.5)
-size = Vector3(7, 1, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
+size = Vector3(7, 1, 5)
 
 [node name="stone_floor2" parent="." index="66" instance=ExtResource("1_e2mqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
