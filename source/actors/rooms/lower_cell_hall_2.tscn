@@ -483,3 +483,6 @@ door_open_angle = 65
 
 [node name="square_doorway3" parent="." index="59" instance=ExtResource("35_mf3lc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.5, 0.5, -3.5)
+
+[node name="square_doorway4" parent="." index="60" instance=ExtResource("35_mf3lc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32, 0.5, -18.5)

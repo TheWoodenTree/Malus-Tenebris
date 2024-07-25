@@ -81,7 +81,7 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 99.25, 6
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114.25, 6, 23.25)
 
 [node name="big_cell4" parent="nav_region" instance=ExtResource("2_7yt8k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 130.25, 6, 23.25)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 129.25, 6, 23.25)
 
 [node name="starting_room" parent="nav_region" instance=ExtResource("2_nvqo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.25, 6, 33.25)
