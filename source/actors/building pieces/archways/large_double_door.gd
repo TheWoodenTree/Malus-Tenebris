@@ -62,7 +62,7 @@ func on_winch_turn(winch_ang_vel_x: float):
 		door_open_player.stop()
 		door1_dust_particles.emitting = false
 		door2_dust_particles.emitting = false
-		emit_signal("finished")
+		finished.emit()
 
 
 func open():

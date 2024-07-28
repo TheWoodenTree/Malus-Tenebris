@@ -26,8 +26,6 @@ var scrolling: bool = false
 @onready var select_slot_frame = $cont/vbox_cont/hbox_cont/select_slot_frame
 @onready var item_click_player = $item_click_player
 
-signal item_used
-
 
 func _enter_tree():
 	reset_slot_positions()

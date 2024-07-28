@@ -6,6 +6,7 @@ extends Interactable
 @onready var vial = $vial
 @onready var mesh = $mesh
 
+@warning_ignore("unused_signal")
 signal vial_used
 
 

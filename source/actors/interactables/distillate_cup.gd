@@ -71,7 +71,7 @@ func distillation_started():
 	set_interactable(false)
 	pour_player.play()
 	await pour_player.finished
-	emit_signal("done_pouring")
+	done_pouring.emit()
 	num_doses += 1
 	set_interactable(true)
 

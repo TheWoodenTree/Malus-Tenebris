@@ -47,7 +47,7 @@ func _on_body_entered(body):
 			pass
 			
 		sound_played = true
-		emit_signal("triggered")
+		triggered.emit()
 
 
 func _set_size(new_size):

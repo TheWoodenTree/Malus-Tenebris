@@ -100,7 +100,7 @@ func hint_popup(msg: String, dur: float):
 func open_inventory():
 	if not block_inventory_open and not Global.player.in_menu:
 		display_menu(inventory_menu)
-		emit_signal("inventory_opened")
+		inventory_opened.emit()
 
 
 func set_blur_background(on: bool):
@@ -115,7 +115,7 @@ func set_blur_background(on: bool):
 		background_blur = 0.0
 	blur_tween.tween_property(background, "color:a", background_alpha, BLUR_TIME)
 	blur_tween.parallel().tween_property(Global.retro_shader, "shader_parameter/blurAmount", background_blur, BLUR_TIME)
-	blur_tween.tween_callback(emit_signal.bind("background_changed"))
+	blur_tween.tween_callback(background_changed.emit)
 
 
 func toggle_draggable_progress_bar(_on: bool):

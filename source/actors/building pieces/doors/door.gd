@@ -135,7 +135,7 @@ func _physics_process(_delta):
 		and sign(draggable_body.angular_velocity.y) == -sign(open_to_angle):
 			set_closed(true)
 			
-		emit_signal("moved", draggable_body.rotation_degrees.y, sign(get_player_z_dist()) == -1)
+		moved.emit(draggable_body.rotation_degrees.y, sign(get_player_z_dist()) == -1)
 		
 	elif player_dragging and unlocked and abs(draggable_body.rotation.y) >= deg_to_rad(abs(closed_max_drag_angle)):
 		set_closed(false)

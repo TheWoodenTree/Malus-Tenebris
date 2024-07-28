@@ -8,7 +8,7 @@ signal interacted
 
 
 func interact():
-	emit_signal("interacted")
+	interacted.emit()
 
 
 func get_interactable_type():

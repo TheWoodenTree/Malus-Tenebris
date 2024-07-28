@@ -74,7 +74,7 @@ func _input(event: InputEvent) -> void:
 				target_rotation.y = wrapf(target_rotation.y, 0.0, TAU)
 				rotation.y = target_rotation.y
 			
-			emit_signal("cam_rotated", rotation_offset / CAM_DRAG_SENS_MULTIPLIER)
+			cam_rotated.emit(rotation_offset / CAM_DRAG_SENS_MULTIPLIER)
 
 
 func _controller_rotate():
@@ -115,4 +115,4 @@ func _controller_rotate():
 		controller_offset.x = 0.0
 	
 	if rotated:
-		emit_signal("cam_rotated", rotation_offset)
+		cam_rotated.emit(rotation_offset)

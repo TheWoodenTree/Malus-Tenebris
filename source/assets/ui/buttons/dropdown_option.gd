@@ -32,4 +32,4 @@ func set_option_name(option_name_: String):
 
 
 func _on_iconless_button_pressed():
-	emit_signal("selected", option_name)
+	selected.emit(option_name)

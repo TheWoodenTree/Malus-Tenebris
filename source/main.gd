@@ -116,7 +116,7 @@ func load_world_and_player():
 	
 	world = world_res.instantiate()
 	add_child(world)
-	emit_signal("world_ready")
+	world_ready.emit()
 	
 	if not nav_update_timer.is_inside_tree():
 		add_child(nav_update_timer)
@@ -165,7 +165,7 @@ func _report_load_progress():
 			pass
 		elif status == ResourceLoader.THREAD_LOAD_LOADED:
 			world = ResourceLoader.load_threaded_get("res://source/world.tscn").instantiate()
-			emit_signal("world_loaded")
+			world_loaded.emit()
 			return
 		else:
 			push_error("Error loading world")

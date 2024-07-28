@@ -74,7 +74,7 @@ func _physics_process(_delta):
 				draggable_body.rotation.x = 100.0
 				draggable_body.angular_velocity = Vector3.ZERO
 				
-			emit_signal("moved", draggable_body.rotation_degrees.x, true)
+			moved.emit(draggable_body.rotation_degrees.x, true)
 		else:
 			creak_player.stop()
 

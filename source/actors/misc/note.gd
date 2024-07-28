@@ -68,7 +68,7 @@ func interact():
 		Global.ui.note_menu.set_page_number_text("Page 1/" + str(num_pages))
 		Global.ui.display_menu(Global.ui.note_menu)
 	
-		emit_signal("was_read")
+		was_read.emit()
 		if display_help:
 			Global.ui.hint_remove()
 		

@@ -61,7 +61,6 @@ signal crouched
 signal looked_at_interactable(interactable_type: Interactable.Type)
 signal looked_away_from_interactable
 signal holding_self_useable(interactable_type: Interactable.Type)
-signal equipped_key
 signal draggable_interacted
 
 
@@ -209,7 +208,7 @@ func _handle_physics_input():
 			standing_collision.disabled = true
 			get_tree().call_group("player_detection_areas", "set_process_mode", Node.PROCESS_MODE_INHERIT)
 			crouch_tween.tween_callback(Callable(self,"set").bind("crouch_trans", false))
-			emit_signal("crouched")
+			crouched.emit()
 	
 	if Input.is_action_just_pressed("throw") and has_torch:
 		print("this will break the game no cap what are you doing")
@@ -272,7 +271,7 @@ func set_held_item_global_transform(new_transform: Transform3D):
 func set_draggable_being_dragged(draggable: Object):
 	draggable_being_dragged = draggable
 	if draggable_being_dragged:
-		emit_signal("draggable_interacted", draggable_being_dragged)
+		draggable_interacted.emit(draggable_being_dragged)
 		draggable_touch_position = interact_ray.get_collision_point()
 		draggable_angle_on_touch = draggable.get_draggable_body_angle()
 		Global.ui.toggle_draggable_progress_bar(true)
@@ -320,7 +319,7 @@ func _handle_look_at(collider):
 		last_looked_at = looking_at
 		looking_at.being_looked_at = true
 		if looking_at.interactable:
-			emit_signal("looked_at_interactable", looking_at.get_interactable_type())
+			looked_at_interactable.emit(looking_at.get_interactable_type())
 			if held_item:
 				held_item.material_overlay.set_shader_parameter("outlineOn", false)
 		if Input.is_action_just_pressed("interact"):
@@ -333,7 +332,7 @@ func _handle_look_at(collider):
 	var hide_interact_icon: bool = not looking_at or looking_at and not looking_at.interactable
 	if not draggable_being_dragged and hide_interact_icon and Global.ui.interact_icon.visible:
 		var is_holding_self_useable: bool = held_item_data and held_item_data.self_useable
-		emit_signal("looked_away_from_interactable", is_holding_self_useable)
+		looked_away_from_interactable.emit(is_holding_self_useable)
 	
 	# Let the last interactable looked at know (if it isn't null or hasn't been freed) 
 	# it's not being looked at anymore
