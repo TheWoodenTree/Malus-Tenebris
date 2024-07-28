@@ -29,5 +29,3 @@ func set_shader_vignette_mult(value: float):
 
 func call_unlock_mouse():
 	Global.unlock_mouse()
-
-

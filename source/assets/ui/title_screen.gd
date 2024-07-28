@@ -48,4 +48,3 @@ func hide_ui():
 	settings_button.disabled = true
 	quit_button.disabled = true
 	Global.lock_mouse()
-

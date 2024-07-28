@@ -69,11 +69,8 @@ orientation = 2
 random_pitch = 1.1
 streams_count = 3
 stream_0/stream = ExtResource("8_7f7qv")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("9_un0ps")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("10_vyll3")
-stream_2/weight = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_helq8"]
 radius = 8.0

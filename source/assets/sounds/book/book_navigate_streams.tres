@@ -7,6 +7,4 @@
 random_pitch = 1.1
 streams_count = 2
 stream_0/stream = ExtResource("2_h7h3c")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_wsmof")
-stream_1/weight = 1.0
