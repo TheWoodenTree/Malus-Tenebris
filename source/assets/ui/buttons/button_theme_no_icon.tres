@@ -1,15 +1,16 @@
-[gd_resource type="Theme" load_steps=40 format=3 uid="uid://cuilhrwln20t4"]
+[gd_resource type="Theme" load_steps=41 format=3 uid="uid://cuilhrwln20t4"]
 
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_t5wm4"]
-[ext_resource type="Texture2D" uid="uid://bp7uhx161r1yb" path="res://source/assets/ui/buttons/slider_button.png" id="2_bbuew"]
+[ext_resource type="Texture2D" uid="uid://cr08ki5bnqgsa" path="res://source/assets/ui/slider/grabber_horizontal.png" id="2_1vh27"]
 [ext_resource type="Texture2D" uid="uid://b76810yf18n7y" path="res://source/assets/ui/panel_background.png" id="2_det0o"]
 [ext_resource type="Texture2D" uid="uid://d3m2llyvlvssv" path="res://source/assets/ui/buttons/dropdown_arrow.png" id="2_ed23a"]
+[ext_resource type="Texture2D" uid="uid://dolpaxqii4ran" path="res://source/assets/ui/slider/grabber_highlight_horizontal.png" id="3_2rldm"]
 [ext_resource type="Texture2D" uid="uid://gskj7mubh3r3" path="res://source/assets/ui/panel_background_simple.png" id="3_4ibrw"]
-[ext_resource type="Texture2D" uid="uid://bdp1myu7ugoy5" path="res://source/assets/ui/buttons/slider_button_pressed.png" id="3_el4vd"]
 [ext_resource type="Texture2D" uid="uid://cylmye8vmdxy8" path="res://source/assets/ui/buttons/dropdown_selected.png" id="4_1h4rs"]
-[ext_resource type="Texture2D" uid="uid://b5bugctidkxk2" path="res://source/assets/ui/buttons/slider_left.png" id="5_880qj"]
+[ext_resource type="Texture2D" uid="uid://bqqry4fdkyh76" path="res://source/assets/ui/slider/slider_background_horizontal.png" id="4_5t2pa"]
+[ext_resource type="Texture2D" uid="uid://cn6aw4u3vmjsc" path="res://source/assets/ui/scroll/scroll_background_horizontal.png" id="5_8i5kh"]
+[ext_resource type="Texture2D" uid="uid://vmoich7edhb5" path="res://source/assets/ui/slider/slider_background_highlight.png" id="5_pwwv6"]
 [ext_resource type="Texture2D" uid="uid://cmt57h8syqfku" path="res://source/assets/ui/buttons/dropdown_unselected.png" id="5_u5h72"]
-[ext_resource type="Texture2D" uid="uid://b4pj0i1yaxhng" path="res://source/assets/ui/buttons/slider_background.png" id="6_pxum0"]
 [ext_resource type="Texture2D" uid="uid://d2okj1tyqn7vc" path="res://source/assets/ui/scroll/grabber.png" id="11_488w8"]
 [ext_resource type="Texture2D" uid="uid://bo8mpmsgd10lk" path="res://source/assets/ui/scroll/grabber_highlight.png" id="12_hid34"]
 [ext_resource type="Texture2D" uid="uid://dvbx36t40q5p5" path="res://source/assets/ui/scroll/scroll_background.png" id="12_vfiug"]
@@ -27,19 +28,19 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjdmr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fevoe"]
-texture = ExtResource("5_880qj")
-texture_margin_left = 3.0
+texture = ExtResource("4_5t2pa")
+texture_margin_left = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfdaf"]
-texture = ExtResource("5_880qj")
-texture_margin_left = 3.0
+texture = ExtResource("5_pwwv6")
+texture_margin_left = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1ums"]
-texture = ExtResource("6_pxum0")
-texture_margin_left = 3.0
-texture_margin_top = 4.0
-texture_margin_right = 3.0
-texture_margin_bottom = 4.0
+texture = ExtResource("5_8i5kh")
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8awl"]
 
@@ -135,9 +136,9 @@ Button/styles/hover = SubResource("StyleBoxEmpty_b2vjb")
 Button/styles/normal = SubResource("StyleBoxEmpty_t0gdh")
 Button/styles/pressed = SubResource("StyleBoxEmpty_qjw62")
 HSeparator/styles/separator = SubResource("StyleBoxEmpty_wjdmr")
-HSlider/icons/grabber = ExtResource("2_bbuew")
-HSlider/icons/grabber_disabled = ExtResource("3_el4vd")
-HSlider/icons/grabber_highlight = ExtResource("2_bbuew")
+HSlider/icons/grabber = ExtResource("2_1vh27")
+HSlider/icons/grabber_disabled = ExtResource("2_1vh27")
+HSlider/icons/grabber_highlight = ExtResource("3_2rldm")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_fevoe")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_jfdaf")
 HSlider/styles/slider = SubResource("StyleBoxTexture_r1ums")

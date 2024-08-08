@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dva57wtcmu4p1"]
+[gd_scene load_steps=7 format=3 uid="uid://dva57wtcmu4p1"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_oy3ig"]
 [ext_resource type="PackedScene" uid="uid://cpt3macrqfk7s" path="res://source/assets/ui/buttons/dropdown_button.tscn" id="2_3txbk"]
 [ext_resource type="Script" path="res://source/assets/ui/menus/settings_menu.gd" id="2_ifcx8"]
 [ext_resource type="Script" path="res://source/assets/ui/buttons/screen_mode_dropdown.gd" id="4_0g71k"]
+[ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="5_bn2ys"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="5_vt8yh"]
 
 [node name="settings_menu" type="Control"]
@@ -73,6 +74,10 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.01
 value = 0.25
+
+[node name="slider_click_player" type="AudioStreamPlayer" parent="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont"]
+stream = ExtResource("5_bn2ys")
+max_polyphony = 10
 
 [node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("5_vt8yh")]
 layout_mode = 2

@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4sfuh7t214ho"]
+[gd_scene load_steps=5 format=3 uid="uid://c4sfuh7t214ho"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_pqtoo"]
 [ext_resource type="Script" path="res://source/assets/prologue/prologue.gd" id="2_46wp7"]
+[ext_resource type="AudioStream" uid="uid://cpqh1cs04k0j0" path="res://source/assets/sounds/ui/text_output.ogg" id="3_bgkt8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mj6ar"]
+playback_mode = 1
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("3_bgkt8")
 
 [node name="prologue" type="Control"]
 layout_mode = 3
@@ -125,3 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="text_click_player" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_mj6ar")
+max_polyphony = 5

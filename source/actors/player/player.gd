@@ -34,6 +34,7 @@ var first_door_unlocked: bool = false
 var noclip_on: bool = false
 var picked_up_larder_key: bool = false
 var scripted_event: bool = false
+var in_world: bool = false
 
 var gulp_sound: AudioStream = preload("res://source/assets/sounds/liquid/gulp.ogg")
 var sigh_of_relief_sound: AudioStream = preload("res://source/assets/sounds/player_character/sigh_of_relief.ogg")
@@ -77,6 +78,8 @@ func _ready() -> void:
 	footstep_timer.one_shot = true
 	add_child(footstep_timer)
 	_load_footsteps()
+	
+	in_world = true
 
 
 func _process(_delta: float) -> void:

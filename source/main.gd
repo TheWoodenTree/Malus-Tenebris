@@ -103,6 +103,7 @@ func load_world_and_player():
 		Global.blackout_blur_shader.set_shader_parameter("colorScale", 0.0)
 		
 		await get_tree().process_frame
+		await tween1.finished
 	
 	if title_screen_room:
 		title_screen_room.queue_free()
@@ -110,7 +111,6 @@ func load_world_and_player():
 		ui.remove_menu()
 	
 	drone_player.play()
-	await tween1.finished
 	if not debug_no_prologue:
 		ui.do_prologue()
 		await ui.prologue.finished

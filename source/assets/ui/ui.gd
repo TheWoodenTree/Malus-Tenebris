@@ -59,7 +59,7 @@ func _process(_delta):
 			if menus.back() == pause_menu:
 				get_tree().paused = false
 			remove_menu()
-		else:
+		elif Global.player.in_world:
 			display_menu(pause_menu)
 	
 	

@@ -4,6 +4,7 @@ signal finished
 
 @onready var cont: MarginContainer = $cont
 @onready var rect: ColorRect = $rect
+@onready var text_click_player: AudioStreamPlayer = $text_click_player
 
 
 func _ready() -> void:
@@ -32,6 +33,10 @@ func _ready() -> void:
 
 func reveal_label_text(label: Label, reveal_interval: float):
 	var char_count: int = label.get_total_character_count()
+	var idx: int = 0
 	while label.visible_characters < char_count:
 		label.visible_characters += 1
+		if idx % 2 == 0:
+			text_click_player.play()
+		idx += 1
 		await get_tree().create_timer(reveal_interval, false).timeout
