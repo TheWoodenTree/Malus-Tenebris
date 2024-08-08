@@ -7,10 +7,10 @@ const EFFECT_MAX_DIST = 30
 @export var anim_chrom_abb_offset: float
 @export var anim_vignette_softness: float
 @export var debug_no_title_screen: bool = false
+@export var debug_no_prologue: bool = false
 
 var player_dist_to_creature: float
 
-var do_prologue = false
 var enable_heartbeat = false
 
 var player_preload = preload("res://source/actors/player/player.tscn")
@@ -57,11 +57,6 @@ func _ready() -> void:
 		load_world_and_player()
 	else:
 		load_title_screen()
-		
-	if !do_prologue:
-		$prologue.queue_free()
-	else:
-		Global.player.in_menu = true
 
 
 func _process(_delta: float) -> void:
@@ -105,7 +100,7 @@ func load_world_and_player():
 		
 		tween1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 		tween1.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 1.0, 3.0).from(2.0)
-		tween1.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 0.3, 3.0).from(0.0)
+		Global.blackout_blur_shader.set_shader_parameter("colorScale", 0.0)
 		
 		await get_tree().process_frame
 	
@@ -113,6 +108,12 @@ func load_world_and_player():
 		title_screen_room.queue_free()
 	if title_screen:
 		ui.remove_menu()
+	
+	drone_player.play()
+	await tween1.finished
+	if not debug_no_prologue:
+		ui.do_prologue()
+		await ui.prologue.finished
 	
 	world = world_res.instantiate()
 	add_child(world)
@@ -137,17 +138,16 @@ func load_world_and_player():
 	# by post-processing
 	move_child(Global.player, 0)
 	
-	drone_player.play()
-	
 	if not debug_no_title_screen:
-		await tween1.finished
+		var tween2: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+		tween2.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 0.0, 3.0).from(0.0)
 		await get_tree().create_timer(3.0, false).timeout
 		
-		var tween2: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-		tween2.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 0.0, 4.0)
-		tween2.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 1.0, 3.0)
+		var tween3: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+		tween3.tween_property(Global.blackout_blur_shader, "shader_parameter/blurAmount", 0.0, 4.0)
+		tween3.parallel().tween_property(Global.blackout_blur_shader, "shader_parameter/colorScale", 1.0, 3.0)
 		
-		await tween2.finished
+		await tween3.finished
 		
 		Global.player.scripted_event = false
 

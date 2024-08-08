@@ -11,6 +11,7 @@ var curr_popup_wr: WeakRef = null
 
 var inventory_open: bool = false
 
+var prologue: Control = preload("res://source/assets/prologue/prologue.tscn").instantiate()
 var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
 var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
@@ -150,4 +151,7 @@ func remove_menu():
 		if not Global.main.title_screen or menus.front() != Global.main.title_screen:
 			Global.lock_mouse()
 		Global.player.in_menu = false
-		
+
+
+func do_prologue():
+	add_child(prologue)

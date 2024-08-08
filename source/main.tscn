@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=29 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://brkutqft4kt3q" path="res://source/assets/sounds/misc/heartbeat.ogg" id="8"]
 [ext_resource type="Material" uid="uid://8ry3t1ttx3f4" path="res://source/assets/shaders/chrom_abb_shader_mat.tres" id="8_dshu8"]
 [ext_resource type="Shader" path="res://source/assets/ui/death_screen.gdshader" id="8_meepd"]
-[ext_resource type="PackedScene" uid="uid://c4sfuh7t214ho" path="res://source/assets/prologue/prologue.tscn" id="9"]
 [ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="11_21vnh"]
@@ -103,7 +102,6 @@ adjustment_contrast = 1.05
 [node name="main" type="Node"]
 script = ExtResource("4")
 anim_vignette_softness = 1.0
-debug_no_title_screen = true
 
 [node name="effects_player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../post_processing")
@@ -248,12 +246,11 @@ color = Color(0, 0, 0, 0)
 [node name="menu_player" type="AudioStreamPlayer3D" parent="ui/menus"]
 max_polyphony = 5
 
-[node name="prologue" parent="." instance=ExtResource("9")]
-
 [node name="world_environment" type="WorldEnvironment" parent="."]
 environment = SubResource("4")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 48.0

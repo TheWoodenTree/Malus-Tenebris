@@ -45,7 +45,7 @@ vec4 retroColor(vec3 textCol)
 	vec4 light = lightColor;// * hueShift;
 	vec4 lighter = lighterColor;// * hueShift;
 	vec4 lightest = lightestColor;// * hueShift;
-	
+
 	if (rgb_less_than(textCol, darkestThreshold))
 		return darkest;
 	else if (rgb_less_than(textCol, darkThreshold))
@@ -65,17 +65,17 @@ void fragment() {
 	vec4 test = texture(TEXTURE, UV);//* (sin(TIME * 0.5) + 1.0) / 8.0 + 0.75
 	test.rgb *= smoothstep(vigMultiplier * (sin(TIME * 1.0) + 1.0) / 8.0 + vigMultiplierOffset, vigSoftness, val);
 	//COLOR = test;//vec4(test.rgb, smoothstep(vigMultiplier, vigSoftness, val));
-	
+
 	vec3 textCol = test.rgb;
-	
+
 	vec4 darkest = darkestColor;// * hueShift;
 	vec4 dark = darkColor;// * hueShift;
 	vec4 light = lightColor;// * hueShift;
 	vec4 lighter = lighterColor;// * hueShift;
 	vec4 lightest = lightestColor;// * hueShift;
-	
+
 	vec4 filteredCol;
-	
+
 	if (rgb_less_than(textCol, darkestThreshold))
 		filteredCol = darkestColor;
 	else if (rgb_less_than(textCol, darkThreshold))
@@ -86,7 +86,7 @@ void fragment() {
 		filteredCol = lighterColor;
 	else
 		filteredCol = lightestColor;
-		
+
 	filteredCol.a = alpha;
 	COLOR = filteredCol;
 }

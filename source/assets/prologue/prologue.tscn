@@ -1,434 +1,127 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4sfuh7t214ho"]
+[gd_scene load_steps=3 format=3 uid="uid://c4sfuh7t214ho"]
 
-[ext_resource type="AudioStream" uid="uid://dkr2a2xm4sgmm" path="res://source/assets/sounds/doors/metal_gate_close.ogg" id="2"]
-[ext_resource type="Script" path="res://source/assets/prologue/anim_player.gd" id="3"]
-
-[sub_resource type="Animation" id="1"]
-resource_name = "card1"
-length = 15.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cards_container/card1/date:visible_characters")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("cards_container/card1/framed:visible_characters")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("cards_container/card1/innocent:visible_characters")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 6, 9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("cards_container/card1/care:visible_characters")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 8, 11),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 75]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("cards_container/card1/sus:visible_characters")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 10, 13),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("cards_container/card1_cover:color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 13, 15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 1)]
-}
-
-[sub_resource type="Animation" id="2"]
-resource_name = "card2"
-length = 20.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cards_container/card2/sentenced:visible_characters")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("cards_container/card2/exist:visible_characters")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("cards_container/card2/known:visible_characters")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 9, 12),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("cards_container/card2/cease:visible_characters")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 11, 14),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 150]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("cards_container/card2/fate:visible_characters")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15, 18),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 75]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("cards_container/card2_cover:color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 18, 20),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 1)]
-}
-
-[sub_resource type="Animation" id="3"]
-resource_name = "card3"
-length = 18.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cards_container/card3/torch:visible_characters")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 100]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("cards_container/card3/locked:visible_characters")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4, 7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 100]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("cards_container/card3/mercy:visible_characters")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 7, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 0, 50]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("card3_cover1:color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 10, 12),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("card3_cover2:color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 13.5, 15.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 0), Color(0.0980392, 0.0313726, 0.0666667, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("background:color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(16.5, 18.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.0980392, 0.0313726, 0.0666667, 1), Color(0, 0, 0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("cards_container:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(15.5, 16),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("card3_cover1:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(15.5, 16),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("card3_cover2:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(15.5, 16),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("anim_player")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(15.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["slam_gate"],
-"method": &"emit_signal"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c44mk"]
-_data = {
-"card1": SubResource("1"),
-"card2": SubResource("2"),
-"card3": SubResource("3")
-}
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_pqtoo"]
+[ext_resource type="Script" path="res://source/assets/prologue/prologue.gd" id="2_46wp7"]
 
 [node name="prologue" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_pqtoo")
+script = ExtResource("2_46wp7")
 
-[node name="background" type="ColorRect" parent="."]
+[node name="cont" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="card_1" type="VBoxContainer" parent="cont"]
 visible = false
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0980392, 0.0313726, 0.0666667, 1)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="cards_container" type="MarginContainer" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="label_1" type="Label" parent="cont/card_1"]
+layout_mode = 2
+text = "1209 AD"
+autowrap_mode = 2
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
 
-[node name="card1" type="VBoxContainer" parent="cards_container"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-alignment = 1
+[node name="label_2" type="Label" parent="cont/card_1"]
+layout_mode = 2
+text = "The Kingdom of Sicily is the most prosperous it has ever been"
+autowrap_mode = 2
+visible_characters_behavior = 1
 
-[node name="date" type="Label" parent="cards_container/card1"]
-offset_top = 467.0
-offset_right = 1920.0
-offset_bottom = 493.0
-text = "23 AD"
+[node name="label_3" type="Label" parent="cont/card_1"]
+layout_mode = 2
+text = "After ascending the throne 12 years ago, His Excellence The Praetor made it his solemn duty to purge the kingdom of the criminal scum infecting it"
+autowrap_mode = 2
+visible_characters_behavior = 1
 
-[node name="framed" type="Label" parent="cards_container/card1"]
-offset_top = 497.0
-offset_right = 1920.0
-offset_bottom = 523.0
-text = "The Roman government is holding you accountable for crimes you did not commit"
+[node name="label_4" type="Label" parent="cont/card_1"]
+layout_mode = 2
+text = "Those found betraying their fellow countrymen are sentenced to death inside an old underground prison nestled deep within the Sicilian wilderness"
+autowrap_mode = 2
+visible_characters_behavior = 1
 
-[node name="innocent" type="Label" parent="cards_container/card1"]
-offset_top = 527.0
-offset_right = 1920.0
-offset_bottom = 553.0
-text = "You professed your innocence, but they did not believe you"
+[node name="card_2" type="VBoxContainer" parent="cont"]
+visible = false
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="care" type="Label" parent="cards_container/card1"]
-offset_top = 557.0
-offset_right = 1920.0
-offset_bottom = 583.0
-text = "They didn't care"
+[node name="label_1" type="Label" parent="cont/card_2"]
+layout_mode = 2
+text = "The prison serves as a gateway from this life to the next and as a chance at atonement for the pitiful lives of those sent there"
+autowrap_mode = 2
+visible_characters_behavior = 1
 
-[node name="sus" type="Label" parent="cards_container/card1"]
-offset_top = 587.0
-offset_right = 1920.0
-offset_bottom = 613.0
-text = "It is as if they knew you were not responsible for the heinous crimes"
+[node name="label_2" type="Label" parent="cont/card_2"]
+layout_mode = 2
+text = "Only those close to the praetor, and of course, those lacking in morality, are privy to what awaits the convicted"
+autowrap_mode = 2
+visible_characters_behavior = 1
 
-[node name="card1_cover" type="ColorRect" parent="cards_container"]
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="card_3" type="VBoxContainer" parent="cont"]
+visible = false
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="label_3" type="Label" parent="cont/card_3"]
+layout_mode = 2
+text = "For your treasonous lies and baseless conjecture against the praetor, you have forfeited your life"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="label_4" type="Label" parent="cont/card_3"]
+layout_mode = 2
+text = "No longer will you pollute the minds of the innocent"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="label_6" type="Label" parent="cont/card_3"]
+layout_mode = 2
+text = "The last of your days will be spent in repentance of your actions"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="card_4" type="VBoxContainer" parent="cont"]
+visible = false
+z_index = 3
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="label_3" type="Label" parent="cont/card_4"]
+layout_mode = 2
+text = "Even in death, you shall serve"
+horizontal_alignment = 1
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="rect" type="ColorRect" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0)
-
-[node name="card2" type="VBoxContainer" parent="cards_container"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-alignment = 1
-
-[node name="sentenced" type="Label" parent="cards_container/card2"]
-offset_top = 467.0
-offset_right = 1920.0
-offset_bottom = 493.0
-text = "You have been sentenced to death in a scarcely known structure one kilometer beneath the streets of Rome"
-
-[node name="exist" type="Label" parent="cards_container/card2"]
-offset_top = 497.0
-offset_right = 1920.0
-offset_bottom = 523.0
-text = "Those who know of its existence don't know why it's there or what it holds inside its dilapidated walls"
-
-[node name="known" type="Label" parent="cards_container/card2"]
-offset_top = 527.0
-offset_right = 1920.0
-offset_bottom = 553.0
-text = "One thing is known, however:"
-
-[node name="cease" type="Label" parent="cards_container/card2"]
-offset_top = 557.0
-offset_right = 1920.0
-offset_bottom = 583.0
-text = "The poor souls condemned to death in this place just as well could have ceased to exist"
-
-[node name="fate" type="Label" parent="cards_container/card2"]
-offset_top = 587.0
-offset_right = 1920.0
-offset_bottom = 613.0
-text = "That would have been a better fate, after all"
-
-[node name="card2_cover" type="ColorRect" parent="cards_container"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0, 0, 0)
-
-[node name="card3" type="VBoxContainer" parent="cards_container"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-alignment = 1
-
-[node name="torch" type="Label" parent="cards_container/card3"]
-offset_top = 497.0
-offset_right = 1920.0
-offset_bottom = 523.0
-text = "You have been given a torch for light"
-
-[node name="locked" type="Label" parent="cards_container/card3"]
-offset_top = 527.0
-offset_right = 1920.0
-offset_bottom = 553.0
-text = "You have been locked in"
-
-[node name="mercy" type="Label" parent="cards_container/card3"]
-offset_top = 557.0
-offset_right = 1920.0
-offset_bottom = 583.0
-text = "May God have mercy checked your soul"
-
-[node name="card3_cover1" type="ColorRect" parent="."]
-offset_left = 256.0
-offset_right = 1664.0
-offset_bottom = 621.0
-color = Color(0.0980392, 0.0313726, 0.0666667, 0)
-
-[node name="card3_cover2" type="ColorRect" parent="."]
-offset_left = 256.0
-offset_right = 1664.0
-offset_bottom = 1080.0
-color = Color(0.0980392, 0.0313726, 0.0666667, 0)
-
-[node name="door_slam_player" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2")
-volume_db = -15.0
-bus = &"Torch Impact"
-
-[node name="anim_player" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_c44mk")
-}
-script = ExtResource("3")
