@@ -10,7 +10,7 @@ enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 
 # Set by child script
 var interactable_type: Type
-var _interact_area: InteractArea # Should  not be accessed by anything but this script
+var _interact_area: InteractArea # Should not be accessed by anything but this script
 var meshes: Array[MeshInstance3D] # Meshes used by child interactable
 
 var being_looked_at: bool = false

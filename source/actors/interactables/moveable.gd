@@ -6,7 +6,7 @@ extends Interactable
 
 # For when the player leaves the "no_interact_area" and interactable is supposed
 # to still be off
-var _interactable: bool = interactable
+var interactable_override: bool
 
 @onready var interact_area = $interact_area
 @onready var static_body = $static_body
@@ -42,7 +42,6 @@ func interact():
 	var duration: float = move_player.stream.get_length() * (2.0 - move_player.pitch_scale)
 	tween.tween_property(self, "position", -move_to_offset, duration).as_relative()
 	move_player.play()
-	_interactable = false
 	set_interactable(false)
 
 
@@ -58,9 +57,15 @@ func update_move_to_collision():
 
 func _on_no_interact_area_body_entered(body):
 	if body == Global.player:
-		set_interactable(false)
+		set_interactable_override(false)
 
 
 func _on_no_interact_area_body_exited(body):
-	if body == Global.player and _interactable:
-		set_interactable(true)
+	if body == Global.player:
+		set_interactable_override(true)
+
+
+func set_interactable_override(interactable_override_: bool):
+	interactable_override = interactable_override_
+	if _interact_area:
+		_interact_area.set_collision_layer_value(16, interactable_override and interactable)

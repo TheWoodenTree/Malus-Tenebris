@@ -36,7 +36,7 @@ theme_override_constants/margin_bottom = 32
 [node name="card_1" type="VBoxContainer" parent="cont"]
 visible = false
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 
 [node name="label_1" type="Label" parent="cont/card_1"]
@@ -69,7 +69,7 @@ visible_characters_behavior = 1
 visible = false
 z_index = 1
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 
 [node name="label_1" type="Label" parent="cont/card_2"]
@@ -88,7 +88,7 @@ visible_characters_behavior = 1
 visible = false
 z_index = 2
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 
 [node name="label_3" type="Label" parent="cont/card_3"]
@@ -118,7 +118,7 @@ theme_override_constants/separation = 10
 
 [node name="label_3" type="Label" parent="cont/card_4"]
 layout_mode = 2
-text = "Even in death, you shall serve"
+text = "In death, you will serve"
 horizontal_alignment = 1
 autowrap_mode = 2
 visible_characters_behavior = 1
