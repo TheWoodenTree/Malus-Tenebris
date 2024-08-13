@@ -14,11 +14,11 @@ void fragment()
 	float yDist = (abs(UV.y) - 0.5);
 	float xOffset = xDist * intensity * SCREEN_PIXEL_SIZE.x;
 	float yOffset = yDist * intensity * SCREEN_PIXEL_SIZE.y;
-	
+
 	vec4 redChannel = texture(SCREEN_TEXTURE, SCREEN_UV);
 	vec4 greenChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + xOffset, SCREEN_UV.y + yOffset));
 	vec4 blueChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - xOffset, SCREEN_UV.y - yOffset));
-	
+
 	COLOR = vec4(redChannel.r, greenChannel.g, blueChannel.b, 1.0);
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/vignette_shader.tres"

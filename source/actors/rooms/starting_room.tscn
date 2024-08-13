@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dji8r6dqmhn6e"]
+[gd_scene load_steps=24 format=3 uid="uid://dji8r6dqmhn6e"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_37jl1"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25"]
 [ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/misc/note.tscn" id="25_j1bmi"]
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="25_n1mrg"]
+[ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dpuxvodfnon0f" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_8j33o"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="30"]
@@ -122,23 +123,27 @@ type = "Convex"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 3, -18.75)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="cobble_wall2" parent="." index="30" instance=ExtResource("22_586v8")]
+[node name="cobble_wall5" parent="." index="30" instance=ExtResource("22_586v8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -18.75)
+size = Vector3(0.5, 5, 0.5)
+
+[node name="cobble_wall2" parent="." index="31" instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 3, -12.25)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="cobble_wall3" parent="." index="31" instance=ExtResource("22_586v8")]
+[node name="cobble_wall3" parent="." index="32" instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 3, -12.25)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="cobble_wall4" parent="." index="32" instance=ExtResource("22_586v8")]
+[node name="cobble_wall4" parent="." index="33" instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 3, -18.75)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="stone_wall2" parent="." index="33" instance=ExtResource("3")]
+[node name="stone_wall2" parent="." index="34" instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -18.75)
 size = Vector3(1, 5, 0.5)
 
-[node name="moveable_shelf_1" parent="." index="34" instance=ExtResource("16_crdny")]
+[node name="moveable_shelf_1" parent="." index="35" instance=ExtResource("16_crdny")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, -16.8643)
 script = ExtResource("17_7et05")
 move_to_offset = Vector3(0, 0, -2.75)
@@ -150,13 +155,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.635
 [node name="fat_pot" parent="moveable_shelf_1" index="7" instance=ExtResource("9")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.864311, 0.25, 0.25)
 
-[node name="wall_shelf" parent="." index="35" instance=ExtResource("18_dmy2p")]
+[node name="wall_shelf" parent="." index="36" instance=ExtResource("18_dmy2p")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.5, 1.75, -15.5)
 
-[node name="plate_w_candle" parent="." index="36" instance=ExtResource("20_ecudg")]
+[node name="plate_w_candle" parent="." index="37" instance=ExtResource("20_ecudg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 2, -18.25)
 default_range = 5.0
 default_energy = 0.25
+lit = false
+shadow_mode = 1
+
+[node name="hanging_lamp" parent="." index="38" instance=ExtResource("28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -16.5)
+default_range = 8.0
+default_energy = 0.5
 shadow_mode = 1
 
 [connection signal="body_entered" from="crouch_tutorial" to="crouch_tutorial" method="_on_body_entered"]
