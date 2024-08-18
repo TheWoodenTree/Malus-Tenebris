@@ -26,7 +26,7 @@ func _ready() -> void:
 	super()
 	init(Type.NOTE, interact_area, [mesh])
 	# I shouldn't have to wonder why I have to do this when resource_local_to_scene
-	# is checked for the material :)
+	# is checked for the material :) (NOTICE: this may be fixed now, try removing 'fix')
 	var note_mat = mesh.mesh.surface_get_material(0)
 	mesh.mesh.surface_set_material(0, note_mat.duplicate())
 	note_mat = mesh.mesh.surface_get_material(0)
@@ -63,7 +63,7 @@ func interact():
 	if interactable and not Global.player.in_menu:
 		super()
 		
-		Global.ui.note_menu.set_note_text(raw_text.replacen("[PAGE]", ""))#pages[curr_page])
+		Global.ui.note_menu.set_note_text(pages[curr_page])
 		Global.ui.note_menu.note_name = note_name
 		Global.ui.note_menu.set_page_number_text("Page 1/" + str(num_pages))
 		Global.ui.display_menu(Global.ui.note_menu)
@@ -78,6 +78,7 @@ func interact():
 		read = true
 
 
+#DEPRECATED
 func turn_page(direction):
 	if direction == FORWARD and (curr_page + 1) < num_pages:
 		curr_page += 1

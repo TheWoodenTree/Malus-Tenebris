@@ -19,10 +19,10 @@ void fragment() {
 	vec4 noise_text2 = texture(noise, pan_uv(vec2(UV.x + 0.5, UV.y), -def_scale / speed_scale.x));
 	vec4 noise_text3 = texture(noise, pan_uv(vec2(-UV.y, UV.x), def_scale / speed_scale.x));
 	vec4 noise_text4 = texture(noise, pan_uv(vec2(-UV.y + 0.5, UV.x), -def_scale / speed_scale.x));
-	
+
 	vec4 mixed_noise = noise_text1 * noise_text2 * noise_text3 * noise_text4;
 	mixed_noise = pow(mixed_noise, vec4(0.65)) * 100.0;
-	
+
 	vec4 final = color + mixed_noise * (color + 0.0);
 	ALBEDO = final.rgb;
 	METALLIC = metallic;

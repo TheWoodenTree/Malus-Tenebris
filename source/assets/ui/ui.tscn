@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://jeo2tjikugy2"]
+
+[ext_resource type="Shader" path="res://source/assets/ui/death_screen.gdshader" id="1_exnrw"]
+[ext_resource type="Script" path="res://source/assets/ui/ui.gd" id="2_b66td"]
+[ext_resource type="AudioStream" uid="uid://dfyvv6qq4h5hi" path="res://source/assets/sounds/book/new_log_entry.ogg" id="3_0dsgc"]
+[ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="4_kn5pb"]
+[ext_resource type="Texture2D" uid="uid://yxjmx6mnc3wl" path="res://source/assets/ui/interact_icons/interact_eye.png" id="5_q4lwx"]
+[ext_resource type="Script" path="res://source/interact_icon.gd" id="6_1mva4"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="7_3urtd"]
+[ext_resource type="Shader" path="res://source/assets/ui/log_entry_notification.gdshader" id="7_8lxju"]
+[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="7_oykh5"]
+[ext_resource type="PackedScene" uid="uid://difwtbkkvagxy" path="res://source/assets/ui/progress_bars/draggable_move_progress_bar.tscn" id="7_rljn5"]
+[ext_resource type="Script" path="res://source/assets/ui/menus.gd" id="8_werd2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_153xn"]
+shader = ExtResource("1_exnrw")
+shader_parameter/alpha = 1.0
+shader_parameter/vigColor = null
+shader_parameter/vigMultiplier = 0.2
+shader_parameter/vigMultiplierOffset = 0.75
+shader_parameter/vigSoftness = 3.0
+shader_parameter/darkestThreshold = 0.06
+shader_parameter/darkThreshold = 0.125
+shader_parameter/lightThreshold = 0.175
+shader_parameter/lighterThreshold = 0.8
+shader_parameter/contrast = null
+shader_parameter/darkestColor = Color(0.078, 0.024, 0.059, 1)
+shader_parameter/darkColor = Color(0.243, 0.067, 0.067, 1)
+shader_parameter/lightColor = Color(0.431, 0.145, 0.078, 1)
+shader_parameter/lighterColor = Color(0.639, 0.235, 0.047, 1)
+shader_parameter/lightestColor = Color(0.812, 0.518, 0.294, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwvjw"]
+shader = ExtResource("7_8lxju")
+shader_parameter/alpha_mult = 0.0
+
+[node name="ui" type="Control"]
+process_mode = 3
+material = SubResource("ShaderMaterial_153xn")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_b66td")
+
+[node name="generic_audio_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0dsgc")
+
+[node name="button_hover_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kn5pb")
+volume_db = -5.0
+
+[node name="button_up_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kn5pb")
+pitch_scale = 0.9
+
+[node name="button_down_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kn5pb")
+pitch_scale = 0.8
+
+[node name="cont" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="interact_icon" type="TextureRect" parent="cont"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_q4lwx")
+script = ExtResource("6_1mva4")
+
+[node name="log_entry_notification" type="HBoxContainer" parent="cont"]
+material = SubResource("ShaderMaterial_mwvjw")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("7_3urtd")
+
+[node name="label" type="Label" parent="cont/log_entry_notification"]
+use_parent_material = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "New log entry"
+
+[node name="icon" type="TextureRect" parent="cont/log_entry_notification"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("7_oykh5")
+
+[node name="draggable_move_progress_bar" parent="." instance=ExtResource("7_rljn5")]
+visible = false
+layout_mode = 1
+
+[node name="menus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_werd2")
+
+[node name="background" type="ColorRect" parent="menus"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 0)
+
+[node name="menu_player" type="AudioStreamPlayer3D" parent="menus"]
+max_polyphony = 5

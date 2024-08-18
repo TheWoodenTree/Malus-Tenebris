@@ -21,7 +21,7 @@ var settings_menu: Control = preload("res://source/assets/ui/menus/settings_menu
 var journal_menu: Control = preload("res://source/assets/ui/menus/journal_menu.tscn").instantiate()
 var log_entries_menu: Control = preload("res://source/assets/ui/menus/log_entries_menu.tscn").instantiate()
 var found_notes_menu: Control = preload("res://source/assets/ui/menus/found_notes_menu.tscn").instantiate()
-var note_menu: Control = preload("res://source/assets/ui/note_menu.tscn").instantiate()
+var note_menu: Control = preload("res://source/assets/ui/menus/note_menu.tscn").instantiate()
 var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_journal_note_menu.tscn").instantiate()
 
 @onready var background = $menus/background
@@ -33,6 +33,7 @@ var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_jou
 @onready var button_hover_player = $button_hover_player
 @onready var button_up_player = $button_up_player
 @onready var button_down_player = $button_down_player
+@onready var log_entry_notification: HBoxContainer = $cont/log_entry_notification
 
 signal inventory_opened
 signal background_changed
@@ -155,3 +156,13 @@ func remove_menu():
 
 func do_prologue():
 	add_child(prologue)
+
+
+func notify_new_log_entry():
+	generic_audio_player.play()
+	var tween1: Tween = get_tree().create_tween()
+	tween1.tween_property(log_entry_notification.material, "shader_parameter/alpha_mult", 1.0, 0.5).from(0.0)
+	
+	await get_tree().create_timer(7.5, false).timeout
+	var tween2: Tween = get_tree().create_tween()
+	tween2.tween_property(log_entry_notification.material, "shader_parameter/alpha_mult", 0.0, 0.5).from(1.0)

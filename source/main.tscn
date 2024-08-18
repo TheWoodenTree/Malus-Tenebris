@@ -1,25 +1,18 @@
-[gd_scene load_steps=29 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=21 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
 [ext_resource type="AudioStream" uid="uid://d157c1hdub448" path="res://source/assets/sounds/horror_sounds/play_sound.ogg" id="5_q5r8v"]
 [ext_resource type="Shader" path="res://source/blackout_blur.gdshader" id="5_r5cia"]
-[ext_resource type="Script" path="res://source/assets/ui/ui.gd" id="6"]
 [ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
 [ext_resource type="Material" uid="uid://faq68tr6wo04" path="res://source/assets/shaders/retro_shader_mat.tres" id="7_768vo"]
 [ext_resource type="AudioStream" uid="uid://brkutqft4kt3q" path="res://source/assets/sounds/misc/heartbeat.ogg" id="8"]
 [ext_resource type="Material" uid="uid://8ry3t1ttx3f4" path="res://source/assets/shaders/chrom_abb_shader_mat.tres" id="8_dshu8"]
-[ext_resource type="Shader" path="res://source/assets/ui/death_screen.gdshader" id="8_meepd"]
 [ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
-[ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="11_21vnh"]
-[ext_resource type="Texture2D" uid="uid://yxjmx6mnc3wl" path="res://source/assets/ui/interact_icons/interact_eye.png" id="11_c2uy7"]
+[ext_resource type="PackedScene" uid="uid://jeo2tjikugy2" path="res://source/assets/ui/ui.tscn" id="11_kc1x7"]
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
-[ext_resource type="Script" path="res://source/interact_icon.gd" id="12_ifoda"]
-[ext_resource type="Script" path="res://source/assets/ui/menus.gd" id="13_by7hf"]
-[ext_resource type="PackedScene" uid="uid://difwtbkkvagxy" path="res://source/assets/ui/progress_bars/draggable_move_progress_bar.tscn" id="13_twsai"]
-[ext_resource type="AudioStream" uid="uid://dfyvv6qq4h5hi" path="res://source/assets/sounds/book/new_log_entry.ogg" id="13_yps3l"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -73,24 +66,6 @@ script/source = "extends Control
 shader = ExtResource("5_r5cia")
 shader_parameter/blurAmount = 0.0
 shader_parameter/colorScale = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_153xn"]
-shader = ExtResource("8_meepd")
-shader_parameter/alpha = 1.0
-shader_parameter/vigColor = null
-shader_parameter/vigMultiplier = 0.2
-shader_parameter/vigMultiplierOffset = 0.75
-shader_parameter/vigSoftness = 3.0
-shader_parameter/darkestThreshold = 0.06
-shader_parameter/darkThreshold = 0.125
-shader_parameter/lightThreshold = 0.175
-shader_parameter/lighterThreshold = 0.8
-shader_parameter/contrast = null
-shader_parameter/darkestColor = Color(0.078, 0.024, 0.059, 1)
-shader_parameter/darkColor = Color(0.243, 0.067, 0.067, 1)
-shader_parameter/lightColor = Color(0.431, 0.145, 0.078, 1)
-shader_parameter/lighterColor = Color(0.639, 0.235, 0.047, 1)
-shader_parameter/lightestColor = Color(0.812, 0.518, 0.294, 1)
 
 [sub_resource type="Environment" id="4"]
 background_mode = 1
@@ -186,67 +161,7 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="ui" type="Control" parent="."]
-process_mode = 3
-material = SubResource("ShaderMaterial_153xn")
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6")
-
-[node name="generic_audio_player" type="AudioStreamPlayer" parent="ui"]
-stream = ExtResource("13_yps3l")
-
-[node name="button_hover_player" type="AudioStreamPlayer" parent="ui"]
-stream = ExtResource("11_21vnh")
-volume_db = -5.0
-
-[node name="button_up_player" type="AudioStreamPlayer" parent="ui"]
-stream = ExtResource("11_21vnh")
-pitch_scale = 0.9
-
-[node name="button_down_player" type="AudioStreamPlayer" parent="ui"]
-stream = ExtResource("11_21vnh")
-pitch_scale = 0.8
-
-[node name="cont" type="MarginContainer" parent="ui"]
-custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="interact_icon" type="TextureRect" parent="ui/cont"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("11_c2uy7")
-script = ExtResource("12_ifoda")
-
-[node name="draggable_move_progress_bar" parent="ui" instance=ExtResource("13_twsai")]
-visible = false
-layout_mode = 1
-
-[node name="menus" type="Control" parent="ui"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("13_by7hf")
-
-[node name="background" type="ColorRect" parent="ui/menus"]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
-color = Color(0, 0, 0, 0)
-
-[node name="menu_player" type="AudioStreamPlayer3D" parent="ui/menus"]
-max_polyphony = 5
+[node name="ui" parent="." instance=ExtResource("11_kc1x7")]
 
 [node name="world_environment" type="WorldEnvironment" parent="."]
 environment = SubResource("4")

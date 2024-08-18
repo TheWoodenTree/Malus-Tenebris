@@ -55,7 +55,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28, 0.
 collision_mask = 0
 monitoring = false
 monitorable = false
-reverb_bus_enabled = true
 reverb_bus_name = &"General (lite)"
 reverb_bus_amount = 1.0
 
@@ -67,7 +66,6 @@ shape = SubResource("BoxShape3D_40cum")
 collision_mask = 0
 monitoring = false
 monitorable = false
-reverb_bus_enabled = true
 reverb_bus_name = &"General (huge)"
 reverb_bus_amount = 1.0
 script = ExtResource("9_3ehge")

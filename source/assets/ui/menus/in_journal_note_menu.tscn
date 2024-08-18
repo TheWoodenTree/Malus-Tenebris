@@ -65,26 +65,31 @@ layout_mode = 2
 text = "Back"
 
 [node name="separator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
 
 [node name="left_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("8_e3c70")]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Prev"
 
 [node name="separator2" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
 
 [node name="right_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("8_e3c70")]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Next"
 
 [node name="page_number" type="Label" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(75, 0)
 layout_direction = 2
 layout_mode = 2
@@ -94,6 +99,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")

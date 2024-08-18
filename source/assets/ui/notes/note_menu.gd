@@ -8,12 +8,14 @@ var page_number_text: String
 @onready var note_name_label = $cont/v_box_cont/panel_cont/note_name
 @onready var left_button: Button = $cont/v_box_cont/h_box_cont/left_button
 @onready var right_button: Button = $cont/v_box_cont/h_box_cont/right_button
+@onready var scroll_cont: ScrollContainer = $cont/v_box_cont/scroll_cont
 
 
 func _enter_tree():
 	if not is_node_ready():
 		await ready
 	
+	#scroll_cont.scroll_vertical = 0
 	update_note_name()
 
 
@@ -24,11 +26,11 @@ func _ready():
 		right_button.disabled = true
 
 
-func _process(_delta):
-	if Input.is_action_just_pressed("right"):
-		note.turn_page(note.FORWARD)
-	elif Input.is_action_just_pressed("left"):
-		note.turn_page(note.BACKWARD)
+#func _process(_delta):
+#	if Input.is_action_just_pressed("right"):
+#		note.turn_page(note.FORWARD)
+#	elif Input.is_action_just_pressed("left"):
+#		note.turn_page(note.BACKWARD)
 
 
 func set_note_text(text):

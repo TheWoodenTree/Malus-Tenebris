@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://cta7frnp42d7n"]
 
-[ext_resource type="Script" path="res://source/assets/ui/notes/note_menu.gd" id="1_bbb5n"]
-[ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="2_js2xi"]
-[ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="2_ofy3d"]
-[ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="3_r34b0"]
-[ext_resource type="FontFile" uid="uid://c1wdfxdb26j27" path="res://source/assets/fonts/Quikhand.ttf" id="3_xnjsc"]
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="6_bopdm"]
-[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="6_vnv8j"]
-[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="7_tpn61"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ekkxf"]
+[ext_resource type="Script" path="res://source/assets/ui/notes/note_menu.gd" id="2_gbm8k"]
+[ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="3_dntnp"]
+[ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="4_0y1tx"]
+[ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="5_1mbmv"]
+[ext_resource type="FontFile" uid="uid://c1wdfxdb26j27" path="res://source/assets/fonts/Quikhand.ttf" id="6_0cqhn"]
+[ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="7_n1fh4"]
+[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="8_bs6yc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnnfj"]
 
@@ -21,10 +21,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
-theme = ExtResource("6_bopdm")
-script = ExtResource("1_bbb5n")
-open_sound = ExtResource("3_r34b0")
-close_sound = ExtResource("2_ofy3d")
+theme = ExtResource("1_ekkxf")
+script = ExtResource("2_gbm8k")
+open_sound = ExtResource("3_dntnp")
+close_sound = ExtResource("4_0y1tx")
 
 [node name="cont" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -45,7 +45,7 @@ theme_override_constants/separation = 0
 [node name="panel_cont" type="PanelContainer" parent="cont/v_box_cont"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme = ExtResource("6_bopdm")
+theme = ExtResource("1_ekkxf")
 
 [node name="note_name" type="Label" parent="cont/v_box_cont/panel_cont"]
 layout_mode = 2
@@ -58,15 +58,15 @@ layout_mode = 2
 [node name="scroll_cont" type="ScrollContainer" parent="cont/v_box_cont"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("6_bopdm")
+theme = ExtResource("1_ekkxf")
 
-[node name="text" parent="cont/v_box_cont/scroll_cont" instance=ExtResource("2_js2xi")]
+[node name="text" parent="cont/v_box_cont/scroll_cont" instance=ExtResource("5_1mbmv")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
-theme_override_fonts/font = ExtResource("3_xnjsc")
+theme_override_fonts/font = ExtResource("6_0cqhn")
 text = "The plague which has been ravaging the servants recently is most concerning. As of one month ago, when reports began to arise, those who showed symptoms had spent a significant amount of time in the depths, while many of the recent reports have come from men who have not spent any time in the depths.
 
 Though my attempts to synthesize a cure have been progressing at a steady rate, the number of reports of similar symptoms has begun to rapidly increase. I've decided to name the ailment Vitriscet.
@@ -77,33 +77,38 @@ I fear the plague will spread faster than I can work to contain it, as even the 
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme = ExtResource("6_bopdm")
+theme = ExtResource("1_ekkxf")
 alignment = 1
 
-[node name="close_menu_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("7_tpn61")]
+[node name="close_menu_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("7_n1fh4")]
 layout_mode = 2
 
 [node name="separator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
 
-[node name="left_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("6_vnv8j")]
+[node name="left_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("8_bs6yc")]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Prev"
 
 [node name="separator2" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
 
-[node name="right_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("6_vnv8j")]
+[node name="right_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("8_bs6yc")]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Next"
 
 [node name="page_number" type="Label" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(75, 0)
 layout_direction = 2
 layout_mode = 2
@@ -113,6 +118,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
