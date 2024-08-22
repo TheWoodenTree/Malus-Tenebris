@@ -167,7 +167,6 @@ offset_bottom = 288.0
 environment = SubResource("4")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 48.0

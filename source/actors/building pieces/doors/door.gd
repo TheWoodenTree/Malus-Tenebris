@@ -318,9 +318,9 @@ func set_player_dragging(dragging: bool):
 	else:
 		player_just_started_dragging = false
 		player_just_stopped_dragging = true
-		await get_tree().create_timer(0.1, false).timeout
-		Global.player.cam.sensitivity_multiplier = 1.0
 		Global.player.set_draggable_being_dragged(null)
+		await get_tree().create_timer(0.1, false).timeout # Prevent camera from flicking when letting go of door
+		Global.player.cam.sensitivity_multiplier = 1.0
 		Global.player.cam.can_rotate = true
 
 
