@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="9_g3bnl"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="10_ax72v"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="11_tyw24"]
-[ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="12_2kxkj"]
 [ext_resource type="PackedScene" uid="uid://c1kffo1qignb8" path="res://source/actors/building pieces/basic/corner_trim.tscn" id="13_bygml"]
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="14_dsgq6"]
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="14_lheut"]
+[ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="14_ux7av"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="15_wcw6n"]
 
 [node name="ritual_chamber_and_quarters_connector" instance=ExtResource("1_3f26d")]
@@ -244,103 +244,103 @@ shadow_mode = 1
 
 [node name="torch_holder5" parent="." index="64" instance=ExtResource("9_g3bnl")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2, 6.5, -38)
+shadow_mode = 1
 
 [node name="half_wood_support" parent="." index="65" instance=ExtResource("11_tyw24")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.25, 0.5, 6.75)
 
-[node name="half_wood_support3" parent="." index="66" instance=ExtResource("11_tyw24")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 9.5, 0.5, 2)
-
-[node name="half_wood_support2" parent="." index="67" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support2" parent="." index="66" instance=ExtResource("11_tyw24")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, 1.75)
 
-[node name="half_wood_support7" parent="." index="68" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support7" parent="." index="67" instance=ExtResource("11_tyw24")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -4.25)
 
-[node name="half_wood_support8" parent="." index="69" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support8" parent="." index="68" instance=ExtResource("11_tyw24")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -15.75)
 
-[node name="half_wood_support9" parent="." index="70" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support9" parent="." index="69" instance=ExtResource("11_tyw24")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.75, 0.5, -15.75)
 
-[node name="half_wood_support10" parent="." index="71" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support10" parent="." index="70" instance=ExtResource("11_tyw24")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.75, 0.5, -4.25)
 
-[node name="half_wood_support4" parent="." index="72" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support4" parent="." index="71" instance=ExtResource("11_tyw24")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -21.75)
 
-[node name="half_wood_support5" parent="." index="73" instance=ExtResource("11_tyw24")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9.5, 0.5, -22)
-
-[node name="half_wood_support6" parent="." index="74" instance=ExtResource("11_tyw24")]
+[node name="half_wood_support6" parent="." index="72" instance=ExtResource("11_tyw24")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.25, 0.5, -26.75)
 
-[node name="cobble_wall" parent="." index="75" instance=ExtResource("12_2kxkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 3.5, -22.25)
-size = Vector3(0.5, 6, 0.5)
-
-[node name="cobble_wall2" parent="." index="76" instance=ExtResource("12_2kxkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, 3.5, -26.75)
-size = Vector3(0.5, 6, 0.5)
-
-[node name="cobble_wall3" parent="." index="77" instance=ExtResource("12_2kxkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, 3.5, 6.75)
-size = Vector3(0.5, 6, 0.5)
-
-[node name="cobble_wall4" parent="." index="78" instance=ExtResource("12_2kxkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 3.5, 2.25)
-size = Vector3(0.5, 6, 0.5)
-
-[node name="corner_trim" parent="." index="79" instance=ExtResource("13_bygml")]
+[node name="corner_trim" parent="." index="73" instance=ExtResource("13_bygml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -22)
 length1 = 5.0
 length2 = 12.35
 type = "Convex"
 
-[node name="corner_trim2" parent="." index="80" instance=ExtResource("13_bygml")]
+[node name="corner_trim2" parent="." index="74" instance=ExtResource("13_bygml")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0.5, 2)
 length1 = 12.35
 length2 = 5.0
 type = "Convex"
 
-[node name="corner_trim3" parent="." index="81" instance=ExtResource("13_bygml")]
+[node name="corner_trim3" parent="." index="75" instance=ExtResource("13_bygml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.5, 0.5, 7)
 length1 = 12.0
 length2 = 14.5
 type = "Convex"
 
-[node name="corner_trim4" parent="." index="82" instance=ExtResource("13_bygml")]
+[node name="corner_trim4" parent="." index="76" instance=ExtResource("13_bygml")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.5, 0.5, -27)
 length1 = 14.5
 length2 = 12.0
 type = "Convex"
 
-[node name="trim" parent="." index="83" instance=ExtResource("14_dsgq6")]
+[node name="trim" parent="." index="77" instance=ExtResource("14_dsgq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.5, -10)
 length = 24.0
 
-[node name="tile_wall6" parent="." index="84" instance=ExtResource("4_y30dx")]
+[node name="tile_wall6" parent="." index="78" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.5, -10)
 size = Vector3(1, 6, 22)
 
-[node name="sign" parent="." index="85" instance=ExtResource("14_lheut")]
+[node name="sign" parent="." index="79" instance=ExtResource("14_lheut")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.5, 2.5, -6.5)
 text = "Crematorium"
 chain_length = 0
 
-[node name="sign2" parent="." index="86" instance=ExtResource("14_lheut")]
+[node name="sign2" parent="." index="80" instance=ExtResource("14_lheut")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 2.5, -27)
 text = "Servant's Quarters"
 chain_length = 0
 
-[node name="reg_doorway" parent="." index="87" instance=ExtResource("15_wcw6n")]
+[node name="reg_doorway" parent="." index="81" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
 door_style = "Polished"
 door_open_angle = 85
 style = "Polished"
 
-[node name="reg_doorway2" parent="." index="88" instance=ExtResource("15_wcw6n")]
+[node name="reg_doorway2" parent="." index="82" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, -3.5, -10)
 door_style = "Polished"
 door_interactable_override = 2
 style = "Polished"
+
+[node name="small_pillar" parent="." index="83" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 2.5)
+
+[node name="small_pillar2" parent="." index="84" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0.5, 2.25)
+
+[node name="small_pillar4" parent="." index="85" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.5, 6.5)
+
+[node name="small_pillar5" parent="." index="86" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.5, -26.5)
+
+[node name="small_pillar3" parent="." index="87" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0.5, -22.25)
+
+[node name="small_pillar6" parent="." index="88" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4.5, -39.5)
+
+[node name="small_pillar7" parent="." index="89" instance=ExtResource("14_ux7av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -22.5)

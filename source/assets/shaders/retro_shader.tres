@@ -8,14 +8,18 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform float blurAmount = 0.0;
 uniform float downScale = 3.75;
 
+//uniform float ambientThreshold = 0.04;
 uniform float darkestThreshold = 0.06;
+uniform float darkerThreshold = 0.08;
 uniform float darkThreshold = 0.125;
 uniform float lightThreshold = 0.175;
 uniform float lighterThreshold = 0.8;
 
 uniform float contrast;
 
+//uniform vec4 ambientColor : source_color = vec4(0.078, 0.024, 0.059, 1.0);
 uniform vec4 darkestColor : source_color = vec4(0.078, 0.024, 0.059, 1.0);
+uniform vec4 darkerColor: source_color = vec4(0.078, 0.024, 0.059, 1.0);
 uniform vec4 darkColor : source_color = vec4(0.243, 0.067, 0.067, 1.0);
 uniform vec4 lightColor : source_color = vec4(0.431, 0.145, 0.078, 1.0);
 uniform vec4 lighterColor : source_color = vec4(0.639, 0.235, 0.047, 1.0);
@@ -58,7 +62,9 @@ vec3 pixelate(sampler2D sText, vec2 sUV)
 
 vec4 retroColor(vec3 textCol)
 {
+	//vec4 ambient = ambientColor;
 	vec4 darkest = darkestColor;// * hueShift;
+	vec4 darker = darkerColor;
 	vec4 dark = darkColor;// * hueShift;
 	vec4 light = lightColor;// * hueShift;
 	vec4 lighter = lighterColor;// * hueShift;
@@ -66,6 +72,8 @@ vec4 retroColor(vec3 textCol)
 	
 	if (rgb_less_than(textCol, darkestThreshold))
 		return darkest;
+	else if (rgb_less_than(textCol, darkerThreshold))
+		return darker;
 	else if (rgb_less_than(textCol, darkThreshold))
 		return dark;
 	else if (rgb_less_than(textCol, lightThreshold))
@@ -79,13 +87,6 @@ vec4 retroColor(vec3 textCol)
 
 void fragment()
 {
-	//vec3 pixelatedTexture = pixelate(SCREEN_TEXTURE, SCREEN_UV);
-	//vec4 tex = textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount);
-	//if (rgb_less_than(tex.rgb, darkestThreshold))
-	//	COLOR = vec4(0.0, 0.0, 0.0, 1.0);
-	//else
-	//	COLOR = tex;
 	COLOR = retroColor(textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount).rgb);
-	//COLOR = retroColor(pixelatedTexture);
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/retro_shader.tres"

@@ -211,8 +211,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -32)
 size = Vector3(4, 1, 11)
 
 [node name="stone_floor5" parent="floors" index="3" instance=ExtResource("1_eo3ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 9, -32)
-size = Vector3(4, 1, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9, -32)
+size = Vector3(3, 1, 11)
 
 [node name="stone_floor6" parent="floors" index="4" instance=ExtResource("1_eo3ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 9, -32)
@@ -287,6 +287,7 @@ shadow_mode = 1
 [node name="hanging_lamp2" parent="decor" index="1" instance=ExtResource("7_iemwg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -10.5)
 default_energy = 1.0
+lit = false
 shadow_mode = 1
 interactable = false
 
@@ -372,7 +373,7 @@ occluder = ExtResource("22_4o403")
 transform = Transform3D(-0.0132293, 0, -0.999913, 0, 1, 0, 0.999913, 0, -0.0132293, 2.29774, 0.5, -21.9958)
 
 [node name="sm_stacked_planks_3" parent="." index="10" instance=ExtResource("29_nvk0o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.541718, 0.5, -30.417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29172, 0.5, -29.917)
 
 [node name="curved_ceiling_1" parent="." index="11" instance=ExtResource("28_ysx0h")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6, 7.5)

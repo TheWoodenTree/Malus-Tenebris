@@ -462,7 +462,7 @@ func _on_fire_burning_sound_area_area_entered(area):
 		area.interactable_ancestor.fire.burning_player.play(start_time)
 		# Only render nearby lights on the second layer for performance
 		# Second layer is for held items so they don't clip into walls
-		area.interactable_ancestor.fire.light.set_layer_mask_value(2, true)
+		#area.interactable_ancestor.fire.light.set_layer_mask_value(2, true)
 
 
 func _on_fire_burning_sound_area_area_exited(area):

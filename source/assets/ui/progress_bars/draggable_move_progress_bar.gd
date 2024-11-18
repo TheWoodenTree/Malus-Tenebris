@@ -17,7 +17,8 @@ var draggable_last_drag: float
 
 
 func _ready():
-	Global.player.draggable_interacted.connect(connect_draggable)
+	#Global.player.draggable_interacted.connect(connect_draggable)
+	pass
 
 
 func connect_draggable(draggable: Object):#, max_drag: float):

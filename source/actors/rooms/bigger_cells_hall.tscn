@@ -300,10 +300,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1.5, -4.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, -4.5)
 
 [node name="pillar6" parent="." index="72" instance=ExtResource("4_gdnmn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -4.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -4.5)
 
 [node name="pillar9" parent="." index="73" instance=ExtResource("4_gdnmn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, -4.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, -4.5)
 
 [node name="pillar10" parent="." index="74" instance=ExtResource("4_gdnmn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, -4.5)

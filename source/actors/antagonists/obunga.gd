@@ -32,10 +32,10 @@ func _ready():
 
 
 func _process(_delta):
-	#if Input.is_action_just_pressed("enemy_pathfind"):
-	#	do_move = !do_move
-	#	anim_tree.set("parameters/locomotion/blend_position", Vector2(1.0, 0.0))
-	#	rotation.y = 0.0
+	if Input.is_action_just_pressed("enemy_pathfind"):
+		do_move = !do_move
+		anim_tree.set("parameters/locomotion/blend_position", Vector2(1.0, 0.0))
+		rotation.y = 0.0
 	if look_at_player:
 		var bone_transform: Transform3D = skeleton.get_bone_global_pose_no_override(5)
 		bone_transform = bone_transform.looking_at(skeleton.to_local(Global.player.cam.global_position), Vector3.UP, true)

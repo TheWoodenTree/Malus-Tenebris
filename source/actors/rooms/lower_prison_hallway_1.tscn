@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bs5t47xjs5a4t"]
+[gd_scene load_steps=16 format=3 uid="uid://bs5t47xjs5a4t"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_7rmgv"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_vu5js"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="12_fyiqa"]
 [ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="13_je7qb"]
 [ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="14_3u1im"]
+[ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="15_2ryt6"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="15_p3y3w"]
 
 [node name="lower_prison_hallway_1" instance=ExtResource("1_7rmgv")]
@@ -237,3 +238,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0.
 
 [node name="reg_archway7" parent="." index="29" instance=ExtResource("15_p3y3w")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.37114e-08, 0.5, -1)
+
+[node name="torch_holder" parent="." index="30" instance=ExtResource("15_2ryt6")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.5, 2.25, -25)
+default_energy = 1.0
+shadow_mode = 1
+
+[node name="torch_holder2" parent="." index="31" instance=ExtResource("15_2ryt6")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 2.25, -5.25)
+default_energy = 1.0
+shadow_mode = 1

@@ -93,11 +93,11 @@ void fragment() {
 [resource]
 render_priority = 0
 shader = SubResource("Shader_li6h0")
-shader_parameter/is_wet = false
+shader_parameter/is_wet = true
 shader_parameter/most_wetness_height = 0.25
 shader_parameter/least_wetness_height = 0.5
 shader_parameter/water_color = Color(0.06, 0.05826, 0.0252, 1)
-shader_parameter/albedo = Color(0.47451, 0.517647, 0.501961, 1)
+shader_parameter/albedo = Color(0.48588, 0.529308, 0.513509, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.75
 shader_parameter/metallic_texture_channel = null

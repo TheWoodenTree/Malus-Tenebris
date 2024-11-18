@@ -197,7 +197,8 @@ func attempt_unlock():
 	var correct_key: bool = Global.player.is_holding_item(key_name + " Key")
 	var is_prison_depths_key: bool = Global.player.is_holding_item("Prison Depths Key")
 	var anim_name: String
-	if is_prison_depths_key and key_name == "Prison Depths":
+	print(key_name)
+	if is_prison_depths_key and key_name == "Lubricated Prison Depths":
 		anim_name = "insert_rusty_key"
 	elif correct_key:
 		anim_name = "insert_key"
@@ -206,6 +207,7 @@ func attempt_unlock():
 			Global.ui.block_inventory_open = true
 	else:
 		anim_name = "insert_wrong_key"
+		
 	Global.ui.block_inventory_open = true
 	if Global.ui.inventory_menu.tutorial_on:
 		Global.ui.inventory_menu.set_tutorial_on(false)

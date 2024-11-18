@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drlvjfjfl1kgg"]
+[gd_scene load_steps=11 format=3 uid="uid://drlvjfjfl1kgg"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ku4fq"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bnb6mx6gl2osh" path="res://source/actors/rooms/occluders/prison_temple_connector.occ" id="2_21qyh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwlelyi72q35" path="res://source/actors/building pieces/basic/tile_wall.tscn" id="3_5bck0"]
 [ext_resource type="PackedScene" uid="uid://bhf6uocwy5fwk" path="res://source/actors/building pieces/basic/tile_floor.tscn" id="4_tjht3"]
 [ext_resource type="PackedScene" uid="uid://ctgpyuh7gpi1d" path="res://source/actors/building pieces/archways/archway_w_double_door.tscn" id="8_gok11"]
+[ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="10_1i8ah"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="10_3hmsf"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="10_motfl"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="10_tao02"]
@@ -159,3 +160,15 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.75,
 door_style = "Polished"
 door_interactable_override = 2
 style = "Polished"
+
+[node name="small_pillar" parent="." index="46" instance=ExtResource("10_1i8ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, -6, -3.5)
+
+[node name="small_pillar2" parent="." index="47" instance=ExtResource("10_1i8ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, -6, 1.5)
+
+[node name="small_pillar3" parent="." index="48" instance=ExtResource("10_1i8ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, -6, -3.5)
+
+[node name="small_pillar4" parent="." index="49" instance=ExtResource("10_1i8ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, -6, 1.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=24 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" path="res://source/main.gd" id="4"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
 [ext_resource type="PackedScene" uid="uid://jeo2tjikugy2" path="res://source/assets/ui/ui.tscn" id="11_kc1x7"]
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
+[ext_resource type="Shader" path="res://source/sky.gdshader" id="12_m4t6m"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -67,8 +68,17 @@ shader = ExtResource("5_r5cia")
 shader_parameter/blurAmount = 0.0
 shader_parameter/colorScale = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ycwu"]
+shader = ExtResource("12_m4t6m")
+
+[sub_resource type="Sky" id="Sky_ga56u"]
+sky_material = SubResource("ShaderMaterial_1ycwu")
+
 [sub_resource type="Environment" id="4"]
 background_mode = 1
+sky = SubResource("Sky_ga56u")
+ambient_light_source = 2
+ambient_light_color = Color(0.29219, 0.29219, 0.29219, 1)
 ssao_radius = 16.0
 ssao_intensity = 16.0
 adjustment_enabled = true
