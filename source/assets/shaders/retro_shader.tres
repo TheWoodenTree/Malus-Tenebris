@@ -18,67 +18,44 @@ uniform float lighterThreshold = 0.8;
 uniform float contrast;
 
 //uniform vec4 ambientColor : source_color = vec4(0.078, 0.024, 0.059, 1.0);
-uniform vec4 darkestColor : source_color = vec4(0.078, 0.024, 0.059, 1.0);
+uniform vec4 darkestColor : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 darkerColor: source_color = vec4(0.078, 0.024, 0.059, 1.0);
 uniform vec4 darkColor : source_color = vec4(0.243, 0.067, 0.067, 1.0);
 uniform vec4 lightColor : source_color = vec4(0.431, 0.145, 0.078, 1.0);
 uniform vec4 lighterColor : source_color = vec4(0.639, 0.235, 0.047, 1.0);
 uniform vec4 lightestColor : source_color = vec4(0.812, 0.518, 0.294, 1.0);
 
-//varying vec2 worldPos;
-
-//void vertex() {
-//	worldPos = (MODEL_MATRIX * vec4(VERTEX, 1.0, 1.0)).xy;
-//}
-
 
 bool rgb_less_than(vec3 color, float threshold)
 {
-	bool smaller;
-	if (color.r >= threshold)
-		smaller = false;
-	else if (color.g >= threshold)
-		smaller = false;
-	else if (color.b >= threshold)
-		smaller = false;
+	if (color.r >= threshold || color.g >= threshold || color.b >= threshold)
+		return false;
 	else
-		smaller = true;
-	return smaller;
+		return true;
 }
 
 
-vec3 pixelate(sampler2D sText, vec2 sUV)
-{
-	float xRes = 1920.0 / downScale; // SCREEN_PIXEL_SIZE.x;
-	float yRes = 1080.0 / downScale; // SCREEN_PIXEL_SIZE.y;
-	
-	float grid_uv_x = round(sUV.x * xRes) / xRes;
-	float grid_uv_y = round(sUV.y * yRes) / yRes;
-	
-	vec3 textureColor = textureLod(sText, vec2(grid_uv_x, grid_uv_y), blurAmount).rgb;
-	return textureColor;
-}
-
-
-vec4 retroColor(vec3 textCol)
+vec4 toRetro(vec4 tex)
 {
 	//vec4 ambient = ambientColor;
-	vec4 darkest = darkestColor;// * hueShift;
+	vec4 darkest = darkestColor;
 	vec4 darker = darkerColor;
-	vec4 dark = darkColor;// * hueShift;
-	vec4 light = lightColor;// * hueShift;
-	vec4 lighter = lighterColor;// * hueShift;
-	vec4 lightest = lightestColor;// * hueShift;
+	vec4 dark = darkColor;
+	vec4 light = lightColor;
+	vec4 lighter = lighterColor;
+	vec4 lightest = lightestColor;
 	
-	if (rgb_less_than(textCol, darkestThreshold))
+	vec3 color = tex.rgb;
+	
+	if (rgb_less_than(color, darkestThreshold))
 		return darkest;
-	else if (rgb_less_than(textCol, darkerThreshold))
+	else if (rgb_less_than(color, darkerThreshold))
 		return darker;
-	else if (rgb_less_than(textCol, darkThreshold))
+	else if (rgb_less_than(color, darkThreshold))
 		return dark;
-	else if (rgb_less_than(textCol, lightThreshold))
+	else if (rgb_less_than(color, lightThreshold))
 		return light;
-	else if (rgb_less_than(textCol, lighterThreshold))
+	else if (rgb_less_than(color, lighterThreshold))
 		return lighter;
 	else
 		return lightest;
@@ -87,6 +64,7 @@ vec4 retroColor(vec3 textCol)
 
 void fragment()
 {
-	COLOR = retroColor(textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount).rgb);
+	vec4 retroTex = toRetro(textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount));
+	COLOR = retroTex;
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/retro_shader.tres"

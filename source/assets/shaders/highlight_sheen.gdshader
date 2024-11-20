@@ -9,7 +9,7 @@ uniform sampler2D whiteTex;
 
 void fragment() {
 	float newAlpha = 0.0;
-	
+
 	if (enableSheen) {
 		// Black magic mask
 		float mask = floor(mod(TIME * floor(mod(TIME, 2)), 2));
