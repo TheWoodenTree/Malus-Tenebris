@@ -39,29 +39,10 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="label_1" type="Label" parent="cont/card_1"]
+[node name="Label" type="Label" parent="cont/card_1"]
 layout_mode = 2
 text = "1209 AD"
-autowrap_mode = 2
-visible_characters = 0
-visible_characters_behavior = 1
-visible_ratio = 0.0
-
-[node name="label_2" type="Label" parent="cont/card_1"]
-layout_mode = 2
-text = "The Kingdom of Sicily is the most prosperous it has ever been"
-autowrap_mode = 2
-visible_characters_behavior = 1
-
-[node name="label_3" type="Label" parent="cont/card_1"]
-layout_mode = 2
-text = "After ascending the throne 12 years ago, His Excellence The Praetor made it his solemn duty to purge the kingdom of the criminal scum infecting it"
-autowrap_mode = 2
-visible_characters_behavior = 1
-
-[node name="label_4" type="Label" parent="cont/card_1"]
-layout_mode = 2
-text = "Those found betraying their fellow countrymen are sentenced to death inside an old underground prison nestled deep within the Sicilian wilderness"
+horizontal_alignment = 1
 autowrap_mode = 2
 visible_characters_behavior = 1
 
@@ -72,15 +53,21 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="label_1" type="Label" parent="cont/card_2"]
+[node name="label_2" type="Label" parent="cont/card_2"]
 layout_mode = 2
-text = "The prison serves as a gateway from this life to the next and as a chance at atonement for the pitiful lives of those sent there"
+text = "Located Southwest of Italy on the island of Atramentis, the Kingdom of Pellina is the most prosperous it has ever been"
 autowrap_mode = 2
 visible_characters_behavior = 1
 
-[node name="label_2" type="Label" parent="cont/card_2"]
+[node name="label_3" type="Label" parent="cont/card_2"]
 layout_mode = 2
-text = "Only those close to the praetor, and of course, those lacking in morality, are privy to what awaits the convicted"
+text = "After ascending the throne 12 years ago, His Excellence The Praetor made it his solemn duty to purge the kingdom of the criminal scum infecting it"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="label_4" type="Label" parent="cont/card_2"]
+layout_mode = 2
+text = "Those found betraying their fellow countrymen are sentenced to death inside an old underground prison nestled deep within the wilderness at the heart of the island"
 autowrap_mode = 2
 visible_characters_behavior = 1
 
@@ -91,21 +78,15 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="label_3" type="Label" parent="cont/card_3"]
+[node name="label_1" type="Label" parent="cont/card_3"]
 layout_mode = 2
-text = "For your treasonous lies and baseless conjecture against the praetor, you have forfeited your life"
+text = "The prison serves as a gateway from this life to the next and as a chance at atonement for the pitiful lives of those sent there"
 autowrap_mode = 2
 visible_characters_behavior = 1
 
-[node name="label_4" type="Label" parent="cont/card_3"]
+[node name="label_2" type="Label" parent="cont/card_3"]
 layout_mode = 2
-text = "No longer will you pollute the minds of the innocent"
-autowrap_mode = 2
-visible_characters_behavior = 1
-
-[node name="label_6" type="Label" parent="cont/card_3"]
-layout_mode = 2
-text = "The last of your days will be spent in repentance of your actions"
+text = "Under the Praetor's tight grip, the fate of the convicted is known only to those close to him"
 autowrap_mode = 2
 visible_characters_behavior = 1
 
@@ -118,13 +99,38 @@ theme_override_constants/separation = 10
 
 [node name="label_3" type="Label" parent="cont/card_4"]
 layout_mode = 2
+text = "For your treasonous lies and baseless conjecture against the praetor, you have forfeited your life"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="label_4" type="Label" parent="cont/card_4"]
+layout_mode = 2
+text = "No longer will you pollute the minds of the innocent"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="label_6" type="Label" parent="cont/card_4"]
+layout_mode = 2
+text = "The last of your days will be spent in repentance of your actions"
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="card_5" type="VBoxContainer" parent="cont"]
+visible = false
+z_index = 4
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="label_3" type="Label" parent="cont/card_5"]
+layout_mode = 2
 text = "In death, you will serve"
 horizontal_alignment = 1
 autowrap_mode = 2
 visible_characters_behavior = 1
 
 [node name="rect" type="ColorRect" parent="."]
-z_index = 3
+z_index = 4
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

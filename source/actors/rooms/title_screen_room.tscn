@@ -15,12 +15,12 @@ size = Vector3(50, 50, 50)
 script = ExtResource("2_7iv7k")
 
 [node name="stone_wall" parent="walls" index="0" instance=ExtResource("2_bsit3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.5, -6.25)
-size = Vector3(1, 8, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.5, -7)
+size = Vector3(1, 8, 6)
 
 [node name="stone_wall2" parent="walls" index="1" instance=ExtResource("2_bsit3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.5, 6.25)
-size = Vector3(1, 8, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.5, 7)
+size = Vector3(1, 8, 6)
 
 [node name="stone_floor" parent="floors" index="0" instance=ExtResource("3_houb0")]
 size = Vector3(10, 1, 20)
@@ -29,13 +29,14 @@ size = Vector3(10, 1, 20)
 occluder = ExtResource("4_0id0i")
 
 [node name="pillar" parent="." index="9" instance=ExtResource("5_l5r0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, -3.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1.5, -3.75)
 
 [node name="pillar2" parent="." index="10" instance=ExtResource("5_l5r0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, 3.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1.5, 3.75)
 
 [node name="stone_wall" parent="." index="11" instance=ExtResource("2_bsit3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.5, 0)
+visible = false
 size = Vector3(1, 8, 5)
 
 [node name="hanging_lamp" parent="." index="12" instance=ExtResource("6_8b8xh")]
