@@ -55,7 +55,7 @@ theme_override_constants/separation = 10
 
 [node name="label_2" type="Label" parent="cont/card_2"]
 layout_mode = 2
-text = "Located Southwest of Italy on the island of Atramentis, the Kingdom of Pellina is the most prosperous it has ever been"
+text = "Located Southwest of Italy on the island of Atramenta, the Kingdom of Pellina is the most prosperous it has ever been"
 autowrap_mode = 2
 visible_characters_behavior = 1
 
@@ -86,7 +86,7 @@ visible_characters_behavior = 1
 
 [node name="label_2" type="Label" parent="cont/card_3"]
 layout_mode = 2
-text = "Under the Praetor's tight grip, the fate of the convicted is known only to those close to him"
+text = "Under the praetor's tight grip, the fate of the convicted is known only to those close to him"
 autowrap_mode = 2
 visible_characters_behavior = 1
 

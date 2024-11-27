@@ -195,10 +195,10 @@ func interact():
 
 func attempt_unlock():
 	var correct_key: bool = Global.player.is_holding_item(key_name + " Key")
-	var is_prison_depths_key: bool = Global.player.is_holding_item("Prison Depths Key")
+	var is_prison_depths_key: bool = Global.player.is_holding_item("Sump Tunnels Key")
 	var anim_name: String
 	print(key_name)
-	if is_prison_depths_key and key_name == "Lubricated Prison Depths":
+	if is_prison_depths_key and key_name == "Lubricated Sump Tunnels":
 		anim_name = "insert_rusty_key"
 	elif correct_key:
 		anim_name = "insert_key"

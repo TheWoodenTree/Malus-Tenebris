@@ -43,7 +43,7 @@
 
 [sub_resource type="Resource" id="Resource_wwn82"]
 script = ExtResource("33_xtbsr")
-name = "Prison Depths Key"
+name = "Sump Tunnels Key"
 texture = ExtResource("34_ho68n")
 pickup_sound = ExtResource("32_2l4ou")
 self_useable = false

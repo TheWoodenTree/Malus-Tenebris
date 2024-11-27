@@ -389,7 +389,7 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="sign" parent="." index="32" instance=ExtResource("32_7v3yc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 4, 1)
-text = "Warden's Chamber"
+text = "Servant Quarters"
 chain_length = 4
 
 [node name="reg_archway" parent="." index="33" instance=ExtResource("33_550pf")]

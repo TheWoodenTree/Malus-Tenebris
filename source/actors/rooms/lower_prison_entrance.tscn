@@ -260,6 +260,7 @@ door_style = "Regular With Window"
 
 [node name="reg_doorway3" parent="." index="66" instance=ExtResource("24_dtoyw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.5, -9.5, -28)
+door_locked_message = "Blocked from the other side"
 
 [node name="apothecary_doorway" parent="." index="67" instance=ExtResource("24_dtoyw")]
 unique_name_in_owner = true

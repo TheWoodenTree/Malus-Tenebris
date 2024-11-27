@@ -93,7 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.25, 6, 28.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -38.25)
 
 [node name="warden_chamber" parent="nav_region" instance=ExtResource("9_xbk25")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 51, -9, -37.25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.75, -9, -37.25)
 
 [node name="safe_room" parent="nav_region" instance=ExtResource("12_nytv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5, -15, -77.75)
@@ -111,7 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -15, -129.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -15, -77.75)
 
 [node name="lower_prison_staircase_1" parent="nav_region" instance=ExtResource("19_2i4co")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -18.5, -129.25)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12, -18.5, -107.75)
 
 [node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 6, -3)
@@ -144,13 +144,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -15, -89.75)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.25, -16.5, -90.75)
 
 [node name="auditorium" parent="nav_region" instance=ExtResource("23_f001m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -23, -89.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -17, 23.75)
 
 [node name="ritual_chamber_and_quarters_connector" parent="nav_region" instance=ExtResource("25_g0g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -23, -112.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, -17, 0.75)
 
 [node name="servants_quarters" parent="nav_region" instance=ExtResource("26_qdr7n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -15, -150.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -9, -36.75)
 
 [node name="itch_background_room" parent="nav_region" instance=ExtResource("27_7hdn1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 126, 3.25, -80.75)
@@ -164,4 +164,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -46.75)
 mesh = SubResource("SphereMesh_w1q8a")
 
 [node name="monster" parent="." instance=ExtResource("26_wekw4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.25, -18.75, -61.25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -108.5, -12.75, 52.25)

@@ -28,6 +28,7 @@ func _ready() -> void:
 	if static_body:
 		static_body.scale = Vector3(xy_scale.x, xy_scale.y, length)
 	update_style()
+	update_has_frame()
 
 
 func _set_length(state):
@@ -73,5 +74,5 @@ func _set_has_frame(has_frame_: bool):
 
 
 func update_has_frame():
-	if has_frame:
-		frame.visible = true
+	if frame:
+		frame.visible = has_frame
