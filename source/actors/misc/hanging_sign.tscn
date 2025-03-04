@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cuvmh4x1wv8ha"]
 
 [ext_resource type="PackedScene" uid="uid://dxqgvfmrq7k46" path="res://source/actors/misc/chain_link.tscn" id="1"]
-[ext_resource type="Script" path="res://source/actors/misc/hanging_chain.gd" id="1_yqmh7"]
+[ext_resource type="Script" uid="uid://b1g2idxrfjfio" path="res://source/actors/misc/hanging_chain.gd" id="1_yqmh7"]
 [ext_resource type="Texture2D" uid="uid://dvg251dkxu8my" path="res://source/assets/materials/chain_link/chain.png" id="3_abrco"]
 [ext_resource type="Texture2D" uid="uid://ckwxf7cathw34" path="res://source/assets/materials/metal_bar/Metal001_2K_NormalGL.jpg" id="4_j3rdc"]
 

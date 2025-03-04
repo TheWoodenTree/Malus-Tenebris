@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn872o546o8ch"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_p80nw"]
-[ext_resource type="Script" path="res://source/assets/ui/menus/are_you_sure_popup.gd" id="2_bjvqg"]
+[ext_resource type="Script" uid="uid://dh030gw5dl0xv" path="res://source/assets/ui/menus/are_you_sure_popup.gd" id="2_bjvqg"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_y7m6p"]
 
 [node name="are_you_sure_popup" type="Control"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkdl17c7capb2"]
 
-[ext_resource type="Script" path="res://source/assets/sounds/one_shot_audio_3d_player.gd" id="1_joo2l"]
+[ext_resource type="Script" uid="uid://817xb3ycrcf" path="res://source/assets/sounds/one_shot_audio_3d_player.gd" id="1_joo2l"]
 
 [node name="one_shot_audio_3d_player" type="AudioStreamPlayer3D"]
 script = ExtResource("1_joo2l")

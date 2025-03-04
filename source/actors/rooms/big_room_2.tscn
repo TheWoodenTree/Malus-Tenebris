@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ckuxyx852kqfw" path="res://source/actors/decor/misc/lever.tscn" id="11"]
 [ext_resource type="AudioStream" uid="uid://khjdo4vxe1ll" path="res://source/assets/sounds/misc/distant_crash.ogg" id="12"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="13"]
-[ext_resource type="Script" path="res://source/actors/rooms/big_room_2.gd" id="14"]
+[ext_resource type="Script" uid="uid://bfy233425rygb" path="res://source/actors/rooms/big_room_2.gd" id="14"]
 [ext_resource type="AudioStream" uid="uid://cand55p0pg7lt" path="res://source/assets/sounds/misc/dif_shriek2.ogg" id="15"]
 [ext_resource type="PackedScene" uid="uid://cdwhh8mxom6hc" path="res://source/actors/decor/furniture/shelf.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="17"]

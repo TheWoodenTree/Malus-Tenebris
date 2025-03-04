@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://taovp5xicteg"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_p14rr"]
-[ext_resource type="Script" path="res://source/actors/interactables/moveable.gd" id="2_tqjtj"]
+[ext_resource type="Script" uid="uid://cfqotdmusjea7" path="res://source/actors/interactables/moveable.gd" id="2_tqjtj"]
 
 [sub_resource type="Shader" id="Shader_1xkeu"]
 resource_local_to_scene = true

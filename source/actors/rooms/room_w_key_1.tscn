@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="26"]
 [ext_resource type="PackedScene" uid="uid://cdwhh8mxom6hc" path="res://source/actors/decor/furniture/shelf.tscn" id="27"]
 [ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="28"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="28_8h402"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="28_8h402"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="28_420m3"]
 [ext_resource type="PackedScene" uid="uid://do60vw7pnfa80" path="res://source/actors/decor/groups/sm_stacked_barrels.tscn" id="29"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="29_w3wd6"]

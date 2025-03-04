@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bidpmdys2yhso"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ldv47"]
-[ext_resource type="Script" path="res://source/assets/ui/buttons/ui_button.gd" id="2_lm6jl"]
+[ext_resource type="Script" uid="uid://fx68ixjnx76g" path="res://source/assets/ui/buttons/ui_button.gd" id="2_lm6jl"]
 
 [node name="dropdown_button" type="OptionButton"]
 offset_right = 45.0

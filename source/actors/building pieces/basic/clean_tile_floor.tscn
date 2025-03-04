@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx5obigsawn47"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_hfnor"]
+[ext_resource type="Script" uid="uid://8nwur2phr8k7" path="res://source/actors/building pieces/basic/block.gd" id="1_hfnor"]
 [ext_resource type="Material" uid="uid://cgeay00e4n45d" path="res://source/assets/materials/clean_tile_floor/clean_tile.tres" id="2_3e705"]
 
 [sub_resource type="BoxMesh" id="1"]

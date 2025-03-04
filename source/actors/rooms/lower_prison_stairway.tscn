@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://di1wwxw78n6ba" path="res://source/actors/decor/misc/pots/fat_pot.tscn" id="14_o5tvj"]
 [ext_resource type="PackedScene" uid="uid://jhbugt164s8d" path="res://source/actors/building pieces/basic/triangle_wall.tscn" id="18_seaur"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="19_mb0ej"]
-[ext_resource type="Script" path="res://source/actors/rooms/exposure_area.gd" id="21_wukun"]
+[ext_resource type="Script" uid="uid://tvkfhkjex46v" path="res://source/actors/rooms/exposure_area.gd" id="21_wukun"]
 [ext_resource type="PackedScene" uid="uid://d1ctp5l8i56d6" path="res://source/actors/interactables/winch.tscn" id="22_kledm"]
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="25_6vxl6"]
 [ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="26_0x21u"]

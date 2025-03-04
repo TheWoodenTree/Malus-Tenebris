@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bcbfemjeghktp"]
 
 [ext_resource type="Texture2D" uid="uid://5v4hxn5osh7k" path="res://source/assets/misc/dust.png" id="1_4mjw5"]
-[ext_resource type="Script" path="res://source/assets/particles/ruboleum_vial_break.gd" id="1_mbcqb"]
+[ext_resource type="Script" uid="uid://dy3663fogc6n1" path="res://source/assets/particles/ruboleum_vial_break.gd" id="1_mbcqb"]
 [ext_resource type="AudioStream" uid="uid://crv3nfq3cdhlw" path="res://source/assets/sounds/misc/bottle_break.ogg" id="2_h3bat"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3_7d6de"]
 [ext_resource type="AudioStream" uid="uid://br2y5q420gcrf" path="res://source/assets/sounds/misc/sizzle.ogg" id="4_ivlio"]
@@ -169,7 +169,7 @@ tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u0tjf"]
 _data = {
-"break": SubResource("Animation_jahv7")
+&"break": SubResource("Animation_jahv7")
 }
 
 [node name="ruboleum_vial_break" type="Node3D"]

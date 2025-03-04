@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://coyfxhlkcko0r"]
 
-[ext_resource type="Script" path="res://source/actors/rooms/occluders/occluder_instance.gd" id="1_lm0et"]
+[ext_resource type="Script" uid="uid://63twav3hbduw" path="res://source/actors/rooms/occluders/occluder_instance.gd" id="1_lm0et"]
 
 [node name="room_template" type="Node3D"]
 

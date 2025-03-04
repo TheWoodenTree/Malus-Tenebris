@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://uhbqrrigshhm"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/archways/reg_doorway.gd" id="1_3lbt4"]
+[ext_resource type="Script" uid="uid://bmosacnef2tnj" path="res://source/actors/building pieces/archways/reg_doorway.gd" id="1_3lbt4"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="2_kvmq0"]
 [ext_resource type="Material" uid="uid://bbj8gr5lxr4q8" path="res://source/assets/materials/white_bricks/white_bricks.tres" id="3_412on"]
 

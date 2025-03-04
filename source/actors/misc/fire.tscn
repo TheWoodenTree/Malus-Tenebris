@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://bybym4b32w5oy"]
 
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
-[ext_resource type="Script" path="res://source/actors/misc/fire.gd" id="1_r4r8e"]
-[ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="2"]
+[ext_resource type="Script" uid="uid://cdhh4pts24qxx" path="res://source/actors/misc/fire.gd" id="1_r4r8e"]
+[ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3_4ki3m"]
 [ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bu5c4a2he6gxl" path="res://source/assets/sounds/misc/burning_low_volume.ogg" id="5_7s1px"]
@@ -22,6 +22,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.1
 emission_ring_radius = 0.0
 emission_ring_inner_radius = 0.1
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = 1.0

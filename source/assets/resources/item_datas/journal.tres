@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://bqtcwaf610b65"]
 
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="1_hffmc"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="2_u53a7"]
-[ext_resource type="Script" path="res://source/actors/interactables/held_journal.gd" id="3_cupsm"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="2_u53a7"]
+[ext_resource type="Script" uid="uid://cixmnwycxps0m" path="res://source/actors/interactables/held_journal.gd" id="3_cupsm"]
 [ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="4_a0ous"]
 
 [resource]

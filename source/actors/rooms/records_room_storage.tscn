@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="7_ex7hr"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="8_i52jy"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="8_x4muf"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="9_440qv"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="9_440qv"]
 [ext_resource type="PackedScene" uid="uid://b7xuqil3lfc14" path="res://source/actors/decor/furniture/large_half_table.tscn" id="9_niu4p"]
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="10_gis0h"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="10_lpqka"]

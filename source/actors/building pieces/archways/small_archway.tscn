@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://ii0e665jma4b"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/archways/archway.gd" id="1_458vh"]
+[ext_resource type="Script" uid="uid://ci5q2accadn7i" path="res://source/actors/building pieces/archways/archway.gd" id="1_458vh"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="2_5lfoj"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2fves"]

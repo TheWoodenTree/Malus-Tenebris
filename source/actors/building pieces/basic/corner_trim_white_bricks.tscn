@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cf4bh2k3xe7ct"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/basic/corner_trim.gd" id="1_42ypo"]
+[ext_resource type="Script" uid="uid://b3bqn6a8d42bt" path="res://source/actors/building pieces/basic/corner_trim.gd" id="1_42ypo"]
 [ext_resource type="Material" uid="uid://b3lurtsv0c00e" path="res://source/assets/materials/white_bricks/white_bricks_tri.tres" id="2_s1vp8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kgmd6"]

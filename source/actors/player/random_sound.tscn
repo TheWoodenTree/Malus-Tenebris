@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dr7pgcagqkatr"]
 
-[ext_resource type="Script" path="res://source/actors/player/random_sound.gd" id="1_lm56a"]
+[ext_resource type="Script" uid="uid://pm8jr87p6oo6" path="res://source/actors/player/random_sound.gd" id="1_lm56a"]
 
 [node name="random_sound" type="Node3D"]
 script = ExtResource("1_lm56a")

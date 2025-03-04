@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://cn2lmv4kxle5o"]
 
-[ext_resource type="Script" path="res://source/assets/ui/death_screen.gd" id="1_5yg6d"]
+[ext_resource type="Script" uid="uid://v3dsgllb2kd5" path="res://source/assets/ui/death_screen.gd" id="1_5yg6d"]
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_l644d"]
-[ext_resource type="Shader" path="res://source/assets/ui/death_screen.gdshader" id="2_13v23"]
+[ext_resource type="Shader" uid="uid://dsfdhbps2vm08" path="res://source/assets/ui/death_screen.gdshader" id="2_13v23"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="4_imk2y"]
 
 [sub_resource type="Animation" id="Animation_mi60y"]
@@ -100,8 +100,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d0481"]
 _data = {
-"RESET": SubResource("Animation_mi60y"),
-"death_screen_anim": SubResource("Animation_j7gsr")
+&"RESET": SubResource("Animation_mi60y"),
+&"death_screen_anim": SubResource("Animation_j7gsr")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_m4tja"]
@@ -113,21 +113,21 @@ noise = SubResource("FastNoiseLite_m4tja")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n2ony"]
 shader = ExtResource("2_13v23")
 shader_parameter/alpha = 1.0
-shader_parameter/vigColor = null
+shader_parameter/vigColor = Color(0, 0, 0, 1)
 shader_parameter/vigMultiplier = 0.8
 shader_parameter/vigMultiplierOffset = 0.0
 shader_parameter/vigSoftness = -0.25
+shader_parameter/noise = SubResource("NoiseTexture2D_1wn3x")
 shader_parameter/darkestThreshold = 0.06
 shader_parameter/darkThreshold = 0.125
 shader_parameter/lightThreshold = 0.175
 shader_parameter/lighterThreshold = 0.8
-shader_parameter/contrast = null
+shader_parameter/contrast = 0.0
 shader_parameter/darkestColor = Color(0, 0, 0, 1)
 shader_parameter/darkColor = Color(0.243137, 0.0666667, 0.0666667, 1)
 shader_parameter/lightColor = Color(0.431373, 0.145098, 0.0784314, 1)
 shader_parameter/lighterColor = Color(0.639216, 0.235294, 0.0470588, 1)
 shader_parameter/lightestColor = Color(0.811765, 0.517647, 0.294118, 1)
-shader_parameter/noise = SubResource("NoiseTexture2D_1wn3x")
 
 [sub_resource type="Gradient" id="Gradient_hijqr"]
 offsets = PackedFloat32Array(0.0193237, 1)

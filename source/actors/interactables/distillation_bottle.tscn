@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://l0xp3jg0klev"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_nmm65"]
-[ext_resource type="Script" path="res://source/actors/interactables/distillation_bottle.gd" id="2_2eusd"]
+[ext_resource type="Script" uid="uid://b5dh11ncvk3yy" path="res://source/actors/interactables/distillation_bottle.gd" id="2_2eusd"]
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="2_ytcmd"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="4_vhmoa"]
 [ext_resource type="AudioStream" uid="uid://1k4ci4d6bkhw" path="res://source/assets/sounds/liquid/liquid_pour_short.ogg" id="5_ckrkl"]
@@ -345,8 +345,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_to3x4"]
 _data = {
-"RESET": SubResource("Animation_tqqdu"),
-"pour": SubResource("Animation_jlkag")
+&"RESET": SubResource("Animation_tqqdu"),
+&"pour": SubResource("Animation_jlkag")
 }
 
 [node name="distillation_bottle" instance=ExtResource("1_nmm65")]

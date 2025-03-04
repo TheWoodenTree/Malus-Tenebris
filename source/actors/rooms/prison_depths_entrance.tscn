@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bijo6w8j3qcjf"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_252wf"]
-[ext_resource type="Script" path="res://source/actors/rooms/prison_depths_entrance.gd" id="1_mwuqq"]
+[ext_resource type="Script" uid="uid://bval2vipvavvt" path="res://source/actors/rooms/prison_depths_entrance.gd" id="1_mwuqq"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_dvdpk"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_h1h30"]
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="4_qb6ki"]

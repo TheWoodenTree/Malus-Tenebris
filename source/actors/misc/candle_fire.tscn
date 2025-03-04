@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://deur3n06nl2p4"]
 
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
-[ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="2"]
+[ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="4"]
 

@@ -1,16 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=26 format=3 uid="uid://cn620q1tuk8ha"]
 
-[ext_resource type="Script" path="res://source/actors/player/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
-[ext_resource type="Script" path="res://source/actors/player/bob_controller.gd" id="2_n0c15"]
-[ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="4"]
+[ext_resource type="Script" uid="uid://c5vj02ndcwjhy" path="res://source/actors/player/bob_controller.gd" id="2_n0c15"]
+[ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="4"]
+[ext_resource type="Script" uid="uid://cjlbyr8yrs06d" path="res://source/actors/player/interact_raycast.gd" id="4_hbv3l"]
 [ext_resource type="Material" uid="uid://6l1ko2kw0opd" path="res://source/assets/particles/ambient_particles.tres" id="4_sn5wa"]
 [ext_resource type="PackedScene" uid="uid://lyhy6lr0j6hy" path="res://source/actors/player/random_sound_manager.tscn" id="5_8g41b"]
 [ext_resource type="AudioStream" uid="uid://c26ecgvwwpjek" path="res://source/assets/sounds/liquid/gulp.ogg" id="5_386p0"]
 [ext_resource type="AudioStream" uid="uid://dcxxknwjj7cqk" path="res://source/assets/sounds/rucksack/rucksack_4.ogg" id="8_7f7qv"]
 [ext_resource type="AudioStream" uid="uid://dqap21jiqu5gq" path="res://source/assets/sounds/misc/fear.ogg" id="8_ulhip"]
 [ext_resource type="AudioStream" uid="uid://bq7tbm4dgtm2j" path="res://source/assets/sounds/rucksack/rucksack_5.ogg" id="9_un0ps"]
-[ext_resource type="Script" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
+[ext_resource type="Script" uid="uid://kkp3nc0byvtr" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
 [ext_resource type="AudioStream" uid="uid://d3pakvmqmjlr0" path="res://source/assets/sounds/rucksack/rucksack_6.ogg" id="10_vyll3"]
 [ext_resource type="AudioStream" uid="uid://c7bxvp10bg6g2" path="res://source/assets/sounds/horror_sounds/fear_pulse_loop.ogg" id="11_nxucy"]
 
@@ -21,7 +22,7 @@ loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_crvps"]
 _data = {
-"timer": SubResource("Animation_dqclq")
+&"timer": SubResource("Animation_dqclq")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8awoy"]
@@ -47,7 +48,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ha0pu"]
 _data = {
-"torch_light_anim": SubResource("Animation_q2cha")
+&"torch_light_anim": SubResource("Animation_q2cha")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68otk"]
@@ -118,6 +119,7 @@ cull_mask = 2
 target_position = Vector3(0, 0, -3)
 collision_mask = 32769
 collide_with_areas = true
+script = ExtResource("4_hbv3l")
 
 [node name="torch_pos" type="Marker3D" parent="head_controller/bob_controller/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252)
@@ -127,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 
 [node name="bob_timer" type="AnimationPlayer" parent="head_controller/bob_controller"]
 libraries = {
-"": SubResource("AnimationLibrary_crvps")
+&"": SubResource("AnimationLibrary_crvps")
 }
 
 [node name="base_light" type="OmniLight3D" parent="head_controller"]
@@ -148,7 +150,7 @@ shape = SubResource("CapsuleShape3D_2fjcf")
 
 [node name="torch_light_player" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ha0pu")
+&"": SubResource("AnimationLibrary_ha0pu")
 }
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
@@ -196,16 +198,17 @@ autostart = true
 script = ExtResource("10_iw64y")
 
 [node name="allow_interactable_sheen_area" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 32768
-monitorable = false
+collision_layer = 2048
+collision_mask = 0
+monitoring = false
 
 [node name="collision_shape" type="CollisionShape3D" parent="allow_interactable_sheen_area"]
 shape = SubResource("SphereShape3D_helq8")
 
 [node name="fire_burning_sound_area" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 16384
+collision_layer = 16384
+collision_mask = 0
+monitoring = false
 
 [node name="collision_shape" type="CollisionShape3D" parent="fire_burning_sound_area"]
 shape = SubResource("SphereShape3D_6dsv4")

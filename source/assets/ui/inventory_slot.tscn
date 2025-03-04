@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6c7xxmin6mg5"]
 
-[ext_resource type="Script" path="res://source/assets/ui/inventory_slot.gd" id="1_8hijp"]
+[ext_resource type="Script" uid="uid://bbx7s8nskwiv1" path="res://source/assets/ui/inventory_slot.gd" id="1_8hijp"]
 [ext_resource type="Material" uid="uid://drvjrexbrri0j" path="res://source/assets/ui/inventory_slot_mat.tres" id="1_10oea"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="2_svwre"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="2_svwre"]
 [ext_resource type="Theme" uid="uid://dq0fbwjx1psc" path="res://source/assets/ui/inventory_slot_theme.tres" id="3_3xp1c"]
 [ext_resource type="Texture2D" uid="uid://crcq45hwhctvi" path="res://source/assets/ui/buttons/inventory_slot_selected.png" id="5_ye2p5"]
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="7_j7b4s"]
@@ -10,6 +10,7 @@
 [sub_resource type="Resource" id="Resource_be26v"]
 script = ExtResource("2_svwre")
 name = ""
+self_useable = false
 hold_rotation_offset = Vector3(0, 0, 0)
 hold_scale_multiplier = 1.0
 

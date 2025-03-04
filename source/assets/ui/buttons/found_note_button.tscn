@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmic1mjx57wev"]
 
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="1_dyjwv"]
-[ext_resource type="Script" path="res://source/assets/ui/buttons/found_note_button.gd" id="2_1fqna"]
+[ext_resource type="Script" uid="uid://dgd4xjl8xregb" path="res://source/assets/ui/buttons/found_note_button.gd" id="2_1fqna"]
 
 [node name="found_note_button" instance=ExtResource("1_dyjwv")]
 size_flags_horizontal = 0

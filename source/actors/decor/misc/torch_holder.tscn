@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bybym4b32w5oy" path="res://source/actors/misc/fire.tscn" id="1"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_6mepo"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="3"]
-[ext_resource type="Script" path="res://source/actors/decor/misc/fire_source.gd" id="4"]
+[ext_resource type="Script" uid="uid://bgxy30m66div2" path="res://source/actors/decor/misc/fire_source.gd" id="4"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="4_r2adj"]
-[ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="6_v67go"]
+[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="6_v67go"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8347d"]
 _surfaces = [{
@@ -80,8 +80,8 @@ mesh = SubResource("ArrayMesh_7jgj4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989, -0.623769)
 
 [node name="interact_area" type="Area3D" parent="."]
-collision_layer = 49152
-collision_mask = 0
+collision_layer = 32768
+collision_mask = 18432
 script = ExtResource("6_v67go")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]

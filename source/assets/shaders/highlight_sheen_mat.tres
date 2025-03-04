@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://13gbugw7ytck"]
 
-[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="1_adblc"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="1_adblc"]
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)

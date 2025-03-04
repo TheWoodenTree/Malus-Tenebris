@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://baqveak4oh8f3" path="res://source/assets/ui/accents/bullet_point.png" id="1_4j4lj"]
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_8av5c"]
-[ext_resource type="Script" path="res://source/assets/ui/misc/log_entry.gd" id="1_coh86"]
+[ext_resource type="Script" uid="uid://c0yabbyhff46r" path="res://source/assets/ui/misc/log_entry.gd" id="1_coh86"]
 
 [node name="log_entry" type="HBoxContainer"]
 offset_right = 40.0

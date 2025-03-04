@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://u2l4baklpl6r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_xlwxy"]
-[ext_resource type="Script" path="res://source/actors/rooms/title_screen_room.gd" id="2_7iv7k"]
+[ext_resource type="Script" uid="uid://dipevb33c4xst" path="res://source/actors/rooms/title_screen_room.gd" id="2_7iv7k"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_bsit3"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_houb0"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b5pn1c11ccgxa" path="res://source/actors/rooms/occluders/itch_background_room.occ" id="4_0id0i"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://jhbugt164s8d"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/basic/triangle_block.gd" id="1_2y32v"]
+[ext_resource type="Script" uid="uid://70swmomqcfp7" path="res://source/actors/building pieces/basic/triangle_block.gd" id="1_2y32v"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="2_onesj"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_vncwr"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=4 uid="uid://bjcdhkttl3bub"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_fhkke"]
-[ext_resource type="Script" path="res://source/actors/interactables/journal.gd" id="2_6rghn"]
+[ext_resource type="Script" uid="uid://bpuvvyhus2ovm" path="res://source/actors/interactables/journal.gd" id="2_6rghn"]
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="2_22kfu"]
 [ext_resource type="Resource" uid="uid://bqtcwaf610b65" path="res://source/assets/resources/item_datas/journal.tres" id="3_50jo0"]
-[ext_resource type="Shader" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_llwg8"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_llwg8"]
 [ext_resource type="Material" uid="uid://b5r5gddichoqf" path="res://source/assets/materials/leather/leather.tres" id="6_owwqv"]
 [ext_resource type="Material" uid="uid://fiek73taac83" path="res://source/assets/materials/pages/pages.tres" id="7_p6hbf"]
 

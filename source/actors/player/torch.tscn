@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_twpvw"]
-[ext_resource type="Script" path="res://source/actors/player/torch.gd" id="2"]
+[ext_resource type="Script" uid="uid://ti5fa7nyemhr" path="res://source/actors/player/torch.gd" id="2"]
 [ext_resource type="Material" uid="uid://dvtrckx2xk08r" path="res://source/assets/materials/wood/wood_alt.tres" id="3_3wk70"]
 [ext_resource type="Material" uid="uid://b74f8weqx6mbn" path="res://source/assets/materials/cloth/cloth.tres" id="3_ohwtc"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="4"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckyx6qrn408pv"]
 
-[ext_resource type="Script" path="res://source/assets/ui/menus/found_notes_menu.gd" id="1_xdb0a"]
+[ext_resource type="Script" uid="uid://dhxo4frbgv38m" path="res://source/assets/ui/menus/found_notes_menu.gd" id="1_xdb0a"]
 
 [node name="found_notes_menu" type="Control"]
 layout_mode = 3

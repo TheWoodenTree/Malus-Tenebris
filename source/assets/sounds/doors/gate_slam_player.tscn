@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cl2gephl8smmv"]
 
-[ext_resource type="Script" path="res://source/assets/sounds/doors/gate_slam_player.gd" id="1"]
+[ext_resource type="Script" uid="uid://cxsjty0k0i5q7" path="res://source/assets/sounds/doors/gate_slam_player.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://dkr2a2xm4sgmm" path="res://source/assets/sounds/doors/metal_gate_close.ogg" id="2"]
 
 [node name="gate_slam_player" type="AudioStreamPlayer3D"]

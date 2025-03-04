@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://be0iw55afdwry"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_04k3r"]
-[ext_resource type="Script" path="res://source/assets/ui/menus/journal_menu.gd" id="2_js0g1"]
+[ext_resource type="Script" uid="uid://bk0tl52vy2062" path="res://source/assets/ui/menus/journal_menu.gd" id="2_js0g1"]
 [ext_resource type="AudioStream" uid="uid://svuwpgc2blcw" path="res://source/assets/sounds/ui/journal_open.ogg" id="3_2t6h2"]
 [ext_resource type="AudioStream" uid="uid://cwnnau2y01356" path="res://source/assets/sounds/book/book_navigate_streams.tres" id="3_mnjjw"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="4_eysq1"]

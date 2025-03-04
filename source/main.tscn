@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
-[ext_resource type="Script" path="res://source/main.gd" id="4"]
+[ext_resource type="Script" uid="uid://dc83hot4enxya" path="res://source/main.gd" id="4"]
 [ext_resource type="AudioStream" uid="uid://d157c1hdub448" path="res://source/assets/sounds/horror_sounds/play_sound.ogg" id="5_q5r8v"]
-[ext_resource type="Shader" path="res://source/blackout_blur.gdshader" id="5_r5cia"]
+[ext_resource type="Shader" uid="uid://c4kq3tb1xat2f" path="res://source/blackout_blur.gdshader" id="5_r5cia"]
 [ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
 [ext_resource type="Material" uid="uid://faq68tr6wo04" path="res://source/assets/shaders/retro_shader_mat.tres" id="7_768vo"]
@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
 [ext_resource type="PackedScene" uid="uid://jeo2tjikugy2" path="res://source/assets/ui/ui.tscn" id="11_kc1x7"]
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
-[ext_resource type="Shader" path="res://source/sky.gdshader" id="12_m4t6m"]
+[ext_resource type="Shader" uid="uid://dj3miebarepq" path="res://source/sky.gdshader" id="12_m4t6m"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -52,9 +52,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_211kc"]
 _data = {
-"RESET": SubResource("1"),
-"chromatic_abberation": SubResource("2"),
-"heartbeat": SubResource("3")
+&"RESET": SubResource("1"),
+&"chromatic_abberation": SubResource("2"),
+&"heartbeat": SubResource("3")
 }
 
 [sub_resource type="GDScript" id="GDScript_7dmx0"]
@@ -91,7 +91,7 @@ debug_no_prologue = true
 [node name="effects_player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../post_processing")
 libraries = {
-"": SubResource("AnimationLibrary_211kc")
+&"": SubResource("AnimationLibrary_211kc")
 }
 
 [node name="drone_player" type="AudioStreamPlayer" parent="."]

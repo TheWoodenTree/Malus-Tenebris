@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2o05ytbeogcx"]
 
-[ext_resource type="Script" path="res://source/actors/rooms/sound_trigger.gd" id="1_5xfuy"]
+[ext_resource type="Script" uid="uid://c0a32ml3cru53" path="res://source/actors/rooms/sound_trigger.gd" id="1_5xfuy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khlmy"]
 resource_local_to_scene = true

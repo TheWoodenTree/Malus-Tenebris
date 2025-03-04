@@ -31,11 +31,11 @@
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="32"]
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="32_05uxv"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="33_21gew"]
-[ext_resource type="Script" path="res://source/actors/rooms/inventory_tutorial.gd" id="34_yoy6g"]
+[ext_resource type="Script" uid="uid://sngnshbbvkhv" path="res://source/actors/rooms/inventory_tutorial.gd" id="34_yoy6g"]
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="35_fb2me"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="36_nu7hr"]
 [ext_resource type="PackedScene" uid="uid://cvw5hi4ridgw" path="res://source/actors/decor/misc/pots/urn_1.tscn" id="37_38ko5"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="37_j145v"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="37_j145v"]
 [ext_resource type="PackedScene" uid="uid://dkjbo1lmsiv60" path="res://source/actors/decor/misc/pots/urn_2.tscn" id="38_83wnf"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="38_wcs0f"]
 [ext_resource type="ArrayOccluder3D" uid="uid://18th0mg6e26a" path="res://source/actors/rooms/occluders/medium_room_1.occ" id="39_3i3hg"]
@@ -48,6 +48,7 @@ script = ExtResource("37_j145v")
 name = "Cell Hall Key"
 texture = ExtResource("38_wcs0f")
 pickup_sound = ExtResource("36_nu7hr")
+self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 

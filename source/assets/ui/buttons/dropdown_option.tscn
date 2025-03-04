@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwjgvoqwsyxu1"]
 
-[ext_resource type="Script" path="res://source/assets/ui/buttons/dropdown_option.gd" id="1_7v4wr"]
+[ext_resource type="Script" uid="uid://cdydd5tli3jlg" path="res://source/assets/ui/buttons/dropdown_option.gd" id="1_7v4wr"]
 [ext_resource type="Texture2D" uid="uid://cmt57h8syqfku" path="res://source/assets/ui/buttons/dropdown_unselected.png" id="2_cvbf7"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="2_vp3xl"]
 

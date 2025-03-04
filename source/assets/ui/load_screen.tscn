@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dubcm7n1r4qld"]
 
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_44pp3"]
-[ext_resource type="Shader" path="res://source/assets/ui/load_screen_text.gdshader" id="1_bj6y0"]
+[ext_resource type="Shader" uid="uid://bte8p1qvnxjw4" path="res://source/assets/ui/load_screen_text.gdshader" id="1_bj6y0"]
 [ext_resource type="Texture2D" uid="uid://dss5t2xp3b5qr" path="res://source/assets/ui/image3.png" id="1_f2s44"]
 [ext_resource type="Texture2D" uid="uid://d1mimetup7pkk" path="res://source/assets/ui/title_background.png" id="1_nnobq"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgsc3liespcxg"]
 
-[ext_resource type="Script" path="res://source/actors/misc/static_chain.gd" id="1_8tpqu"]
+[ext_resource type="Script" uid="uid://ca2snlftdbqvk" path="res://source/actors/misc/static_chain.gd" id="1_8tpqu"]
 [ext_resource type="Material" uid="uid://i74t3uqbk4ow" path="res://source/assets/materials/chain_link/chain_link_billboard.tres" id="2_3qspw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mg0h2"]

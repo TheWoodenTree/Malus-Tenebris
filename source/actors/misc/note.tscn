@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=4 uid="uid://cvuemxunf1nna"]
 
-[ext_resource type="Script" path="res://source/actors/misc/note.gd" id="1"]
+[ext_resource type="Script" uid="uid://g30cjaos4rle" path="res://source/actors/misc/note.gd" id="1"]
 [ext_resource type="Material" uid="uid://dmm640qoa0ufe" path="res://source/assets/materials/paper/paper.tres" id="3"]
-[ext_resource type="Script" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_h4ok5"]
+[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_h4ok5"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="3_jfep5"]
 [ext_resource type="AudioStream" uid="uid://doo8csxbtqqq3" path="res://source/assets/sounds/paper/page_turn2.ogg" id="4_uvg2r"]
 [ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="5_c7kx5"]

@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="15_ajx8c"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="15_r21ri"]
 [ext_resource type="PackedScene" uid="uid://fts1qwh5jkyj" path="res://source/actors/decor/misc/plate_w_candle.tscn" id="16_5ybdr"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="16_gel8u"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="16_gel8u"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="17_7yo00"]
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="17_kh1wk"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="19_3xe0r"]
@@ -34,6 +34,7 @@ script = ExtResource("16_gel8u")
 name = "Prison Depths Key"
 texture = ExtResource("17_7yo00")
 pickup_sound = ExtResource("15_ajx8c")
+self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 

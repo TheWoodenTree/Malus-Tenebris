@@ -45,10 +45,10 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://cl7imk76s8ugw" path="res://source/actors/rooms/occluders/kitchen.occ" id="49_gii5n"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="49_ifubp"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="50_8los6"]
-[ext_resource type="Script" path="res://source/actors/rooms/monster_crouch_area.gd" id="51_qocnc"]
+[ext_resource type="Script" uid="uid://cju0ubidj8gmt" path="res://source/actors/rooms/monster_crouch_area.gd" id="51_qocnc"]
 [ext_resource type="PackedScene" uid="uid://d2o05ytbeogcx" path="res://source/actors/misc/sound_trigger.tscn" id="52_ppil4"]
 [ext_resource type="AudioStream" uid="uid://dky8q3668wlci" path="res://source/assets/sounds/horror_sounds/jumpscare.ogg" id="53_8gr7f"]
-[ext_resource type="Script" path="res://source/actors/rooms/event_trigger.gd" id="54_ffjji"]
+[ext_resource type="Script" uid="uid://cb7nmn158a3lb" path="res://source/actors/rooms/event_trigger.gd" id="54_ffjji"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5yokh"]
 size = Vector3(1, 4.25, 3)

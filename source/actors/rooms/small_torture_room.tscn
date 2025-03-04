@@ -12,7 +12,7 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://c8da74ump72ny" path="res://source/actors/rooms/occluders/small_torture_room.occ" id="11_e68t4"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/ruboleum_vial.tscn" id="13_3serb"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="14_v7eo7"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="15_aqurv"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="15_aqurv"]
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="16_g0e2e"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="17_bvf6q"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="17_nsor2"]

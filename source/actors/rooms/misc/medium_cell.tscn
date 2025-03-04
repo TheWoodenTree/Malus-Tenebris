@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dox1fsx7m4wle"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_8hq7q"]
-[ext_resource type="Script" path="res://source/actors/building pieces/archways/doorway.gd" id="1_v5axv"]
+[ext_resource type="Script" uid="uid://ljm5ohhsqfr4" path="res://source/actors/building pieces/archways/doorway.gd" id="1_v5axv"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_50goa"]
 [ext_resource type="PackedScene" uid="uid://bqmuk6hmgo8rk" path="res://source/actors/building pieces/cell_door.tscn" id="3_0gbpf"]
 [ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="4_qb4u2"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://citdjndu5i5q4"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/archways/doorway.gd" id="1_rbmkw"]
+[ext_resource type="Script" uid="uid://ljm5ohhsqfr4" path="res://source/actors/building pieces/archways/doorway.gd" id="1_rbmkw"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="3_57k8v"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_dudqu"]
 [ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="5_cp0rh"]

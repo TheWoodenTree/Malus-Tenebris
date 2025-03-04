@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_goou0"]
 resource_name = "Amplify"
-volume_db = -18.0
+volume_db = -26.7
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_5g3v8"]
 resource_name = "LowPassFilter"
@@ -53,7 +53,7 @@ room_size = 0.4
 wet = 0.2
 
 [resource]
-bus/0/volume_db = 0.0694828
+bus/0/volume_db = 0.0672607
 bus/0/effect/0/effect = SubResource("AudioEffectAmplify_goou0")
 bus/0/effect/0/enabled = true
 bus/1/name = &"Global"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ds66ib3qesslo"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_n78m5"]
-[ext_resource type="Script" path="res://source/assets/ui/menus/dropdown_menu.gd" id="2_7077d"]
+[ext_resource type="Script" uid="uid://cs2qqpmtyr7b5" path="res://source/assets/ui/menus/dropdown_menu.gd" id="2_7077d"]
 
 [node name="dropdown_menu" type="Control"]
 z_index = 1

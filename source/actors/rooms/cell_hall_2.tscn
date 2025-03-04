@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://dkbtoycokfxad"]
 
-[ext_resource type="Script" path="res://source/actors/rooms/cell_hall_2.gd" id="1_h4icy"]
+[ext_resource type="Script" uid="uid://5dt0yqiu8aqb" path="res://source/actors/rooms/cell_hall_2.gd" id="1_h4icy"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_lcx1u"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="1_yn7ph"]
 [ext_resource type="PackedScene" uid="uid://citdjndu5i5q4" path="res://source/actors/rooms/misc/small_cell.tscn" id="3_io8te"]

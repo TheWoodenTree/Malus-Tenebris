@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4sfuh7t214ho"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_pqtoo"]
-[ext_resource type="Script" path="res://source/assets/prologue/prologue.gd" id="2_46wp7"]
+[ext_resource type="Script" uid="uid://btssej4s26b7x" path="res://source/assets/prologue/prologue.gd" id="2_46wp7"]
 [ext_resource type="AudioStream" uid="uid://cpqh1cs04k0j0" path="res://source/assets/sounds/ui/text_output.ogg" id="3_bgkt8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mj6ar"]

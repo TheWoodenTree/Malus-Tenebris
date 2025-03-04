@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://daiit8sip3qoj"]
 
-[ext_resource type="Script" path="res://source/assets/ui/inventory.gd" id="1_0pmc3"]
+[ext_resource type="Script" uid="uid://ceymoomowpskj" path="res://source/assets/ui/inventory.gd" id="1_0pmc3"]
 [ext_resource type="Texture2D" uid="uid://bok3qh5mh0w5o" path="res://source/assets/ui/inventory/inventory_bag.png" id="2_0xxye"]
 [ext_resource type="PackedScene" uid="uid://c6c7xxmin6mg5" path="res://source/assets/ui/inventory_slot.tscn" id="2_7krhi"]
 [ext_resource type="AudioStream" uid="uid://dcxxknwjj7cqk" path="res://source/assets/sounds/rucksack/rucksack_4.ogg" id="2_nn852"]
@@ -18,21 +18,15 @@
 random_pitch = 1.1
 streams_count = 3
 stream_0/stream = ExtResource("2_nn852")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_4tmw0")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("4_eojqe")
-stream_2/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_crqe2"]
 random_pitch = 1.1
 streams_count = 3
 stream_0/stream = ExtResource("2_nn852")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_4tmw0")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("4_eojqe")
-stream_2/weight = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gq48e"]
 
@@ -137,9 +131,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xph6x"]
 _data = {
-"RESET": SubResource("Animation_7vw54"),
-"scroll_left": SubResource("Animation_eca3f"),
-"scroll_right": SubResource("Animation_pswr1")
+&"RESET": SubResource("Animation_7vw54"),
+&"scroll_left": SubResource("Animation_eca3f"),
+&"scroll_right": SubResource("Animation_pswr1")
 }
 
 [node name="inventory" type="Control"]

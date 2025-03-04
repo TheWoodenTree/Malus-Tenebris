@@ -31,6 +31,9 @@ func _ready() -> void:
 		light.flicker()
 		set_interactable(lit and is_instance_valid(Global.player.torch) and not Global.player.torch.is_lit)
 		
+		interact_area.fire_burning_sound_area_entered.connect(_on_fire_burning_sound_area_entered)
+		interact_area.fire_burning_sound_area_exited.connect(_on_fire_burning_sound_area_exited)
+		
 		if audio_fade_in_on_ready:
 			var tween = get_tree().create_tween()
 			tween.tween_property(fire.burning_player, 'volume_db', 6.0, 5.0).from(-15.0)
@@ -57,6 +60,22 @@ func _process(_delta: float) -> void:
 	elif outline_on:
 		mesh.material_overlay.set_shader_parameter("outlineOn", false)
 		outline_on = false
+
+
+func _on_fire_burning_sound_area_entered():
+	if lit and fire.has_node("burning_player"):
+		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
+		start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
+		fire.burning_player.play(start_time)
+		# Only render nearby lights on the second layer for performance
+		# Second layer is for held items so they don't clip into walls
+		#area.interactable_ancestor.fire.light.set_layer_mask_value(2, true)
+
+
+func _on_fire_burning_sound_area_exited():
+	if fire.has_node("burning_player"):
+		fire.burning_player.stop()
+	#fire.light.set_layer_mask_value(2, false)
 
 
 func interact():

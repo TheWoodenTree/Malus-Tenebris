@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1ul7yhvnry3x"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_nrris"]
-[ext_resource type="Script" path="res://source/assets/ui/buttons/close_menu_button.gd" id="2_gonxu"]
+[ext_resource type="Script" uid="uid://dqd5ekfk1i8uy" path="res://source/assets/ui/buttons/close_menu_button.gd" id="2_gonxu"]
 
 [node name="close_menu_button" type="Button"]
 size_flags_horizontal = 4

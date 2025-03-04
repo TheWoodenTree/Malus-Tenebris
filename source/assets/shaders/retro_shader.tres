@@ -44,9 +44,9 @@ vec4 toRetro(vec4 tex)
 	vec4 light = lightColor;
 	vec4 lighter = lighterColor;
 	vec4 lightest = lightestColor;
-	
+
 	vec3 color = tex.rgb;
-	
+
 	if (rgb_less_than(color, darkestThreshold))
 		return darkest;
 	else if (rgb_less_than(color, darkerThreshold))

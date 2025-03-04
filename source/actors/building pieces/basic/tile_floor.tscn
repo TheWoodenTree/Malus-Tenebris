@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhf6uocwy5fwk"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_i8a1q"]
+[ext_resource type="Script" uid="uid://8nwur2phr8k7" path="res://source/actors/building pieces/basic/block.gd" id="1_i8a1q"]
 [ext_resource type="Material" uid="uid://qsa4owr7omuh" path="res://source/assets/materials/tile_floor_2/tile_floor_2.tres" id="2_vkn7x"]
 
 [sub_resource type="BoxMesh" id="1"]

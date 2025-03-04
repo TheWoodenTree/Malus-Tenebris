@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="26_4g5ii"]
 [ext_resource type="PackedScene" uid="uid://c3rxkp6vaovuq" path="res://source/actors/interactables/winch_crank.tscn" id="26_gik4w"]
 [ext_resource type="AudioStream" uid="uid://dcb0ks2xkb46f" path="res://source/assets/sounds/misc/metal_scrape.ogg" id="26_j7fcr"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="27_4qxhj"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="27_4qxhj"]
 [ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="28_32h2w"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_c6mxc"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="29_jsc7q"]

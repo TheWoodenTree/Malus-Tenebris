@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="31_4l2yx"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="32_2l4ou"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="33_cstxe"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="33_xtbsr"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="33_xtbsr"]
 [ext_resource type="PackedScene" uid="uid://bx4c82xi8bksb" path="res://source/actors/decor/groups/books_1.tscn" id="34_agt8x"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="34_ho68n"]
 [ext_resource type="PackedScene" uid="uid://cid4xuq72t4q7" path="res://source/actors/decor/groups/books_3.tscn" id="35_5at0i"]

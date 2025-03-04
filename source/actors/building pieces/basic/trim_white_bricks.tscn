@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxv781ctc54hw"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/basic/trim.gd" id="1_t0w83"]
+[ext_resource type="Script" uid="uid://e6mchfneucyb" path="res://source/actors/building pieces/basic/trim.gd" id="1_t0w83"]
 [ext_resource type="Material" uid="uid://b3lurtsv0c00e" path="res://source/assets/materials/white_bricks/white_bricks_tri.tres" id="2_0g28m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wr63"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://cbcgqpe627vc8"]
 
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="2_kvjux"]
-[ext_resource type="Script" path="res://source/actors/building pieces/archways/archway.gd" id="3"]
+[ext_resource type="Script" uid="uid://ci5q2accadn7i" path="res://source/actors/building pieces/archways/archway.gd" id="3"]
 [ext_resource type="Material" uid="uid://bbj8gr5lxr4q8" path="res://source/assets/materials/white_bricks/white_bricks.tres" id="3_yss1q"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_njx2r"]

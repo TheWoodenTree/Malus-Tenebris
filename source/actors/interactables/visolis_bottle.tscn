@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_va2my"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_2wexg"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="3_j8owv"]
-[ext_resource type="Script" path="res://source/assets/resources/item_data.gd" id="4_ipjbm"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="4_ipjbm"]
 [ext_resource type="Texture2D" uid="uid://clhsusibnxp3v" path="res://source/assets/ui/inventory/visolis_bottle.png" id="5_tjuu2"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="7_d7ec8"]
 

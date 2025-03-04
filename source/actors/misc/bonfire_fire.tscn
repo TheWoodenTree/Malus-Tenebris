@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1_t8nnb"]
 [ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="2_4dpfu"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3_6goma"]
-[ext_resource type="Script" path="res://source/actors/misc/fire_light.gd" id="4_28q5t"]
+[ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="4_28q5t"]
 
 [sub_resource type="Curve" id="10"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
@@ -20,6 +20,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.5
 emission_ring_radius = 0.0
 emission_ring_inner_radius = 0.5
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = 1.5

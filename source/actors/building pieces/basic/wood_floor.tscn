@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cffojy8sonot2"]
 
-[ext_resource type="Script" path="res://source/actors/building pieces/basic/block.gd" id="1_rr40e"]
+[ext_resource type="Script" uid="uid://8nwur2phr8k7" path="res://source/actors/building pieces/basic/block.gd" id="1_rr40e"]
 [ext_resource type="Material" uid="uid://t3e18auh2koj" path="res://source/assets/materials/dark_wood_planks/dark_wood_planks_triplanar.tres" id="2_c0wrl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wjwk3"]
