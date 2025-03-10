@@ -413,33 +413,3 @@ func cam_look_at_over_time(pos: Vector3, time: float):
 func debug_get_torch():
 	Global.torch.interact()
 	Global.player.torch.light_torch()
-
-
-func _on_allow_interactable_sheen_area_area_entered(area):
-	#if area.interactable_ancestor.enable_highlight_sheen:
-	#	area.interactable_ancestor.enable_sheen()
-	pass
-
-
-func _on_allow_interactable_sheen_area_area_exited(area):
-	#if area.interactable_ancestor.enable_highlight_sheen:
-	#	area.interactable_ancestor.disable_sheen()
-	pass
-
-
-# Only play fire burning audio from nearby fire sources since there's a lot of them
-func _on_fire_burning_sound_area_area_entered(area):
-	#if area.interactable_ancestor.lit:
-	#	var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
-	#	start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
-	#	area.interactable_ancestor.fire.burning_player.play(start_time)
-		# Only render nearby lights on the second layer for performance
-		# Second layer is for held items so they don't clip into walls
-		#area.interactable_ancestor.fire.light.set_layer_mask_value(2, true)
-	pass
-
-
-func _on_fire_burning_sound_area_area_exited(area):
-	#area.interactable_ancestor.fire.burning_player.stop()
-	#area.interactable_ancestor.fire.light.set_layer_mask_value(2, false)
-	pass
