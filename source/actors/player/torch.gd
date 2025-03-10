@@ -34,7 +34,7 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 @onready var lit_particles = $lit_fire_particles
 @onready var particle_attractor: GPUParticlesAttractorSphere3D = $particle_attractor
 @onready var interact_area = $interact_area
-@onready var mesh = $mesh
+@onready var mesh = meshes[0]
 
 
 func _ready() -> void:
@@ -45,8 +45,6 @@ func _ready() -> void:
 	# so it must be playing at all times rather than be paused
 	burning_player.volume_db = -80.0
 	
-	init(Type.PICKUP, interact_area, [mesh])
-	mesh.mesh.surface_get_material(0).albedo_color = Color.WHITE
 	light.omni_range = default_range
 	light.light_energy = default_energy
 	timer.one_shot = true
@@ -74,19 +72,16 @@ func _process(_delta: float) -> void:
 		#global_position = Global.player.torch_pos.global_position
 		#rotation = Global.player.torch_pos.rotation
 		global_transform = Global.player.torch_pos.global_transform
-	
-	# Enable interaction outline if being looked at
-	material.set_shader_parameter("outlineOn", being_looked_at)
 
 
 func interact():
+	super()
 	held_by_player = true
 	Global.player.torch = self
 	Global.player.has_torch = true
 	get_tree().call_group("fire_sources", "update_interactable")
 	
 	pickup_player.play()
-	mesh.mesh.surface_get_material(0).albedo_color = Color.WEB_GRAY
 	particles.local_coords = true
 	mesh.layers = 2
 	light.visible = false

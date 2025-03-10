@@ -29,7 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="28_esjvg"]
 [ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="29_1pfam"]
 [ext_resource type="PackedScene" uid="uid://bx4c82xi8bksb" path="res://source/actors/decor/groups/books_1.tscn" id="30_kgkjp"]
-[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/misc/note.tscn" id="31_nynm0"]
+[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/interactables/note.tscn" id="31_nynm0"]
 [ext_resource type="PackedScene" uid="uid://d1cgr3gbbj6ni" path="res://source/assets/ui/notes/servant_note.tscn" id="32_e7uj6"]
 [ext_resource type="PackedScene" uid="uid://dgn84cdkpu41o" path="res://source/actors/decor/furniture/bench.tscn" id="33_u0syo"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="34_uayob"]

@@ -24,7 +24,6 @@ signal was_read
 
 func _ready() -> void:
 	super()
-	init(Type.NOTE, interact_area, [mesh])
 	# I shouldn't have to wonder why I have to do this when resource_local_to_scene
 	# is checked for the material :) (NOTICE: this may be fixed now, try removing 'fix')
 	var note_mat = mesh.mesh.surface_get_material(0)
@@ -38,29 +37,19 @@ func _ready() -> void:
 	curr_page = 0
 
 
-func _process(_delta: float) -> void:
-	# Enable interaction outline if being looked at
-	if being_looked_at:
-		if display_help and not read and not outline_on:
-			Global.ui.hint_popup("Press 'Left Click' to interact with highlighted objects", -1)
-		if shader_mode == "Outline" and mesh.material_overlay and not outline_on:
-			mesh.material_overlay.set_shader_parameter("outlineOn", true)
-		elif shader_mode == "Highlight" and not mesh.material_override:
-			mesh.material_override = highlight_material
-		outline_on = true
-	elif outline_on:
-		if display_help:
-			Global.ui.hint_remove()
-		if shader_mode == "Outline" and mesh.material_overlay:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
-		elif shader_mode == "Highlight" and mesh.material_override:
-			mesh.material_override = null
-		outline_on = false
+func _on_target():
+	if display_help and not read:
+		Global.ui.hint_popup("Press 'Left Click' to interact with highlighted objects", -1)
+
+
+func _on_untarget():
+	if display_help:
+		Global.ui.hint_remove()
 
 
 func interact():
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
-	if interactable and not Global.player.in_menu:
+	if not Global.player.in_menu:
 		super()
 		
 		Global.ui.note_menu.set_note_text(pages[curr_page])

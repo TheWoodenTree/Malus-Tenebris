@@ -14,7 +14,6 @@ var burning_player: AudioStreamPlayer3D
 @onready var light = $fire/light
 @onready var particles = $fire/fire_particles
 @onready var interact_area = $interact_area
-@onready var mesh = $mesh
 @onready var detection_area = Area3D.new()
 
 
@@ -24,7 +23,6 @@ func _ready() -> void:
 		if has_node("interact_area"):
 			interact_area = $interact_area
 		add_to_group("fire_sources")
-		init(Type.FIRE, interact_area, [mesh])
 		light.default_range = default_range
 		light.omni_range = default_range
 		light.default_energy = default_energy
@@ -49,19 +47,6 @@ func set_lit(is_lit):
 	$fire/light.visible = lit
 
 
-func _process(_delta: float) -> void:
-	if being_looked_at and interactable:
-		if Global.player.has_torch and not Global.player.torch.is_lit:
-			mesh.material_overlay.set_shader_parameter("outlineOn", true)
-			outline_on = true
-		elif outline_on and Global.player.has_torch and Global.player.torch.is_lit:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
-			outline_on = false
-	elif outline_on:
-		mesh.material_overlay.set_shader_parameter("outlineOn", false)
-		outline_on = false
-
-
 func _on_fire_burning_sound_area_entered():
 	if lit and fire.has_node("burning_player"):
 		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
@@ -79,6 +64,7 @@ func _on_fire_burning_sound_area_exited():
 
 
 func interact():
+	super()
 	if interactable and Global.player.has_torch and not Global.player.torch.is_lit:
 		Global.player.torch.light_torch()
 

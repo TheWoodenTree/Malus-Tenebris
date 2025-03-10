@@ -62,11 +62,12 @@ shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="interactable" instance=ExtResource("1_gjmcy")]
+[node name="pickup" node_paths=PackedStringArray("meshes") instance=ExtResource("1_gjmcy")]
 script = ExtResource("2_8rstg")
 item_data = null
 name_override = ""
 count = 1
+meshes = [NodePath("mesh")]
 enable_highlight_sheen = true
 
 [node name="mesh" parent="." index="0"]

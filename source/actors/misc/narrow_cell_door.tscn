@@ -50,8 +50,10 @@ size = Vector3(0.15, 3.5, 2.05)
 [sub_resource type="BoxShape3D" id="BoxShape3D_eyo3m"]
 size = Vector3(0.5, 3.5, 2.25)
 
-[node name="door" type="Node3D"]
+[node name="door" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
 script = ExtResource("1_ho16k")
+interact_areas = [NodePath("door_body/interact_area")]
+meshes = [NodePath("door_body/door")]
 
 [node name="door_body" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, -1.67037e-22, -2.5411e-21, 1, 0, -1.67037e-22, 0, 1, -5.02354e-16, 0, 4.65661e-09)
@@ -59,8 +61,8 @@ collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 sleeping = true
-max_contacts_reported = 5
 contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_8wx54")
 
 [node name="hinge_attach" type="StaticBody3D" parent="door_body"]

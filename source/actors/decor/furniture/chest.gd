@@ -19,10 +19,8 @@ var pitch_scale_max: float = 1.5
 var sound_cooldown_timer: Timer = Timer.new()
 
 @onready var draggable_body = $draggable_body
-@onready var interact_area = $draggable_body/interact_area
 @onready var creak_player = $creak_player
 @onready var close_player = $close_player
-@onready var mesh = $draggable_body/mesh
 
 signal moved
 
@@ -30,7 +28,6 @@ signal moved
 func _ready():
 	super()
 	if not Engine.is_editor_hint():
-		init(Type.DRAGGABLE, interact_area, [mesh])
 		sound_cooldown_timer.one_shot = true
 		sound_cooldown_timer.wait_time = 0.3
 		add_child(sound_cooldown_timer)
@@ -39,15 +36,11 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
-		if being_looked_at and interactable or player_dragging:
-			mesh.material_overlay.set_shader_parameter("outlineOn", true)
+		if being_targeted and interactable or player_dragging:
 			if not Global.player.cam.is_connected("cam_rotated", add_torque_to_lid):
 				Global.player.cam.connect("cam_rotated", add_torque_to_lid)
-			outline_on = true
-		elif outline_on:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
+		elif being_targeted:
 			Global.player.cam.disconnect("cam_rotated", add_torque_to_lid)
-			outline_on = false
 
 
 func _physics_process(_delta):

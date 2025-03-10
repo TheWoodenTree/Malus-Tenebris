@@ -8,13 +8,9 @@ var last_cam_offset: Vector2 = Vector2.ZERO
 var last_3_mouse_positions: Array[Vector2] = []
 var local_mouse_position: Vector2 = Vector2.ZERO
 
-@onready var interact_area = $interact_area
 @onready var crank_anim_player = $crank_anim_player
 @onready var rotating_body = $rotating_body
-@onready var wheel = $rotating_body/wheel
-@onready var chains = $rotating_body/chains
 @onready var crank = $rotating_body/crank
-@onready var support = $support
 @onready var chain_player = $chain_player
 @onready var static_chain_1_mat: StandardMaterial3D = $static_chain.get_node("mesh").mesh.surface_get_material(0)
 @onready var static_chain_2_mat: StandardMaterial3D = $static_chain2.get_node("mesh").mesh.surface_get_material(0)
@@ -33,25 +29,13 @@ func _enter_tree():
 
 
 func _ready():
-	init(Type.MISC, interact_area, [wheel, chains, support])
+	super()
 	crank.visible = has_crank
 	if has_crank:
 		crank.position.x = -0.15
 	await Global.player.ready
 	if interactable:
 		Global.player.cam.connect("cam_rotated", add_torque_to_handle)
-
-
-func _process(_delta):
-	if being_looked_at and interactable:
-		wheel.material_overlay.set_shader_parameter("outlineOn", true)
-		support.material_overlay.set_shader_parameter("outlineOn", true)
-		crank.material_overlay.set_shader_parameter("outlineOn", true)
-		outline_on = true
-	elif outline_on:
-		wheel.material_overlay.set_shader_parameter("outlineOn", false)
-		support.material_overlay.set_shader_parameter("outlineOn", false)
-		crank.material_overlay.set_shader_parameter("outlineOn", false)
 
 
 func _physics_process(_delta):

@@ -58,7 +58,7 @@ signal moved
 
 
 func _ready():
-	init(Type.DRAGGABLE, interact_area, [mesh])
+	super()
 	sound_cooldown_timer.one_shot = true
 	sound_cooldown_timer.wait_time = 0.3
 	add_child(sound_cooldown_timer)
@@ -77,29 +77,31 @@ func parent_ready_finished():
 		set_hinge_limits(closed_max_drag_angle)
 
 
+func _on_target():
+	if tutorial_popup and not tutorial_popup_shown and not Global.player.debug_no_tutorials \
+	and Global.player.has_torch and Global.player.torch.is_lit:
+		Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
+		tutorial_popup_shown = true
+	
+	if interactable:
+		if not unlocked and Global.player.is_holding_key() and interactable_type == Type.DOOR:
+			interactable_type = Type.LOCKED_DOOR
+		elif not Global.player.is_holding_key() and interactable_type == Type.LOCKED_DOOR:
+			interactable_type = Type.DOOR
+
+
+func _on_untarget():
+	pass
+
+
 func _process(_delta: float) -> void:
-	if being_looked_at and interactable or player_dragging:
-		door.material_overlay.set_shader_parameter("outlineOn", true)
+	if being_targeted and interactable or player_dragging:
 		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
 			Global.player.cam.connect("cam_rotated", add_torque_to_door)
-		outline_on = true
-		if tutorial_popup and not tutorial_popup_shown and not Global.player.debug_no_tutorials \
-		and Global.player.has_torch and Global.player.torch.is_lit:
-			Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
-			tutorial_popup_shown = true
-	elif outline_on:
-		door.material_overlay.set_shader_parameter("outlineOn", false)
+			
+	elif being_targeted:
 		Global.player.cam.disconnect("cam_rotated", add_torque_to_door)
-		outline_on = false
-	
-	# Swap interact icons between open door and locked door depending on if door 
-	# is locked and player has a key
-	if being_looked_at and interactable and not unlocked and \
-	Global.player.is_holding_key() and interactable_type == Type.DOOR:
-		interactable_type = Type.LOCKED_DOOR
-	elif being_looked_at and interactable and not \
-	Global.player.is_holding_key() and interactable_type == Type.LOCKED_DOOR:
-		interactable_type = Type.DOOR
+		being_targeted = false
 
 
 func _physics_process(_delta):

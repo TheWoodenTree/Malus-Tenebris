@@ -3,19 +3,17 @@ extends Node3D
 
 enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 
+@export var interactable_type: Type = Type.MISC
+@export var interact_areas: Array[InteractArea]
+@export var meshes: Array[MeshInstance3D]
 @export var interactable: bool = true : set = set_interactable
 @export var enable_highlight_light: bool = false : set = _set_enable_highlight_light
 @export var enable_highlight_sheen: bool = false : set = _set_enable_highlight_sheen
 @export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
 
-# Set by child script
-var interactable_type: Type
-var _interact_area: InteractArea # Should not be accessed by anything but this script
-var meshes: Array[MeshInstance3D] # Meshes used by child interactable
+var being_targeted: bool = false
 
-var being_looked_at: bool = false
-var outline_on: bool = false
-
+var outline_material: ShaderMaterial = preload("res://source/assets/shaders/outline_shader_mat.tres")
 var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
 
 @onready var highlight_light = $highlight_light if has_node("highlight_light") else null
@@ -24,20 +22,43 @@ var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/hi
 func _ready():
 	if highlight_light:
 		highlight_light.visible = enable_highlight_light
+	
+	for area: InteractArea in interact_areas:
+		area.set_collision_layer_value(16, interactable)
+		area.interact_ray_collided.connect(_target)
+		area.interact_ray_stopped_colliding.connect(_untarget)
+		area.allow_sheen_area_entered.connect(enable_sheen)
+		area.allow_sheen_area_exited.connect(disable_sheen)
 
 
-# Set this interactable's type and connect its interact_area to its interact function
-# as well as provide the interact_area with a reference to this node
-# We use signals here so we don't have to worry about having the interact_area be a direct child of
-# whatever node has the interactable script attached; in the case of a door the interact_area
-# is a child of the door rigid body rather than the root node since the door moves
-func init(type: Type, interact_area: Area3D, meshes_: Array[MeshInstance3D]):
-	interactable_type = type
-	_interact_area = interact_area
-	_interact_area.connect("interacted", Callable(self, "interact"))
-	_interact_area.interactable_ancestor = self
-	_interact_area.set_collision_layer_value(16, interactable)
-	meshes = meshes_
+func _target():
+	being_targeted = true
+	for mesh: MeshInstance3D in meshes:
+		if shader_mode == "Outline":
+			mesh.material_overlay.set_shader_parameter("outlineOn", true)
+		else:
+			mesh.material_override = highlight_material
+	Global.player.set_targeted_interactable(self)
+	_on_target()
+
+
+func _untarget():
+	being_targeted = false
+	for mesh: MeshInstance3D in meshes:
+		if shader_mode == "Outline":
+			mesh.material_overlay.set_shader_parameter("outlineOn", false)
+		else:
+			mesh.material_override = null
+	Global.player.set_targeted_interactable(null)
+	_on_untarget()
+
+
+func _on_target(): # Virtual
+	pass
+
+
+func _on_untarget(): # Virtual
+	pass
 
 
 func enable_sheen():
@@ -60,8 +81,9 @@ func interact():
 
 func set_interactable(interactable_: bool):
 	interactable = interactable_
-	if _interact_area:
-		_interact_area.set_collision_layer_value(16, interactable_)
+	for area: InteractArea in interact_areas:
+		if area:
+			area.set_collision_layer_value(16, interactable)
 
 
 func get_interactable_type():

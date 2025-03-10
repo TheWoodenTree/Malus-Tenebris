@@ -8,25 +8,13 @@ var key_dipped: bool = false
 @onready var key = $key
 @onready var key_pickup_player = $key_pickup_player
 @onready var anim_player = $anim_player
-@onready var interact_area = $interact_area
-@onready var mesh = $mesh
 
 @export var key_item_data: ItemData
 
 
 func _ready():
 	super()
-	init(Type.MISC, interact_area, [mesh])
 	key_item_data.mesh = key.get_node("mesh").duplicate()
-
-
-func _process(_delta):
-	if interactable and being_looked_at:
-		mesh.material_overlay.set_shader_parameter("outlineOn", true)
-		outline_on = true
-	elif outline_on:
-		mesh.material_overlay.set_shader_parameter("outlineOn", false)
-		outline_on = false
 
 
 func _melt_fat():

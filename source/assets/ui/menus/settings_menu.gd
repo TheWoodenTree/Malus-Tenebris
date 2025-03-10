@@ -8,10 +8,12 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.wait_time = 0.1
 	add_child(timer)
+	print(AudioServer.get_bus_effect(0, 0).volume_db)
 
 
 func _on_volume_slider_value_changed(value):
-	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(value) - 10.0
+	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(value) - 15.0
+	print(AudioServer.get_bus_effect(0, 0).volume_db)
 	if timer.is_stopped():
 		slider_click_player.play()
 		timer.start()

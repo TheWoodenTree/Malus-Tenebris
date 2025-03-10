@@ -1,6 +1,6 @@
 extends Node3D
 
-var being_looked_at = false
+var being_targeted = false
 
 @export var key_name: String = "Default"
 
@@ -10,7 +10,7 @@ var being_looked_at = false
 
 
 func _process(_delta: float) -> void:
-	if being_looked_at:
+	if being_targeted:
 		highlight_material.set_shader_parameter("outlineOn", true)
 	else:
 		highlight_material.set_shader_parameter("outlineOn", false)

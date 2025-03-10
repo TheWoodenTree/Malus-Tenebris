@@ -8,30 +8,16 @@ extends Interactable
 # to still be off
 var interactable_override: bool
 
-@onready var interact_area = $interact_area
 @onready var static_body = $static_body
 @onready var moveable_collision_blocker = $moveable_collision_blocker
 @onready var moveable_collision_blocker_shape = $moveable_collision_blocker/collision_shape
 @onready var no_interact_area = $no_interact_area
 @onready var move_player = $static_body/move_player
-@onready var mesh = $mesh
 
 
 func _ready():
 	super()
-	if not Engine.is_editor_hint():
-		init(Type.MISC, interact_area, [mesh])
 	update_move_to_collision()
-
-
-func _process(_delta):
-	if not Engine.is_editor_hint():
-		if interactable and being_looked_at:
-			mesh.material_overlay.set_shader_parameter("outlineOn", true)
-			outline_on = true
-		elif outline_on:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
-			outline_on = false
 
 
 func interact():
@@ -67,5 +53,6 @@ func _on_no_interact_area_body_exited(body):
 
 func set_interactable_override(interactable_override_: bool):
 	interactable_override = interactable_override_
-	if _interact_area:
-		_interact_area.set_collision_layer_value(16, interactable_override and interactable)
+	for area: InteractArea in interact_areas:
+		if area:
+			area.set_collision_layer_value(16, interactable_override and interactable)

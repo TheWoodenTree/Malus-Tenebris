@@ -249,5 +249,5 @@ skeleton = NodePath("")
 
 [node name="anim_player" type="AnimationPlayer" parent="." index="3"]
 libraries = {
-"": SubResource("AnimationLibrary_6ocew")
+&"": SubResource("AnimationLibrary_6ocew")
 }

@@ -18,8 +18,7 @@ var draggable_touch_position := Vector3.ZERO
 var draggable_angle_on_touch: float
 
 var torch: Object
-var looking_at: Interactable
-var looking_at_last_frame: Interactable
+var targeted_interactable: Interactable
 var last_looked_at: Object = null
 var held_item_data: ItemData = null
 var held_item: MeshInstance3D = null
@@ -59,8 +58,8 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 @export var is_omnipotent_door_god: bool = false
 
 signal crouched
-signal looked_at_interactable(interactable_type: Interactable.Type)
-signal looked_away_from_interactable
+signal interactable_targeted(interactable_type: Interactable.Type)
+signal interactable_untargeted
 signal holding_self_useable(interactable_type: Interactable.Type)
 signal draggable_interacted
 
@@ -100,10 +99,6 @@ func _process(_delta: float) -> void:
 		bob_controller.bob_timer.seek(0.0)
 		bob_controller.bob_timer.play("timer")
 	
-	if not in_menu:
-		var collider = interact_ray.get_collider()
-		_handle_look_at(collider)
-	
 	# Stop dragging if too far from draggable
 	if is_instance_valid(draggable_being_dragged):
 		# Comically long line of code:
@@ -137,12 +132,16 @@ func _handle_input():
 		set_collision_layer_value(2, !noclip_on)
 		set_collision_mask_value(1, !noclip_on)
 	
-	var can_self_use: bool = held_item_data and held_item_data.self_useable and not looking_at and not draggable_being_dragged
+	var can_self_use: bool = held_item_data and held_item_data.self_useable and not targeted_interactable and not draggable_being_dragged
 	if Input.is_action_just_pressed("interact") and can_self_use and not in_menu:
 		if held_item_data.self_useable_script:
 			held_item.use()
 		else:
 			push_error("Self-useable has no attached script")
+	
+	if Input.is_action_just_pressed("interact"):
+		if targeted_interactable:
+			targeted_interactable.interact()
 	
 	if Input.is_action_just_released("interact"):
 		if is_instance_valid(draggable_being_dragged):
@@ -271,6 +270,15 @@ func set_held_item_global_transform(new_transform: Transform3D):
 	held_item.global_transform = new_transform
 
 
+func set_targeted_interactable(interactable: Interactable):
+	targeted_interactable = interactable
+	if targeted_interactable:
+		interactable_targeted.emit(targeted_interactable.get_interactable_type())
+	else:
+		var is_holding_self_useable: bool = held_item_data and held_item_data.self_useable
+		interactable_untargeted.emit(is_holding_self_useable)
+
+
 func set_draggable_being_dragged(draggable: Object):
 	draggable_being_dragged = draggable
 	if draggable_being_dragged:
@@ -306,43 +314,6 @@ func _can_stand():
 	var results = space_state.get_rest_info(query)
 	
 	return results.is_empty()
-
-
-func _handle_look_at(collider):
-	# Don't collide with Area3Ds that are in the world layer because those are for
-	# adjusting reverb based on room because for some reason they have to have collision layer
-	# bit 0 set to enabled to work
-	if collider != null and collider is Area3D and collider.get_collision_layer_value(1) and collider.name != "collision_blocker":
-		interact_ray.add_exception(collider)
-	# Only handle "look ats" if collider is non-null and is not the world
-	# Note that collisions with the world are still desired as interacting with
-	# something through a wall is not intended
-	if collider != null and collider.get_collision_layer_value(1) == false:
-		looking_at = collider.interactable_ancestor
-		last_looked_at = looking_at
-		looking_at.being_looked_at = true
-		if looking_at.interactable:
-			looked_at_interactable.emit(looking_at.get_interactable_type())
-			if held_item:
-				held_item.material_overlay.set_shader_parameter("outlineOn", false)
-		if Input.is_action_just_pressed("interact"):
-			looking_at.interact()
-	else:
-		looking_at = null
-		if held_item and held_item_data.self_useable and not draggable_being_dragged:
-			held_item.material_overlay.set_shader_parameter("outlineOn", true)
-	
-	var hide_interact_icon: bool = not looking_at or looking_at and not looking_at.interactable
-	if not draggable_being_dragged and hide_interact_icon and Global.ui.interact_icon.visible:
-		var is_holding_self_useable: bool = held_item_data and held_item_data.self_useable
-		looked_away_from_interactable.emit(is_holding_self_useable)
-	
-	# Let the last interactable looked at know (if it isn't null or hasn't been freed) 
-	# it's not being looked at anymore
-	if looking_at != looking_at_last_frame and is_instance_valid(looking_at_last_frame):
-		looking_at_last_frame.being_looked_at = false
-	
-	looking_at_last_frame = looking_at
 
 
 func get_facing_dir():
@@ -445,26 +416,30 @@ func debug_get_torch():
 
 
 func _on_allow_interactable_sheen_area_area_entered(area):
-	if area.interactable_ancestor.enable_highlight_sheen:
-		area.interactable_ancestor.enable_sheen()
+	#if area.interactable_ancestor.enable_highlight_sheen:
+	#	area.interactable_ancestor.enable_sheen()
+	pass
 
 
 func _on_allow_interactable_sheen_area_area_exited(area):
-	if area.interactable_ancestor.enable_highlight_sheen:
-		area.interactable_ancestor.disable_sheen()
+	#if area.interactable_ancestor.enable_highlight_sheen:
+	#	area.interactable_ancestor.disable_sheen()
+	pass
 
 
 # Only play fire burning audio from nearby fire sources since there's a lot of them
 func _on_fire_burning_sound_area_area_entered(area):
-	if area.interactable_ancestor.lit:
-		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
-		start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
-		area.interactable_ancestor.fire.burning_player.play(start_time)
+	#if area.interactable_ancestor.lit:
+	#	var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
+	#	start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
+	#	area.interactable_ancestor.fire.burning_player.play(start_time)
 		# Only render nearby lights on the second layer for performance
 		# Second layer is for held items so they don't clip into walls
 		#area.interactable_ancestor.fire.light.set_layer_mask_value(2, true)
+	pass
 
 
 func _on_fire_burning_sound_area_area_exited(area):
-	area.interactable_ancestor.fire.burning_player.stop()
-	area.interactable_ancestor.fire.light.set_layer_mask_value(2, false)
+	#area.interactable_ancestor.fire.burning_player.stop()
+	#area.interactable_ancestor.fire.light.set_layer_mask_value(2, false)
+	pass

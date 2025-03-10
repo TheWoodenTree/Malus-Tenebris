@@ -251,16 +251,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p2g6y")
 
-[node name="door" type="Node3D"]
+[node name="door" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
 script = ExtResource("1_sfplb")
+interact_areas = [NodePath("door_body/interact_area")]
+meshes = [NodePath("door_body/door")]
 
 [node name="door_body" type="RigidBody3D" parent="."]
 collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 sleeping = true
-max_contacts_reported = 5
 contact_monitor = true
+max_contacts_reported = 5
 angular_damp_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_ib6ef")
@@ -327,7 +329,7 @@ attenuation_filter_db = -12.0
 [node name="key_anim_player" type="AnimationPlayer" parent="door_body"]
 root_node = NodePath("../key/mesh")
 libraries = {
-"": SubResource("AnimationLibrary_5tg4p")
+&"": SubResource("AnimationLibrary_5tg4p")
 }
 
 [node name="key" type="Node3D" parent="door_body"]

@@ -4,30 +4,25 @@ extends Interactable
 @export_multiline var text: String
 @export var chain_length: int = 2 : set = _set_chain_length
 
-@onready var mesh = $mesh
-@onready var interact_area = $interact_area
 @onready var static_chain_1 = $static_chain1
 @onready var static_chain_2 = $static_chain2
 
 
 func _ready():
+	super()
 	update_chains()
-	if not Engine.is_editor_hint():
-		init(Type.NOTE, interact_area, [mesh])
 
 
-func _process(_delta):
-	if not Engine.is_editor_hint():
-		if interactable and being_looked_at:
-			if not outline_on:
-				Global.ui.hint_popup(text, -1)
-				if enable_highlight_sheen:
-					enable_highlight_sheen = false
-					disable_sheen()
-			outline_on = true
-		elif outline_on:
-			Global.ui.hint_remove()
-			outline_on = false
+func _on_target():
+	if interactable:
+		Global.ui.hint_popup(text, -1)
+		if enable_highlight_sheen:
+			enable_highlight_sheen = false
+			disable_sheen()
+
+
+func _on_untarget():
+	Global.ui.hint_remove()
 
 
 func _set_chain_length(length: int):

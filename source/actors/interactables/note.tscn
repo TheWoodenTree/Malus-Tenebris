@@ -1,11 +1,71 @@
-[gd_scene load_steps=11 format=4 uid="uid://cvuemxunf1nna"]
+[gd_scene load_steps=18 format=4 uid="uid://cvuemxunf1nna"]
 
-[ext_resource type="Script" uid="uid://g30cjaos4rle" path="res://source/actors/misc/note.gd" id="1"]
+[ext_resource type="Script" uid="uid://g30cjaos4rle" path="res://source/actors/interactables/note.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_fvl0x"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_8fymt"]
 [ext_resource type="Material" uid="uid://dmm640qoa0ufe" path="res://source/assets/materials/paper/paper.tres" id="3"]
-[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_h4ok5"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="3_jfep5"]
+[ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="3_u3nc3"]
 [ext_resource type="AudioStream" uid="uid://doo8csxbtqqq3" path="res://source/assets/sounds/paper/page_turn2.ogg" id="4_uvg2r"]
 [ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="5_c7kx5"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3nc3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_8fymt")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_pa7mw"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdain"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_u3nc3")
+shader = SubResource("Shader_pa7mw")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c3nkf"]
 _surfaces = [{
@@ -21,7 +81,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_fif51"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6l7u0"]
 resource_local_to_scene = true
 resource_name = "note_Plane"
 _surfaces = [{
@@ -40,36 +100,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c3nkf")
 
-[sub_resource type="BoxShape3D" id="3"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6f5y"]
 size = Vector3(0.75, 0.25, 0.6)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bdxoe"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nhq67"]
 streams_count = 3
 stream_0/stream = ExtResource("3_jfep5")
 stream_1/stream = ExtResource("4_uvg2r")
 stream_2/stream = ExtResource("5_c7kx5")
 
-[node name="note" type="Node3D"]
+[node name="note" instance=ExtResource("1_fvl0x")]
 script = ExtResource("1")
-note_name = "Test"
+display_help = true
+note_name = "Note"
+label = ExtResource("3_u3nc3")
+interactable_type = 4
 enable_highlight_sheen = true
 shader_mode = "Highlight"
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 0, 0.00477657, 0)
-mesh = SubResource("ArrayMesh_fif51")
+[node name="mesh" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.005, 0)
+material_overlay = SubResource("ShaderMaterial_kdain")
+mesh = SubResource("ArrayMesh_6l7u0")
 
-[node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
-collision_mask = 0
-script = ExtResource("3_h4ok5")
+[node name="collision_shape" parent="interact_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+shape = SubResource("BoxShape3D_b6f5y")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0403578, 0)
-shape = SubResource("3")
-
-[node name="page_turn_player" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_bdxoe")
+[node name="page_turn_player" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = SubResource("AudioStreamRandomizer_nhq67")
 attenuation_model = 3
 max_polyphony = 5
 bus = &"General"

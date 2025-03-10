@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=4 uid="uid://l0xp3jg0klev"]
+[gd_scene load_steps=30 format=4 uid="uid://l0xp3jg0klev"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_nmm65"]
 [ext_resource type="Script" uid="uid://b5dh11ncvk3yy" path="res://source/actors/interactables/distillation_bottle.gd" id="2_2eusd"]
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="2_ytcmd"]
+[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="4_a8vca"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="4_vhmoa"]
 [ext_resource type="AudioStream" uid="uid://1k4ci4d6bkhw" path="res://source/assets/sounds/liquid/liquid_pour_short.ogg" id="5_ckrkl"]
 [ext_resource type="Texture2D" uid="uid://bwm5dytkuawsh" path="res://source/assets/materials/yellow_metal/Metal034_1K-JPG_Color.jpg" id="5_r3ffe"]
@@ -349,8 +350,9 @@ _data = {
 &"pour": SubResource("Animation_jlkag")
 }
 
-[node name="distillation_bottle" instance=ExtResource("1_nmm65")]
+[node name="distillation_bottle" node_paths=PackedStringArray("meshes") instance=ExtResource("1_nmm65")]
 script = ExtResource("2_2eusd")
+meshes = [NodePath("mesh"), NodePath("transfer_tube")]
 
 [node name="mesh" parent="." index="0"]
 layers = 4
@@ -372,6 +374,7 @@ shape = SubResource("CylinderShape3D_7m5fd")
 
 [node name="transfer_tube" type="MeshInstance3D" parent="." index="2"]
 layers = 8
+material_overlay = ExtResource("4_a8vca")
 mesh = SubResource("ArrayMesh_pb6k6")
 
 [node name="pour_particles" type="GPUParticles3D" parent="." index="3"]
@@ -399,5 +402,5 @@ draw_pass_1 = SubResource("PlaneMesh_xiwoo")
 [node name="pour_anim_player" type="AnimationPlayer" parent="." index="5"]
 root_node = NodePath("../vial")
 libraries = {
-"": SubResource("AnimationLibrary_to3x4")
+&"": SubResource("AnimationLibrary_to3x4")
 }

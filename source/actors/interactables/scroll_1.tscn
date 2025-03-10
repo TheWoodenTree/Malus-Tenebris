@@ -1,14 +1,71 @@
-[gd_scene load_steps=14 format=4 uid="uid://ctcrs3lo5h6fa"]
+[gd_scene load_steps=18 format=4 uid="uid://ctcrs3lo5h6fa"]
 
+[ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_340pc"]
 [ext_resource type="Material" uid="uid://pgdmoo3yb500" path="res://source/assets/materials/old_paper/old_paper.tres" id="1_jt28r"]
-[ext_resource type="Script" uid="uid://g30cjaos4rle" path="res://source/actors/misc/note.gd" id="1_tnm4v"]
-[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_uxljp"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_nhmrs"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="4_fc0x2"]
 [ext_resource type="Material" uid="uid://dln1xs4gfd6g1" path="res://source/assets/materials/copper/copper.tres" id="4_x6eeo"]
-[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="5_oew24"]
 [ext_resource type="AudioStream" uid="uid://doo8csxbtqqq3" path="res://source/assets/sounds/paper/page_turn2.ogg" id="5_olnei"]
 [ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="6_n05dm"]
 [ext_resource type="Texture2D" uid="uid://b6fq7waqo01nx" path="res://source/assets/misc/scroll_text.png" id="8_mgug2"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wt8i"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_nhmrs")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_ovmep"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uas4k"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7wt8i")
+shader = SubResource("Shader_ovmep")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c44fu"]
 _surfaces = [{
@@ -35,7 +92,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xr41v"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dgsum"]
 resource_name = "scroll_1_Cylinder"
 _surfaces = [{
 "aabb": AABB(-0.228622, 0.000772914, -0.436109, 0.457255, 0.101933, 0.872218),
@@ -66,41 +123,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c44fu")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bl55e"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_db4qs"]
 size = Vector3(1, 0.5, 1.25)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_najpt"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ig40w"]
 streams_count = 3
 stream_0/stream = ExtResource("4_fc0x2")
 stream_1/stream = ExtResource("5_olnei")
 stream_2/stream = ExtResource("6_n05dm")
 
-[node name="scroll_3" type="Node3D"]
-script = ExtResource("1_tnm4v")
+[node name="scroll_1" instance=ExtResource("1_340pc")]
+interactable_type = 4
 enable_highlight_sheen = true
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-layers = 8
-material_overlay = ExtResource("2_uxljp")
+[node name="mesh" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_uas4k")
 cast_shadow = 0
-mesh = SubResource("ArrayMesh_xr41v")
+mesh = SubResource("ArrayMesh_dgsum")
 
-[node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
-collision_mask = 0
-script = ExtResource("5_oew24")
+[node name="collision_shape" parent="interact_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054, 0)
+shape = SubResource("BoxShape3D_db4qs")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0535194, 0)
-shape = SubResource("BoxShape3D_bl55e")
-
-[node name="page_turn_player" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_najpt")
+[node name="page_turn_player" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = SubResource("AudioStreamRandomizer_ig40w")
 attenuation_model = 3
 bus = &"General"
 attenuation_filter_cutoff_hz = 20500.0
 
-[node name="Decal" type="Decal" parent="."]
+[node name="Decal" type="Decal" parent="." index="4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 size = Vector3(0.603, 0.5, 0.5)
 texture_albedo = ExtResource("8_mgug2")

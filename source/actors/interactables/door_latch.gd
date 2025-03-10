@@ -8,28 +8,16 @@ var locked: bool = false
 # Set by parent doro script
 var parent_door: Door
 
-@onready var interact_area = $interact_area
 @onready var anim_player = $anim_player
-@onready var mesh = $mesh
+@onready var mesh = meshes[0]
 
 
 func _ready():
 	super()
-	init(Type.MISC, interact_area, [mesh])
 	if locked:
 		mesh.position.x = LOCKED_POS_X
 	else:
 		mesh.position.x = UNLOCKED_POS_X
-
-
-func _process(_delta):
-	if not Engine.is_editor_hint():
-		if being_looked_at:
-			mesh.material_overlay.set_shader_parameter("outlineOn", true)
-			outline_on = true
-		elif outline_on:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
-			outline_on = false
 
 
 func interact():

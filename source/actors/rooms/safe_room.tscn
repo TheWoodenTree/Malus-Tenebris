@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="7_s44qe"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="9_r1pjc"]
 [ext_resource type="PackedScene" uid="uid://fts1qwh5jkyj" path="res://source/actors/decor/misc/plate_w_candle.tscn" id="12_i4x8k"]
-[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/misc/note.tscn" id="14_bjogf"]
+[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/interactables/note.tscn" id="14_bjogf"]
 [ext_resource type="PackedScene" uid="uid://2vla0smwg114" path="res://source/assets/ui/notes/alchemists_note.tscn" id="15_3js4e"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="15_awa08"]
 [ext_resource type="PackedScene" uid="uid://cid4xuq72t4q7" path="res://source/actors/decor/groups/books_3.tscn" id="16_0k3ei"]

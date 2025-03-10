@@ -1,9 +1,9 @@
 extends RigidBody3D
 #
-#var being_looked_at: bool = false
+#var being_targeted: bool = false
 #var door_shaking: bool = false
 #var attempt_open_angle: float
-#var outline_on: bool = false
+#var being_targeted: bool = false
 #var player_on_openable_side: bool = true
 #var player_dragging: bool = false
 #var player_just_started_dragging: bool = false
@@ -68,15 +68,15 @@ extends RigidBody3D
 #
 #
 #func _process(_delta: float) -> void:
-	#if being_looked_at and interactable or player_dragging:
+	#if being_targeted and interactable or player_dragging:
 		#highlight_material.set_shader_parameter("outlineOn", true)
-		#outline_on = true
+		#being_targeted = true
 		#if tutorial_popup and not tutorial_popup_shown:
 			#Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
 			#tutorial_popup_shown = true
-	#elif outline_on:
+	#elif being_targeted:
 		#highlight_material.set_shader_parameter("outlineOn", false)
-		#outline_on = false
+		#being_targeted = false
 #
 #
 #func _physics_process(_delta):

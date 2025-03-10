@@ -1,27 +1,15 @@
 extends Interactable
 
-@onready var interact_area = $interact_area
 @onready var pour_particles = $pour_particles
 @onready var pour_anim_player = $pour_anim_player
 @onready var vial = $vial
-@onready var mesh = $mesh
 
 @warning_ignore("unused_signal")
 signal vial_used
 
 
-func _ready():
+func _ready() -> void:
 	super()
-	init(Type.MISC, interact_area, [mesh])
-
-
-func _process(_delta):
-	if interactable and being_looked_at:
-		mesh.material_overlay.set_shader_parameter("outlineOn", true)
-		outline_on = true
-	elif outline_on:
-		mesh.material_overlay.set_shader_parameter("outlineOn", false)
-		outline_on = false
 
 
 func interact():

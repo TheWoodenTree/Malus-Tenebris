@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjwfj2c1e5kxd" path="res://source/actors/rooms/misc/tiny_cell.tscn" id="8_bepy2"]
 [ext_resource type="PackedScene" uid="uid://bmdwoy18v4ov5" path="res://source/actors/decor/debris/ash_pile.tscn" id="9_j3jk0"]
 [ext_resource type="PackedScene" uid="uid://fts1qwh5jkyj" path="res://source/actors/decor/misc/plate_w_candle.tscn" id="10_vmi8b"]
-[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/misc/note.tscn" id="11_8j4it"]
+[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/interactables/note.tscn" id="11_8j4it"]
 [ext_resource type="PackedScene" uid="uid://balppusisc6xg" path="res://source/assets/ui/notes/prisoner_note.tscn" id="12_e0ets"]
 [ext_resource type="PackedScene" uid="uid://dxilow4owel0j" path="res://source/actors/building pieces/archways/crawlway.tscn" id="13_70f53"]
 [ext_resource type="PackedScene" uid="uid://lbq63t26e644" path="res://source/actors/building pieces/archways/partial_frameless_archway.tscn" id="14_46vfg"]

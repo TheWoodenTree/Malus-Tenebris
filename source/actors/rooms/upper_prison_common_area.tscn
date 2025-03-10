@@ -513,7 +513,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 
 text = "Main Cell Hall"
 chain_length = 0
 
-[node name="sign4" parent="." index="132" instance=ExtResource("51_1gadi")]
+[node name="sign4_t" parent="." index="132" instance=ExtResource("51_1gadi")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, -1, 9)
 text = "Experimentation"
