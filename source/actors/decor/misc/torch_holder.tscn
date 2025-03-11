@@ -1,11 +1,69 @@
-[gd_scene load_steps=10 format=4 uid="uid://cx0vwjgdcwwar"]
+[gd_scene load_steps=15 format=4 uid="uid://cx0vwjgdcwwar"]
 
 [ext_resource type="PackedScene" uid="uid://bybym4b32w5oy" path="res://source/actors/misc/fire.tscn" id="1"]
-[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_6mepo"]
+[ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_eh2yt"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="3"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_m3slb"]
 [ext_resource type="Script" uid="uid://bgxy30m66div2" path="res://source/actors/decor/misc/fire_source.gd" id="4"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="4_r2adj"]
-[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="6_v67go"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfn06"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_m3slb")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_m6mli"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6hau"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_nfn06")
+shader = SubResource("Shader_m6mli")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8347d"]
 _surfaces = [{
@@ -32,7 +90,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7jgj4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pntri"]
 resource_name = "torch_Cube"
 _surfaces = [{
 "aabb": AABB(-0.028971, -0.303196, 0.0892036, 0.0977595, 0.918843, 0.553445),
@@ -63,27 +121,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8347d")
 
-[sub_resource type="CapsuleShape3D" id="2"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ayvr3"]
 radius = 0.4
 
-[node name="torch_holder" type="Node3D" groups=["fire_sources"]]
+[node name="torch_holder" instance=ExtResource("1_eh2yt")]
 script = ExtResource("4")
+default_range = 12.0
+default_energy = 0.75
+lit = true
+shadow_mode = 0
+audio_fade_in_on_ready = false
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, -0.0220984, 0.156182, -0.216999)
 layers = 8
-material_overlay = ExtResource("2_6mepo")
+material_overlay = SubResource("ShaderMaterial_r6hau")
 cast_shadow = 0
-mesh = SubResource("ArrayMesh_7jgj4")
+mesh = SubResource("ArrayMesh_pntri")
 
-[node name="fire" parent="." instance=ExtResource("1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989, -0.623769)
-
-[node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
-collision_mask = 18432
-script = ExtResource("6_v67go")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
+[node name="collision_shape" parent="interact_area" index="0"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, -0.5, 0, 0.5, -0.866025, 0, 0.519339, -0.291774)
-shape = SubResource("2")
+shape = SubResource("CapsuleShape3D_ayvr3")
+
+[node name="fire" parent="." index="3" instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989, -0.623769)

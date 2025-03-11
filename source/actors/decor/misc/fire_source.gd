@@ -13,15 +13,13 @@ var burning_player: AudioStreamPlayer3D
 @onready var fire = $fire
 @onready var light = $fire/light
 @onready var particles = $fire/fire_particles
-@onready var interact_area = $interact_area
 @onready var detection_area = Area3D.new()
+@onready var interact_area = interact_areas[0]
 
 
 func _ready() -> void:
 	super()
 	if not Engine.is_editor_hint():
-		if has_node("interact_area"):
-			interact_area = $interact_area
 		add_to_group("fire_sources")
 		light.default_range = default_range
 		light.omni_range = default_range
@@ -43,8 +41,10 @@ func _ready() -> void:
 
 func set_lit(is_lit):
 	lit = is_lit
-	$fire/fire_particles.emitting = lit
-	$fire/light.visible = lit
+	if particles:
+		particles.emitting = lit
+	if light:
+		light.visible = lit
 
 
 func _on_fire_burning_sound_area_entered():
@@ -71,7 +71,8 @@ func interact():
 
 func set_shadow_mode(new_shadow_mode: OmniLight3D.ShadowMode):
 	shadow_mode = new_shadow_mode
-	$fire/light.omni_shadow_mode = new_shadow_mode
+	if light:
+		light.omni_shadow_mode = new_shadow_mode
 
 
 func update_interactable():

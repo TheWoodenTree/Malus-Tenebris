@@ -1,11 +1,69 @@
-[gd_scene load_steps=10 format=4 uid="uid://ciqhcdlogy3np"]
+[gd_scene load_steps=15 format=4 uid="uid://ciqhcdlogy3np"]
 
+[ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_t3vo7"]
 [ext_resource type="Material" uid="uid://ctkc38wtdaow" path="res://source/assets/materials/rope/rope.tres" id="2"]
-[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_o5kdx"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="2_rq1co"]
 [ext_resource type="PackedScene" uid="uid://bybym4b32w5oy" path="res://source/actors/misc/fire.tscn" id="3"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_m7j4c"]
 [ext_resource type="Script" uid="uid://bgxy30m66div2" path="res://source/actors/decor/misc/fire_source.gd" id="4"]
-[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="6_5o5cu"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mq2u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_m7j4c")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_mxpac"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_depro"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0mq2u")
+shader = SubResource("Shader_mxpac")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xw2ll"]
 _surfaces = [{
@@ -33,7 +91,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dyem4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_il53b"]
 resource_name = "hanging_lamp_Cylinder002"
 _surfaces = [{
 "aabb": AABB(-0.225052, -1.10515, -0.236796, 0.450103, 1.02952, 0.473266),
@@ -65,27 +123,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xw2ll")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1o0hv"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ombk"]
 radius = 1.0
 
-[node name="hanging_lamp" type="Node3D"]
+[node name="hanging_lamp" instance=ExtResource("1_t3vo7")]
 script = ExtResource("4")
+default_range = 12.0
+default_energy = 0.75
+lit = true
+shadow_mode = 0
+audio_fade_in_on_ready = false
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
-layers = 8
-material_overlay = ExtResource("2_o5kdx")
+material_overlay = SubResource("ShaderMaterial_depro")
 cast_shadow = 0
-mesh = SubResource("ArrayMesh_dyem4")
+mesh = SubResource("ArrayMesh_il53b")
 
-[node name="fire" parent="." instance=ExtResource("3")]
+[node name="collision_shape" parent="interact_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18, 0)
+shape = SubResource("SphereShape3D_7ombk")
+
+[node name="fire" parent="." index="3" instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83312, 0)
-
-[node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
-collision_mask = 18432
-script = ExtResource("6_5o5cu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.17951, 0)
-shape = SubResource("SphereShape3D_1o0hv")

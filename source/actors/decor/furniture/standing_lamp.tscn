@@ -1,10 +1,68 @@
-[gd_scene load_steps=10 format=4 uid="uid://dd46328ws5rmd"]
+[gd_scene load_steps=15 format=4 uid="uid://dd46328ws5rmd"]
 
 [ext_resource type="Script" uid="uid://bgxy30m66div2" path="res://source/actors/decor/misc/fire_source.gd" id="1_7hewh"]
+[ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_noob1"]
 [ext_resource type="PackedScene" uid="uid://bybym4b32w5oy" path="res://source/actors/misc/fire.tscn" id="1_rvqon"]
 [ext_resource type="Material" uid="uid://dln1xs4gfd6g1" path="res://source/assets/materials/copper/copper.tres" id="2_a2vst"]
-[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_lgjpw"]
-[ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="5_yh2x5"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_fkv2p"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ldf0"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_fkv2p")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_fe3l1"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfrme"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5ldf0")
+shader = SubResource("Shader_fe3l1")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yt1og"]
 _surfaces = [{
@@ -20,7 +78,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_86pqe"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rcnnh"]
 resource_name = "standing_lamp_Cylinder"
 _surfaces = [{
 "aabb": AABB(-0.266573, 0, -0.426474, 0.739778, 3.1, 0.852948),
@@ -38,34 +96,34 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yt1og")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kkqhl"]
-points = PackedVector3Array(-0.207773, 0, 0.426474, -0.265487, 0, 0.393078, 0.473205, 0, 0.0333131, 0.133223, 3.0733, 0.230854, -1.8239e-05, 3.0733, 0.269176, -0.133332, 3.0733, 0.230854, -0.265487, 0, -0.393161, -0.23319, 3.0733, 0.134588, -0.266573, 3.0733, -8.34465e-05, 0.473205, 0, -0.0333965, 0.266536, 3.0733, 2.98023e-08, 0.233081, 3.0733, 0.134588, 0.224464, 3.1, 0.129579, 0.128299, 3.1, 0.222254, -1.8239e-05, 3.1, 0.259157, -0.128335, 3.1, 0.222254, -0.224501, 3.1, 0.129579, -0.207773, 0, -0.426474, -0.23319, 3.0733, -0.134672, -0.133332, 3.0733, -0.230937, -0.256725, 3.1, -8.34465e-05, 0.133223, 3.0733, -0.230937, 0.233081, 3.0733, -0.134672, 0.224464, 3.1, -0.129662, 0.256616, 3.1, 2.98023e-08, -1.8239e-05, 3.0733, -0.26926, -0.224501, 3.1, -0.129662, -0.128335, 3.1, -0.222338, -1.8239e-05, 3.1, -0.259241, 0.128299, 3.1, -0.222338)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_rvn2b"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_25tja"]
 height = 3.80425
 
-[node name="standing_lamp" type="Node3D"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f7nnk"]
+points = PackedVector3Array(-0.207773, 0, 0.426474, -0.265487, 0, 0.393078, 0.473205, 0, 0.0333131, 0.133223, 3.0733, 0.230854, -1.8239e-05, 3.0733, 0.269176, -0.133332, 3.0733, 0.230854, -0.265487, 0, -0.393161, -0.23319, 3.0733, 0.134588, -0.266573, 3.0733, -8.34465e-05, 0.473205, 0, -0.0333965, 0.266536, 3.0733, 2.98023e-08, 0.233081, 3.0733, 0.134588, 0.224464, 3.1, 0.129579, 0.128299, 3.1, 0.222254, -1.8239e-05, 3.1, 0.259157, -0.128335, 3.1, 0.222254, -0.224501, 3.1, 0.129579, -0.207773, 0, -0.426474, -0.23319, 3.0733, -0.134672, -0.133332, 3.0733, -0.230937, -0.256725, 3.1, -8.34465e-05, 0.133223, 3.0733, -0.230937, 0.233081, 3.0733, -0.134672, 0.224464, 3.1, -0.129662, 0.256616, 3.1, 2.98023e-08, -1.8239e-05, 3.0733, -0.26926, -0.224501, 3.1, -0.129662, -0.128335, 3.1, -0.222338, -1.8239e-05, 3.1, -0.259241, 0.128299, 3.1, -0.222338)
+
+[node name="standing_lamp" instance=ExtResource("1_noob1")]
 script = ExtResource("1_7hewh")
+default_range = 12.0
+default_energy = 0.75
+lit = true
+shadow_mode = 0
+audio_fade_in_on_ready = false
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-material_overlay = ExtResource("2_lgjpw")
+[node name="mesh" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_kfrme")
 cast_shadow = 0
-mesh = SubResource("ArrayMesh_86pqe")
+mesh = SubResource("ArrayMesh_rcnnh")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="collision_shape" parent="interact_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86, 0)
+shape = SubResource("CylinderShape3D_25tja")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 visible = false
-shape = SubResource("ConvexPolygonShape3D_kkqhl")
+shape = SubResource("ConvexPolygonShape3D_f7nnk")
 
-[node name="fire" parent="." instance=ExtResource("1_rvqon")]
+[node name="fire" parent="." index="4" instance=ExtResource("1_rvqon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0514, 0)
-
-[node name="interact_area" type="Area3D" parent="."]
-collision_layer = 32768
-collision_mask = 18432
-script = ExtResource("5_yh2x5")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85998, 0)
-shape = SubResource("CylinderShape3D_rvn2b")

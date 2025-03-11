@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="9_kkksw"]
 [ext_resource type="PackedScene" uid="uid://jhbugt164s8d" path="res://source/actors/building pieces/basic/triangle_wall.tscn" id="17_uvfpw"]
 [ext_resource type="PackedScene" uid="uid://b6whktuedgmql" path="res://source/actors/building pieces/fence/diag_fence_section.tscn" id="18_wkmx8"]
+[ext_resource type="PackedScene" uid="uid://cb1s47muwls2s" path="res://source/assets/ui/notes/memo_note.tscn" id="19_0r65x"]
 [ext_resource type="PackedScene" uid="uid://b77hkubu8n6ij" path="res://source/actors/building pieces/fence/fence_stair_base_short.tscn" id="19_uiw60"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="23_qffuj"]
 [ext_resource type="PackedScene" uid="uid://dsw0y5f4o4ycs" path="res://source/actors/decor/kitchen/bowl_1.tscn" id="24_pivnp"]
@@ -30,7 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="34_35gkc"]
 [ext_resource type="PackedScene" uid="uid://ctcrs3lo5h6fa" path="res://source/actors/interactables/scroll_1.tscn" id="34_ytya3"]
 [ext_resource type="PackedScene" uid="uid://clhxehvbj2k6m" path="res://source/actors/decor/debris/rubble_2.tscn" id="35_why55"]
-[ext_resource type="PackedScene" uid="uid://cb1s47muwls2s" path="res://source/assets/ui/notes/memo_note.tscn" id="36_dfrjr"]
 [ext_resource type="PackedScene" uid="uid://b7xuqil3lfc14" path="res://source/actors/decor/furniture/large_half_table.tscn" id="36_jvy7g"]
 [ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="37_vqjop"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="38_moras"]
@@ -248,13 +248,11 @@ size = Vector3(5, 1, 11.5)
 
 [node name="hanging_lamp2" parent="." index="56" instance=ExtResource("9_kkksw")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -20.75, -3.5, 1.75)
-default_range = 15.0
 default_energy = 1.0
 shadow_mode = 1
 
 [node name="hanging_lamp3" parent="." index="57" instance=ExtResource("9_kkksw")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -9.25, -3.5, 4.5)
-default_range = 15.0
 default_energy = 1.0
 lit = false
 
@@ -347,7 +345,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, -
 
 [node name="hanging_lamp4" parent="." index="81" instance=ExtResource("9_kkksw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.75, -4, -15.25)
-default_range = 15.0
 shadow_mode = 1
 
 [node name="half_wood_support2" parent="." index="82" instance=ExtResource("28_13e46")]
@@ -362,7 +359,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -37, -
 [node name="scroll_4" parent="." index="85" instance=ExtResource("34_ytya3")]
 transform = Transform3D(-0.616706, 0, -0.787193, 0, 1, 0, 0.787193, 0, -0.616706, -27.1709, -1.5, -13.7199)
 note_name = "Guard Relocation Memo"
-label = ExtResource("36_dfrjr")
+label = ExtResource("19_0r65x")
 
 [node name="stone_wall4" parent="." index="86" instance=ExtResource("4_chcy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 2.5, 9.5)
@@ -500,24 +497,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, -3, -10)
 
 [node name="sign" parent="." index="129" instance=ExtResource("51_1gadi")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17, -1.25, -14)
-text = "Lower Prison"
 chain_length = 0
+disable_highlight_shader = false
 
 [node name="sign2" parent="." index="130" instance=ExtResource("51_1gadi")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -20, -1.25, 8)
-text = "Holding Cells"
 chain_length = 0
+disable_highlight_shader = false
 
 [node name="sign3" parent="." index="131" instance=ExtResource("51_1gadi")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 2, -2)
-text = "Main Cell Hall"
 chain_length = 0
+disable_highlight_shader = false
 
 [node name="sign4_t" parent="." index="132" instance=ExtResource("51_1gadi")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, -1, 9)
-text = "Experimentation"
 chain_length = 0
+disable_highlight_shader = false
 
 [node name="reg_doorway" parent="." index="133" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.75, -3, -15.5)
@@ -632,7 +629,6 @@ size = Vector3(1, 8, 0.5)
 
 [node name="hanging_lamp" parent="." index="167" instance=ExtResource("9_kkksw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.25, -3.5, -10.75)
-default_range = 15.0
 default_energy = 1.0
 lit = false
 

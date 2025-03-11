@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://ctcrs3lo5h6fa"]
+[gd_scene load_steps=19 format=4 uid="uid://ctcrs3lo5h6fa"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_340pc"]
 [ext_resource type="Material" uid="uid://pgdmoo3yb500" path="res://source/assets/materials/old_paper/old_paper.tres" id="1_jt28r"]
+[ext_resource type="Script" uid="uid://g30cjaos4rle" path="res://source/actors/interactables/note.gd" id="2_7wt8i"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_nhmrs"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="4_fc0x2"]
 [ext_resource type="Material" uid="uid://dln1xs4gfd6g1" path="res://source/assets/materials/copper/copper.tres" id="4_x6eeo"]
@@ -133,6 +134,10 @@ stream_1/stream = ExtResource("5_olnei")
 stream_2/stream = ExtResource("6_n05dm")
 
 [node name="scroll_1" instance=ExtResource("1_340pc")]
+script = ExtResource("2_7wt8i")
+display_help = false
+note_name = "Note"
+label = null
 interactable_type = 4
 enable_highlight_sheen = true
 

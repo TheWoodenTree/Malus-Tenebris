@@ -8,7 +8,6 @@ signal picked_up
 @export_range(0, 99) var count: int = 1
 
 @onready var pickup_player = $pickup_player
-@onready var interact_area = $interact_area
 
 
 func _ready():
@@ -40,7 +39,8 @@ func interact():
 		Global.ui.hint_popup(pickup_string, 3.0)
 		
 		highlight_light.visible = false
-		interact_area.set_collision_layer_value(16, false)
+		for area: InteractArea in interact_areas:
+			area.set_collision_layer_value(16, false)
 		for mesh: MeshInstance3D in meshes:
 			mesh.visible = false
 		

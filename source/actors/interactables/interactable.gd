@@ -7,6 +7,7 @@ enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 @export var interact_areas: Array[InteractArea]
 @export var meshes: Array[MeshInstance3D]
 @export var interactable: bool = true : set = set_interactable
+@export var disable_highlight_shader: bool = false
 @export var enable_highlight_light: bool = false : set = _set_enable_highlight_light
 @export var enable_highlight_sheen: bool = false : set = _set_enable_highlight_sheen
 @export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
@@ -23,21 +24,23 @@ func _ready():
 	if highlight_light:
 		highlight_light.visible = enable_highlight_light
 	
-	for area: InteractArea in interact_areas:
-		area.set_collision_layer_value(16, interactable)
-		area.interact_ray_collided.connect(_target)
-		area.interact_ray_stopped_colliding.connect(_untarget)
-		area.allow_sheen_area_entered.connect(enable_sheen)
-		area.allow_sheen_area_exited.connect(disable_sheen)
+	if not Engine.is_editor_hint():
+		for area: InteractArea in interact_areas:
+			area.set_collision_layer_value(16, interactable)
+			area.interact_ray_collided.connect(_target)
+			area.interact_ray_stopped_colliding.connect(_untarget)
+			area.allow_sheen_area_entered.connect(enable_sheen)
+			area.allow_sheen_area_exited.connect(disable_sheen)
 
 
 func _target():
 	being_targeted = true
-	for mesh: MeshInstance3D in meshes:
-		if shader_mode == "Outline":
-			mesh.material_overlay.set_shader_parameter("outlineOn", true)
-		else:
-			mesh.material_override = highlight_material
+	if not disable_highlight_shader:
+		for mesh: MeshInstance3D in meshes:
+			if shader_mode == "Outline":
+				mesh.material_overlay.set_shader_parameter("outlineOn", true)
+			else:
+				mesh.material_override = highlight_material
 	Global.player.set_targeted_interactable(self)
 	_on_target()
 

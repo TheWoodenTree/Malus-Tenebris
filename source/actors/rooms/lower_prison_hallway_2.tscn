@@ -259,15 +259,18 @@ length = 6.0
 [node name="sign" parent="." index="30" instance=ExtResource("15_wcx2h")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.5, 4, 0)
 text = "Kitchen"
+disable_highlight_shader = false
 
 [node name="sign2" parent="." index="31" instance=ExtResource("15_wcx2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 4, 0)
 text = "Atonement Chamber"
+disable_highlight_shader = false
 
 [node name="sign3" parent="." index="32" instance=ExtResource("15_wcx2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 2.5, -15.5)
 text = "Sump Tunnels"
 chain_length = 0
+disable_highlight_shader = false
 enable_highlight_sheen = true
 
 [node name="reg_archway2" parent="." index="33" instance=ExtResource("12_wcgft")]

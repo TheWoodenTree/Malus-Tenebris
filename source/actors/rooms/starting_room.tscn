@@ -93,6 +93,7 @@ shape = SubResource("BoxShape3D_f1tr0")
 [node name="note" parent="." index="24" instance=ExtResource("25_j1bmi")]
 unique_name_in_owner = true
 transform = Transform3D(0.689759, 0, 0.724039, 0, 1, 0, -0.724039, 0, 0.689759, -0.799832, 2, -18.1627)
+note_name = "My Last Days"
 
 [node name="reg_archway" parent="." index="25" instance=ExtResource("29_8j33o")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, -12)

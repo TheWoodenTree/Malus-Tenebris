@@ -130,6 +130,7 @@ script = ExtResource("2_l1qgr")
 text = ""
 chain_length = 2
 interactable_type = 4
+disable_highlight_shader = true
 
 [node name="mesh" parent="." index="0"]
 layers = 4
