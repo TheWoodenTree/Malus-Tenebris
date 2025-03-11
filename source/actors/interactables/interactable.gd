@@ -99,5 +99,5 @@ func _set_enable_highlight_light(enable: bool):
 		highlight_light.visible = enable_highlight_light
 
 
-func _set_enable_highlight_sheen(enable_: bool):
-	enable_highlight_sheen = enable_
+func _set_enable_highlight_sheen(enable: bool):
+	enable_highlight_sheen = enable
