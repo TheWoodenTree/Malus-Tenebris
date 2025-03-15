@@ -497,24 +497,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, -3, -10)
 
 [node name="sign" parent="." index="129" instance=ExtResource("51_1gadi")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17, -1.25, -14)
+text = "Lower Prison"
 chain_length = 0
-disable_highlight_shader = false
 
 [node name="sign2" parent="." index="130" instance=ExtResource("51_1gadi")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -20, -1.25, 8)
+text = "Holding Cells"
 chain_length = 0
-disable_highlight_shader = false
 
 [node name="sign3" parent="." index="131" instance=ExtResource("51_1gadi")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 2, -2)
 chain_length = 0
-disable_highlight_shader = false
 
 [node name="sign4_t" parent="." index="132" instance=ExtResource("51_1gadi")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5, -1, 9)
+text = "Experimentation"
 chain_length = 0
-disable_highlight_shader = false
 
 [node name="reg_doorway" parent="." index="133" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.75, -3, -15.5)
