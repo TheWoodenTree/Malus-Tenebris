@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_goou0"]
 resource_name = "Amplify"
-volume_db = -26.7
+volume_db = -22.0
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_5g3v8"]
 resource_name = "LowPassFilter"
