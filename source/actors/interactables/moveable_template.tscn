@@ -48,6 +48,7 @@ shader_parameter/transparent = false
 [node name="moveable_template" instance=ExtResource("1_p14rr")]
 script = ExtResource("2_tqjtj")
 move_to_offset = Vector3(0, 0, 0)
+interactable_type = 5
 
 [node name="mesh" parent="." index="0"]
 layers = 4

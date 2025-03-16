@@ -7,13 +7,14 @@ var box_move_icon = preload("res://source/assets/ui/interact_icons/box_move.png"
 var insert_key_icon = preload("res://source/assets/ui/interact_icons/interact_insert_key.png")
 var eye_icon = preload("res://source/assets/ui/interact_icons/interact_eye.png")
 var grabbing_hand_icon = preload("res://source/assets/ui/interact_icons/interact_grabbing_hand.png")
+var pushing_hand_icon = preload("res://source/assets/ui/interact_icons/interact_pushing_hand.png")
 
 var icons_dict: Dictionary = {Interactable.Type.DOOR: grabbing_hand_icon,
 							  Interactable.Type.DRAGGABLE: rotate_arrow_hand_icon,
 							  Interactable.Type.LOCKED_DOOR: insert_key_icon,
 							  Interactable.Type.PICKUP: grabbing_hand_icon,
 							  Interactable.Type.NOTE: eye_icon,
-							  Interactable.Type.MOVEABLE: grabbing_hand_icon,
+							  Interactable.Type.MOVEABLE: pushing_hand_icon,
 							  Interactable.Type.FIRE: grabbing_hand_icon,
 							  Interactable.Type.MISC: grabbing_hand_icon}
 
