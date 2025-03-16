@@ -16,6 +16,14 @@ func _ready() -> void:
 	area_exited.connect(_on_area_exited)
 
 
+func on_interact_ray_collided():
+	interact_ray_collided.emit()
+
+
+func on_interact_ray_stopped_colliding():
+	interact_ray_stopped_colliding.emit()
+
+
 func _on_area_entered(area: Area3D):
 	if area.get_collision_layer_value(12): # enable_sheen_area
 		allow_sheen_area_entered.emit()

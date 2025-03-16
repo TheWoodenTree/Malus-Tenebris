@@ -12,11 +12,9 @@ func _process(_delta: float) -> void:
 		add_exception(collider)
 
 	if collider != collider_last_frame:
-		if collider_last_frame is InteractArea: # Untarget last targeted object
-			collider_last_frame.interact_ray_stopped_colliding.emit()
-			#Global.ui.interact_icon_off()
-		if collider is InteractArea: # Target new object
-			collider.interact_ray_collided.emit()
-			#Global.ui.interact_icon_on()
+		if collider_last_frame is InteractArea: # Untarget last targeted interactable
+			collider_last_frame.on_interact_ray_stopped_colliding()
+		if collider is InteractArea: # Target new interactable
+			collider.on_interact_ray_collided()
 		
 	collider_last_frame = collider
