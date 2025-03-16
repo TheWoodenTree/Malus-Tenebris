@@ -20,4 +20,5 @@ type = 1
 mesh = SubResource("BoxMesh_wjwk3")
 
 [node name="collision_box" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("2")

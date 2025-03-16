@@ -18,4 +18,5 @@ script = ExtResource("1_hfnor")
 mesh = SubResource("1")
 
 [node name="collision_box" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("2")

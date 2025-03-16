@@ -12,7 +12,7 @@ var angular_velocity_last_frame: Vector3 = Vector3.ZERO
 var last_cam_rot_offset: Vector2 = Vector2.ZERO
 
 var rotation_axis := Vector3.RIGHT
-
+ 
 var pitch_scale_min: float = 1.2
 var pitch_scale_max: float = 1.5
 

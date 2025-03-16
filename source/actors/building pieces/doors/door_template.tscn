@@ -229,6 +229,7 @@ shadow_mesh = SubResource("ArrayMesh_p2g6y")
 
 [node name="door_template" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
 script = ExtResource("1_03ck2")
+interactable_type = 1
 interact_areas = [NodePath("door_body/interact_area")]
 meshes = [NodePath("door_body/door")]
 

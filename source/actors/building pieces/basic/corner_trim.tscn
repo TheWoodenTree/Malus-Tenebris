@@ -54,12 +54,15 @@ collision_mask = 2
 
 [node name="collision_shape1" type="CollisionShape3D" parent="node/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, -0.5)
+visible = false
 shape = SubResource("BoxShape3D_eea4j")
 
 [node name="collision_shape2" type="CollisionShape3D" parent="node/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.175, 0.175)
+visible = false
 shape = SubResource("BoxShape3D_ffayx")
 
 [node name="collision_shape3" type="CollisionShape3D" parent="node/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, 0.175)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_f7iof")

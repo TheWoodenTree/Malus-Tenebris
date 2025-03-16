@@ -185,7 +185,7 @@ data = PackedVector3Array(0, 0.7175, 0.4, -0.92, 0.68, 0.4, 0, 0.68, 0.4, 0, 0.7
 [node name="chest" instance=ExtResource("1_etywi")]
 script = ExtResource("2_ml8md")
 open_angle = 0
-interactable_type = 0
+interactable_type = 1
 enable_highlight_light = true
 
 [node name="draggable_body" parent="." index="0"]
