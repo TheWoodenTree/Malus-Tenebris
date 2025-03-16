@@ -13,8 +13,8 @@ mean_sound_interval = 30.0
 
 [node name="distant_impacts" parent="." instance=ExtResource("1_m88es")]
 stream = ExtResource("3_icr7q")
-mean_sound_interval = 120.0
-sound_interval_variance = 20.0
+mean_sound_interval = 480.0
+sound_interval_variance = 120.0
 
 [node name="mice" parent="." instance=ExtResource("1_m88es")]
 stream = ExtResource("4_xxnts")

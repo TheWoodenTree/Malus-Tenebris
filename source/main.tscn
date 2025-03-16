@@ -96,7 +96,6 @@ libraries = {
 
 [node name="drone_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qtdgl")
-volume_db = -3.0
 bus = &"Global"
 
 [node name="heartbeat_player" type="AudioStreamPlayer" parent="."]
