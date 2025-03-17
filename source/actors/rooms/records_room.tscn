@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://btiqf7ymx77it"]
+[gd_scene load_steps=54 format=3 uid="uid://btiqf7ymx77it"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_m44oj"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_118qf"]
@@ -21,7 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="23_ah2ej"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="24_jkcxi"]
 [ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="25_oukcq"]
+[ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="26_6vwom"]
 [ext_resource type="PackedScene" uid="uid://bldplijh1bq7g" path="res://source/actors/decor/groups/books_2.tscn" id="26_jhf6l"]
+[ext_resource type="PackedScene" uid="uid://b7xcdnbrbgydc" path="res://source/actors/building pieces/doors/wood_door_no_window.tscn" id="27_8i1jx"]
 [ext_resource type="PackedScene" uid="uid://bx4c82xi8bksb" path="res://source/actors/decor/groups/books_1.tscn" id="28_vjoi7"]
 [ext_resource type="PackedScene" uid="uid://ijd8uaep4lbk" path="res://source/actors/decor/groups/books_5.tscn" id="30_bempb"]
 [ext_resource type="PackedScene" uid="uid://bxeqhg7y7wy06" path="res://source/actors/decor/misc/pots/tall_pot.tscn" id="30_bep35"]
@@ -225,12 +227,18 @@ transform = Transform3D(0.999997, 0, -0.00249574, 0, 1, 0, 0.00249574, 0, 0.9999
 
 [node name="reg_doorway" parent="." index="28" instance=ExtResource("38_wylgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0.5, 17.75)
-door_style = "Regular With Window"
 door_key_name = "Cell Hall"
+
+[node name="wood_door" parent="reg_doorway" index="3" instance=ExtResource("26_6vwom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+key_name = "Cell Hall"
 
 [node name="reg_doorway2" parent="." index="29" instance=ExtResource("38_wylgf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25, 0.5, -9.25)
 door_tutorial_popup = true
+
+[node name="wood_door_no_window" parent="reg_doorway2" index="3" instance=ExtResource("27_8i1jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="small_pillar" parent="." index="30" instance=ExtResource("37_vx8n6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0.5, 16.75)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjlr1mq4h3we5"]
+[gd_scene load_steps=25 format=3 uid="uid://bjlr1mq4h3we5"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ymlyk"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_g4sh5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="12_q7jgv"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="12_wcgft"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="13_3c8ha"]
+[ext_resource type="PackedScene" uid="uid://b7xcdnbrbgydc" path="res://source/actors/building pieces/doors/wood_door_no_window.tscn" id="13_4taaj"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="13_5w06m"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="14_c20ms"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="15_v5wai"]
@@ -303,6 +304,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0
 
 [node name="reg_doorway" parent="." index="42" instance=ExtResource("13_5w06m")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0.5, 0)
+
+[node name="wood_door_no_window" parent="reg_doorway" index="3" instance=ExtResource("13_4taaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="stone_wall4" parent="." index="43" instance=ExtResource("2_g4sh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3, -22.5)

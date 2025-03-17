@@ -5,7 +5,6 @@ extends Interactable
 @export var one_way: bool = false
 @export var starting_rotation: int = 0 : set = _set_starting_rotation
 @export var open_to_angle: int = 85
-@export var angle_offset: int = 0
 @export var open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
 @export var key_name: String = ""
 @export var locked_message: String = ""
@@ -66,8 +65,8 @@ func _ready():
 			set_hinge_limits(open_to_angle)
 	
 	#_set_starting_rotation(starting_rotation)
-	draggable_body.rotation.y = deg_to_rad(starting_rotation - angle_offset)
-	closed_max_drag_angle = 3.0 * sign(open_to_angle - angle_offset)
+	draggable_body.rotation.y = deg_to_rad(starting_rotation)
+	closed_max_drag_angle = 3.0 * sign(open_to_angle)
 	closed = abs(draggable_body.rotation.y) <= abs(deg_to_rad(closed_max_drag_angle))
 	if unlocked:
 		set_hinge_limits(open_to_angle)
@@ -349,4 +348,4 @@ func get_draggable_body_angle():
 func _set_starting_rotation(starting_rotation_):
 	starting_rotation = starting_rotation_
 	if draggable_body:
-		draggable_body.rotation.y = deg_to_rad(starting_rotation - angle_offset)
+		draggable_body.rotation.y = deg_to_rad(starting_rotation)

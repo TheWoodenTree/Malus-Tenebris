@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://dw8x78dpqdprb"]
+[gd_scene load_steps=74 format=3 uid="uid://dw8x78dpqdprb"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_4rvkc"]
 [ext_resource type="PackedScene" uid="uid://bhf6uocwy5fwk" path="res://source/actors/building pieces/basic/tile_floor.tscn" id="2_dj88v"]
@@ -68,6 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="68_8yhho"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="69_5u57d"]
 [ext_resource type="Script" uid="uid://ko7e18wn1ga3" path="res://source/actors/rooms/first_encounter_trigger.gd" id="69_s45mn"]
+[ext_resource type="PackedScene" uid="uid://c0b82x1nvse65" path="res://source/actors/building pieces/doors/clean_wood_door.tscn" id="69_yrwff"]
 [ext_resource type="AudioStream" uid="uid://bk2dxrbam7bvw" path="res://source/assets/sounds/horror_sounds/first_encounter_swell.ogg" id="70_k1kcs"]
 
 [sub_resource type="Resource" id="Resource_75sfm"]
@@ -872,24 +873,32 @@ volume_db = -2.0
 
 [node name="reg_doorway" parent="." index="223" instance=ExtResource("69_5u57d")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0.5, 34.5)
-door_style = "Polished"
 style = "Polished"
+
+[node name="clean_wood_door" parent="reg_doorway" index="3" instance=ExtResource("69_yrwff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="reg_doorway2" parent="." index="224" instance=ExtResource("69_5u57d")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.5, 0.5, 25)
-door_style = "Polished"
 door_locked_message = "It's locked"
 style = "Polished"
 
+[node name="clean_wood_door" parent="reg_doorway2" index="3" instance=ExtResource("69_yrwff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+
 [node name="reg_doorway3" parent="." index="225" instance=ExtResource("69_5u57d")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.5, 0.5, 13)
-door_style = "Polished"
 style = "Polished"
+
+[node name="clean_wood_door" parent="reg_doorway3" index="3" instance=ExtResource("69_yrwff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="reg_doorway4" parent="." index="226" instance=ExtResource("69_5u57d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 3.5)
-door_style = "Polished"
 style = "Polished"
+
+[node name="clean_wood_door" parent="reg_doorway4" index="3" instance=ExtResource("69_yrwff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="stone_floor5" parent="." index="227" instance=ExtResource("2_dj88v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -0.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://hwt7rtb67g3l"]
+[gd_scene load_steps=54 format=3 uid="uid://hwt7rtb67g3l"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_8uxo2"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b0xmooxcv7hfy" path="res://source/actors/rooms/occluders/upper_prison_common_area.occ" id="2_8xk5f"]
@@ -44,8 +44,10 @@
 [ext_resource type="PackedScene" uid="uid://gl2we4tjxsd8" path="res://source/actors/decor/misc/broken_barrel.tscn" id="46_ehdng"]
 [ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="47_a3n4n"]
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="48_8frpn"]
+[ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="49_jxbe4"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="49_lk6kt"]
 [ext_resource type="PackedScene" uid="uid://c0j1d0qath30j" path="res://source/actors/decor/misc/bucket.tscn" id="50_8q6u0"]
+[ext_resource type="PackedScene" uid="uid://b7xcdnbrbgydc" path="res://source/actors/building pieces/doors/wood_door_no_window.tscn" id="50_i7xhl"]
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="51_1gadi"]
 [ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="51_ecass"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="51_ho4s3"]
@@ -503,18 +505,30 @@ chain_length = 0
 
 [node name="reg_doorway" parent="." index="133" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.75, -3, -15.5)
-door_style = "Regular With Window"
 door_open_angle = 85
+
+[node name="wood_door" parent="reg_doorway" index="3" instance=ExtResource("49_jxbe4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="reg_doorway2" parent="." index="134" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3, 9.5)
 door_open_angle = 85
 
+[node name="wood_door" parent="reg_doorway2" index="3" instance=ExtResource("49_jxbe4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+starting_rotation = 85
+
 [node name="reg_doorway3" parent="." index="135" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -33.5, -3, -19.5)
 
+[node name="wood_door_no_window" parent="reg_doorway3" index="3" instance=ExtResource("50_i7xhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+
 [node name="reg_doorway4" parent="." index="136" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, -3, -9.5)
+
+[node name="wood_door_no_window" parent="reg_doorway4" index="3" instance=ExtResource("50_i7xhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="reg_archway" parent="." index="137" instance=ExtResource("51_ho4s3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -2)

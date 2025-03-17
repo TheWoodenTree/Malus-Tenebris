@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=28 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ok18y"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="18_le25o"]
 [ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="19_b2uug"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="23_jgj6y"]
+[ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="24_gf34h"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25_tn2h1"]
 [ext_resource type="Script" uid="uid://bdnadlu2tq2xk" path="res://source/actors/rooms/sprint_tutorial.gd" id="26_p45ll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://1sb83i8d2g" path="res://source/actors/rooms/occluders/bigger_cells_hall.occ" id="27_mmdhw"]
@@ -358,13 +359,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.5, 4.5)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31, 0.5, 0)
 door_locked_message = "It's completely blocked"
 
+[node name="wood_door" parent="reg_doorway" index="3" instance=ExtResource("19_b2uug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+locked_message = "It's completely blocked"
+
 [node name="reg_doorway2" parent="." index="91" instance=ExtResource("32_c2run")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 0.5, 0)
 door_custom_script = ExtResource("29_cexpk")
 
 [node name="wood_door" parent="reg_doorway2" index="3" instance=ExtResource("19_b2uug")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 60
+script = ExtResource("29_cexpk")
 
 [node name="reg_archway5" parent="." index="92" instance=ExtResource("32_osmw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, -5)
@@ -417,23 +422,43 @@ text = "Cell A2"
 chain_length = 0
 
 [node name="square_doorway" parent="." index="106" instance=ExtResource("23_jgj6y")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, 0.5, -5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, 0.5, -5.5)
 door_interactable_override = 2
+
+[node name="square_cell_door" parent="square_doorway" index="3" instance=ExtResource("24_gf34h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+interactable = false
 
 [node name="square_doorway2" parent="." index="107" instance=ExtResource("23_jgj6y")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0.5, -5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0.5, -5.5)
 door_locked_message = "It's Locked"
 
+[node name="square_cell_door" parent="square_doorway2" index="3" instance=ExtResource("24_gf34h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+locked_message = "It's locked"
+
 [node name="square_doorway3" parent="." index="108" instance=ExtResource("23_jgj6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 5.5)
 door_interactable_override = 2
+
+[node name="square_cell_door" parent="square_doorway3" index="3" instance=ExtResource("24_gf34h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+interactable = false
 
 [node name="square_doorway5" parent="." index="109" instance=ExtResource("23_jgj6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, 5.5)
 door_interactable_override = 2
 
+[node name="square_cell_door" parent="square_doorway5" index="3" instance=ExtResource("24_gf34h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+interactable = false
+
 [node name="square_doorway4" parent="." index="110" instance=ExtResource("23_jgj6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 5.5)
 door_interactable_override = 2
+
+[node name="square_cell_door" parent="square_doorway4" index="3" instance=ExtResource("24_gf34h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+interactable = false
 
 [connection signal="body_entered" from="sprint_tutorial" to="sprint_tutorial" method="_on_body_entered"]

@@ -42,7 +42,6 @@ func _ready():
 		door1.starting_rotation = door1_open_angle + door1_angle_offset
 		door1.open_to_angle = door1_open_to_angle
 		door1.open_tween_trans = door1_open_tween_trans
-		door1.angle_offset = door1_angle_offset
 		door1.key_name = door1_key_name
 		door1.locked_message = door1_locked_message
 		door1.unlocked = door1_key_name.is_empty()
@@ -58,7 +57,6 @@ func _ready():
 		door2.starting_rotation = door2_open_angle + door2_angle_offset
 		door2.open_to_angle = door2_open_to_angle
 		door2.open_tween_trans = door2_open_tween_trans
-		door2.angle_offset = door2_angle_offset
 		door2.key_name = door2_key_name
 		door2.locked_message = door2_locked_message
 		door2.unlocked = door2_key_name.is_empty()

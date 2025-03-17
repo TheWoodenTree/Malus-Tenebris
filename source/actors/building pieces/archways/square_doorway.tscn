@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://br17y22d380wd"]
+[gd_scene load_steps=10 format=4 uid="uid://br17y22d380wd"]
 
 [ext_resource type="Script" uid="uid://ljm5ohhsqfr4" path="res://source/actors/building pieces/archways/doorway.gd" id="1_ox1ge"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="1_ynkg4"]
 [ext_resource type="Material" uid="uid://bbj8gr5lxr4q8" path="res://source/assets/materials/white_bricks/white_bricks.tres" id="2_4r3ap"]
-[ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="3_1gb8w"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5lwy3"]
 _surfaces = [{
@@ -80,14 +79,16 @@ script = ExtResource("1_ox1ge")
 door_open_to_angle = 85
 
 [node name="archway" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("ArrayMesh_6uv57")
 
 [node name="frame" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.8)
 mesh = SubResource("ArrayMesh_068s2")
 skeleton = NodePath("../archway")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="frame_col_shape" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.3)
@@ -98,6 +99,3 @@ shape = SubResource("ConcavePolygonShape3D_fadnb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148866, 0.0286702, 0.00502276)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_f7xpp")
-
-[node name="door" parent="." instance=ExtResource("3_1gb8w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12502, 0.05, 0.591895)

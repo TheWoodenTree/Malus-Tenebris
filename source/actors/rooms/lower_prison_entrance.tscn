@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1onovq0nc1xf"]
+[gd_scene load_steps=24 format=3 uid="uid://c1onovq0nc1xf"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_i7tkv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b24yy1t4ft602" path="res://source/actors/rooms/occluders/lower_prison_entrance.occ" id="2_ujbbf"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_6e4iy"]
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="4_a8ir7"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="15_13v5q"]
+[ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="16_aq76f"]
+[ext_resource type="PackedScene" uid="uid://cjcxmmlyufmug" path="res://source/actors/building pieces/doors/latched_door.tscn" id="16_cpg5x"]
 [ext_resource type="PackedScene" uid="uid://cde0mlew1cmil" path="res://source/actors/building pieces/archways/big_tall_archway.tscn" id="17_4de7j"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="17_5n3dr"]
+[ext_resource type="PackedScene" uid="uid://b7xcdnbrbgydc" path="res://source/actors/building pieces/doors/wood_door_no_window.tscn" id="17_ovnjs"]
 [ext_resource type="Script" uid="uid://blculpi0mdabm" path="res://source/actors/rooms/door_open_event.gd" id="18_6n6fv"]
 [ext_resource type="PackedScene" uid="uid://dgn84cdkpu41o" path="res://source/actors/decor/furniture/bench.tscn" id="18_jl7fd"]
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="19_7jmwe"]
@@ -253,17 +256,31 @@ text = "South Cell Hall"
 [node name="reg_doorway" parent="." index="64" instance=ExtResource("24_dtoyw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -9.5, -10.5)
 
+[node name="wood_door" parent="reg_doorway" index="3" instance=ExtResource("16_aq76f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+
 [node name="reg_doorway2" parent="." index="65" instance=ExtResource("24_dtoyw")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.5, -35.5)
+
+[node name="wood_door" parent="reg_doorway2" index="3" instance=ExtResource("16_aq76f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="reg_doorway3" parent="." index="66" instance=ExtResource("24_dtoyw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.5, -9.5, -28)
 door_locked_message = "Blocked from the other side"
 
+[node name="wood_door_no_window" parent="reg_doorway3" index="3" instance=ExtResource("17_ovnjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+one_way = true
+
 [node name="apothecary_doorway" parent="." index="67" instance=ExtResource("24_dtoyw")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, -9.5, -26)
-door_open_angle = 85
+door_open_to_angle = 85
+
+[node name="latched_door" parent="apothecary_doorway" index="3" instance=ExtResource("16_cpg5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+starting_rotation = 85
 
 [node name="reg_archway" parent="." index="68" instance=ExtResource("22_onmv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.5, -17)

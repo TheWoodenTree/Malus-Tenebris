@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqppw8pqo3hs"]
+[gd_scene load_steps=16 format=3 uid="uid://dqppw8pqo3hs"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3f26d"]
 [ext_resource type="PackedScene" uid="uid://bhf6uocwy5fwk" path="res://source/actors/building pieces/basic/tile_floor.tscn" id="2_0i0gp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="11_tyw24"]
 [ext_resource type="PackedScene" uid="uid://c1kffo1qignb8" path="res://source/actors/building pieces/basic/corner_trim.tscn" id="13_bygml"]
 [ext_resource type="PackedScene" uid="uid://crk28bh4d7n6g" path="res://source/actors/building pieces/basic/trim.tscn" id="14_dsgq6"]
+[ext_resource type="PackedScene" uid="uid://c0b82x1nvse65" path="res://source/actors/building pieces/doors/clean_wood_door.tscn" id="14_ew6a5"]
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="14_lheut"]
 [ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="14_ux7av"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="15_wcw6n"]
@@ -314,15 +315,21 @@ chain_length = 0
 
 [node name="reg_doorway" parent="." index="81" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
-door_style = "Polished"
 door_open_angle = 85
 style = "Polished"
 
+[node name="clean_wood_door" parent="reg_doorway" index="3" instance=ExtResource("14_ew6a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+starting_rotation = 85
+
 [node name="reg_doorway2" parent="." index="82" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, -3.5, -10)
-door_style = "Polished"
 door_interactable_override = 2
 style = "Polished"
+
+[node name="clean_wood_door" parent="reg_doorway2" index="3" instance=ExtResource("14_ew6a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+interactable = false
 
 [node name="small_pillar" parent="." index="83" instance=ExtResource("14_ux7av")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 2.5)

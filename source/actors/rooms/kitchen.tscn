@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://7rhkd1sxw43r"]
+[gd_scene load_steps=53 format=3 uid="uid://7rhkd1sxw43r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_r3ajh"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="2_xlfra"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://bctdw41uh664" path="res://source/actors/decor/kitchen/bowl_3.tscn" id="45_61jt3"]
 [ext_resource type="PackedScene" uid="uid://ctah2h6vefugt" path="res://source/actors/decor/kitchen/plate_3.tscn" id="46_5jqbm"]
 [ext_resource type="PackedScene" uid="uid://bxeqhg7y7wy06" path="res://source/actors/decor/misc/pots/tall_pot.tscn" id="47_iu47q"]
+[ext_resource type="PackedScene" uid="uid://b7xcdnbrbgydc" path="res://source/actors/building pieces/doors/wood_door_no_window.tscn" id="47_x7baa"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="48_604ch"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cl7imk76s8ugw" path="res://source/actors/rooms/occluders/kitchen.occ" id="49_gii5n"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="49_ifubp"]
@@ -436,9 +437,16 @@ shape = SubResource("BoxShape3D_1qt76")
 [node name="reg_doorway" parent="." index="109" instance=ExtResource("50_8los6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0.5, 0)
 
+[node name="wood_door_no_window" parent="reg_doorway" index="3" instance=ExtResource("47_x7baa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+
 [node name="reg_doorway2" parent="." index="110" instance=ExtResource("50_8los6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, -3)
 door_key_name = "Larder"
+
+[node name="wood_door_no_window" parent="reg_doorway2" index="3" instance=ExtResource("47_x7baa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+key_name = "Larder"
 
 [node name="reg_archway" parent="." index="111" instance=ExtResource("49_ifubp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.5, 0.5, -12)

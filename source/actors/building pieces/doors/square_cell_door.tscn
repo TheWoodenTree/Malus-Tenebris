@@ -113,6 +113,10 @@ shader_parameter/transparent = false
 
 [node name="square_cell_door" instance=ExtResource("1_1qg3c")]
 
+[node name="hinge" parent="door_body" index="1"]
+angular_limit/upper = 1.48353
+angular_limit/lower = 0.0
+
 [node name="door" parent="door_body" index="2"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
 material_overlay = SubResource("ShaderMaterial_qg6v7")
@@ -136,9 +140,6 @@ stream = ExtResource("5_fnp10")
 
 [node name="door_close_player" parent="door_body" index="9"]
 stream = ExtResource("6_u5p70")
-
-[node name="key" parent="door_body" index="11"]
-transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, -2.049, 1.154, -0.22)
 
 [node name="mesh" parent="door_body/key" index="0"]
 material_overlay = SubResource("ShaderMaterial_4y0ed")

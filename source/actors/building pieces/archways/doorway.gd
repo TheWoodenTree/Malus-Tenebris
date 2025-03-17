@@ -21,6 +21,7 @@ const DOOR_POSITION := Vector3(1.125, 0.0, 0.1)
 
 func _ready() -> void:
 	super()
+	child_entered_tree.connect(_on_child_entered_tree)
 	if door:
 		if not Engine.is_editor_hint():
 			# Override interactable script attached to door
@@ -43,10 +44,17 @@ func _ready() -> void:
 		#	door.rotation.y = deg_to_rad(door_open_angle + door_angle_offset)
 
 
+func _on_child_entered_tree(node: Node):
+	if node is Door:
+		node.position = DOOR_POSITION
+		print('test')
+
+
 func _snap_door():
 	for child in get_children():
 		if child is Door:
 			child.position = DOOR_POSITION
+			return
 
 
 func _set_door_rotation(new_state):
