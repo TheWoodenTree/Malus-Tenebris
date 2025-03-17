@@ -1,8 +1,15 @@
+@tool
 class_name Door
 extends Interactable
 
-@export var pitch_scale_min: float = 0.8
-@export var pitch_scale_max: float = 1.0
+@export var one_way: bool = false
+@export var starting_rotation: int = 0 : set = _set_starting_rotation
+@export var open_to_angle: int = 85
+@export var angle_offset: int = 0
+@export var open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
+@export var key_name: String = ""
+@export var locked_message: String = ""
+@export var tutorial_popup: bool = false
 
 var door_shaking: bool = false
 var attempt_open_angle: float
@@ -22,23 +29,14 @@ var angular_velocity_last_frame: Vector3 = Vector3.ZERO
 var last_cam_rot_offset: Vector2 = Vector2.ZERO
 
 var sound_cooldown_timer: Timer = Timer.new()
+var pitch_scale_max: float = 1.0
+var pitch_scale_min: float = 0.8
 
 var rotation_axis := Vector3.UP
 
-# SET BY DOORWAY SCRIPT
-var one_way: bool = false
-var locked_by_contraption: bool = false
-var open_angle: int
-var open_to_angle: int
-var angle_offset: int
-var open_tween_trans: Tween.TransitionType
-var key_name: String
-var locked_message: String
-var unlocked: bool
-var tutorial_popup: bool
-var need_journal: bool
-
 var reverse_z_dist: bool = false
+
+@onready var unlocked = key_name.is_empty()
 
 @onready var draggable_body = $door_body
 @onready var door = $door_body/door
@@ -58,17 +56,17 @@ signal moved
 
 
 func _ready():
-	super()
-	sound_cooldown_timer.one_shot = true
-	sound_cooldown_timer.wait_time = 0.3
-	add_child(sound_cooldown_timer)
-	await Global.player.ready
-	if interactable and Global.player.is_omnipotent_door_god:
-		set_hinge_limits(open_to_angle)
-
-
-func parent_ready_finished():
-	draggable_body.rotation.y = deg_to_rad(open_angle - angle_offset)
+	if not Engine.is_editor_hint():
+		super()
+		sound_cooldown_timer.one_shot = true
+		sound_cooldown_timer.wait_time = 0.3
+		add_child(sound_cooldown_timer)
+		await Global.player.ready
+		if interactable and Global.player.is_omnipotent_door_god:
+			set_hinge_limits(open_to_angle)
+	
+	#_set_starting_rotation(starting_rotation)
+	draggable_body.rotation.y = deg_to_rad(starting_rotation - angle_offset)
 	closed_max_drag_angle = 3.0 * sign(open_to_angle - angle_offset)
 	closed = abs(draggable_body.rotation.y) <= abs(deg_to_rad(closed_max_drag_angle))
 	if unlocked:
@@ -95,55 +93,57 @@ func _on_untarget():
 
 
 func _process(_delta: float) -> void:
-	if being_targeted and interactable or player_dragging:
-		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
-			Global.player.cam.connect("cam_rotated", add_torque_to_door)
-			
-	elif being_targeted:
-		Global.player.cam.disconnect("cam_rotated", add_torque_to_door)
-		being_targeted = false
+	if not Engine.is_editor_hint():
+		if being_targeted and interactable or player_dragging:
+			if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
+				Global.player.cam.connect("cam_rotated", add_torque_to_door)
+				
+		elif being_targeted:
+			Global.player.cam.disconnect("cam_rotated", add_torque_to_door)
+			being_targeted = false
 
 
 func _physics_process(_delta):
-	if not draggable_body.sleeping and not closed:
-		if abs(draggable_body.angular_velocity.y) > 0.1:
-			var effect_scale: float = clamp(abs(draggable_body.angular_velocity.y) / PI, 0, 1.0)
-			var large_ang_vel_change: bool = abs(draggable_body.angular_velocity.y - angular_velocity_last_frame.y) > 0.35
-			var ang_vel_dir_changed: bool = sign(draggable_body.angular_velocity.y) != sign(angular_velocity_last_frame.y)
-			if (ang_vel_dir_changed or large_ang_vel_change) and sound_cooldown_timer.is_stopped() or player_just_started_dragging:
-				if not ang_vel_dir_changed or player_dragging:
-					door_open_player.play()
-					sound_cooldown_timer.start()
-					player_just_started_dragging = false
-					
-			door_open_player.volume_db = lerp(-30.0, 0.0, pow(effect_scale, 1.0))
-			door_open_player.pitch_scale = lerp(pitch_scale_min, pitch_scale_max, pow(effect_scale, 1.0))
+	if not Engine.is_editor_hint():
+		if not draggable_body.sleeping and not closed:
+			if abs(draggable_body.angular_velocity.y) > 0.1:
+				var effect_scale: float = clamp(abs(draggable_body.angular_velocity.y) / PI, 0, 1.0)
+				var large_ang_vel_change: bool = abs(draggable_body.angular_velocity.y - angular_velocity_last_frame.y) > 0.35
+				var ang_vel_dir_changed: bool = sign(draggable_body.angular_velocity.y) != sign(angular_velocity_last_frame.y)
+				if (ang_vel_dir_changed or large_ang_vel_change) and sound_cooldown_timer.is_stopped() or player_just_started_dragging:
+					if not ang_vel_dir_changed or player_dragging:
+						door_open_player.play()
+						sound_cooldown_timer.start()
+						player_just_started_dragging = false
+						
+				door_open_player.volume_db = lerp(-30.0, 0.0, pow(effect_scale, 1.0))
+				door_open_player.pitch_scale = lerp(pitch_scale_min, pitch_scale_max, pow(effect_scale, 1.0))
+				
+				angular_velocity_last_frame = draggable_body.angular_velocity
+				
+			# Increase damp for angular velocity when the door is close to its hinge limit
+			if sign(open_to_angle) == sign(draggable_body.angular_velocity.y):
+				var min_damp_angle: float = abs(open_to_angle) - 10.0
+				var max_damp_angle: float = abs(open_to_angle)
+				var normalized: float = (abs(rad_to_deg(draggable_body.rotation.y)) - min_damp_angle) / (max_damp_angle - min_damp_angle)
+				var damping_scale: float = clamp(normalized, 0.0, 1.0) * 10.0
+				draggable_body.angular_damp = clamp(5.0 * damping_scale, 5.0, 50.0)
+			elif not closed:
+				draggable_body.angular_damp = 5.0
+				
+			# Set door to closed if it is within the closed angle
+			# and angular velocity is closing door
+			if abs(draggable_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)) \
+			and sign(draggable_body.angular_velocity.y) == -sign(open_to_angle):
+				set_closed(true)
+				
+			moved.emit(draggable_body.rotation_degrees.y, sign(get_player_z_dist()) == -1)
 			
-			angular_velocity_last_frame = draggable_body.angular_velocity
+		elif player_dragging and unlocked and abs(draggable_body.rotation.y) >= deg_to_rad(abs(closed_max_drag_angle)):
+			set_closed(false)
 			
-		# Increase damp for angular velocity when the door is close to its hinge limit
-		if sign(open_to_angle) == sign(draggable_body.angular_velocity.y):
-			var min_damp_angle: float = abs(open_to_angle) - 10.0
-			var max_damp_angle: float = abs(open_to_angle)
-			var normalized: float = (abs(rad_to_deg(draggable_body.rotation.y)) - min_damp_angle) / (max_damp_angle - min_damp_angle)
-			var damping_scale: float = clamp(normalized, 0.0, 1.0) * 10.0
-			draggable_body.angular_damp = clamp(5.0 * damping_scale, 5.0, 50.0)
-		elif not closed:
-			draggable_body.angular_damp = 5.0
-			
-		# Set door to closed if it is within the closed angle
-		# and angular velocity is closing door
-		if abs(draggable_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)) \
-		and sign(draggable_body.angular_velocity.y) == -sign(open_to_angle):
-			set_closed(true)
-			
-		moved.emit(draggable_body.rotation_degrees.y, sign(get_player_z_dist()) == -1)
-		
-	elif player_dragging and unlocked and abs(draggable_body.rotation.y) >= deg_to_rad(abs(closed_max_drag_angle)):
-		set_closed(false)
-		
-	if abs(draggable_body.angular_velocity.y) < 0.05:
-			door_open_player.volume_db = -80.0
+		if abs(draggable_body.angular_velocity.y) < 0.05:
+				door_open_player.volume_db = -80.0
 
 
 func interact():
@@ -344,3 +344,9 @@ func get_player_z_dist():
 
 func get_draggable_body_angle():
 	return draggable_body.rotation.y
+
+
+func _set_starting_rotation(starting_rotation_):
+	starting_rotation = starting_rotation_
+	if draggable_body:
+		draggable_body.rotation.y = deg_to_rad(starting_rotation - angle_offset)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=27 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ok18y"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dv6sskdi2c7qt" path="res://source/assets/sounds/ambience/general/low_rumble.ogg" id="11_h27ph"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="17_txavf"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="18_le25o"]
+[ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="19_b2uug"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="23_jgj6y"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25_tn2h1"]
 [ext_resource type="Script" uid="uid://bdnadlu2tq2xk" path="res://source/actors/rooms/sprint_tutorial.gd" id="26_p45ll"]
@@ -355,13 +356,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.5, 4.5)
 
 [node name="reg_doorway" parent="." index="90" instance=ExtResource("32_c2run")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31, 0.5, 0)
-door_style = "Regular With Window"
 door_locked_message = "It's completely blocked"
 
 [node name="reg_doorway2" parent="." index="91" instance=ExtResource("32_c2run")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 0.5, 0)
-door_style = "Regular With Window"
 door_custom_script = ExtResource("29_cexpk")
+
+[node name="wood_door" parent="reg_doorway2" index="3" instance=ExtResource("19_b2uug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+starting_rotation = 60
 
 [node name="reg_archway5" parent="." index="92" instance=ExtResource("32_osmw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, -5)

@@ -1,8 +1,6 @@
 @tool
 extends Doorway
 
-const DOOR_POSITION := Vector3(1.125, 0.0, 0.1)
-
 @export_enum("Regular", "Regular With Window", "Polished", "Latched") var door_style: String = "Regular" : set = _set_door_style
 
 static var regular_door: Resource = preload("res://source/actors/building pieces/doors/wood_door_no_window.tscn")
@@ -40,7 +38,7 @@ func update_door():
 			_set_style("Prison")
 	new_door.position = DOOR_POSITION
 	new_door.name = "door"
-	if door_custom_script:
+	if door_custom_script and new_door.get_script() != door_custom_script:
 		new_door.set_script(door_custom_script)
 	door = new_door
-	add_child(door)
+	add_child(door, true, Node.INTERNAL_MODE_FRONT)

@@ -39,7 +39,7 @@ func _ready():
 			2:
 				door1.set_interactable(false)
 		door1.one_way = door1_one_way
-		door1.open_angle = door1_open_angle + door1_angle_offset
+		door1.starting_rotation = door1_open_angle + door1_angle_offset
 		door1.open_to_angle = door1_open_to_angle
 		door1.open_tween_trans = door1_open_tween_trans
 		door1.angle_offset = door1_angle_offset
@@ -47,7 +47,7 @@ func _ready():
 		door1.locked_message = door1_locked_message
 		door1.unlocked = door1_key_name.is_empty()
 		door1.tutorial_popup = door1_tutorial_popup
-		door1.parent_ready_finished()
+		#door1.parent_ready_finished()
 		
 		match door2_interactable_override:
 			1:
@@ -55,7 +55,7 @@ func _ready():
 			2:
 				door2.set_interactable(false)
 		door2.one_way = door2_one_way
-		door2.open_angle = door2_open_angle + door2_angle_offset
+		door2.starting_rotation = door2_open_angle + door2_angle_offset
 		door2.open_to_angle = door2_open_to_angle
 		door2.open_tween_trans = door2_open_tween_trans
 		door2.angle_offset = door2_angle_offset
@@ -64,7 +64,7 @@ func _ready():
 		door2.unlocked = door2_key_name.is_empty()
 		door2.tutorial_popup = door2_tutorial_popup
 		door2.reverse_z_dist = true
-		door2.parent_ready_finished()
+		#door2.parent_ready_finished()
 	else:
 		door1_body.rotation.y = deg_to_rad(door2_open_angle + door2_angle_offset)
 		door2_body.rotation.y = deg_to_rad(door2_open_angle + door2_angle_offset)

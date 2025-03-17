@@ -2,6 +2,8 @@
 class_name Doorway
 extends Archway
 
+const DOOR_POSITION := Vector3(1.125, 0.0, 0.1)
+
 @export_enum("Do Not Override", "Override True", "Override False") var door_interactable_override: int = 0
 @export var door_one_way: bool = false
 @export var door_open_angle: int = 0 : set = _set_door_rotation
@@ -12,14 +14,9 @@ extends Archway
 @export var door_locked_message: String = ""
 @export var door_tutorial_popup: bool = false
 @export var door_custom_script: Script
+@export_tool_button("Snap Door") var snap_door: Callable = _snap_door
 
 @onready var door = $door if has_node("door") else null
-
-
-# Set door custom script before ready so its on_ready vars can be initialized
-func _enter_tree():
-	if door_custom_script:
-		get_node("door").set_script(door_custom_script)
 
 
 func _ready() -> void:
@@ -32,18 +29,24 @@ func _ready() -> void:
 					door.set_interactable(true)
 				2:
 					door.set_interactable(false)
-			door.one_way = door_one_way
-			door.open_angle = door_open_angle + door_angle_offset
-			door.open_to_angle = door_open_to_angle
-			door.open_tween_trans = door_open_tween_trans
-			door.angle_offset = door_angle_offset
-			door.key_name = door_key_name
-			door.locked_message = door_locked_message
-			door.unlocked = door_key_name.is_empty()
-			door.tutorial_popup = door_tutorial_popup
-			door.parent_ready_finished()
-		else:
-			door.rotation.y = deg_to_rad(door_open_angle + door_angle_offset)
+			#door.one_way = door_one_way
+			#door.open_angle = door_open_angle + door_angle_offset
+			#door.open_to_angle = door_open_to_angle
+			#door.open_tween_trans = door_open_tween_trans
+			#door.angle_offset = door_angle_offset
+			#door.key_name = door_key_name
+			#door.locked_message = door_locked_message
+			#door.unlocked = door_key_name.is_empty()
+			#door.tutorial_popup = door_tutorial_popup
+			#door.parent_ready_finished()
+		#else:
+		#	door.rotation.y = deg_to_rad(door_open_angle + door_angle_offset)
+
+
+func _snap_door():
+	for child in get_children():
+		if child is Door:
+			child.position = DOOR_POSITION
 
 
 func _set_door_rotation(new_state):
