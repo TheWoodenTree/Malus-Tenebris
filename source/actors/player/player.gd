@@ -140,7 +140,7 @@ func _handle_input():
 			push_error("Self-useable has no attached script")
 	
 	if Input.is_action_just_pressed("interact"):
-		if targeted_interactable:
+		if targeted_interactable and not in_menu:
 			targeted_interactable.interact()
 	
 	if Input.is_action_just_released("interact"):
