@@ -137,9 +137,6 @@ shape = SubResource("BoxShape3D_1btq6")
 [node name="collision_shape" parent="door_body/interact_area" index="0"]
 shape = SubResource("BoxShape3D_6ie3j")
 
-[node name="key" parent="door_body" index="11"]
-transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, -2.049, 1.154, -0.22)
-
 [node name="mesh" parent="door_body/key" index="0"]
 material_overlay = SubResource("ShaderMaterial_je52j")
 

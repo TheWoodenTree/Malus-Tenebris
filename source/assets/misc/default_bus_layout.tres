@@ -55,7 +55,7 @@ wet = 0.2
 [resource]
 bus/0/volume_db = 0.0672607
 bus/0/effect/0/effect = SubResource("AudioEffectAmplify_goou0")
-bus/0/effect/0/enabled = true
+bus/0/effect/0/enabled = false
 bus/1/name = &"Global"
 bus/1/solo = false
 bus/1/mute = false
@@ -111,7 +111,7 @@ bus/7/solo = false
 bus/7/mute = false
 bus/7/bypass_fx = false
 bus/7/volume_db = 0.0
-bus/7/send = &"Global"
+bus/7/send = &"Master"
 bus/7/effect/0/effect = SubResource("7")
 bus/7/effect/0/enabled = true
 bus/8/name = &"General (huge)"

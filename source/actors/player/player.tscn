@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=27 format=3 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://kkp3nc0byvtr" path="res://source/actors/player/affliction_timer.gd" id="10_iw64y"]
 [ext_resource type="AudioStream" uid="uid://d3pakvmqmjlr0" path="res://source/assets/sounds/rucksack/rucksack_6.ogg" id="10_vyll3"]
 [ext_resource type="AudioStream" uid="uid://c7bxvp10bg6g2" path="res://source/assets/sounds/horror_sounds/fear_pulse_loop.ogg" id="11_nxucy"]
+[ext_resource type="AudioStream" uid="uid://bsc71ah2d6oii" path="res://source/assets/sounds/walk/stone_footstep_crunchy_2.ogg" id="15_u2hm4"]
 
 [sub_resource type="Animation" id="Animation_dqclq"]
 resource_name = "timer"
@@ -212,6 +213,12 @@ monitoring = false
 
 [node name="collision_shape" type="CollisionShape3D" parent="fire_burning_sound_area"]
 shape = SubResource("SphereShape3D_6dsv4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_u2hm4")
+volume_db = 63.284
+max_db = 6.0
+max_polyphony = 10
 
 [connection signal="area_entered" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_entered"]
 [connection signal="area_exited" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_exited"]

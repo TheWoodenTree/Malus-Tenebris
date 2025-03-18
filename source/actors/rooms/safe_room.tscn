@@ -345,7 +345,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("33_x680n")
-message = "Lock the door behind you using the latch"
+message = "Close the door behind you and lock it with the latch"
 duration = 5.0
 
 [node name="collision_shape" type="CollisionShape3D" parent="lock_door_tutorial" index="0"]
