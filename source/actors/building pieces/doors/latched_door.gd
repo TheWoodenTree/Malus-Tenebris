@@ -1,4 +1,5 @@
 @tool
+class_name LatchedDoor
 extends Door
 
 var latch_locked: bool = false
@@ -30,4 +31,5 @@ func on_latch_toggle(latch_locked_: bool):
 	if latch_locked:
 		var tween = get_tree().create_tween()
 		tween.tween_property(draggable_body, "rotation_degrees:y", 0.0, 0.1)
+	print(not latch_locked)
 	set_interactable(not latch_locked)

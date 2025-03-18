@@ -1,50 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://dtoh5ycnqnbpi"]
+[gd_scene load_steps=11 format=4 uid="uid://dtoh5ycnqnbpi"]
 
 [ext_resource type="PackedScene" uid="uid://taovp5xicteg" path="res://source/actors/interactables/moveable_template.tscn" id="1_rhx02"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_3s8aw"]
+[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_7270b"]
 [ext_resource type="AudioStream" uid="uid://dl0a6xpsxj08v" path="res://source/assets/sounds/move/wood_scrape.ogg" id="3_pwuyp"]
-
-[sub_resource type="Shader" id="Shader_3kcb1"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckhal"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_3kcb1")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0tqa3"]
 _surfaces = [{
@@ -91,7 +50,7 @@ points = PackedVector3Array(-1.575, 0, -1.1, 1.575, 0, -1.1, -1.575, 0, 1.1, -1.
 [node name="moveable_shelf_1" instance=ExtResource("1_rhx02")]
 
 [node name="mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_ckhal")
+material_overlay = ExtResource("2_7270b")
 mesh = SubResource("ArrayMesh_f0j0b")
 
 [node name="collision_shape" parent="interact_area" index="0"]

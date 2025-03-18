@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://fu1p001b3o4f" path="res://source/actors/rooms/auditorium.tscn" id="23_f001m"]
 [ext_resource type="PackedScene" uid="uid://btiqf7ymx77it" path="res://source/actors/rooms/records_room.tscn" id="24_w38t7"]
 [ext_resource type="PackedScene" uid="uid://cv4ajx80ijgv5" path="res://source/actors/rooms/holding_cells.tscn" id="25_47crl"]
-[ext_resource type="PackedScene" uid="uid://c1onovq0nc1xf" path="res://source/actors/rooms/lower_prison_entrance.tscn" id="25_7631t"]
+[ext_resource type="PackedScene" uid="uid://cxgp3mqvhu2np" path="res://source/actors/rooms/lower_prison_entrance.tscn" id="25_7631t"]
 [ext_resource type="PackedScene" uid="uid://dqppw8pqo3hs" path="res://source/actors/rooms/ritual_chamber_and_quarters_connector.tscn" id="25_g0g0n"]
 [ext_resource type="PackedScene" uid="uid://dq56ian4bntsp" path="res://source/actors/rooms/bigger_cells_hall.tscn" id="26_mq5sv"]
 [ext_resource type="PackedScene" uid="uid://dw8x78dpqdprb" path="res://source/actors/rooms/servants_quarters.tscn" id="26_qdr7n"]

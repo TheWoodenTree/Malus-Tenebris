@@ -21,6 +21,7 @@ func _ready():
 
 
 func interact():
+	super()
 	moveable_collision_blocker.position = move_to_offset.rotated(Vector3.UP, rotation.y)
 	moveable_collision_blocker_shape.disabled = false
 	moveable_collision_blocker.top_level = true

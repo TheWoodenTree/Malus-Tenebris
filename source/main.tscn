@@ -87,6 +87,7 @@ script = ExtResource("4")
 anim_vignette_softness = 1.0
 debug_no_title_screen = true
 debug_no_prologue = true
+anim_chrom_abb_offset = null
 
 [node name="effects_player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../post_processing")
