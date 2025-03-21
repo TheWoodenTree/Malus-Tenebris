@@ -1,7 +1,7 @@
 @tool
 extends Door
 
-var player_picked_up_journal: bool = false or Global.player.debug_no_tutorials
+var player_picked_up_journal: bool = Global.player.debug_no_tutorials and not Engine.is_editor_hint()
 
 
 func _ready():

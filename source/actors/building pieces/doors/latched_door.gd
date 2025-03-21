@@ -9,7 +9,7 @@ var latch_locked: bool = false
 
 func _ready():
 	super()
-	if latch:
+	if not Engine.is_editor_hint() and latch:
 		latch.parent_door = self
 		latch.set_interactable(starting_rotation < closed_max_drag_angle)
 
