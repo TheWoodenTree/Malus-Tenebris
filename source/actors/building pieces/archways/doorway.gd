@@ -47,7 +47,6 @@ func _ready() -> void:
 func _on_child_entered_tree(node: Node):
 	if node is Door:
 		node.position = DOOR_POSITION
-		print('test')
 
 
 func _snap_door():

@@ -1,21 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://faq68tr6wo04"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://faq68tr6wo04"]
 
 [ext_resource type="Shader" uid="uid://c00cldsmctvsm" path="res://source/assets/shaders/retro_shader.tres" id="1"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_icbwn"]
-noise_type = 3
-frequency = 0.0412
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pxx04"]
-width = 1024
-height = 576
-seamless = true
-noise = SubResource("FastNoiseLite_icbwn")
-
 [resource]
 shader = ExtResource("1")
-shader_parameter/noise = SubResource("NoiseTexture2D_pxx04")
-shader_parameter/test = 0.045
 shader_parameter/blurAmount = 0.0
 shader_parameter/downScale = 3.75
 shader_parameter/darkestThreshold = 0.06

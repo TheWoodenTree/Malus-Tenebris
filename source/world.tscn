@@ -52,7 +52,6 @@ radius = 0.1
 height = 0.2
 
 [node name="world" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -32.75)
 
 [node name="default_sound" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.4339, 0, -44.5)
