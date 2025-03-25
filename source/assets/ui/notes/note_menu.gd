@@ -5,10 +5,10 @@ var note_name: String
 var note_text: String
 var page_number_text: String
 
-@onready var note_name_label = $cont/v_box_cont/panel_cont/note_name
-@onready var left_button: Button = $cont/v_box_cont/h_box_cont/left_button
-@onready var right_button: Button = $cont/v_box_cont/h_box_cont/right_button
-@onready var scroll_cont: ScrollContainer = $cont/v_box_cont/scroll_cont
+@onready var note_name_label = $Cont/VBoxCont/PanelCont/NoteName
+@onready var left_button: Button = $Cont/VBoxCont/HBoxCont/LeftButton
+@onready var right_button: Button = $Cont/VBoxCont/HBoxCont/RightButton
+@onready var scroll_cont: ScrollContainer = $Cont/VBoxCont/ScrollCont
 
 
 func _enter_tree():
@@ -35,7 +35,7 @@ func _ready():
 
 func set_note_text(text):
 	note_text = text
-	$cont/v_box_cont/scroll_cont/text.text = note_text
+	$Cont/VBoxCont/ScrollCont/Text.text = note_text
 
 
 func update_note_name():
@@ -44,7 +44,7 @@ func update_note_name():
 
 func set_page_number_text(text):
 	page_number_text = text
-	$cont/v_box_cont/h_box_cont/page_number.text = page_number_text
+	$Cont/VBoxCont/HBoxCont/PageNumber.text = page_number_text
 
 
 func _on_close_button_pressed():

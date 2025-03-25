@@ -6,6 +6,6 @@
 material = ExtResource("1")
 size = Vector2(3, 3)
 
-[node name="cobweb" type="MeshInstance3D"]
+[node name="Cobweb" type="MeshInstance3D"]
 mesh = SubResource("1")
 material/0 = null

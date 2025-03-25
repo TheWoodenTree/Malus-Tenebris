@@ -23,26 +23,26 @@ var mouse_locked: bool
 
 var monster: CharacterBody3D
 
-@onready var main: Node = get_tree().root.get_node("main")
+@onready var main: Node = get_tree().root.get_node("Main")
 @onready var player: CharacterBody3D = load("res://source/actors/player/player.tscn").instantiate()
 
 
 #Init Globals
 func _ready() -> void:
-	main.connect("world_ready", func(): world = main.get_node("world"); monster = world.get_node("monster"))
-	world_environment = main.get_node("world_environment")
-	post_processing = main.get_node("post_processing")
+	main.connect("world_ready", func(): world = main.get_node("World"); monster = world.get_node("Monster"))
+	world_environment = main.get_node("WorldEnvironment")
+	post_processing = main.get_node("PostProcessing")
 	if post_processing != null:
-		retro_shader = post_processing.get_node("retro_shader").material
-		chromatic_abberation_shader = post_processing.get_node("chromatic_abberation").material
-		vignette_shader = post_processing.get_node("vignette").material
-		zoom_shader = post_processing.get_node("zoom").material
-		blackout_blur_shader = post_processing.get_node("blackout_blur").material
-	ui = main.get_node("ui")
+		retro_shader = post_processing.get_node("RetroShader").material
+		chromatic_abberation_shader = post_processing.get_node("ChromaticAbberation").material
+		vignette_shader = post_processing.get_node("Vignette").material
+		zoom_shader = post_processing.get_node("Zoom").material
+		blackout_blur_shader = post_processing.get_node("BlackoutBlur").material
+	ui = main.get_node("Ui")
 	inventory = ui.inventory_menu
 	journal_log = ui.log_entries_menu
 	found_notes = ui.found_notes_menu
-	cursor = main.get_node("cursor")
+	cursor = main.get_node("Cursor")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 

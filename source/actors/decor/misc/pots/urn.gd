@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-@onready var ash = $ash
+@onready var ash = $Ash
 
 @export var ash_visible: bool = true : set = _set_ash_visible
 

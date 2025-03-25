@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwxs7uffbs0wu"]
 
-[node name="distillation_instructions" type="Label"]
+[node name="DistillationInstructions" type="Label"]
 custom_minimum_size = Vector2(800, 0)
 text = "Trial #13: First Successful Cure
 

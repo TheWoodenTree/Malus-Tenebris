@@ -1,8 +1,8 @@
 extends Interactable
 
-@onready var pour_particles = $pour_particles
-@onready var pour_anim_player = $pour_anim_player
-@onready var vial = $vial
+@onready var pour_particles = $PourParticles
+@onready var pour_anim_player = $PourAnimPlayer
+@onready var vial = $Vial
 
 @warning_ignore("unused_signal")
 signal vial_used

@@ -32,7 +32,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j2iov")
 
-[node name="plank_1" type="Node3D"]
+[node name="Plank1" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_msmjf")

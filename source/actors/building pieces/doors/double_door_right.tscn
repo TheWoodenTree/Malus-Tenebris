@@ -118,36 +118,36 @@ shader_parameter/outlineSize = 0.04
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="double_door_right" instance=ExtResource("1_y7dbd")]
+[node name="DoubleDoorRight" instance=ExtResource("1_y7dbd")]
 
-[node name="door" parent="door_body" index="2"]
+[node name="Door" parent="DoorBody" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.75, 0, 0)
 material_overlay = SubResource("ShaderMaterial_205sd")
 mesh = SubResource("ArrayMesh_5q4ds")
 
-[node name="collision_shape" parent="door_body" index="3"]
+[node name="CollisionShape" parent="DoorBody" index="3"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.75, 2.25, 0)
 visible = false
 shape = SubResource("BoxShape3D_x4vdx")
 
-[node name="interact_area" parent="door_body" index="4"]
+[node name="InteractArea" parent="DoorBody" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.450127)
 
-[node name="collision_shape" parent="door_body/interact_area" index="0"]
+[node name="CollisionShape" parent="DoorBody/InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 2.25, -0.453)
 shape = SubResource("BoxShape3D_7l44g")
 
-[node name="door_attempt_player" parent="door_body" index="7"]
+[node name="DoorAttemptPlayer" parent="DoorBody" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27559, 1.72, 0)
 
-[node name="door_unlock_player" parent="door_body" index="8"]
+[node name="DoorUnlockPlayer" parent="DoorBody" index="8"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.26351, 1.71481, 0)
 
-[node name="door_close_player" parent="door_body" index="9"]
+[node name="DoorClosePlayer" parent="DoorBody" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 1.75, 0)
 
-[node name="key" parent="door_body" index="11"]
+[node name="Key" parent="DoorBody" index="11"]
 transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0.201, 1.048, -0.22)
 
-[node name="mesh" parent="door_body/key" index="0"]
+[node name="Mesh" parent="DoorBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_yjfnd")

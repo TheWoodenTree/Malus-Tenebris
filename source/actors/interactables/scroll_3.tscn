@@ -134,21 +134,21 @@ stream_0/stream = ExtResource("5_4h3xn")
 stream_1/stream = ExtResource("6_f2qcc")
 stream_2/stream = ExtResource("7_wxdnw")
 
-[node name="scroll_3" instance=ExtResource("1_i5nqm")]
+[node name="Scroll3" instance=ExtResource("1_i5nqm")]
 interactable_type = 4
 enable_highlight_sheen = true
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.137109)
 material_overlay = SubResource("ShaderMaterial_a7glc")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_5miqw")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054, 0)
 shape = SubResource("BoxShape3D_clai2")
 
-[node name="page_turn_player" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="PageTurnPlayer" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = SubResource("AudioStreamRandomizer_ahj8c")
 attenuation_model = 3
 bus = &"General"

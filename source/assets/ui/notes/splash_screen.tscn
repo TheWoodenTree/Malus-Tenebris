@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_mhdtq"]
 
-[node name="splash_screen" type="Control"]
+[node name="SplashScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mhdtq")
 
-[node name="made_with" type="Label" parent="."]
+[node name="MadeWith" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Made with"
 
-[node name="image" type="TextureRect" parent="."]
+[node name="Image" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

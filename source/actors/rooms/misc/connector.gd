@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var hanging_lamp = $hanging_lamp
+@onready var hanging_lamp = $HangingLamp
 
 @export var lamp_lit: bool = true
 

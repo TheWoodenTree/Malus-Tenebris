@@ -4,17 +4,17 @@ var fat_being_melted: bool = false
 var fat_melted: bool = false
 var key_dipped: bool = false
 
-@onready var fat = $fat
-@onready var key = $key
-@onready var key_pickup_player = $key_pickup_player
-@onready var anim_player = $anim_player
+@onready var fat = $Fat
+@onready var key = $Key
+@onready var key_pickup_player = $KeyPickupPlayer
+@onready var anim_player = $AnimPlayer
 
 @export var key_item_data: ItemData
 
 
 func _ready():
 	super()
-	key_item_data.mesh = key.get_node("mesh").duplicate()
+	key_item_data.mesh = key.get_node("Mesh").duplicate()
 
 
 func _melt_fat():
@@ -53,11 +53,11 @@ func _lube_key():
 	tween.parallel().tween_property(key, "global_rotation", initial_rot, 0.35)
 	
 	key.visible = true
-	key.get_node("mesh").layers = 2
+	key.get_node("Mesh").layers = 2
 	set_interactable(false)
 	
 	await tween.finished
-	key.get_node("mesh").layers = 1
+	key.get_node("Mesh").layers = 1
 	anim_player.play("dip_key")
 	
 	await anim_player.animation_finished

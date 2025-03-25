@@ -89,18 +89,18 @@ material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="fire" type="Node3D"]
+[node name="Fire" type="Node3D"]
 
-[node name="fire_particles" parent="." instance=ExtResource("1_t8nnb")]
+[node name="FireParticles" parent="." instance=ExtResource("1_t8nnb")]
 amount = 128
 process_material = SubResource("ParticleProcessMaterial_66r14")
 draw_pass_1 = SubResource("PlaneMesh_8ci4t")
 
-[node name="lit_fire_particles" parent="." instance=ExtResource("2_4dpfu")]
+[node name="LitFireParticles" parent="." instance=ExtResource("2_4dpfu")]
 process_material = SubResource("ParticleProcessMaterial_o4s5b")
 draw_pass_1 = SubResource("PlaneMesh_0pb01")
 
-[node name="light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.666667, 0.254902, 1)
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0

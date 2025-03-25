@@ -33,17 +33,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_scxka")
 
-[node name="rubble_1" type="Node3D"]
+[node name="Rubble1" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0293335, 0)
 layers = 8
 mesh = SubResource("ArrayMesh_odwn6")
 
-[node name="area" parent="." instance=ExtResource("2_lad26")]
+[node name="Area" parent="." instance=ExtResource("2_lad26")]
 
-[node name="collision_shape" parent="area" index="0"]
+[node name="CollisionShape" parent="Area" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.343994, 0, -0.01307)
 visible = false
 
-[editable path="area"]
+[editable path="Area"]

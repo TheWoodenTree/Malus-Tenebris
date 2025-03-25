@@ -134,32 +134,32 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w3jl4")
 
-[node name="plate_w_candle" node_paths=PackedStringArray("meshes") instance=ExtResource("1_qn5b8")]
+[node name="PlateWCandle" node_paths=PackedStringArray("meshes") instance=ExtResource("1_qn5b8")]
 script = ExtResource("3")
 default_range = 12.0
 default_energy = 0.75
 lit = true
 shadow_mode = 0
 audio_fade_in_on_ready = false
-meshes = [NodePath("mesh"), NodePath("mesh_2")]
+meshes = [NodePath("Mesh"), NodePath("Mesh2")]
 interactable = false
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161, 0)
 material_overlay = SubResource("ShaderMaterial_ckwuf")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_qscbh")
 
-[node name="interact_area" parent="." index="1"]
+[node name="InteractArea" parent="." index="1"]
 collision_layer = 0
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149, 0)
 shape = SubResource("SphereShape3D_yqsqd")
 
-[node name="mesh_2" type="MeshInstance3D" parent="." index="3"]
+[node name="Mesh2" type="MeshInstance3D" parent="." index="3"]
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_alnvp")
 
-[node name="fire" parent="." index="4" instance=ExtResource("2")]
+[node name="Fire" parent="." index="4" instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.348723, 0)

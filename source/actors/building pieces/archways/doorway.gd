@@ -16,7 +16,7 @@ const DOOR_POSITION := Vector3(1.125, 0.0, 0.1)
 @export var door_custom_script: Script
 @export_tool_button("Snap Door") var snap_door: Callable = _snap_door
 
-@onready var door = $door if has_node("door") else null
+@onready var door = $Door if has_node("Door") else null
 
 
 func _ready() -> void:

@@ -1,13 +1,13 @@
 extends Menu
 
-@onready var title = $cont/v_box_cont/title
-@onready var play_button = $cont/v_box_cont/play_button
-@onready var settings_button = $cont/v_box_cont/settings_button
-@onready var credits_button = $cont/v_box_cont/credits_button
-@onready var quit_button = $cont/v_box_cont/quit_button
+@onready var title = $Cont/VBoxCont/Title
+@onready var play_button = $Cont/VBoxCont/PlayButton
+@onready var settings_button = $Cont/VBoxCont/SettingsButton
+@onready var credits_button = $Cont/VBoxCont/CreditsButton
+@onready var quit_button = $Cont/VBoxCont/QuitButton
 @onready var title_screen_room = Global.main.title_screen_room
 @onready var credits_menu = preload("res://source/assets/ui/menus/credits_menu.tscn").instantiate()
-@onready var music_player = $music_player
+@onready var music_player = $MusicPlayer
 
 
 func _enter_tree():

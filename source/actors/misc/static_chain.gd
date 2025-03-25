@@ -1,8 +1,8 @@
 @tool
 extends Node3D
 
-@onready var mesh_inst = $mesh
-@onready var mesh = $mesh.mesh
+@onready var mesh_inst = $Mesh
+@onready var mesh = $Mesh.mesh
 
 @export_range(1, 10) var length: int = 1 : set = _set_length
 

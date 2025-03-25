@@ -3,9 +3,9 @@ extends Area3D
 
 var sound_played: bool = false
 
-@onready var collision_shape = $collision_shape
-@onready var sound_player_3d = $sound_player_3d
-@onready var sound_player = $sound_player
+@onready var collision_shape = $CollisionShape
+@onready var sound_player_3d = $SoundPlayer3d
+@onready var sound_player = $SoundPlayer
 
 @export var size: Vector3 = Vector3.ONE : set = _set_size
 @export var sound: AudioStream : set = _set_sound

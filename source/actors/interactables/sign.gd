@@ -4,8 +4,8 @@ extends Interactable
 @export_multiline var text: String
 @export var chain_length: int = 2 : set = _set_chain_length
 
-@onready var static_chain_1 = $static_chain1
-@onready var static_chain_2 = $static_chain2
+@onready var static_chain_1 = $StaticChain1
+@onready var static_chain_2 = $StaticChain2
 
 
 func _ready():

@@ -9,8 +9,8 @@ enum FloorType {STONE, WOOD, DEBRIS_STONE}
 @export var global_triplanar: bool = true : set = _set_global_triplanar
 @export var type: FloorType = FloorType.STONE
 
-@onready var mesh = $mesh.mesh
-@onready var collision_box = $collision_box.shape
+@onready var mesh = $Mesh.mesh
+@onready var collision_box = $CollisionBox.shape
 
 
 func _ready() -> void:
@@ -20,10 +20,10 @@ func _ready() -> void:
 		var nav_blocking_volume = load("res://source/actors/building pieces/basic/nav_blocking_volume.tscn").instantiate()
 		add_child(nav_blocking_volume)
 		nav_blocking_volume.position.y = (mesh.size.y / 2) + 0.5
-		nav_blocking_volume.get_node("mesh").mesh.size.x = size.x
-		nav_blocking_volume.get_node("mesh").mesh.size.z = size.z
-		nav_blocking_volume.get_node("collision_box").shape.extents.x = size.x / 2
-		nav_blocking_volume.get_node("collision_box").shape.extents.z = size.z / 2
+		nav_blocking_volume.get_node("Mesh").mesh.size.x = size.x
+		nav_blocking_volume.get_node("Mesh").mesh.size.z = size.z
+		nav_blocking_volume.get_node("CollisionBox").shape.extents.x = size.x / 2
+		nav_blocking_volume.get_node("CollisionBox").shape.extents.z = size.z / 2
 		if not Engine.is_editor_hint():
 			nav_blocking_volume.visible = false
 	if not global_triplanar and "wall" in name:
@@ -47,13 +47,13 @@ func _set_nav_walkable(walkable):
 		var nav_blocking_volume = load("res://source/actors/building pieces/basic/nav_blocking_volume.tscn").instantiate()
 		add_child(nav_blocking_volume)
 		nav_blocking_volume.position.y = (mesh.size.y / 2) + 0.5
-		nav_blocking_volume.get_node("mesh").mesh.size.x = size.x
-		nav_blocking_volume.get_node("mesh").mesh.size.z = size.z
-		nav_blocking_volume.get_node("collision_box").shape.extents.x = size.x / 2
-		nav_blocking_volume.get_node("collision_box").shape.extents.z = size.z / 2
+		nav_blocking_volume.get_node("Mesh").mesh.size.x = size.x
+		nav_blocking_volume.get_node("Mesh").mesh.size.z = size.z
+		nav_blocking_volume.get_node("CollisionBox").shape.extents.x = size.x / 2
+		nav_blocking_volume.get_node("CollisionBox").shape.extents.z = size.z / 2
 	else:
-		if has_node("nav_blocking_volume"):
-			$nav_blocking_volume.queue_free()
+		if has_node("NavBlockingVolume"):
+			$NavBlockingVolume.queue_free()
 
 
 func _set_global_triplanar(is_global):

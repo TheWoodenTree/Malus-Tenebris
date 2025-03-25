@@ -24,16 +24,16 @@ var found_notes_menu: Control = preload("res://source/assets/ui/menus/found_note
 var note_menu: Control = preload("res://source/assets/ui/menus/note_menu.tscn").instantiate()
 var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_journal_note_menu.tscn").instantiate()
 
-@onready var background = $menus/background
-@onready var interact_icon = $cont/interact_icon
-@onready var draggable_move_progress_bar = $draggable_move_progress_bar
-@onready var menus = $menus
+@onready var background = $Menus/Background
+@onready var interact_icon = $Cont/InteractIcon
+@onready var draggable_move_progress_bar = $DraggableMoveProgressBar
+@onready var menus = $Menus
 @onready var block_inventory_open: bool = false
-@onready var generic_audio_player = $generic_audio_player
-@onready var button_hover_player = $button_hover_player
-@onready var button_up_player = $button_up_player
-@onready var button_down_player = $button_down_player
-@onready var log_entry_notification: HBoxContainer = $cont/log_entry_notification
+@onready var generic_audio_player = $GenericAudioPlayer
+@onready var button_hover_player = $ButtonHoverPlayer
+@onready var button_up_player = $ButtonUpPlayer
+@onready var button_down_player = $ButtonDownPlayer
+@onready var log_entry_notification: HBoxContainer = $Cont/LogEntryNotification
 
 signal inventory_opened
 signal background_changed
@@ -47,8 +47,8 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("debug3") and has_node("death_screen"):
-		remove_child(get_node("death_screen"))
+	if Input.is_action_just_pressed("debug3") and has_node("DeathScreen"):
+		remove_child(get_node("DeathScreen"))
 	if Input.is_action_just_pressed("toggle_inventory"):
 		if menus.num_menus == 0:
 			open_inventory()

@@ -111,35 +111,35 @@ shader_parameter/outlineSize = 0.04
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="square_cell_door" instance=ExtResource("1_1qg3c")]
+[node name="SquareCellDoor" instance=ExtResource("1_1qg3c")]
 
-[node name="hinge" parent="door_body" index="1"]
+[node name="Hinge" parent="DoorBody" index="1"]
 angular_limit/upper = 1.48353
 angular_limit/lower = 0.0
 
-[node name="door" parent="door_body" index="2"]
+[node name="Door" parent="DoorBody" index="2"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
 material_overlay = SubResource("ShaderMaterial_qg6v7")
 mesh = SubResource("ArrayMesh_m74a6")
 
-[node name="collision_shape" parent="door_body" index="3"]
+[node name="CollisionShape" parent="DoorBody" index="3"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 1.75, 0)
 shape = SubResource("BoxShape3D_2mpug")
 
-[node name="collision_shape" parent="door_body/interact_area" index="0"]
+[node name="CollisionShape" parent="DoorBody/InteractArea" index="0"]
 shape = SubResource("BoxShape3D_qk6xr")
 
-[node name="door_full_open_player" parent="door_body" index="5"]
+[node name="DoorFullOpenPlayer" parent="DoorBody" index="5"]
 stream = ExtResource("4_87roi")
 
-[node name="door_open_player" parent="door_body" index="6"]
+[node name="DoorOpenPlayer" parent="DoorBody" index="6"]
 stream = ExtResource("4_87roi")
 
-[node name="door_attempt_player" parent="door_body" index="7"]
+[node name="DoorAttemptPlayer" parent="DoorBody" index="7"]
 stream = ExtResource("5_fnp10")
 
-[node name="door_close_player" parent="door_body" index="9"]
+[node name="DoorClosePlayer" parent="DoorBody" index="9"]
 stream = ExtResource("6_u5p70")
 
-[node name="mesh" parent="door_body/key" index="0"]
+[node name="Mesh" parent="DoorBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_4y0ed")

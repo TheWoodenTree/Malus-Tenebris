@@ -62,16 +62,16 @@ shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="pickup" node_paths=PackedStringArray("meshes") instance=ExtResource("1_gjmcy")]
+[node name="Pickup" node_paths=PackedStringArray("meshes") instance=ExtResource("1_gjmcy")]
 script = ExtResource("2_8rstg")
 item_data = null
 name_override = ""
 count = 1
-meshes = [NodePath("mesh")]
+meshes = [NodePath("Mesh")]
 enable_highlight_sheen = true
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 layers = 4
 material_overlay = SubResource("ShaderMaterial_ii0sb")
 
-[node name="pickup_player" type="AudioStreamPlayer3D" parent="." index="2"]
+[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="2"]

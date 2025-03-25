@@ -37,19 +37,19 @@ var reverse_z_dist: bool = false
 
 @onready var unlocked = key_name.is_empty()
 
-@onready var draggable_body = $door_body
-@onready var door = $door_body/door
-@onready var door_open_player = $door_body/door_open_player
-@onready var door_full_open_player = $door_body/door_full_open_player
-@onready var door_unlock_player = $door_body/door_unlock_player
-@onready var door_close_player = $door_body/door_close_player
-@onready var door_attempt_player = $door_body/door_attempt_player
-@onready var interact_area = $door_body/interact_area
-@onready var key_anim_player = $door_body/key_anim_player
-@onready var key = $door_body/key # Parent necessary because of a bug relating to scale when setting global_rotation
-@onready var collision_shape = $door_body/collision_shape
-@onready var hinge = $door_body/hinge
-@onready var mesh = $door_body/door
+@onready var draggable_body = $DoorBody
+@onready var door = $DoorBody/Door
+@onready var door_open_player = $DoorBody/DoorOpenPlayer
+@onready var door_full_open_player = $DoorBody/DoorFullOpenPlayer
+@onready var door_unlock_player = $DoorBody/DoorUnlockPlayer
+@onready var door_close_player = $DoorBody/DoorClosePlayer
+@onready var door_attempt_player = $DoorBody/DoorAttemptPlayer
+@onready var interact_area = $DoorBody/InteractArea
+@onready var key_anim_player = $DoorBody/KeyAnimPlayer
+@onready var key = $DoorBody/Key # Parent necessary because of a bug relating to scale when setting global_rotation
+@onready var collision_shape = $DoorBody/CollisionShape
+@onready var hinge = $DoorBody/Hinge
+@onready var mesh = $DoorBody/Door
 
 signal moved
 
@@ -223,22 +223,22 @@ func attempt_unlock():
 	tween.parallel().tween_property(key, "global_rotation", initial_rot, 0.35)
 	
 	key.visible = true
-	key.get_node("mesh").layers = 2
+	key.get_node("Mesh").layers = 2
 	Global.player.set_held_item_visibility(false)
 	set_interactable(false)
 	
 	await tween.finished
-	key.get_node("mesh").layers = 1
+	key.get_node("Mesh").layers = 1
 	key_anim_player.play(anim_name)
 	
 	# TODO: Remove
 	if correct_key and key_name == "Larder":
-		get_parent().get_parent().get_parent().get_node("lower_prison_hallway_2/misc/archway_w_door_no_window/door/door_body").rotation_degrees.y = 85.0
+		get_parent().get_parent().get_parent().get_node("LowerPrisonHallway2/Misc/ArchwayWDoorNoWindow/Door/DoorBody").rotation_degrees.y = 85.0
 		await get_tree().create_timer(1.0, false).timeout
-		Global.monster.global_position = get_parent().get_parent().get_node("monster_start_point").global_position
+		Global.monster.global_position = get_parent().get_parent().get_node("MonsterStartPoint").global_position
 		Global.monster.kitchen_encounter_event()
 		await get_tree().create_timer(1.0, false).timeout
-		Global.player.cam_look_at_over_time(get_parent().get_parent().get_node("look_at_monster_point").global_position, 3.0)
+		Global.player.cam_look_at_over_time(get_parent().get_parent().get_node("LookAtMonsterPoint").global_position, 3.0)
 	
 	await key_anim_player.animation_finished
 	if correct_key and not is_prison_depths_key:
@@ -266,7 +266,7 @@ func open():
 	door_full_open_player.play()
 	interact_area.set_collision_layer_value(16, false)
 	await door_tween.finished
-	Global.world.get_node("nav_region").bake_navigation_mesh()
+	Global.world.get_node("NavRegion").bake_navigation_mesh()
 	set_interactable(true)
 
 

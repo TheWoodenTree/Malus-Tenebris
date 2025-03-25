@@ -42,7 +42,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_afov8")
 orientation = 2
 
-[node name="dust_particles" type="GPUParticles3D"]
+[node name="DustParticles" type="GPUParticles3D"]
 emitting = false
 amount = 5
 lifetime = 2.0

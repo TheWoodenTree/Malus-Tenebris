@@ -1,7 +1,7 @@
 @tool
 extends Moveable
 
-@onready var note = %note
+@onready var note = %Note
 
 func _ready() -> void:
 	super()

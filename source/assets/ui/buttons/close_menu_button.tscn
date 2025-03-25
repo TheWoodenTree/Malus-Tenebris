@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_nrris"]
 [ext_resource type="Script" uid="uid://dqd5ekfk1i8uy" path="res://source/assets/ui/buttons/close_menu_button.gd" id="2_gonxu"]
 
-[node name="close_menu_button" type="Button"]
+[node name="CloseMenuButton" type="Button"]
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_nrris")

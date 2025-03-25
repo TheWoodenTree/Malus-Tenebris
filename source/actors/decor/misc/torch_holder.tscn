@@ -124,7 +124,7 @@ shadow_mesh = SubResource("ArrayMesh_8347d")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ayvr3"]
 radius = 0.4
 
-[node name="torch_holder" instance=ExtResource("1_eh2yt")]
+[node name="TorchHolder" instance=ExtResource("1_eh2yt")]
 script = ExtResource("4")
 default_range = 12.0
 default_energy = 0.75
@@ -132,16 +132,16 @@ lit = true
 shadow_mode = 0
 audio_fade_in_on_ready = false
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, -0.0220984, 0.156182, -0.216999)
 layers = 8
 material_overlay = SubResource("ShaderMaterial_r6hau")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_pntri")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, -0.5, 0, 0.5, -0.866025, 0, 0.519339, -0.291774)
 shape = SubResource("CapsuleShape3D_ayvr3")
 
-[node name="fire" parent="." index="3" instance=ExtResource("1")]
+[node name="Fire" parent="." index="3" instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989, -0.623769)

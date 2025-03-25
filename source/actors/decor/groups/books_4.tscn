@@ -57,9 +57,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tkmah")
 
-[node name="books_4" type="Node3D"]
+[node name="Books4" type="Node3D"]
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.895, 0)
 layers = 8
 cast_shadow = 0

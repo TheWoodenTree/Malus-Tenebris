@@ -4,7 +4,7 @@ var collision_normal: Vector3 = Vector3.ZERO
 
 var break_effect_res: Resource = preload("res://source/assets/particles/ruboleum_vial_break.tscn")
 
-@onready var break_player = $break_player
+@onready var break_player = $BreakPlayer
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D):

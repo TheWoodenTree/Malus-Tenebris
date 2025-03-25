@@ -70,16 +70,16 @@ size = Vector3(0.6, 0.4, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3p7oh"]
 size = Vector3(1.2, 0.8, 0.4)
 
-[node name="stone_button" instance=ExtResource("1_q0acp")]
+[node name="StoneButton" instance=ExtResource("1_q0acp")]
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 material_overlay = SubResource("ShaderMaterial_pam6d")
 mesh = SubResource("BoxMesh_7kcht")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 shape = SubResource("BoxShape3D_3p7oh")
 
-[node name="push_player" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="PushPlayer" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("4_3bgsf")

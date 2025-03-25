@@ -35,7 +35,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hx0eo")
 
-[node name="narrow_curved_ceiling_1" type="Node3D"]
+[node name="NarrowCurvedCeiling1" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

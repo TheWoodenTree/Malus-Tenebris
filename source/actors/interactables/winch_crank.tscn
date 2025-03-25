@@ -108,17 +108,17 @@ shadow_mesh = SubResource("ArrayMesh_h6ebl")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_msbx5"]
 
-[node name="winch_crank" instance=ExtResource("1_lf2j4")]
+[node name="WinchCrank" instance=ExtResource("1_lf2j4")]
 item_data = SubResource("Resource_my8ss")
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.540983, 0.068, 0.115531)
 material_overlay = SubResource("ShaderMaterial_jotu1")
 mesh = SubResource("ArrayMesh_q3oai")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_msbx5")
 
-[node name="pickup_player" parent="." index="2"]
+[node name="PickupPlayer" parent="." index="2"]
 stream = ExtResource("4_82x00")

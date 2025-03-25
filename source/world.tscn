@@ -51,116 +51,116 @@ material = SubResource("StandardMaterial3D_a6rj2")
 radius = 0.1
 height = 0.2
 
-[node name="world" type="Node3D"]
+[node name="World" type="Node3D"]
 
-[node name="default_sound" type="Area3D" parent="."]
+[node name="DefaultSound" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.4339, 0, -44.5)
 priority = 1
 reverb_bus_enabled = true
 reverb_bus_name = &"General (big)"
 reverb_bus_amount = 1.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="default_sound"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DefaultSound"]
 shape = SubResource("BoxShape3D_jlowy")
 
-[node name="player_spawn_point" type="Marker3D" parent="."]
+[node name="PlayerSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 7.85, 49.5)
 
-[node name="nav_region" type="NavigationRegion3D" parent="."]
+[node name="NavRegion" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)
 navigation_mesh = SubResource("NavigationMesh_q4dpi")
 
-[node name="big_cell2" parent="nav_region" instance=ExtResource("2_7yt8k")]
+[node name="BigCell2" parent="NavRegion" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 99.25, 6, 23.25)
 
-[node name="big_cell5" parent="nav_region" instance=ExtResource("2_7yt8k")]
+[node name="BigCell5" parent="NavRegion" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 99.25, 6, 33.25)
 
-[node name="big_cell3" parent="nav_region" instance=ExtResource("2_7yt8k")]
+[node name="BigCell3" parent="NavRegion" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114.25, 6, 23.25)
 
-[node name="big_cell4" parent="nav_region" instance=ExtResource("2_7yt8k")]
+[node name="BigCell4" parent="NavRegion" instance=ExtResource("2_7yt8k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 129.25, 6, 23.25)
 
-[node name="starting_room" parent="nav_region" instance=ExtResource("2_nvqo1")]
+[node name="StartingRoom" parent="NavRegion" instance=ExtResource("2_nvqo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.25, 6, 33.25)
 
-[node name="bigger_cells_hall" parent="nav_region" instance=ExtResource("26_mq5sv")]
+[node name="BiggerCellsHall" parent="NavRegion" instance=ExtResource("26_mq5sv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.25, 6, 28.25)
 
-[node name="cells_stairway" parent="nav_region" instance=ExtResource("8_pef6q")]
+[node name="CellsStairway" parent="NavRegion" instance=ExtResource("8_pef6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -9, -38.25)
 
-[node name="warden_chamber" parent="nav_region" instance=ExtResource("9_xbk25")]
+[node name="WardenChamber" parent="NavRegion" instance=ExtResource("9_xbk25")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.75, -9, -37.25)
 
-[node name="safe_room" parent="nav_region" instance=ExtResource("12_nytv3")]
+[node name="SafeRoom" parent="NavRegion" instance=ExtResource("12_nytv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5, -15, -77.75)
 
-[node name="lower_cell_hall_1" parent="nav_region" instance=ExtResource("13_3dwqw")]
+[node name="LowerCellHall1" parent="NavRegion" instance=ExtResource("13_3dwqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -15, -97.25)
 
-[node name="lower_cell_hall_2" parent="nav_region" instance=ExtResource("33_ysjgv")]
+[node name="LowerCellHall2" parent="NavRegion" instance=ExtResource("33_ysjgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5, -15, -60.25)
 
-[node name="lower_cell_hall_3" parent="nav_region" instance=ExtResource("32_yfpp8")]
+[node name="LowerCellHall3" parent="NavRegion" instance=ExtResource("32_yfpp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -15, -129.25)
 
-[node name="kitchen" parent="nav_region" instance=ExtResource("34_2ebpu")]
+[node name="Kitchen" parent="NavRegion" instance=ExtResource("34_2ebpu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, -15, -77.75)
 
-[node name="lower_prison_staircase_1" parent="nav_region" instance=ExtResource("19_2i4co")]
+[node name="LowerPrisonStaircase1" parent="NavRegion" instance=ExtResource("19_2i4co")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12, -18.5, -107.75)
 
-[node name="records_room" parent="nav_region" instance=ExtResource("24_w38t7")]
+[node name="RecordsRoom" parent="NavRegion" instance=ExtResource("24_w38t7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 6, -3)
 
-[node name="upper_prison_common_area" parent="nav_region" instance=ExtResource("21_3ed77")]
+[node name="UpperPrisonCommonArea" parent="NavRegion" instance=ExtResource("21_3ed77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.25, 6.5, 24.75)
 
-[node name="small_torture_room" parent="nav_region" instance=ExtResource("22_564cf")]
+[node name="SmallTortureRoom" parent="NavRegion" instance=ExtResource("22_564cf")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 73.25, 3, 39.75)
 
-[node name="barracks" parent="nav_region" instance=ExtResource("22_gqwdo")]
+[node name="Barracks" parent="NavRegion" instance=ExtResource("22_gqwdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3.5, 16.5)
 
-[node name="upper_storage_room" parent="nav_region" instance=ExtResource("30_scntj")]
+[node name="UpperStorageRoom" parent="NavRegion" instance=ExtResource("30_scntj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 47.75, 3, -0.25)
 
-[node name="holding_cells" parent="nav_region" instance=ExtResource("25_47crl")]
+[node name="HoldingCells" parent="NavRegion" instance=ExtResource("25_47crl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.75, 3.5, 34.75)
 
-[node name="lower_prison_entrance" parent="nav_region" instance=ExtResource("25_7631t")]
+[node name="LowerPrisonEntrance" parent="NavRegion" instance=ExtResource("25_7631t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5, -5, -49.75)
 
-[node name="lower_prison_hallway_1" parent="nav_region" instance=ExtResource("20_2fkcd")]
+[node name="LowerPrisonHallway1" parent="NavRegion" instance=ExtResource("20_2fkcd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62, -15, -107.75)
 
-[node name="lower_prison_hallway_2" parent="nav_region" instance=ExtResource("21_t63ha")]
+[node name="LowerPrisonHallway2" parent="NavRegion" instance=ExtResource("21_t63ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -15, -89.75)
 
-[node name="prison_temple_connector" parent="nav_region" instance=ExtResource("22_sswj8")]
+[node name="PrisonTempleConnector" parent="NavRegion" instance=ExtResource("22_sswj8")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.25, -16.5, -90.75)
 
-[node name="auditorium" parent="nav_region" instance=ExtResource("23_f001m")]
+[node name="Auditorium" parent="NavRegion" instance=ExtResource("23_f001m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -17, 23.75)
 
-[node name="ritual_chamber_and_quarters_connector" parent="nav_region" instance=ExtResource("25_g0g0n")]
+[node name="RitualChamberAndQuartersConnector" parent="NavRegion" instance=ExtResource("25_g0g0n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, -17, 0.75)
 
-[node name="servants_quarters" parent="nav_region" instance=ExtResource("26_qdr7n")]
+[node name="ServantsQuarters" parent="NavRegion" instance=ExtResource("26_qdr7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -9, -36.75)
 
-[node name="itch_background_room" parent="nav_region" instance=ExtResource("27_7hdn1")]
+[node name="ItchBackgroundRoom" parent="NavRegion" instance=ExtResource("27_7hdn1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 126, 3.25, -80.75)
 visible = false
 
-[node name="records_room_storage" parent="nav_region" instance=ExtResource("27_xk6td")]
+[node name="RecordsRoomStorage" parent="NavRegion" instance=ExtResource("27_xk6td")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.25, 6.5, -12.25)
 
-[node name="test" type="MeshInstance3D" parent="."]
+[node name="Test" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, -16.4483, -46.75)
 mesh = SubResource("SphereMesh_w1q8a")
 
-[node name="monster" parent="." instance=ExtResource("26_wekw4")]
+[node name="Monster" parent="." instance=ExtResource("26_wekw4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -108.5, -12.75, 52.25)

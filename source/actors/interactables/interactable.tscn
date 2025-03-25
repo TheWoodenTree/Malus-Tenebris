@@ -4,22 +4,22 @@
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_143x3"]
 [ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_3f3on"]
 
-[node name="interactable" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
+[node name="Interactable" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
 script = ExtResource("1_088xv")
-interact_areas = [NodePath("interact_area")]
-meshes = [NodePath("mesh")]
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 material_overlay = ExtResource("2_143x3")
 
-[node name="interact_area" type="Area3D" parent="."]
+[node name="InteractArea" type="Area3D" parent="."]
 collision_layer = 32768
 collision_mask = 2048
 script = ExtResource("3_3f3on")
 
-[node name="collision_shape" type="CollisionShape3D" parent="interact_area"]
+[node name="CollisionShape" type="CollisionShape3D" parent="InteractArea"]
 
-[node name="highlight_light" type="OmniLight3D" parent="."]
+[node name="HighlightLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102692, 0)
 visible = false
 light_energy = 0.2

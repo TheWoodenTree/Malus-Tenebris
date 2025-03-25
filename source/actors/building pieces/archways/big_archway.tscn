@@ -74,22 +74,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ph64e")
 
-[node name="big_archway" type="Node3D"]
+[node name="BigArchway" type="Node3D"]
 script = ExtResource("1_nnuja")
 
-[node name="archway" type="MeshInstance3D" parent="."]
+[node name="Archway" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_gtusq")
 
-[node name="static_body" type="StaticBody3D" parent="."]
+[node name="StaticBody" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="static_body"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody"]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_ko8hl")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="static_body"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_yofme")
 
-[node name="frame" type="MeshInstance3D" parent="."]
+[node name="Frame" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_lu802")

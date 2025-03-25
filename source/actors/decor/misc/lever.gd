@@ -1,8 +1,8 @@
 extends Interactable
 
-@onready var lever_pull_player = $lever_pull_player
-@onready var interact_area = $interact_area
-@onready var lever_hinge = $lever_hinge
+@onready var lever_pull_player = $LeverPullPlayer
+@onready var interact_area = $InteractArea
+@onready var lever_hinge = $LeverHinge
 
 signal lever_pulled(index)
 

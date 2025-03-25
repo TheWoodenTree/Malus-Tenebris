@@ -127,7 +127,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("fat:mesh:size")
+tracks/1/path = NodePath("Fat:mesh:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -155,7 +155,7 @@ length = 1.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("key:position")
+tracks/0/path = NodePath("Key:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -171,7 +171,7 @@ length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fat:position")
+tracks/0/path = NodePath("Fat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -195,7 +195,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("fat:mesh:size")
+tracks/2/path = NodePath("Fat:mesh:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -219,7 +219,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("sizzle_player:playing")
+tracks/4/path = NodePath("SizzlePlayer:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -271,48 +271,48 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p2g6y")
 
-[node name="fat_melting_pot" instance=ExtResource("1_o7aaj")]
+[node name="FatMeltingPot" instance=ExtResource("1_o7aaj")]
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309912, 0)
 material_overlay = SubResource("ShaderMaterial_kpbaf")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_868qy")
 
-[node name="interact_area" parent="." index="1"]
+[node name="InteractArea" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309912, 0)
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 shape = SubResource("SphereShape3D_aghl4")
 
-[node name="sizzle_player" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="SizzlePlayer" type="AudioStreamPlayer3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138894, 0)
 stream = ExtResource("8_vquea")
 unit_size = 100.0
 max_distance = 30.0
 
-[node name="key_pickup_player" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="KeyPickupPlayer" type="AudioStreamPlayer3D" parent="." index="4"]
 stream = ExtResource("2_yswou")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(0.956305, 0, 0.292372, 0, 1, 0, -0.292372, 0, 0.956305, 0, 0.0920419, 0)
 mesh = SubResource("CylinderMesh_j58j2")
 
-[node name="anim_player" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 &"": SubResource("AnimationLibrary_ssidx")
 }
 
-[node name="fat" type="MeshInstance3D" parent="." index="7"]
+[node name="Fat" type="MeshInstance3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("BoxMesh_8qcke")
 
-[node name="key" type="Node3D" parent="." index="8"]
+[node name="Key" type="Node3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.164033)
 visible = false
 
-[node name="mesh" type="MeshInstance3D" parent="key" index="0"]
+[node name="Mesh" type="MeshInstance3D" parent="Key" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qjee5")
-skeleton = NodePath("../../anim_player")
+skeleton = NodePath("../../AnimPlayer")

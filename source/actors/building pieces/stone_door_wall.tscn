@@ -180,7 +180,7 @@ capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../torch_holder/fire/light:omni_range")
+tracks/0/path = NodePath("../../TorchHolder/Fire/Light:omniRange")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -192,7 +192,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../torch_holder2/fire/light:omni_range")
+tracks/1/path = NodePath("../../TorchHolder2/Fire/Light:omniRange")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -204,7 +204,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../torch_holder/fire/lit_fire_particles:emitting")
+tracks/2/path = NodePath("../../TorchHolder/Fire/LitFireParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -216,7 +216,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../torch_holder2/fire/lit_fire_particles:emitting")
+tracks/3/path = NodePath("../../TorchHolder2/Fire/LitFireParticles:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -328,22 +328,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pa7e1")
 
-[node name="stone_door_wall" type="Node3D"]
+[node name="StoneDoorWall" type="Node3D"]
 script = ExtResource("5")
 
-[node name="stone_archway" parent="." instance=ExtResource("9")]
+[node name="StoneArchway" parent="." instance=ExtResource("9")]
 transform = Transform3D(-1, 0, -3.01992e-07, 0, 1, 0, 1.50996e-07, 0, -2, 1.25, -0.25, -0.5)
 
-[node name="pillar" parent="." instance=ExtResource("3")]
+[node name="Pillar" parent="." instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0.75, 2)
 
-[node name="pillar2" parent="." instance=ExtResource("3")]
+[node name="Pillar2" parent="." instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.75, 2)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.75, 0)
 
-[node name="stone_door" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="StoneDoor" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.75)
 mesh = SubResource("1")
 skeleton = NodePath("../..")
@@ -352,122 +352,122 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.75)
 shape = SubResource("22")
 
-[node name="stone_wall" parent="." instance=ExtResource("1")]
+[node name="StoneWall" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.625, 3.75, 0.75)
 size = Vector3(6.25, 8, 1)
 
-[node name="stone_wall2" parent="." instance=ExtResource("1")]
+[node name="StoneWall2" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.125, 3.75, 0.75)
 size = Vector3(6.25, 8, 1)
 
-[node name="stone_wall3" parent="." instance=ExtResource("1")]
+[node name="StoneWall3" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 3.75, -1.375)
 size = Vector3(8, 8, 3.25)
 
-[node name="stone_wall4" parent="." instance=ExtResource("1")]
+[node name="StoneWall4" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.75, -1.375)
 size = Vector3(8, 8, 3.25)
 
-[node name="stone_wall5" parent="." instance=ExtResource("1")]
+[node name="StoneWall5" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 6, -0.25)
 size = Vector3(4, 2.5, 1)
 
-[node name="torch_holder" parent="." instance=ExtResource("4")]
+[node name="TorchHolder" parent="." instance=ExtResource("4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 6.25, 1.5, 2.5)
 default_range = 15.0
 lit = false
 
-[node name="mesh" parent="torch_holder" index="0"]
+[node name="Mesh" parent="TorchHolder" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, -0.0220985, 0.156182, -0.216999)
 material_overlay = SubResource("ShaderMaterial_whbib")
 
-[node name="fire_particles" parent="torch_holder/fire" index="0"]
+[node name="FireParticles" parent="TorchHolder/Fire" index="0"]
 process_material = SubResource("ParticleProcessMaterial_c00e2")
 draw_pass_1 = SubResource("17")
 
-[node name="lit_fire_particles" parent="torch_holder/fire" index="1"]
+[node name="LitFireParticles" parent="TorchHolder/Fire" index="1"]
 process_material = SubResource("18")
 
-[node name="light" parent="torch_holder/fire" index="2"]
+[node name="Light" parent="TorchHolder/Fire" index="2"]
 light_energy = 0.0
 omni_range = 0.0
 
-[node name="torch_holder2" parent="." instance=ExtResource("4")]
+[node name="TorchHolder2" parent="." instance=ExtResource("4")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -3.75, 1.5, 2.5)
 default_range = 15.0
 lit = false
 
-[node name="mesh" parent="torch_holder2" index="0"]
+[node name="Mesh" parent="TorchHolder2" index="0"]
 material_overlay = SubResource("ShaderMaterial_m07gd")
 
-[node name="fire_particles" parent="torch_holder2/fire" index="0"]
+[node name="FireParticles" parent="TorchHolder2/Fire" index="0"]
 process_material = SubResource("ParticleProcessMaterial_4t0fr")
 draw_pass_1 = SubResource("20")
 
-[node name="lit_fire_particles" parent="torch_holder2/fire" index="1"]
+[node name="LitFireParticles" parent="TorchHolder2/Fire" index="1"]
 process_material = SubResource("21")
 
-[node name="light" parent="torch_holder2/fire" index="2"]
+[node name="Light" parent="TorchHolder2/Fire" index="2"]
 light_energy = 0.0
 omni_range = 0.0
 
-[node name="fire_light_area" type="Area3D" parent="."]
+[node name="FireLightArea" type="Area3D" parent="."]
 collision_mask = 2
 
-[node name="collision_shape" type="CollisionShape3D" parent="fire_light_area"]
+[node name="CollisionShape" type="CollisionShape3D" parent="FireLightArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 shape = SubResource("2")
 
-[node name="torch_light_player" type="AnimationPlayer" parent="."]
-root_node = NodePath("../fire_light_area/collision_shape")
+[node name="TorchLightPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../FireLightArea/CollisionShape")
 libraries = {
 "": SubResource("AnimationLibrary_n5cab")
 }
 
-[node name="fire_lit_player" type="AudioStreamPlayer3D" parent="."]
+[node name="FireLitPlayer" type="AudioStreamPlayer3D" parent="."]
 pitch_scale = 0.5
 bus = &"General (big)"
 
-[node name="fire_lit_player2" type="AudioStreamPlayer3D" parent="."]
+[node name="FireLitPlayer2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6")
 pitch_scale = 0.5
 bus = &"General (big)"
 
-[node name="stone_wall6" parent="." instance=ExtResource("1")]
+[node name="StoneWall6" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 7.5, 0.75)
 size = Vector3(7.5, 0.5, 1)
 
-[node name="lever_count_light" parent="." instance=ExtResource("10")]
+[node name="LeverCountLight" parent="." instance=ExtResource("10")]
 transform = Transform3D(-0.642788, 0.766044, 0, -0.766044, -0.642788, 0, 0, 0, 1, -1.6, 5.77616, 2.20647)
 
-[node name="mesh" parent="lever_count_light" index="0"]
+[node name="Mesh" parent="LeverCountLight" index="0"]
 mesh = SubResource("ArrayMesh_70811")
 
-[node name="lever_count_light2" parent="." instance=ExtResource("10")]
+[node name="LeverCountLight2" parent="." instance=ExtResource("10")]
 transform = Transform3D(-0.920505, 0.390731, 0, -0.390731, -0.920505, 0, 0, 0, 1, -0.206, 6.73703, 2.20015)
 
-[node name="mesh" parent="lever_count_light2" index="0"]
+[node name="Mesh" parent="LeverCountLight2" index="0"]
 mesh = SubResource("ArrayMesh_hdf6d")
 
-[node name="lever_count_light4" parent="." instance=ExtResource("10")]
+[node name="LeverCountLight4" parent="." instance=ExtResource("10")]
 transform = Transform3D(-0.642788, -0.766044, 0, 0.766044, -0.642788, 0, 0, 0, 1, 4.099, 5.776, 2.206)
 
-[node name="mesh" parent="lever_count_light4" index="0"]
+[node name="Mesh" parent="LeverCountLight4" index="0"]
 mesh = SubResource("ArrayMesh_titls")
 
-[node name="lever_count_light5" parent="." instance=ExtResource("10")]
+[node name="LeverCountLight5" parent="." instance=ExtResource("10")]
 transform = Transform3D(-0.920505, -0.390731, 0, 0.390731, -0.920505, 0, 0, 0, 1, 2.687, 6.737, 2.206)
 
-[node name="mesh" parent="lever_count_light5" index="0"]
+[node name="Mesh" parent="LeverCountLight5" index="0"]
 mesh = SubResource("ArrayMesh_b7tw2")
 
-[connection signal="body_entered" from="fire_light_area" to="." method="_on_fire_light_area_body_entered"]
+[connection signal="body_entered" from="FireLightArea" to="." method="_on_fire_light_area_body_entered"]
 
-[editable path="torch_holder"]
-[editable path="torch_holder/fire"]
-[editable path="torch_holder2"]
-[editable path="torch_holder2/fire"]
-[editable path="lever_count_light"]
-[editable path="lever_count_light2"]
-[editable path="lever_count_light4"]
-[editable path="lever_count_light5"]
+[editable path="TorchHolder"]
+[editable path="TorchHolder/Fire"]
+[editable path="TorchHolder2"]
+[editable path="TorchHolder2/Fire"]
+[editable path="LeverCountLight"]
+[editable path="LeverCountLight2"]
+[editable path="LeverCountLight4"]
+[editable path="LeverCountLight5"]

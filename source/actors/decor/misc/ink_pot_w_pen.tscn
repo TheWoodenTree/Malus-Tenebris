@@ -67,7 +67,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o0inc")
 
-[node name="ink_pot_w_pen" type="Node3D"]
+[node name="InkPotWPen" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 0

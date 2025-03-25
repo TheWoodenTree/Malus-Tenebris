@@ -37,7 +37,7 @@ resource_name = "torch_light_anim"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("head_controller/base_light:omni_range")
+tracks/0/path = NodePath("HeadController/BaseLight:omniRange")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,7 +80,7 @@ radius = 8.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_6dsv4"]
 radius = 12.0
 
-[node name="player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 slide_on_ceiling = false
 floor_constant_speed = true
@@ -89,16 +89,16 @@ floor_snap_length = 1.0
 script = ExtResource("1")
 debug_has_torch = true
 
-[node name="head_controller" type="Node3D" parent="."]
+[node name="HeadController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="bob_controller" type="Node3D" parent="head_controller"]
+[node name="BobController" type="Node3D" parent="HeadController"]
 script = ExtResource("2_n0c15")
 
-[node name="camera" parent="head_controller/bob_controller" instance=ExtResource("2")]
+[node name="Camera" parent="HeadController/BobController" instance=ExtResource("2")]
 cull_mask = 1048573
 
-[node name="viewport_cont" type="SubViewportContainer" parent="head_controller/bob_controller/camera"]
+[node name="ViewportCont" type="SubViewportContainer" parent="HeadController/BobController/Camera"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -107,49 +107,49 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="torch_cam_viewport" type="SubViewport" parent="head_controller/bob_controller/camera/viewport_cont"]
+[node name="TorchCamViewport" type="SubViewport" parent="HeadController/BobController/Camera/ViewportCont"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(512, 288)
 render_target_update_mode = 4
 
-[node name="torch_cam" type="Camera3D" parent="head_controller/bob_controller/camera/viewport_cont/torch_cam_viewport"]
+[node name="TorchCam" type="Camera3D" parent="HeadController/BobController/Camera/ViewportCont/TorchCamViewport"]
 cull_mask = 2
 
-[node name="interact_raycast" type="RayCast3D" parent="head_controller/bob_controller/camera"]
+[node name="InteractRaycast" type="RayCast3D" parent="HeadController/BobController/Camera"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 32769
 collide_with_areas = true
 script = ExtResource("4_hbv3l")
 
-[node name="torch_pos" type="Marker3D" parent="head_controller/bob_controller/camera"]
+[node name="TorchPos" type="Marker3D" parent="HeadController/BobController/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252)
 
-[node name="held_item_marker" type="Marker3D" parent="head_controller/bob_controller/camera"]
+[node name="HeldItemMarker" type="Marker3D" parent="HeadController/BobController/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 
-[node name="bob_timer" type="AnimationPlayer" parent="head_controller/bob_controller"]
+[node name="BobTimer" type="AnimationPlayer" parent="HeadController/BobController"]
 libraries = {
 &"": SubResource("AnimationLibrary_crvps")
 }
 
-[node name="base_light" type="OmniLight3D" parent="head_controller"]
+[node name="BaseLight" type="OmniLight3D" parent="HeadController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.805, 0)
 layers = 3
 light_energy = 0.75
 omni_range = 3.0
 script = ExtResource("4")
 
-[node name="random_sound_manager" parent="head_controller" instance=ExtResource("5_8g41b")]
+[node name="RandomSoundManager" parent="HeadController" instance=ExtResource("5_8g41b")]
 
-[node name="standing_collision" type="CollisionShape3D" parent="."]
+[node name="StandingCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8awoy")
 
-[node name="crouching_collision" type="CollisionShape3D" parent="."]
+[node name="CrouchingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852, 0)
 shape = SubResource("CapsuleShape3D_2fjcf")
 
-[node name="torch_light_player" type="AnimationPlayer" parent="."]
+[node name="TorchLightPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ha0pu")
 }
@@ -162,56 +162,56 @@ lifetime = 5.0
 process_material = ExtResource("4_sn5wa")
 draw_pass_1 = SubResource("PlaneMesh_occu0")
 
-[node name="floor_type_check" type="RayCast3D" parent="."]
+[node name="FloorTypeCheck" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 target_position = Vector3(0, -3, 0)
 collision_mask = 8192
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="water_check" type="RayCast3D" parent="."]
+[node name="WaterCheck" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 target_position = Vector3(0, -2.65, 0)
 collision_mask = 5
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="noise_player" type="AudioStreamPlayer3D" parent="."]
+[node name="NoisePlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 stream = ExtResource("5_386p0")
 
-[node name="rucksack_player" type="AudioStreamPlayer3D" parent="."]
+[node name="RucksackPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 stream = SubResource("AudioStreamRandomizer_v4sui")
 max_polyphony = 5
 
-[node name="fear_player" type="AudioStreamPlayer" parent="."]
+[node name="FearPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ulhip")
 
-[node name="fear_pulse_player" type="AudioStreamPlayer" parent="."]
+[node name="FearPulsePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_nxucy")
 volume_db = 10.0
 
-[node name="affliction_timer" type="Timer" parent="."]
+[node name="AfflictionTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 autostart = true
 script = ExtResource("10_iw64y")
 
-[node name="allow_interactable_sheen_area" type="Area3D" parent="."]
+[node name="AllowInteractableSheenArea" type="Area3D" parent="."]
 collision_layer = 2048
 collision_mask = 0
 monitoring = false
 
-[node name="collision_shape" type="CollisionShape3D" parent="allow_interactable_sheen_area"]
+[node name="CollisionShape" type="CollisionShape3D" parent="AllowInteractableSheenArea"]
 shape = SubResource("SphereShape3D_helq8")
 
-[node name="fire_burning_sound_area" type="Area3D" parent="."]
+[node name="FireBurningSoundArea" type="Area3D" parent="."]
 collision_layer = 16384
 collision_mask = 0
 monitoring = false
 
-[node name="collision_shape" type="CollisionShape3D" parent="fire_burning_sound_area"]
+[node name="CollisionShape" type="CollisionShape3D" parent="FireBurningSoundArea"]
 shape = SubResource("SphereShape3D_6dsv4")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
@@ -220,7 +220,7 @@ volume_db = 63.284
 max_db = 6.0
 max_polyphony = 10
 
-[connection signal="area_entered" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_entered"]
-[connection signal="area_exited" from="allow_interactable_sheen_area" to="." method="_on_allow_interactable_sheen_area_area_exited"]
-[connection signal="area_entered" from="fire_burning_sound_area" to="." method="_on_fire_burning_sound_area_area_entered"]
-[connection signal="area_exited" from="fire_burning_sound_area" to="." method="_on_fire_burning_sound_area_area_exited"]
+[connection signal="area_entered" from="AllowInteractableSheenArea" to="." method="_on_allow_interactable_sheen_area_area_entered"]
+[connection signal="area_exited" from="AllowInteractableSheenArea" to="." method="_on_allow_interactable_sheen_area_area_exited"]
+[connection signal="area_entered" from="FireBurningSoundArea" to="." method="_on_fire_burning_sound_area_area_entered"]
+[connection signal="area_exited" from="FireBurningSoundArea" to="." method="_on_fire_burning_sound_area_area_exited"]

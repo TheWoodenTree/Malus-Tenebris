@@ -1,7 +1,7 @@
 extends Menu
 
-@onready var anim_player: AnimationPlayer = $anim_player
-@onready var background: Sprite2D = $background
+@onready var anim_player: AnimationPlayer = $AnimPlayer
+@onready var background: Sprite2D = $Background
 
 
 func _ready():

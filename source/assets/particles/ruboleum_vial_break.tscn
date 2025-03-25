@@ -89,7 +89,7 @@ length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("particles:emitting")
+tracks/0/path = NodePath("Particles:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +101,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("light:light_energy")
+tracks/1/path = NodePath("Light:lightEnergy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -113,7 +113,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sound_player")
+tracks/2/path = NodePath("SoundPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -142,7 +142,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("particles2:emitting")
+tracks/4/path = NodePath("Particles2:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -154,7 +154,7 @@ tracks/4/keys = {
 tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("sizzle_player")
+tracks/5/path = NodePath("SizzlePlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -172,10 +172,10 @@ _data = {
 &"break": SubResource("Animation_jahv7")
 }
 
-[node name="ruboleum_vial_break" type="Node3D"]
+[node name="RuboleumVialBreak" type="Node3D"]
 script = ExtResource("1_mbcqb")
 
-[node name="particles" type="GPUParticles3D" parent="."]
+[node name="Particles" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 custom_aabb = AABB(-1000, -1000, -1000, 2000, 2000, 2000)
 emitting = false
@@ -186,7 +186,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4pmki")
 draw_pass_1 = SubResource("PlaneMesh_ycau7")
 
-[node name="particles2" type="GPUParticles3D" parent="."]
+[node name="Particles2" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 custom_aabb = AABB(-1000, -1000, -1000, 2000, 2000, 2000)
 emitting = false
@@ -197,20 +197,20 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_vli1b")
 draw_pass_1 = SubResource("QuadMesh_lk2sy")
 
-[node name="light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 light_energy = 0.0
 light_specular = 0.01
 shadow_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
-[node name="sound_player" type="AudioStreamPlayer3D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer3D" parent="."]
 volume_db = 6.0
 max_db = 6.0
 
-[node name="sizzle_player" type="AudioStreamPlayer3D" parent="."]
+[node name="SizzlePlayer" type="AudioStreamPlayer3D" parent="."]
 
-[node name="anim_player" type="AnimationPlayer" parent="."]
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u0tjf")
 }

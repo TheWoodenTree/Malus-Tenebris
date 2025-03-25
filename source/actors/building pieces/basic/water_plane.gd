@@ -7,7 +7,7 @@ const DEF_PLANE_SIZE: int = 5
 #@export var size: int = DEF_PLANE_SIZE : set = _set_size
 #@export var noise: NoiseTexture2D
 
-@onready var mesh: PlaneMesh = $plane.mesh
+@onready var mesh: PlaneMesh = $Plane.mesh
 
 
 func _set_size(new_size):
@@ -23,7 +23,7 @@ func _set_size(new_size):
 		#shader.set_shader_parameter("noise", noise)
 		#shader.set_shader_parameter("speed_scale", 1.0)
 
-		$water_col_area/box.shape.size = Vector3(new_size, 1, new_size)
+		$WaterColArea/Box.shape.size = Vector3(new_size, 1, new_size)
 
 
 func _ready():

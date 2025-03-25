@@ -34,8 +34,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pa7e1")
 
-[node name="lever_count_light" type="Node3D"]
+[node name="LeverCountLight" type="Node3D"]
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -0.14)
 mesh = SubResource("ArrayMesh_e0kf6")

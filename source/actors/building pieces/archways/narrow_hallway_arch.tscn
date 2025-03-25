@@ -37,7 +37,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vxkkm")
 
-[node name="narrow_hallway_arch" type="Node3D"]
+[node name="NarrowHallwayArch" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

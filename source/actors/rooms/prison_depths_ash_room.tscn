@@ -10,117 +10,117 @@
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="8_mlqdb"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cjh508d86iwr2" path="res://source/actors/rooms/occluders/prison_depths_ash_room.occ" id="9_3qrh2"]
 
-[node name="prison_depths_ash_room" type="Node3D"]
+[node name="PrisonDepthsAshRoom" type="Node3D"]
 
-[node name="cobble_floor" parent="." instance=ExtResource("1_vds4h")]
+[node name="CobbleFloor" parent="." instance=ExtResource("1_vds4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 size = Vector3(5, 1, 3)
 
-[node name="half_stairs" parent="." instance=ExtResource("3_rqrqu")]
+[node name="HalfStairs" parent="." instance=ExtResource("3_rqrqu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0.5, 1)
 
-[node name="half_stairs2" parent="." instance=ExtResource("3_rqrqu")]
+[node name="HalfStairs2" parent="." instance=ExtResource("3_rqrqu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0.5, 1)
 
-[node name="half_stairs3" parent="." instance=ExtResource("3_rqrqu")]
+[node name="HalfStairs3" parent="." instance=ExtResource("3_rqrqu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1.5, 2)
 
-[node name="half_stairs4" parent="." instance=ExtResource("3_rqrqu")]
+[node name="HalfStairs4" parent="." instance=ExtResource("3_rqrqu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1.5, 2)
 
-[node name="half_stairs5" parent="." instance=ExtResource("3_rqrqu")]
+[node name="HalfStairs5" parent="." instance=ExtResource("3_rqrqu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 2.5, 3)
 
-[node name="half_stairs6" parent="." instance=ExtResource("3_rqrqu")]
+[node name="HalfStairs6" parent="." instance=ExtResource("3_rqrqu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 2.5, 3)
 
-[node name="stone_archway2" parent="." instance=ExtResource("4_bm3re")]
+[node name="StoneArchway2" parent="." instance=ExtResource("4_bm3re")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 6)
 
-[node name="stone_wall" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.5, 2)
 size = Vector3(1, 8, 6)
 
-[node name="stone_wall2" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall2" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.5, 2)
 size = Vector3(1, 8, 6)
 
-[node name="stairs3" parent="." instance=ExtResource("6_8fu0n")]
+[node name="Stairs3" parent="." instance=ExtResource("6_8fu0n")]
 transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 1, 7, 0)
 
-[node name="stairs4" parent="." instance=ExtResource("6_8fu0n")]
+[node name="Stairs4" parent="." instance=ExtResource("6_8fu0n")]
 transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, -1, 7, 0)
 
-[node name="cobble_floor2" parent="." instance=ExtResource("1_vds4h")]
+[node name="CobbleFloor2" parent="." instance=ExtResource("1_vds4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4.5)
 size = Vector3(5, 1, 1)
 
-[node name="stone_floor" parent="." instance=ExtResource("7_6qlwf")]
+[node name="StoneFloor" parent="." instance=ExtResource("7_6qlwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 3.5)
 size = Vector3(3, 1, 3)
 
-[node name="half_stairs7" parent="." instance=ExtResource("8_7bprl")]
+[node name="HalfStairs7" parent="." instance=ExtResource("8_7bprl")]
 transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 1, 5, -1)
 
-[node name="half_stairs8" parent="." instance=ExtResource("8_7bprl")]
+[node name="HalfStairs8" parent="." instance=ExtResource("8_7bprl")]
 transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, -1, 5, -1)
 
-[node name="cobble_floor3" parent="." instance=ExtResource("1_vds4h")]
+[node name="CobbleFloor3" parent="." instance=ExtResource("1_vds4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 9.5)
 size = Vector3(14, 1, 9)
 
-[node name="stone_wall3" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall3" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, 5.5)
 size = Vector3(3, 5, 1)
 
-[node name="stone_wall4" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall4" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 10)
 size = Vector3(1, 5, 8)
 
-[node name="stone_wall5" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall5" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, 5.5)
 size = Vector3(6, 5, 1)
 
-[node name="cobble_floor4" parent="." instance=ExtResource("1_vds4h")]
+[node name="CobbleFloor4" parent="." instance=ExtResource("1_vds4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 16.5)
 size = Vector3(8, 1, 5)
 
-[node name="stone_wall6" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall6" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 6, 10)
 size = Vector3(1, 5, 8)
 
-[node name="stone_wall7" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall7" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 6, 13.5)
 size = Vector3(2, 5, 1)
 
-[node name="stone_wall8" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall8" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 6, 16.5)
 size = Vector3(1, 5, 5)
 
-[node name="stone_wall9" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall9" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 16.5)
 size = Vector3(1, 5, 5)
 
-[node name="stone_wall10" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall10" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6, 18.5)
 size = Vector3(6, 5, 1)
 
-[node name="stone_wall11" parent="." instance=ExtResource("5_qhxan")]
+[node name="StoneWall11" parent="." instance=ExtResource("5_qhxan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6, 13.5)
 size = Vector3(4, 5, 1)
 
-[node name="stone_floor2" parent="." instance=ExtResource("7_6qlwf")]
+[node name="StoneFloor2" parent="." instance=ExtResource("7_6qlwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 9, 9.5)
 size = Vector3(14, 1, 9)
 
-[node name="stone_floor3" parent="." instance=ExtResource("7_6qlwf")]
+[node name="StoneFloor3" parent="." instance=ExtResource("7_6qlwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 9, 16.5)
 size = Vector3(8, 1, 5)
 
-[node name="hanging_lamp" parent="." instance=ExtResource("8_mlqdb")]
+[node name="HangingLamp" parent="." instance=ExtResource("8_mlqdb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, 15.5)
 default_range = 10.0
 
-[node name="occluder_instance" type="OccluderInstance3D" parent="."]
+[node name="OccluderInstance" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("9_3qrh2")
 bake_mask = 4294967283

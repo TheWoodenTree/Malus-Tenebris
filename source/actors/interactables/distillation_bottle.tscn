@@ -202,7 +202,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:mesh:surface_0/material:albedo_color")
+tracks/0/path = NodePath(".:mesh:surface_0/Material:albedoColor")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -218,7 +218,7 @@ length = 10.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../transfer_tube:position")
+tracks/0/path = NodePath("../TransferTube:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -242,7 +242,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("vial_pour_particles:emitting")
+tracks/2/path = NodePath("VialPourParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -254,7 +254,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../transfer_tube:rotation")
+tracks/3/path = NodePath("../TransferTube:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -266,7 +266,7 @@ tracks/3/keys = {
 tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../mesh/pour_player")
+tracks/4/path = NodePath("../Mesh/PourPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -293,7 +293,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:mesh:surface_0/material:albedo_color")
+tracks/6/path = NodePath(".:mesh:surface_0/Material:albedoColor")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -305,7 +305,7 @@ tracks/6/keys = {
 tracks/7/type = "audio"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../mesh/boiling_player")
+tracks/7/path = NodePath("../Mesh/BoilingPlayer")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -320,7 +320,7 @@ tracks/7/use_blend = true
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../pour_particles:emitting")
+tracks/8/path = NodePath("../PourParticles:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -350,34 +350,34 @@ _data = {
 &"pour": SubResource("Animation_jlkag")
 }
 
-[node name="distillation_bottle" node_paths=PackedStringArray("meshes") instance=ExtResource("1_nmm65")]
+[node name="DistillationBottle" node_paths=PackedStringArray("meshes") instance=ExtResource("1_nmm65")]
 script = ExtResource("2_2eusd")
-meshes = [NodePath("mesh"), NodePath("transfer_tube")]
+meshes = [NodePath("Mesh"), NodePath("TransferTube")]
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 layers = 4
 material_overlay = SubResource("ShaderMaterial_thhg6")
 mesh = SubResource("ArrayMesh_q3gl4")
 
-[node name="pour_player" type="AudioStreamPlayer3D" parent="mesh" index="0"]
+[node name="PourPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.734305, 0)
 unit_size = 3.0
 
-[node name="boiling_player" type="AudioStreamPlayer3D" parent="mesh" index="1"]
+[node name="BoilingPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="1"]
 volume_db = -2.0
 unit_size = 2.0
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02792, 0)
 visible = false
 shape = SubResource("CylinderShape3D_7m5fd")
 
-[node name="transfer_tube" type="MeshInstance3D" parent="." index="2"]
+[node name="TransferTube" type="MeshInstance3D" parent="." index="2"]
 layers = 8
 material_overlay = ExtResource("4_a8vca")
 mesh = SubResource("ArrayMesh_pb6k6")
 
-[node name="pour_particles" type="GPUParticles3D" parent="." index="3"]
+[node name="PourParticles" type="GPUParticles3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00154, 0.962411, 0)
 emitting = false
 amount = 16
@@ -386,12 +386,12 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bsi86")
 draw_pass_1 = SubResource("PlaneMesh_g85ib")
 
-[node name="vial" type="MeshInstance3D" parent="." index="4"]
+[node name="Vial" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(0.642788, 0.766045, 0, -0.766045, 0.642788, 0, 0, 0, 1, -0.305099, 1.57814, 0)
 visible = false
 mesh = SubResource("ArrayMesh_tuns3")
 
-[node name="vial_pour_particles" type="GPUParticles3D" parent="vial" index="0"]
+[node name="VialPourParticles" type="GPUParticles3D" parent="Vial" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012778, 0.309754, 0)
 emitting = false
 amount = 64
@@ -399,8 +399,8 @@ lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_07wqi")
 draw_pass_1 = SubResource("PlaneMesh_xiwoo")
 
-[node name="pour_anim_player" type="AnimationPlayer" parent="." index="5"]
-root_node = NodePath("../vial")
+[node name="PourAnimPlayer" type="AnimationPlayer" parent="." index="5"]
+root_node = NodePath("../Vial")
 libraries = {
 &"": SubResource("AnimationLibrary_to3x4")
 }

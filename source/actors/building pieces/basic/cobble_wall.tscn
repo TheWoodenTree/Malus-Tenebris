@@ -10,14 +10,14 @@ material = ExtResource("2_pjtv8")
 [sub_resource type="BoxShape3D" id="2"]
 resource_local_to_scene = true
 
-[node name="cobble_wall" type="StaticBody3D"]
+[node name="CobbleWall" type="StaticBody3D"]
 collision_layer = 8193
 collision_mask = 2
 script = ExtResource("1_3bldh")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("1")
 
-[node name="collision_box" type="CollisionShape3D" parent="."]
+[node name="CollisionBox" type="CollisionShape3D" parent="."]
 visible = false
 shape = SubResource("2")

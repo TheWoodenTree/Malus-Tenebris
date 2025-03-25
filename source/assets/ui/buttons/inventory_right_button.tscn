@@ -11,7 +11,7 @@ texture = ExtResource("2_hc315")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm5jv"]
 
-[node name="inventory_right_button" type="Button"]
+[node name="InventoryRightButton" type="Button"]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 8.0
 offset_bottom = 8.0

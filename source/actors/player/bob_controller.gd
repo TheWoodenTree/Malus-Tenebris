@@ -19,8 +19,8 @@ var cam_stabilize_pos: Vector3 = Vector3(0.0, 0.0, DEF_CAM_STABILIZE_DIST)
 var stabilize_angle: float
 
 @onready var starting_pos: Vector3 = position
-@onready var camera = $camera
-@onready var bob_timer = $bob_timer
+@onready var camera = $Camera
+@onready var bob_timer = $BobTimer
 
 
 func _process(_delta):

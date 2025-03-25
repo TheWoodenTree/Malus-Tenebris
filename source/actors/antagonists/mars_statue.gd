@@ -1,6 +1,6 @@
 extends Character
 
-@onready var skeleton = $skeleton
+@onready var skeleton = $Skeleton
 
 
 func _process(_delta):

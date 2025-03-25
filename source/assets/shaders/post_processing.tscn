@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://8ry3t1ttx3f4" path="res://source/assets/shaders/chrom_abb_shader_mat.tres" id="2"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="3"]
 
-[node name="post_processing" type="Control"]
+[node name="PostProcessing" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vignette" type="ColorRect" parent="."]
+[node name="Vignette" type="ColorRect" parent="."]
 visible = false
 material = ExtResource("3")
 layout_mode = 0
@@ -21,11 +21,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="back_buf_copy1" type="BackBufferCopy" parent="."]
+[node name="BackBufCopy1" type="BackBufferCopy" parent="."]
 visible = false
 copy_mode = 2
 
-[node name="retro_shader" type="ColorRect" parent="."]
+[node name="RetroShader" type="ColorRect" parent="."]
 material = ExtResource("1")
 layout_mode = 0
 anchor_right = 1.0
@@ -33,11 +33,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="back_buf_copy3" type="BackBufferCopy" parent="."]
+[node name="BackBufCopy3" type="BackBufferCopy" parent="."]
 visible = false
 copy_mode = 2
 
-[node name="blur" type="ColorRect" parent="."]
+[node name="Blur" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
 anchor_right = 1.0
@@ -45,11 +45,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="back_buf_copy4" type="BackBufferCopy" parent="."]
+[node name="BackBufCopy4" type="BackBufferCopy" parent="."]
 visible = false
 copy_mode = 2
 
-[node name="chromatic_abberation" type="ColorRect" parent="."]
+[node name="ChromaticAbberation" type="ColorRect" parent="."]
 visible = false
 material = ExtResource("2")
 layout_mode = 0

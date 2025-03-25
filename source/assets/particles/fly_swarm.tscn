@@ -38,14 +38,14 @@ material = SubResource("StandardMaterial3D_gspcw")
 size = Vector2(0.05, 0.05)
 orientation = 2
 
-[node name="fly_swarm" type="GPUParticles3D"]
+[node name="FlySwarm" type="GPUParticles3D"]
 amount = 40
 lifetime = 7.5
 preprocess = 5.0
 process_material = SubResource("ParticleProcessMaterial_yka0p")
 draw_pass_1 = SubResource("PlaneMesh_3jlpo")
 
-[node name="sound_player" type="AudioStreamPlayer3D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("1_t37df")
 autoplay = true
 max_distance = 12.0

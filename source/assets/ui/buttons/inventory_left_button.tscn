@@ -11,7 +11,7 @@ texture = ExtResource("2_gqagt")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fjqp"]
 
-[node name="inventory_left_button" type="Button"]
+[node name="InventoryLeftButton" type="Button"]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 8.0
 offset_bottom = 8.0

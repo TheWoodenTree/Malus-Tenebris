@@ -147,36 +147,36 @@ material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="distillation_station" type="Node3D"]
+[node name="DistillationStation" type="Node3D"]
 script = ExtResource("1_mk3xs")
 
-[node name="holder" type="MeshInstance3D" parent="."]
+[node name="Holder" type="MeshInstance3D" parent="."]
 layers = 8
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_5aofw")
-skeleton = NodePath("../table")
+skeleton = NodePath("../Table")
 
-[node name="table" type="MeshInstance3D" parent="."]
+[node name="Table" type="MeshInstance3D" parent="."]
 layers = 8
 mesh = SubResource("ArrayMesh_1p8o6")
 skeleton = NodePath("")
 
-[node name="distillation_bottle" parent="." instance=ExtResource("3_n6ufw")]
+[node name="DistillationBottle" parent="." instance=ExtResource("3_n6ufw")]
 
-[node name="distillate_cup" parent="." instance=ExtResource("4_fmnkr")]
+[node name="DistillateCup" parent="." instance=ExtResource("4_fmnkr")]
 
-[node name="candle_fire" parent="." instance=ExtResource("6_tw7wy")]
+[node name="CandleFire" parent="." instance=ExtResource("6_tw7wy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.191127, 0)
 
-[node name="fire_particles" parent="candle_fire" index="0"]
+[node name="FireParticles" parent="CandleFire" index="0"]
 process_material = SubResource("ParticleProcessMaterial_k3tvn")
 draw_pass_1 = SubResource("PlaneMesh_7wusg")
 
-[node name="lit_fire_particles" parent="candle_fire" index="1"]
+[node name="LitFireParticles" parent="CandleFire" index="1"]
 process_material = SubResource("ParticleProcessMaterial_86l80")
 draw_pass_1 = SubResource("PlaneMesh_vddtw")
 
-[node name="light" parent="candle_fire" index="2"]
+[node name="Light" parent="CandleFire" index="2"]
 light_energy = 0.25
 
-[editable path="candle_fire"]
+[editable path="CandleFire"]

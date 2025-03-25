@@ -16,5 +16,5 @@ func _on_area_3d_body_entered(body):
 	if body == Global.player and can_trigger:
 		var tween = get_tree().create_tween()
 		tween.tween_property($PathFollow3D, "progress_ratio", 1.0, 5.0)
-		$PathFollow3D/obunga/AudioStreamPlayer3D.play()
+		$PathFollow3D/Obunga/AudioStreamPlayer3D.play()
 		can_trigger = false

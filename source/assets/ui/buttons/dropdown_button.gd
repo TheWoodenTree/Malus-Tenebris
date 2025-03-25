@@ -4,8 +4,8 @@ extends IconlessButton
 
 @export var dropdown_option_names: Array[String] = [] : set = _set_dropdown_option_names
 
-@onready var dropdown_menu = $dropdown_menu
-@onready var dropdown_menu_cont = $dropdown_menu/panel_cont/v_box_cont
+@onready var dropdown_menu = $DropdownMenu
+@onready var dropdown_menu_cont = $DropdownMenu/PanelCont/VBoxCont
 
 var dropdown_option_res = preload("res://source/assets/ui/buttons/dropdown_option.tscn")
 var dropdown_option_list: Array[DropdownOption]

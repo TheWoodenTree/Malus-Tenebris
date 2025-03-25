@@ -109,24 +109,24 @@ shadow_mesh = SubResource("ArrayMesh_38mcu")
 radius = 0.75
 height = 3.0
 
-[node name="lever" type="Node3D"]
+[node name="Lever" type="Node3D"]
 script = ExtResource("3")
 
-[node name="lever_hinge" type="Marker3D" parent="."]
+[node name="LeverHinge" type="Marker3D" parent="."]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0.0839151, 0)
 
-[node name="lever" type="MeshInstance3D" parent="lever_hinge"]
+[node name="Lever" type="MeshInstance3D" parent="LeverHinge"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0839151, 0)
 material_overlay = SubResource("3")
 mesh = SubResource("ArrayMesh_s43uo")
 skeleton = NodePath("../..")
 
-[node name="lever_holder" type="MeshInstance3D" parent="."]
+[node name="LeverHolder" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0slmm")
-skeleton = NodePath("../lever_hinge/lever")
+skeleton = NodePath("../LeverHinge/Lever")
 
-[node name="lever_pull_player" type="AudioStreamPlayer3D" parent="."]
+[node name="LeverPullPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4")
 attenuation_model = 3
 volume_db = -22.0
@@ -134,10 +134,10 @@ bus = &"General (big)"
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = 0.0
 
-[node name="interact_area" type="Area3D" parent="."]
+[node name="InteractArea" type="Area3D" parent="."]
 collision_layer = 32768
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.526899, 0.617045, 0)
 shape = SubResource("4")

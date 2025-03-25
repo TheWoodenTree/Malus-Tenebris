@@ -116,25 +116,25 @@ shader_parameter/outlineSize = 0.04
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="wood_door_no_window" instance=ExtResource("1_c5ye8")]
+[node name="WoodDoorNoWindow" instance=ExtResource("1_c5ye8")]
 
-[node name="door_body" parent="." index="0"]
+[node name="DoorBody" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 
-[node name="door" parent="door_body" index="2"]
+[node name="Door" parent="DoorBody" index="2"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
 material_overlay = SubResource("ShaderMaterial_205sd")
 mesh = SubResource("ArrayMesh_gxl6y")
 
-[node name="collision_shape" parent="door_body" index="3"]
+[node name="CollisionShape" parent="DoorBody" index="3"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 1.8, 0)
 shape = SubResource("BoxShape3D_q2u0v")
 
-[node name="collision_shape" parent="door_body/interact_area" index="0"]
+[node name="CollisionShape" parent="DoorBody/InteractArea" index="0"]
 shape = SubResource("BoxShape3D_46xfk")
 
-[node name="key" parent="door_body" index="11"]
+[node name="Key" parent="DoorBody" index="11"]
 transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, -2.049, 1.154, -0.22)
 
-[node name="mesh" parent="door_body/key" index="0"]
+[node name="Mesh" parent="DoorBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_yjfnd")

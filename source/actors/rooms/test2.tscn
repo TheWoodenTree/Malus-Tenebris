@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_t0vgp"]
 
-[node name="room_template" instance=ExtResource("1_t0vgp")]
+[node name="RoomTemplate" instance=ExtResource("1_t0vgp")]
 
-[node name="occluder_instance" parent="." index="7"]
+[node name="OccluderInstance" parent="." index="7"]
 visible = false

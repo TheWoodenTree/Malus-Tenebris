@@ -61,7 +61,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_36usk")
 
-[node name="pot_rack" type="Node3D"]
+[node name="PotRack" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8

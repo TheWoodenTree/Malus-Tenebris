@@ -126,7 +126,7 @@ shadow_mesh = SubResource("ArrayMesh_xw2ll")
 [sub_resource type="SphereShape3D" id="SphereShape3D_7ombk"]
 radius = 1.0
 
-[node name="hanging_lamp" instance=ExtResource("1_t3vo7")]
+[node name="HangingLamp" instance=ExtResource("1_t3vo7")]
 script = ExtResource("4")
 default_range = 12.0
 default_energy = 0.75
@@ -134,15 +134,15 @@ lit = true
 shadow_mode = 0
 audio_fade_in_on_ready = false
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
 material_overlay = SubResource("ShaderMaterial_depro")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_il53b")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18, 0)
 shape = SubResource("SphereShape3D_7ombk")
 
-[node name="fire" parent="." index="3" instance=ExtResource("3")]
+[node name="Fire" parent="." index="3" instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83312, 0)

@@ -34,7 +34,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gcu1d")
 
-[node name="door_frame_latch_holder" type="Node3D"]
+[node name="DoorFrameLatchHolder" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8

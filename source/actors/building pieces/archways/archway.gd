@@ -20,9 +20,9 @@ static var test = load("res://source/assets/materials/white_bricks/white_bricks_
 
 
 func _ready() -> void:
-	archway = find_child("archway")
-	frame = find_child("frame")
-	static_body = find_child("static_body")
+	archway = find_child("Archway")
+	frame = find_child("Frame")
+	static_body = find_child("StaticBody")
 	if archway:
 		archway.scale = Vector3(xy_scale.x, xy_scale.y, length)
 	if static_body:

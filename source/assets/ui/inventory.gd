@@ -16,15 +16,15 @@ var block_scroll: bool = false
 var tutorial_on: bool = true
 var scrolling: bool = false
 
-@onready var slot_cont = $cont/slot_cont
-@onready var slot_grid = $cont/slot_cont/slot_grid
+@onready var slot_cont = $Cont/SlotCont
+@onready var slot_grid = $Cont/SlotCont/SlotGrid
 @onready var item_slots: Array[Node] = slot_grid.get_children()
-@onready var scroll_anim_player = $scroll_anim_player
-@onready var slot_scroll_player = $slot_scroll_player
-@onready var tutorial_label = $cont/vbox_cont/tutorial_label
-@onready var item_name_label = $cont/vbox_cont/item_name_label
-@onready var select_slot_frame = $cont/vbox_cont/hbox_cont/select_slot_frame
-@onready var item_click_player = $item_click_player
+@onready var scroll_anim_player = $ScrollAnimPlayer
+@onready var slot_scroll_player = $SlotScrollPlayer
+@onready var tutorial_label = $Cont/VboxCont/TutorialLabel
+@onready var item_name_label = $Cont/VboxCont/ItemNameLabel
+@onready var select_slot_frame = $Cont/VboxCont/HboxCont/SelectSlotFrame
+@onready var item_click_player = $ItemClickPlayer
 
 
 func _enter_tree():

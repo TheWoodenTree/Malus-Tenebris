@@ -10,14 +10,14 @@ var look_at_player: bool = false
 
 var look_at_pos: Vector3 = Vector3(0.0, 0.0, 1.0)
 
-@onready var nav_agent: NavigationAgent3D = $nav_agent
+@onready var nav_agent: NavigationAgent3D = $NavAgent
 @onready var player_seek_ray: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
-@onready var skeleton = $armature/Skeleton3D
-@onready var animation_player = $anim_player
-@onready var anim_tree = $anim_tree
-@onready var sound_player = $sound_player
-@onready var footstep_player = $footstep_player
-@onready var spear = $spear
+@onready var skeleton = $Armature/Skeleton3D
+@onready var animation_player = $AnimPlayer
+@onready var anim_tree = $AnimTree
+@onready var sound_player = $SoundPlayer
+@onready var footstep_player = $FootstepPlayer
+@onready var spear = $Spear
 
 
 func _ready():
@@ -56,8 +56,8 @@ func _physics_process(delta):
 		new_velocity = (next_pos - curr_pos).normalized() * SPEED * speed_multiplier
 		velocity = new_velocity
 		
-		look_at_pos = lerp(look_at_pos, Vector3(velocity.x, $armature.position.y, velocity.z).rotated(Vector3.UP, PI), 0.04)
-		$armature.look_at(to_global(look_at_pos), Vector3.UP, false)
+		look_at_pos = lerp(look_at_pos, Vector3(velocity.x, $Armature.position.y, velocity.z).rotated(Vector3.UP, PI), 0.04)
+		$Armature.look_at(to_global(look_at_pos), Vector3.UP, false)
 		
 		move_and_slide()
 		if is_on_wall():
@@ -103,9 +103,9 @@ func seek_player():
 	player_seek_ray.to = Global.player.global_position
 	var collision: Dictionary
 	collision = space.intersect_ray(player_seek_ray)
-	if collision.get("collider") == Global.player and $screetch_cooldown.time_left == 0:
-		#$screetch_player.play()
-		$screetch_cooldown.start()
+	if collision.get("collider") == Global.player and $ScreetchCooldown.time_left == 0:
+		#$ScreetchPlayer.play()
+		$ScreetchCooldown.start()
 
 
 func update_target_position():
@@ -135,7 +135,7 @@ func walk_in_servants_quarters_event(end_position: Vector3):
 
 func first_encounter_event(end_position: Vector3):
 	rotation.y = 0.0
-	$armature.rotation.y = PI
+	$Armature.rotation.y = PI
 	scripted_event = true
 	do_move = true
 	var tween: Tween = get_tree().create_tween()

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ldv47"]
 [ext_resource type="Script" uid="uid://fx68ixjnx76g" path="res://source/assets/ui/buttons/ui_button.gd" id="2_lm6jl"]
 
-[node name="dropdown_button" type="OptionButton"]
+[node name="DropdownButton" type="OptionButton"]
 offset_right = 45.0
 offset_bottom = 20.0
 size_flags_horizontal = 4

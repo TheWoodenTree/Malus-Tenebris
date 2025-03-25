@@ -4,7 +4,7 @@ extends Archway
 @export var door_interactable = false
 @export var open_angle: int = 0
 
-@onready var hinge = $door_hinge
+@onready var hinge = $DoorHinge
 
 
 func _ready() -> void:

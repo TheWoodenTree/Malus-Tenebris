@@ -2,7 +2,7 @@ extends Area3D
 
 var triggered: bool = false
 
-@onready var door = %apothecary_doorway.door
+@onready var door = %ApothecaryDoorway.door
 
 
 func _on_body_entered(body):

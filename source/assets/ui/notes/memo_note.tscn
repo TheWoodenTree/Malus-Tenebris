@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb1s47muwls2s"]
 
-[node name="memo_note" type="Label"]
+[node name="MemoNote" type="Label"]
 custom_minimum_size = Vector2(800, 0)
 text = "Effective immediately: 
 

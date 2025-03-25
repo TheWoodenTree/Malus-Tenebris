@@ -205,7 +205,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("static_chain/mesh:mesh:material:uv1_offset")
+tracks/0/path = NodePath("StaticChain/Mesh:mesh:material:uv1Offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -217,7 +217,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("static_chain2/mesh:mesh:material:uv1_offset")
+tracks/1/path = NodePath("StaticChain2/Mesh:mesh:material:uv1Offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -233,7 +233,7 @@ length = 5.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("rotating_body/wheel:rotation")
+tracks/0/path = NodePath("RotatingBody/Wheel:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -245,7 +245,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("rotating_body/crank:rotation")
+tracks/1/path = NodePath("RotatingBody/Crank:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -257,7 +257,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("static_chain/mesh:mesh:material:uv1_offset")
+tracks/2/path = NodePath("StaticChain/Mesh:mesh:material:uv1Offset")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -269,7 +269,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("static_chain2/mesh:mesh:material:uv1_offset")
+tracks/3/path = NodePath("StaticChain2/Mesh:mesh:material:uv1Offset")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -281,7 +281,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = false
-tracks/4/path = NodePath("rotating_body/wheel:rotation:x")
+tracks/4/path = NodePath("RotatingBody/Wheel:rotation:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -292,7 +292,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("rotating_body/chains:rotation")
+tracks/5/path = NodePath("RotatingBody/Chains:rotation")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -304,7 +304,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("crank_anim_player:speed_scale")
+tracks/6/path = NodePath("CrankAnimPlayer:speedScale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -316,7 +316,7 @@ tracks/6/keys = {
 tracks/7/type = "audio"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("chain_player")
+tracks/7/path = NodePath("ChainPlayer")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -339,7 +339,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("rotating_body/crank:position")
+tracks/0/path = NodePath("RotatingBody/Crank:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -351,7 +351,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("rotating_body/crank/slide_player")
+tracks/1/path = NodePath("RotatingBody/Crank/SlidePlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -432,26 +432,26 @@ orientation = 2
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gco1a"]
 points = PackedVector3Array(1.51094, 1.36171, 0.27727, 1.33745, 1.36171, 0.27727, 1.51079, 0.239259, 0.853472, 1.51079, 3.57628e-07, 0.885185, 1.51094, 1.17617, 0.045403, 1.51094, 1.26281, -0.0175027, 1.51079, 1.36171, -0.277444, 4.76837e-07, 0.239259, 0.853472, 1.33745, 1.36171, -0.277444, 1.51094, 1.15577, 0.0173294, 4.76837e-07, 3.57628e-07, 0.885185, 1.51079, 3.57628e-07, -0.885185, 1.51094, 1.24241, -0.0455763, 1.51079, 0.239259, -0.853646, 4.76837e-07, 0.239259, -0.853646, 1.51094, 1.15577, -0.0175027, 4.76837e-07, 3.57628e-07, -0.885185, 1.51094, 1.20922, -0.0563205, 1.51094, 1.17617, -0.0455763)
 
-[node name="winch" node_paths=PackedStringArray("meshes") instance=ExtResource("1_vj3eq")]
+[node name="Winch" node_paths=PackedStringArray("meshes") instance=ExtResource("1_vj3eq")]
 script = ExtResource("1_8caag")
 connected_node_name = ""
 has_crank = false
 is_broken = false
-meshes = [NodePath("mesh"), NodePath("rotating_body/wheel"), NodePath("rotating_body/chains")]
+meshes = [NodePath("Mesh"), NodePath("RotatingBody/Wheel"), NodePath("RotatingBody/Chains")]
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_uoxor")
 mesh = SubResource("ArrayMesh_8gfim")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1, 0)
 shape = SubResource("BoxShape3D_xb3s4")
 
-[node name="collision_shape_2" type="CollisionShape3D" parent="interact_area" index="1"]
+[node name="CollisionShape2" type="CollisionShape3D" parent="InteractArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.38398, 0)
 shape = SubResource("BoxShape3D_oklhf")
 
-[node name="rotating_body" type="RigidBody3D" parent="." index="3"]
+[node name="RotatingBody" type="RigidBody3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.209, 0)
 gravity_scale = 0.0
 sleeping = true
@@ -459,56 +459,56 @@ freeze = true
 angular_damp_mode = 1
 angular_damp = 5.0
 
-[node name="wheel" type="MeshInstance3D" parent="rotating_body" index="0"]
+[node name="Wheel" type="MeshInstance3D" parent="RotatingBody" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.00899994, 0)
 material_overlay = ExtResource("2_fbf18")
 mesh = SubResource("ArrayMesh_48jt4")
 skeleton = NodePath("../..")
 
-[node name="chains" type="MeshInstance3D" parent="rotating_body" index="1"]
+[node name="Chains" type="MeshInstance3D" parent="RotatingBody" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.00899994, 0)
 layers = 8
 material_overlay = ExtResource("2_fbf18")
 mesh = SubResource("ArrayMesh_unxmg")
-skeleton = NodePath("../wheel")
+skeleton = NodePath("../Wheel")
 
-[node name="crank" type="MeshInstance3D" parent="rotating_body" index="2"]
+[node name="Crank" type="MeshInstance3D" parent="RotatingBody" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 layers = 8
 material_overlay = ExtResource("2_fbf18")
 mesh = SubResource("ArrayMesh_v8qbw")
-skeleton = NodePath("../chains")
+skeleton = NodePath("../Chains")
 
-[node name="slide_player" type="AudioStreamPlayer3D" parent="rotating_body/crank" index="0"]
+[node name="SlidePlayer" type="AudioStreamPlayer3D" parent="RotatingBody/Crank" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041, 0)
 visible = false
 
-[node name="chain_player" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="ChainPlayer" type="AudioStreamPlayer3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0)
 
-[node name="hinge" type="HingeJoint3D" parent="." index="5"]
+[node name="Hinge" type="HingeJoint3D" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 1.209, 0)
 node_a = NodePath("../StaticBody3D")
-node_b = NodePath("../rotating_body")
+node_b = NodePath("../RotatingBody")
 
-[node name="crank_anim_player" type="AnimationPlayer" parent="." index="6"]
+[node name="CrankAnimPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 &"": SubResource("AnimationLibrary_xivrr")
 }
 
-[node name="static_chain" parent="." index="7" instance=ExtResource("6_rfp83")]
+[node name="StaticChain" parent="." index="7" instance=ExtResource("6_rfp83")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 8.25, 0.375)
 length = 7
 
-[node name="mesh" parent="static_chain" index="0"]
+[node name="Mesh" parent="StaticChain" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -3.5, 0)
 mesh = SubResource("PlaneMesh_jtaed")
 
-[node name="static_chain2" parent="." index="8" instance=ExtResource("6_rfp83")]
+[node name="StaticChain2" parent="." index="8" instance=ExtResource("6_rfp83")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 8.25, -0.375)
 length = 7
 
-[node name="mesh" parent="static_chain2" index="0"]
+[node name="Mesh" parent="StaticChain2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -3.5, 0)
 mesh = SubResource("PlaneMesh_pbw17")
 
@@ -518,5 +518,5 @@ mesh = SubResource("PlaneMesh_pbw17")
 visible = false
 shape = SubResource("ConvexPolygonShape3D_gco1a")
 
-[editable path="static_chain"]
-[editable path="static_chain2"]
+[editable path="StaticChain"]
+[editable path="StaticChain2"]

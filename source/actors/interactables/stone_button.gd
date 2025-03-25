@@ -2,7 +2,7 @@ extends Interactable
 
 @export var connected_node_name: String
 
-@onready var push_player: AudioStreamPlayer3D = $push_player
+@onready var push_player: AudioStreamPlayer3D = $PushPlayer
 @onready var mesh = meshes[0]
 
 

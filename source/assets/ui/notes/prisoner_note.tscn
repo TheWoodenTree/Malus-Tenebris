@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://balppusisc6xg"]
 
-[node name="prisoner_note" type="Label"]
+[node name="PrisonerNote" type="Label"]
 custom_minimum_size = Vector2(800, 0)
 text = "This is a living nightmare. I haven't committed any crime, yet here I am, sitting in darkness and silence only broken up by occasional cries of agony echoing down the corridors.
 

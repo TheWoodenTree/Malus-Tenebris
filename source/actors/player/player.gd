@@ -39,19 +39,19 @@ var gulp_sound: AudioStream = preload("res://source/assets/sounds/liquid/gulp.og
 var sigh_of_relief_sound: AudioStream = preload("res://source/assets/sounds/player_character/sigh_of_relief.ogg")
 var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn")
 
-@onready var head = $head_controller
-@onready var bob_controller = $head_controller/bob_controller
-@onready var cam = $head_controller/bob_controller/camera
-@onready var torch_cam = $head_controller/bob_controller/camera/viewport_cont/torch_cam_viewport/torch_cam
-@onready var interact_ray = $head_controller/bob_controller/camera/interact_raycast
-@onready var torch_pos = $head_controller/bob_controller/camera/torch_pos
-@onready var light = $head_controller/base_light
-@onready var held_item_marker = $head_controller/bob_controller/camera/held_item_marker
-@onready var noise_player = $noise_player
-@onready var rucksack_player = $rucksack_player
-@onready var fear_player = $fear_player
-@onready var fear_pulse_player = $fear_pulse_player
-@onready var affliction_timer = $affliction_timer
+@onready var head = $HeadController
+@onready var bob_controller = $HeadController/BobController
+@onready var cam = $HeadController/BobController/Camera
+@onready var torch_cam = $HeadController/BobController/Camera/ViewportCont/TorchCamViewport/TorchCam
+@onready var interact_ray = $HeadController/BobController/Camera/InteractRaycast
+@onready var torch_pos = $HeadController/BobController/Camera/TorchPos
+@onready var light = $HeadController/BaseLight
+@onready var held_item_marker = $HeadController/BobController/Camera/HeldItemMarker
+@onready var noise_player = $NoisePlayer
+@onready var rucksack_player = $RucksackPlayer
+@onready var fear_player = $FearPlayer
+@onready var fear_pulse_player = $FearPulsePlayer
+@onready var affliction_timer = $AfflictionTimer
 
 @export var debug_has_torch: bool = false
 @export var debug_no_tutorials: bool = false
@@ -150,7 +150,7 @@ func _handle_input():
 	
 	#if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
 	#	var instance: RigidBody3D = thrown_item.instantiate()
-	#	#instance.get_node("mesh").mesh = held_item
+	#	#instance.get_node("Mesh").mesh = held_item
 	#	Global.world.add_child(instance)
 	#	instance.global_transform = held_item.global_transform
 	#	delete_held_item()

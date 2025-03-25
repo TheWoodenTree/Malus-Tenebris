@@ -160,32 +160,32 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lqs2j")
 
-[node name="bonfire" node_paths=PackedStringArray("meshes") instance=ExtResource("1_w574w")]
+[node name="Bonfire" node_paths=PackedStringArray("meshes") instance=ExtResource("1_w574w")]
 script = ExtResource("2_p1fmm")
 default_range = 12.0
 default_energy = 0.75
 lit = true
 shadow_mode = 0
 audio_fade_in_on_ready = false
-meshes = [NodePath("mesh"), NodePath("mesh2"), NodePath("mesh3")]
+meshes = [NodePath("Mesh"), NodePath("Mesh2"), NodePath("Mesh3")]
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 material_overlay = SubResource("ShaderMaterial_f1iox")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_5bql3")
 
-[node name="mesh2" type="MeshInstance3D" parent="." index="3"]
+[node name="Mesh2" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_og4gl")
-skeleton = NodePath("../mesh3")
+skeleton = NodePath("../Mesh3")
 
-[node name="mesh3" type="MeshInstance3D" parent="." index="4"]
+[node name="Mesh3" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_atu6a")
-skeleton = NodePath("../mesh")
+skeleton = NodePath("../Mesh")
 
-[node name="fire" parent="." index="5" instance=ExtResource("5_n1den")]
+[node name="Fire" parent="." index="5" instance=ExtResource("5_n1den")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118674, 0.5, 0)

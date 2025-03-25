@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_8av5c"]
 [ext_resource type="Script" uid="uid://c0yabbyhff46r" path="res://source/assets/ui/misc/log_entry.gd" id="1_coh86"]
 
-[node name="log_entry" type="HBoxContainer"]
+[node name="LogEntry" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
@@ -12,21 +12,21 @@ theme = ExtResource("1_8av5c")
 script = ExtResource("1_coh86")
 hint_name = 3
 
-[node name="v_box_cont" type="VBoxContainer" parent="."]
+[node name="VBoxCont" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="v_box_cont"]
+[node name="HSeparator" type="HSeparator" parent="VBoxCont"]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="bullet" type="TextureRect" parent="v_box_cont"]
+[node name="Bullet" type="TextureRect" parent="VBoxCont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_4j4lj")
 stretch_mode = 2
 
-[node name="text_label" type="Label" parent="."]
+[node name="TextLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 3

@@ -11,15 +11,15 @@ left_to_right = 1.0
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yfs0t"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[node name="triangle_wall" type="StaticBody3D"]
+[node name="TriangleWall" type="StaticBody3D"]
 collision_layer = 8193
 collision_mask = 2
 script = ExtResource("1_2y32v")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_vncwr")
 skeleton = NodePath("")
 
-[node name="collision_box" type="CollisionShape3D" parent="."]
+[node name="CollisionBox" type="CollisionShape3D" parent="."]
 visible = false
 shape = SubResource("ConvexPolygonShape3D_yfs0t")

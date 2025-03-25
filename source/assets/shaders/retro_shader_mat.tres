@@ -4,8 +4,6 @@
 
 [resource]
 shader = ExtResource("1")
-shader_parameter/grain_size = 0.0
-shader_parameter/grain_amount = 0.1
 shader_parameter/blurAmount = 0.0
 shader_parameter/downScale = 3.75
 shader_parameter/darkestThreshold = 0.06

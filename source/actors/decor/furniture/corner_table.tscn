@@ -38,7 +38,7 @@ size = Vector3(4, 1.5, 1.75)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pepd"]
 size = Vector3(1.75, 1.5, 5.5)
 
-[node name="corner_table" type="Node3D"]
+[node name="CornerTable" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_lsmaf")

@@ -102,7 +102,7 @@ height = 3.80425
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f7nnk"]
 points = PackedVector3Array(-0.207773, 0, 0.426474, -0.265487, 0, 0.393078, 0.473205, 0, 0.0333131, 0.133223, 3.0733, 0.230854, -1.8239e-05, 3.0733, 0.269176, -0.133332, 3.0733, 0.230854, -0.265487, 0, -0.393161, -0.23319, 3.0733, 0.134588, -0.266573, 3.0733, -8.34465e-05, 0.473205, 0, -0.0333965, 0.266536, 3.0733, 2.98023e-08, 0.233081, 3.0733, 0.134588, 0.224464, 3.1, 0.129579, 0.128299, 3.1, 0.222254, -1.8239e-05, 3.1, 0.259157, -0.128335, 3.1, 0.222254, -0.224501, 3.1, 0.129579, -0.207773, 0, -0.426474, -0.23319, 3.0733, -0.134672, -0.133332, 3.0733, -0.230937, -0.256725, 3.1, -8.34465e-05, 0.133223, 3.0733, -0.230937, 0.233081, 3.0733, -0.134672, 0.224464, 3.1, -0.129662, 0.256616, 3.1, 2.98023e-08, -1.8239e-05, 3.0733, -0.26926, -0.224501, 3.1, -0.129662, -0.128335, 3.1, -0.222338, -1.8239e-05, 3.1, -0.259241, 0.128299, 3.1, -0.222338)
 
-[node name="standing_lamp" instance=ExtResource("1_noob1")]
+[node name="StandingLamp" instance=ExtResource("1_noob1")]
 script = ExtResource("1_7hewh")
 default_range = 12.0
 default_energy = 0.75
@@ -110,12 +110,12 @@ lit = true
 shadow_mode = 0
 audio_fade_in_on_ready = false
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_kfrme")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_rcnnh")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86, 0)
 shape = SubResource("CylinderShape3D_25tja")
 
@@ -125,5 +125,5 @@ shape = SubResource("CylinderShape3D_25tja")
 visible = false
 shape = SubResource("ConvexPolygonShape3D_f7nnk")
 
-[node name="fire" parent="." index="4" instance=ExtResource("1_rvqon")]
+[node name="Fire" parent="." index="4" instance=ExtResource("1_rvqon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0514, 0)

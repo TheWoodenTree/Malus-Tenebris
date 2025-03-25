@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6tli0h113yk1" path="res://source/assets/sounds/impacts/impact_player.gd" id="1"]
 
-[node name="impact_player" type="AudioStreamPlayer3D"]
+[node name="ImpactPlayer" type="AudioStreamPlayer3D"]
 unit_db = 5.0
 unit_size = 2.0
 pitch_scale = 0.9

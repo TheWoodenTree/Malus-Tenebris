@@ -7,8 +7,8 @@ var unselected_icon: CompressedTexture2D = load("res://source/assets/ui/buttons/
 
 @export var option_name: String : set = set_option_name
 
-@onready var button = $iconless_button
-@onready var select_texture = $select_texture
+@onready var button = $IconlessButton
+@onready var select_texture = $SelectTexture
 
 signal selected
 

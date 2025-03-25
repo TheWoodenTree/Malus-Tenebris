@@ -125,31 +125,31 @@ shadow_mesh = SubResource("ArrayMesh_niopr")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wmoqj"]
 size = Vector3(0.5, 1, 1.5)
 
-[node name="sign" instance=ExtResource("1_7mh3a")]
+[node name="Sign" instance=ExtResource("1_7mh3a")]
 script = ExtResource("2_l1qgr")
 text = ""
 chain_length = 2
 interactable_type = 4
 disable_highlight_shader = true
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 layers = 4
 material_overlay = SubResource("ShaderMaterial_py3mv")
 mesh = SubResource("ArrayMesh_45dlg")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 shape = SubResource("BoxShape3D_wmoqj")
 
-[node name="static_chain1" parent="." index="3" instance=ExtResource("6_1yi3l")]
+[node name="StaticChain1" parent="." index="3" instance=ExtResource("6_1yi3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0.4)
 length = 2
 
-[node name="static_chain2" parent="." index="4" instance=ExtResource("6_1yi3l")]
+[node name="StaticChain2" parent="." index="4" instance=ExtResource("6_1yi3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -0.4)
 length = 2
 
-[node name="decal" type="Decal" parent="." index="5"]
+[node name="Decal" type="Decal" parent="." index="5"]
 transform = Transform3D(-5.46392e-08, 1.25, -5.46392e-08, 0, -5.46392e-08, -1.25, -1.25, -5.46392e-08, 2.38836e-15, 0, 0.375, 0)
 size = Vector3(0.603, 0.1, 0.5)
 texture_albedo = ExtResource("7_wcmxp")

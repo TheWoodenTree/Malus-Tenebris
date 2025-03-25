@@ -15,9 +15,9 @@ var raw_text: String
 
 var read: bool = false
 
-@onready var interact_area = $interact_area
-@onready var page_turn_player = $page_turn_player
-@onready var mesh = $mesh
+@onready var interact_area = $InteractArea
+@onready var page_turn_player = $PageTurnPlayer
+@onready var mesh = $Mesh
 
 signal was_read
 

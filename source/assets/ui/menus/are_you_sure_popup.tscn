@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dh030gw5dl0xv" path="res://source/assets/ui/menus/are_you_sure_popup.gd" id="2_bjvqg"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_y7m6p"]
 
-[node name="are_you_sure_popup" type="Control"]
+[node name="AreYouSurePopup" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,44 +14,44 @@ grow_vertical = 2
 theme = ExtResource("1_p80nw")
 script = ExtResource("2_bjvqg")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="are_you_sure_label" type="Label" parent="cont/v_box_cont"]
+[node name="AreYouSureLabel" type="Label" parent="Cont/VBoxCont"]
 layout_mode = 2
 text = "Are you sure you want to quit?
 Unsaved data will be lost."
 horizontal_alignment = 1
 
-[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="yes_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("3_y7m6p")]
+[node name="YesButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("3_y7m6p")]
 layout_mode = 2
 text = "Yes"
 
-[node name="separator" type="VSeparator" parent="cont/v_box_cont/h_box_cont"]
+[node name="Separator" type="VSeparator" parent="Cont/VBoxCont/HBoxCont"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="no_button" parent="cont/v_box_cont/h_box_cont" instance=ExtResource("3_y7m6p")]
+[node name="NoButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("3_y7m6p")]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "No"
 
-[connection signal="pressed" from="cont/v_box_cont/h_box_cont/yes_button" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/h_box_cont/no_button" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/HBoxCont/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/HBoxCont/NoButton" to="." method="_on_no_button_pressed"]

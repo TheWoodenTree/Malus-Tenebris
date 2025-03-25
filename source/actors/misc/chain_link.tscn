@@ -12,23 +12,23 @@ orientation = 2
 radius = 0.15
 height = 1.0
 
-[node name="chain_link" type="RigidBody3D"]
+[node name="ChainLink" type="RigidBody3D"]
 collision_layer = 0
 collision_mask = 3
 
-[node name="joint" type="ConeTwistJoint3D" parent="."]
+[node name="Joint" type="ConeTwistJoint3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 node_b = NodePath("..")
 swing_span = 1.0472
 twist_span = 0.0
 bias = 0.1
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("PlaneMesh_aovx5")
 skeleton = NodePath("../..")
 
-[node name="collision_shape" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_5tg3s")

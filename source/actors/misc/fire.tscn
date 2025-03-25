@@ -89,20 +89,20 @@ material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="fire" type="Node3D"]
+[node name="Fire" type="Node3D"]
 script = ExtResource("1_r4r8e")
 
-[node name="fire_particles" parent="." instance=ExtResource("1")]
+[node name="FireParticles" parent="." instance=ExtResource("1")]
 visibility_aabb = AABB(-1, -0.75, -1, 2, 2, 2)
 process_material = SubResource("ParticleProcessMaterial_8ls2a")
 draw_pass_1 = SubResource("PlaneMesh_8gso6")
 
-[node name="lit_fire_particles" parent="." instance=ExtResource("4")]
+[node name="LitFireParticles" parent="." instance=ExtResource("4")]
 visibility_aabb = AABB(-1, -0.75, -1, 2, 2, 2)
 process_material = SubResource("ParticleProcessMaterial_w4tfn")
 draw_pass_1 = SubResource("PlaneMesh_vle7t")
 
-[node name="light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 shadow_enabled = true
@@ -112,7 +112,7 @@ omni_range = 12.0
 omni_shadow_mode = 0
 script = ExtResource("2")
 
-[node name="burning_player" type="AudioStreamPlayer3D" parent="."]
+[node name="BurningPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_7s1px")
 volume_db = 6.0
 max_db = 6.0

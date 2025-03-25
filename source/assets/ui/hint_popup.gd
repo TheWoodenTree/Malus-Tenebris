@@ -2,9 +2,9 @@ extends Control
 
 const POPUP_TRANS_TIME = 0.5
 
-@onready var cont: MarginContainer = $cont
-@onready var text = $cont/text
-@onready var inst_timer = $inst_timer
+@onready var cont: MarginContainer = $Cont
+@onready var text = $Cont/Text
+@onready var inst_timer = $InstTimer
 
 
 func appear(msg):

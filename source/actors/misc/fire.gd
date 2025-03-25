@@ -1,4 +1,4 @@
 extends Node3D
 
-@onready var burning_player = $burning_player
-@onready var light = $light
+@onready var burning_player = $BurningPlayer
+@onready var light = $Light

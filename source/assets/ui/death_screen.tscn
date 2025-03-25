@@ -14,7 +14,7 @@ length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../..:theme_override_constants/margin_top")
+tracks/0/path = NodePath("../..:themeOverrideConstants/MarginTop")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../../../background:material:shader_parameter/alpha")
+tracks/2/path = NodePath("../../../Background:material:shaderParameter/Alpha")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,7 +52,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../background:material:shader_parameter/vigMultiplierOffset")
+tracks/3/path = NodePath("../../../Background:material:shaderParameter/VigMultiplierOffset")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -64,7 +64,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:theme_override_colors/font_color")
+tracks/4/path = NodePath(".:themeOverrideColors/FontColor")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -76,7 +76,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../title_screen_button:modulate")
+tracks/5/path = NodePath("../TitleScreenButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -88,7 +88,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../quit_button:modulate")
+tracks/6/path = NodePath("../QuitButton:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -152,7 +152,7 @@ noise = SubResource("FastNoiseLite_lj8dq")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dek7v"]
 
-[node name="death_screen" type="Control"]
+[node name="DeathScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,29 +162,29 @@ grow_vertical = 2
 theme = ExtResource("1_l644d")
 script = ExtResource("1_5yg6d")
 
-[node name="anim_player" type="AnimationPlayer" parent="."]
-root_node = NodePath("../cont/v_box_cont/death_label")
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Cont/VBoxCont/DeathLabel")
 libraries = {
 "": SubResource("AnimationLibrary_d0481")
 }
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n2ony")
 position = Vector2(256, 144)
 texture = SubResource("NoiseTexture2D_gpv1q")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 theme_override_constants/margin_top = 125
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="death_label" type="Label" parent="cont/v_box_cont"]
+[node name="DeathLabel" type="Label" parent="Cont/VBoxCont"]
 light_mask = 2
 z_index = 1
 layout_mode = 2
@@ -195,33 +195,33 @@ theme_override_font_sizes/font_size = 48
 text = "End of Demo"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="cont/v_box_cont"]
+[node name="HSeparator2" type="HSeparator" parent="Cont/VBoxCont"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_23coi")
 
-[node name="title_screen_button" parent="cont/v_box_cont" instance=ExtResource("4_imk2y")]
+[node name="TitleScreenButton" parent="Cont/VBoxCont" instance=ExtResource("4_imk2y")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Title Screen"
 
-[node name="HSeparator" type="HSeparator" parent="cont/v_box_cont"]
+[node name="HSeparator" type="HSeparator" parent="Cont/VBoxCont"]
 layout_mode = 2
 theme_override_constants/separation = 5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_movsl")
 
-[node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("4_imk2y")]
+[node name="QuitButton" parent="Cont/VBoxCont" instance=ExtResource("4_imk2y")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
-[node name="HSeparator3" type="HSeparator" parent="cont/v_box_cont"]
+[node name="HSeparator3" type="HSeparator" parent="Cont/VBoxCont"]
 layout_mode = 2
 theme_override_constants/separation = 70
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dek7v")
 
-[connection signal="pressed" from="cont/v_box_cont/title_screen_button" to="." method="_on_title_screen_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/TitleScreenButton" to="." method="_on_title_screen_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/QuitButton" to="." method="_on_quit_button_pressed"]

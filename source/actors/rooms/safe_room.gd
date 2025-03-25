@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var music_player = $music_player
-@onready var safe_room_area = $safe_room_area
+@onready var music_player = $MusicPlayer
+@onready var safe_room_area = $SafeRoomArea
 
 
 func _ready():

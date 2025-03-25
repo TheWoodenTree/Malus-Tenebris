@@ -10,13 +10,13 @@ material = ExtResource("2_3e705")
 [sub_resource type="BoxShape3D" id="2"]
 resource_local_to_scene = true
 
-[node name="stone_floor" type="StaticBody3D"]
+[node name="StoneFloor" type="StaticBody3D"]
 collision_layer = 8193
 script = ExtResource("1_hfnor")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("1")
 
-[node name="collision_box" type="CollisionShape3D" parent="."]
+[node name="CollisionBox" type="CollisionShape3D" parent="."]
 visible = false
 shape = SubResource("2")

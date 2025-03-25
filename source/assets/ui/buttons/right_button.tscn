@@ -15,7 +15,7 @@ texture = ExtResource("3_riarv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ast0k"]
 
-[node name="right_button" type="Button"]
+[node name="RightButton" type="Button"]
 custom_minimum_size = Vector2(36, 25)
 offset_right = 36.0
 offset_bottom = 25.0

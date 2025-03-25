@@ -7,7 +7,7 @@ var option_res = preload("res://source/assets/ui/buttons/dropdown_option.tscn")
 
 var option_list: Array[DropdownOption]
 
-@onready var v_box_cont = $panel_cont/v_box_cont
+@onready var v_box_cont = $PanelCont/VBoxCont
 
 
 func _ready():

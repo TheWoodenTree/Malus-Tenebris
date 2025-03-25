@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var distillation_bottle = $distillation_bottle
-@onready var distillate_cup = $distillate_cup
+@onready var distillation_bottle = $DistillationBottle
+@onready var distillate_cup = $DistillateCup
 
 
 func _ready():

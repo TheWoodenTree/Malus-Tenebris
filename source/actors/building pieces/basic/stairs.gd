@@ -6,8 +6,8 @@ extends StaticBody3D
 @export var y_size: float = 1
 @export var z_size: float = 1
 
-@onready var mesh = $mesh.mesh
-@onready var collision_box = $collision_box.shape
+@onready var mesh = $Mesh.mesh
+@onready var collision_box = $CollisionBox.shape
 
 
 func _ready() -> void:

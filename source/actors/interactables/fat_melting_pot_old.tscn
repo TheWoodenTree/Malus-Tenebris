@@ -81,7 +81,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("fat:mesh:size")
+tracks/1/path = NodePath("Fat:mesh:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,7 +109,7 @@ length = 1.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("key:position")
+tracks/0/path = NodePath("Key:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -125,7 +125,7 @@ length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fat:position")
+tracks/0/path = NodePath("Fat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -149,7 +149,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("fat:mesh:size")
+tracks/2/path = NodePath("Fat:mesh:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -173,7 +173,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("sizzle_player:playing")
+tracks/4/path = NodePath("SizzlePlayer:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -225,54 +225,54 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5mmcw")
 
-[node name="fat_melting_pot" type="Node3D"]
+[node name="FatMeltingPot" type="Node3D"]
 script = ExtResource("1_cyt8n")
 key_item_data = SubResource("Resource_yyqcr")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309912, 0)
 layers = 8
 material_overlay = ExtResource("5_d2fde")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_436ag")
 
-[node name="interact_area" type="Area3D" parent="."]
+[node name="InteractArea" type="Area3D" parent="."]
 collision_layer = 32768
 collision_mask = 0
 script = ExtResource("7_7jw0t")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212593, 0)
 shape = SubResource("SphereShape3D_vix3v")
 
-[node name="sizzle_player" type="AudioStreamPlayer3D" parent="."]
+[node name="SizzlePlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138894, 0)
 stream = ExtResource("8_1miek")
 unit_size = 100.0
 max_distance = 30.0
 
-[node name="key_pickup_player" type="AudioStreamPlayer3D" parent="."]
+[node name="KeyPickupPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_xp36b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.956305, 0, 0.292372, 0, 1, 0, -0.292372, 0, 0.956305, 0, 0.0920419, 0)
 mesh = SubResource("CylinderMesh_kiuk5")
 
-[node name="anim_player" type="AnimationPlayer" parent="."]
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ssidx")
 }
 
-[node name="fat" type="MeshInstance3D" parent="."]
+[node name="Fat" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("BoxMesh_h1xlu")
 
-[node name="key" type="Node3D" parent="."]
+[node name="Key" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.164033)
 visible = false
 
-[node name="mesh" type="MeshInstance3D" parent="key"]
+[node name="Mesh" type="MeshInstance3D" parent="Key"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nsxkc")
-skeleton = NodePath("../../anim_player")
+skeleton = NodePath("../../AnimPlayer")

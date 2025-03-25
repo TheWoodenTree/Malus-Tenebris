@@ -77,16 +77,16 @@ shadow_mesh = SubResource("ArrayMesh_gjaob")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a6fed"]
 points = PackedVector3Array(-3.5, 0, -0.35, -0.100039, 0, -0.35, -3.5, 0, 0.349932, -3.5, 8, -0.35, 2.38419e-07, 0, -0.250029, -0.100039, 8, -0.35, -0.100039, 0, 0.349932, -3.5, 8, 0.349932, 2.38419e-07, 0, 0.249961, 2.38419e-07, 8, -0.250029, -0.100039, 8, 0.349932, 2.38419e-07, 8, 0.249961)
 
-[node name="large_double_door" type="Node3D"]
+[node name="LargeDoubleDoor" type="Node3D"]
 script = ExtResource("1_ch00n")
 
-[node name="door1_hinge" type="Marker3D" parent="."]
+[node name="Door1Hinge" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
 
-[node name="dust_particles" parent="door1_hinge" instance=ExtResource("2_v0621")]
+[node name="DustParticles" parent="Door1Hinge" instance=ExtResource("2_v0621")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0.25, 0.5)
 
-[node name="door1" type="MeshInstance3D" parent="door1_hinge"]
+[node name="Door1" type="MeshInstance3D" parent="Door1Hinge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0)
 layers = 4
 material_override = ExtResource("1_vhxxd")
@@ -94,42 +94,42 @@ lod_bias = 128.0
 mesh = SubResource("ArrayMesh_npt0n")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="door1_hinge/door1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Door1Hinge/Door1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door1_hinge/door1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1Hinge/Door1/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_hhii4")
 
-[node name="door2_hinge" type="Marker3D" parent="."]
+[node name="Door2Hinge" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0)
 
-[node name="dust_particles" parent="door2_hinge" instance=ExtResource("2_v0621")]
+[node name="DustParticles" parent="Door2Hinge" instance=ExtResource("2_v0621")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0.25, 0.5)
 
-[node name="door2" type="MeshInstance3D" parent="door2_hinge"]
+[node name="Door2" type="MeshInstance3D" parent="Door2Hinge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
 layers = 4
 lod_bias = 128.0
 mesh = SubResource("ArrayMesh_qmik0")
-skeleton = NodePath("../../door1_hinge/door1")
+skeleton = NodePath("../../Door1Hinge/Door1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="door2_hinge/door2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Door2Hinge/Door2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door2_hinge/door2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2Hinge/Door2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_a6fed")
 
-[node name="door_budge_player" type="AudioStreamPlayer3D" parent="."]
+[node name="DoorBudgePlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_1fbut")
 volume_db = 6.0
 unit_size = 35.0
 max_db = 6.0
 
-[node name="door_open_player" type="AudioStreamPlayer3D" parent="."]
+[node name="DoorOpenPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_n56mf")
 volume_db = 6.0
 unit_size = 35.0
 max_db = 6.0
 
-[node name="door_closed_player" type="AudioStreamPlayer3D" parent="."]
+[node name="DoorClosedPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.25, 0.5)
 stream = ExtResource("6_rfktn")
 unit_size = 35.0

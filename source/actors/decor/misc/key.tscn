@@ -110,16 +110,16 @@ shadow_mesh = SubResource("ArrayMesh_p2g6y")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6680"]
 height = 1.5
 
-[node name="key" instance=ExtResource("1_wh2hv")]
+[node name="Key" instance=ExtResource("1_wh2hv")]
 item_data = SubResource("Resource_53vmw")
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_7oo3d")
 mesh = SubResource("ArrayMesh_bith5")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.333875)
 shape = SubResource("CapsuleShape3D_q6680")
 
-[node name="pickup_player" parent="." index="2"]
+[node name="PickupPlayer" parent="." index="2"]
 stream = ExtResource("2")

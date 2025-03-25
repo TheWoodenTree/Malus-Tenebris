@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://btkdnefp2h41d" path="res://source/assets/sounds/ui/journal_close.ogg" id="4_hgs1l"]
 [ext_resource type="PackedScene" uid="uid://1hcg08j1wd6k" path="res://source/assets/ui/buttons/tab_button.tscn" id="6_v2h2v"]
 
-[node name="journal_menu" type="Control"]
+[node name="JournalMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,60 +21,60 @@ navigation_sound = ExtResource("3_mnjjw")
 open_sound = ExtResource("3_2t6h2")
 close_sound = ExtResource("4_hgs1l")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
 layout_mode = 2
 
-[node name="cont" type="MarginContainer" parent="cont/v_box_cont"]
+[node name="Cont" type="MarginContainer" parent="Cont/VBoxCont"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 
-[node name="panel_cont" type="PanelContainer" parent="cont/v_box_cont/cont"]
+[node name="PanelCont" type="PanelContainer" parent="Cont/VBoxCont/Cont"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont/cont/panel_cont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont/Cont/PanelCont"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="log_entries_button" parent="cont/v_box_cont/cont/panel_cont/h_box_cont" instance=ExtResource("6_v2h2v")]
+[node name="LogEntriesButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" instance=ExtResource("6_v2h2v")]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Log Entries"
 
-[node name="v_sep_1" type="VSeparator" parent="cont/v_box_cont/cont/panel_cont/h_box_cont"]
+[node name="VSep1" type="VSeparator" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="found_notes_button" parent="cont/v_box_cont/cont/panel_cont/h_box_cont" instance=ExtResource("6_v2h2v")]
+[node name="FoundNotesButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" instance=ExtResource("6_v2h2v")]
 layout_mode = 2
 text = "Found Notes"
 
-[node name="v_sep_2" type="VSeparator" parent="cont/v_box_cont/cont/panel_cont/h_box_cont"]
+[node name="VSep2" type="VSeparator" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="close_menu_button" parent="cont/v_box_cont/cont/panel_cont/h_box_cont" instance=ExtResource("4_eysq1")]
+[node name="CloseMenuButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" instance=ExtResource("4_eysq1")]
 layout_mode = 2
 
-[node name="journal_label" type="Label" parent="cont/v_box_cont/cont"]
+[node name="JournalLabel" type="Label" parent="Cont/VBoxCont/Cont"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 28
 text = "Journal"
 
-[node name="submenu_cont" type="MarginContainer" parent="cont/v_box_cont"]
+[node name="SubmenuCont" type="MarginContainer" parent="Cont/VBoxCont"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[connection signal="pressed" from="cont/v_box_cont/cont/panel_cont/h_box_cont/log_entries_button" to="." method="_on_log_entries_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/cont/panel_cont/h_box_cont/found_notes_button" to="." method="_on_found_notes_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/Cont/PanelCont/HBoxCont/LogEntriesButton" to="." method="_on_log_entries_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/Cont/PanelCont/HBoxCont/FoundNotesButton" to="." method="_on_found_notes_button_pressed"]

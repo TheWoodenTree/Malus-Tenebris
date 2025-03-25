@@ -68,15 +68,15 @@ shadow_mesh = SubResource("ArrayMesh_6vdfe")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1ar22"]
 points = PackedVector3Array(-1.44079, 0.549897, -1.10095, -1.45709, 0, -1.06129, -1.54171, 0, -1.04167, -1.57086, 0.549897, -1.07077, -1.44079, 1.15, -1.10095, 1.44016, 0.549897, -1.10095, 1.45677, 0, -1.06129, -1.56146, 0, -0.956969, -1.60095, 0.549897, -0.940589, -1.57086, 1.15, -1.07077, 1.44016, 1.15, -1.10095, 1.57054, 0.549897, -1.07077, 1.5414, 0, -1.04167, -1.56146, 0, 0.956754, -1.60095, 1.15, -0.940589, -1.60095, 0.549897, 0.940373, 1.57054, 1.15, -1.07077, 1.60095, 0.549897, -0.940589, 1.56114, 0, -0.956969, -1.57086, 0.549897, 1.07056, -1.54171, 0, 1.04146, -1.60095, 1.15, 0.940373, 1.60095, 1.15, -0.940589, 1.60095, 0.549897, 0.940373, 1.56114, 0, 0.956754, -1.44079, 0.549897, 1.10095, -1.57086, 1.15, 1.07056, -1.45709, 0, 1.06107, 1.60095, 1.15, 0.940373, 1.57054, 0.549897, 1.07056, 1.5414, 0, 1.04146, -1.44079, 1.15, 1.10095, 1.44016, 0.549897, 1.10095, 1.45677, 0, 1.06107, 1.57054, 1.15, 1.07056, 1.44016, 1.15, 1.10095)
 
-[node name="small_bed" type="Node3D"]
+[node name="SmallBed" type="Node3D"]
 
-[node name="frame" type="MeshInstance3D" parent="."]
+[node name="Frame" type="MeshInstance3D" parent="."]
 layers = 8
 mesh = SubResource("ArrayMesh_xvlst")
 
-[node name="mattress" type="MeshInstance3D" parent="."]
+[node name="Mattress" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ixdet")
-skeleton = NodePath("../frame")
+skeleton = NodePath("../Frame")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

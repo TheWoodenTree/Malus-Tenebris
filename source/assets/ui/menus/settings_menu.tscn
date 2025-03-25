@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="5_bn2ys"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="5_vt8yh"]
 
-[node name="settings_menu" type="Control"]
+[node name="SettingsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ grow_vertical = 2
 theme = ExtResource("1_oy3ig")
 script = ExtResource("2_ifcx8")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
@@ -27,14 +27,14 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
 layout_mode = 2
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont/v_box_cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont/VBoxCont"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="settings" type="Label" parent="cont/v_box_cont/v_box_cont"]
+[node name="Settings" type="Label" parent="Cont/VBoxCont/VBoxCont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
@@ -42,31 +42,31 @@ theme_override_font_sizes/font_size = 32
 text = "Settings
 "
 
-[node name="separator" type="HSeparator" parent="cont/v_box_cont/v_box_cont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont/VBoxCont"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="h_box_cont" type="HBoxContainer" parent="cont/v_box_cont/v_box_cont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont/VBoxCont"]
 layout_mode = 2
 
-[node name="screen_mode_dropdown" parent="cont/v_box_cont/v_box_cont/h_box_cont" instance=ExtResource("2_3txbk")]
+[node name="ScreenModeDropdown" parent="Cont/VBoxCont/VBoxCont/HBoxCont" instance=ExtResource("2_3txbk")]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Screen Mode"
 script = ExtResource("4_0g71k")
 dropdown_option_names = Array[String](["Windowed", "Fullscreen", "Borderless Fullscreen"])
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont/v_box_cont/v_box_cont/h_box_cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont/VBoxCont/VBoxCont/HBoxCont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="master_volume" type="Label" parent="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont"]
+[node name="MasterVolume" type="Label" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Master Volume"
 
-[node name="volume_slider" type="HSlider" parent="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont"]
+[node name="VolumeSlider" type="HSlider" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -75,13 +75,13 @@ max_value = 1.0
 step = 0.01
 value = 0.25
 
-[node name="slider_click_player" type="AudioStreamPlayer" parent="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont"]
+[node name="SliderClickPlayer" type="AudioStreamPlayer" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont"]
 stream = ExtResource("5_bn2ys")
 max_polyphony = 10
 
-[node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("5_vt8yh")]
+[node name="CloseMenuButton" parent="Cont/VBoxCont" instance=ExtResource("5_vt8yh")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[connection signal="value_changed" from="cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont/volume_slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont/VolumeSlider" to="." method="_on_volume_slider_value_changed"]

@@ -53,54 +53,54 @@ size = Vector3(1.75, 1, 0.1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48kpg"]
 points = PackedVector3Array(0.875, 0.5, 0.05, 0.875, 0.5, -0.05, -0.875, 0.5, 0.05, 0.875, -0.5, 0.05, 0.875, -0.5, -0.05, -0.875, 0.5, -0.05, -0.875, -0.5, 0.05, -0.875, -0.5, -0.05)
 
-[node name="hanging_chain" type="Node3D"]
+[node name="HangingChain" type="Node3D"]
 script = ExtResource("1_yqmh7")
 
-[node name="anchor_1" type="StaticBody3D" parent="."]
+[node name="Anchor1" type="StaticBody3D" parent="."]
 
-[node name="anchor_2" type="StaticBody3D" parent="."]
+[node name="Anchor2" type="StaticBody3D" parent="."]
 
-[node name="chain_1" type="Node3D" parent="."]
+[node name="Chain1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
 
-[node name="chain_link_1" parent="chain_1" instance=ExtResource("1")]
+[node name="ChainLink1" parent="Chain1" instance=ExtResource("1")]
 
-[node name="joint" parent="chain_1/chain_link_1" index="0"]
-node_a = NodePath("../../../anchor_1")
+[node name="Joint" parent="Chain1/ChainLink1" index="0"]
+node_a = NodePath("../../../Anchor1")
 
-[node name="mesh" parent="chain_1/chain_link_1" index="1"]
+[node name="Mesh" parent="Chain1/ChainLink1" index="1"]
 mesh = SubResource("PlaneMesh_tdqvs")
 
-[node name="chain_2" type="Node3D" parent="."]
+[node name="Chain2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
 
-[node name="chain_link_1" parent="chain_2" instance=ExtResource("1")]
+[node name="ChainLink1" parent="Chain2" instance=ExtResource("1")]
 
-[node name="joint" parent="chain_2/chain_link_1" index="0"]
-node_a = NodePath("../../../anchor_2")
+[node name="Joint" parent="Chain2/ChainLink1" index="0"]
+node_a = NodePath("../../../Anchor2")
 
-[node name="mesh" parent="chain_2/chain_link_1" index="1"]
+[node name="Mesh" parent="Chain2/ChainLink1" index="1"]
 mesh = SubResource("PlaneMesh_c6xlo")
 
-[node name="joint_1" type="ConeTwistJoint3D" parent="."]
+[node name="Joint1" type="ConeTwistJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, -1, 0)
-node_b = NodePath("../sign")
+node_b = NodePath("../Sign")
 
-[node name="joint_2" type="ConeTwistJoint3D" parent="."]
+[node name="Joint2" type="ConeTwistJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, -1, 0)
-node_b = NodePath("../sign")
+node_b = NodePath("../Sign")
 
-[node name="sign" type="RigidBody3D" parent="."]
+[node name="Sign" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 collision_layer = 0
 collision_mask = 3
 mass = 5.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sign"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sign"]
 mesh = SubResource("BoxMesh_c3cho")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sign"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sign"]
 shape = SubResource("ConvexPolygonShape3D_48kpg")
 
-[editable path="chain_1/chain_link_1"]
-[editable path="chain_2/chain_link_1"]
+[editable path="Chain1/ChainLink1"]
+[editable path="Chain2/ChainLink1"]

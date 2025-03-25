@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3e4t"]
 shader = ExtResource("1_bj6y0")
 
-[node name="load_screen" type="Control"]
+[node name="LoadScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,14 +29,14 @@ energy = 10.13
 texture = ExtResource("1_nnobq")
 texture_scale = 4.9
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 light_mask = 0
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 theme_override_constants/margin_right = 45
 
-[node name="loading_label" type="Label" parent="cont"]
+[node name="LoadingLabel" type="Label" parent="Cont"]
 light_mask = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_q3e4t")

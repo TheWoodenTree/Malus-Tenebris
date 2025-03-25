@@ -61,7 +61,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p7i6x")
 
-[node name="saw" type="Node3D"]
+[node name="Saw" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_hkqtd")

@@ -140,7 +140,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("mesh:position")
+tracks/0/path = NodePath("Mesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -152,7 +152,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("mesh:rotation")
+tracks/1/path = NodePath("Mesh:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -164,7 +164,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("mesh/latch_sound_player")
+tracks/2/path = NodePath("Mesh/LatchSoundPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -191,7 +191,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("mesh:position")
+tracks/0/path = NodePath("Mesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -203,7 +203,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("mesh:rotation")
+tracks/1/path = NodePath("Mesh:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -215,7 +215,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("mesh/latch_sound_player")
+tracks/2/path = NodePath("Mesh/LatchSoundPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -242,19 +242,19 @@ _data = {
 &"unlock": SubResource("Animation_irbb8")
 }
 
-[node name="door_latch" instance=ExtResource("1_8axtm")]
+[node name="DoorLatch" instance=ExtResource("1_8axtm")]
 script = ExtResource("2_rkwjl")
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385, 0, 0)
 layers = 4
 material_overlay = SubResource("ShaderMaterial_u87td")
 mesh = SubResource("ArrayMesh_0lrdm")
 
-[node name="latch_sound_player" type="AudioStreamPlayer3D" parent="mesh" index="0"]
+[node name="LatchSoundPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146705, 0, 0)
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.146777, -0.0314052, 0.168546)
 shape = SubResource("CapsuleShape3D_xjqwe")
 
@@ -264,7 +264,7 @@ layers = 8
 mesh = SubResource("ArrayMesh_u1dq4")
 skeleton = NodePath("")
 
-[node name="anim_player" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 &"": SubResource("AnimationLibrary_6ocew")
 }

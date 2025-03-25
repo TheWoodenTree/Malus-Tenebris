@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_q3ba8"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="4_g4plg"]
 
-[node name="pause_menu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ grow_vertical = 2
 theme = ExtResource("1_cvp73")
 script = ExtResource("2_x24sp")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
@@ -25,51 +25,51 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="pause_label" type="Label" parent="cont/v_box_cont"]
+[node name="PauseLabel" type="Label" parent="Cont/VBoxCont"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="continue_button" parent="cont/v_box_cont" instance=ExtResource("3_q3ba8")]
+[node name="ContinueButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Continue"
 
-[node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator2" type="HSeparator" parent="Cont/VBoxCont"]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="settings_button" parent="cont/v_box_cont" instance=ExtResource("3_q3ba8")]
+[node name="SettingsButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Settings"
 
-[node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator3" type="HSeparator" parent="Cont/VBoxCont"]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="close_menu_button" parent="cont/v_box_cont" instance=ExtResource("4_g4plg")]
+[node name="CloseMenuButton" parent="Cont/VBoxCont" instance=ExtResource("4_g4plg")]
 layout_mode = 2
 
-[node name="separator4" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator4" type="HSeparator" parent="Cont/VBoxCont"]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("3_q3ba8")]
+[node name="QuitButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="cont/v_box_cont/continue_button" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/settings_button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/QuitButton" to="." method="_on_quit_button_pressed"]

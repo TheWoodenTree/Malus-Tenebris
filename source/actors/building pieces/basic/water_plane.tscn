@@ -73,22 +73,22 @@ size = Vector2(10, 10)
 resource_local_to_scene = true
 size = Vector3(10, 1, 10)
 
-[node name="water_plane" type="Node3D"]
+[node name="WaterPlane" type="Node3D"]
 script = ExtResource("1_hakrc")
 
-[node name="plane" type="MeshInstance3D" parent="."]
+[node name="Plane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_d5y7h")
 
-[node name="water_col_area" type="Area3D" parent="."]
+[node name="WaterColArea" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
-[node name="box" type="CollisionShape3D" parent="water_col_area"]
+[node name="Box" type="CollisionShape3D" parent="WaterColArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 shape = SubResource("BoxShape3D_8bhbt")
 
-[node name="puddle" parent="." instance=ExtResource("2_m3um1")]
+[node name="Puddle" parent="." instance=ExtResource("2_m3um1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 visible = false
 lower_fade = 1e+06

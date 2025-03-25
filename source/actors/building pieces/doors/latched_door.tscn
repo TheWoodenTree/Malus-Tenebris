@@ -119,29 +119,29 @@ shader_parameter/outlineSize = 0.04
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="latched_door" instance=ExtResource("1_r6dx6")]
+[node name="LatchedDoor" instance=ExtResource("1_r6dx6")]
 script = ExtResource("2_7g1um")
 
-[node name="door_body" parent="." index="0"]
+[node name="DoorBody" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 
-[node name="door" parent="door_body" index="2"]
+[node name="Door" parent="DoorBody" index="2"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
 material_overlay = SubResource("ShaderMaterial_6wsa6")
 mesh = SubResource("ArrayMesh_pg0dc")
 
-[node name="collision_shape" parent="door_body" index="3"]
+[node name="CollisionShape" parent="DoorBody" index="3"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 1.8, 0)
 shape = SubResource("BoxShape3D_1btq6")
 
-[node name="collision_shape" parent="door_body/interact_area" index="0"]
+[node name="CollisionShape" parent="DoorBody/InteractArea" index="0"]
 shape = SubResource("BoxShape3D_6ie3j")
 
-[node name="mesh" parent="door_body/key" index="0"]
+[node name="Mesh" parent="DoorBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_je52j")
 
-[node name="door_latch" parent="door_body" index="12" instance=ExtResource("4_7j8lg")]
+[node name="DoorLatch" parent="DoorBody" index="12" instance=ExtResource("4_7j8lg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94622, 2.20789, 0.195759)
 
-[node name="door_frame_latch_holder" parent="." index="1" instance=ExtResource("5_rhct3")]
+[node name="DoorFrameLatchHolder" parent="." index="1" instance=ExtResource("5_rhct3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.434, 2.174, 0.081)

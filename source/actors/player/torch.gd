@@ -25,15 +25,15 @@ var impact_player = preload("res://source/assets/sounds/impacts/impact_player.ts
 
 @onready var flicker_low = default_energy / flicker_intensity
 @onready var flicker_high = default_energy * flicker_intensity
-@onready var material = $mesh.material_overlay
-@onready var particles = $fire_particles
-@onready var light = $fire_particles/light
-@onready var torch_light_player = $torch_light_player
-@onready var pickup_player = $pickup_player
-@onready var burning_player = $burning_player
-@onready var lit_particles = $lit_fire_particles
-@onready var particle_attractor: GPUParticlesAttractorSphere3D = $particle_attractor
-@onready var interact_area = $interact_area
+@onready var material = $Mesh.material_overlay
+@onready var particles = $FireParticles
+@onready var light = $FireParticles/Light
+@onready var torch_light_player = $TorchLightPlayer
+@onready var pickup_player = $PickupPlayer
+@onready var burning_player = $BurningPlayer
+@onready var lit_particles = $LitFireParticles
+@onready var particle_attractor: GPUParticlesAttractorSphere3D = $ParticleAttractor
+@onready var interact_area = $InteractArea
 @onready var mesh = meshes[0]
 
 

@@ -12,8 +12,8 @@ var current_draggable: Object
 var draggable_max_drag: float = 85.0
 var draggable_last_drag: float
 
-@onready var bar = $cont/bar
-@onready var arrow = $cont/bar/arrow
+@onready var bar = $Cont/Bar
+@onready var arrow = $Cont/Bar/Arrow
 
 
 func _ready():

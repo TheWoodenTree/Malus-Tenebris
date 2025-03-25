@@ -35,7 +35,7 @@ material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="lit_fire_particles" type="GPUParticles3D"]
+[node name="LitFireParticles" type="GPUParticles3D"]
 emitting = false
 amount = 128
 lifetime = 0.8

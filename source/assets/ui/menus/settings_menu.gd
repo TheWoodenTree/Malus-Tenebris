@@ -1,7 +1,7 @@
 extends Menu
 
-@onready var volume_slider: HSlider = $cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont/volume_slider
-@onready var slider_click_player: AudioStreamPlayer = $cont/v_box_cont/v_box_cont/h_box_cont/v_box_cont/slider_click_player
+@onready var volume_slider: HSlider = $Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont/VolumeSlider
+@onready var slider_click_player: AudioStreamPlayer = $Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont/SliderClickPlayer
 @onready var timer := Timer.new()
 
 func _ready() -> void:

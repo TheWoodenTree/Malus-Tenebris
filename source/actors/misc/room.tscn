@@ -15,80 +15,80 @@ size = Vector3(15, 10, 3)
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(15, 11, 3)
 
-[node name="room" type="Node3D"]
+[node name="Room" type="Node3D"]
 
-[node name="floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="."]
 collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
 mesh = SubResource("1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 17.5, 0, 0, -5.5)
 shape = SubResource("2")
 
-[node name="ceiling" type="StaticBody3D" parent="."]
+[node name="Ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ceiling"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -5.5)
 mesh = SubResource("1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 17.5, 0, -5, -5.5)
 shape = SubResource("2")
 
-[node name="wall" type="StaticBody3D" parent="."]
+[node name="Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17)
 collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, -6)
 mesh = SubResource("3")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
 transform = Transform3D(10, 0, 0, 0, 4.5, 0, 0, 0, 1, 0, 1.5, -6)
 shape = SubResource("2")
 
-[node name="wall2" type="StaticBody3D" parent="."]
+[node name="Wall2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -28)
 collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="wall2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 6)
 mesh = SubResource("3")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
 transform = Transform3D(10, 0, 0, 0, 4.5, 0, 0, 0, 1, 0, 1.5, 6)
 shape = SubResource("2")
 
-[node name="wall3" type="StaticBody3D" parent="."]
+[node name="Wall3" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 2, 0)
 collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="wall3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.5, 1.5, -6)
 mesh = SubResource("3")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
 transform = Transform3D(17.5, 0, 0, 0, 4.5, 0, 0, 0, 1, 5.5, 1.5, -6)
 shape = SubResource("2")
 
-[node name="wall4" type="StaticBody3D" parent="."]
+[node name="Wall4" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 2, 0)
 collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="wall4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.5, 1.5, 6)
 mesh = SubResource("3")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
 transform = Transform3D(17.5, 0, 0, 0, 4.5, 0, 0, 0, 1, 5.5, 1.5, 6)
 shape = SubResource("2")
 

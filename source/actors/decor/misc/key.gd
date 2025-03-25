@@ -4,9 +4,9 @@ var being_targeted = false
 
 @export var key_name: String = "Default"
 
-@onready var key_pickup_player = $key_pickup_player
-@onready var interact_area = $interact_area
-@onready var highlight_material = $key.material_overlay
+@onready var key_pickup_player = $KeyPickupPlayer
+@onready var interact_area = $InteractArea
+@onready var highlight_material = $Key.material_overlay
 
 
 func _process(_delta: float) -> void:

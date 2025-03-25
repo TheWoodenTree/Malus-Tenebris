@@ -9,7 +9,7 @@ shader = ExtResource("2_l8bde")
 shader_parameter/freq = 3.0
 shader_parameter/speed = 20.0
 
-[node name="hint_popup" type="Control"]
+[node name="HintPopup" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +20,13 @@ size_flags_horizontal = 4
 theme = ExtResource("1_as0b4")
 script = ExtResource("2")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 theme_override_constants/margin_bottom = -320
 
-[node name="text" type="Label" parent="cont"]
+[node name="Text" type="Label" parent="Cont"]
 material = SubResource("ShaderMaterial_0mtx4")
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -37,5 +37,5 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="inst_timer" type="Timer" parent="."]
+[node name="InstTimer" type="Timer" parent="."]
 one_shot = true

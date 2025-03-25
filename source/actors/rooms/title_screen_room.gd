@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var camera = $camera
+@onready var camera = $Camera
 
 signal camera_moved
 

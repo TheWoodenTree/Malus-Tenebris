@@ -7,8 +7,8 @@ var buttons: Array[Control]
 var queued_method_calls: Array[Callable]
 var button_res: Resource = preload("res://source/assets/ui/buttons/iconless_button.tscn")
 
-@onready var buttons_cont = $cont/scroll_cont/buttons_cont
-@onready var tutorial_label = $cont/tutorial_label
+@onready var buttons_cont = $Cont/ScrollCont/ButtonsCont
+@onready var tutorial_label = $Cont/TutorialLabel
 
 
 func _enter_tree():

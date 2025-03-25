@@ -3,8 +3,8 @@ extends Block
 
 @export var move_to_position: Vector3 = Vector3.ZERO
 
-@onready var move_player: AudioStreamPlayer3D = $move_player
-@onready var particles = $particles
+@onready var move_player: AudioStreamPlayer3D = $MovePlayer
+@onready var particles = $Particles
 
 
 func _ready():

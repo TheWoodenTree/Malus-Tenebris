@@ -1,7 +1,7 @@
 extends Interactable
 
-@onready var mesh = $mesh
-@onready var interact_area = $interact_area
+@onready var mesh = $Mesh
+@onready var interact_area = $InteractArea
 
 
 func interact():

@@ -82,20 +82,20 @@ shadow_mesh = SubResource("ArrayMesh_0dnb3")
 [sub_resource type="SphereShape3D" id="SphereShape3D_nc51l"]
 radius = 0.341322
 
-[node name="distillate_cup" instance=ExtResource("1_g2huc")]
+[node name="DistillateCup" instance=ExtResource("1_g2huc")]
 script = ExtResource("2_qq4d4")
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 layers = 4
 material_overlay = SubResource("ShaderMaterial_p2hrb")
 mesh = SubResource("ArrayMesh_ccb6t")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05119, 0.63969, 0)
 visible = false
 shape = SubResource("SphereShape3D_nc51l")
 
-[node name="pour_player" type="AudioStreamPlayer3D" parent="." index="2"]
+[node name="PourPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05638, 0.584891, 0)
 stream = ExtResource("4_gai3w")
 unit_size = 3.0

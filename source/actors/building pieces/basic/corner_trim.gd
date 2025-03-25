@@ -5,13 +5,13 @@ extends Node3D
 @export var length2: float = 1.0 : set = _set_length2
 @export_enum("Concave", "Convex") var type: String = "Concave" : set = _set_type
 
-@onready var node = $node
-@onready var mesh1 = $node/mesh1
-@onready var mesh2 = $node/mesh2
-@onready var mesh3 = $node/mesh3
-@onready var collision_shape1 = $node/body/collision_shape1
-@onready var collision_shape2 = $node/body/collision_shape2
-@onready var collision_shape3 = $node/body/collision_shape3
+@onready var node = $Node
+@onready var mesh1 = $Node/Mesh1
+@onready var mesh2 = $Node/Mesh2
+@onready var mesh3 = $Node/Mesh3
+@onready var collision_shape1 = $Node/Body/CollisionShape1
+@onready var collision_shape2 = $Node/Body/CollisionShape2
+@onready var collision_shape3 = $Node/Body/CollisionShape3
 
 
 func _ready():

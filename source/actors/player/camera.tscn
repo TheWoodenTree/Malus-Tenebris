@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cp1qikj3srmp6" path="res://source/actors/player/camera.gd" id="1"]
 
-[node name="camera" type="Camera3D"]
+[node name="Camera" type="Camera3D"]
 current = true
 script = ExtResource("1")

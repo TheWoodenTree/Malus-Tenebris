@@ -11,7 +11,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi37g"]
 
-[node name="title_screen" type="Control"]
+[node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,22 +20,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b237l")
 
-[node name="cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="v_box_cont" type="VBoxContainer" parent="cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="separator" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rgk4g")
 
-[node name="title" type="Label" parent="cont/v_box_cont"]
+[node name="Title" type="Label" parent="Cont/VBoxCont"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = SubResource("Theme_5bq6o")
@@ -45,51 +45,51 @@ theme_override_font_sizes/font_size = 32
 text = "Malus Tenebris"
 horizontal_alignment = 1
 
-[node name="separator2" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator2" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
 
-[node name="play_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+[node name="PlayButton" parent="Cont/VBoxCont" instance=ExtResource("3_da6oj")]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Play"
 
-[node name="separator3" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator3" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
 
-[node name="settings_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+[node name="SettingsButton" parent="Cont/VBoxCont" instance=ExtResource("3_da6oj")]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Settings"
 
-[node name="separator4" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator4" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
 
-[node name="credits_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+[node name="CreditsButton" parent="Cont/VBoxCont" instance=ExtResource("3_da6oj")]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Credits"
 
-[node name="separator5" type="HSeparator" parent="cont/v_box_cont"]
+[node name="Separator5" type="HSeparator" parent="Cont/VBoxCont"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wi37g")
 
-[node name="quit_button" parent="cont/v_box_cont" instance=ExtResource("3_da6oj")]
+[node name="QuitButton" parent="Cont/VBoxCont" instance=ExtResource("3_da6oj")]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Quit"
 
-[node name="music_player" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_u22f8")
 volume_db = -30.0
 
-[connection signal="pressed" from="cont/v_box_cont/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/settings_button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/credits_button" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="cont/v_box_cont/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/QuitButton" to="." method="_on_quit_button_pressed"]

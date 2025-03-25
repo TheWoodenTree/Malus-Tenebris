@@ -205,10 +205,10 @@ material = SubResource("StandardMaterial3D_xkibk")
 radius = 0.05
 height = 0.1
 
-[node name="mars_statue" type="CharacterBody3D"]
+[node name="MarsStatue" type="CharacterBody3D"]
 script = ExtResource("1_umwes")
 
-[node name="skeleton" type="Skeleton3D" parent="."]
+[node name="Skeleton" type="Skeleton3D" parent="."]
 bones/0/name = "Bone.007"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.999737, 4.65661e-10, -0.0229336, -0.00445275, 0.98097, -0.194107, 0.0224972, 0.194158, 0.980712, 0, 2.29286, -0.12128)
@@ -427,26 +427,26 @@ bones/30/position = Vector3(-7.97445e-09, 1.22898, -3.14249e-08)
 bones/30/rotation = Quaternion(0.0202153, 0.0242958, 0.701677, 0.711794)
 bones/30/scale = Vector3(1, 1, 1)
 
-[node name="Sphere_001" type="MeshInstance3D" parent="skeleton"]
+[node name="Sphere001" type="MeshInstance3D" parent="Skeleton"]
 mesh = SubResource("ArrayMesh_h24vv")
 skin = SubResource("Skin_so5l0")
 
-[node name="Sphere_002" type="MeshInstance3D" parent="skeleton"]
+[node name="Sphere002" type="MeshInstance3D" parent="Skeleton"]
 mesh = SubResource("ArrayMesh_umq24")
 skin = SubResource("Skin_so5l0")
 
-[node name="Sphere_003" type="MeshInstance3D" parent="skeleton"]
+[node name="Sphere003" type="MeshInstance3D" parent="Skeleton"]
 mesh = SubResource("ArrayMesh_b2fy2")
 skin = SubResource("Skin_so5l0")
 
-[node name="standing_collision" type="CollisionShape3D" parent="."]
+[node name="StandingCollision" type="CollisionShape3D" parent="."]
 
-[node name="crouching_collision" type="CollisionShape3D" parent="."]
+[node name="CrouchingCollision" type="CollisionShape3D" parent="."]
 
-[node name="floor_type_check" type="RayCast3D" parent="."]
+[node name="FloorTypeCheck" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
-[node name="water_check" type="RayCast3D" parent="."]
+[node name="WaterCheck" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-@onready var mesh = $mesh
+@onready var mesh = $Mesh
 
 
 func _ready():

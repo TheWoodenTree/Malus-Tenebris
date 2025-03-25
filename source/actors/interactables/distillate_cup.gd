@@ -3,7 +3,7 @@ extends Interactable
 var num_doses: int = 1
 var first_dose: bool = true
 
-@onready var pour_player = $pour_player
+@onready var pour_player = $PourPlayer
 
 
 signal done_pouring

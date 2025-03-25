@@ -23,10 +23,10 @@ extends Archway
 @export var door2_locked_message: String = ""
 @export var door2_tutorial_popup: bool = false
 
-@onready var door1 = $door1
-@onready var door2 = $door2
-@onready var door1_body = $door1/door_body
-@onready var door2_body = $door2/door_body
+@onready var door1 = $Door1
+@onready var door2 = $Door2
+@onready var door1_body = $Door1/DoorBody
+@onready var door2_body = $Door2/DoorBody
 
 
 func _ready():

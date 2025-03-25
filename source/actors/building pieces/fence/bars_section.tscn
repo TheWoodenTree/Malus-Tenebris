@@ -37,9 +37,9 @@ shadow_mesh = SubResource("ArrayMesh_tudov")
 [sub_resource type="BoxShape3D" id="BoxShape3D_13hwm"]
 size = Vector3(1.5, 6, 0.2)
 
-[node name="bars_section" type="Node3D"]
+[node name="BarsSection" type="Node3D"]
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_q13sf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

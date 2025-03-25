@@ -2,10 +2,10 @@ extends Menu
 
 @export var navigation_sound: AudioStream
 
-@onready var log_entries_button = $cont/v_box_cont/cont/panel_cont/h_box_cont/log_entries_button
-@onready var v_sep_1 = $cont/v_box_cont/cont/panel_cont/h_box_cont/v_sep_1
-@onready var found_notes_button = $cont/v_box_cont/cont/panel_cont/h_box_cont/found_notes_button
-@onready var submenu_cont = $cont/v_box_cont/submenu_cont
+@onready var log_entries_button = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/LogEntriesButton
+@onready var v_sep_1 = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/VSep1
+@onready var found_notes_button = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/FoundNotesButton
+@onready var submenu_cont = $Cont/VBoxCont/SubmenuCont
 
 
 func _ready():

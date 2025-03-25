@@ -8,12 +8,12 @@ var last_cam_offset: Vector2 = Vector2.ZERO
 var last_3_mouse_positions: Array[Vector2] = []
 var local_mouse_position: Vector2 = Vector2.ZERO
 
-@onready var crank_anim_player = $crank_anim_player
-@onready var rotating_body = $rotating_body
-@onready var crank = $rotating_body/crank
-@onready var chain_player = $chain_player
-@onready var static_chain_1_mat: StandardMaterial3D = $static_chain.get_node("mesh").mesh.surface_get_material(0)
-@onready var static_chain_2_mat: StandardMaterial3D = $static_chain2.get_node("mesh").mesh.surface_get_material(0)
+@onready var crank_anim_player = $CrankAnimPlayer
+@onready var rotating_body = $RotatingBody
+@onready var crank = $RotatingBody/Crank
+@onready var chain_player = $ChainPlayer
+@onready var static_chain_1_mat: StandardMaterial3D = $StaticChain.get_node("Mesh").mesh.surface_get_material(0)
+@onready var static_chain_2_mat: StandardMaterial3D = $StaticChain2.get_node("Mesh").mesh.surface_get_material(0)
 
 @export var connected_node_name: String
 @export var has_crank: bool = false

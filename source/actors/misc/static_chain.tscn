@@ -9,10 +9,10 @@ material = ExtResource("2_3qspw")
 size = Vector2(0.2, 1)
 orientation = 2
 
-[node name="static_chain" type="Node3D"]
+[node name="StaticChain" type="Node3D"]
 script = ExtResource("1_8tpqu")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 layers = 8
 mesh = SubResource("PlaneMesh_mg0h2")

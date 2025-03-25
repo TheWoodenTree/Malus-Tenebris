@@ -63,7 +63,7 @@ shadow_mesh = SubResource("ArrayMesh_8wf2v")
 height = 2.00952
 radius = 0.8
 
-[node name="barrel" type="Node3D"]
+[node name="Barrel" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ltuda")

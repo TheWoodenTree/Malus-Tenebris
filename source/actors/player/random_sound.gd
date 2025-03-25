@@ -8,8 +8,8 @@ extends Node3D
 @export var sound_interval_variance: float = 5.0
 @export var playing: bool = true : set = _set_playing
 
-@onready var sound_player = $sound_player
-@onready var sound_timer = $sound_timer
+@onready var sound_player = $SoundPlayer
+@onready var sound_timer = $SoundTimer
 
 
 func _ready():

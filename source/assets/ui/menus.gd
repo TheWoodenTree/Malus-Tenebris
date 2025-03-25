@@ -6,7 +6,7 @@ var open_menus: Array[Control]
 
 var inside_tree: bool = false
 
-@onready var menu_player = $menu_player
+@onready var menu_player = $MenuPlayer
 
 
 func _process(_delta):

@@ -80,17 +80,17 @@ material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="candle_fire" type="Node3D"]
+[node name="CandleFire" type="Node3D"]
 
-[node name="fire_particles" parent="." instance=ExtResource("1")]
+[node name="FireParticles" parent="." instance=ExtResource("1")]
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_k3tvn")
 draw_pass_1 = SubResource("PlaneMesh_7wusg")
 
-[node name="lit_fire_particles" parent="." instance=ExtResource("4")]
+[node name="LitFireParticles" parent="." instance=ExtResource("4")]
 process_material = SubResource("ParticleProcessMaterial_86l80")
 draw_pass_1 = SubResource("PlaneMesh_vddtw")
 
-[node name="light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 shadow_enabled = true
 script = ExtResource("2")

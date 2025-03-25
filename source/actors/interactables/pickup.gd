@@ -7,7 +7,7 @@ signal picked_up
 @export var name_override: String = ""
 @export_range(0, 99) var count: int = 1
 
-@onready var pickup_player = $pickup_player
+@onready var pickup_player = $PickupPlayer
 
 
 func _ready():

@@ -6,13 +6,13 @@ extends Node3D
 @export var door1_to_angle: int = 0
 @export var door2_to_angle: int = 0
 
-@onready var door1_hinge: Marker3D = $door1_hinge
-@onready var door2_hinge: Marker3D = $door2_hinge
-@onready var door1_dust_particles: GPUParticles3D = $door1_hinge/dust_particles
-@onready var door2_dust_particles: GPUParticles3D = $door2_hinge/dust_particles
-@onready var door_budge_player: AudioStreamPlayer3D = $door_budge_player
-@onready var door_open_player: AudioStreamPlayer3D = $door_open_player
-@onready var door_closed_player: AudioStreamPlayer3D = $door_closed_player
+@onready var door1_hinge: Marker3D = $Door1Hinge
+@onready var door2_hinge: Marker3D = $Door2Hinge
+@onready var door1_dust_particles: GPUParticles3D = $Door1Hinge/DustParticles
+@onready var door2_dust_particles: GPUParticles3D = $Door2Hinge/DustParticles
+@onready var door_budge_player: AudioStreamPlayer3D = $DoorBudgePlayer
+@onready var door_open_player: AudioStreamPlayer3D = $DoorOpenPlayer
+@onready var door_closed_player: AudioStreamPlayer3D = $DoorClosedPlayer
 
 signal finished
 

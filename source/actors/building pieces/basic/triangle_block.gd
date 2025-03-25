@@ -5,8 +5,8 @@ extends StaticBody3D
 @export var size: Vector3 = Vector3.ONE : set = _set_size
 #@export var nav_walkable: bool = true : set = _set_nav_walkable
 
-@onready var mesh: Mesh = $mesh.mesh
-@onready var collision_box = $collision_box
+@onready var mesh: Mesh = $Mesh.mesh
+@onready var collision_box = $CollisionBox
 
 
 func _ready() -> void:

@@ -59,7 +59,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1msbv")
 
-[node name="scroll_2" type="Node3D"]
+[node name="Scroll2" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://817xb3ycrcf" path="res://source/assets/sounds/one_shot_audio_3d_player.gd" id="1_joo2l"]
 
-[node name="one_shot_audio_3d_player" type="AudioStreamPlayer3D"]
+[node name="OneShotAudio3dPlayer" type="AudioStreamPlayer3D"]
 script = ExtResource("1_joo2l")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

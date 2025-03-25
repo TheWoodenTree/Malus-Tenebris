@@ -16,7 +16,7 @@ var log_entry_dict: Dictionary = {
 }
 
 @export var hint_name: LogEntryName : set = set_hint_name
-@onready var text_label = $text_label
+@onready var text_label = $TextLabel
 
 func _ready():
 	text_label.text = log_entry_dict[hint_name]

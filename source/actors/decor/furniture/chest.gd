@@ -18,9 +18,9 @@ var pitch_scale_max: float = 1.5
 
 var sound_cooldown_timer: Timer = Timer.new()
 
-@onready var draggable_body = $draggable_body
-@onready var creak_player = $creak_player
-@onready var close_player = $close_player
+@onready var draggable_body = $DraggableBody
+@onready var creak_player = $CreakPlayer
+@onready var close_player = $ClosePlayer
 
 signal moved
 

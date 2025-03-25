@@ -4,7 +4,7 @@ extends Door
 
 var latch_locked: bool = false
 
-@onready var latch = $door_body/door_latch
+@onready var latch = $DoorBody/DoorLatch
 
 
 func _ready():

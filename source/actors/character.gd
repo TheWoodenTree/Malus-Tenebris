@@ -58,10 +58,10 @@ var footstep_vol_offset = 0.0
 var speed_multiplier: float = 1.0
 
 @onready var level = get_parent()
-@onready var standing_collision = $standing_collision
-@onready var crouching_collision = $crouching_collision
-@onready var water_check = $water_check
-@onready var floor_type_check = $floor_type_check
+@onready var standing_collision = $StandingCollision
+@onready var crouching_collision = $CrouchingCollision
+@onready var water_check = $WaterCheck
+@onready var floor_type_check = $FloorTypeCheck
 
 
 func _load_footsteps():

@@ -35,7 +35,7 @@ shadow_mesh = SubResource("ArrayMesh_kqns6")
 [sub_resource type="ConvexPolygonShape3D" id="2"]
 points = PackedVector3Array(-2.5, 0, -0.1, -2.5, 0.1, -0.1, 2.5, 0, -0.1, -2.5, 0, 0.1, -2.5, 0.1, 0.1, 2.5, 0.1, -0.1, 2.5, 0, 0.1, 2.5, 0.1, 0.1)
 
-[node name="plank2" type="Node3D"]
+[node name="Plank2" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_txoag")

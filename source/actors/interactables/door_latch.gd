@@ -8,7 +8,7 @@ var locked: bool = false
 # Set by parent doro script
 var parent_door: Door
 
-@onready var anim_player = $anim_player
+@onready var anim_player = $AnimPlayer
 @onready var mesh = meshes[0]
 
 

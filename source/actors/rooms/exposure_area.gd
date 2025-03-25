@@ -2,7 +2,7 @@ extends Area3D
 
 var player_entered_area: bool = false
 
-@onready var sound_player = $sound_player
+@onready var sound_player = $SoundPlayer
 
 
 #TODO: Fix door swinging wildly when mouse sensitivity is adjusted

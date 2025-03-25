@@ -5,10 +5,10 @@ var has_item: bool = false
 var selected: bool = false
 var on_edge: bool = false
 
-@onready var button = $slot_button
-@onready var hover_sound_player = $hover_sound_player
-@onready var slot_frame = $slot_frame
-@onready var item_texture_rect = $item_texture_rect
+@onready var button = $SlotButton
+@onready var hover_sound_player = $HoverSoundPlayer
+@onready var slot_frame = $SlotFrame
+@onready var item_texture_rect = $ItemTextureRect
 
 @export var item_data: ItemData
 

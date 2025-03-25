@@ -3,8 +3,8 @@ extends Node3D
 
 @export var length: float = 1.0 : set = _set_length
 
-@onready var mesh = $mesh
-@onready var collision_shape = $body/collision_shape
+@onready var mesh = $Mesh
+@onready var collision_shape = $Body/CollisionShape
 
 
 func _ready():

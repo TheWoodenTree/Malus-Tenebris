@@ -30,20 +30,20 @@ var world: Node3D
 
 var obunga
 
-@onready var drone_player = $drone_player
-@onready var drip_player = $drip_player
-@onready var play_game_sound_player = $play_game_sound_player
-@onready var retro_shader = $post_processing/retro_shader
-@onready var chromatic_abberation = $post_processing/chromatic_abberation
-@onready var vignette = $post_processing/vignette
-@onready var zoom = $post_processing/zoom
-@onready var blackout_blur = $post_processing/blackout_blur
-@onready var effects_player = $effects_player
+@onready var drone_player = $DronePlayer
+@onready var drip_player = $DripPlayer
+@onready var play_game_sound_player = $PlayGameSoundPlayer
+@onready var retro_shader = $PostProcessing/RetroShader
+@onready var chromatic_abberation = $PostProcessing/ChromaticAbberation
+@onready var vignette = $PostProcessing/Vignette
+@onready var zoom = $PostProcessing/Zoom
+@onready var blackout_blur = $PostProcessing/BlackoutBlur
+@onready var effects_player = $EffectsPlayer
 @onready var heartbeat_anim = effects_player.get_animation("heartbeat")
-@onready var heartbeat_player = $heartbeat_player
-@onready var ui = $ui
+@onready var heartbeat_player = $HeartbeatPlayer
+@onready var ui = $Ui
 @onready var nav_update_timer: Timer = Timer.new()
-@onready var debug_affliction_time_left = $timer_label
+@onready var debug_affliction_time_left = $TimerLabel
 
 @export_range(0.0, 2.0) var light_energy_multiplier: float = 1.0
 
@@ -90,7 +90,7 @@ func load_title_screen():
 	ui.menus.add_menu(title_screen)
 	add_child(title_screen_room)
 	Global.unlock_mouse()
-	title_screen_room.get_node("camera").current = true
+	title_screen_room.get_node("Camera").current = true
 
 
 func load_world_and_player():
@@ -126,10 +126,10 @@ func load_world_and_player():
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		nav_update_timer.connect("timeout", enemy.update_target_position)
 	nav_update_timer.start()
-	world.get_node("nav_region").bake_navigation_mesh()
+	world.get_node("NavRegion").bake_navigation_mesh()
 	
 	Global.lock_mouse()
-	Global.player.position = world.get_node("player_spawn_point").global_position
+	Global.player.position = world.get_node("PlayerSpawnPoint").global_position
 	if not Global.player.is_inside_tree():
 		add_child(Global.player)
 	Global.player.cam.rotation = Vector3.ZERO

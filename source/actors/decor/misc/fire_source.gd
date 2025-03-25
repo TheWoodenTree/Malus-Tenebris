@@ -10,9 +10,9 @@ extends Interactable
 
 var burning_player: AudioStreamPlayer3D
 
-@onready var fire = $fire
-@onready var light = $fire/light
-@onready var particles = $fire/fire_particles
+@onready var fire = $Fire
+@onready var light = $Fire/Light
+@onready var particles = $Fire/FireParticles
 @onready var detection_area = Area3D.new()
 @onready var interact_area = interact_areas[0]
 
@@ -48,7 +48,7 @@ func set_lit(is_lit):
 
 
 func _on_fire_burning_sound_area_entered():
-	if lit and fire.has_node("burning_player"):
+	if lit and fire.has_node("BurningPlayer"):
 		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
 		start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
 		fire.burning_player.play(start_time)
@@ -58,7 +58,7 @@ func _on_fire_burning_sound_area_entered():
 
 
 func _on_fire_burning_sound_area_exited():
-	if fire.has_node("burning_player"):
+	if fire.has_node("BurningPlayer"):
 		fire.burning_player.stop()
 	#fire.light.set_layer_mask_value(2, false)
 

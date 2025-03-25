@@ -6,13 +6,13 @@
 height = 1.0
 radius = 2.07465
 
-[node name="area" type="Area3D"]
+[node name="Area" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.307999)
 collision_layer = 8192
 collision_mask = 0
 script = ExtResource("1_smlsr")
 type = 2
 
-[node name="collision_shape" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.343994, 0, 0.00476074)
 shape = SubResource("CylinderShape3D_jojja")

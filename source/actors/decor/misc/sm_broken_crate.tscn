@@ -35,7 +35,7 @@ shadow_mesh = SubResource("ArrayMesh_clbs4")
 [sub_resource type="ConvexPolygonShape3D" id="2"]
 points = PackedVector3Array(-1.00555, 5.68284e-09, -0.500155, -1.00555, 5.68284e-09, 0.500057, -1.00555, 0.775, -0.500155, 1.00555, 5.68284e-09, -0.500155, -1.00555, 0.775, 0.500057, 1.00555, 5.68284e-09, 0.500057, 1.00555, 0.775, -0.500155, 1.00555, 0.775, 0.500057)
 
-[node name="sm_broken_crate" type="Node3D"]
+[node name="SmBrokenCrate" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8

@@ -2,7 +2,7 @@ extends Node3D
 
 var can_trigger = true
 
-@onready var sound_player = $sound_player
+@onready var sound_player = $SoundPlayer
 
 
 func _on_trigger_area_body_entered(_body):

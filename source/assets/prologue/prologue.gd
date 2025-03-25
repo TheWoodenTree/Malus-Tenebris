@@ -2,9 +2,9 @@ extends Control
 
 signal finished
 
-@onready var cont: MarginContainer = $cont
-@onready var rect: ColorRect = $rect
-@onready var text_click_player: AudioStreamPlayer = $text_click_player
+@onready var cont: MarginContainer = $Cont
+@onready var rect: ColorRect = $Rect
+@onready var text_click_player: AudioStreamPlayer = $TextClickPlayer
 
 
 func _ready() -> void:

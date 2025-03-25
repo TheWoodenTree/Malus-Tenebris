@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb8yg3bimqnfx"]
 
-[node name="prisoner_manifest" type="Label"]
+[node name="PrisonerManifest" type="Label"]
 custom_minimum_size = Vector2(800, 0)
 text = "Prisoner Manifest
 XXXI May, MCXVIII

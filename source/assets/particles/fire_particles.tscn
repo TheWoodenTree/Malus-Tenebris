@@ -20,7 +20,7 @@ material = SubResource("1")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="fire_particles" type="GPUParticles3D"]
+[node name="FireParticles" type="GPUParticles3D"]
 amount = 64
 lifetime = 0.8
 randomness = 0.2

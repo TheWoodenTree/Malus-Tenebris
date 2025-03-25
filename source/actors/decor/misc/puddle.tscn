@@ -7,7 +7,7 @@
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_d67si"]
 gradient = SubResource("Gradient_xhaap")
 
-[node name="puddle" type="Decal"]
+[node name="Puddle" type="Decal"]
 size = Vector3(10, 2, 10)
 texture_albedo = SubResource("GradientTexture1D_d67si")
 texture_orm = ExtResource("1_cq5ri")

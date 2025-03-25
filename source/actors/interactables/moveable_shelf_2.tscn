@@ -87,29 +87,29 @@ data = PackedVector3Array(-0.6033, 0.2999, -1.2, -0.6033, 0.2, 1.2, -0.6033, 0.2
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ohk4"]
 points = PackedVector3Array(0.521726, 4.25, 1.39973, 0.521726, 4.25, -1.4, -0.603274, 4.25, 1.39973, 0.521726, 0, 1.39973, -0.603274, 4.25, -1.4, 0.521726, 0, -1.4, -0.603274, 0, 1.39973, -0.603274, 0, -1.4)
 
-[node name="moveable_shelf_2" instance=ExtResource("1_a5v7j")]
+[node name="MoveableShelf2" instance=ExtResource("1_a5v7j")]
 
-[node name="mesh" parent="." index="0"]
+[node name="Mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 material_overlay = SubResource("ShaderMaterial_pv4t5")
 mesh = SubResource("ArrayMesh_jwdy5")
 
-[node name="collision_shape" parent="interact_area" index="0"]
+[node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0332031, 2.09108, 0.0100098)
 shape = SubResource("BoxShape3D_2782g")
 
-[node name="collision_shape" parent="static_body" index="0"]
+[node name="CollisionShape" parent="StaticBody" index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_n5ktp")
 
-[node name="move_player" parent="static_body" index="1"]
+[node name="MovePlayer" parent="StaticBody" index="1"]
 stream = ExtResource("3_htign")
 
-[node name="collision_shape" parent="moveable_collision_blocker" index="0"]
+[node name="CollisionShape" parent="MoveableCollisionBlocker" index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_8ohk4")
 
-[node name="collision_shape" parent="no_interact_area" index="0"]
+[node name="CollisionShape" parent="NoInteractArea" index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_8ohk4")

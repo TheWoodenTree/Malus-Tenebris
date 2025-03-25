@@ -78,7 +78,7 @@ colors = PackedColorArray(0, 0.188235, 0.639216, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3jud0"]
 gradient = SubResource("Gradient_8d0b0")
 
-[node name="sacraficial_altar" type="Node3D"]
+[node name="SacraficialAltar" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_fb228")

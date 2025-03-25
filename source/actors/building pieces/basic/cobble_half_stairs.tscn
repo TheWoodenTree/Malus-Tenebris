@@ -35,7 +35,7 @@ shadow_mesh = SubResource("ArrayMesh_g41jv")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rb4hv"]
 data = PackedVector3Array(1, 0, -1, 1, 0, 0, 1, 1, -1, -1, 0, -1, -1, 1, -1, -1, 0, 0, -1, 1, -1, 1, 0, 0, -1, 0, 0, -1, 1, -1, 1, 1, -1, 1, 0, 0, -1, 0, 0, 1, 0, -1, -1, 0, -1, -1, 0, 0, 1, 0, 0, 1, 0, -1, 1, 1, -1, -1, 0, -1, 1, 0, -1, 1, 1, -1, -1, 1, -1, -1, 0, -1)
 
-[node name="half_stairs" type="StaticBody3D"]
+[node name="HalfStairs" type="StaticBody3D"]
 collision_layer = 8193
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

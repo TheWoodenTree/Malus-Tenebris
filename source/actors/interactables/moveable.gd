@@ -8,11 +8,11 @@ extends Interactable
 # to still be off
 var interactable_override: bool
 
-@onready var static_body = $static_body
-@onready var moveable_collision_blocker = $moveable_collision_blocker
-@onready var moveable_collision_blocker_shape = $moveable_collision_blocker/collision_shape
-@onready var no_interact_area = $no_interact_area
-@onready var move_player = $static_body/move_player
+@onready var static_body = $StaticBody
+@onready var moveable_collision_blocker = $MoveableCollisionBlocker
+@onready var moveable_collision_blocker_shape = $MoveableCollisionBlocker/CollisionShape
+@onready var no_interact_area = $NoInteractArea
+@onready var move_player = $StaticBody/MovePlayer
 
 
 func _ready():

@@ -4,22 +4,22 @@
 [ext_resource type="Script" uid="uid://fx68ixjnx76g" path="res://source/assets/ui/buttons/ui_button.gd" id="2_wlfld"]
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="3_b1tbu"]
 
-[node name="iconless_button" type="Button"]
+[node name="IconlessButton" type="Button"]
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_4oaw8")
 text = "Text"
 script = ExtResource("2_wlfld")
 
-[node name="up_sound_player" type="AudioStreamPlayer" parent="."]
+[node name="UpSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b1tbu")
 pitch_scale = 0.9
 
-[node name="down_sound_player" type="AudioStreamPlayer" parent="."]
+[node name="DownSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b1tbu")
 pitch_scale = 0.8
 
-[node name="hover_sound_player" type="AudioStreamPlayer" parent="."]
+[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b1tbu")
 volume_db = -5.0
 

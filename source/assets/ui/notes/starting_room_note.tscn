@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvhwjelug7bvn"]
 
-[node name="text" type="Label"]
+[node name="Text" type="Label"]
 custom_minimum_size = Vector2(800, 0)
 size_flags_horizontal = 4
 text = "Entry 1:

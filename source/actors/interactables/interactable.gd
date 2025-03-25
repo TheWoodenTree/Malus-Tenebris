@@ -17,7 +17,7 @@ var being_targeted: bool = false
 var outline_material: ShaderMaterial = preload("res://source/assets/shaders/outline_shader_mat.tres")
 var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
 
-@onready var highlight_light = $highlight_light if has_node("highlight_light") else null
+@onready var highlight_light = $HighlightLight if has_node("HighlightLight") else null
 
 
 func _ready():

@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" uid="uid://63twav3hbduw" path="res://source/actors/rooms/occluders/occluder_instance.gd" id="1_lm0et"]
 
-[node name="room_template" type="Node3D"]
+[node name="RoomTemplate" type="Node3D"]
 
-[node name="walls" type="Node3D" parent="."]
+[node name="Walls" type="Node3D" parent="."]
 
-[node name="floors" type="Node3D" parent="."]
+[node name="Floors" type="Node3D" parent="."]
 
-[node name="pillars" type="Node3D" parent="."]
+[node name="Pillars" type="Node3D" parent="."]
 
-[node name="stairs" type="Node3D" parent="."]
+[node name="Stairs" type="Node3D" parent="."]
 
-[node name="fences" type="Node3D" parent="."]
+[node name="Fences" type="Node3D" parent="."]
 
-[node name="cells" type="Node3D" parent="."]
+[node name="Cells" type="Node3D" parent="."]
 
-[node name="decor" type="Node3D" parent="."]
+[node name="Decor" type="Node3D" parent="."]
 
-[node name="misc" type="Node3D" parent="."]
+[node name="Misc" type="Node3D" parent="."]
 
-[node name="occluder_instance" type="OccluderInstance3D" parent="."]
+[node name="OccluderInstance" type="OccluderInstance3D" parent="."]
 visible = false
 bake_mask = 4294967283
 script = ExtResource("1_lm0et")

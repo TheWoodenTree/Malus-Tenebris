@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://d3m2llyvlvssv" path="res://source/assets/ui/buttons/dropdown_arrow.png" id="3_xc7ek"]
 [ext_resource type="PackedScene" uid="uid://ds66ib3qesslo" path="res://source/assets/ui/menus/dropdown_menu.tscn" id="4_orc4b"]
 
-[node name="dropdown_button" type="Button"]
+[node name="DropdownButton" type="Button"]
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("1_ldv47")
 text = "Dropdown"
 script = ExtResource("2_j1fhq")
 
-[node name="dropdown_arrow_icon" type="TextureRect" parent="."]
+[node name="DropdownArrowIcon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -30,7 +30,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_xc7ek")
 stretch_mode = 2
 
-[node name="dropdown_menu" parent="." instance=ExtResource("4_orc4b")]
+[node name="DropdownMenu" parent="." instance=ExtResource("4_orc4b")]
 visible = false
 layout_mode = 1
 anchors_preset = 2

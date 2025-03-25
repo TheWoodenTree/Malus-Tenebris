@@ -7,7 +7,7 @@ extends Node3D
 func _ready():
 	if Engine.is_editor_hint():
 		for water_plane in get_children():
-			var water_mat = water_plane.get_node("plane").mesh.material
+			var water_mat = water_plane.get_node("Plane").mesh.material
 			water_mat.set_shader_parameter("parent_room_global_rot", parent_room_global_rot)
 
 

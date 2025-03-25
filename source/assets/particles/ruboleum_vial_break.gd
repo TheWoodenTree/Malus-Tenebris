@@ -3,10 +3,10 @@ extends Node3D
 # Set by thrown object
 var relative_up_direction: Vector3 = Vector3.ZERO
 
-@onready var particles = $particles
-@onready var particles2 = $particles2
-@onready var light = $light
-@onready var anim_player = $anim_player
+@onready var particles = $Particles
+@onready var particles2 = $Particles2
+@onready var light = $Light
+@onready var anim_player = $AnimPlayer
 
 
 #TODO: Fix particle emission direction based on collision normal
