@@ -505,3 +505,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32, 0
 
 [node name="SquareCellDoor" parent="SquareDoorway4" index="3" instance=ExtResource("37_gkg1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+
+[node name="StoneFloor2" parent="." index="61" instance=ExtResource("1_ltnrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.75, 0, 0.75)
+nav_walkable = false
