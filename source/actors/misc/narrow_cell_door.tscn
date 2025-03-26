@@ -56,7 +56,7 @@ interact_areas = [NodePath("DoorBody/InteractArea")]
 meshes = [NodePath("DoorBody/Door")]
 
 [node name="DoorBody" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, -1.67037e-22, -2.5411e-21, 1, 0, -1.67037e-22, 0, 1, -5.02354e-16, 0, 4.65661e-09)
+transform = Transform3D(1, 2.5411e-21, 0, -2.5411e-21, 1, 0, 0, 0, 1, -5.02354e-16, 0, 4.65661e-09)
 collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -80,7 +80,7 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 node_a = NodePath("../HingeAttach")
 node_b = NodePath("..")
 angular_limit/enable = true
-angular_limit/upper = 0.0
+angular_limit/upper = 1.48353
 angular_limit/lower = 0.0
 
 [node name="CollisionShape" type="CollisionShape3D" parent="DoorBody"]

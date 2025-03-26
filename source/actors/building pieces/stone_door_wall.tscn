@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://bongpq25mn3sw"]
+[gd_scene load_steps=42 format=4 uid="uid://bongpq25mn3sw"]
 
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="1"]
 [ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="2"]
@@ -105,6 +105,24 @@ spread = 35.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_ptn6u")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6hvc"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.564706, 0.25098, 1)
+albedo_texture = ExtResource("7")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vle7t"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b6hvc")
+size = Vector2(0.25, 0.25)
+orientation = 2
+
 [sub_resource type="Shader" id="Shader_ujidr"]
 resource_local_to_scene = true
 code = "shader_type spatial;
@@ -169,6 +187,12 @@ spread = 35.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_ptn6u")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_fkoy3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b6hvc")
+size = Vector2(0.25, 0.25)
+orientation = 2
+
 [sub_resource type="CylinderShape3D" id="2"]
 height = 20.0
 radius = 40.0
@@ -180,7 +204,7 @@ capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../TorchHolder/Fire/Light:omniRange")
+tracks/0/path = NodePath("../../TorchHolder/Fire/Light:omni_range")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -192,7 +216,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../TorchHolder2/Fire/Light:omniRange")
+tracks/1/path = NodePath("../../TorchHolder2/Fire/Light:omni_range")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -382,13 +406,16 @@ transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 
 material_overlay = SubResource("ShaderMaterial_whbib")
 
 [node name="FireParticles" parent="TorchHolder/Fire" index="0"]
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_c00e2")
 draw_pass_1 = SubResource("17")
 
 [node name="LitFireParticles" parent="TorchHolder/Fire" index="1"]
 process_material = SubResource("18")
+draw_pass_1 = SubResource("PlaneMesh_vle7t")
 
 [node name="Light" parent="TorchHolder/Fire" index="2"]
+visible = false
 light_energy = 0.0
 omni_range = 0.0
 
@@ -401,13 +428,16 @@ lit = false
 material_overlay = SubResource("ShaderMaterial_m07gd")
 
 [node name="FireParticles" parent="TorchHolder2/Fire" index="0"]
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_4t0fr")
 draw_pass_1 = SubResource("20")
 
 [node name="LitFireParticles" parent="TorchHolder2/Fire" index="1"]
 process_material = SubResource("21")
+draw_pass_1 = SubResource("PlaneMesh_fkoy3")
 
 [node name="Light" parent="TorchHolder2/Fire" index="2"]
+visible = false
 light_energy = 0.0
 omni_range = 0.0
 
@@ -421,7 +451,7 @@ shape = SubResource("2")
 [node name="TorchLightPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../FireLightArea/CollisionShape")
 libraries = {
-"": SubResource("AnimationLibrary_n5cab")
+&"": SubResource("AnimationLibrary_n5cab")
 }
 
 [node name="FireLitPlayer" type="AudioStreamPlayer3D" parent="."]

@@ -101,7 +101,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light:lightEnergy")
+tracks/1/path = NodePath("Light:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -178,7 +178,6 @@ script = ExtResource("1_mbcqb")
 [node name="Particles" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 custom_aabb = AABB(-1000, -1000, -1000, 2000, 2000, 2000)
-emitting = false
 amount = 32
 lifetime = 15.0
 one_shot = true
@@ -189,7 +188,6 @@ draw_pass_1 = SubResource("PlaneMesh_ycau7")
 [node name="Particles2" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 custom_aabb = AABB(-1000, -1000, -1000, 2000, 2000, 2000)
-emitting = false
 amount = 32
 lifetime = 20.0
 one_shot = true
@@ -212,5 +210,5 @@ max_db = 6.0
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_u0tjf")
+&"": SubResource("AnimationLibrary_u0tjf")
 }

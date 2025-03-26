@@ -46,7 +46,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cont/SlotCont:themeOverrideConstants/MarginLeft")
+tracks/0/path = NodePath("Cont/SlotCont:theme_override_constants/MarginLeft")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -296,7 +296,7 @@ size_flags_vertical = 8
 
 [node name="ScrollAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xph6x")
+&"": SubResource("AnimationLibrary_xph6x")
 }
 
 [node name="SlotScrollPlayer" type="AudioStreamPlayer" parent="."]

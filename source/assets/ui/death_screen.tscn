@@ -14,7 +14,7 @@ length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../..:themeOverrideConstants/MarginTop")
+tracks/0/path = NodePath("../..:theme_override_constants/MarginTop")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../../../Background:material:shaderParameter/Alpha")
+tracks/2/path = NodePath("../../../Background:material:shader_parameter/alpha")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,7 +52,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../Background:material:shaderParameter/VigMultiplierOffset")
+tracks/3/path = NodePath("../../../Background:material:shader_parameter/vigMultiplierOffset")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -64,7 +64,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:themeOverrideColors/FontColor")
+tracks/4/path = NodePath(".:theme_override_colors/fontColor")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -165,7 +165,7 @@ script = ExtResource("1_5yg6d")
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Cont/VBoxCont/DeathLabel")
 libraries = {
-"": SubResource("AnimationLibrary_d0481")
+&"": SubResource("AnimationLibrary_d0481")
 }
 
 [node name="Background" type="Sprite2D" parent="."]
