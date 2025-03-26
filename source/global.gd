@@ -38,7 +38,7 @@ func _ready() -> void:
 		vignette_shader = post_processing.get_node("Vignette").material
 		zoom_shader = post_processing.get_node("Zoom").material
 		blackout_blur_shader = post_processing.get_node("BlackoutBlur").material
-	ui = main.get_node("Ui")
+	ui = main.get_node("UI")
 	inventory = ui.inventory_menu
 	journal_log = ui.log_entries_menu
 	found_notes = ui.found_notes_menu

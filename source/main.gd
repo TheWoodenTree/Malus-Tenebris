@@ -41,7 +41,7 @@ var obunga
 @onready var effects_player = $EffectsPlayer
 @onready var heartbeat_anim = effects_player.get_animation("heartbeat")
 @onready var heartbeat_player = $HeartbeatPlayer
-@onready var ui = $Ui
+@onready var ui = $UI
 @onready var nav_update_timer: Timer = Timer.new()
 @onready var debug_affliction_time_left = $TimerLabel
 

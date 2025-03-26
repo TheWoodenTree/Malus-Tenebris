@@ -168,7 +168,7 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="Ui" parent="." instance=ExtResource("11_kc1x7")]
+[node name="UI" parent="." instance=ExtResource("11_kc1x7")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("4")
