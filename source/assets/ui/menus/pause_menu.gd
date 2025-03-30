@@ -7,7 +7,6 @@ func _enter_tree():
 
 
 func _on_continue_button_pressed():
-	Global.ui.remove_menu()
 	get_tree().paused = false
 
 

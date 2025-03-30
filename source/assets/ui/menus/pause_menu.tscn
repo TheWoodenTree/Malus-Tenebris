@@ -40,7 +40,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ContinueButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
+[node name="ContinueButton" parent="Cont/VBoxCont" instance=ExtResource("4_g4plg")]
 layout_mode = 2
 text = "Continue"
 
@@ -58,18 +58,11 @@ visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="CloseMenuButton" parent="Cont/VBoxCont" instance=ExtResource("4_g4plg")]
-layout_mode = 2
-
-[node name="Separator4" type="HSeparator" parent="Cont/VBoxCont"]
-visible = false
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-
 [node name="QuitButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_close_menu_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/QuitButton" to="." method="_on_quit_button_pressed"]
