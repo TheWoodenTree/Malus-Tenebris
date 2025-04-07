@@ -2,13 +2,14 @@
 class_name Door
 extends Interactable
 
-@export var one_way: bool = false
+@export var blocked: bool = false
 @export var starting_rotation: int = 0 : set = _set_starting_rotation
 @export var open_to_angle: int = 85
 @export var open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
 @export var key_name: String = ""
 @export var locked_message: String = ""
 @export var tutorial_popup: bool = false
+@export var global_signal_allow_open: String
 
 var door_shaking: bool = false
 var attempt_open_angle: float
@@ -63,6 +64,9 @@ func _ready():
 		await Global.player.ready
 		if interactable and Global.player.is_omnipotent_door_god:
 			set_hinge_limits(open_to_angle)
+		
+		if global_signal_allow_open:
+			GlobalSignals.connect(global_signal_allow_open, func(): blocked = false)
 	
 	#_set_starting_rotation(starting_rotation)
 	draggable_body.rotation.y = deg_to_rad(starting_rotation)
@@ -147,14 +151,6 @@ func _physics_process(_delta):
 
 func interact():
 	if interactable:
-		# If the door is one way, check if the player's distance from the door on
-		# the z axis (relative to the door) is positive or negative. If the sign 
-		# of the distance is opposite the sign of the angle that the door opens to, 
-		# the player is on the correct side and can open the door, otherwise not.
-		if one_way:
-			var player_z_dist = get_player_z_dist()
-			player_on_openable_side = sign(player_z_dist) == sign(open_to_angle)
-		
 		# Player tries to unlock a locked door
 		if Global.player.is_holding_key() and player_on_openable_side and not unlocked:
 			attempt_unlock()
@@ -164,7 +160,7 @@ func interact():
 			Global.ui.hint_popup("It's too dark; find a light source", 3.0)
 		
 		# Player drags an unlocked door
-		elif (unlocked and player_on_openable_side and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
+		elif (unlocked and not blocked and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
 			set_player_dragging(true)
 		
 		# Player tries to open a locked door
@@ -176,10 +172,10 @@ func interact():
 				var message: String
 				if not locked_message.is_empty():
 					message = locked_message
+				elif blocked:
+					message = "Blocked by something"
 				elif player_on_openable_side:
 					message = "Need %s Key" % key_name.replace("Lubricated ", "")
-				else:
-					message = "Blocked from the other side"
 				Global.ui.hint_popup(message, 3.0)
 				
 				var door_tween = get_tree().create_tween()

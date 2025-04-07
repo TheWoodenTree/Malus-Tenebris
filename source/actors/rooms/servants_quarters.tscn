@@ -559,7 +559,7 @@ shadow_mode = 1
 
 [node name="MoveableShelf2" parent="." index="134" instance=ExtResource("39_2itgw")]
 transform = Transform3D(1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, 8.75, 0.5, 21.5)
-move_to_offset = Vector3(0, 0, -2.5)
+move_to_offset = Vector3(2.5, 0, 0)
 
 [node name="Books2" parent="MoveableShelf2" index="5" instance=ExtResource("41_k8x2w")]
 transform = Transform3D(0.333033, 0, -0.942915, 0, 1, 0, 0.942915, 0, 0.333033, -0.100956, 3.5, -0.250714)

@@ -1,58 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://taovp5xicteg"]
+[gd_scene load_steps=3 format=3 uid="uid://taovp5xicteg"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_p14rr"]
 [ext_resource type="Script" uid="uid://cfqotdmusjea7" path="res://source/actors/interactables/moveable.gd" id="2_tqjtj"]
 
-[sub_resource type="Shader" id="Shader_1xkeu"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyo86"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_1xkeu")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
-
 [node name="MoveableTemplate" instance=ExtResource("1_p14rr")]
 script = ExtResource("2_tqjtj")
 move_to_offset = Vector3(0, 0, 0)
+global_signal_emit_on_move = ""
 interactable_type = 5
 
 [node name="Mesh" parent="." index="0"]
 layers = 4
-material_overlay = SubResource("ShaderMaterial_nyo86")
 
 [node name="StaticBody" type="StaticBody3D" parent="." index="2"]
 

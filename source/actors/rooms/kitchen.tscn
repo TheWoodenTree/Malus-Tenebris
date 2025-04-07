@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://7rhkd1sxw43r"]
+[gd_scene load_steps=55 format=3 uid="uid://7rhkd1sxw43r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_r3ajh"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="2_xlfra"]
+[ext_resource type="PackedScene" uid="uid://bii7yw1lnrtyf" path="res://source/actors/interactables/moveable_barrel.tscn" id="3_0ccvb"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_v50n1"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="6_pn310"]
 [ext_resource type="PackedScene" uid="uid://dq06hcs0nc8xo" path="res://source/actors/building pieces/basic/stairs.tscn" id="8_3xeph"]
@@ -46,6 +47,7 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://cl7imk76s8ugw" path="res://source/actors/rooms/occluders/kitchen.occ" id="49_gii5n"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="49_ifubp"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="50_8los6"]
+[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="51_1nl83"]
 [ext_resource type="Script" uid="uid://cju0ubidj8gmt" path="res://source/actors/rooms/monster_crouch_area.gd" id="51_qocnc"]
 [ext_resource type="PackedScene" uid="uid://d2o05ytbeogcx" path="res://source/actors/misc/sound_trigger.tscn" id="52_ppil4"]
 [ext_resource type="AudioStream" uid="uid://dky8q3668wlci" path="res://source/assets/sounds/horror_sounds/jumpscare.ogg" id="53_8gr7f"]
@@ -60,8 +62,13 @@ size = Vector3(0.1, 5, 3)
 [node name="Kitchen" instance=ExtResource("1_r3ajh")]
 
 [node name="WoodFloor" parent="Floors" index="0" instance=ExtResource("2_xlfra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -4)
-size = Vector3(5.5, 1, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, -4)
+size = Vector3(6.5, 1, 19)
+
+[node name="MoveableBarrel" parent="Floors" index="1" instance=ExtResource("3_0ccvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -0.5)
+move_to_offset = Vector3(-3.555, 0, 0)
+global_signal_emit_on_move = "kitchen_barrel_moved"
 
 [node name="StoneWall" parent="." index="7" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.5, 4)
@@ -434,13 +441,7 @@ script = ExtResource("54_ffjji")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_1qt76")
 
-[node name="RegDoorway" parent="." index="109" instance=ExtResource("50_8los6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0.5, 0)
-
-[node name="WoodDoorNoWindow" parent="RegDoorway" index="3" instance=ExtResource("47_x7baa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-
-[node name="RegDoorway2" parent="." index="110" instance=ExtResource("50_8los6")]
+[node name="RegDoorway2" parent="." index="109" instance=ExtResource("50_8los6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, -3)
 door_key_name = "Larder"
 
@@ -448,13 +449,16 @@ door_key_name = "Larder"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 key_name = "Larder"
 
-[node name="RegArchway" parent="." index="111" instance=ExtResource("49_ifubp")]
+[node name="RegArchway" parent="." index="110" instance=ExtResource("49_ifubp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.5, 0.5, -12)
 
-[node name="FatMeltingPot" parent="." index="112" instance=ExtResource("41_njceo")]
+[node name="FatMeltingPot" parent="." index="111" instance=ExtResource("41_njceo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1.83205, -16.3328)
 
-[node name="Bonfire2" parent="." index="113" instance=ExtResource("24_lpptl")]
+[node name="Bonfire2" parent="." index="112" instance=ExtResource("24_lpptl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 1, -17.25)
 default_range = 14.0
 default_energy = 1.0
+
+[node name="StoneArchway" parent="." index="113" instance=ExtResource("51_1nl83")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0.5, 0)

@@ -1,50 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://ctdap6qphlks0"]
+[gd_scene load_steps=9 format=4 uid="uid://ctdap6qphlks0"]
 
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="1_5lsh5"]
 [ext_resource type="PackedScene" uid="uid://taovp5xicteg" path="res://source/actors/interactables/moveable_template.tscn" id="1_a5v7j"]
 [ext_resource type="AudioStream" uid="uid://chreeyw440iog" path="res://source/assets/sounds/move/wood_scrape_on_wood.ogg" id="3_htign"]
-
-[sub_resource type="Shader" id="Shader_cmlwy"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pv4t5"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_cmlwy")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yki85"]
 _surfaces = [{
@@ -91,7 +49,6 @@ points = PackedVector3Array(0.521726, 4.25, 1.39973, 0.521726, 4.25, -1.4, -0.60
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-material_overlay = SubResource("ShaderMaterial_pv4t5")
 mesh = SubResource("ArrayMesh_jwdy5")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

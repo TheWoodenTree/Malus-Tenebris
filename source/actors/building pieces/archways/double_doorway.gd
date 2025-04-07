@@ -3,6 +3,7 @@ extends Archway
 
 @export_category("Door 1")
 @export_enum("Do Not Override", "Override True", "Override False") var door1_interactable_override: int = 0
+@export var door1_blocked: bool = false
 @export var door1_one_way: bool = false
 @export var door1_open_angle: int = 0 : set = _set_door1_rotation
 @export var door1_open_to_angle: int = 0
@@ -14,6 +15,7 @@ extends Archway
 
 @export_category("Door 2")
 @export_enum("Do Not Override", "Override True", "Override False") var door2_interactable_override: int = 0
+@export var door2_blocked: bool = false
 @export var door2_one_way: bool = false
 @export var door2_open_angle: int = 0 : set = _set_door2_rotation
 @export var door2_open_to_angle: int = 0
@@ -38,7 +40,7 @@ func _ready():
 				door1.set_interactable(true)
 			2:
 				door1.set_interactable(false)
-		door1.one_way = door1_one_way
+		door1.blocked = door1_blocked
 		door1.starting_rotation = door1_open_angle + door1_angle_offset
 		door1.open_to_angle = door1_open_to_angle
 		door1.open_tween_trans = door1_open_tween_trans
@@ -53,7 +55,7 @@ func _ready():
 				door2.set_interactable(true)
 			2:
 				door2.set_interactable(false)
-		door2.one_way = door2_one_way
+		door2.blocked = door2_blocked
 		door2.starting_rotation = door2_open_angle + door2_angle_offset
 		door2.open_to_angle = door2_open_to_angle
 		door2.open_tween_trans = door2_open_tween_trans
