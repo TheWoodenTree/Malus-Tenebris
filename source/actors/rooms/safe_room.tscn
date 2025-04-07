@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=52 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="9_r1pjc"]
 [ext_resource type="PackedScene" uid="uid://fts1qwh5jkyj" path="res://source/actors/decor/misc/plate_w_candle.tscn" id="12_i4x8k"]
 [ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/interactables/note.tscn" id="14_bjogf"]
-[ext_resource type="PackedScene" uid="uid://2vla0smwg114" path="res://source/assets/ui/notes/alchemists_note.tscn" id="15_3js4e"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="15_awa08"]
 [ext_resource type="PackedScene" uid="uid://cid4xuq72t4q7" path="res://source/actors/decor/groups/books_3.tscn" id="16_0k3ei"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="16_83156"]
@@ -247,16 +246,11 @@ shadow_mode = 1
 [node name="CornerTable" parent="Decor" index="15" instance=ExtResource("22_5kyhp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.75, 2, -3.5)
 
-[node name="Note" parent="Misc" index="0" instance=ExtResource("14_bjogf")]
-transform = Transform3D(-0.680746, 0, 0.732519, 0, 1, 0, -0.732519, 0, -0.680746, 12.5822, 0.801072, -2.33667)
-note_name = "The Plague Spreads"
-label = ExtResource("15_3js4e")
-
-[node name="SmallArchway" parent="Misc" index="1" instance=ExtResource("28_gg6p8")]
+[node name="SmallArchway" parent="Misc" index="0" instance=ExtResource("28_gg6p8")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.5, 0.5, -0.5)
 length = 4.0
 
-[node name="Chest" parent="Misc" index="2" instance=ExtResource("32_v6vsh")]
+[node name="Chest" parent="Misc" index="1" instance=ExtResource("32_v6vsh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -3.374)
 
 [node name="RuboleumVial" parent="Misc/Chest" index="6" instance=ExtResource("24_g1atn")]
@@ -267,7 +261,7 @@ item_data = SubResource("Resource_yb1eg")
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
 item_data = SubResource("Resource_2sw8t")
 
-[node name="Note2" parent="Misc" index="3" instance=ExtResource("14_bjogf")]
+[node name="Note2" parent="Misc" index="2" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
 note_name = "Ruboleum Distillation Instructions"
 label = ExtResource("28_a1a56")

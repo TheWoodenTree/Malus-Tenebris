@@ -62,7 +62,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_close_menu_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/QuitButton" to="." method="_on_quit_button_pressed"]

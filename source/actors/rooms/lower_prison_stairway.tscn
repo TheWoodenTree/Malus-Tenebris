@@ -654,3 +654,5 @@ size = Vector3(2, 1, 13)
 [node name="StoneFloor12" parent="." index="100" instance=ExtResource("1_sx5ry")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
 size = Vector3(2, 1, 13)
+
+[connection signal="body_entered" from="ExposureArea" to="ExposureArea" method="_on_body_entered"]
