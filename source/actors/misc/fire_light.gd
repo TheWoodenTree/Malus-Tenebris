@@ -4,22 +4,13 @@ const FLICKER_INTENSITY = 1.2
 
 var timer = Timer.new()
 
-var default_range
-var default_energy
+var default_range: float
+var default_energy: float
 
 
 func _ready() -> void:
-	#omni_range = default_range
-	#light_energy = default_energy
-	
 	timer.one_shot = true
 	add_child(timer)
-	_load_sounds()
-	#flicker()
-
-
-func _load_sounds():
-	pass
 
 
 func flicker():

@@ -17,14 +17,9 @@ var is_lit = false
 var held_by_player = false
 var looked_at_last_frame = false
 
-var impact_sounds: Array
-var impact_player = preload("res://source/assets/sounds/impacts/impact_player.tscn")
-
 @export var default_range: float = 12.0
 @export var default_energy: float = 1.25
 
-@onready var flicker_low = default_energy / flicker_intensity
-@onready var flicker_high = default_energy * flicker_intensity
 @onready var material = $Mesh.material_overlay
 @onready var particles = $FireParticles
 @onready var light = $FireParticles/Light
@@ -53,15 +48,6 @@ func _ready() -> void:
 	hit_sound_timer.wait_time = 0.2
 	hit_sound_timer.one_shot = true
 	add_child(timer)
-	add_child(hit_sound_timer)
-	_load_sounds()
-	_flicker()
-
-
-func _load_sounds():
-	for i in range (1, 4):
-		var sound = load("res://source/assets/sounds/impacts/small_wood_impact%d.ogg" % i)
-		impact_sounds.append(sound)
 
 
 func _process(_delta: float) -> void:
@@ -93,10 +79,6 @@ func interact():
 
 
 func calculate_fire_up_dir():
-	#var global_rot = global_transform.basis.get_euler()
-	#particles.rotation.x = -global_rot.x
-	#particles.rotation.z = -global_rot.z
-	#print(Vector3.UP.rotated(Vector3.LEFT, global_rotation.x))
 	particles.process_material.direction = Vector3.UP.rotated(Vector3.LEFT, global_rotation.x)
 
 
@@ -121,30 +103,18 @@ func update_particle_attractor_transform():
 		particle_attractor.strength = 0
 
 
-func _flicker():
-	var flicker_duration = randf_range(0.1, 0.2)
-	var intensity = randf_range(0, 1)
-	var energy_flicker = lerp(flicker_low, flicker_high, intensity)
-	var flicker_tween = get_tree().create_tween()
-	flicker_tween.tween_property(light, "light_energy", \
-		energy_flicker, flicker_duration)
-	flicker_tween.tween_callback(Callable(self,"_flicker"))
-
-
-#warning-ignore:FUNCTION_CONFLICTS_VARIABLE
 func light_torch():
 	var player_light = Global.player.light
-	torch_light_player.play()
-	burning_player.volume_db = -5.0
-	player_light.default_range = default_range
-	player_light.default_energy = default_energy
-	player_light.omni_range = default_range
-	player_light.light_energy = default_energy
+	
+	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(burning_player, "volume_db", -5.0, 3.0).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(player_light, "omni_range", default_range, 3.0).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(player_light, "default_energy", default_energy, 3.0)
+	tween.parallel().tween_property(particles.process_material, "initial_velocity", Vector2.ONE, 3.0).from(Vector2.ZERO)
+	tween.parallel().tween_property(particles.process_material, "scale", Vector2.ONE, 3.0).from(Vector2.ZERO)
+	
 	player_light.flicker()
-	var torch_light_tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	torch_light_tween.tween_property(player_light, "omni_range", default_range + 5, 0.3)
-	torch_light_tween.tween_property(player_light, "omni_range", default_range, 0.7)
 	particles.emitting = true
-	lit_particles.emitting = true
 	is_lit = true
+	
 	get_tree().call_group("fire_sources", "set_interactable", false)
