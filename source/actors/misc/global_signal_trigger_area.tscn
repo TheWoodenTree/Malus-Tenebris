@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dicfvnrwgb3h4"]
+
+[ext_resource type="Script" uid="uid://b7bh5r4sevv47" path="res://source/actors/misc/global_signal_trigger_area.gd" id="1_throa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8csa"]
+size = Vector3(5, 8, 1)
+
+[node name="GlobalSignalTriggerArea" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_throa")
+signal_name = "great_door_close_area_entered"
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0.75)
+shape = SubResource("BoxShape3D_y8csa")

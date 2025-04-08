@@ -20,6 +20,7 @@ signal finished
 func _ready():
 	door1_hinge.rotation.y = deg_to_rad(door1_angle)
 	door2_hinge.rotation.y = -deg_to_rad(door2_angle)
+	GlobalSignals.great_door_close_area_entered.connect(close)
 
 
 func _set_door1_angle(rot):
@@ -92,6 +93,21 @@ func open():
 	if door2_angle != door2_to_angle:
 		door2_dust_particles.emitting = true
 		doors_open_tween.tween_property(door2_hinge, "rotation:y", -deg_to_rad(door2_to_angle), 5.5)
+	door_open_player.play()
+	await doors_open_tween.finished
+	#door_closed_player.play()
+	door1_dust_particles.emitting = false
+	door2_dust_particles.emitting = false
+
+
+func close():
+	var doors_open_tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).set_parallel()
+	if door1_angle != door1_to_angle:
+		doors_open_tween.tween_property(door1_hinge, "rotation:y", 0.0, 5.5)
+		door1_dust_particles.emitting = true
+	if door2_angle != door2_to_angle:
+		door2_dust_particles.emitting = true
+		doors_open_tween.tween_property(door2_hinge, "rotation:y", 0.0, 5.5)
 	door_open_player.play()
 	await doors_open_tween.finished
 	#door_closed_player.play()
