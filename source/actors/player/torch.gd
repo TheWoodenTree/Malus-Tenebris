@@ -10,7 +10,8 @@ const MAX_HIT_VOL = 5
 
 var flicker_intensity = 1.2
 
-var timer = Timer.new()
+var cam_rot_last_frame := Vector3.ZERO
+
 var hit_sound_timer = Timer.new()
 
 var is_lit = false
@@ -26,10 +27,13 @@ var looked_at_last_frame = false
 @onready var torch_light_player = $TorchLightPlayer
 @onready var pickup_player = $PickupPlayer
 @onready var burning_player = $BurningPlayer
+@onready var swoosh_player: AudioStreamPlayer3D = $SwooshPlayer
 @onready var lit_particles = $LitFireParticles
-@onready var particle_attractor: GPUParticlesAttractorSphere3D = $ParticleAttractor
+@onready var movement_particle_attractor: GPUParticlesAttractorSphere3D = $MovementParticleAttractor
+@onready var rotation_particle_attractor: GPUParticlesAttractorSphere3D = $RotationParticleAttractor
 @onready var interact_area = $InteractArea
 @onready var mesh = meshes[0]
+@onready var swoosh_timer = Timer.new()
 
 
 func _ready() -> void:
@@ -42,17 +46,19 @@ func _ready() -> void:
 	
 	light.omni_range = default_range
 	light.light_energy = default_energy
-	timer.one_shot = true
 	particles.emitting = false
 	light.visible = false
 	hit_sound_timer.wait_time = 0.2
 	hit_sound_timer.one_shot = true
-	add_child(timer)
+	swoosh_timer.one_shot = true
+	swoosh_timer.wait_time = 0.2
+	add_child(swoosh_timer)
 
 
 func _process(_delta: float) -> void:
 	calculate_fire_up_dir()
-	update_particle_attractor_transform()
+	update_movement_particle_attractor_transform()
+	update_rotation_particle_attractor_transform()
 	
 	if held_by_player:
 		#global_position = Global.player.torch_pos.global_position
@@ -82,9 +88,10 @@ func calculate_fire_up_dir():
 	particles.process_material.direction = Vector3.UP.rotated(Vector3.LEFT, global_rotation.x)
 
 
-func update_particle_attractor_transform():
-	particle_attractor.global_position = self.global_position
-	if Global.player.global_input_dir != Vector3.ZERO:
+func update_movement_particle_attractor_transform():
+	movement_particle_attractor.global_position = self.global_position
+		
+	if Global.player.global_input_dir:
 		var norm_player_input_dir = Global.player.global_input_dir.normalized()
 		var law_of_cos = func (a, b, c) -> float: return acos((a*a + b*b - c*c) / (2*a))
 		var angle = 0
@@ -92,15 +99,42 @@ func update_particle_attractor_transform():
 		if norm_player_input_dir.x > 0:
 			angle = -angle
 		if Global.player.sprinting:
-			particle_attractor.strength = -7.5
+			movement_particle_attractor.strength = -7.5
 		else:
-			particle_attractor.strength = -5
+			movement_particle_attractor.strength = -5
 		
 		# Particle attractor is top level so that x and z rotation are not included
 		# because the y rotation is the only thing needed when walking around
-		particle_attractor.rotation.y = Global.player.cam.rotation.y + angle
+		movement_particle_attractor.rotation.y = Global.player.cam.rotation.y + angle
 	else:
-		particle_attractor.strength = 0
+		movement_particle_attractor.strength = 0.0
+
+
+func update_rotation_particle_attractor_transform():
+	rotation_particle_attractor.global_position = self.global_position
+	
+	var cam_rot: Vector3 = Global.player.cam.rotation
+	var cam_rot_offset: Vector3 = cam_rot - cam_rot_last_frame
+	
+	# Compensate for cam rotation wrapping between -2PI and 0
+	if cam_rot_offset.y > PI:
+		cam_rot_offset.y -= TAU
+	elif cam_rot_offset.y < -PI:
+		cam_rot_offset.y += TAU
+		
+	#var norm_cam_rot_offset_y = (abs(cam_rot_offset.y) - 0.1) / (0.25 - 0.1)
+	#if abs(cam_rot_offset.y) > 0.2 and swoosh_timer.is_stopped():
+	#	swoosh_player.volume_db = lerp(-17.5, 6.0, norm_cam_rot_offset_y)
+	#	swoosh_player.play()
+	#	swoosh_timer.start()
+		
+	if abs(cam_rot_offset.y) > 0.0001:
+		rotation_particle_attractor.strength = lerp(rotation_particle_attractor.strength, cam_rot_offset.y * 250.0, 0.1)
+		rotation_particle_attractor.rotation.y = Global.player.cam.rotation.y - PI/2.0
+	else:
+		rotation_particle_attractor.strength = lerp(rotation_particle_attractor.strength, 0.0, 0.1)
+		
+	cam_rot_last_frame = cam_rot
 
 
 func light_torch():
