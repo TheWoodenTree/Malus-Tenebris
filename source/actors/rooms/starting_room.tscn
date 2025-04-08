@@ -143,7 +143,7 @@ size = Vector3(1, 5, 0.5)
 [node name="MoveableShelf1" parent="." index="35" instance=ExtResource("16_crdny")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, -16.8643)
 script = ExtResource("17_7et05")
-move_to_offset = Vector3(0, 0, -2.75)
+move_to_offset = Vector3(2.75, 0, 0)
 interactable = false
 
 [node name="Bucket" parent="MoveableShelf1" index="6" instance=ExtResource("14")]
@@ -167,5 +167,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -16.5)
 default_range = 8.0
 default_energy = 0.5
 shadow_mode = 1
-
-[connection signal="body_entered" from="CrouchTutorial" to="crouch_tutorial" method="_on_body_entered"]
