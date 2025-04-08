@@ -270,7 +270,7 @@ stream = ExtResource("10_6t08c")
 
 [node name="BurningPlayer" type="AudioStreamPlayer3D" parent="." index="8"]
 stream = ExtResource("10_481dk")
-volume_db = -5.0
+volume_db = -12.5
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = 0.0

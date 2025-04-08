@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://dqlc1s8bbnegp"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_wh2hv"]
-[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="2"]
+[ext_resource type="AudioStream" uid="uid://d2vdsl61h1lnr" path="res://source/assets/sounds/pickup/key_pickup.ogg" id="2_bp65t"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_fvu66"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="4_hhjbt"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_2d77b"]
@@ -12,7 +12,7 @@ resource_local_to_scene = true
 script = ExtResource("3_fvu66")
 name = "Key"
 texture = ExtResource("4_hhjbt")
-pickup_sound = ExtResource("2")
+pickup_sound = ExtResource("2_bp65t")
 self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
@@ -122,4 +122,4 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 shape = SubResource("CapsuleShape3D_q6680")
 
 [node name="PickupPlayer" parent="." index="2"]
-stream = ExtResource("2")
+stream = ExtResource("2_bp65t")
