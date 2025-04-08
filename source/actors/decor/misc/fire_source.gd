@@ -49,7 +49,7 @@ func set_lit(is_lit):
 
 func _on_fire_burning_sound_area_entered():
 	if lit and fire.has_node("BurningPlayer"):
-		var start_time: float = Global.torch.burning_player.get_playback_position() + 30.0
+		var start_time: float = Global.torch.burning_player.get_playback_position() + 15.0
 		start_time = wrapf(start_time, 0.0, Global.torch.burning_player.stream.get_length())
 		fire.burning_player.play(start_time)
 		# Only render nearby lights on the second layer for performance
