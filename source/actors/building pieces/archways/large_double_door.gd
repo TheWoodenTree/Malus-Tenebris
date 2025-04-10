@@ -20,7 +20,9 @@ signal finished
 func _ready():
 	door1_hinge.rotation.y = deg_to_rad(door1_angle)
 	door2_hinge.rotation.y = -deg_to_rad(door2_angle)
-	GlobalSignals.great_door_close_area_entered.connect(close)
+	
+	if not Engine.is_editor_hint():
+		GlobalSignals.great_door_close_area_entered.connect(close)
 
 
 func _set_door1_angle(rot):

@@ -30,7 +30,8 @@ func interact():
 	var duration: float = move_player.stream.get_length() * (2.0 - move_player.pitch_scale)
 	tween.tween_property(self, "position", move_to_offset.rotated(Vector3.UP, rotation.y), duration).as_relative()
 	
-	GlobalSignals.emit_signal(global_signal_emit_on_move)
+	if global_signal_emit_on_move:
+		GlobalSignals.emit_signal(global_signal_emit_on_move)
 	
 	move_player.play()
 	set_interactable(false)
