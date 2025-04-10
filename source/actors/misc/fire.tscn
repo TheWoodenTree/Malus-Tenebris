@@ -114,5 +114,5 @@ script = ExtResource("2")
 
 [node name="BurningPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_5vd8g")
-volume_db = -15.0
+volume_db = -12.5
 max_distance = 10.0

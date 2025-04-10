@@ -1,11 +1,23 @@
-[gd_scene load_steps=24 format=4 uid="uid://by73o8sfai65"]
+[gd_scene load_steps=28 format=4 uid="uid://by73o8sfai65"]
 
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="1_bulif"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_o7aaj"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_qmo0r"]
+[ext_resource type="Script" uid="uid://dxte2s8yg8unx" path="res://source/actors/interactables/fat_melting_pot.gd" id="2_wjrtc"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="2_yswou"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="4_pm4np"]
 [ext_resource type="Material" uid="uid://bexxkykcnwpm3" path="res://source/assets/materials/metal_bar/light_metal.tres" id="5_h3rxx"]
+[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="5_kpbaf"]
 [ext_resource type="AudioStream" uid="uid://desp40b6lbytr" path="res://source/assets/sounds/misc/fat_rendering_loop.ogg" id="8_vquea"]
+
+[sub_resource type="Resource" id="Resource_868qy"]
+script = ExtResource("4_pm4np")
+name = "Sump Tunnels Key"
+texture = ExtResource("5_kpbaf")
+pickup_sound = ExtResource("2_yswou")
+self_useable = false
+hold_rotation_offset = Vector3(0, 200, 90)
+hold_scale_multiplier = 0.5
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -272,6 +284,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p2g6y")
 
 [node name="FatMeltingPot" instance=ExtResource("1_o7aaj")]
+script = ExtResource("2_wjrtc")
+key_item_data = SubResource("Resource_868qy")
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309912, 0)

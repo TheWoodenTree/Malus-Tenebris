@@ -55,7 +55,7 @@ func _ready() -> void:
 	add_child(swoosh_timer)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	calculate_fire_up_dir()
 	update_movement_particle_attractor_transform()
 	#update_rotation_particle_attractor_transform(delta) ## TODO: Come back to this

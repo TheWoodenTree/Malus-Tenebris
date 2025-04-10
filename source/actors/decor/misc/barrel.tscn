@@ -66,6 +66,7 @@ radius = 0.8
 [node name="Barrel" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 8
 mesh = SubResource("ArrayMesh_ltuda")
 skeleton = NodePath("../StaticBody3D")
 

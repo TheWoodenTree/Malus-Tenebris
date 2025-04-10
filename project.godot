@@ -29,11 +29,6 @@ Sound="*res://source/sound.gd"
 AfflictionEffectController="*res://source/affliction_effect_controller.gd"
 GlobalSignals="*res://source/global_signals.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-settings/fps/force_fps=500
-
 [display]
 
 window/size/viewport_width=512
