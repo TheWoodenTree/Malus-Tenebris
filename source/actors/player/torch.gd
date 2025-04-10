@@ -55,10 +55,10 @@ func _ready() -> void:
 	add_child(swoosh_timer)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	calculate_fire_up_dir()
 	update_movement_particle_attractor_transform()
-	update_rotation_particle_attractor_transform()
+	#update_rotation_particle_attractor_transform(delta) ## TODO: Come back to this
 	
 	if held_by_player:
 		#global_position = Global.player.torch_pos.global_position
@@ -79,6 +79,8 @@ func interact():
 	light.visible = false
 	
 	highlight_light.visible = false
+	
+	set_interactable(false)
 	
 	if not Global.player.debug_has_torch:
 		Global.ui.hint_popup("Find a way to light the torch", 5.0)
@@ -110,29 +112,22 @@ func update_movement_particle_attractor_transform():
 		movement_particle_attractor.strength = 0.0
 
 
-func update_rotation_particle_attractor_transform():
+func update_rotation_particle_attractor_transform(delta: float):
 	rotation_particle_attractor.global_position = self.global_position
 	
 	var cam_rot: Vector3 = Global.player.cam.rotation
-	var cam_rot_offset: Vector3 = cam_rot - cam_rot_last_frame
+	var cam_rot_offset: Vector3 = (cam_rot - cam_rot_last_frame)
 	
-	# Compensate for cam rotation wrapping between -2PI and 0
-	if cam_rot_offset.y > PI:
-		cam_rot_offset.y -= TAU
-	elif cam_rot_offset.y < -PI:
-		cam_rot_offset.y += TAU
+	# Compensate for cam rotation wrapping between -2PI and 
+	
+	var rotation_velocity: float = cam_rot_offset.y / delta
 		
-	#var norm_cam_rot_offset_y = (abs(cam_rot_offset.y) - 0.1) / (0.25 - 0.1)
-	#if abs(cam_rot_offset.y) > 0.2 and swoosh_timer.is_stopped():
-	#	swoosh_player.volume_db = lerp(-17.5, 6.0, norm_cam_rot_offset_y)
-	#	swoosh_player.play()
-	#	swoosh_timer.start()
-		
-	if abs(cam_rot_offset.y) > 0.0001:
-		rotation_particle_attractor.strength = lerp(rotation_particle_attractor.strength, cam_rot_offset.y * 250.0, 0.1)
+	print(cam_rot_offset.y)
+	if abs(rotation_velocity) > 0.0001:
+		rotation_particle_attractor.strength = rotation_velocity * 10# move_toward(rotation_particle_attractor.strength, rotation_velocity, delta * 1500.0)
 		rotation_particle_attractor.rotation.y = Global.player.cam.rotation.y - PI/2.0
 	else:
-		rotation_particle_attractor.strength = lerp(rotation_particle_attractor.strength, 0.0, 0.1)
+		rotation_particle_attractor.strength = 0.0# move_toward(rotation_particle_attractor.strength, 0.0, delta * 500.0)
 		
 	cam_rot_last_frame = cam_rot
 
