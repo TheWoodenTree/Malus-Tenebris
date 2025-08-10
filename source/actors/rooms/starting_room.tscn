@@ -167,3 +167,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -16.5)
 default_range = 8.0
 default_energy = 0.5
 shadow_mode = 1
+
+[connection signal="body_entered" from="CrouchTutorial" to="CrouchTutorial" method="_on_body_entered"]
