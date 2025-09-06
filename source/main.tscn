@@ -130,6 +130,7 @@ layout_mode = 0
 copy_mode = 2
 
 [node name="Vignette" type="ColorRect" parent="PostProcessing"]
+visible = false
 material = ExtResource("6_kj3sd")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0

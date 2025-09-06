@@ -146,7 +146,7 @@ orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7agml"]
 transparency = 1
-albedo_color = Color(0.3692, 0.52, 0.434547, 1)
+albedo_color = Color(0.368627, 0.521569, 0.435294, 1)
 albedo_texture = ExtResource("5_r3ffe")
 metallic = 0.8
 metallic_specular = 0.49
@@ -293,14 +293,14 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:mesh:surface_0/Material:albedo_color")
+tracks/6/path = NodePath(".:mesh:surface_0/material:albedo_color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 3.5, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.368627, 0.521569, 0.435294, 1), Color(0.368627, 0.521569, 0.435294, 1), Color(0.368627, 0.521569, 0.435294, 0)]
+"values": [Color(0.368627, 0.521569, 0.435294, 1), Color(0.368627, 0.521569, 0.435294, 1), Color(0.36920002, 0.52, 0.43454665, 0)]
 }
 tracks/7/type = "audio"
 tracks/7/imported = false
@@ -387,8 +387,7 @@ process_material = SubResource("ParticleProcessMaterial_bsi86")
 draw_pass_1 = SubResource("PlaneMesh_g85ib")
 
 [node name="Vial" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(0.642788, 0.766045, 0, -0.766045, 0.642788, 0, 0, 0, 1, -0.305099, 1.57814, 0)
-visible = false
+transform = Transform3D(0.6427877, 0.76604515, 0, -0.76604515, 0.6427877, 0, 0, 0, 1, -0.305099, 1.57814, 0)
 mesh = SubResource("ArrayMesh_tuns3")
 
 [node name="VialPourParticles" type="GPUParticles3D" parent="Vial" index="0"]
