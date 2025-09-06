@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxgp3mqvhu2np"]
+[gd_scene load_steps=25 format=3 uid="uid://cxgp3mqvhu2np"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_i7tkv"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b24yy1t4ft602" path="res://source/actors/rooms/occluders/lower_prison_entrance.occ" id="2_ujbbf"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="22_onmv6"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="22_xxynh"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="24_dtoyw"]
+[ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="24_hkp77"]
 [ext_resource type="PackedScene" uid="uid://dtoh5ycnqnbpi" path="res://source/actors/interactables/moveable_shelf_1.tscn" id="24_u5saf"]
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="25_84ikb"]
 
@@ -215,24 +216,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -8.5, -33.75)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, -9.5, -27.75)
 script = ExtResource("13_cpg5x")
 move_to_offset = Vector3(3, 0, 0)
-global_signal_emit_on_move = ""
 
 [node name="Sign" parent="." index="57" instance=ExtResource("25_84ikb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -6, -26)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, -5.75, -26)
 text = "Apothecary"
 enable_highlight_sheen = true
 
 [node name="Sign4" parent="." index="58" instance=ExtResource("25_84ikb")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, -6, -10.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.25, -7.75, -12.625)
 text = "West Cell Hall"
-chain_length = 4
+chain_length = 0
 
 [node name="Sign2" parent="." index="59" instance=ExtResource("25_84ikb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -6, -28)
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -1.75, -5.75, -28)
 text = "Kitchen"
 
 [node name="Sign3" parent="." index="60" instance=ExtResource("25_84ikb")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, -6, -34.5)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, -5.75, -34.25)
 text = "South Cell Hall"
 
 [node name="RegDoorway" parent="." index="61" instance=ExtResource("24_dtoyw")]
@@ -294,3 +294,27 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 
 [node name="Shelf2" parent="." index="73" instance=ExtResource("19_xvvcj")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 1, -9.5, -29.75)
+
+[node name="CobbleWall" parent="." index="74" instance=ExtResource("24_hkp77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, -6.5, -34.75)
+size = Vector3(0.5, 6, 0.5)
+
+[node name="CobbleWall2" parent="." index="75" instance=ExtResource("24_hkp77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -6.5, -34.75)
+size = Vector3(0.5, 6, 0.5)
+
+[node name="CobbleWall3" parent="." index="76" instance=ExtResource("24_hkp77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, -6.5, -19.25)
+size = Vector3(0.5, 6, 0.5)
+
+[node name="CobbleWall4" parent="." index="77" instance=ExtResource("24_hkp77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -6.5, -19.25)
+size = Vector3(0.5, 6, 0.5)
+
+[node name="Trim5" parent="." index="78" instance=ExtResource("19_7jmwe")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3, -3.5, -27)
+length = 15.0
+
+[node name="Trim6" parent="." index="79" instance=ExtResource("19_7jmwe")]
+transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 3, -3.5, -27)
+length = 15.0

@@ -10,6 +10,7 @@ extends Interactable
 @export var locked_message: String = ""
 @export var tutorial_popup: bool = false
 @export var global_signal_allow_open: String
+@export var log_entry_on_first_attempt: LogEntry.LogEntryName
 
 var door_shaking: bool = false
 var attempt_open_angle: float
@@ -35,6 +36,8 @@ var pitch_scale_min: float = 0.8
 var rotation_axis := Vector3.UP
 
 var reverse_z_dist: bool = false
+
+var open_attempted: bool = false
 
 @onready var unlocked = key_name.is_empty()
 
@@ -176,6 +179,10 @@ func interact():
 					message = "Blocked by something"
 				elif player_on_openable_side:
 					message = "Need %s Key" % key_name.replace("Lubricated ", "")
+				
+				if log_entry_on_first_attempt and not open_attempted:
+					Global.journal_log.add_entry(log_entry_on_first_attempt)
+				
 				Global.ui.hint_popup(message, 3.0)
 				
 				var door_tween = get_tree().create_tween()
@@ -188,6 +195,7 @@ func interact():
 				door_tween.tween_property(draggable_body, "rotation:y", attempt_open_angle, 0.1)
 				door_tween.tween_property(draggable_body, "rotation:y", 0, 0.1)
 				door_tween.tween_callback(Callable(self,"set").bind("door_shaking", false))
+	open_attempted = true
 
 
 func attempt_unlock():
@@ -246,6 +254,9 @@ func attempt_unlock():
 		# TODO: Remove
 		if not key_name == "Larder":
 			Global.ui.hint_popup("Unlocked", 2.0)
+		
+		if log_entry_on_first_attempt and Global.journal_log.has_entry(log_entry_on_first_attempt):
+			Global.journal_log.remove_entry(log_entry_on_first_attempt)
 	else:
 		Global.player.set_held_item_global_transform(key.global_transform)
 		Global.player.set_held_item_visibility(true)

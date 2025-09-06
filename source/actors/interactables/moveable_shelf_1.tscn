@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dtoh5ycnqnbpi"]
+[gd_scene load_steps=10 format=4 uid="uid://dtoh5ycnqnbpi"]
 
 [ext_resource type="PackedScene" uid="uid://taovp5xicteg" path="res://source/actors/interactables/moveable_template.tscn" id="1_rhx02"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_3s8aw"]
-[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_7270b"]
 [ext_resource type="AudioStream" uid="uid://dl0a6xpsxj08v" path="res://source/assets/sounds/move/wood_scrape.ogg" id="3_pwuyp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0tqa3"]
@@ -48,10 +47,8 @@ points = PackedVector3Array(-1.575, 0, -1.1, 1.575, 0, -1.1, -1.575, 0, 1.1, -1.
 points = PackedVector3Array(-1.575, 0, -1.1, 1.575, 0, -1.1, -1.575, 0, 1.1, -1.575, 3.4, -1.1, 1.575, 0, 1.1, 1.575, 3.4, -1.1, -1.575, 3.4, 1.1, 1.575, 3.4, 1.1)
 
 [node name="MoveableShelf1" instance=ExtResource("1_rhx02")]
-global_signal_emit_on_move = null
 
 [node name="Mesh" parent="." index="0"]
-material_overlay = ExtResource("2_7270b")
 mesh = SubResource("ArrayMesh_f0j0b")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

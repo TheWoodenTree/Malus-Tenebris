@@ -146,7 +146,7 @@ orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7agml"]
 transparency = 1
-albedo_color = Color(0.368627, 0.521569, 0.435294, 1)
+albedo_color = Color(0.3692, 0.52, 0.434547, 1)
 albedo_texture = ExtResource("5_r3ffe")
 metallic = 0.8
 metallic_specular = 0.49
@@ -214,7 +214,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jlkag"]
 resource_name = "pour"
-length = 10.8
+length = 10.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -293,7 +293,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:mesh:surface_0/Material:albedoColor")
+tracks/6/path = NodePath(".:mesh:surface_0/Material:albedo_color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {

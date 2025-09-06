@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://but5ppjmdoelt"]
+[gd_scene load_steps=13 format=3 uid="uid://but5ppjmdoelt"]
 
 [ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="1_jlbk6"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_q0acp"]
+[ext_resource type="Script" uid="uid://7fu4fcspms6r" path="res://source/actors/interactables/stone_button.gd" id="2_dmrkn"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_xpgir"]
 [ext_resource type="AudioStream" uid="uid://b1wi20w6l3rp4" path="res://source/assets/sounds/move/short_stone_drag.ogg" id="4_3bgsf"]
 
@@ -71,6 +72,8 @@ size = Vector3(0.6, 0.4, 0.2)
 size = Vector3(1.2, 0.8, 0.4)
 
 [node name="StoneButton" instance=ExtResource("1_q0acp")]
+script = ExtResource("2_dmrkn")
+connected_node_name = ""
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
