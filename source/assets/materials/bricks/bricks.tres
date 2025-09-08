@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ddx5a86u6kmdr" path="res://source/assets/materials/bricks/medieval_blocks_05_rough_1k.jpg" id="3_t4kk1"]
 
 [resource]
+resource_local_to_scene = true
 albedo_color = Color(0.45098, 0.505882, 0.556863, 1)
 albedo_texture = ExtResource("1_woxdl")
 roughness = 0.75

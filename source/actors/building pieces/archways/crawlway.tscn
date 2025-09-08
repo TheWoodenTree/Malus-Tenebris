@@ -18,6 +18,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b6bio"]
+resource_local_to_scene = true
 resource_name = "crawlway_Cube"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 1.00001),

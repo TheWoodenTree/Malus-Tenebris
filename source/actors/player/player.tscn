@@ -17,7 +17,7 @@
 
 [sub_resource type="Animation" id="Animation_dqclq"]
 resource_name = "timer"
-length = 4.5e+06
+length = 4500000.0
 loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_crvps"]
