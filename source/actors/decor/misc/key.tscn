@@ -13,7 +13,6 @@ script = ExtResource("3_fvu66")
 name = "Key"
 texture = ExtResource("4_hhjbt")
 pickup_sound = ExtResource("2_bp65t")
-self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 
@@ -110,8 +109,10 @@ shadow_mesh = SubResource("ArrayMesh_p2g6y")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6680"]
 height = 1.5
 
-[node name="Key" instance=ExtResource("1_wh2hv")]
+[node name="Key" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_wh2hv")]
 item_data = SubResource("Resource_53vmw")
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh"), NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_7oo3d")
