@@ -125,11 +125,11 @@ shadow_mesh = SubResource("ArrayMesh_niopr")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wmoqj"]
 size = Vector3(0.5, 1, 1.5)
 
-[node name="Sign" instance=ExtResource("1_7mh3a")]
+[node name="Sign" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_7mh3a")]
 script = ExtResource("2_l1qgr")
-text = ""
-chain_length = 2
 interactable_type = 4
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 disable_highlight_shader = true
 
 [node name="Mesh" parent="." index="0"]

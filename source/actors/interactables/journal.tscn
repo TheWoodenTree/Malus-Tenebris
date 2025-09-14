@@ -127,9 +127,10 @@ shadow_mesh = SubResource("ArrayMesh_a8aic")
 [sub_resource type="BoxShape3D" id="BoxShape3D_j77l4"]
 size = Vector3(1, 0.75, 1.1)
 
-[node name="Journal" instance=ExtResource("1_fhkke")]
+[node name="Journal" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_fhkke")]
 script = ExtResource("2_6rghn")
 item_data = ExtResource("3_50jo0")
+interact_areas = [NodePath("InteractArea")]
 enable_highlight_sheen = false
 
 [node name="Mesh" parent="." index="0"]

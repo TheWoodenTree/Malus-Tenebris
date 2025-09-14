@@ -164,13 +164,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lqs2j")
 
-[node name="Bonfire" node_paths=PackedStringArray("meshes") instance=ExtResource("1_w574w")]
+[node name="Bonfire" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_w574w")]
 script = ExtResource("2_p1fmm")
-default_range = 12.0
-default_energy = 0.75
-lit = true
-shadow_mode = 0
-audio_fade_in_on_ready = false
+interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("Mesh2"), NodePath("Mesh3")]
 
 [node name="Mesh" parent="." index="0"]
@@ -180,6 +176,7 @@ cast_shadow = 0
 mesh = SubResource("ArrayMesh_5bql3")
 
 [node name="InteractArea" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.99941254, -0.034271553, 0, 0.034271553, 0.99941254, 0, 0, 0)
 collision_mask = 18432
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

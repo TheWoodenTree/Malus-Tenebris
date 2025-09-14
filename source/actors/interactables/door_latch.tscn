@@ -242,8 +242,10 @@ _data = {
 &"unlock": SubResource("Animation_irbb8")
 }
 
-[node name="DoorLatch" instance=ExtResource("1_8axtm")]
+[node name="DoorLatch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_8axtm")]
 script = ExtResource("2_rkwjl")
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh"), NodePath("MeshInstance3D2")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.557, 0, 0)

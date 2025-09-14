@@ -126,13 +126,10 @@ shadow_mesh = SubResource("ArrayMesh_xw2ll")
 [sub_resource type="SphereShape3D" id="SphereShape3D_7ombk"]
 radius = 1.0
 
-[node name="HangingLamp" instance=ExtResource("1_t3vo7")]
+[node name="HangingLamp" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_t3vo7")]
 script = ExtResource("4")
-default_range = 12.0
-default_energy = 0.75
-lit = true
-shadow_mode = 0
-audio_fade_in_on_ready = false
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)

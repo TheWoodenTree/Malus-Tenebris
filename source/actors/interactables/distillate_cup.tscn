@@ -82,8 +82,10 @@ shadow_mesh = SubResource("ArrayMesh_0dnb3")
 [sub_resource type="SphereShape3D" id="SphereShape3D_nc51l"]
 radius = 0.341322
 
-[node name="DistillateCup" instance=ExtResource("1_g2huc")]
+[node name="DistillateCup" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_g2huc")]
 script = ExtResource("2_qq4d4")
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 layers = 4

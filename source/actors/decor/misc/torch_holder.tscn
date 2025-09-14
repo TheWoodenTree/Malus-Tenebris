@@ -124,13 +124,10 @@ shadow_mesh = SubResource("ArrayMesh_8347d")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ayvr3"]
 radius = 0.4
 
-[node name="TorchHolder" instance=ExtResource("1_eh2yt")]
+[node name="TorchHolder" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_eh2yt")]
 script = ExtResource("4")
-default_range = 12.0
-default_energy = 0.75
-lit = true
-shadow_mode = 0
-audio_fade_in_on_ready = false
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, -0.0220984, 0.156182, -0.216999)

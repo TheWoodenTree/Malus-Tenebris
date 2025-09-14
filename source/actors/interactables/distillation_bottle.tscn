@@ -350,8 +350,9 @@ _data = {
 &"pour": SubResource("Animation_jlkag")
 }
 
-[node name="DistillationBottle" node_paths=PackedStringArray("meshes") instance=ExtResource("1_nmm65")]
+[node name="DistillationBottle" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_nmm65")]
 script = ExtResource("2_2eusd")
+interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("TransferTube")]
 
 [node name="Mesh" parent="." index="0"]

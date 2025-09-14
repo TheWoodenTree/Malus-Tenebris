@@ -14,9 +14,6 @@ script = ExtResource("4_ipjbm")
 name = "Visolis"
 texture = ExtResource("5_tjuu2")
 pickup_sound = ExtResource("3_j8owv")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x2wa2"]
 _surfaces = [{
@@ -124,8 +121,10 @@ shadow_mesh = SubResource("ArrayMesh_gql6q")
 radius = 0.301234
 height = 0.913681
 
-[node name="VisolisBottle" instance=ExtResource("1_v001e")]
+[node name="VisolisBottle" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_v001e")]
 item_data = SubResource("Resource_rwkh1")
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh"), NodePath("Mesh")]
 interactable = false
 
 [node name="Mesh2" type="MeshInstance3D" parent="." index="0"]

@@ -12,9 +12,6 @@ script = ExtResource("3_imk6i")
 name = "Winch Crank"
 texture = ExtResource("4_ftnpv")
 pickup_sound = ExtResource("7_ew2w3")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [sub_resource type="Gradient" id="Gradient_rxqmh"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -108,8 +105,9 @@ shadow_mesh = SubResource("ArrayMesh_h6ebl")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_msbx5"]
 
-[node name="WinchCrank" instance=ExtResource("1_lf2j4")]
+[node name="WinchCrank" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_lf2j4")]
 item_data = SubResource("Resource_my8ss")
+interact_areas = [NodePath("InteractArea")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.540983, 0.068, 0.115531)

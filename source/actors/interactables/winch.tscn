@@ -432,11 +432,9 @@ orientation = 2
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gco1a"]
 points = PackedVector3Array(1.51094, 1.36171, 0.27727, 1.33745, 1.36171, 0.27727, 1.51079, 0.239259, 0.853472, 1.51079, 3.57628e-07, 0.885185, 1.51094, 1.17617, 0.045403, 1.51094, 1.26281, -0.0175027, 1.51079, 1.36171, -0.277444, 4.76837e-07, 0.239259, 0.853472, 1.33745, 1.36171, -0.277444, 1.51094, 1.15577, 0.0173294, 4.76837e-07, 3.57628e-07, 0.885185, 1.51079, 3.57628e-07, -0.885185, 1.51094, 1.24241, -0.0455763, 1.51079, 0.239259, -0.853646, 4.76837e-07, 0.239259, -0.853646, 1.51094, 1.15577, -0.0175027, 4.76837e-07, 3.57628e-07, -0.885185, 1.51094, 1.20922, -0.0563205, 1.51094, 1.17617, -0.0455763)
 
-[node name="Winch" node_paths=PackedStringArray("meshes") instance=ExtResource("1_vj3eq")]
+[node name="Winch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_vj3eq")]
 script = ExtResource("1_8caag")
-connected_node_name = ""
-has_crank = false
-is_broken = false
+interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("RotatingBody/Wheel"), NodePath("RotatingBody/Chains")]
 
 [node name="Mesh" parent="." index="0"]

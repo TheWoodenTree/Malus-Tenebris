@@ -1,7 +1,7 @@
-class_name Interactable
-extends Node3D
+@abstract class_name Interactable extends Node3D
 
 enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
+enum ShaderMode {OUTLINE, HIGHLIGHT}
 
 @export var interactable_type: Type = Type.MISC
 @export var interact_areas: Array[InteractArea]
@@ -10,7 +10,7 @@ enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
 @export var disable_highlight_shader: bool = false
 @export var enable_highlight_light: bool = false : set = _set_enable_highlight_light
 @export var enable_highlight_sheen: bool = false : set = _set_enable_highlight_sheen
-@export_enum("Outline", "Highlight") var shader_mode: String = "Outline"
+@export var shader_mode: ShaderMode = ShaderMode.OUTLINE
 
 var being_targeted: bool = false
 
@@ -37,7 +37,7 @@ func _target():
 	being_targeted = true
 	if not disable_highlight_shader:
 		for mesh: MeshInstance3D in meshes:
-			if shader_mode == "Outline":
+			if shader_mode == ShaderMode.OUTLINE:
 				mesh.material_overlay.set_shader_parameter("outlineOn", true)
 			else:
 				mesh.material_override = highlight_material
@@ -48,7 +48,7 @@ func _target():
 func _untarget():
 	being_targeted = false
 	for mesh: MeshInstance3D in meshes:
-		if shader_mode == "Outline":
+		if shader_mode == ShaderMode.OUTLINE:
 			mesh.material_overlay.set_shader_parameter("outlineOn", false)
 		else:
 			mesh.material_override = null

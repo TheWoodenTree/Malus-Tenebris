@@ -133,13 +133,13 @@ stream_0/stream = ExtResource("4_fc0x2")
 stream_1/stream = ExtResource("5_olnei")
 stream_2/stream = ExtResource("6_n05dm")
 
-[node name="Scroll1" instance=ExtResource("1_340pc")]
+[node name="Scroll1" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_340pc")]
 script = ExtResource("2_7wt8i")
-display_help = false
-note_name = "Note"
-label = null
 interactable_type = 4
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 enable_highlight_sheen = true
+shader_mode = 1
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_uas4k")

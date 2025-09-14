@@ -1,9 +1,68 @@
-[gd_scene load_steps=10 format=4 uid="uid://bii7yw1lnrtyf"]
+[gd_scene load_steps=16 format=4 uid="uid://bii7yw1lnrtyf"]
 
 [ext_resource type="PackedScene" uid="uid://taovp5xicteg" path="res://source/actors/interactables/moveable_template.tscn" id="1_2x3ax"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_1830c"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_yxace"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="3_1830c"]
 [ext_resource type="AudioStream" uid="uid://chreeyw440iog" path="res://source/assets/sounds/move/wood_scrape_on_wood.ogg" id="4_yxace"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5b05"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_1830c")
+shader_parameter/enableSheen = false
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_1ya8k"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nxkc"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f5b05")
+shader = SubResource("Shader_1ya8k")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8wf2v"]
 _surfaces = [{
@@ -72,10 +131,13 @@ radius = 0.8
 [sub_resource type="BoxShape3D" id="BoxShape3D_2x3ax"]
 size = Vector3(1.75, 2, 1.75)
 
-[node name="MoveableBarrel" instance=ExtResource("1_2x3ax")]
+[node name="MoveableBarrel" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_2x3ax")]
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 enable_highlight_sheen = true
 
 [node name="Mesh" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_5nxkc")
 mesh = SubResource("ArrayMesh_5nxkc")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

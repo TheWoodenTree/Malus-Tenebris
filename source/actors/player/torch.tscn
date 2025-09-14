@@ -225,10 +225,10 @@ material = SubResource("StandardMaterial3D_ktl6q")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="Torch" instance=ExtResource("1_twpvw")]
+[node name="Torch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
 script = ExtResource("2")
-default_range = 12.0
-default_energy = 1.25
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 enable_highlight_light = true
 
 [node name="Mesh" parent="." index="0"]

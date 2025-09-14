@@ -71,9 +71,10 @@ size = Vector3(0.6, 0.4, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3p7oh"]
 size = Vector3(1.2, 0.8, 0.4)
 
-[node name="StoneButton" instance=ExtResource("1_q0acp")]
+[node name="StoneButton" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_q0acp")]
 script = ExtResource("2_dmrkn")
-connected_node_name = ""
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)

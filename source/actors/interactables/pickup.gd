@@ -24,7 +24,7 @@ func _ready():
 	
 	pickup_player.stream = item_data.pickup_sound
 	
-	if shader_mode == "Highlight":
+	if shader_mode == ShaderMode.HIGHLIGHT:
 		for mesh: MeshInstance3D in meshes:
 			mesh.material_overlay.set_shader_parameter("outlineOn", false)
 

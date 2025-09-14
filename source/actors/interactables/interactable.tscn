@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://7bbxdmeobxfs"]
+[gd_scene load_steps=3 format=3 uid="uid://7bbxdmeobxfs"]
 
-[ext_resource type="Script" uid="uid://brdb6u2soierq" path="res://source/actors/interactables/interactable.gd" id="1_088xv"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_143x3"]
 [ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_3f3on"]
 
-[node name="Interactable" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
-script = ExtResource("1_088xv")
-interact_areas = [NodePath("InteractArea")]
-meshes = [NodePath("Mesh")]
+[node name="Interactable" type="Node3D"]
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 material_overlay = ExtResource("2_143x3")

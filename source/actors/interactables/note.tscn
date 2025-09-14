@@ -109,14 +109,15 @@ stream_0/stream = ExtResource("3_jfep5")
 stream_1/stream = ExtResource("4_uvg2r")
 stream_2/stream = ExtResource("5_c7kx5")
 
-[node name="Note" instance=ExtResource("1_fvl0x")]
+[node name="Note" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_fvl0x")]
 script = ExtResource("1")
 display_help = true
-note_name = "Note"
 label = ExtResource("3_u3nc3")
 interactable_type = 4
+interact_areas = [NodePath("InteractArea")]
+meshes = [NodePath("Mesh")]
 enable_highlight_sheen = true
-shader_mode = "Highlight"
+shader_mode = 1
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.005, 0)
