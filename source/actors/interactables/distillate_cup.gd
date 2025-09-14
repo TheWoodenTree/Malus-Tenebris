@@ -22,7 +22,7 @@ func _on_untarget():
 	Global.ui.hint_remove()
 
 
-func interact():
+func _on_interact() -> void:
 	if first_dose:
 		Global.ui.hint_remove()
 		first_dose = false
