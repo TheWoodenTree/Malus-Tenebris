@@ -63,8 +63,7 @@ func _on_fire_burning_sound_area_exited():
 	#fire.light.set_layer_mask_value(2, false)
 
 
-func interact():
-	super()
+func _on_interact() -> void:
 	if interactable and Global.player.has_torch and not Global.player.torch.is_lit:
 		Global.player.torch.light_torch()
 

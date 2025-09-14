@@ -12,7 +12,7 @@ func _ready() -> void:
 	super()
 
 
-func interact():
+func _on_interact() -> void:
 	if Global.player.is_holding_item("Ruboleum Vial"):
 		set_interactable(false)
 		

@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 		highlight_material.set_shader_parameter("outlineOn", false)
 
 
-func interact():
+func _on_interact() -> void:
 	key_pickup_player.play()
 	self.visible = false
 	interact_area.set_collision_layer_value(16, false)

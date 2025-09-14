@@ -29,7 +29,7 @@ func _ready():
 			mesh.material_overlay.set_shader_parameter("outlineOn", false)
 
 
-func interact():
+func _on_interact():
 	if interactable:
 		set_interactable(false)
 		

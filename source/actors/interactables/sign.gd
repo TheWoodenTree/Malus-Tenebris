@@ -25,6 +25,10 @@ func _on_untarget():
 	Global.ui.hint_remove()
 
 
+func _on_interact() -> void:
+	pass
+
+
 func _set_chain_length(length: int):
 	chain_length = length
 	update_chains()

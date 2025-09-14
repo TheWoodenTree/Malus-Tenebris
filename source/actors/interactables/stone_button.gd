@@ -6,8 +6,7 @@ extends Interactable
 @onready var mesh = meshes[0]
 
 
-func interact():
-	super()
+func _on_interact() -> void:
 	var push_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 	push_tween.tween_property(mesh, "position:z", 0.15, 0.7).as_relative()
 	#set_interactable(false)

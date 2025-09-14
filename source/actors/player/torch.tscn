@@ -227,9 +227,16 @@ orientation = 2
 
 [node name="Torch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
 script = ExtResource("2")
+default_range = null
+default_energy = null
+interactable_type = null
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh")]
+interactable = null
+disable_highlight_shader = null
 enable_highlight_light = true
+enable_highlight_sheen = null
+shader_mode = null
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_eknsh")

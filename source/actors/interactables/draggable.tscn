@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7l0lxt4jjg8c"]
+[gd_scene load_steps=3 format=3 uid="uid://c7l0lxt4jjg8c"]
 
-[ext_resource type="Script" uid="uid://brdb6u2soierq" path="res://source/actors/interactables/interactable.gd" id="1_glk8c"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="1_xqb35"]
 [ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="2_jojgu"]
 
-[node name="Draggable" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
-script = ExtResource("1_glk8c")
-interact_areas = [NodePath("DraggableBody/InteractArea")]
-meshes = [NodePath("DraggableBody/Mesh")]
+[node name="Draggable" type="Node3D"]
 
 [node name="DraggableBody" type="RigidBody3D" parent="."]
 

@@ -20,7 +20,7 @@ func _ready():
 		mesh.position.x = UNLOCKED_POS_X
 
 
-func interact():
+func _on_interact() -> void:
 	if not locked:
 		parent_door.on_latch_toggle(true)
 		set_interactable(false)

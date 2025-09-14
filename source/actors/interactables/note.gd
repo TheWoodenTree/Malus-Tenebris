@@ -47,11 +47,9 @@ func _on_untarget():
 		Global.ui.hint_remove()
 
 
-func interact():
+func _on_interact() -> void:
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
-	if not Global.player.in_menu:
-		super()
-		
+	if not Global.player.in_menu:	
 		Global.ui.note_menu.set_note_text(pages[curr_page])
 		Global.ui.note_menu.note_name = note_name
 		Global.ui.note_menu.set_page_number_text("Page 1/" + str(num_pages))

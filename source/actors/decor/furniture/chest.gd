@@ -72,7 +72,7 @@ func _physics_process(_delta):
 			creak_player.stop()
 
 
-func interact():
+func _on_interact() -> void:
 	player_dragging = true
 	Global.player.set_draggable_being_dragged(self)
 

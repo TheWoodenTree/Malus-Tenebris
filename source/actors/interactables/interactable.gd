@@ -77,9 +77,13 @@ func disable_sheen():
 			mesh.material_overlay.next_pass.set_shader_parameter("enableSheen", false)
 
 
-func interact():
+func interact() -> void:
 	enable_highlight_sheen = false
 	disable_sheen()
+	_on_interact()
+
+
+@abstract func _on_interact() -> void
 
 
 func set_interactable(interactable_: bool):

@@ -66,8 +66,7 @@ func _process(_delta: float) -> void:
 		global_transform = Global.player.torch_pos.global_transform
 
 
-func interact():
-	super()
+func _on_interact() -> void:
 	held_by_player = true
 	Global.player.torch = self
 	Global.player.has_torch = true

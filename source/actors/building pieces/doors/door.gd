@@ -152,7 +152,7 @@ func _physics_process(_delta):
 				door_open_player.volume_db = -80.0
 
 
-func interact():
+func _on_interact() -> void:
 	if interactable:
 		# Player tries to unlock a locked door
 		if Global.player.is_holding_key() and player_on_openable_side and not unlocked:

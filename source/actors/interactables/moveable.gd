@@ -21,8 +21,7 @@ func _ready():
 	update_move_to_collision()
 
 
-func interact():
-	super()
+func _on_interact() -> void:
 	moveable_collision_blocker.position = move_to_offset
 	moveable_collision_blocker_shape.disabled = false
 	moveable_collision_blocker.top_level = true

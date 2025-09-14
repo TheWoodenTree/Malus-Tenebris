@@ -65,7 +65,7 @@ func _lube_key():
 	set_interactable(true)
 
 
-func interact():
+func _on_interact() -> void:
 	if not fat_being_melted and not fat_melted and not key_dipped:
 		if Global.player.is_holding_item("Beef Fat"):
 			_melt_fat()

@@ -37,7 +37,7 @@ func _set_door2_angle(rot):
 		door2_hinge.rotation.y = -deg_to_rad(rot)
 
 
-func interact():
+func _on_interact() -> void:
 	open()
 
 

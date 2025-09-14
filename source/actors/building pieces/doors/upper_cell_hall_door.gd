@@ -10,8 +10,6 @@ func _ready():
 		GlobalSignals.journal_picked_up.connect(func(): player_picked_up_journal = true)
 
 
-func interact():
-	if player_picked_up_journal:
-		super()
-	else:
+func _on_interact() -> void:
+	if not player_picked_up_journal:
 		Global.ui.hint_popup("What was that book on the ground?", 3.0)
