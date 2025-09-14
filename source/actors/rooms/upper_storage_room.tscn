@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://b8x6fq3iwrnwh" path="res://source/actors/decor/debris/plank_1.tscn" id="24_cyed5"]
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="25_l5dfm"]
 [ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="26_4g5ii"]
-[ext_resource type="PackedScene" uid="uid://c3rxkp6vaovuq" path="res://source/actors/interactables/winch_crank.tscn" id="26_gik4w"]
+[ext_resource type="PackedScene" uid="uid://c3rxkp6vaovuq" path="res://source/actors/interactables/pickups/winch_crank.tscn" id="26_gik4w"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="27_4qxhj"]
 [ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="28_32h2w"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_c6mxc"]

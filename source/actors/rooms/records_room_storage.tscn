@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_0rq04"]
 [ext_resource type="PackedScene" uid="uid://2n0p2swjfvtx" path="res://source/actors/decor/furniture/chest.tscn" id="5_k4ms5"]
 [ext_resource type="PackedScene" uid="uid://do60vw7pnfa80" path="res://source/actors/decor/groups/sm_stacked_barrels.tscn" id="6_0206u"]
-[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="7_5geft"]
+[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/interactables/pickups/key.tscn" id="7_5geft"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="7_ex7hr"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="8_i52jy"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="8_x4muf"]
@@ -33,7 +33,6 @@ script = ExtResource("9_440qv")
 name = "Cell Hall Key"
 texture = ExtResource("10_lpqka")
 pickup_sound = ExtResource("8_x4muf")
-self_useable = false
 hold_rotation_offset = Vector3(0, 200, 90)
 hold_scale_multiplier = 0.5
 

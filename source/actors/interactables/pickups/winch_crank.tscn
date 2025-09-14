@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://c3rxkp6vaovuq"]
 
-[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_lf2j4"]
+[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_lf2j4"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="1_uebo4"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_imk6i"]
 [ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="4_ftnpv"]

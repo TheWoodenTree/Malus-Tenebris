@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://btbw0ox4avnkm"]
 
-[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_v001e"]
+[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_v001e"]
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_va2my"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_2wexg"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="3_j8owv"]

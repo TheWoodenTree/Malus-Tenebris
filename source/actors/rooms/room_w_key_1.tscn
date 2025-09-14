@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bpbucejg2mbbm" path="res://source/actors/decor/furniture/stand.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/interactables/pickups/key.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://di1wwxw78n6ba" path="res://source/actors/decor/misc/pots/fat_pot.tscn" id="9"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="42_gscoh"]
 [ext_resource type="PackedScene" uid="uid://dwue8yvjv7iog" path="res://source/actors/decor/misc/pots/urn_3.tscn" id="42_uw42v"]
 [ext_resource type="PackedScene" uid="uid://dkjbo1lmsiv60" path="res://source/actors/decor/misc/pots/urn_2.tscn" id="43_ptoiv"]
+
 
 [sub_resource type="Resource" id="Resource_invuv"]
 script = ExtResource("28_8h402")

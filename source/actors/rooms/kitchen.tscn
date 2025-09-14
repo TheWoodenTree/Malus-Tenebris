@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dq06hcs0nc8xo" path="res://source/actors/building pieces/basic/stairs.tscn" id="8_3xeph"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="9_u1uxw"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="14_pcqt1"]
-[ext_resource type="PackedScene" uid="uid://kixyva1bs3gf" path="res://source/actors/interactables/beef_fat.tscn" id="15_0v0uk"]
+[ext_resource type="PackedScene" uid="uid://kixyva1bs3gf" path="res://source/actors/interactables/pickups/beef_fat.tscn" id="15_0v0uk"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="16_dgr4a"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="17_45dlr"]
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="18_4pdix"]

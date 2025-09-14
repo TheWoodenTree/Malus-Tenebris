@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://dqlc1s8bbnegp"]
 
-[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickup.tscn" id="1_wh2hv"]
+[ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_wh2hv"]
 [ext_resource type="AudioStream" uid="uid://d2vdsl61h1lnr" path="res://source/assets/sounds/pickup/key_pickup.ogg" id="2_bp65t"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_fvu66"]
 [ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="4_hhjbt"]

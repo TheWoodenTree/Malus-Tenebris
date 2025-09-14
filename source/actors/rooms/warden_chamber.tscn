@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://samn2dje0fbg" path="res://source/actors/decor/misc/rope/laying_rope_1.tscn" id="28_fmbn5"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="29_6nf2q"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="30_yxp60"]
-[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/decor/misc/key.tscn" id="31_4l2yx"]
+[ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/interactables/pickups/key.tscn" id="31_4l2yx"]
 [ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="32_2l4ou"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="33_cstxe"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="33_xtbsr"]
