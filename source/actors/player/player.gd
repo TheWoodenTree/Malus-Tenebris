@@ -311,6 +311,10 @@ func is_holding_key():
 	return held_item_data and held_item_data.name.contains("Key")
 
 
+func is_holding_journal():
+	return held_item_data and held_item_data.name == 'Journal'
+
+
 func is_holding_hourglass():
 	return held_item_data and held_item_data.name == 'Hourglass'
 
