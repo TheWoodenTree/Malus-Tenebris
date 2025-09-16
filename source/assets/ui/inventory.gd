@@ -25,7 +25,6 @@ var scrolling: bool = false
 @onready var item_name_label = $Cont/VboxCont/ItemNameLabel
 @onready var select_slot_frame = $Cont/VboxCont/HboxCont/SelectSlotFrame
 @onready var item_click_player = $ItemClickPlayer
-@onready var vitriscet_progress_bar: ProgressBar = $VitriscetProgressBar
 
 
 func _enter_tree():
@@ -62,8 +61,6 @@ func _process(_delta):
 		queue_scroll(RIGHT)
 	if is_item_on_cursor:
 		_handle_drag()
-	
-	vitriscet_progress_bar.value = 100.0 * AfflictionTimer.time_left / 900.0
 
 
 func add_item(item_data: ItemData):

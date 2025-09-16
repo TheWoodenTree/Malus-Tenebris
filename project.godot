@@ -28,6 +28,7 @@ Global="*res://source/global.gd"
 Sound="*res://source/sound.gd"
 AfflictionEffectController="*res://source/affliction_effect_controller.gd"
 GlobalSignals="*res://source/global_signals.gd"
+AfflictionTimer="*res://source/affliction_timer.gd"
 
 [display]
 
@@ -187,6 +188,7 @@ journal={
 3d_render/layer_2="player torch"
 3d_render/layer_3="interactables"
 3d_render/layer_4="no occlude"
+3d_render/layer_5="hourglass"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
 3d_physics/layer_3="monster"

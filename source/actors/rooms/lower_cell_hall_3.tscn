@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://6740g18km7ny"]
+[gd_scene load_steps=46 format=3 uid="uid://6740g18km7ny"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_f5h4f"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_2appl"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="8_l28ll"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="9_sendj"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="10_fcnch"]
-[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="11_quh8y"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="12_oqhdh"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="13_no1ii"]
 [ext_resource type="PackedScene" uid="uid://dafxw7skruo3p" path="res://source/actors/decor/groups/books_9.tscn" id="14_m1n76"]
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="15_sgaa1"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="16_vmtff"]
@@ -48,16 +45,6 @@
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="46_kwjv8"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="47_0raq0"]
 [ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="48_2b4yf"]
-
-[sub_resource type="Resource" id="Resource_gf6xt"]
-resource_local_to_scene = true
-script = ExtResource("12_oqhdh")
-name = "Ruboleum Vial"
-texture = ExtResource("13_no1ii")
-pickup_sound = ExtResource("11_quh8y")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [node name="LowerCellHall3" instance=ExtResource("1_f5h4f")]
 
@@ -277,7 +264,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.25, 0.5, 0)
 
 [node name="RuboleumVial" parent="." index="30" instance=ExtResource("10_fcnch")]
 transform = Transform3D(0.567068, 0, 0.823671, 0, 1, 0, -0.823671, 0, 0.567068, -45.9045, 2.4, 0.341764)
-item_data = SubResource("Resource_gf6xt")
 
 [node name="Books6" parent="." index="31" instance=ExtResource("14_m1n76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7523, 0.5, 2.82592)

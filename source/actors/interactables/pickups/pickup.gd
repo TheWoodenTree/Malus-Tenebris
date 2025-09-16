@@ -13,7 +13,7 @@ signal picked_up
 func _ready():
 	super()
 	if item_data:
-		item_data.mesh = meshes[0].duplicate()
+		item_data.item_instance = self
 	else:
 		item_data = ItemData.new()
 		
@@ -26,7 +26,8 @@ func _ready():
 	
 	if shader_mode == ShaderMode.HIGHLIGHT:
 		for mesh: MeshInstance3D in meshes:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
+			if mesh.material_overlay:
+				mesh.material_overlay.set_shader_parameter("outlineOn", false)
 
 
 func _on_interact():
@@ -41,12 +42,13 @@ func _on_interact():
 		Global.ui.hint_popup(pickup_string, 3.0)
 		
 		highlight_light.visible = false
+		visible = false
 		for area: InteractArea in interact_areas:
 			area.set_collision_layer_value(16, false)
-		for mesh: MeshInstance3D in meshes:
-			mesh.visible = false
 		
 		picked_up.emit()
 		
 		await Global.player.play_pickup_sound(pickup_player)
-		queue_free()
+		get_parent().remove_child(self)
+		visible = true
+		

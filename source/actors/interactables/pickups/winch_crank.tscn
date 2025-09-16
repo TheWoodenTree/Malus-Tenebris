@@ -1,17 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://c3rxkp6vaovuq"]
+[gd_scene load_steps=14 format=4 uid="uid://c3rxkp6vaovuq"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_lf2j4"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="1_uebo4"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_imk6i"]
-[ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="4_ftnpv"]
+[ext_resource type="Resource" uid="uid://8ou378eo38r2" path="res://source/assets/resources/item_datas/winch_crank.tres" id="2_4dbkw"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_wt67n"]
 [ext_resource type="AudioStream" uid="uid://1esobq86df0k" path="res://source/assets/sounds/pickup/metal_scrape.ogg" id="7_ew2w3"]
-
-[sub_resource type="Resource" id="Resource_my8ss"]
-script = ExtResource("3_imk6i")
-name = "Winch Crank"
-texture = ExtResource("4_ftnpv")
-pickup_sound = ExtResource("7_ew2w3")
 
 [sub_resource type="Gradient" id="Gradient_rxqmh"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -106,7 +99,7 @@ shadow_mesh = SubResource("ArrayMesh_h6ebl")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_msbx5"]
 
 [node name="WinchCrank" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_lf2j4")]
-item_data = SubResource("Resource_my8ss")
+item_data = ExtResource("2_4dbkw")
 interact_areas = [NodePath("InteractArea")]
 
 [node name="Mesh" parent="." index="0"]

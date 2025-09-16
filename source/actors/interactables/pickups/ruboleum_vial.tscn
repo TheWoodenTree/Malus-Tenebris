@@ -1,18 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://cykavwbds5y1f"]
+[gd_scene load_steps=14 format=4 uid="uid://cykavwbds5y1f"]
 
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_55ctl"]
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_lbm0b"]
+[ext_resource type="Resource" uid="uid://dq2xpjjilobj" path="res://source/assets/resources/item_datas/ruboleum_vial.tres" id="2_owc37"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="2_oxcjt"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_g3uyu"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="4_elrw2"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_ejaji"]
-
-[sub_resource type="Resource" id="Resource_meejj"]
-resource_local_to_scene = true
-script = ExtResource("3_g3uyu")
-name = "Ruboleum Vial"
-texture = ExtResource("4_elrw2")
-pickup_sound = ExtResource("2_oxcjt")
 
 [sub_resource type="Gradient" id="Gradient_rxqmh"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -109,7 +101,7 @@ radius = 0.204578
 height = 0.669671
 
 [node name="RuboleumVial" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_lbm0b")]
-item_data = SubResource("Resource_meejj")
+item_data = ExtResource("2_owc37")
 interactable_type = 3
 interact_areas = [NodePath("InteractArea")]
 shader_mode = 1

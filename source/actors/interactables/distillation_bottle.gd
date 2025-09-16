@@ -39,4 +39,6 @@ func _on_interact() -> void:
 
 func distillation_complete():
 	pour_particles.emitting = false
+	if pour_anim_player.is_playing():
+		await pour_anim_player.animation_finished
 	set_interactable(true)

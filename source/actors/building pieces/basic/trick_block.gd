@@ -14,6 +14,10 @@ func _ready():
 		mesh.material = load("res://source/assets/materials/tile_wall/tile_wall_local_triplanar.tres")
 
 
+func interact():
+	_on_interact()
+
+
 func _on_interact() -> void:
 	var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 	var move_anim_dur = move_player.stream.get_length() * (2 - move_player.pitch_scale)

@@ -2,5 +2,6 @@ extends Pickup
 
 
 func _on_interact() -> void:
+	super()
 	GlobalSignals.journal_picked_up.emit()
-	Global.journal_log.add_entry(LogEntry.LogEntryName.PICKED_UP_JOURNAL)	
+	Global.journal_log.add_entry(LogEntry.LogEntryName.PICKED_UP_JOURNAL)

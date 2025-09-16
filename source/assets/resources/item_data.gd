@@ -2,8 +2,8 @@ class_name ItemData
 extends Resource
 
 # Set by pickup script
-var mesh: MeshInstance3D : set = _set_mesh
 var count: int = 1
+var item_instance: Node3D = null
 
 @export var name: String = ""
 @export var texture: CompressedTexture2D = null
@@ -14,12 +14,8 @@ var count: int = 1
 @export var hold_scale_multiplier: float = 1.0
 
 
-func _set_mesh(new_mesh: MeshInstance3D):
-	mesh = new_mesh
-	if mesh.material_overlay:
-		mesh.material_overlay.set_shader_parameter("outlineOn", false)
-	mesh.layers = 3
-	mesh.set_script(self_useable_script)
+func _init() -> void:
+	resource_local_to_scene = true
 
 
 func reset():

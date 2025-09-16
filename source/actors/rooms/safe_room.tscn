@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=53 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
@@ -43,26 +43,23 @@
 [ext_resource type="PackedScene" uid="uid://cx4g8tg3wsy7p" path="res://source/actors/decor/misc/pots/sm_fat_pot.tscn" id="42_6xnj5"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="43_0v6kg"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="44_fvmec"]
+[ext_resource type="PackedScene" uid="uid://b0ulsvtx3b41t" path="res://source/actors/interactables/pickups/hourglass.tscn" id="44_ydufn"]
 
-[sub_resource type="Resource" id="Resource_yb1eg"]
+[sub_resource type="Resource" id="Resource_0ilup"]
 resource_local_to_scene = true
 script = ExtResource("26_rhjbl")
 name = "Ruboleum Vial"
 texture = ExtResource("27_lo8s1")
 pickup_sound = ExtResource("34_e2n1h")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
+hold_rotation_offset = Vector3(0, 0, -90)
 
-[sub_resource type="Resource" id="Resource_2sw8t"]
+[sub_resource type="Resource" id="Resource_r3otd"]
 resource_local_to_scene = true
 script = ExtResource("26_rhjbl")
 name = "Ruboleum Vial"
 texture = ExtResource("27_lo8s1")
 pickup_sound = ExtResource("34_e2n1h")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
+hold_rotation_offset = Vector3(0, 0, -90)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cenn"]
 size = Vector3(19.5, 10, 13)
@@ -76,9 +73,6 @@ script = ExtResource("26_rhjbl")
 name = "Visolis"
 texture = ExtResource("39_y8yjx")
 pickup_sound = ExtResource("34_e2n1h")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_hmohl"]
 resource_local_to_scene = true
@@ -86,9 +80,6 @@ script = ExtResource("26_rhjbl")
 name = "Visolis"
 texture = ExtResource("39_y8yjx")
 pickup_sound = ExtResource("34_e2n1h")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_o3amn"]
 resource_local_to_scene = true
@@ -96,9 +87,6 @@ script = ExtResource("26_rhjbl")
 name = "Visolis"
 texture = ExtResource("39_y8yjx")
 pickup_sound = ExtResource("34_e2n1h")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_x4mc3"]
 resource_local_to_scene = true
@@ -106,9 +94,6 @@ script = ExtResource("26_rhjbl")
 name = "Visolis"
 texture = ExtResource("39_y8yjx")
 pickup_sound = ExtResource("34_e2n1h")
-self_useable = false
-hold_rotation_offset = Vector3(0, 0, 0)
-hold_scale_multiplier = 1.0
 
 [node name="SafeRoom" instance=ExtResource("1_ntfkh")]
 script = ExtResource("1_d3v5u")
@@ -255,11 +240,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 
 [node name="RuboleumVial" parent="Misc/Chest" index="6" instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
-item_data = SubResource("Resource_yb1eg")
+item_data = SubResource("Resource_0ilup")
 
 [node name="RuboleumVial2" parent="Misc/Chest" index="7" instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
-item_data = SubResource("Resource_2sw8t")
+item_data = SubResource("Resource_r3otd")
 
 [node name="Note2" parent="Misc" index="2" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
@@ -414,6 +399,9 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 [node name="StoneWall" parent="." index="45" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3, 4)
 size = Vector3(1, 5, 1)
+
+[node name="Hourglass" parent="." index="46" instance=ExtResource("44_ydufn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.4, -3)
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]

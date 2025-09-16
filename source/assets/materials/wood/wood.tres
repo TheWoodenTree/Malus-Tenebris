@@ -13,3 +13,5 @@ roughness_texture = ExtResource("3")
 normal_enabled = true
 normal_texture = ExtResource("2")
 grow_amount = 0.296
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)

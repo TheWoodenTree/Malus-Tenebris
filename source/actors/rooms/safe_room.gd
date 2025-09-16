@@ -15,6 +15,7 @@ func _on_safe_room_area_body_entered(body):
 		tween.parallel().tween_property(Global.main.drone_player, "volume_db", -30, 3.0)
 		tween.parallel().tween_property(music_player, "volume_db", -5.0, 3.0).from(-50.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		music_player.play()
+		AfflictionTimer.paused = true
 
 
 func _on_safe_room_area_body_exited(body):
@@ -24,3 +25,4 @@ func _on_safe_room_area_body_exited(body):
 		tween.parallel().tween_property(Global.main.drone_player, "volume_db", -6, 3.0)
 		tween.parallel().tween_property(music_player, "volume_db", -35.0, 3.0).from(-5.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 		tween.tween_callback(music_player.set.bind("playing", false))
+		AfflictionTimer.paused = false

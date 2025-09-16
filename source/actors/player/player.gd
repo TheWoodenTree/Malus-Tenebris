@@ -2,7 +2,6 @@ extends Character
 
 const NOCLIP_SPEED: float = 20.0
 const MAX_DIST_FROM_DRAGGABLE: float = 5.0
-const MAX_AFFLICTION_TIMER_ALLOW_DRINK: float = 700.0
 
 var torch_range = 10.0
 var torch_energy = 0.75
@@ -21,7 +20,7 @@ var torch: Object
 var targeted_interactable: Interactable
 var last_looked_at: Object = null
 var held_item_data: ItemData = null
-var held_item: MeshInstance3D = null
+var held_item: Pickup = null
 var draggable_being_dragged: Object = null # Set by door script
 
 var has_torch: bool = false
@@ -47,11 +46,11 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 @onready var torch_pos = $HeadController/BobController/Camera/TorchPos
 @onready var light = $HeadController/BaseLight
 @onready var held_item_marker = $HeadController/BobController/Camera/HeldItemMarker
+@onready var hourglass_marker: Marker3D = $HeadController/BobController/Camera/HourglassMarker
 @onready var noise_player = $NoisePlayer
 @onready var rucksack_player = $RucksackPlayer
 @onready var fear_player = $FearPlayer
 @onready var fear_pulse_player = $FearPulsePlayer
-@onready var affliction_timer = $AfflictionTimer
 
 @export var debug_has_torch: bool = false
 @export var debug_no_tutorials: bool = false
@@ -86,7 +85,8 @@ func _process(_delta: float) -> void:
 	
 	torch_cam.global_transform = cam.global_transform
 	if held_item:
-		held_item.global_position = lerp(held_item.global_position, held_item_marker.global_position, 0.025)
+		var held_item_pos: Vector3 = held_item_marker.global_position if held_item_data.name != "Hourglass" else hourglass_marker.global_position
+		held_item.global_position = lerp(held_item.global_position, held_item_pos, 0.025)
 		var rot_offset_x: float = deg_to_rad(held_item_data.hold_rotation_offset.x)
 		var rot_offset_y: float = deg_to_rad(held_item_data.hold_rotation_offset.y)
 		var rot_offset_z: float = deg_to_rad(held_item_data.hold_rotation_offset.z)
@@ -231,7 +231,12 @@ func inventory_remove_item(item_data: ItemData):
 
 func hold_item(item_data: ItemData):
 	held_item_data = item_data
-	held_item = item_data.mesh
+	held_item = item_data.item_instance
+	var visual_layer := 3
+	if held_item_data.name == "Hourglass":
+		visual_layer = 16
+	for mesh in held_item.meshes:
+		mesh.layers = visual_layer
 	add_child(held_item)
 	held_item.position = Vector3.ZERO
 	held_item.scale *= item_data.hold_scale_multiplier
@@ -239,7 +244,9 @@ func hold_item(item_data: ItemData):
 		held_item.material_overlay.set_shader_parameter("outlineOn", true)
 		holding_self_useable.emit(Interactable.Type.NOTE)
 	else:
-		held_item.material_overlay.set_shader_parameter("outlineOn", false)
+		pass
+		#if held_item.material_overlay:
+			#held_item.material_overlay.set_shader_parameter("outlineOn", false)
 		
 	if not first_item_held and is_holding_key() and not debug_no_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)

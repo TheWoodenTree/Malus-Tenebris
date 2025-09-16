@@ -38,7 +38,10 @@ func _target():
 	if not disable_highlight_shader:
 		for mesh: MeshInstance3D in meshes:
 			if shader_mode == ShaderMode.OUTLINE:
-				mesh.material_overlay.set_shader_parameter("outlineOn", true)
+				if mesh.material_overlay:
+					mesh.material_overlay.set_shader_parameter("outlineOn", true)
+				else:
+					push_error('Mesh has no highlight material: ' + str(mesh.name) + ' from ' + str(mesh.get_parent().name))
 			else:
 				mesh.material_override = highlight_material
 	Global.player.set_targeted_interactable(self)
@@ -49,7 +52,10 @@ func _untarget():
 	being_targeted = false
 	for mesh: MeshInstance3D in meshes:
 		if shader_mode == ShaderMode.OUTLINE:
-			mesh.material_overlay.set_shader_parameter("outlineOn", false)
+			if mesh.material_overlay:
+					mesh.material_overlay.set_shader_parameter("outlineOn", false)
+			else:
+				push_error('Mesh has no highlight material: ' + str(mesh.name) + ' from ' + str(mesh.get_parent().name))
 		else:
 			mesh.material_override = null
 	Global.player.set_targeted_interactable(null)

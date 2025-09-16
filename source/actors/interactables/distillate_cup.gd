@@ -30,7 +30,7 @@ func _on_interact() -> void:
 		do_log_entry()
 		
 	if num_doses > 0:
-		if Global.player.affliction_timer.time_left < Global.player.MAX_AFFLICTION_TIMER_ALLOW_DRINK:
+		if AfflictionTimer.time_left < AfflictionTimer.MAX_AFFLICTION_TIMER_ALLOW_DRINK:
 			num_doses -= 1
 			if num_doses > 0:
 				var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
@@ -38,10 +38,10 @@ func _on_interact() -> void:
 			else:
 				Global.ui.hint_remove()
 			
-			var play_sigh: bool = Global.player.affliction_timer.time_left < 60.0
+			var play_sigh: bool = AfflictionTimer.time_left < 60.0
 			
 			Global.player.play_sound_one_shot(Global.player.gulp_sound)
-			Global.player.affliction_timer.add_time_mins(5.0)
+			AfflictionTimer.add_time_mins(5.0)
 			AfflictionEffectController.set_to_min_effect(2.0)
 			
 			set_interactable(false)
