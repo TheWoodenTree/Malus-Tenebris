@@ -32,7 +32,7 @@ var cam_soft_movement_weight: float
 
 func _process(_delta):
 	if not being_tweened and not override_effect_scale and first_dose_taken and AfflictionTimer:
-		effect_scale = 1.0 - clamp(AfflictionTimer.time_left / 60.0, 0.0, 1.0)
+		effect_scale = 1.0 - clamp(AfflictionTimer.time_left / 30.0, 0.0, 1.0)
 		zoom_intensity = lerp(ZOOM_INTENSITY_DEF, ZOOM_INTENSITY_SC, effect_scale)
 		vignette_softness = lerp(VIGNETTE_SOFTNESS_DEF, VIGNETTE_SOFTNESS_SC, effect_scale)
 		player_speed_mult = lerp(1.0, PLAYER_SPEED_MULT_SC, effect_scale)

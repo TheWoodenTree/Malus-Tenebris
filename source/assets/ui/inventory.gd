@@ -1,5 +1,7 @@
 extends Menu
 
+signal item_attached_to_cursor(item_data: ItemData)
+
 const MAX_QUEUE_SIZE: int = 4
 const LEFT: int = 0
 const RIGHT: int = 1
@@ -129,8 +131,7 @@ func queue_scroll(dir):
 
 func attach_item_to_cursor(item_data: ItemData):
 	Global.cursor.attached_item.texture = item_data.texture
-	item_click_player.stream = item_data.pickup_sound
-	item_click_player.play()
+	item_attached_to_cursor.emit(item_data)
 	var count: int = item_data.count - 1
 	if count < 1:
 		selected_slot.set_item_visible(false)

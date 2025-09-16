@@ -30,10 +30,13 @@ var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_jou
 @onready var menus = $Menus
 @onready var block_inventory_open: bool = false
 @onready var generic_audio_player = $GenericAudioPlayer
+@onready var hourglass_empty_player: AudioStreamPlayer = $HourglassEmptyPlayer
+@onready var inventory_item_sound_player: AudioStreamPlayer = $InventoryItemSoundPlayer
 @onready var button_hover_player = $ButtonHoverPlayer
 @onready var button_up_player = $ButtonUpPlayer
 @onready var button_down_player = $ButtonDownPlayer
 @onready var log_entry_notification: HBoxContainer = $Cont/LogEntryNotification
+@onready var hourglass_empty_notification: MarginContainer = $Cont/HourglassEmptyNotification
 
 signal inventory_opened
 signal background_changed
@@ -44,6 +47,9 @@ func _ready():
 	death_screen = death_screen_res.instantiate()
 	add_child(inventory_menu)
 	remove_child(inventory_menu)
+	
+	AfflictionTimer.timeout.connect(notify_hourglass_empty)
+	inventory_menu.item_attached_to_cursor.connect(play_inventory_item_click_sound)
 
 
 func _process(_delta):
@@ -161,8 +167,24 @@ func do_prologue():
 func notify_new_log_entry():
 	generic_audio_player.play()
 	var tween1: Tween = get_tree().create_tween()
-	tween1.tween_property(log_entry_notification.material, "shader_parameter/alpha_mult", 1.0, 0.5).from(0.0)
+	tween1.tween_property(log_entry_notification, "modulate:a", 1.0, 0.5).from(0.0)
 	
 	await get_tree().create_timer(7.5, false).timeout
 	var tween2: Tween = get_tree().create_tween()
-	tween2.tween_property(log_entry_notification.material, "shader_parameter/alpha_mult", 0.0, 0.5).from(1.0)
+	tween2.tween_property(log_entry_notification, "modulate:a", 0.0, 0.5).from(1.0)
+
+
+func notify_hourglass_empty():
+	hourglass_empty_player.play()
+	await get_tree().create_timer(1.0, false).timeout
+	var tween1: Tween = get_tree().create_tween()
+	tween1.tween_property(hourglass_empty_notification, "modulate:a", 1.0, 0.5).from(0.0)
+	
+	await get_tree().create_timer(7.5, false).timeout
+	var tween2: Tween = get_tree().create_tween()
+	tween2.tween_property(hourglass_empty_notification, "modulate:a", 0.0, 0.5).from(1.0)
+
+
+func play_inventory_item_click_sound(item_data: ItemData):
+	inventory_item_sound_player.stream = item_data.pickup_sound
+	inventory_item_sound_player.play()

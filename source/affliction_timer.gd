@@ -1,35 +1,65 @@
-extends Timer
+extends Node
 
 signal started
 signal stopped
+signal timeout
+signal time_scale_changed(scale: float)
 
 const MAX_AFFLICTION_TIMER_ALLOW_DRINK := 600.1
 const MAX_AFFLICTION_TIMER_VALUE := 900.0
 
+var time_scale := 1.0 : set = set_time_scale
+var wait_time := 0.0 : set = set_wait_time
+var time_left := 0.0 : set = _set_time_left
+var paused := false : set = set_paused
 
-func _ready() -> void:
-	timeout.connect(func(): stopped.emit()) # For consistency
-	one_shot = true
 
-
-func _process(_delta):
+func _process(delta):
+	if not paused and not is_equal_approx(time_left, 0.0):
+		time_left -= delta * time_scale
+		
 	Global.main.debug_affliction_time_left.text = "Time Left: " + formatted_time_left()
 
 
-func _set(property: StringName, value: Variant):
-	if property == 'wait_time':
-		wait_time = clamp(value, 0.0, MAX_AFFLICTION_TIMER_VALUE)
-		if wait_time > 0.0001:
-			start()
-			if not paused:
-				started.emit()
-	
-	if property == 'paused':
-		paused = value
-		if paused:
-			stopped.emit()
-		else:
-			started.emit()
+func set_time_scale(time_scale_: float):
+	time_scale = time_scale_
+	time_scale_changed.emit(time_scale)
+
+
+func set_wait_time(wait_time_: float):
+	wait_time = clamp(wait_time_, 0.0, MAX_AFFLICTION_TIMER_VALUE)
+	time_left = wait_time
+	if wait_time > 0.0001:
+		start()
+
+
+func _set_time_left(time_left_: float):
+	time_left = clamp(time_left_, 0.0, wait_time)
+	if is_equal_approx(time_left, 0.0) or time_left < 0.0:
+		timeout.emit()
+		stopped.emit()
+
+
+func set_paused(paused_: bool):
+	paused = paused_
+	if paused:
+		stopped.emit()
+	else:
+		started.emit()
+
+
+func start(at_time: float = wait_time):
+	if not paused:
+		time_left = at_time
+		started.emit()
+
+
+func pause():
+	paused = true
+
+
+func unpause():
+	paused = false
 
 
 func formatted_time_left():

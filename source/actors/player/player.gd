@@ -311,6 +311,10 @@ func is_holding_key():
 	return held_item_data and held_item_data.name.contains("Key")
 
 
+func is_holding_hourglass():
+	return held_item_data and held_item_data.name == 'Hourglass'
+
+
 # Check if the standing collision shape collides with the world
 func _can_stand():
 	var space_state = get_world_3d().direct_space_state
