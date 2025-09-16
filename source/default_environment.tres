@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://eiomq46f2kvo"]
+
+[ext_resource type="Shader" uid="uid://dj3miebarepq" path="res://source/sky.gdshader" id="1_6runl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ycwu"]
+shader = ExtResource("1_6runl")
+
+[sub_resource type="Sky" id="Sky_ga56u"]
+sky_material = SubResource("ShaderMaterial_1ycwu")
+
+[resource]
+background_mode = 1
+sky = SubResource("Sky_ga56u")
+ambient_light_source = 2
+ambient_light_color = Color(0.29219, 0.29219, 0.29219, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.05

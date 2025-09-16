@@ -2,5 +2,6 @@
 
 [resource]
 background_mode = 1
+ssao_enabled = true
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_density = 0.0
