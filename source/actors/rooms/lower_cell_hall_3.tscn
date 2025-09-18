@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://6740g18km7ny"]
+[gd_scene load_steps=50 format=3 uid="uid://6740g18km7ny"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_f5h4f"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_2appl"]
@@ -8,7 +8,10 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://dycbysm1104uj" path="res://source/actors/rooms/occluders/lower_cell_hall_3.occ" id="7_0yak2"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="8_l28ll"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="9_sendj"]
+[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="10_2b4yf"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="10_fcnch"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="11_1jyvm"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="12_611c0"]
 [ext_resource type="PackedScene" uid="uid://dafxw7skruo3p" path="res://source/actors/decor/groups/books_9.tscn" id="14_m1n76"]
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="15_sgaa1"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="16_vmtff"]
@@ -46,6 +49,14 @@
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="47_0raq0"]
 [ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="48_2b4yf"]
 
+[sub_resource type="Resource" id="Resource_lhc1t"]
+resource_local_to_scene = true
+script = ExtResource("11_1jyvm")
+name = "Ruboleum Vial"
+texture = ExtResource("12_611c0")
+pickup_sound = ExtResource("10_2b4yf")
+hold_rotation_offset = Vector3(0, 0, -90)
+
 [node name="LowerCellHall3" instance=ExtResource("1_f5h4f")]
 
 [node name="StoneWall" parent="Walls" index="0" instance=ExtResource("2_2appl")]
@@ -66,7 +77,6 @@ door_interactable_override = 2
 
 [node name="SmallCell2" parent="Cells" index="1" instance=ExtResource("3_4hq1u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0.5, 3.5)
-door_open_angle = -65
 
 [node name="StoneWall" parent="." index="7" instance=ExtResource("2_2appl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 4.5, -4)
@@ -78,7 +88,6 @@ size = Vector3(10.5, 8, 1)
 
 [node name="SmallCell" parent="." index="9" instance=ExtResource("3_4hq1u")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 0.5, -3.5)
-door_open_angle = -35
 
 [node name="StoneWall2" parent="." index="10" instance=ExtResource("2_2appl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 4.5, 4)
@@ -264,6 +273,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.25, 0.5, 0)
 
 [node name="RuboleumVial" parent="." index="30" instance=ExtResource("10_fcnch")]
 transform = Transform3D(0.567068, 0, 0.823671, 0, 1, 0, -0.823671, 0, 0.567068, -45.9045, 2.4, 0.341764)
+item_data = SubResource("Resource_lhc1t")
 
 [node name="Books6" parent="." index="31" instance=ExtResource("14_m1n76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7523, 0.5, 2.82592)
@@ -478,11 +488,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0
 
 [node name="SquareDoorway" parent="." index="96" instance=ExtResource("47_0raq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 4)
-door_open_angle = 15
 
 [node name="SquareCellDoor" parent="SquareDoorway" index="3" instance=ExtResource("48_2b4yf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 15
+initial_rotation = 85.0
 
 [node name="SquareDoorway2" parent="." index="97" instance=ExtResource("47_0raq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.5, 4)
@@ -493,8 +502,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="SquareDoorway3" parent="." index="98" instance=ExtResource("47_0raq0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 0.5, -4)
-door_open_angle = 45
 
 [node name="SquareCellDoor" parent="SquareDoorway3" index="3" instance=ExtResource("48_2b4yf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 45
+initial_rotation = 19.0

@@ -157,7 +157,6 @@ style = "Polished"
 
 [node name="RegDoorway" parent="." index="45" instance=ExtResource("10_3hmsf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.75, -6, -4.5)
-door_style = "Polished"
 door_interactable_override = 2
 style = "Polished"
 

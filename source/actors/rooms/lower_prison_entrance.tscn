@@ -240,12 +240,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -9
 
 [node name="WoodDoor" parent="RegDoorway" index="3" instance=ExtResource("16_aq76f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+blocked = false
 
 [node name="RegDoorway2" parent="." index="62" instance=ExtResource("24_dtoyw")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.5, -35.5)
 
 [node name="WoodDoor" parent="RegDoorway2" index="3" instance=ExtResource("16_aq76f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+blocked = false
 
 [node name="RegDoorway3" parent="." index="63" instance=ExtResource("24_dtoyw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.5, -9.5, -28)
@@ -264,7 +266,7 @@ door_open_to_angle = 85
 [node name="LatchedDoor" parent="ApothecaryDoorway" index="3" instance=ExtResource("16_cpg5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 script = ExtResource("19_hkp77")
-starting_rotation = 85
+initial_rotation = 85.0
 
 [node name="RegArchway" parent="." index="65" instance=ExtResource("22_onmv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.5, -17)

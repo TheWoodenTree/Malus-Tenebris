@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://csrs2a5ulov1a"]
+[gd_scene load_steps=25 format=4 uid="uid://csrs2a5ulov1a"]
 
 [ext_resource type="Script" uid="uid://c1sng1fhyl8jm" path="res://source/actors/building pieces/doors/door.gd" id="1_03ck2"]
 [ext_resource type="Script" uid="uid://c1tcd1h0ewxfi" path="res://source/actors/building pieces/door_body.gd" id="1_ea760"]
@@ -6,13 +6,12 @@
 [ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="5_0lx2f"]
 [ext_resource type="PackedScene" uid="uid://ogd88gkrpbw5" path="res://source/assets/sounds/doors/door_full_open_player.tscn" id="6_7f8hy"]
 [ext_resource type="AudioStream" uid="uid://bp3t5catw7yr" path="res://source/assets/sounds/doors/wood_door_open.ogg" id="7_fwag2"]
-[ext_resource type="PackedScene" uid="uid://cxcrhst771t0j" path="res://source/assets/sounds/doors/door_open_player.tscn" id="8_istey"]
 [ext_resource type="AudioStream" uid="uid://be631gjyel76q" path="res://source/assets/sounds/doors/wood_door_open_finish.ogg" id="9_qpgn4"]
 [ext_resource type="PackedScene" uid="uid://bojvd78tojudr" path="res://source/assets/sounds/doors/door_attempt_player.tscn" id="10_jsgf3"]
+[ext_resource type="AudioStream" uid="uid://bx34wvubqn1jh" path="res://source/assets/sounds/doors/wood_door_close_2.ogg" id="11_8p6uf"]
 [ext_resource type="AudioStream" uid="uid://c4j33btu5ij88" path="res://source/assets/sounds/doors/wood_door_attempt.ogg" id="11_c042c"]
 [ext_resource type="PackedScene" uid="uid://ba6ttdmamhif6" path="res://source/assets/sounds/doors/door_unlock_player.tscn" id="12_ox66r"]
 [ext_resource type="PackedScene" uid="uid://dgtgawtdo332v" path="res://source/assets/sounds/doors/door_close_player.tscn" id="13_4adru"]
-[ext_resource type="AudioStream" uid="uid://bx34wvubqn1jh" path="res://source/assets/sounds/doors/wood_door_close_2.ogg" id="14_uga41"]
 [ext_resource type="AudioStream" uid="uid://b5dmq1pp2nsoi" path="res://source/assets/sounds/doors/wood_door_unlock.ogg" id="15_sty7t"]
 [ext_resource type="AudioStream" uid="uid://dhj5lg6kxnjrp" path="res://source/assets/sounds/misc/wrong_key.ogg" id="16_ogebv"]
 [ext_resource type="Shader" uid="uid://dqtv12rd2pdiu" path="res://source/assets/shaders/outline_shader.tres" id="17_250pq"]
@@ -229,11 +228,16 @@ shadow_mesh = SubResource("ArrayMesh_p2g6y")
 
 [node name="DoorTemplate" type="Node3D" node_paths=PackedStringArray("interact_areas", "meshes")]
 script = ExtResource("1_03ck2")
+rotation_axis = "y"
+max_rotation = 85.0
+min_rotation = 0.0
+sound_volume_max = 0.0
+sound_pitch_scale_max = 1.0
 interactable_type = 1
-interact_areas = [NodePath("DoorBody/InteractArea")]
-meshes = [NodePath("DoorBody/Door")]
+interact_areas = [NodePath("DraggableBody/InteractArea")]
+meshes = [NodePath("DraggableBody/Door")]
 
-[node name="DoorBody" type="RigidBody3D" parent="."]
+[node name="DraggableBody" type="RigidBody3D" parent="."]
 collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -245,70 +249,69 @@ angular_damp_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_ea760")
 
-[node name="HingeAttach" type="StaticBody3D" parent="DoorBody"]
-top_level = true
-
-[node name="Hinge" type="HingeJoint3D" parent="DoorBody"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.45995, 0)
-node_a = NodePath("../HingeAttach")
-node_b = NodePath("..")
-angular_limit/enable = true
-angular_limit/upper = 1.48353
-angular_limit/lower = 0.0
-
-[node name="Door" type="MeshInstance3D" parent="DoorBody"]
+[node name="Door" type="MeshInstance3D" parent="DraggableBody"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, -0.21, 0)
 layers = 8
 material_overlay = ExtResource("2_qiygx")
 skeleton = NodePath("")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="DoorBody"]
+[node name="CollisionShape" type="CollisionShape3D" parent="DraggableBody"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 1.70188, 0)
 
-[node name="InteractArea" type="Area3D" parent="DoorBody"]
+[node name="InteractArea" type="Area3D" parent="DraggableBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 0, 0.450127)
 collision_layer = 32768
 collision_mask = 0
 script = ExtResource("5_0lx2f")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="DoorBody/InteractArea"]
+[node name="CollisionShape" type="CollisionShape3D" parent="DraggableBody/InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -0.453477)
 
-[node name="DoorFullOpenPlayer" parent="DoorBody" instance=ExtResource("6_7f8hy")]
+[node name="DoorFullOpenPlayer" parent="DraggableBody" instance=ExtResource("6_7f8hy")]
 stream = ExtResource("7_fwag2")
 max_polyphony = 1
 attenuation_filter_db = 0.0
 
-[node name="DoorOpenPlayer" parent="DoorBody" instance=ExtResource("8_istey")]
-stream = ExtResource("9_qpgn4")
-attenuation_filter_db = 0.0
-
-[node name="DoorAttemptPlayer" parent="DoorBody" instance=ExtResource("10_jsgf3")]
+[node name="DoorAttemptPlayer" parent="DraggableBody" instance=ExtResource("10_jsgf3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22441, 1.72, 0)
 stream = ExtResource("11_c042c")
 volume_db = 6.0
 max_db = 6.0
 
-[node name="DoorUnlockPlayer" parent="DoorBody" instance=ExtResource("12_ox66r")]
+[node name="DoorUnlockPlayer" parent="DraggableBody" instance=ExtResource("12_ox66r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.23649, 1.71481, 0)
-stream = null
 
-[node name="DoorClosePlayer" parent="DoorBody" instance=ExtResource("13_4adru")]
+[node name="ClosePlayer" parent="DraggableBody" instance=ExtResource("13_4adru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 1.75, 0)
-stream = ExtResource("14_uga41")
+stream = ExtResource("11_8p6uf")
 
-[node name="KeyAnimPlayer" type="AnimationPlayer" parent="DoorBody"]
+[node name="KeyAnimPlayer" type="AnimationPlayer" parent="DraggableBody"]
 libraries = {
 &"": SubResource("AnimationLibrary_pvi61")
 }
 
-[node name="Key" type="Node3D" parent="DoorBody"]
+[node name="Key" type="Node3D" parent="DraggableBody"]
 transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, -2.049, 1.154, -0.22)
 visible = false
 
-[node name="Mesh" type="MeshInstance3D" parent="DoorBody/Key"]
+[node name="Mesh" type="MeshInstance3D" parent="DraggableBody/Key"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 4
 material_overlay = SubResource("ShaderMaterial_gp8j4")
 mesh = SubResource("ArrayMesh_g70an")
 skeleton = NodePath("")
+
+[node name="MovePlayer" type="AudioStreamPlayer3D" parent="DraggableBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717, 0)
+stream = ExtResource("9_qpgn4")
+
+[node name="HingeAttach" type="StaticBody3D" parent="."]
+top_level = true
+
+[node name="Hinge" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.45995, 0)
+node_a = NodePath("../HingeAttach")
+node_b = NodePath("../DraggableBody")
+angular_limit/enable = true
+angular_limit/upper = 1.4835298
+angular_limit/lower = 0.0

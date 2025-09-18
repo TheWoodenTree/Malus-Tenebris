@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://cf00o5jt3m2xi" path="res://source/actors/decor/furniture/chest.gd" id="2_ml8md"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_0lga1"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="3_4hw1h"]
-[ext_resource type="AudioStream" uid="uid://be631gjyel76q" path="res://source/assets/sounds/doors/wood_door_open_finish.ogg" id="5_aimeu"]
 [ext_resource type="AudioStream" uid="uid://djpaxbkieo8pc" path="res://source/assets/sounds/misc/chest_close.ogg" id="6_20ssm"]
+[ext_resource type="AudioStream" uid="uid://be631gjyel76q" path="res://source/assets/sounds/doors/wood_door_open_finish.ogg" id="7_8wpvv"]
 
 [sub_resource type="Gradient" id="Gradient_rxqmh"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -184,6 +184,11 @@ data = PackedVector3Array(0, 0.7175, 0.4, -0.92, 0.68, 0.4, 0, 0.68, 0.4, 0, 0.7
 
 [node name="Chest" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_etywi")]
 script = ExtResource("2_ml8md")
+max_rotation = 100.0
+min_rotation = 0.0
+default_angular_damp = 0.0
+sound_pitch_scale_max = 1.5
+sound_pitch_scale_min = 1.2
 interactable_type = 1
 interact_areas = [NodePath("DraggableBody/InteractArea")]
 meshes = [NodePath("DraggableBody/Mesh")]
@@ -204,15 +209,23 @@ mesh = SubResource("ArrayMesh_3wugu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, -0.5)
 shape = SubResource("BoxShape3D_lq3pv")
 
+[node name="ClosePlayer" parent="DraggableBody" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+stream = ExtResource("6_20ssm")
+
+[node name="MovePlayer" parent="DraggableBody" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.99939084, -0.034899496, 0, 0.034899496, 0.99939084, 0, -0.032999992, 0.029999971)
+stream = ExtResource("7_8wpvv")
+
 [node name="Mesh2" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("ArrayMesh_f6jd2")
 
 [node name="Hinge" type="HingeJoint3D" parent="." index="2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.717, 0.53)
+transform = Transform3D(1.9106855e-15, -4.371139e-08, 1, -1, -4.371139e-08, 0, 4.371139e-08, -1, -4.371139e-08, 0, 0.717, 0.53)
 node_a = NodePath("../DraggableBody")
 node_b = NodePath("../StaticBody3D")
 angular_limit/enable = true
-angular_limit/upper = 1.74533
+angular_limit/upper = 1.7453293
 angular_limit/lower = 0.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
@@ -220,10 +233,3 @@ angular_limit/lower = 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_suri6")
-
-[node name="CreakPlayer" type="AudioStreamPlayer3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717, 0.53)
-stream = ExtResource("5_aimeu")
-
-[node name="ClosePlayer" type="AudioStreamPlayer3D" parent="." index="5"]
-stream = ExtResource("6_20ssm")

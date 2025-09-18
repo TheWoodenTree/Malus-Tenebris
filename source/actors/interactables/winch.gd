@@ -107,14 +107,14 @@ func add_torque_to_handle(offset: Vector2):
 		if abs(angle_to_last_offset) > min_angle:
 			var torque: Vector3 = Vector3.BACK * -(abs(offset.x) + abs(offset.y)) * 150.0
 			rotating_body.apply_torque(torque)
-		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
 		last_cam_offset = offset
 
 
 func set_player_dragging(dragging: bool):
 	player_dragging = dragging
 	if dragging:
-		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
 	else:
 		#local_mouse_position = Vector2.ZERO
 		#last_3_mouse_positions.clear()

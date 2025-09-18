@@ -5,7 +5,7 @@ const CONTROLLER_DZ = 0.25
 const SOFT_MOVEMENT_MIN_WEIGHT: float = 0.025
 const SOFT_MOVEMENT_MAX_WEIGHT: float = 1.0
 
-const CAM_DRAG_SENS_MULTIPLIER = 0.075
+const DRAG_SENS_MULTIPLIER = 0.075
 
 var controller_sens = 1.0
 var controller_offset: Vector2 = Vector2.ZERO
@@ -74,7 +74,7 @@ func _input(event: InputEvent) -> void:
 				target_rotation.y = wrapf(target_rotation.y, 0.0, TAU)
 				rotation.y = target_rotation.y
 			
-			cam_rotated.emit(rotation_offset / CAM_DRAG_SENS_MULTIPLIER)
+			cam_rotated.emit(rotation_offset / DRAG_SENS_MULTIPLIER)
 
 
 func _controller_rotate():
@@ -116,3 +116,7 @@ func _controller_rotate():
 	
 	if rotated:
 		cam_rotated.emit(rotation_offset)
+
+
+func set_sens_mult_to_drag_sens_mult():
+	sensitivity_multiplier = DRAG_SENS_MULTIPLIER

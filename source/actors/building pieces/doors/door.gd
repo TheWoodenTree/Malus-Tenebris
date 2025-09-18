@@ -1,11 +1,8 @@
 @tool
 class_name Door
-extends Interactable
+extends Draggable
 
 @export var blocked: bool = false
-@export var starting_rotation: int = 0 : set = _set_starting_rotation
-@export var open_to_angle: int = 85
-@export var open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
 @export var key_name: String = ""
 @export var locked_message: String = ""
 @export var tutorial_popup: bool = false
@@ -15,25 +12,10 @@ extends Interactable
 var door_shaking: bool = false
 var attempt_open_angle: float
 var player_on_openable_side: bool = true
-var player_dragging: bool = false
-var player_just_started_dragging: bool = false
-var player_just_stopped_dragging: bool = false
-var closed_max_drag_angle: float
-var closed: bool
 var tutorial_popup_shown: bool = false
 var effects_scale: float = 0.0
 var player_interact_ray_col_normal: Vector3
 var player_facing_dir_xz: Vector2
-
-var cam_rot_offset: Vector2 = Vector2.ZERO
-var angular_velocity_last_frame: Vector3 = Vector3.ZERO
-var last_cam_rot_offset: Vector2 = Vector2.ZERO
-
-var sound_cooldown_timer: Timer = Timer.new()
-var pitch_scale_max: float = 1.0
-var pitch_scale_min: float = 0.8
-
-var rotation_axis := Vector3.UP
 
 var reverse_z_dist: bool = false
 
@@ -41,44 +23,24 @@ var open_attempted: bool = false
 
 @onready var unlocked = key_name.is_empty()
 
-@onready var draggable_body = $DoorBody
-@onready var door = $DoorBody/Door
-@onready var door_open_player = $DoorBody/DoorOpenPlayer
-@onready var door_full_open_player = $DoorBody/DoorFullOpenPlayer
-@onready var door_unlock_player = $DoorBody/DoorUnlockPlayer
-@onready var door_close_player = $DoorBody/DoorClosePlayer
-@onready var door_attempt_player = $DoorBody/DoorAttemptPlayer
-@onready var interact_area = $DoorBody/InteractArea
-@onready var key_anim_player = $DoorBody/KeyAnimPlayer
-@onready var key = $DoorBody/Key # Parent necessary because of a bug relating to scale when setting global_rotation
-@onready var collision_shape = $DoorBody/CollisionShape
-@onready var hinge = $DoorBody/Hinge
-@onready var mesh = $DoorBody/Door
-
-signal moved
+@onready var door = $DraggableBody/Door
+@onready var door_full_open_player = $DraggableBody/DoorFullOpenPlayer
+@onready var door_unlock_player = $DraggableBody/DoorUnlockPlayer
+@onready var door_attempt_player = $DraggableBody/DoorAttemptPlayer
+@onready var interact_area = $DraggableBody/InteractArea
+@onready var key_anim_player = $DraggableBody/KeyAnimPlayer
+@onready var key = $DraggableBody/Key # Parent necessary because of a bug relating to scale when setting global_rotation
+@onready var collision_shape = $DraggableBody/CollisionShape
+@onready var mesh = $DraggableBody/Door
 
 
 func _ready():
-	if not Engine.is_editor_hint():
-		super()
-		sound_cooldown_timer.one_shot = true
-		sound_cooldown_timer.wait_time = 0.3
-		add_child(sound_cooldown_timer)
-		await Global.player.ready
-		if interactable and Global.player.is_omnipotent_door_god:
-			set_hinge_limits(open_to_angle)
-		
-		if global_signal_allow_open:
-			GlobalSignals.connect(global_signal_allow_open, func(): blocked = false)
+	super()
+	if not Engine.is_editor_hint() and global_signal_allow_open:
+		GlobalSignals.connect(global_signal_allow_open, func(): blocked = false)
 	
-	#_set_starting_rotation(starting_rotation)
-	draggable_body.rotation.y = deg_to_rad(starting_rotation)
-	closed_max_drag_angle = 3.0 * sign(open_to_angle)
-	closed = abs(draggable_body.rotation.y) <= abs(deg_to_rad(closed_max_drag_angle))
-	if unlocked:
-		set_hinge_limits(open_to_angle)
-	else:
-		set_hinge_limits(closed_max_drag_angle)
+	if not unlocked:
+		set_hinge_limits(-close_threshold_angle, close_threshold_angle)
 
 
 func _on_target():
@@ -94,64 +56,6 @@ func _on_target():
 			interactable_type = Type.DOOR
 
 
-func _on_untarget():
-	pass
-
-
-func _process(_delta: float) -> void:
-	if not Engine.is_editor_hint():
-		if being_targeted and interactable or player_dragging:
-			if not Global.player.cam.is_connected("cam_rotated", add_torque_to_door):
-				Global.player.cam.connect("cam_rotated", add_torque_to_door)
-				
-		elif being_targeted:
-			Global.player.cam.disconnect("cam_rotated", add_torque_to_door)
-			being_targeted = false
-
-
-func _physics_process(_delta):
-	if not Engine.is_editor_hint():
-		if not draggable_body.sleeping and not closed:
-			if abs(draggable_body.angular_velocity.y) > 0.1:
-				var effect_scale: float = clamp(abs(draggable_body.angular_velocity.y) / PI, 0, 1.0)
-				var large_ang_vel_change: bool = abs(draggable_body.angular_velocity.y - angular_velocity_last_frame.y) > 0.35
-				var ang_vel_dir_changed: bool = sign(draggable_body.angular_velocity.y) != sign(angular_velocity_last_frame.y)
-				if (ang_vel_dir_changed or large_ang_vel_change) and sound_cooldown_timer.is_stopped() or player_just_started_dragging:
-					if not ang_vel_dir_changed or player_dragging:
-						door_open_player.play()
-						sound_cooldown_timer.start()
-						player_just_started_dragging = false
-						
-				door_open_player.volume_db = lerp(-30.0, 0.0, pow(effect_scale, 1.0))
-				door_open_player.pitch_scale = lerp(pitch_scale_min, pitch_scale_max, pow(effect_scale, 1.0))
-				
-				angular_velocity_last_frame = draggable_body.angular_velocity
-				
-			# Increase damp for angular velocity when the door is close to its hinge limit
-			if sign(open_to_angle) == sign(draggable_body.angular_velocity.y):
-				var min_damp_angle: float = abs(open_to_angle) - 10.0
-				var max_damp_angle: float = abs(open_to_angle)
-				var normalized: float = (abs(rad_to_deg(draggable_body.rotation.y)) - min_damp_angle) / (max_damp_angle - min_damp_angle)
-				var damping_scale: float = clamp(normalized, 0.0, 1.0) * 10.0
-				draggable_body.angular_damp = clamp(5.0 * damping_scale, 5.0, 50.0)
-			elif not closed:
-				draggable_body.angular_damp = 5.0
-				
-			# Set door to closed if it is within the closed angle
-			# and angular velocity is closing door
-			if abs(draggable_body.rotation.y) <= deg_to_rad(abs(closed_max_drag_angle)) \
-			and sign(draggable_body.angular_velocity.y) == -sign(open_to_angle):
-				set_closed(true)
-				
-			moved.emit(draggable_body.rotation_degrees.y, sign(get_player_z_dist()) == -1)
-			
-		elif player_dragging and unlocked and abs(draggable_body.rotation.y) >= deg_to_rad(abs(closed_max_drag_angle)):
-			set_closed(false)
-			
-		if abs(draggable_body.angular_velocity.y) < 0.05:
-				door_open_player.volume_db = -80.0
-
-
 func _on_interact() -> void:
 	if interactable:
 		# Player tries to unlock a locked door
@@ -165,6 +69,7 @@ func _on_interact() -> void:
 		# Player drags an unlocked door
 		elif (unlocked and not blocked and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
 			set_player_dragging(true)
+			Global.player.set_draggable_being_dragged(self)
 		
 		# Player tries to open a locked door
 		else:
@@ -187,7 +92,7 @@ func _on_interact() -> void:
 				
 				var door_tween = get_tree().create_tween()
 				
-				if open_to_angle > 0:
+				if max_rotation > 0:
 					attempt_open_angle = deg_to_rad(0.5)
 				else:
 					attempt_open_angle = -deg_to_rad(0.5)
@@ -202,7 +107,7 @@ func attempt_unlock():
 	var correct_key: bool = Global.player.is_holding_item(key_name + " Key")
 	var is_prison_depths_key: bool = Global.player.is_holding_item("Sump Tunnels Key")
 	var anim_name: String
-	print(key_name)
+	
 	if is_prison_depths_key and key_name == "Lubricated Sump Tunnels":
 		anim_name = "insert_rusty_key"
 	elif correct_key:
@@ -237,7 +142,7 @@ func attempt_unlock():
 	
 	# TODO: Remove
 	if correct_key and key_name == "Larder":
-		get_parent().get_parent().get_parent().get_node("LowerPrisonHallway2/Misc/ArchwayWDoorNoWindow/Door/DoorBody").rotation_degrees.y = 85.0
+		get_parent().get_parent().get_parent().get_node("LowerPrisonHallway2/Misc/ArchwayWDoorNoWindow/Door/DraggableBody").rotation_degrees.y = 85.0
 		await get_tree().create_timer(1.0, false).timeout
 		Global.monster.global_position = get_parent().get_parent().get_node("MonsterStartPoint").global_position
 		Global.monster.kitchen_encounter_event()
@@ -248,7 +153,7 @@ func attempt_unlock():
 	if correct_key and not is_prison_depths_key:
 		Global.player.delete_held_item()
 		unlocked = true
-		set_hinge_limits(open_to_angle)
+		set_hinge_limits(min_rotation, max_rotation)
 		if not Global.player.first_door_unlocked:
 			Global.player.first_door_unlocked = false
 		# TODO: Remove
@@ -267,9 +172,9 @@ func attempt_unlock():
 
 func open():
 	set_interactable(false)
-	var door_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(open_tween_trans)
+	var door_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	var anim_dur = door_full_open_player.stream.get_length() * (2 - door_full_open_player.pitch_scale)
-	door_tween.tween_property(draggable_body, "rotation:y", deg_to_rad(open_to_angle), anim_dur).from(0.0)
+	door_tween.tween_property(draggable_body, "rotation:y", deg_to_rad(max_rotation), anim_dur).from(0.0)
 	door_full_open_player.play()
 	interact_area.set_collision_layer_value(16, false)
 	await door_tween.finished
@@ -277,25 +182,7 @@ func open():
 	set_interactable(true)
 
 
-func set_closed(closed_: bool):
-	if closed_ and not closed:
-		door_close_player.play()
-		door_open_player.stop()
-		var tween = get_tree().create_tween()
-		tween.tween_property(draggable_body, "rotation_degrees:y", 0.0, 0.1)
-	closed = closed_
-
-
-func set_hinge_limits(angle: float):
-	if sign(angle) == 1:
-		hinge.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, deg_to_rad(angle)) 
-		hinge.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, 0.0) 
-	elif sign(angle) == -1:
-		hinge.set_param(HingeJoint3D.PARAM_LIMIT_UPPER, 0.0) 
-		hinge.set_param(HingeJoint3D.PARAM_LIMIT_LOWER, deg_to_rad(angle))
-
-
-func add_torque_to_door(offset: Vector2):
+func add_torque_to_draggable_body(offset: Vector2):
 	if player_dragging and (unlocked or Global.player.is_omnipotent_door_god):
 		cam_rot_offset = offset
 		#var force_direction: Vector2 = Vector2(-cam_rot_offset.y, -cam_rot_offset.x)
@@ -305,33 +192,21 @@ func add_torque_to_door(offset: Vector2):
 		#var torque: Vector3 = Vector3.UP * dot * 100.0 * force_direction.length()
 		#print(force_direction)
 		var player_z_dist = get_player_z_dist()
-		var torque_sign: int = sign(open_to_angle) * sign(player_z_dist)
+		var torque_sign: int = sign(max_rotation) * sign(player_z_dist)
 		var torque: Vector3 = Vector3.UP * (cam_rot_offset.y + cam_rot_offset.x) * 100.0 * torque_sign
 		draggable_body.apply_torque(torque)
-		if abs(draggable_body.angular_velocity.y) < 0.075:
-			Global.player.cam.can_rotate = false
-		else:
-			Global.player.cam.can_rotate = true
-		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
+		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
 		last_cam_rot_offset = offset
 
 
-func set_player_dragging(dragging: bool):
-	player_dragging = dragging
-	if dragging:
-		var player_facing_dir: Vector3 = Global.player.get_facing_dir()
-		player_facing_dir_xz = Vector2(player_facing_dir.x, player_facing_dir.z).normalized()
-		player_just_started_dragging = true
-		player_just_stopped_dragging = false
-		Global.player.cam.sensitivity_multiplier = Global.player.cam.CAM_DRAG_SENS_MULTIPLIER
-		Global.player.set_draggable_being_dragged(self)
-	else:
-		player_just_started_dragging = false
-		player_just_stopped_dragging = true
-		Global.player.set_draggable_being_dragged(null)
-		await get_tree().create_timer(0.1, false).timeout # Prevent camera from flicking when letting go of door
-		Global.player.cam.sensitivity_multiplier = 1.0
-		Global.player.cam.can_rotate = true
+func _on_player_started_dragging():
+	var player_facing_dir: Vector3 = Global.player.get_facing_dir()
+	player_facing_dir_xz = Vector2(player_facing_dir.x, player_facing_dir.z).normalized()
+
+
+func set_closed(closed_: bool):
+	if unlocked:
+		super(closed_)
 
 
 func wrong_key_hint_popup():
@@ -346,13 +221,3 @@ func get_player_z_dist():
 	var z_dist: float = draggable_body.to_local(Global.player.global_position).rotated(Vector3.UP, draggable_body.rotation.y).z
 	# Reverse z_dist for doors that are rotated
 	return z_dist if not reverse_z_dist else -1 * z_dist
-
-
-func get_draggable_body_angle():
-	return draggable_body.rotation.y
-
-
-func _set_starting_rotation(starting_rotation_):
-	starting_rotation = starting_rotation_
-	if draggable_body:
-		draggable_body.rotation.y = deg_to_rad(starting_rotation)

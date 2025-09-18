@@ -234,7 +234,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35, 1
 
 [node name="SmallCell" parent="Cells" index="0" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0.5, 3.5)
-door_open_angle = -35
 
 [node name="SmallCell2" parent="Cells" index="1" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.5, 0.5, -3.5)
@@ -467,31 +466,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="SquareDoorway" parent="." index="54" instance=ExtResource("35_mf3lc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 4)
-door_open_angle = 45
 
 [node name="SquareCellDoor" parent="SquareDoorway" index="3" instance=ExtResource("37_gkg1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 45
 
 [node name="SquareDoorway2" parent="." index="55" instance=ExtResource("35_mf3lc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.5, 4)
-door_open_angle = 65
 
 [node name="SquareCellDoor" parent="SquareDoorway2" index="3" instance=ExtResource("37_gkg1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 65
 
 [node name="SquareDoorway3" parent="." index="56" instance=ExtResource("35_mf3lc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.5, 0.5, -4)
 
 [node name="SquareCellDoor" parent="SquareDoorway3" index="3" instance=ExtResource("37_gkg1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+initial_rotation = 55.0
 
 [node name="SquareDoorway4" parent="." index="57" instance=ExtResource("35_mf3lc")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32, 0.5, -19)
 
 [node name="SquareCellDoor" parent="SquareDoorway4" index="3" instance=ExtResource("37_gkg1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+initial_rotation = 85.0
 
 [node name="StoneWall2" parent="." index="58" instance=ExtResource("4_4tjt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 10, -4)

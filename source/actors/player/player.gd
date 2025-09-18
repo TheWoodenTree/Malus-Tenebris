@@ -13,15 +13,13 @@ var global_input_dir = Vector3.ZERO
 var global_input_dir_last_frame = Vector3.ZERO
 var max_speed = walk_speed
 
-var draggable_touch_position := Vector3.ZERO
-var draggable_angle_on_touch: float
+var draggable_local_touch_position := Vector3.ZERO
 
 var torch: Object
 var targeted_interactable: Interactable
-var last_looked_at: Object = null
 var held_item_data: ItemData = null
 var held_item: Pickup = null
-var draggable_being_dragged: Object = null # Set by door script
+var draggable_being_dragged: Draggable = null
 
 var has_torch: bool = false
 var in_menu: bool = false
@@ -60,7 +58,6 @@ signal crouched
 signal interactable_targeted(interactable_type: Interactable.Type)
 signal interactable_untargeted
 signal holding_self_useable(interactable_type: Interactable.Type)
-signal draggable_interacted
 
 
 func _ready() -> void:
@@ -102,15 +99,19 @@ func _process(_delta: float) -> void:
 	# Stop dragging if too far from draggable
 	if is_instance_valid(draggable_being_dragged):
 		# Comically long line of code:
-		#var dist_from_touch_point: float = cam.global_position.distance_to(draggable_being_dragged.draggable_body.to_global(draggable_being_dragged.draggable_body.to_local(draggable_touch_position).rotated(draggable_being_dragged.rotation_axis, draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch)))
-		var local_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_local(draggable_touch_position)
-		var angle_diff: float = draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch
-		var rotated_touch_point: Vector3 = local_touch_point.rotated(draggable_being_dragged.rotation_axis, angle_diff)
-		var global_rotated_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_global(rotated_touch_point)
-		var dist_from_touch_point: float = cam.global_position.distance_to(global_rotated_touch_point)
+		#var dist_from_touch_point: float = cam.global_position.distance_to(draggable_being_dragged.draggable_body.to_global(draggable_being_dragged.draggable_body.to_local(draggable_local_touch_position).rotated(draggable_being_dragged.rotation_axis, draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch)))
+		#var local_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_local(draggable_local_touch_position)
+		#var angle_diff: float = draggable_being_dragged.get_draggable_body_angle() - draggable_angle_on_touch
+		#var rotated_touch_point: Vector3 = local_touch_point.rotated(draggable_being_dragged.rotation_axis_vector, angle_diff)
+		#var global_rotated_touch_point: Vector3 = draggable_being_dragged.draggable_body.to_global(rotated_touch_point)
+		#var dist_from_touch_point: float = cam.global_position.distance_to(global_rotated_touch_point)
+		#if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
+			#set_draggable_being_dragged(null)
+		
+		var current_global_touch_position: Vector3 = draggable_being_dragged.draggable_body.to_global(draggable_local_touch_position)
+		var dist_from_touch_point: float = cam.global_position.distance_to(current_global_touch_position)
 		if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
-			draggable_being_dragged.set_player_dragging(false)
-			draggable_being_dragged = null
+			set_draggable_being_dragged(null)
 
 
 func _physics_process(delta: float) -> void:
@@ -145,8 +146,7 @@ func _handle_input():
 	
 	if Input.is_action_just_released("interact"):
 		if is_instance_valid(draggable_being_dragged):
-			draggable_being_dragged.set_player_dragging(false)
-			draggable_being_dragged = null
+			set_draggable_being_dragged(null)
 	
 	#if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
 	#	var instance: RigidBody3D = thrown_item.instantiate()
@@ -286,16 +286,13 @@ func set_targeted_interactable(interactable: Interactable):
 		interactable_untargeted.emit(is_holding_self_useable)
 
 
-func set_draggable_being_dragged(draggable: Object):
-	draggable_being_dragged = draggable
-	if draggable_being_dragged:
-		draggable_interacted.emit(draggable_being_dragged)
-		draggable_touch_position = interact_ray.get_collision_point()
-		draggable_angle_on_touch = draggable.get_draggable_body_angle()
-		Global.ui.toggle_draggable_progress_bar(true)
+func set_draggable_being_dragged(draggable: Draggable):
+	if draggable:
+		draggable_local_touch_position = draggable.draggable_body.to_local(interact_ray.get_collision_point())
 	else:
-		draggable_touch_position = Vector3.ZERO
-		Global.ui.toggle_draggable_progress_bar(false)
+		draggable_local_touch_position = Vector3.ZERO
+		draggable_being_dragged.set_player_dragging(false)
+	draggable_being_dragged = draggable
 
 
 func play_sound_one_shot(sound: AudioStream):

@@ -107,7 +107,7 @@ size = Vector3(6, 5, 1)
 [node name="Chest" parent="." index="25" instance=ExtResource("5_k4ms5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -0.75)
 
-[node name="Key" parent="Chest" index="6" instance=ExtResource("7_5geft")]
+[node name="Key" parent="Chest" index="4" instance=ExtResource("7_5geft")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0.25, 0.25, 0)
 item_data = SubResource("Resource_s084f")
 enable_highlight_light = true

@@ -213,7 +213,6 @@ has_frame = false
 
 [node name="WoodDoorNoWindow" parent="RegDoorway" index="3" instance=ExtResource("13_4taaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 85
 
 [node name="StoneWall4" parent="." index="30" instance=ExtResource("2_g4sh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3, -22.5)

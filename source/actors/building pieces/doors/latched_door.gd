@@ -4,14 +4,14 @@ extends Door
 
 var latch_locked: bool = false
 
-@onready var latch = $DoorBody/DoorLatch
+@onready var latch = $DraggableBody/DoorLatch
 
 
 func _ready():
 	super()
 	if not Engine.is_editor_hint() and latch:
 		latch.parent_door = self
-		latch.set_interactable(starting_rotation < closed_max_drag_angle)
+		latch.set_interactable(initial_rotation < close_threshold_angle)
 
 
 func open():
@@ -31,5 +31,4 @@ func on_latch_toggle(latch_locked_: bool):
 	if latch_locked:
 		var tween = get_tree().create_tween()
 		tween.tween_property(draggable_body, "rotation_degrees:y", 0.0, 0.1)
-	print(not latch_locked)
 	set_interactable(not latch_locked)

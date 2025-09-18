@@ -1,7 +1,22 @@
-@abstract class_name Interactable extends Node3D
+@abstract 
+class_name Interactable 
+extends Node3D
 
-enum Type {DOOR, DRAGGABLE, LOCKED_DOOR, PICKUP, NOTE, MOVEABLE, FIRE, MISC}
-enum ShaderMode {OUTLINE, HIGHLIGHT}
+enum Type {
+	DOOR, 
+	DRAGGABLE, 
+	LOCKED_DOOR, 
+	PICKUP, 
+	NOTE, 
+	MOVEABLE, 
+	FIRE, 
+	MISC,
+}
+
+enum ShaderMode {
+	OUTLINE, 
+	HIGHLIGHT,
+}
 
 @export var interactable_type: Type = Type.MISC
 @export var interact_areas: Array[InteractArea]
@@ -23,7 +38,7 @@ var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/hi
 func _ready():
 	if highlight_light:
 		highlight_light.visible = enable_highlight_light
-	
+		
 	if not Engine.is_editor_hint():
 		for area: InteractArea in interact_areas:
 			area.set_collision_layer_value(16, interactable)

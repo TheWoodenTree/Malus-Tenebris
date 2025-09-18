@@ -5,7 +5,7 @@ extends Archway
 @export_enum("Do Not Override", "Override True", "Override False") var door1_interactable_override: int = 0
 @export var door1_blocked: bool = false
 @export var door1_one_way: bool = false
-@export var door1_open_angle: int = 0 : set = _set_door1_rotation
+@export var door1_initial_rotation: int = 0 : set = _set_door1_rotation
 @export var door1_open_to_angle: int = 0
 @export var door1_angle_offset: int = 0
 @export var door1_open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
@@ -17,7 +17,7 @@ extends Archway
 @export_enum("Do Not Override", "Override True", "Override False") var door2_interactable_override: int = 0
 @export var door2_blocked: bool = false
 @export var door2_one_way: bool = false
-@export var door2_open_angle: int = 0 : set = _set_door2_rotation
+@export var door2_initial_rotation: int = 0 : set = _set_door2_rotation
 @export var door2_open_to_angle: int = 0
 @export var door2_angle_offset: int = 0
 @export var door2_open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
@@ -27,8 +27,8 @@ extends Archway
 
 @onready var door1 = $Door1
 @onready var door2 = $Door2
-@onready var door1_body = $Door1/DoorBody
-@onready var door2_body = $Door2/DoorBody
+@onready var door1_body = $Door1/DraggableBody
+@onready var door2_body = $Door2/DraggableBody
 
 
 func _ready():
@@ -41,9 +41,8 @@ func _ready():
 			2:
 				door1.set_interactable(false)
 		door1.blocked = door1_blocked
-		door1.starting_rotation = door1_open_angle + door1_angle_offset
-		door1.open_to_angle = door1_open_to_angle
-		door1.open_tween_trans = door1_open_tween_trans
+		door1.initial_rotation = door1_initial_rotation + door1_angle_offset
+		door1.max_rotation = door1_open_to_angle
 		door1.key_name = door1_key_name
 		door1.locked_message = door1_locked_message
 		door1.unlocked = door1_key_name.is_empty()
@@ -56,9 +55,8 @@ func _ready():
 			2:
 				door2.set_interactable(false)
 		door2.blocked = door2_blocked
-		door2.starting_rotation = door2_open_angle + door2_angle_offset
-		door2.open_to_angle = door2_open_to_angle
-		door2.open_tween_trans = door2_open_tween_trans
+		door2.initial_rotation = door2_initial_rotation + door2_angle_offset
+		door2.max_rotation = door2_open_to_angle
 		door2.key_name = door2_key_name
 		door2.locked_message = door2_locked_message
 		door2.unlocked = door2_key_name.is_empty()
@@ -66,17 +64,17 @@ func _ready():
 		door2.reverse_z_dist = true
 		#door2.parent_ready_finished()
 	else:
-		door1_body.rotation.y = deg_to_rad(door2_open_angle + door2_angle_offset)
-		door2_body.rotation.y = deg_to_rad(door2_open_angle + door2_angle_offset)
+		door1_body.rotation.y = deg_to_rad(door2_initial_rotation + door2_angle_offset)
+		door2_body.rotation.y = deg_to_rad(door2_initial_rotation + door2_angle_offset)
 
 
 func _set_door1_rotation(new_state):
-	door1_open_angle = new_state
+	door1_initial_rotation = new_state
 	if door1:
 		door1_body.rotation.y = deg_to_rad(new_state + door1_angle_offset)
 
 
 func _set_door2_rotation(new_state):
-	door2_open_angle = new_state
+	door2_initial_rotation = new_state
 	if door2:
 		door2_body.rotation.y = deg_to_rad(new_state + door2_angle_offset)

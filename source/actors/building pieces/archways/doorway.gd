@@ -6,7 +6,7 @@ const DOOR_POSITION := Vector3(1.125, 0.0, 0.1)
 
 @export_enum("Do Not Override", "Override True", "Override False") var door_interactable_override: int = 0
 @export var door_one_way: bool = false
-@export var door_open_angle: int = 0 : set = _set_door_rotation
+@export var door_initial_rotation: int = 0 : set = _set_door_rotation
 @export var door_open_to_angle: int = 0
 @export var door_angle_offset: int = 0
 @export var door_open_tween_trans: Tween.TransitionType = Tween.TRANS_SINE
@@ -31,7 +31,7 @@ func _ready() -> void:
 				2:
 					door.set_interactable(false)
 			#door.one_way = door_one_way
-			#door.open_angle = door_open_angle + door_angle_offset
+			#door.initial_rotation = door_initial_rotation + door_angle_offset
 			#door.open_to_angle = door_open_to_angle
 			#door.open_tween_trans = door_open_tween_trans
 			#door.angle_offset = door_angle_offset
@@ -41,7 +41,7 @@ func _ready() -> void:
 			#door.tutorial_popup = door_tutorial_popup
 			#door.parent_ready_finished()
 		#else:
-		#	door.rotation.y = deg_to_rad(door_open_angle + door_angle_offset)
+		#	door.rotation.y = deg_to_rad(door_initial_rotation + door_angle_offset)
 
 
 func _on_child_entered_tree(node: Node):
@@ -57,6 +57,6 @@ func _snap_door():
 
 
 func _set_door_rotation(new_state):
-	door_open_angle = new_state
+	door_initial_rotation = new_state
 	if door:
 		door.rotation.y = deg_to_rad(new_state + door_angle_offset)

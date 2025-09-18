@@ -505,18 +505,15 @@ chain_length = 0
 
 [node name="RegDoorway" parent="." index="133" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.75, -3, -15.5)
-door_open_angle = 85
 
 [node name="WoodDoor" parent="RegDoorway" index="3" instance=ExtResource("49_jxbe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 
 [node name="RegDoorway2" parent="." index="134" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3, 9.5)
-door_open_angle = 85
 
 [node name="WoodDoor" parent="RegDoorway2" index="3" instance=ExtResource("49_jxbe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 85
 
 [node name="RegDoorway3" parent="." index="135" instance=ExtResource("52_cdtbi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -33.5, -3, -19.5)

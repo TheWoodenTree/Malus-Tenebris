@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqcgnrdsde7ui"]
+[gd_scene load_steps=8 format=3 uid="uid://cqcgnrdsde7ui"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_bo8jr"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="2_blq6y"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="5_w683f"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="6_5xhv7"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="7_4skmv"]
-[ext_resource type="PackedScene" uid="uid://c105p4vajm71h" path="res://source/actors/building pieces/archways/archway_w_cell_door.tscn" id="8_lpygc"]
 
 [node name="ItchBackgroundRoom" instance=ExtResource("1_bo8jr")]
 
@@ -64,6 +63,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 1, 0)
 default_range = 14.0
 default_energy = 1.0
 shadow_mode = 1
-
-[node name="ArchwayWCellDoor" parent="." index="18" instance=ExtResource("8_lpygc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0.5, 0)
