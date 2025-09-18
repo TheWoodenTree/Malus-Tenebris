@@ -18,8 +18,10 @@ func _on_interact() -> void:
 		
 		var initial_pos: Vector3 = vial.global_position
 		var initial_rot: Vector3 = vial.global_rotation
-		vial.global_position = Global.player.held_item.global_position
-		vial.global_rotation = Global.player.held_item.global_rotation
+		
+		var held_item: Pickup = Global.player.held_item
+		vial.global_position = held_item.global_position
+		vial.global_rotation = held_item.meshes[0].global_rotation
 		
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 		tween.tween_property(vial, "global_position", initial_pos, 0.35)
