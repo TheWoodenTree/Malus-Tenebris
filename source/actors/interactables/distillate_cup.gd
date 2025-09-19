@@ -15,7 +15,7 @@ func _on_target():
 			var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
 			Global.ui.hint_popup(doses_left_string, -1)
 		else:
-			Global.ui.hint_popup("Contains a dose of the cure for the ailment", -1)
+			Global.ui.hint_popup("Contains a dose of a temporary inhibitor for Vitriscet", -1)
 
 
 func _on_untarget():

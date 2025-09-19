@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=56 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
@@ -44,6 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="43_0v6kg"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="44_fvmec"]
 [ext_resource type="PackedScene" uid="uid://b0ulsvtx3b41t" path="res://source/actors/interactables/pickups/hourglass.tscn" id="44_ydufn"]
+[ext_resource type="AudioStream" uid="uid://dh2kkntq5trgy" path="res://source/assets/sounds/pickup/hourglass_pickup.ogg" id="45_0ilup"]
+[ext_resource type="Texture2D" uid="uid://cal01wqt1245e" path="res://source/assets/ui/inventory/hourglass.png" id="46_r3otd"]
 
 [sub_resource type="Resource" id="Resource_0ilup"]
 resource_local_to_scene = true
@@ -94,6 +96,14 @@ script = ExtResource("26_rhjbl")
 name = "Visolis"
 texture = ExtResource("39_y8yjx")
 pickup_sound = ExtResource("34_e2n1h")
+
+[sub_resource type="Resource" id="Resource_47idu"]
+resource_local_to_scene = true
+script = ExtResource("26_rhjbl")
+name = "Hourglass"
+texture = ExtResource("46_r3otd")
+pickup_sound = ExtResource("45_0ilup")
+metadata/_custom_type_script = "uid://c8rev6ihosd6u"
 
 [node name="SafeRoom" instance=ExtResource("1_ntfkh")]
 script = ExtResource("1_d3v5u")
@@ -238,16 +248,17 @@ length = 4.0
 [node name="Chest" parent="Misc" index="1" instance=ExtResource("32_v6vsh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25, 0.5, -3.374)
 
-[node name="RuboleumVial" parent="Misc/Chest" index="6" instance=ExtResource("24_g1atn")]
+[node name="RuboleumVial" parent="Misc/Chest" index="4" instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
 item_data = SubResource("Resource_0ilup")
 
-[node name="RuboleumVial2" parent="Misc/Chest" index="7" instance=ExtResource("24_g1atn")]
+[node name="RuboleumVial2" parent="Misc/Chest" index="5" instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
 item_data = SubResource("Resource_r3otd")
 
 [node name="Note2" parent="Misc" index="2" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
+display_help = false
 note_name = "Ruboleum Distillation Instructions"
 label = ExtResource("28_a1a56")
 
@@ -401,7 +412,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3, 4)
 size = Vector3(1, 5, 1)
 
 [node name="Hourglass" parent="." index="46" instance=ExtResource("44_ydufn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.4, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25, 2.8, 1.5)
+item_data = SubResource("Resource_47idu")
+enable_highlight_light = true
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]

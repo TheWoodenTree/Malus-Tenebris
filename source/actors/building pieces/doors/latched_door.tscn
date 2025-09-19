@@ -138,13 +138,6 @@ shader_parameter/transparent = false
 
 [node name="LatchedDoor" instance=ExtResource("1_r6dx6")]
 script = ExtResource("2_7g1um")
-blocked = Object(HingeJoint3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.45995, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"node_a":NodePath("../HingeAttach"),"node_b":NodePath("../DraggableBody"),"solver_priority":1,"exclude_nodes_from_collision":true,"params/bias":0.3,"angular_limit/enable":true,"angular_limit/upper":1.4835298,"angular_limit/lower":0.0,"angular_limit/bias":0.3,"angular_limit/softness":0.9,"angular_limit/relaxation":1.0,"motor/enable":false,"motor/target_velocity":1.0,"motor/max_impulse":1.0,"script":null)
-
-min_rotation = null
-initial_rotation = -90.0
-
-[node name="DraggableBody" parent="." index="0"]
-transform = Transform3D(0.9986295, 0, 0.05233596, 0, 1, 0, -0.05233596, 0, 0.9986295, 0, 0, 0)
 
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
@@ -166,4 +159,4 @@ material_overlay = SubResource("ShaderMaterial_x3m8t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94622, 2.20789, 0.195759)
 
 [node name="DoorFrameLatchHolder" parent="." index="1" instance=ExtResource("5_rhct3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.434, 2.174, 0.081)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.434, 2.174, 0.18)

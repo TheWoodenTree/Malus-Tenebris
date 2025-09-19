@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://dgk5jc33rhc4k"]
+[gd_scene load_steps=15 format=4 uid="uid://dgk5jc33rhc4k"]
 
 [ext_resource type="PackedScene" uid="uid://csrs2a5ulov1a" path="res://source/actors/building pieces/doors/door_template.tscn" id="1_0ft13"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_fpfc1"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="3_krmcs"]
 [ext_resource type="Material" uid="uid://dqllpa5eiv4dr" path="res://source/assets/materials/dark_wood_planks/dark_wood_planks.tres" id="4_hjihc"]
-[ext_resource type="AudioStream" uid="uid://bx34wvubqn1jh" path="res://source/assets/sounds/doors/wood_door_close_2.ogg" id="5_0xlik"]
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -135,8 +134,6 @@ shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
 [node name="WoodDoor" instance=ExtResource("1_0ft13")]
-blocked = Object(HingeJoint3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.45995, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"node_a":NodePath("../HingeAttach"),"node_b":NodePath("../DraggableBody"),"solver_priority":1,"exclude_nodes_from_collision":true,"params/bias":0.3,"angular_limit/enable":true,"angular_limit/upper":1.4835298,"angular_limit/lower":0.0,"angular_limit/bias":0.3,"angular_limit/softness":0.9,"angular_limit/relaxation":1.0,"motor/enable":false,"motor/target_velocity":1.0,"motor/max_impulse":1.0,"script":null)
-
 
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
@@ -150,9 +147,6 @@ shape = SubResource("BoxShape3D_0xlik")
 [node name="CollisionShape" parent="DraggableBody/InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83, -0.453)
 shape = SubResource("BoxShape3D_hwyut")
-
-[node name="ClosePlayer" parent="DraggableBody" index="6"]
-stream = ExtResource("5_0xlik")
 
 [node name="Mesh" parent="DraggableBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_hwyut")
