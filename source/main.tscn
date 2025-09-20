@@ -92,6 +92,7 @@ autoplay = true
 [node name="DripPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10")
 volume_db = -16.0
+stream_paused = true
 bus = &"Global"
 
 [node name="PlayGameSoundPlayer" type="AudioStreamPlayer" parent="."]
@@ -148,6 +149,7 @@ visible = false
 copy_mode = 2
 
 [node name="RetroShader" type="ColorRect" parent="PostProcessing"]
+visible = false
 material = ExtResource("7_768vo")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
@@ -160,13 +162,13 @@ offset_bottom = 288.0
 environment = ExtResource("12_r5lv5")
 
 [node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 45.0
+offset_right = 46.0
+offset_bottom = 44.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.9607843, 0.60784316, 0.3529412, 1)
 theme_override_fonts/font = ExtResource("10_8mkgv")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "FPS:"
 
 [node name="TimerLabel" type="Label" parent="."]

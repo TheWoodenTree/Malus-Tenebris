@@ -363,7 +363,6 @@ shadow_mode = 1
 
 [node name="HangingLamp2" parent="." index="25" instance=ExtResource("7_wl0yr")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -10.5, 2.25, 0)
-default_energy = 1.0
 shadow_mode = 1
 
 [node name="HangingLamp3" parent="." index="26" instance=ExtResource("7_wl0yr")]

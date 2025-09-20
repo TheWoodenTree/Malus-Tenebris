@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode specular_toon;
 
 uniform int parent_room_global_rot = 0;
 uniform float def_scale = 0.005;

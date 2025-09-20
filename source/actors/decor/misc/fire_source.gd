@@ -3,7 +3,7 @@ class_name FireSource
 extends Interactable
 
 @export var default_range: float = 12.0
-@export var default_energy: float = 0.75
+@export var default_energy: float = 1.25
 @export var lit: bool = true : set = set_lit
 @export var shadow_mode: OmniLight3D.ShadowMode = OmniLight3D.ShadowMode.SHADOW_DUAL_PARABOLOID : set = set_shadow_mode
 @export var audio_fade_in_on_ready: bool = false
@@ -24,7 +24,8 @@ func _ready() -> void:
 		light.default_range = default_range
 		light.omni_range = default_range
 		light.default_energy = default_energy
-		light.flicker()
+		if lit:
+			light.flicker()
 		set_interactable(lit and is_instance_valid(Global.player.torch) and not Global.player.torch.is_lit)
 		
 		interact_area.fire_burning_sound_area_entered.connect(_on_fire_burning_sound_area_entered)

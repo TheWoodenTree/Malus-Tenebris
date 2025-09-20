@@ -1,69 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://ciqhcdlogy3np"]
+[gd_scene load_steps=9 format=4 uid="uid://ciqhcdlogy3np"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_t3vo7"]
 [ext_resource type="Material" uid="uid://ctkc38wtdaow" path="res://source/assets/materials/rope/rope.tres" id="2"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="2_rq1co"]
 [ext_resource type="PackedScene" uid="uid://bybym4b32w5oy" path="res://source/actors/misc/fire.tscn" id="3"]
-[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_m7j4c"]
 [ext_resource type="Script" uid="uid://bgxy30m66div2" path="res://source/actors/decor/misc/fire_source.gd" id="4"]
-
-[sub_resource type="Gradient" id="Gradient_rddky"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rddky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mq2u"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_m7j4c")
-shader_parameter/enableSheen = false
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
-
-[sub_resource type="Shader" id="Shader_mxpac"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_depro"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_0mq2u")
-shader = SubResource("Shader_mxpac")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xw2ll"]
 _surfaces = [{
@@ -128,12 +69,12 @@ radius = 1.0
 
 [node name="HangingLamp" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_t3vo7")]
 script = ExtResource("4")
+default_energy = 3.0
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
-material_overlay = SubResource("ShaderMaterial_depro")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_il53b")
 

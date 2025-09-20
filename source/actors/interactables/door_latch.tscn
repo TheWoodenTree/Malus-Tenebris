@@ -1,71 +1,12 @@
-[gd_scene load_steps=22 format=4 uid="uid://bh806ab5c7js6"]
+[gd_scene load_steps=16 format=4 uid="uid://bh806ab5c7js6"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_8axtm"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="2_k8gro"]
 [ext_resource type="Script" uid="uid://cct5hlmel313d" path="res://source/actors/interactables/door_latch.gd" id="2_rkwjl"]
-[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_cw6yq"]
 [ext_resource type="AudioStream" uid="uid://cbwd4cq1acw68" path="res://source/assets/sounds/latch/latch_rotate_1.ogg" id="4_wfqst"]
 [ext_resource type="AudioStream" uid="uid://iqjdbgkjm8o2" path="res://source/assets/sounds/latch/latch_rotate_2.ogg" id="5_48d1n"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="5_fbgjp"]
 [ext_resource type="AudioStream" uid="uid://b2pge7wjcwl0f" path="res://source/assets/sounds/latch/latch_move.ogg" id="5_ueqj5"]
-
-[sub_resource type="Gradient" id="Gradient_rddky"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rddky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbgjp"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_cw6yq")
-shader_parameter/enableSheen = false
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
-
-[sub_resource type="Shader" id="Shader_llpgf"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u87td"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_fbgjp")
-shader = SubResource("Shader_llpgf")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0c1sn"]
 _surfaces = [{
@@ -251,7 +192,6 @@ meshes = [NodePath("Mesh"), NodePath("MeshInstance3D2")]
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.557, 0, 0)
 layers = 4
-material_overlay = SubResource("ShaderMaterial_u87td")
 mesh = SubResource("ArrayMesh_0lrdm")
 
 [node name="LatchSoundPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="0"]

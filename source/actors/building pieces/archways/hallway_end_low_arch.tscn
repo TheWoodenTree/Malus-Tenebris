@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://dvqmit8sb2byw"]
 
-[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/rough_bricks.tres" id="1_rgnrg"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/stone_wall/rough_bricks.tres" id="1_rgnrg"]
+
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_s4ssk"]
 _surfaces = [{

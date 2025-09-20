@@ -162,5 +162,5 @@ size = Vector3(1, 9, 2)
 
 [node name="HangingLamp" parent="." index="49" instance=ExtResource("10_xn0ed")]
 default_range = 8.0
-default_energy = 0.5
+default_energy = 2.5
 shadow_mode = 1

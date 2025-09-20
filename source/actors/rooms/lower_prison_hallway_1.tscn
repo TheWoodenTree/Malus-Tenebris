@@ -215,12 +215,10 @@ has_frame = false
 
 [node name="TorchHolder" parent="." index="30" instance=ExtResource("15_2ryt6")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.625, 2.25, -25.25)
-default_energy = 1.0
 shadow_mode = 1
 
 [node name="TorchHolder2" parent="." index="31" instance=ExtResource("15_2ryt6")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.25, 2.25, -4.625)
-default_energy = 1.0
 shadow_mode = 1
 
 [node name="NarrowCurvedCeiling1" parent="." index="32" instance=ExtResource("16_gxsyu")]

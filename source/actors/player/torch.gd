@@ -23,7 +23,7 @@ var looked_at_last_frame = false
 
 @onready var material = $Mesh.material_overlay
 @onready var particles = $FireParticles
-@onready var light = $FireParticles/Light
+@onready var self_light = $SelfLight
 @onready var torch_light_player = $TorchLightPlayer
 @onready var pickup_player = $PickupPlayer
 @onready var burning_player = $BurningPlayer
@@ -44,10 +44,9 @@ func _ready() -> void:
 	# so it must be playing at all times rather than be paused
 	burning_player.volume_db = -80.0
 	
-	light.omni_range = default_range
-	light.light_energy = default_energy
+	self_light.default_energy = 1.0
 	particles.emitting = false
-	light.visible = false
+	self_light.visible = false
 	hit_sound_timer.wait_time = 0.2
 	hit_sound_timer.one_shot = true
 	swoosh_timer.one_shot = true
@@ -75,7 +74,7 @@ func _on_interact() -> void:
 	pickup_player.play()
 	particles.local_coords = true
 	mesh.layers = 2
-	light.visible = false
+	self_light.visible = true
 	
 	highlight_light.visible = false
 	
@@ -138,6 +137,8 @@ func light_torch():
 	tween.tween_property(burning_player, "volume_db", -5.0, 3.0).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(player_light, "omni_range", default_range, 3.0).set_ease(Tween.EASE_IN_OUT)
 	tween.parallel().tween_property(player_light, "default_energy", default_energy, 3.0)
+	tween.parallel().tween_property(self_light, "omni_range", 1.0, 3.0).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(self_light, "default_energy", 1.0, 3.0)
 	tween.parallel().tween_property(particles.process_material, "initial_velocity", Vector2.ONE, 3.0).from(Vector2.ZERO)
 	tween.parallel().tween_property(particles.process_material, "scale", Vector2.ONE, 3.0).from(Vector2.ZERO)
 	

@@ -80,7 +80,7 @@ data = PackedVector3Array(-2.5, -2.5, 0.8, -2.5, 0, 0.6, -2.5, 0, 0.8, -2.5, -2.
 script = ExtResource("1_ixywx")
 
 [node name="Archway" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ko1ra")
 skeleton = NodePath("")
 

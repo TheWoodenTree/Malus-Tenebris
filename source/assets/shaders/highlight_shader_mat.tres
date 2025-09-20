@@ -6,11 +6,12 @@ code = "shader_type spatial;
 
 uniform bool highlightOn = true;
 
+uniform vec3 highlightColor : source_color = vec3(0.913, 0.328, 0.102);
 
 void fragment()
 {
 	if (highlightOn) {
-		ALBEDO = vec3(1.0, 1.0, 1.0);
+		ALBEDO = highlightColor;
 	}
 }
 
@@ -27,3 +28,4 @@ resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("1")
 shader_parameter/highlightOn = true
+shader_parameter/highlightColor = Color(0.9607843, 0.60784316, 0.3529412, 1)

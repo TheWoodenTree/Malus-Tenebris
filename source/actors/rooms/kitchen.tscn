@@ -321,7 +321,7 @@ label = ExtResource("29_r0ce2")
 [node name="TorchHolder" parent="." index="63" instance=ExtResource("22_12ae0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89023, 2, -3.70009)
 default_range = 8.0
-default_energy = 0.65
+default_energy = 2.5
 shadow_mode = 1
 
 [node name="SmTallPot" parent="." index="64" instance=ExtResource("31_upow3")]
@@ -536,13 +536,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1
 
 [node name="Bonfire2" parent="." index="122" instance=ExtResource("24_lpptl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 1, -17.25)
-default_range = 14.0
-default_energy = 1.0
+default_energy = 4.0
 shadow_mode = 1
 
 [node name="Bonfire3" parent="." index="123" instance=ExtResource("24_lpptl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -17.25)
-default_range = 14.0
 default_energy = 1.0
 lit = false
 
@@ -646,7 +644,7 @@ transform = Transform3D(-0.527682, 0, -0.849442, 0, 1, 0, 0.849442, 0, -0.527682
 [node name="PlateWCandle" parent="." index="147" instance=ExtResource("63_gh80q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -11)
 default_range = 5.0
-default_energy = 0.25
+default_energy = 2.0
 shadow_mode = 1
 
 [node name="Sack2" parent="." index="148" instance=ExtResource("64_t8enq")]

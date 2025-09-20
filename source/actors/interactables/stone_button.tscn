@@ -1,68 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://but5ppjmdoelt"]
+[gd_scene load_steps=7 format=3 uid="uid://but5ppjmdoelt"]
 
 [ext_resource type="Material" uid="uid://bwsdy2e3xouar" path="res://source/assets/materials/rock/rock_triplanar.tres" id="1_jlbk6"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_q0acp"]
 [ext_resource type="Script" uid="uid://7fu4fcspms6r" path="res://source/actors/interactables/stone_button.gd" id="2_dmrkn"]
-[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_xpgir"]
 [ext_resource type="AudioStream" uid="uid://b1wi20w6l3rp4" path="res://source/assets/sounds/move/short_stone_drag.ogg" id="4_3bgsf"]
-
-[sub_resource type="Gradient" id="Gradient_rddky"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rddky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmrkn"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_xpgir")
-shader_parameter/enableSheen = false
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
-
-[sub_resource type="Shader" id="Shader_0mvir"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pam6d"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_dmrkn")
-shader = SubResource("Shader_0mvir")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_7kcht"]
 material = ExtResource("1_jlbk6")
@@ -78,7 +19,6 @@ meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
-material_overlay = SubResource("ShaderMaterial_pam6d")
 mesh = SubResource("BoxMesh_7kcht")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

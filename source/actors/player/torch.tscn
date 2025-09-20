@@ -1,24 +1,43 @@
-[gd_scene load_steps=30 format=4 uid="uid://cukgu0s353k08"]
+[gd_scene load_steps=35 format=4 uid="uid://cukgu0s353k08"]
 
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_twpvw"]
 [ext_resource type="Script" uid="uid://ti5fa7nyemhr" path="res://source/actors/player/torch.gd" id="2"]
 [ext_resource type="Material" uid="uid://dvtrckx2xk08r" path="res://source/assets/materials/wood/wood_alt.tres" id="3_3wk70"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_noxe7"]
 [ext_resource type="Material" uid="uid://b74f8weqx6mbn" path="res://source/assets/materials/cloth/cloth.tres" id="3_ohwtc"]
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="4"]
 [ext_resource type="Material" uid="uid://ctkc38wtdaow" path="res://source/assets/materials/rope/rope.tres" id="5_2a4em"]
 [ext_resource type="AudioStream" uid="uid://cfon2el4gkbsp" path="res://source/assets/sounds/misc/fire_lit.ogg" id="8"]
 [ext_resource type="AudioStream" uid="uid://c6mn6ltfrx2jh" path="res://source/assets/sounds/fire/fire_swoosh.ogg" id="8_6t08c"]
+[ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="8_xv4ds"]
 [ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="9"]
 [ext_resource type="AudioStream" uid="uid://cxddvt82st6h4" path="res://source/assets/sounds/pickup/torch_pickup.ogg" id="10_6t08c"]
 [ext_resource type="AudioStream" uid="uid://d4dmff8yloppm" path="res://source/assets/sounds/fire/fire_burning.ogg" id="10_481dk"]
 
-[sub_resource type="Shader" id="Shader_q5i13"]
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkghg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_noxe7")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_sspou"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
 
 uniform float outlineSize = 0.02;
+uniform vec3 outlineColor : source_color = vec3(0.961, 0.608, 0.353);
 uniform bool outlineOn = false;
 uniform bool transparent = false;
 
@@ -32,7 +51,7 @@ void vertex()
 void fragment()
 {
 	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
+		ALBEDO = outlineColor;
 	if (transparent && !outlineOn)
 		ALPHA = 0.0;
 }
@@ -47,11 +66,13 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eknsh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tquro"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("Shader_q5i13")
+next_pass = SubResource("ShaderMaterial_lkghg")
+shader = SubResource("Shader_sspou")
 shader_parameter/outlineSize = 0.02
+shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
@@ -174,7 +195,7 @@ transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.564706, 0.25098, 1)
+albedo_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 albedo_texture = ExtResource("4")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -227,19 +248,13 @@ orientation = 2
 
 [node name="Torch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
 script = ExtResource("2")
-default_range = null
-default_energy = null
-interactable_type = null
+default_energy = 3.0
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh")]
-interactable = null
-disable_highlight_shader = null
 enable_highlight_light = true
-enable_highlight_sheen = null
-shader_mode = null
 
 [node name="Mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_eknsh")
+material_overlay = SubResource("ShaderMaterial_tquro")
 mesh = SubResource("ArrayMesh_bj70x")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
@@ -251,13 +266,6 @@ layers = 2
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_k4obn")
 draw_pass_1 = SubResource("PlaneMesh_dm2kp")
-
-[node name="Light" type="OmniLight3D" parent="FireParticles" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.144136, 0)
-visible = false
-layers = 3
-shadow_enabled = true
-omni_shadow_mode = 0
 
 [node name="ParticlesPos" type="Marker3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368581, 0)
@@ -299,3 +307,14 @@ top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
+
+[node name="SelfLight" type="OmniLight3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49522424, 0)
+layers = 2
+light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
+light_energy = 0.0
+light_size = 0.5
+light_cull_mask = 4293918722
+omni_range = 0.0
+omni_shadow_mode = 0
+script = ExtResource("8_xv4ds")

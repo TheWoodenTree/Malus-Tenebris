@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ljm5ohhsqfr4" path="res://source/actors/building pieces/archways/doorway.gd" id="1_nsblc"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="2_4dkrh"]
-[ext_resource type="Material" uid="uid://dso8adlqgrix8" path="res://source/assets/materials/bricks/rough_bricks_no_triplanar.tres" id="3_6qft2"]
+[ext_resource type="Material" uid="uid://dso8adlqgrix8" path="res://source/assets/materials/stone_wall/rough_bricks_no_triplanar.tres" id="3_6qft2"]
 [ext_resource type="PackedScene" uid="uid://b7xcdnbrbgydc" path="res://source/actors/building pieces/doors/wood_door_no_window.tscn" id="4_vjken"]
+
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qgbgt"]
 _surfaces = [{

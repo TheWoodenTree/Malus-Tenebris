@@ -18,7 +18,8 @@ script = ExtResource("3_3f3on")
 [node name="HighlightLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102692, 0)
 visible = false
-light_energy = 0.1
+light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
+light_energy = 0.3
 light_size = 3.0
 light_specular = 0.0
 light_cull_mask = 4294967291

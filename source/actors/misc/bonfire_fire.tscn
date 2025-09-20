@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvkn3et73ympv"]
+[gd_scene load_steps=20 format=3 uid="uid://bvkn3et73ympv"]
 
 [ext_resource type="Script" uid="uid://cdhh4pts24qxx" path="res://source/actors/misc/fire.gd" id="1_7b1g1"]
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1_t8nnb"]
@@ -6,6 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="3_6goma"]
 [ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="4_28q5t"]
 [ext_resource type="AudioStream" uid="uid://cdox7lvk7xupu" path="res://source/assets/sounds/misc/torch_burning_3_test.ogg" id="6_rxdtn"]
+
+[sub_resource type="Curve" id="Curve_481dk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.494505, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rxdtn"]
+curve = SubResource("Curve_481dk")
 
 [sub_resource type="Curve" id="10"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
@@ -31,6 +38,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 1.5
 scale_curve = SubResource("6")
+alpha_curve = SubResource("CurveTexture_rxdtn")
 turbulence_noise_strength = 5.46
 turbulence_noise_speed = Vector3(0, 0.5, 0)
 turbulence_influence_max = 1.0
@@ -42,7 +50,8 @@ load_path = "res://.godot/imported/fire_sprite.png-2acc16b9d0e0adcc3396820162410
 transparency = 1
 blend_mode = 1
 shading_mode = 0
-albedo_color = Color(1, 0.564706, 0.25098, 1)
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 albedo_texture = SubResource("CompressedTexture2D_q7cig")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -77,7 +86,7 @@ scale_curve = SubResource("14")
 transparency = 1
 blend_mode = 1
 shading_mode = 0
-albedo_color = Color(1, 0.564706, 0.25098, 1)
+albedo_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 albedo_texture = ExtResource("3_6goma")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -104,7 +113,7 @@ process_material = SubResource("ParticleProcessMaterial_o4s5b")
 draw_pass_1 = SubResource("PlaneMesh_0pb01")
 
 [node name="Light" type="OmniLight3D" parent="."]
-light_color = Color(1, 0.666667, 0.254902, 1)
+light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 shadow_enabled = true

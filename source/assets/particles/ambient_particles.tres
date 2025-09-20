@@ -9,7 +9,7 @@ curve = SubResource("Curve_jovrq")
 
 [resource]
 emission_shape = 3
-emission_box_extents = Vector3(45, 30, 45)
+emission_box_extents = Vector3(35, 25, 35)
 direction = Vector3(0, -1, 0)
 spread = 10.0
 initial_velocity_min = 0.5

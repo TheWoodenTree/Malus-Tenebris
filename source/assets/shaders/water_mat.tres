@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bke87q5b8qclv"]
 
-[ext_resource type="Shader" path="res://source/assets/shaders/water_shader.gdshader" id="1_oj57a"]
+[ext_resource type="Shader" uid="uid://bmavttd6gavuw" path="res://source/assets/shaders/water_shader.gdshader" id="1_oj57a"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qjxnm"]
 noise_type = 2
@@ -13,17 +13,17 @@ domain_warp_type = 2
 width = 1024
 height = 1024
 generate_mipmaps = false
-seamless = true
 noise = SubResource("FastNoiseLite_qjxnm")
+seamless = true
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_oj57a")
 shader_parameter/parent_room_global_rot = 0
 shader_parameter/def_scale = 0.01
-shader_parameter/metallic = 1.0
-shader_parameter/specular = 0.0
-shader_parameter/roughness = 0.5
-shader_parameter/color = Color(0.341176, 0.160784, 0.0509804, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.2000000095
+shader_parameter/roughness = 0.0
+shader_parameter/color = Color(0.06, 0.046499997, 0.03, 1)
 shader_parameter/speed_scale = Vector2(1, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_0gqs1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://btbw0ox4avnkm"]
+[gd_scene load_steps=19 format=4 uid="uid://btbw0ox4avnkm"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_v001e"]
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_va2my"]
@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="3_j8owv"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="4_ipjbm"]
 [ext_resource type="Texture2D" uid="uid://clhsusibnxp3v" path="res://source/assets/ui/inventory/visolis_bottle.png" id="5_tjuu2"]
-[ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="7_d7ec8"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="6_u32wv"]
 
 [sub_resource type="Resource" id="Resource_rwkh1"]
 resource_local_to_scene = true
@@ -47,13 +47,31 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x2wa2")
 
-[sub_resource type="Shader" id="Shader_du6qw"]
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umaaf"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_u32wv")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_r387v"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
 
 uniform float outlineSize = 0.02;
+uniform vec3 outlineColor : source_color = vec3(0.961, 0.608, 0.353);
 uniform bool outlineOn = false;
+uniform bool transparent = false;
 
 void vertex()
 {
@@ -65,7 +83,9 @@ void vertex()
 void fragment()
 {
 	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
+		ALBEDO = outlineColor;
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
 }
 
 
@@ -78,12 +98,15 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2ubl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq0gh"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("Shader_du6qw")
+next_pass = SubResource("ShaderMaterial_umaaf")
+shader = SubResource("Shader_r387v")
 shader_parameter/outlineSize = 0.02
+shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gql6q"]
 _surfaces = [{
@@ -126,15 +149,15 @@ item_data = SubResource("Resource_rwkh1")
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("Mesh")]
 interactable = false
+enable_highlight_sheen = false
 
 [node name="Mesh2" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.455, 0)
 layers = 4
-material_overlay = ExtResource("7_d7ec8")
 mesh = SubResource("ArrayMesh_s8mut")
 
 [node name="Mesh" parent="." index="1"]
-material_overlay = SubResource("ShaderMaterial_f2ubl")
+material_overlay = SubResource("ShaderMaterial_sq0gh")
 mesh = SubResource("ArrayMesh_i60oo")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

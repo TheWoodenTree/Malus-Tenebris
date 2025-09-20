@@ -75,10 +75,11 @@ void fragment() {
 		else
 			displace_tex = 1.0;
 	}
-	
+
 	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
 	//ALBEDO = vec3(displace_tex);
-	ALBEDO = mix(water_color.rgb, albedo.rgb * albedo_tex.rgb, vec3(displace_tex));
+	vec3 test = water_color.rgb * pow(displace_tex, 0.5);
+	ALBEDO = mix(test, albedo.rgb * albedo_tex.rgb, vec3(displace_tex));
 	float metallic_tex = dot(triplanar_texture(texture_metallic,uv1_power_normal,uv1_triplanar_pos),metallic_texture_channel);
 	METALLIC = mix(1.0 ,metallic_tex * metallic, displace_tex);
 	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
@@ -96,20 +97,20 @@ shader = SubResource("Shader_li6h0")
 shader_parameter/is_wet = true
 shader_parameter/most_wetness_height = 0.25
 shader_parameter/least_wetness_height = 0.5
-shader_parameter/water_color = Color(0.06, 0.05826, 0.0252, 1)
-shader_parameter/albedo = Color(0.48588, 0.529308, 0.513509, 1)
-shader_parameter/point_size = 1.0
+shader_parameter/water_color = Color(0.28, 0.22512001, 0.1428, 1)
+shader_parameter/albedo = Color(0.4745098, 0.5176471, 0.5019608, 1)
+shader_parameter/texture_albedo = ExtResource("1_2b4b8")
+shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.75
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_roughness = ExtResource("3_v5hw2")
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/normal_scale = 8.0
+shader_parameter/texture_normal = ExtResource("2_oee5k")
+shader_parameter/texture_displace = ExtResource("2_tabip")
+shader_parameter/normal_scale = 8.000001139999998
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(0.15, 0.15, 0.15)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("1_2b4b8")
-shader_parameter/texture_roughness = ExtResource("3_v5hw2")
-shader_parameter/texture_normal = ExtResource("2_oee5k")
-shader_parameter/texture_displace = ExtResource("2_tabip")

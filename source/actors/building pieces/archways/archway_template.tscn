@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ci5q2accadn7i" path="res://source/actors/building pieces/archways/archway.gd" id="1_dt8n5"]
 [ext_resource type="Material" uid="uid://dxeoptj8rsx36" path="res://source/assets/materials/bricks/bricks.tres" id="2_0tmrw"]
-[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/bricks/rough_bricks.tres" id="3_5ykf3"]
+[ext_resource type="Material" uid="uid://nrreijtn3dy4" path="res://source/assets/materials/stone_wall/rough_bricks.tres" id="3_5ykf3"]
+
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_njx2r"]
 _surfaces = [{

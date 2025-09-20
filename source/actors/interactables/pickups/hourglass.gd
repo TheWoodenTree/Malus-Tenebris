@@ -31,7 +31,7 @@ func _on_interact():
 
 
 func _on_timescale_change(time_scale: float):
-	sand_particles.amount = int(2.0 * time_scale)
+	sand_particles.amount = int(3.0 * time_scale)
 
 
 func test(testt):

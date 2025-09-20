@@ -1,67 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://b7xcdnbrbgydc"]
+[gd_scene load_steps=10 format=4 uid="uid://b7xcdnbrbgydc"]
 
 [ext_resource type="PackedScene" uid="uid://csrs2a5ulov1a" path="res://source/actors/building pieces/doors/door_template.tscn" id="1_c5ye8"]
-[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_1eos6"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="3_p06bj"]
 [ext_resource type="Material" uid="uid://dqllpa5eiv4dr" path="res://source/assets/materials/dark_wood_planks/dark_wood_planks.tres" id="4_lreev"]
-
-[sub_resource type="Gradient" id="Gradient_rddky"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rddky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pplwk"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_1eos6")
-shader_parameter/enableSheen = false
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
-
-[sub_resource type="Shader" id="Shader_y1key"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ngf2"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_pplwk")
-shader = SubResource("Shader_y1key")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3y01m"]
 _surfaces = [{
@@ -125,6 +66,40 @@ size = Vector3(2.25, 3.6, 0.25)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ptjjv"]
 size = Vector3(2.5, 4, 0.5)
 
+[sub_resource type="Shader" id="Shader_y1key"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = vec3(1.0, 1.0, 1.0);
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uy5hv"]
 resource_local_to_scene = true
 render_priority = 0
@@ -137,7 +112,6 @@ shader_parameter/transparent = false
 
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
-material_overlay = SubResource("ShaderMaterial_2ngf2")
 mesh = SubResource("ArrayMesh_ycf3w")
 
 [node name="CollisionShape" parent="DraggableBody" index="1"]

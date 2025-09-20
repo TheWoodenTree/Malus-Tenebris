@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://d1ctp5l8i56d6"]
+[gd_scene load_steps=34 format=4 uid="uid://d1ctp5l8i56d6"]
 
 [ext_resource type="Script" uid="uid://bjn7upextlyjg" path="res://source/actors/interactables/winch.gd" id="1_8caag"]
 [ext_resource type="Material" uid="uid://ghsgltdiflkh" path="res://source/assets/materials/chain_link/chain_link.tres" id="1_11xcp"]
@@ -6,69 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_vj3eq"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_fbf18"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_rajvw"]
-[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_1okwd"]
 [ext_resource type="AudioStream" uid="uid://nmfx7g7cp3de" path="res://source/assets/sounds/chain/winch_movement.ogg" id="6_13ic8"]
 [ext_resource type="AudioStream" uid="uid://tf1krwkperu" path="res://source/assets/sounds/misc/metal_wood_scrape.ogg" id="6_ecak6"]
 [ext_resource type="PackedScene" uid="uid://dgsc3liespcxg" path="res://source/actors/misc/static_chain.tscn" id="6_rfp83"]
 [ext_resource type="AudioStream" uid="uid://be1rsk1tnf0d0" path="res://source/assets/sounds/chain/winch_short_movement.ogg" id="6_u8t4f"]
-
-[sub_resource type="Gradient" id="Gradient_rddky"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rddky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qar8y"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_1okwd")
-shader_parameter/enableSheen = false
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
-
-[sub_resource type="Shader" id="Shader_qak6f"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxor"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_qar8y")
-shader = SubResource("Shader_qak6f")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_m4wsj"]
 _surfaces = [{
@@ -438,7 +379,6 @@ interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("RotatingBody/Wheel"), NodePath("RotatingBody/Chains")]
 
 [node name="Mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_uoxor")
 mesh = SubResource("ArrayMesh_8gfim")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

@@ -45,8 +45,6 @@ var obunga
 @onready var nav_update_timer: Timer = Timer.new()
 @onready var debug_affliction_time_left = $TimerLabel
 
-@export_range(0.0, 2.0) var light_energy_multiplier: float = 1.0
-
 signal world_loaded
 signal world_ready
 
@@ -60,7 +58,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	$Label.text = str(Engine.get_frames_per_second())
+	$Label.text = str(int(Engine.get_frames_per_second()))
 	if Input.is_action_just_pressed("debug2"):
 		Global.player.fear_player.play()
 		Global.player.fear_pulse_player.play()

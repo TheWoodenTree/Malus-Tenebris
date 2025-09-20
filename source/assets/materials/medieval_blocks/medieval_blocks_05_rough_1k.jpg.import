@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0lnpkfwe6063"
-path.s3tc="res://.godot/imported/castle_wall_slates_diff_1k.jpg-88bb4f1f84f99c078a4741c4cd8c9f90.s3tc.ctex"
+uid="uid://ddx5a86u6kmdr"
+path.s3tc="res://.godot/imported/medieval_blocks_05_rough_1k.jpg-bd1be90676ba19dfc9ef430eaeb74e33.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,14 +11,16 @@ metadata={
 
 [deps]
 
-source_file="res://source/assets/materials/bricks_2/castle_wall_slates_diff_1k.jpg"
-dest_files=["res://.godot/imported/castle_wall_slates_diff_1k.jpg-88bb4f1f84f99c078a4741c4cd8c9f90.s3tc.ctex"]
+source_file="res://source/assets/materials/medieval_blocks/medieval_blocks_05_rough_1k.jpg"
+dest_files=["res://.godot/imported/medieval_blocks_05_rough_1k.jpg-bd1be90676ba19dfc9ef430eaeb74e33.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -26,6 +28,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

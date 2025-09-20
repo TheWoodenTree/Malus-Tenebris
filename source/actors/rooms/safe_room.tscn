@@ -1,6 +1,5 @@
-[gd_scene load_steps=56 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=55 format=3 uid="uid://dijlshyjh0vla"]
 
-[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_6kysq"]
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ntfkh"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="3_tctxl"]
@@ -161,26 +160,6 @@ global_triplanar = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 0)
 size = Vector3(18.5, 1, 11)
 
-[node name="StoneFloor5" parent="Floors" index="1" instance=ExtResource("1_6kysq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 7, -2.5)
-size = Vector3(8.5, 1, 6)
-
-[node name="StoneFloor6" parent="Floors" index="2" instance=ExtResource("1_6kysq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 7, -2.5)
-size = Vector3(2, 1, 6)
-
-[node name="StoneFloor7" parent="Floors" index="3" instance=ExtResource("1_6kysq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 6, 2.25)
-size = Vector3(5.5, 1, 4.5)
-
-[node name="StoneFloor8" parent="Floors" index="4" instance=ExtResource("1_6kysq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 6, 3)
-size = Vector3(5.5, 1, 5)
-
-[node name="StoneFloor9" parent="Floors" index="5" instance=ExtResource("1_6kysq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 6, -2.5)
-size = Vector3(6.5, 1, 6)
-
 [node name="Books3" parent="Decor" index="0" instance=ExtResource("16_0k3ei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702, 2.4, -3.01845)
 
@@ -234,8 +213,7 @@ shadow_mode = 1
 
 [node name="HangingLamp2" parent="Decor" index="14" instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, -0.5, -2.5)
-default_energy = 0.25
-lit = false
+default_energy = 2.0
 shadow_mode = 1
 
 [node name="CornerTable" parent="Decor" index="15" instance=ExtResource("22_5kyhp")]
@@ -327,7 +305,8 @@ omni_range = 12.0
 
 [node name="TorchHolder" parent="." index="23" instance=ExtResource("32_cfv3l")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 2.25, 0)
-default_energy = 0.5
+default_energy = 2.0
+lit = false
 shadow_mode = 1
 
 [node name="LockDoorTutorial" type="Area3D" parent="." index="24"]
@@ -415,6 +394,24 @@ size = Vector3(1, 5, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25, 2.8, 1.5)
 item_data = SubResource("Resource_47idu")
 enable_highlight_light = true
+
+[node name="StoneWall2" parent="." index="47" instance=ExtResource("3_tctxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 6, 2.25)
+size = Vector3(5.5, 1, 4.5)
+
+[node name="StoneWall3" parent="." index="48" instance=ExtResource("3_tctxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 7, -2.5)
+size = Vector3(10.4, 1, 6)
+
+[node name="StoneWall4" parent="." index="49" instance=ExtResource("3_tctxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 6, -2.5)
+size = Vector3(6.5, 1, 6)
+
+[node name="StoneWall5" parent="." index="50" instance=ExtResource("3_tctxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 6, 3)
+size = Vector3(5.5, 1, 5)
+
+[node name="StoneWall6" parent="." index="51" instance=ExtResource("3_tctxl")]
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]

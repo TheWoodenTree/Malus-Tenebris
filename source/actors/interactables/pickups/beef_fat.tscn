@@ -1,78 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://kixyva1bs3gf"]
+[gd_scene load_steps=8 format=3 uid="uid://kixyva1bs3gf"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_wg1mq"]
 [ext_resource type="AudioStream" uid="uid://bw87ir2c7afbs" path="res://source/assets/sounds/misc/fat_pickup.ogg" id="2_l8woq"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_10d7e"]
 [ext_resource type="Texture2D" uid="uid://1bopmhso37fg" path="res://source/assets/ui/inventory/beef_fat.png" id="4_ywort"]
-[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_is73f"]
-
 
 [sub_resource type="Resource" id="Resource_hf70l"]
 script = ExtResource("3_10d7e")
 name = "Beef Fat"
 texture = ExtResource("4_ywort")
 pickup_sound = ExtResource("2_l8woq")
-self_useable = false
 hold_rotation_offset = Vector3(0, 45, 0)
-hold_scale_multiplier = 1.0
-
-[sub_resource type="Gradient" id="Gradient_rxqmh"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rxqmh")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_de1nc"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("5_is73f")
-shader_parameter/enableSheen = false
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
-
-[sub_resource type="Shader" id="Shader_0nn48"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode cull_front;
-
-uniform float outlineSize = 0.02;
-uniform bool outlineOn = false;
-uniform bool transparent = false;
-
-void vertex()
-{
-	if (outlineOn)
-		VERTEX += NORMAL * outlineSize;
-}
-
-
-void fragment()
-{
-	if (outlineOn)
-		ALBEDO = vec3(1.0, 1.0, 1.0);
-	if (transparent && !outlineOn)
-		ALPHA = 0.0;
-}
-
-
-void light()
-{
-	if (outlineOn)
-	{
-		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
-	}
-}"
-metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn6ph"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_de1nc")
-shader = SubResource("Shader_0nn48")
-shader_parameter/outlineSize = 0.02
-shader_parameter/outlineOn = false
-shader_parameter/transparent = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_igp70"]
 size = Vector3(0.15, 0.15, 0.15)
@@ -85,7 +23,6 @@ item_data = SubResource("Resource_hf70l")
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-material_overlay = SubResource("ShaderMaterial_rn6ph")
 mesh = SubResource("BoxMesh_igp70")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

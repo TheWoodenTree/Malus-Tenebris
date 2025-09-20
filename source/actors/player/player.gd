@@ -232,11 +232,10 @@ func inventory_remove_item(item_data: ItemData):
 func hold_item(item_data: ItemData):
 	held_item_data = item_data
 	held_item = item_data.item_instance
-	var visual_layer := 3
-	if held_item_data.name == "Hourglass":
-		visual_layer = 16
+	if is_holding_hourglass():
+		interact_ray.enabled = false
 	for mesh in held_item.meshes:
-		mesh.layers = visual_layer
+		mesh.layers = 3
 	add_child(held_item)
 	held_item.position = Vector3.ZERO
 	held_item.scale *= item_data.hold_scale_multiplier
@@ -256,6 +255,7 @@ func hold_item(item_data: ItemData):
 func delete_held_item():
 	remove_child(held_item)
 	inventory_remove_item(held_item_data)
+	interact_ray.enabled = true
 	held_item_data = null
 	held_item = null
 
@@ -263,6 +263,7 @@ func delete_held_item():
 func stop_holding_item(play_sound: bool):
 	if held_item:
 		remove_child(held_item)
+	interact_ray.enabled = true
 	held_item_data = null
 	held_item = null
 	if play_sound:

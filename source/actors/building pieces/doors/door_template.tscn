@@ -191,6 +191,7 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("17_250pq")
 shader_parameter/outlineSize = 0.04
+shader_parameter/outlineColor = Color(0.913, 0.328, 0.102, 1)
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 

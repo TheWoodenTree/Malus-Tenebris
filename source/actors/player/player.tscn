@@ -51,8 +51,7 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68otk"]
-shading_mode = 0
-albedo_color = Color(0.118581, 0.118581, 0.118581, 1)
+albedo_color = Color(0.22310299, 0.22310287, 0.22310284, 1)
 disable_receive_shadows = true
 billboard_mode = 3
 billboard_keep_scale = true
@@ -127,7 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 
 [node name="HourglassMarker" type="Marker3D" parent="HeadController/BobController/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="BobTimer" type="AnimationPlayer" parent="HeadController/BobController"]
 libraries = {
@@ -137,7 +136,8 @@ libraries = {
 [node name="BaseLight" type="OmniLight3D" parent="HeadController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.805, 0)
 layers = 3
-light_energy = 0.75
+light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
+light_energy = 1.25
 light_cull_mask = 4294967279
 omni_range = 3.0
 script = ExtResource("4")
