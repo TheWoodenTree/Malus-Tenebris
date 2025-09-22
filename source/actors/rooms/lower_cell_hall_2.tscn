@@ -207,7 +207,7 @@ size = Vector3(9, 1, 12)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27, 1.5, 5)
 
 [node name="Pillar19" parent="Pillars" index="1" instance=ExtResource("5_vod4y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37.25, 1.5, 5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37, 1.5, 5)
 
 [node name="Pillar20" parent="Pillars" index="2" instance=ExtResource("5_vod4y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37, 1.5, -5)
@@ -223,6 +223,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29, 1
 
 [node name="Pillar26" parent="Pillars" index="6" instance=ExtResource("5_vod4y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35, 1.5, 7)
+
+[node name="StoneWall" parent="Pillars" index="7" instance=ExtResource("4_4tjt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 6, -19)
+size = Vector3(7, 1, 1)
 
 [node name="SmallCell" parent="Cells" index="0" instance=ExtResource("6_ycgdv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0.5, 3.5)
