@@ -45,16 +45,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4, 7)
 size = Vector3(1, 8, 12)
 
 [node name="StoneWall32" parent="Walls" index="5" instance=ExtResource("3_1vynf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 12.5)
-size = Vector3(14, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 12.5)
+size = Vector3(14, 3, 1)
 
 [node name="StoneFloor13" parent="Floors" index="0" instance=ExtResource("4_ppvc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 6)
 size = Vector3(16, 1, 12)
-
-[node name="StoneFloor14" parent="Floors" index="1" instance=ExtResource("4_ppvc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 6.5)
-size = Vector3(16, 1, 13)
 
 [node name="Pillar12" parent="Pillars" index="0" instance=ExtResource("6_qb7da")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 1.5)
@@ -157,3 +153,7 @@ interactable = false
 
 [node name="Chair" parent="." index="22" instance=ExtResource("7_wfmr5")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.25, 0, 11.75)
+
+[node name="StoneWall" parent="." index="23" instance=ExtResource("3_1vynf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 6.5)
+size = Vector3(16, 1, 13)

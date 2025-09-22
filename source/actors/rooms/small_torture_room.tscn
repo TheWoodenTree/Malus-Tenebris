@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw4xwroyayfdv"]
+[gd_scene load_steps=21 format=3 uid="uid://dw4xwroyayfdv"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3sot7"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_jlmsx"]
@@ -9,13 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="7_u0vsv"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="8_qyfwj"]
 [ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="10_n87qg"]
+[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="11_4oab0"]
 [ext_resource type="ArrayOccluder3D" uid="uid://c8da74ump72ny" path="res://source/actors/rooms/occluders/small_torture_room.occ" id="11_e68t4"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="12_t481b"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="13_3serb"]
+[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="13_j0ecg"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="17_bvf6q"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="17_nsor2"]
 [ext_resource type="PackedScene" uid="uid://jvnfjk0l83vw" path="res://source/assets/particles/fly_swarm.tscn" id="18_ctpme"]
 [ext_resource type="PackedScene" uid="uid://1f7kquwbkp1q" path="res://source/actors/decor/tools/knife.tscn" id="18_y5udt"]
 [ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="19_8vryn"]
+
+[sub_resource type="Resource" id="Resource_q7v16"]
+resource_local_to_scene = true
+script = ExtResource("12_t481b")
+name = "Ruboleum Vial"
+texture = ExtResource("13_j0ecg")
+pickup_sound = ExtResource("11_4oab0")
+hold_rotation_offset = Vector3(0, 0, -90)
 
 [node name="SmallTortureRoom" instance=ExtResource("1_3sot7")]
 
@@ -44,10 +55,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 6, 0)
 size = Vector3(1, 1, 5)
 
 [node name="StoneFloor" parent="Floors" index="0" instance=ExtResource("1_jlmsx")]
-size = Vector3(10, 1, 10)
-
-[node name="StoneFloor2" parent="Floors" index="1" instance=ExtResource("1_jlmsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 size = Vector3(10, 1, 10)
 
 [node name="HangingLamp" parent="Decor" index="0" instance=ExtResource("4_buubx")]
@@ -80,6 +87,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.2
 
 [node name="RuboleumVial" parent="Misc" index="0" instance=ExtResource("13_3serb")]
 transform = Transform3D(-0.753884, 0.657007, 2.87187e-08, -1.44114e-15, -4.37114e-08, 1, 0.657007, 0.753884, 3.29533e-08, -0.63256, 2.04474, -1.25988)
+item_data = SubResource("Resource_q7v16")
 
 [node name="OccluderInstance" parent="." index="8"]
 occluder = ExtResource("11_e68t4")
@@ -107,3 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, 3.5)
 
 [node name="SmallPillar3" parent="." index="16" instance=ExtResource("19_8vryn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, 3.5)
+
+[node name="StoneWall" parent="." index="17" instance=ExtResource("3_ss4ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+size = Vector3(10, 1, 10)

@@ -65,6 +65,6 @@ func _flare():
 	flicker_tween.tween_property(self, "flare_energy", flicker_variation, flicker_duration).from_current()
 	flicker_tween.tween_interval(randf_range(0.05, 0.15))
 	flicker_tween.tween_property(self, "flare_energy", 0.0, 0.15)
-	flicker_tween.tween_interval(randf_range(3.0, 5.0))
+	flicker_tween.tween_interval(randf_range(2.0, 4.0))
 	flicker_tween.tween_callback(_flare)
 	

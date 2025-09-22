@@ -92,7 +92,6 @@ autoplay = true
 [node name="DripPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10")
 volume_db = -16.0
-stream_paused = true
 bus = &"Global"
 
 [node name="PlayGameSoundPlayer" type="AudioStreamPlayer" parent="."]
