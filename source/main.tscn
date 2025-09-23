@@ -133,6 +133,7 @@ offset_right = 512.0
 offset_bottom = 288.0
 
 [node name="BackBufCopy3" type="BackBufferCopy" parent="PostProcessing"]
+visible = false
 copy_mode = 2
 
 [node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing"]

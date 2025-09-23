@@ -1,4 +1,4 @@
-extends OmniLight3D
+extends Light3D
 
 const FAST_FLICKER_VARIATION := 0.2
 const SLOW_FLICKER_VARIATION := 0.5
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if visible:
-		light_energy = (default_energy + fast_flicker_energy + slow_flicker_energy + flare_energy)
+		light_energy = default_energy + fast_flicker_energy + slow_flicker_energy + flare_energy
 		light_color = default_color + fast_flicker_color + slow_flicker_color + flare_color
 
 

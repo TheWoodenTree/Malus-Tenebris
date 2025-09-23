@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=27 format=4 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
@@ -35,8 +35,8 @@ resource_name = "torch_light_anim"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeadController/BaseLight:omni_range")
-tracks/0/interp = 2
+tracks/0/path = NodePath("HeadController/BobController/Camera/BaseLight:spot_range")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 1),
@@ -45,13 +45,29 @@ tracks/0/keys = {
 "values": [3.0, 12.0, 12.0]
 }
 
+[sub_resource type="Animation" id="Animation_wr2nm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadController/BobController/Camera/BaseLight:spot_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ha0pu"]
 _data = {
+&"RESET": SubResource("Animation_wr2nm"),
 &"torch_light_anim": SubResource("Animation_q2cha")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68otk"]
-albedo_color = Color(0.22310299, 0.22310287, 0.22310284, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr2nm"]
+albedo_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 disable_receive_shadows = true
 billboard_mode = 3
 billboard_keep_scale = true
@@ -59,10 +75,35 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_occu0"]
-material = SubResource("StandardMaterial3D_68otk")
-size = Vector2(0.1, 0.1)
-orientation = 2
+[sub_resource type="ArrayMesh" id="ArrayMesh_br3ns"]
+_surfaces = [{
+"aabb": AABB(-0.04479476, -0.0471, -3.383366e-09, 0.08958952, 0.0942, 1e-05),
+"format": 34359742465,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAwAAAAUABQAAAAYAAwAFAAcABwAFAAgAAwAHAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("tno3PdZ2bjzOgGixiMAKsO7rQD3yfH+w/criPK0THD0cMWaxtno3vdZ2bjwL3Jgx/crivK0THD1I5cww/criPK0THL3I2umvtno3Pdh2brzsBQSx/crivK0THL0ztJcxfsAKsO7rQL0kBqkxtno3vdh2brx8Gcsx")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kx8ox"]
+resource_name = "snowflake_Circle"
+_surfaces = [{
+"aabb": AABB(-0.04479476, -0.0471, -3.383366e-09, 0.08958952, 0.0942, 1e-05),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8="),
+"format": 34359742487,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAwAAAAUABQAAAAYAAwAFAAcABwAFAAgAAwAHAAkA"),
+"material": SubResource("StandardMaterial3D_wr2nm"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("tno3PdZ2bjzOgGixiMAKsO7rQD3yfH+w/criPK0THD0cMWaxtno3vdZ2bjwL3Jgx/crivK0THD1I5cww/criPK0THL3I2umvtno3Pdh2brzsBQSx/crivK0THL0ztJcxfsAKsO7rQL0kBqkxtno3vdh2brx8Gcsx/3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_br3ns")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v4sui"]
 random_pitch = 1.1
@@ -84,7 +125,6 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 floor_snap_length = 1.0
 script = ExtResource("1")
-debug_has_torch = true
 
 [node name="HeadController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
@@ -128,19 +168,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 [node name="HourglassMarker" type="Marker3D" parent="HeadController/BobController/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
+[node name="BaseLight" type="SpotLight3D" parent="HeadController/BobController/Camera"]
+layers = 3
+light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
+light_energy = 3.0
+light_cull_mask = 4294967279
+shadow_enabled = true
+shadow_caster_mask = 4294967293
+spot_range = 12.0
+spot_angle = 60.0
+spot_angle_attenuation = 1e-05
+script = ExtResource("4")
+
 [node name="BobTimer" type="AnimationPlayer" parent="HeadController/BobController"]
 libraries = {
 &"": SubResource("AnimationLibrary_crvps")
 }
-
-[node name="BaseLight" type="OmniLight3D" parent="HeadController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.805, 0)
-layers = 3
-light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
-light_energy = 1.25
-light_cull_mask = 4294967279
-omni_range = 3.0
-script = ExtResource("4")
 
 [node name="RandomSoundManager" parent="HeadController" instance=ExtResource("5_8g41b")]
 
@@ -159,10 +202,10 @@ libraries = {
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 cast_shadow = 0
-amount = 3500
+amount = 5000
 lifetime = 5.0
 process_material = ExtResource("4_sn5wa")
-draw_pass_1 = SubResource("PlaneMesh_occu0")
+draw_pass_1 = SubResource("ArrayMesh_kx8ox")
 
 [node name="FloorTypeCheck" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)

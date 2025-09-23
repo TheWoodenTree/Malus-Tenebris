@@ -42,7 +42,7 @@ var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn
 @onready var torch_cam = $HeadController/BobController/Camera/ViewportCont/TorchCamViewport/TorchCam
 @onready var interact_ray = $HeadController/BobController/Camera/InteractRaycast
 @onready var torch_pos = $HeadController/BobController/Camera/TorchPos
-@onready var light = $HeadController/BaseLight
+@onready var light = $HeadController/BobController/Camera/BaseLight
 @onready var held_item_marker = $HeadController/BobController/Camera/HeldItemMarker
 @onready var hourglass_marker: Marker3D = $HeadController/BobController/Camera/HourglassMarker
 @onready var noise_player = $NoisePlayer
@@ -66,8 +66,9 @@ func _ready() -> void:
 	if debug_has_torch:
 		debug_get_torch()
 	
-	light.omni_range = 3.0
+	light.spot_range = 3.0
 	light.default_range = 3.0
+	light.default_energy = 1.0
 	
 	footstep_timer.wait_time = footstep_walk_interval
 	footstep_timer.one_shot = true
@@ -79,7 +80,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_handle_input()
-	
+	#light.global_rotation = cam.global_rotation
 	torch_cam.global_transform = cam.global_transform
 	if held_item:
 		var held_item_pos: Vector3 = held_item_marker.global_position if held_item_data.name != "Hourglass" else hourglass_marker.global_position
