@@ -67,7 +67,6 @@ func _ready() -> void:
 		debug_get_torch()
 	
 	light.spot_range = 3.0
-	light.default_range = 3.0
 	light.default_energy = 1.0
 	
 	footstep_timer.wait_time = footstep_walk_interval

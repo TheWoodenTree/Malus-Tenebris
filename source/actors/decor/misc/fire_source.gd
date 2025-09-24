@@ -21,7 +21,6 @@ func _ready() -> void:
 	super()
 	if not Engine.is_editor_hint():
 		add_to_group("fire_sources")
-		light.default_range = default_range
 		light.omni_range = default_range
 		light.default_energy = default_energy
 		if lit:
@@ -34,7 +33,7 @@ func _ready() -> void:
 		if audio_fade_in_on_ready:
 			var tween = get_tree().create_tween()
 			tween.tween_property(fire.burning_player, 'volume_db', 6.0, 5.0).from(-15.0)
-		
+			
 	particles.emitting = lit
 	light.visible = lit
 	light.omni_shadow_mode = shadow_mode

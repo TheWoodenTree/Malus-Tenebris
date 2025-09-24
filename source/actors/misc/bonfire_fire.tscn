@@ -120,5 +120,7 @@ shadow_enabled = true
 shadow_caster_mask = 4294967293
 script = ExtResource("4_28q5t")
 
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="Light"]
+
 [node name="BurningPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_rxdtn")

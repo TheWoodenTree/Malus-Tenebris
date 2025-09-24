@@ -123,6 +123,8 @@ omni_range = 12.0
 omni_shadow_mode = 0
 script = ExtResource("2")
 
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="Light"]
+
 [node name="BurningPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_5vd8g")
 volume_db = -12.5

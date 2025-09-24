@@ -105,3 +105,5 @@ light_color = Color(0.8901961, 0.54901963, 0.1764706, 1)
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 script = ExtResource("2")
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="Light"]
