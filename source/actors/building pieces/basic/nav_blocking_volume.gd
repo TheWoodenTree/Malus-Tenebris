@@ -19,7 +19,8 @@ func _set_size(size_: Vector3):
 
 func _set_show_volume(show_volume_: bool):
 	show_volume = show_volume_
-	volume_mesh.visible = Engine.is_editor_hint() and show_volume
+	if volume_mesh:
+		volume_mesh.visible = Engine.is_editor_hint() and show_volume
 
 
 func _update_blocker_and_mesh():
@@ -36,7 +37,8 @@ func _update_blocker_and_mesh():
 	vertices = new_vertices
 	height = size.y
 	
-	volume_mesh.mesh.size = size
-	volume_mesh.position.y = size.y / 2.0
-	
-	volume_mesh.visible = Engine.is_editor_hint()
+	if volume_mesh:
+		volume_mesh.mesh.size = size
+		volume_mesh.position.y = size.y / 2.0
+		
+		volume_mesh.visible = Engine.is_editor_hint()
