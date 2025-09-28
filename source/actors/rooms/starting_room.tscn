@@ -167,5 +167,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5,
 [node name="StoneWall" parent="." index="38" instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -15.5)
 size = Vector3(11, 1, 9)
+nav_walkable = false
 
 [connection signal="body_entered" from="CrouchTutorial" to="CrouchTutorial" method="_on_body_entered"]

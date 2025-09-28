@@ -33,14 +33,17 @@ occluder = ExtResource("2_ujbbf")
 [node name="StoneWall10" parent="." index="9" instance=ExtResource("3_6e4iy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -27)
 size = Vector3(8, 1, 18)
+nav_walkable = false
 
 [node name="StoneWall9" parent="." index="10" instance=ExtResource("3_6e4iy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10.5)
 size = Vector3(15, 1, 11)
+nav_walkable = false
 
 [node name="StoneWall" parent="." index="11" instance=ExtResource("3_6e4iy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -17)
 size = Vector3(11, 1, 2)
+nav_walkable = false
 
 [node name="StoneWall2" parent="." index="12" instance=ExtResource("3_6e4iy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -5.5, -14.5)

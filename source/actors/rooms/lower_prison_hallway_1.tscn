@@ -232,6 +232,7 @@ size = Vector3(1, 2.5, 7)
 [node name="StoneWall2" parent="." index="37" instance=ExtResource("4_n2pfa")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.43094e-07, 6.75, -17)
 size = Vector3(1, 2.5, 7)
+nav_walkable = false
 
 [node name="NarrowHallwayArch" parent="." index="38" instance=ExtResource("17_578ay")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.37114e-08, 0, -1)
@@ -292,6 +293,7 @@ transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 16, 0, -
 [node name="StoneWall3" parent="." index="56" instance=ExtResource("4_n2pfa")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 6.75, -23)
 size = Vector3(7, 2.5, 1)
+nav_walkable = false
 
 [node name="StoneWall4" parent="." index="57" instance=ExtResource("4_n2pfa")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5, 6.75, -23)
@@ -329,7 +331,9 @@ transform = Transform3D(-1.64203e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37
 [node name="StoneWall5" parent="." index="67" instance=ExtResource("4_n2pfa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0053622e-06, 7, -23)
 size = Vector3(11, 1, 11)
+nav_walkable = false
 
 [node name="StoneWall6" parent="." index="68" instance=ExtResource("4_n2pfa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3004142e-06, 6, -29.75)
 size = Vector3(7, 1, 2.5)
+nav_walkable = false

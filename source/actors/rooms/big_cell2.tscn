@@ -162,3 +162,4 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5
 [node name="StoneWall2" parent="." instance=ExtResource("3_og5e7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -17.5)
 size = Vector3(13, 1, 13)
+nav_walkable = false

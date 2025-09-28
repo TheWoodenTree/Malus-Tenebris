@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=58 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ntfkh"]
@@ -44,7 +44,10 @@
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="44_fvmec"]
 [ext_resource type="PackedScene" uid="uid://b0ulsvtx3b41t" path="res://source/actors/interactables/pickups/hourglass.tscn" id="44_ydufn"]
 [ext_resource type="AudioStream" uid="uid://dh2kkntq5trgy" path="res://source/assets/sounds/pickup/hourglass_pickup.ogg" id="45_0ilup"]
+[ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="46_0ilup"]
 [ext_resource type="Texture2D" uid="uid://cal01wqt1245e" path="res://source/assets/ui/inventory/hourglass.png" id="46_r3otd"]
+[ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="47_47idu"]
+[ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="48_th1ig"]
 
 [sub_resource type="Resource" id="Resource_0ilup"]
 resource_local_to_scene = true
@@ -110,55 +113,68 @@ script = ExtResource("1_d3v5u")
 [node name="StoneWall13" parent="Walls" index="0" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 6, 2)
 size = Vector3(3, 1, 5)
+nav_walkable = false
 
 [node name="StoneWall14" parent="Walls" index="1" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 3.5, 5)
 size = Vector3(12.5, 6, 1)
+nav_walkable = false
 
 [node name="StoneWall15" parent="Walls" index="2" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 3.5, 4)
 size = Vector3(4, 6, 1)
+nav_walkable = false
 
 [node name="StoneWall16" parent="Walls" index="3" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 3.5, -5)
 size = Vector3(7.5, 6, 1)
+show_nav_blocking_volume = null
 
 [node name="StoneWall17" parent="Walls" index="4" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.5, -2.5)
 size = Vector3(1, 6, 4)
+show_nav_blocking_volume = null
 
 [node name="StoneWall19" parent="Walls" index="5" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, -5)
 size = Vector3(3, 6, 1)
+show_nav_blocking_volume = null
 
 [node name="StoneWall20" parent="Walls" index="6" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3.5, -2.5)
 size = Vector3(1, 6, 4)
+show_nav_blocking_volume = null
 
 [node name="StoneWall21" parent="Walls" index="7" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 6, -0.25)
 size = Vector3(5.5, 1, 0.5)
+show_nav_blocking_volume = null
 
 [node name="StoneWall22" parent="Walls" index="8" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 5.5, 1.5)
 size = Vector3(4, 2, 4)
+nav_walkable = false
 
 [node name="StoneWall23" parent="Walls" index="9" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 3, 5)
 size = Vector3(5.5, 5, 1)
+show_nav_blocking_volume = null
 
 [node name="StoneWall24" parent="Walls" index="10" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 3, 0)
 size = Vector3(1, 5, 9)
+show_nav_blocking_volume = null
 
 [node name="StoneWall25" parent="Walls" index="11" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 3, -5)
 size = Vector3(6.5, 5, 1)
+show_nav_blocking_volume = null
 global_triplanar = false
 
 [node name="WoodFloor" parent="Floors" index="0" instance=ExtResource("7_s44qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 0)
 size = Vector3(18.5, 1, 11)
+show_nav_blocking_volume = null
 
 [node name="Books3" parent="Decor" index="0" instance=ExtResource("16_0k3ei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702, 2.4, -3.01845)
@@ -206,14 +222,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 4)
 
 [node name="PlateWCandle2" parent="Decor/Stool2" index="2" instance=ExtResource("12_i4x8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-default_energy = 0.25
-lit = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -7.5)
+default_range = 5.0
+default_energy = 2.0
 shadow_mode = 1
 
 [node name="HangingLamp2" parent="Decor" index="14" instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, -0.5, -2.5)
 default_energy = 2.0
+lit = false
 shadow_mode = 1
 
 [node name="CornerTable" parent="Decor" index="15" instance=ExtResource("22_5kyhp")]
@@ -261,8 +278,7 @@ volume_db = -15.0
 [node name="HangingLamp" parent="." index="11" instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, -0.5, -1.5)
 default_range = 8.0
-default_energy = 0.25
-lit = false
+default_energy = 2.0
 shadow_mode = 1
 
 [node name="Shelf2" parent="." index="12" instance=ExtResource("16_83156")]
@@ -389,6 +405,7 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 [node name="StoneWall" parent="." index="45" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3, 4)
 size = Vector3(1, 5, 1)
+show_nav_blocking_volume = null
 
 [node name="Hourglass" parent="." index="46" instance=ExtResource("44_ydufn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25, 2.8, 1.5)
@@ -398,20 +415,67 @@ enable_highlight_light = true
 [node name="StoneWall2" parent="." index="47" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 6, 2.25)
 size = Vector3(5.5, 1, 4.5)
+nav_walkable = false
 
 [node name="StoneWall3" parent="." index="48" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 7, -2.5)
-size = Vector3(10.4, 1, 6)
+size = Vector3(10.5, 1, 6)
+nav_walkable = false
 
 [node name="StoneWall4" parent="." index="49" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 6, -2.5)
 size = Vector3(6.5, 1, 6)
+nav_walkable = false
 
 [node name="StoneWall5" parent="." index="50" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 6, 3)
 size = Vector3(5.5, 1, 5)
+nav_walkable = false
 
 [node name="StoneWall6" parent="." index="51" instance=ExtResource("3_tctxl")]
+show_nav_blocking_volume = null
+
+[node name="Plank2" parent="." index="52" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.75, 6.4, -2)
+
+[node name="Plank6" parent="." index="53" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.75, 6.4, -2)
+
+[node name="Plank7" parent="." index="54" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.75, 6.4, -2)
+
+[node name="Plank8" parent="." index="55" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.75, 6.4, -2)
+
+[node name="Plank3" parent="." index="56" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.75, 6.4, -2)
+
+[node name="Plank4" parent="." index="57" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.75, 6.4, -2)
+
+[node name="Plank5" parent="." index="58" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.75, 6.4, -2)
+
+[node name="Plank9" parent="." index="59" instance=ExtResource("46_0ilup")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.75, 6.4, -2)
+
+[node name="Books14" parent="." index="60" instance=ExtResource("36_2n11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, -1)
+
+[node name="Books15" parent="." index="61" instance=ExtResource("37_35dm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 0)
+
+[node name="Cobweb" parent="." index="62" instance=ExtResource("47_47idu")]
+transform = Transform3D(0.35891926, 0.06367345, -0.34223172, 0.023201581, 0.48609558, 0.11477283, 0.34733063, -0.098268986, 0.34598362, 10.081939, 0.83207977, -4.1490297)
+
+[node name="SmStackedPlanks" parent="." index="63" instance=ExtResource("48_th1ig")]
+transform = Transform3D(0.94929934, 0, 0.31437355, 0, 1, 0, -0.31437355, 0, 0.94929934, 8.023832, 0.5, -3.237335)
+
+[node name="Books16" parent="." index="64" instance=ExtResource("35_30nki")]
+transform = Transform3D(0.47396526, 0, 0.88054353, 0, 1, 0, -0.88054353, 0, 0.47396526, 5.0130687, 0.5, 3.8909473)
+
+[node name="Books17" parent="." index="65" instance=ExtResource("36_2n11f")]
+transform = Transform3D(0.44213215, 0, -0.89694995, 0, 1, 0, 0.89694995, 0, 0.44213215, 5.0091386, 1.107919, 3.88831)
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]

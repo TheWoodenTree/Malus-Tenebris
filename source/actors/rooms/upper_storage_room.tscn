@@ -233,15 +233,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.5, 7.5)
 [node name="StoneWall" parent="." index="19" instance=ExtResource("3_8nyrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7, 0)
 size = Vector3(13, 1, 12)
+nav_walkable = false
 
 [node name="StoneWall2" parent="." index="20" instance=ExtResource("3_8nyrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, 8.5)
 size = Vector3(6, 1, 5)
+nav_walkable = false
 
 [node name="StoneWall3" parent="." index="21" instance=ExtResource("3_8nyrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 7, 11)
 size = Vector3(10, 1, 10)
+nav_walkable = false
 
 [node name="StoneWall4" parent="." index="22" instance=ExtResource("3_8nyrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 7, 17.5)
 size = Vector3(7, 1, 3)
+nav_walkable = false

@@ -73,10 +73,12 @@ size = Vector3(15, 1, 16)
 [node name="TileWall10" parent="." index="19" instance=ExtResource("3_sf1ka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 11, 10.75)
 size = Vector3(30, 1, 8.5)
+nav_walkable = false
 
 [node name="TileWall12" parent="." index="20" instance=ExtResource("3_sf1ka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 11, -10.75)
 size = Vector3(30, 1, 8.5)
+nav_walkable = false
 
 [node name="TileWall11" parent="." index="21" instance=ExtResource("3_sf1ka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 8.75, 0)

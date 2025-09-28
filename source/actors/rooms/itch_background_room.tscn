@@ -21,6 +21,7 @@ size = Vector3(1, 8, 7.5)
 [node name="StoneFloor" parent="Floors" index="0" instance=ExtResource("3_tutes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
 size = Vector3(50, 1, 20)
+nav_walkable = false
 
 [node name="OccluderInstance" parent="." index="8"]
 occluder = ExtResource("4_eelaq")

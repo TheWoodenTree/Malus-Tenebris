@@ -64,14 +64,17 @@ size = Vector3(7, 1, 22)
 [node name="StoneFloor5" parent="." index="17" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 7, 4.5)
 size = Vector3(19, 1, 7)
+nav_walkable = false
 
 [node name="StoneFloor11" parent="." index="18" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25, 7, -24.5)
 size = Vector3(12.5, 1, 7)
+nav_walkable = false
 
 [node name="StoneFloor6" parent="." index="19" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7, -10)
 size = Vector3(7, 1, 22)
+nav_walkable = false
 
 [node name="TileWall5" parent="." index="20" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3.5, -0.25)
@@ -116,6 +119,7 @@ size = Vector3(4, 8, 1)
 [node name="StoneFloor2" parent="." index="31" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 5, -10)
 size = Vector3(4, 1, 6)
+nav_walkable = false
 
 [node name="StoneFloor3" parent="." index="32" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -4, -10)
@@ -124,6 +128,7 @@ size = Vector3(4, 1, 7)
 [node name="StoneFloor4" parent="." index="33" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 3, -10)
 size = Vector3(4, 1, 7)
+nav_walkable = false
 
 [node name="TileWall9" parent="." index="34" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -0.5, -13)
@@ -176,6 +181,7 @@ size = Vector3(6, 1, 4)
 [node name="StoneFloor12" parent="." index="48" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 13, -38)
 size = Vector3(4, 1, 6)
+nav_walkable = false
 
 [node name="StoneFloor8" parent="." index="49" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -38)
@@ -184,18 +190,22 @@ size = Vector3(4, 1, 4)
 [node name="StoneFloor10" parent="." index="50" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -34)
 size = Vector3(4, 1, 12)
+nav_walkable = false
 
 [node name="TileWall16" parent="." index="51" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6, -31.5)
 size = Vector3(1, 11, 7)
+nav_walkable = false
 
 [node name="TileWall17" parent="." index="52" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6, -34.5)
 size = Vector3(1, 11, 13)
+nav_walkable = false
 
 [node name="TileWall18" parent="." index="53" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.5, -40.5)
 size = Vector3(8, 8, 1)
+nav_walkable = false
 
 [node name="StoneFloor9" parent="." index="54" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 8, -38)
@@ -208,10 +218,12 @@ size = Vector3(4, 9, 1)
 [node name="TileWall22" parent="." index="56" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, -27.5)
 size = Vector3(6, 6, 1)
+nav_walkable = false
 
 [node name="StoneFloor13" parent="." index="57" instance=ExtResource("2_0i0gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 7, -24)
 size = Vector3(6.5, 1, 6)
+nav_walkable = false
 
 [node name="TileWall23" parent="." index="58" instance=ExtResource("4_y30dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 11.5, -38)
@@ -315,12 +327,10 @@ chain_length = 0
 
 [node name="RegDoorway" parent="." index="81" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
-door_open_angle = 85
 style = "Polished"
 
 [node name="CleanWoodDoor" parent="RegDoorway" index="3" instance=ExtResource("14_ew6a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-starting_rotation = 85
 
 [node name="RegDoorway2" parent="." index="82" instance=ExtResource("15_wcw6n")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, -3.5, -10)

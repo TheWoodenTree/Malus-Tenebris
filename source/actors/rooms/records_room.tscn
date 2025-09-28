@@ -92,14 +92,17 @@ size = Vector3(1, 6, 7)
 [node name="StoneWall2" parent="Walls" index="6" instance=ExtResource("3_7io2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 7, -6.25)
 size = Vector3(14, 1, 15)
+nav_walkable = false
 
 [node name="StoneWall3" parent="Walls" index="7" instance=ExtResource("3_7io2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7, 9.75)
 size = Vector3(13.5, 1, 17)
+nav_walkable = false
 
 [node name="StoneWall11" parent="Walls" index="8" instance=ExtResource("3_7io2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 7, 7.25)
 size = Vector3(4.5, 1, 12)
+nav_walkable = false
 
 [node name="StoneFloor" parent="Floors" index="0" instance=ExtResource("2_118qf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 9.75)
