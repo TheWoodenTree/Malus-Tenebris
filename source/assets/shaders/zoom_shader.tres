@@ -10,15 +10,21 @@ uniform float intensity = 10.0;
 
 void fragment()
 {
-	float xDist = (abs(UV.x) - 0.5);
-	float yDist = (abs(UV.y) - 0.5);
-	float xOffset = xDist * intensity * SCREEN_PIXEL_SIZE.x;
-	float yOffset = yDist * intensity * SCREEN_PIXEL_SIZE.y;
+    float xDist = (UV.x - 0.5);
+    float yDist = (UV.y - 0.5);
 
-	vec4 redChannel = texture(SCREEN_TEXTURE, SCREEN_UV);
-	vec4 greenChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + xOffset, SCREEN_UV.y + yOffset));
-	vec4 blueChannel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - xOffset, SCREEN_UV.y - yOffset));
+    float xOffset = xDist * intensity * SCREEN_PIXEL_SIZE.x;
+    float yOffset = yDist * intensity * SCREEN_PIXEL_SIZE.y;
 
-	COLOR = vec4(redChannel.r, greenChannel.g, blueChannel.b, 1.0);
-}"
+    // Base sample
+    vec4 baseColor = texture(SCREEN_TEXTURE, SCREEN_UV);
+
+    // Ghost samples (inwards and outwards from center)
+    vec4 ghost1 = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + xOffset, SCREEN_UV.y + yOffset));
+    vec4 ghost2 = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - xOffset, SCREEN_UV.y - yOffset));
+
+    // Blend them all together
+    COLOR = (baseColor * 0.6) + (ghost1 * 0.2) + (ghost2 * 0.2);
+}
+"
 metadata/_edit_res_path = "res://source/assets/shaders/vignette_shader.tres"

@@ -42,7 +42,6 @@ var obunga
 @onready var heartbeat_anim = effects_player.get_animation("heartbeat")
 @onready var heartbeat_player = $HeartbeatPlayer
 @onready var ui = $UI
-@onready var nav_update_timer: Timer = Timer.new()
 @onready var debug_affliction_time_left = $TimerLabel
 
 signal world_loaded
@@ -118,12 +117,6 @@ func load_world_and_player():
 	add_child(world)
 	world_ready.emit()
 	
-	if not nav_update_timer.is_inside_tree():
-		add_child(nav_update_timer)
-	nav_update_timer.wait_time = 0.1
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		nav_update_timer.connect("timeout", enemy.update_target_position)
-	nav_update_timer.start()
 	world.get_node("NavRegion").bake_navigation_mesh()
 	
 	Global.lock_mouse()
@@ -181,13 +174,13 @@ func _calculate_effects_scale():
 func fear_effect_timed(duration: float):
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween.parallel().tween_property(zoom.material, "shader_parameter/intensity", 15.0, 1.0).from(0.0)
-	tween.parallel().tween_property(vignette.material, "shader_parameter/softness", 1.0, 1.0).from(3.0)
+	#tween.parallel().tween_property(vignette.material, "shader_parameter/softness", 1.0, 1.0).from(3.0)
 	
 	await get_tree().create_timer(duration, false).timeout
 	
 	var tween2 = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween2.parallel().tween_property(zoom.material, "shader_parameter/intensity", 0.0, 3.0).from(15.0)
-	tween2.parallel().tween_property(vignette.material, "shader_parameter/softness", 3.0, 3.0).from(1.0)
+	#tween2.parallel().tween_property(vignette.material, "shader_parameter/softness", 3.0, 3.0).from(1.0)
 
 
 func set_upside_down_sound(on: bool):

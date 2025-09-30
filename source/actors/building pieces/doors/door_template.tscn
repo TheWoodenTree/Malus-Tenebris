@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://csrs2a5ulov1a"]
+[gd_scene load_steps=26 format=4 uid="uid://csrs2a5ulov1a"]
 
 [ext_resource type="Script" uid="uid://c1sng1fhyl8jm" path="res://source/actors/building pieces/doors/door.gd" id="1_03ck2"]
 [ext_resource type="Script" uid="uid://c1tcd1h0ewxfi" path="res://source/actors/building pieces/door_body.gd" id="1_ea760"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dgtgawtdo332v" path="res://source/assets/sounds/doors/door_close_player.tscn" id="13_4adru"]
 [ext_resource type="AudioStream" uid="uid://b5dmq1pp2nsoi" path="res://source/assets/sounds/doors/wood_door_unlock.ogg" id="15_sty7t"]
 [ext_resource type="AudioStream" uid="uid://dhj5lg6kxnjrp" path="res://source/assets/sounds/misc/wrong_key.ogg" id="16_ogebv"]
+[ext_resource type="PackedScene" uid="uid://dlod6l5423wx1" path="res://source/actors/building pieces/basic/nav_blocking_volume.tscn" id="17_4lc3r"]
 [ext_resource type="Shader" uid="uid://dqtv12rd2pdiu" path="res://source/assets/shaders/outline_shader.tres" id="17_250pq"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="18_b0y0l"]
 
@@ -239,6 +240,7 @@ interact_areas = [NodePath("DraggableBody/InteractArea")]
 meshes = [NodePath("DraggableBody/Door")]
 
 [node name="DraggableBody" type="RigidBody3D" parent="."]
+collision_layer = 8
 collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -315,3 +317,15 @@ node_b = NodePath("../DraggableBody")
 angular_limit/enable = true
 angular_limit/upper = 1.4835298
 angular_limit/lower = 0.0
+
+[node name="OpenBlockingVolume" parent="." instance=ExtResource("17_4lc3r")]
+transform = Transform3D(0.087155804, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, 0.087155804, -0.09805028, 0, 1.1207191)
+height = 3.66
+vertices = PackedVector3Array(-1.125, 0, 0.1, 1.125, 0, 0.1, 1.125, 0, -0.1, -1.125, 0, -0.1)
+size = Vector3(-2.25, 3.66, 0.2)
+
+[node name="ClosedBlockingVolume" parent="." instance=ExtResource("17_4lc3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 0, 0)
+height = 3.66
+vertices = PackedVector3Array(-1.125, 0, 0.1, 1.125, 0, 0.1, 1.125, 0, -0.1, -1.125, 0, -0.1)
+size = Vector3(-2.25, 3.66, 0.2)

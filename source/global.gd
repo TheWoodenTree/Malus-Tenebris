@@ -5,6 +5,7 @@ extends Node
 ######################
 var world: Node3D
 var world_environment: WorldEnvironment
+var nav_region: NavigationRegion3D
 var post_processing: Control
 var retro_shader: Material
 var chromatic_abberation_shader: Material
@@ -29,7 +30,7 @@ var monster: CharacterBody3D
 
 #Init Globals
 func _ready() -> void:
-	main.connect("world_ready", func(): world = main.get_node("World"); monster = world.get_node("Monster"))
+	main.connect("world_ready", func(): world = main.get_node("World"); monster = world.get_node("Monster"); nav_region = world.get_node('NavRegion'))
 	world_environment = main.get_node("WorldEnvironment")
 	post_processing = main.get_node("PostProcessing")
 	if post_processing != null:

@@ -21,9 +21,9 @@ var rotation_axis_vector: Vector3:
 			'z': return Vector3.FORWARD
 			_: return Vector3.UP
 
-var player_dragging: bool = false
-var player_just_started_dragging: bool = false
-var player_just_stopped_dragging: bool = false
+var being_dragged_by: Character = null
+var just_started_being_dragged: bool = false
+var just_stopped_being_dragged: bool = false
 var closed: bool
 
 var cam_rot_offset: Vector2 = Vector2.ZERO
@@ -57,11 +57,11 @@ func _physics_process(_delta):
 			if abs(angular_speed) > 0.1:
 				var large_ang_vel_change: bool = abs(angular_speed - angular_speed_last_frame) > 0.35
 				var ang_vel_dir_changed: bool = sign(angular_speed) != sign(angular_speed_last_frame)
-				if ((ang_vel_dir_changed or large_ang_vel_change) and sound_cooldown_timer.is_stopped()) or player_just_started_dragging:
-					if not ang_vel_dir_changed or player_dragging:
+				if ((ang_vel_dir_changed or large_ang_vel_change) and sound_cooldown_timer.is_stopped()) or just_started_being_dragged:
+					if not ang_vel_dir_changed or being_dragged_by:
 						move_player.play()
 						sound_cooldown_timer.start()
-						player_just_started_dragging = false
+						just_started_being_dragged = false
 						
 				var effect_scale: float = clamp(abs(angular_speed) / PI, 0, 1.0)
 				move_player.volume_db = lerp(sound_volume_min, sound_volume_max, pow(effect_scale, 1.0))
@@ -84,7 +84,7 @@ func _physics_process(_delta):
 			and sign(draggable_body.angular_velocity[rotation_axis]) == -sign(max_rotation):
 				set_closed(true)
 					
-		elif player_dragging and closed and abs(draggable_body.rotation_degrees[rotation_axis]) >= abs(close_threshold_angle):
+		elif being_dragged_by and closed and abs(draggable_body.rotation_degrees[rotation_axis]) >= abs(close_threshold_angle):
 			set_closed(false)
 			
 		if abs(draggable_body.angular_velocity[rotation_axis]) < 0.05:
@@ -96,27 +96,37 @@ func _on_draggable_body_moved():
 
 
 func _on_interact() -> void:
-	set_player_dragging(true)
+	set_being_dragged(Global.player)
 	Global.player.set_draggable_being_dragged(self)
 
 
 func set_player_dragging(dragging: bool):
-	player_dragging = dragging
 	if dragging:
 		_on_player_started_dragging()
-		player_just_started_dragging = true
-		player_just_stopped_dragging = false
 		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
 		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_draggable_body):
 			Global.player.cam.connect("cam_rotated", add_torque_to_draggable_body)
 	else:
 		_on_player_stopped_dragging()
-		player_just_started_dragging = false
-		player_just_stopped_dragging = true
 		if Global.player.cam.is_connected("cam_rotated", add_torque_to_draggable_body):
 			Global.player.cam.disconnect("cam_rotated", add_torque_to_draggable_body)
 		await get_tree().create_timer(0.1, false).timeout
 		Global.player.cam.sensitivity_multiplier = 1.0
+
+
+func set_being_dragged(being_dragged_by_: Character):
+	being_dragged_by = being_dragged_by_
+	var being_dragged_by_player: bool = being_dragged_by == Global.player
+	set_player_dragging(being_dragged_by_player)
+	if being_dragged_by:
+		if not being_dragged_by_player:
+			set_interactable(false)
+		just_started_being_dragged = true
+		just_stopped_being_dragged = false
+	else:
+		set_interactable(true)
+		just_started_being_dragged = false
+		just_stopped_being_dragged = true
 
 
 func _on_player_started_dragging():
@@ -146,7 +156,7 @@ func get_true_angle() -> float:
 
 
 func add_torque_to_draggable_body(offset: Vector2):
-	if player_dragging:
+	if being_dragged_by:
 		cam_rot_offset = offset
 		var torque: Vector3 = Vector3.LEFT * cam_rot_offset.x * 1000.0
 		draggable_body.apply_torque(torque.rotated(Vector3.UP, rotation.y))

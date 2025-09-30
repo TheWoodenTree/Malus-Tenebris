@@ -32,6 +32,7 @@ var open_attempted: bool = false
 @onready var key = $DraggableBody/Key # Parent necessary because of a bug relating to scale when setting global_rotation
 @onready var collision_shape = $DraggableBody/CollisionShape
 @onready var mesh = $DraggableBody/Door
+@onready var closed_blocking_volume: NavigationObstacle3D = $ClosedBlockingVolume
 
 
 func _ready():
@@ -39,8 +40,10 @@ func _ready():
 	if not Engine.is_editor_hint() and global_signal_allow_open:
 		GlobalSignals.connect(global_signal_allow_open, func(): blocked = false)
 	
-	if not unlocked:
+	if not unlocked and (Global.player and not Global.player.is_omnipotent_door_god):
 		set_hinge_limits(-close_threshold_angle, close_threshold_angle)
+	
+	closed_blocking_volume.affect_navigation_mesh = not unlocked
 
 
 func _on_target():
@@ -68,7 +71,7 @@ func _on_interact() -> void:
 		
 		# Player drags an unlocked door
 		elif (unlocked and not blocked and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
-			set_player_dragging(true)
+			set_being_dragged(Global.player)
 			Global.player.set_draggable_being_dragged(self)
 		
 		# Player tries to open a locked door
@@ -168,6 +171,9 @@ func attempt_unlock():
 		key.visible = false
 	Global.ui.block_inventory_open = false
 	set_interactable(true)
+	
+	closed_blocking_volume.affect_navigation_mesh = false
+	Global.nav_region.bake_navigation_mesh()
 
 
 func open():
@@ -183,19 +189,19 @@ func open():
 
 
 func add_torque_to_draggable_body(offset: Vector2):
-	if player_dragging and (unlocked or Global.player.is_omnipotent_door_god):
-		cam_rot_offset = offset
-		#var force_direction: Vector2 = Vector2(-cam_rot_offset.y, -cam_rot_offset.x)
+	if being_dragged_by and (unlocked or Global.player.is_omnipotent_door_god):
+		#var force_direction: Vector2 = Vector2(-offset.y, -offset.x)
 		#var test: Vector2 = force_direction.rotated(player_facing_dir_xz.angle_to(Vector2.UP) + PI/2.0)
 		#var body_to_hinge: Vector2 = Vector2(door.global_position.x - hinge.global_position.x, door.global_position.z - hinge.global_position.z)
 		#var dot: float = body_to_hinge.normalized().dot(test.normalized())
 		#var torque: Vector3 = Vector3.UP * dot * 100.0 * force_direction.length()
 		#print(force_direction)
-		var player_z_dist = get_player_z_dist()
-		var torque_sign: int = sign(max_rotation) * sign(player_z_dist)
-		var torque: Vector3 = Vector3.UP * (cam_rot_offset.y + cam_rot_offset.x) * 100.0 * torque_sign
+		var character_z_dist = get_character_z_dist(being_dragged_by)
+		var torque_sign: int = sign(max_rotation) * sign(character_z_dist)
+		var torque: Vector3 = Vector3.UP * (offset.y + offset.x) * 100.0 * torque_sign
 		draggable_body.apply_torque(torque)
-		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
+		if being_dragged_by == Global.player:
+			Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
 		last_cam_rot_offset = offset
 
 
@@ -217,7 +223,7 @@ func key_needs_lube_hint_popup():
 	Global.ui.hint_popup("It's too rusty; perhaps it can be lubricated", 3.0)
 
 
-func get_player_z_dist():
-	var z_dist: float = draggable_body.to_local(Global.player.global_position).rotated(Vector3.UP, draggable_body.rotation.y).z
+func get_character_z_dist(character: CharacterBody3D):
+	var z_dist: float = draggable_body.to_local(character.global_position).rotated(Vector3.UP, draggable_body.rotation.y).z
 	# Reverse z_dist for doors that are rotated
 	return z_dist if not reverse_z_dist else -1 * z_dist

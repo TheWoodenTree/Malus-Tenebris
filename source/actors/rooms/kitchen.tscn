@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://7rhkd1sxw43r"]
+[gd_scene load_steps=73 format=3 uid="uid://7rhkd1sxw43r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_r3ajh"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="2_xlfra"]
@@ -49,12 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="49_ifubp"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="50_8los6"]
 [ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="51_1nl83"]
-[ext_resource type="Script" uid="uid://cju0ubidj8gmt" path="res://source/actors/rooms/monster_crouch_area.gd" id="51_qocnc"]
-[ext_resource type="PackedScene" uid="uid://d2o05ytbeogcx" path="res://source/actors/misc/sound_trigger.tscn" id="52_ppil4"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="53_7fd0o"]
-[ext_resource type="AudioStream" uid="uid://dky8q3668wlci" path="res://source/assets/sounds/horror_sounds/jumpscare.ogg" id="53_8gr7f"]
 [ext_resource type="PackedScene" uid="uid://crsbreiuabhvi" path="res://source/actors/decor/groups/books_6.tscn" id="54_42ese"]
-[ext_resource type="Script" uid="uid://cb7nmn158a3lb" path="res://source/actors/rooms/event_trigger.gd" id="54_ffjji"]
 [ext_resource type="PackedScene" uid="uid://co8wmy3bgkhpy" path="res://source/actors/decor/groups/books_4.tscn" id="55_5k5x0"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="56_aut5k"]
 [ext_resource type="PackedScene" uid="uid://bx4c82xi8bksb" path="res://source/actors/decor/groups/books_1.tscn" id="57_kpjom"]
@@ -76,12 +72,6 @@
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="74_2s6w1"]
 [ext_resource type="PackedScene" uid="uid://di1wwxw78n6ba" path="res://source/actors/decor/misc/pots/fat_pot.tscn" id="75_jffkx"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="76_nldkq"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5yokh"]
-size = Vector3(1, 4.25, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1qt76"]
-size = Vector3(0.1, 5, 3)
 
 [node name="Kitchen" instance=ExtResource("1_r3ajh")]
 
@@ -459,49 +449,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 1, -13)
 [node name="OccluderInstance" parent="." index="107"]
 occluder = ExtResource("49_gii5n")
 
-[node name="MonsterStartPoint" type="Marker3D" parent="." index="108"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.75, 0.5, -1.25)
-
-[node name="MonsterCrouchArea" type="Area3D" parent="." index="109"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.75, 0.75, -11.75)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("51_qocnc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterCrouchArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.875, -0.25)
-shape = SubResource("BoxShape3D_5yokh")
-
-[node name="MonsterCrouchArea2" type="Area3D" parent="." index="110"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.75, -11.75)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("51_qocnc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterCrouchArea2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.875, -0.25)
-shape = SubResource("BoxShape3D_5yokh")
-
-[node name="LookAtMonsterPoint" type="Marker3D" parent="." index="111"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.25, 3, -10)
-
-[node name="SoundTrigger" parent="." index="112" instance=ExtResource("52_ppil4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.75, 2.25, -12)
-size = Vector3(0.1, 5, 3)
-sound = ExtResource("53_8gr7f")
-triggered_by = "Monster"
-
-[node name="EventTrigger" type="Area3D" parent="." index="113"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.75, 1.5, -12)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("54_ffjji")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="EventTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-shape = SubResource("BoxShape3D_1qt76")
-
-[node name="RegDoorway2" parent="." index="114" instance=ExtResource("50_8los6")]
+[node name="RegDoorway2" parent="." index="108" instance=ExtResource("50_8los6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, -3)
 door_key_name = "Larder"
 
@@ -509,47 +457,47 @@ door_key_name = "Larder"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 key_name = "Larder"
 
-[node name="RegArchway" parent="." index="115" instance=ExtResource("49_ifubp")]
+[node name="RegArchway" parent="." index="109" instance=ExtResource("49_ifubp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28, 0.5, -12)
 
-[node name="FatMeltingPot" parent="." index="116" instance=ExtResource("41_njceo")]
+[node name="FatMeltingPot" parent="." index="110" instance=ExtResource("41_njceo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1.83205, -16.3328)
 
-[node name="Bonfire2" parent="." index="117" instance=ExtResource("24_lpptl")]
+[node name="Bonfire2" parent="." index="111" instance=ExtResource("24_lpptl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 1, -17.25)
 shadow_mode = 1
 
-[node name="Bonfire3" parent="." index="118" instance=ExtResource("24_lpptl")]
+[node name="Bonfire3" parent="." index="112" instance=ExtResource("24_lpptl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -17.25)
 default_energy = 1.0
 lit = false
 
-[node name="StoneArchway" parent="." index="119" instance=ExtResource("51_1nl83")]
+[node name="StoneArchway" parent="." index="113" instance=ExtResource("51_1nl83")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0.5, 0)
 
-[node name="WoodFloor2" parent="." index="120" instance=ExtResource("2_xlfra")]
+[node name="WoodFloor2" parent="." index="114" instance=ExtResource("2_xlfra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.25, 0, -12)
 size = Vector3(10.5, 1, 5)
 
-[node name="StoneWall29" parent="." index="121" instance=ExtResource("4_v50n1")]
+[node name="StoneWall29" parent="." index="115" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.5, -5.5)
 size = Vector3(1, 6, 4)
 
-[node name="StoneWall30" parent="." index="122" instance=ExtResource("4_v50n1")]
+[node name="StoneWall30" parent="." index="116" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 6, -8.125)
 size = Vector3(1, 1, 1.25)
 
-[node name="Shelf4" parent="." index="123" instance=ExtResource("53_7fd0o")]
+[node name="Shelf4" parent="." index="117" instance=ExtResource("53_7fd0o")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26.25, 0.5, -4.25)
 
-[node name="StoneWall31" parent="." index="124" instance=ExtResource("4_v50n1")]
+[node name="StoneWall31" parent="." index="118" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.75, 3.5, -18)
 size = Vector3(4.5, 6, 1)
 
-[node name="Pot8" parent="." index="125" instance=ExtResource("38_0fphm")]
+[node name="Pot8" parent="." index="119" instance=ExtResource("38_0fphm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 1.832, -16.333)
 
-[node name="Shelf5" parent="." index="126" instance=ExtResource("53_7fd0o")]
+[node name="Shelf5" parent="." index="120" instance=ExtResource("53_7fd0o")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -20.25, 0.5, -4.25)
 
 [node name="Books6" parent="Shelf5" index="2" instance=ExtResource("54_42ese")]
@@ -564,7 +512,7 @@ transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926
 [node name="Scroll4" parent="Shelf5" index="5" instance=ExtResource("56_aut5k")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -4.76837e-07, 0.298449, -0.75)
 
-[node name="Shelf6" parent="." index="127" instance=ExtResource("53_7fd0o")]
+[node name="Shelf6" parent="." index="121" instance=ExtResource("53_7fd0o")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -20.25, 0.5, -4.25)
 
 [node name="Books6" parent="Shelf6" index="2" instance=ExtResource("54_42ese")]
@@ -579,138 +527,138 @@ transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926
 [node name="Scroll4" parent="Shelf6" index="5" instance=ExtResource("56_aut5k")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -4.76837e-07, 0.298449, -0.75)
 
-[node name="Books1" parent="." index="128" instance=ExtResource("57_kpjom")]
+[node name="Books1" parent="." index="122" instance=ExtResource("57_kpjom")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26.25, 2.4, -4.25)
 
-[node name="Books6" parent="." index="129" instance=ExtResource("58_p0vgm")]
+[node name="Books6" parent="." index="123" instance=ExtResource("58_p0vgm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4622, 0.7999, -4.22785)
 
-[node name="Pot9" parent="." index="130" instance=ExtResource("38_0fphm")]
+[node name="Pot9" parent="." index="124" instance=ExtResource("38_0fphm")]
 transform = Transform3D(0.728526, 0, -0.685018, 0, 1, 0, 0.685018, 0, 0.728526, -25.5981, 4.00106, -4.31013)
 
-[node name="SmTallPot2" parent="." index="131" instance=ExtResource("31_upow3")]
+[node name="SmTallPot2" parent="." index="125" instance=ExtResource("31_upow3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9772, 4, -4.20609)
 
-[node name="TallPot2" parent="." index="132" instance=ExtResource("47_iu47q")]
+[node name="TallPot2" parent="." index="126" instance=ExtResource("47_iu47q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6731, 1.2999, -4.22887)
 
-[node name="Pot10" parent="." index="133" instance=ExtResource("36_3611f")]
+[node name="Pot10" parent="." index="127" instance=ExtResource("36_3611f")]
 transform = Transform3D(-3.89267e-08, -0.890539, -0.454908, 1, -4.37114e-08, 0, -1.98847e-08, -0.454908, 0.890539, -26.5982, 1.01257, -4.45468)
 
-[node name="Books7" parent="." index="134" instance=ExtResource("59_1t3a5")]
+[node name="Books7" parent="." index="128" instance=ExtResource("59_1t3a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.798, 2, -11.1773)
 
-[node name="Books8" parent="." index="135" instance=ExtResource("60_t8enq")]
+[node name="Books8" parent="." index="129" instance=ExtResource("60_t8enq")]
 transform = Transform3D(-0.769801, 0, -0.638284, 0, 1, 0, 0.638284, 0, -0.769801, -22.753, 2, -10.7419)
 
-[node name="Books9" parent="." index="136" instance=ExtResource("58_p0vgm")]
+[node name="Books9" parent="." index="130" instance=ExtResource("58_p0vgm")]
 transform = Transform3D(-0.325519, 0, 0.945536, 0, 1, 0, -0.945536, 0, -0.325519, -20.1066, 2, -9.54896)
 
-[node name="Bowl6" parent="." index="137" instance=ExtResource("45_61jt3")]
+[node name="Bowl6" parent="." index="131" instance=ExtResource("45_61jt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2609, 2, -10.4494)
 
-[node name="Bowl7" parent="." index="138" instance=ExtResource("44_y63gc")]
+[node name="Bowl7" parent="." index="132" instance=ExtResource("44_y63gc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1284, 2, -10.645)
 
-[node name="Bowl1" parent="." index="139" instance=ExtResource("61_aewds")]
+[node name="Bowl1" parent="." index="133" instance=ExtResource("61_aewds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8936, 2, -10.0424)
 
-[node name="InkPotWPen" parent="." index="140" instance=ExtResource("62_mh5w5")]
+[node name="InkPotWPen" parent="." index="134" instance=ExtResource("62_mh5w5")]
 transform = Transform3D(-0.68003, 0, -0.733184, 0, 1, 0, 0.733184, 0, -0.68003, -22.0066, 2.00983, -11.1926)
 
-[node name="Chair2" parent="." index="141" instance=ExtResource("34_mogn6")]
+[node name="Chair2" parent="." index="135" instance=ExtResource("34_mogn6")]
 transform = Transform3D(-0.527682, 0, -0.849442, 0, 1, 0, 0.849442, 0, -0.527682, -20.2957, 0.5, -12.3993)
 
-[node name="PlateWCandle" parent="." index="142" instance=ExtResource("63_gh80q")]
+[node name="PlateWCandle" parent="." index="136" instance=ExtResource("63_gh80q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -11)
 default_range = 5.0
 default_energy = 2.0
 shadow_mode = 1
 
-[node name="Sack2" parent="." index="143" instance=ExtResource("64_t8enq")]
+[node name="Sack2" parent="." index="137" instance=ExtResource("64_t8enq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.179, 0.5, -16.7768)
 
-[node name="Sack5" parent="." index="144" instance=ExtResource("65_aewds")]
+[node name="Sack5" parent="." index="138" instance=ExtResource("65_aewds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3518, 0.501084, -15.6561)
 
-[node name="Sack6" parent="." index="145" instance=ExtResource("66_mh5w5")]
+[node name="Sack6" parent="." index="139" instance=ExtResource("66_mh5w5")]
 transform = Transform3D(0.293873, 0, -0.955844, 0, 1, 0, 0.955844, 0, 0.293873, -18.7641, 0.507474, -16.6114)
 
-[node name="WallShelf3" parent="." index="146" instance=ExtResource("24_07yeg")]
+[node name="WallShelf3" parent="." index="140" instance=ExtResource("24_07yeg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.25, 2, -3.5)
 
-[node name="Scroll2" parent="." index="147" instance=ExtResource("56_aut5k")]
+[node name="Scroll2" parent="." index="141" instance=ExtResource("56_aut5k")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -23, 2, -4)
 
-[node name="Bowl8" parent="." index="148" instance=ExtResource("45_61jt3")]
+[node name="Bowl8" parent="." index="142" instance=ExtResource("45_61jt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.25, 2, -4)
 
-[node name="Books10" parent="." index="149" instance=ExtResource("58_p0vgm")]
+[node name="Books10" parent="." index="143" instance=ExtResource("58_p0vgm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.25, 2, -4)
 
-[node name="Sack3" parent="." index="150" instance=ExtResource("66_mh5w5")]
+[node name="Sack3" parent="." index="144" instance=ExtResource("66_mh5w5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0.5, -4.25)
 
-[node name="Sack4" parent="." index="151" instance=ExtResource("65_aewds")]
+[node name="Sack4" parent="." index="145" instance=ExtResource("65_aewds")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.25, 0.5, -5.5)
 
-[node name="WoodSupport" parent="." index="152" instance=ExtResource("67_gh80q")]
+[node name="WoodSupport" parent="." index="146" instance=ExtResource("67_gh80q")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.5, 0.5, -10.25)
 
-[node name="WoodPile" parent="." index="153" instance=ExtResource("68_scdd2")]
+[node name="WoodPile" parent="." index="147" instance=ExtResource("68_scdd2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0.5, -16.5)
 
-[node name="Knife" parent="." index="154" instance=ExtResource("69_rvd07")]
+[node name="Knife" parent="." index="148" instance=ExtResource("69_rvd07")]
 transform = Transform3D(0.299857, 0, 0.953984, 0, 1, 0, -0.953984, 0, 0.299857, -9.7818, 2, -11.5)
 
-[node name="Knife2" parent="." index="155" instance=ExtResource("69_rvd07")]
+[node name="Knife2" parent="." index="149" instance=ExtResource("69_rvd07")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -17.5, 2.25, -15.5)
 
-[node name="Pan5" parent="." index="156" instance=ExtResource("35_bftg8")]
+[node name="Pan5" parent="." index="150" instance=ExtResource("35_bftg8")]
 transform = Transform3D(1.38351e-08, 0.31651, 0.948589, 1, -4.37114e-08, 0, 4.14641e-08, 0.948589, -0.31651, -9.02561, 2.08123, -10.8372)
 
-[node name="Sack7" parent="." index="157" instance=ExtResource("65_aewds")]
+[node name="Sack7" parent="." index="151" instance=ExtResource("65_aewds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.491, 0.501084, -14.8785)
 
-[node name="Plank1" parent="." index="158" instance=ExtResource("71_nldkq")]
+[node name="Plank1" parent="." index="152" instance=ExtResource("71_nldkq")]
 transform = Transform3D(0.950554, 0, 0.31056, 0, 1, 0, -0.31056, 0, 0.950554, -25.1104, 0.5, -13.8262)
 
-[node name="Plank3" parent="." index="159" instance=ExtResource("72_qyelt")]
+[node name="Plank3" parent="." index="153" instance=ExtResource("72_qyelt")]
 transform = Transform3D(0.944365, 0, 0.3289, 0, 1, 0, -0.3289, 0, 0.944365, -15.0851, 0.5, -9.45758)
 
-[node name="SmStackedPlanks3" parent="." index="160" instance=ExtResource("73_hroi3")]
+[node name="SmStackedPlanks3" parent="." index="154" instance=ExtResource("73_hroi3")]
 transform = Transform3D(0.612617, 0, 0.79038, 0, 1, 0, -0.79038, 0, 0.612617, -0.0665718, 0.514266, -3.36453)
 
-[node name="SmStackedPlanks" parent="." index="161" instance=ExtResource("74_2s6w1")]
+[node name="SmStackedPlanks" parent="." index="155" instance=ExtResource("74_2s6w1")]
 transform = Transform3D(0.945308, 0, -0.326179, 0, 1, 0, 0.326179, 0, 0.945308, -23.4175, 0.5, -4.57837)
 
-[node name="FatPot" parent="." index="162" instance=ExtResource("75_jffkx")]
+[node name="FatPot" parent="." index="156" instance=ExtResource("75_jffkx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.40952, 0.503349, -4.30618)
 
-[node name="Saw" parent="." index="163" instance=ExtResource("76_nldkq")]
+[node name="Saw" parent="." index="157" instance=ExtResource("76_nldkq")]
 transform = Transform3D(-0.401117, 0, 0.916027, 0, 1, 0, -0.916027, 0, -0.401117, -24.0992, 2, -10.0474)
 
-[node name="StoneWall32" parent="." index="164" instance=ExtResource("4_v50n1")]
+[node name="StoneWall32" parent="." index="158" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 7, -4)
 size = Vector3(6, 1, 19)
 nav_walkable = false
 
-[node name="StoneWall33" parent="." index="165" instance=ExtResource("4_v50n1")]
+[node name="StoneWall33" parent="." index="159" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.25, 7, -10.5)
 size = Vector3(25.5, 1, 16)
 nav_walkable = false
 
-[node name="StoneWall34" parent="." index="166" instance=ExtResource("4_v50n1")]
+[node name="StoneWall34" parent="." index="160" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 4.5)
 size = Vector3(15, 1, 6)
 nav_walkable = false
 
-[node name="StoneWall35" parent="." index="167" instance=ExtResource("4_v50n1")]
+[node name="StoneWall35" parent="." index="161" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 4, 0)
 size = Vector3(4, 1, 3)
 nav_walkable = false
 
-[node name="StoneWall36" parent="." index="168" instance=ExtResource("4_v50n1")]
+[node name="StoneWall36" parent="." index="162" instance=ExtResource("4_v50n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6, -0.5)
 size = Vector3(7, 1, 4)
 nav_walkable = false

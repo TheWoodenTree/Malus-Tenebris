@@ -1,10 +1,72 @@
-[gd_scene load_steps=12 format=4 uid="uid://bs3u1nk2gihsj"]
+[gd_scene load_steps=18 format=4 uid="uid://bs3u1nk2gihsj"]
 
 [ext_resource type="PackedScene" uid="uid://csrs2a5ulov1a" path="res://source/actors/building pieces/doors/door_template.tscn" id="1_1qg3c"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_4x4yy"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="3_hltnl"]
 [ext_resource type="AudioStream" uid="uid://nhs3ijfkuapp" path="res://source/assets/sounds/doors/cell_door_open.ogg" id="4_87roi"]
 [ext_resource type="AudioStream" uid="uid://dunv6btc4xhul" path="res://source/assets/sounds/doors/cell_open_attempt.ogg" id="5_fnp10"]
 [ext_resource type="AudioStream" uid="uid://opnotmgskkym" path="res://source/assets/sounds/doors/cell_door_close.ogg" id="6_u5p70"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qufmn"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_4x4yy")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_p6yio"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform vec3 outlineColor : source_color = vec3(0.961, 0.608, 0.353);
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = outlineColor;
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6bch"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qufmn")
+shader = SubResource("Shader_p6yio")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i4njk"]
 _surfaces = [{
@@ -90,6 +152,7 @@ shader_parameter/transparent = false
 
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
+material_overlay = SubResource("ShaderMaterial_c6bch")
 mesh = SubResource("ArrayMesh_tb0ye")
 
 [node name="CollisionShape" parent="DraggableBody" index="1"]

@@ -15,7 +15,7 @@ func _enter_tree():
 	if not is_node_ready():
 		await ready
 	
-	#scroll_cont.scroll_vertical = 0
+	scroll_cont.scroll_vertical = 0
 	update_note_name()
 
 

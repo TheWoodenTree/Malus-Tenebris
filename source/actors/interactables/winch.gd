@@ -1,8 +1,8 @@
 extends Interactable
 
 var can_crank: bool = true
-var player_dragging: bool = false
-var player_just_stopped_dragging: bool = false
+var being_dragged: bool = false
+var just_stopped_being_dragged: bool = false
 var connected_node: Node3D
 var last_cam_offset: Vector2 = Vector2.ZERO
 var last_3_mouse_positions: Array[Vector2] = []
@@ -40,7 +40,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if not rotating_body.sleeping and can_crank:
-		#if not test and player_dragging:
+		#if not test and being_dragged:
 		#	chain_player.play()
 		#	test = true
 		rotating_body.angular_velocity.z = clampf(rotating_body.angular_velocity.z, -PI, PI)
@@ -83,7 +83,7 @@ func _on_interact() -> void:
 				crank_anim_player.play("crank")
 				get_parent().get_node("%" + connected_node_name).interact()
 				set_interactable(false)
-				#player_dragging = true
+				#being_dragged = true
 			else:
 				Global.ui.hint_popup("It won't budge", 3.0)
 		else:
@@ -91,7 +91,7 @@ func _on_interact() -> void:
 
 
 func add_torque_to_handle(offset: Vector2):
-	if player_dragging and can_crank:
+	if being_dragged and can_crank:
 		rotating_body.freeze = false
 		#if not chain_player.playing:
 		#	chain_player.play()
@@ -112,13 +112,13 @@ func add_torque_to_handle(offset: Vector2):
 
 
 func set_player_dragging(dragging: bool):
-	player_dragging = dragging
+	being_dragged = dragging
 	if dragging:
 		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
 	else:
 		#local_mouse_position = Vector2.ZERO
 		#last_3_mouse_positions.clear()
-		player_just_stopped_dragging = true
+		just_stopped_being_dragged = true
 		await get_tree().create_timer(0.1, false).timeout
 		Global.player.cam.sensitivity_multiplier = 1.0
 

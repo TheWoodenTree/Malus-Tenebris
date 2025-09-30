@@ -13,7 +13,7 @@ var frame2: MeshInstance3D = null
 var static_body: StaticBody3D = null
 
 static var prison_bricks_mat: StandardMaterial3D = load("res://source/assets/materials/bricks/bricks.tres")
-static var prison_frame_mat: StandardMaterial3D = load("res://source/assets/materials/bricks/rough_bricks.tres")
+static var prison_frame_mat: StandardMaterial3D = load("res://source/assets/materials/stone_wall/rough_bricks.tres")
 static var polished_bricks_mat: StandardMaterial3D = load("res://source/assets/materials/bricks_2/bricks_2.tres")
 static var polished_frame_mat: StandardMaterial3D = load("res://source/assets/materials/white_bricks/white_bricks.tres")
 static var test = load("res://source/assets/materials/white_bricks/white_bricks_tri.tres")

@@ -1,12 +1,20 @@
 extends Character
 
+signal opened_door
+
+enum State {IDLE, WANDER, PATROL, CHASE, ATTACK, SCRIPTED_EVENT}
 
 const SPEED = 3.5
 const JUMP_VELOCITY = 4.5
+const MAX_DOOR_DISTANCE_ALONG_PATH := 3.0
+
+@export var shape_cast_shape: Shape3D
+@export var shape_cast_transform: Transform3D
 
 var do_move = false
 var scripted_event: bool = false
 var look_at_player: bool = false
+var draggable_being_dragged: Draggable
 
 var look_at_pos: Vector3 = Vector3(0.0, 0.0, 1.0)
 
@@ -46,40 +54,22 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	if do_move:
-		if not scripted_event:
-			seek_player()
+	if draggable_being_dragged:
+		if draggable_being_dragged.draggable_body.rotation_degrees.y < 80:
+			var z_dist_sign: int = sign(draggable_being_dragged.get_character_z_dist(self))
+			draggable_being_dragged.add_torque_to_draggable_body(Vector2(0.05 * z_dist_sign, 0.0))
+		else:
+			draggable_being_dragged.set_being_dragged(null)
+			draggable_being_dragged = null
+			opened_door.emit()
+			
 		
-		var new_velocity: Vector3
-		var curr_pos = global_transform.origin
-		var next_pos = nav_agent.get_next_path_position()
-		new_velocity = (next_pos - curr_pos).normalized() * SPEED * speed_multiplier
-		velocity = new_velocity
-		
-		look_at_pos = lerp(look_at_pos, Vector3(velocity.x, $Armature.position.y, velocity.z).rotated(Vector3.UP, PI), 0.04)
-		$Armature.look_at(to_global(look_at_pos), Vector3.UP, false)
-		
+	if do_move and not draggable_being_dragged:
+		#look_at_pos = lerp(look_at_pos, Vector3(velocity.x, $Armature.position.y, velocity.z).rotated(Vector3.UP, PI), 0.04)
+		#$Armature.look_at(to_global(look_at_pos), Vector3.UP, false)
 		move_and_slide()
-		if is_on_wall():
-			var wall_normal: Vector3 = get_wall_normal()
-			if (abs(wall_normal.x) > 0.0 and abs(wall_normal.x) > abs(wall_normal.z)):
-				if new_velocity.z > 0.0:
-					new_velocity = Vector3(0.0, velocity.y, SPEED)
-				else:
-					new_velocity = Vector3(0.0, velocity.y, -SPEED)
-			elif (abs(wall_normal.z) > 0.0 and abs(wall_normal.z) > abs(wall_normal.x)):
-				if new_velocity.x > 0.0:
-					new_velocity = Vector3(SPEED, velocity.y, 0.0)
-				else:
-					new_velocity = Vector3(-SPEED, velocity.y, 0.0)
-			velocity = new_velocity
-			move_and_slide()
 			
-		#if not is_on_floor():
 		velocity.y -= gravity * delta
-			
-		#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#	velocity.y = JUMP_VELOCITY
 			
 		if abs(velocity.x) > 0 or abs(velocity.z) > 0:
 			if footstep_timer.time_left > footstep_walk_interval:
@@ -92,9 +82,67 @@ func _physics_process(delta):
 			in_water = true
 		else:
 			in_water = false
+	elif draggable_being_dragged:
+		anim_tree.set("parameters/locomotion/blend_position", Vector2(0.0, 1.0))
+
+
+func check_for_door_in_path():
+	var found_door: Door = null
+	var path_points = nav_agent.get_current_navigation_path()
+	var nav_path_index: int = nav_agent.get_current_navigation_path_index()
+	
+	if path_points.size() < 2 or nav_path_index >= path_points.size():
+		return null
+	
+	var total_distance := 0.0
+	path_points.insert(nav_path_index, global_position)
+	for i in range(nav_path_index, path_points.size() - 1):
+		var from: Vector3 = path_points[i] + Vector3.UP
+		var to: Vector3 = path_points[i + 1] + Vector3.UP
+		var segment_length: float = from.distance_to(to)
+		
+		var overshoot_amount: float = total_distance + segment_length - MAX_DOOR_DISTANCE_ALONG_PATH
+		
+		if overshoot_amount > 0:
+			to = from + from.direction_to(to) * (segment_length - overshoot_amount)
+		
+		var collision = check_path_segment(from, to)
+		
+		if collision:
+			print('cunt')
+			found_door = collision.collider.get_parent()
+			break
+		elif overshoot_amount > 0:
+			break
 			
-		if nav_agent.is_target_reached():
-			do_move = false
+		total_distance += segment_length
+	
+	if found_door:
+		if found_door.being_dragged_by != self:
+			found_door.set_being_dragged(self)
+			draggable_being_dragged = found_door
+
+
+func check_path_segment(from: Vector3, to: Vector3) -> Dictionary:
+	var door_collision_layer: int = 8
+	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var query := PhysicsShapeQueryParameters3D.new()
+	
+	var direction: Vector3 = (to - from).normalized()
+	var new_basis := Basis.looking_at(direction, Vector3.UP) if direction != Vector3.ZERO else Basis()
+	
+	query.shape = shape_cast_shape
+	query.transform = Transform3D(new_basis, from)
+	query.motion = to - from
+	query.collision_mask = door_collision_layer
+	
+	var results: Array[Dictionary] = space_state.intersect_shape(query)
+	
+	if results.size() > 0:
+		return results[0]
+	else:
+		return {}
+		
 
 
 func seek_player():
@@ -106,11 +154,6 @@ func seek_player():
 	if collision.get("collider") == Global.player and $ScreetchCooldown.time_left == 0:
 		#$ScreetchPlayer.play()
 		$ScreetchCooldown.start()
-
-
-func update_target_position():
-	if not scripted_event:
-		nav_agent.set_target_position(Global.player.global_position)
 
 
 func play_sound_one_shot(sound: AudioStream):

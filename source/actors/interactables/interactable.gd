@@ -18,6 +18,9 @@ enum ShaderMode {
 	HIGHLIGHT,
 }
 
+const OUTLINE_MATERIAL: ShaderMaterial = preload("res://source/assets/shaders/outline_shader_mat.tres")
+const HIGHLIGHT_MATERIAL: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
+
 @export var interactable_type: Type = Type.MISC
 @export var interact_areas: Array[InteractArea]
 @export var meshes: Array[MeshInstance3D]
@@ -27,10 +30,7 @@ enum ShaderMode {
 @export var enable_highlight_sheen: bool = false : set = _set_enable_highlight_sheen
 @export var shader_mode: ShaderMode = ShaderMode.OUTLINE
 
-var being_targeted: bool = false
-
-var outline_material: ShaderMaterial = preload("res://source/assets/shaders/outline_shader_mat.tres")
-var highlight_material: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
+var is_targeted: bool = false
 
 @onready var highlight_light = $HighlightLight if has_node("HighlightLight") else null
 
@@ -49,20 +49,20 @@ func _ready():
 
 
 func _target():
-	being_targeted = true
+	is_targeted = true
 	if not disable_highlight_shader:
 		for mesh: MeshInstance3D in meshes:
 			if shader_mode == ShaderMode.OUTLINE:
 				if mesh.material_overlay:
 					mesh.material_overlay.set_shader_parameter("outlineOn", true)
 			else:
-				mesh.material_override = highlight_material
+				mesh.material_override = HIGHLIGHT_MATERIAL
 	Global.player.set_targeted_interactable(self)
 	_on_target()
 
 
 func _untarget():
-	being_targeted = false
+	is_targeted = false
 	for mesh: MeshInstance3D in meshes:
 		if shader_mode == ShaderMode.OUTLINE:
 			if mesh.material_overlay:
