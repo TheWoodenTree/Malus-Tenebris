@@ -3,13 +3,13 @@ class_name State
 extends Node
 
 @warning_ignore("unused_signal")
-signal transition(from_state: State, to_state_name: String)
+signal transitioned(from_state: State, to_state_name: String)
 
 var character: CharacterBody3D
 var nav_agent: NavigationAgent3D
 
 
-@abstract func enter()
+@abstract func enter(params: Dictionary)
 @abstract func exit()
 
 

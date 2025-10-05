@@ -1,29 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c314k8wgwc5sq"]
+[gd_scene load_steps=10 format=3 uid="uid://c314k8wgwc5sq"]
 
 [ext_resource type="PackedScene" uid="uid://mg8n68f4h55m" path="res://source/actors/building pieces/basic/cobble_floor.tscn" id="1_j8ros"]
-[ext_resource type="PackedScene" uid="uid://cbcgqpe627vc8" path="res://source/actors/building pieces/archways/archway.tscn" id="2_73tbs"]
 [ext_resource type="PackedScene" uid="uid://dx1dvrbna6x6e" path="res://source/actors/building pieces/basic/water_plane.tscn" id="3_5ygpj"]
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="4_el8iw"]
 [ext_resource type="PackedScene" uid="uid://bx5depf8krodx" path="res://source/actors/building pieces/basic/cobble_half_stairs.tscn" id="5_uhsr4"]
-[ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="6_i0cai"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="7_qayte"]
 [ext_resource type="PackedScene" uid="uid://cjwfj2c1e5kxd" path="res://source/actors/rooms/misc/tiny_cell.tscn" id="8_hqjr2"]
 [ext_resource type="PackedScene" uid="uid://bmdwoy18v4ov5" path="res://source/actors/decor/debris/ash_pile.tscn" id="9_ry71y"]
+[ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="10_fnhqw"]
 [ext_resource type="ArrayOccluder3D" uid="uid://866x8nrp7gvf" path="res://source/actors/rooms/occluders/prison_depths_jct_1.occ" id="10_litci"]
 
 [node name="PrisonDepthsJtc1" type="Node3D"]
-
-[node name="StoneArchway" parent="." instance=ExtResource("2_73tbs")]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -3.0598e-07, 0.5, -7)
-length = 8.0
-
-[node name="StoneArchway3" parent="." instance=ExtResource("2_73tbs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0.5, -3.0598e-07)
-length = 8.0
-
-[node name="StoneArchway2" parent="." instance=ExtResource("2_73tbs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 0.5, 3.0598e-07)
-length = 8.0
 
 [node name="Stairs" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -119,10 +106,6 @@ size = Vector3(0.5, 1, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 1, -5)
 size = Vector3(0.5, 1, 4)
 
-[node name="StoneFloor7" parent="Floors" instance=ExtResource("6_i0cai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 0)
-size = Vector3(24, 1, 30)
-
 [node name="Water" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -149,8 +132,7 @@ interactable = false
 
 [node name="TorchHolder2" parent="." instance=ExtResource("7_qayte")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 3, 4.75)
-default_energy = 0.5
-lit = false
+shadow_mode = 1
 interactable = false
 
 [node name="StoneWall" parent="." instance=ExtResource("4_el8iw")]
@@ -188,7 +170,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 1, 
 
 [node name="TinyCell2" parent="." instance=ExtResource("8_hqjr2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.15258e-07, 1, 9.5)
-door_open_angle = 69
 
 [node name="TinyCell3" parent="." instance=ExtResource("8_hqjr2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1, 9.5)
@@ -206,18 +187,15 @@ size = Vector3(1, 4, 1)
 
 [node name="TinyCell4" parent="." instance=ExtResource("8_hqjr2")]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -9.5, 1, -5)
-door_open_angle = 33
 
 [node name="TinyCell7" parent="." instance=ExtResource("8_hqjr2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.5, 1, -5)
-door_open_angle = -74
 
 [node name="TinyCell5" parent="." instance=ExtResource("8_hqjr2")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5, 1, -9.5)
 
 [node name="TinyCell6" parent="." instance=ExtResource("8_hqjr2")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 1, -9.5)
-door_open_angle = 67
 
 [node name="StoneWall9" parent="." instance=ExtResource("4_el8iw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.75, 3.5, -6.75)
@@ -230,3 +208,19 @@ size = Vector3(0.5, 4, 0.5)
 [node name="OccluderInstance" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("10_litci")
 bake_mask = 4294967283
+
+[node name="RegArchway" parent="." instance=ExtResource("10_fnhqw")]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 7, 0.5, 0)
+length = 8.0
+
+[node name="RegArchway2" parent="." instance=ExtResource("10_fnhqw")]
+transform = Transform3D(8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 8.7422784e-08, -7, 0.5, 0)
+length = 8.0
+
+[node name="RegArchway3" parent="." instance=ExtResource("10_fnhqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7)
+length = 8.0
+
+[node name="StoneWall11" parent="." instance=ExtResource("4_el8iw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 6, 1)
+size = Vector3(24, 1, 30)

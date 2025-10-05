@@ -37,6 +37,7 @@ func _on_interact() -> void:
 	
 	await tween.finished
 	moveable_collision_blocker_shape.disabled = true
+	Global.nav_region.bake_navigation_mesh()
 
 
 func _set_move_to_offset(offset: Vector3):

@@ -21,15 +21,25 @@ func _on_set_character(_character: CharacterBody3D):
 	nav_agent.velocity_computed.connect(func(velocity): character.velocity = velocity)
 
 
-func enter() -> void:
+func enter(_params: Dictionary) -> void:
 	randomize_wander()
+	character.get_node("AnimationPlayer2").speed_scale = 1.0
 
 
 func exit() -> void:
-	pass
+	wander_timer.stop()
 
 
-func physics_update(_delta: float):
+func physics_update(delta: float):
+	if character.can_see_player(30.0):
+		var norm_distance: float = clamp(character.global_position.distance_to(Global.player.global_position) / 30.0, 0.0, 1.0)
+		var delta_scale: float = 1.0 - pow(norm_distance, 3.0)
+		character.suspicion += delta * (delta_scale)
+		if character.is_max_suspicion():
+			transitioned.emit(self, 'Chase')
+	else:
+		character.suspicion = 0.0
+	
 	var new_velocity: Vector3
 	var next_pos: Vector3 = nav_agent.get_next_path_position()
 	var direction: Vector3 = character.global_position.direction_to(next_pos)

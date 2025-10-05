@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=23 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" uid="uid://dc83hot4enxya" path="res://source/main.gd" id="4"]
@@ -14,6 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://jeo2tjikugy2" path="res://source/assets/ui/ui.tscn" id="11_kc1x7"]
 [ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
 [ext_resource type="Environment" uid="uid://eiomq46f2kvo" path="res://source/default_environment.tres" id="12_r5lv5"]
+
+[sub_resource type="Animation" id="Animation_r5lv5"]
+resource_name = "fear"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rnte"]
+_data = {
+&"fear": SubResource("Animation_r5lv5")
+}
 
 [sub_resource type="Animation" id="1"]
 length = 0.001
@@ -73,6 +81,12 @@ script = ExtResource("4")
 anim_vignette_softness = 1.0
 debug_no_title_screen = true
 debug_no_prologue = true
+
+[node name="FearAnimPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../EffectsPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_7rnte")
+}
 
 [node name="EffectsPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../PostProcessing")

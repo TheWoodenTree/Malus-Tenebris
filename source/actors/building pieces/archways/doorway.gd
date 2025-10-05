@@ -60,4 +60,3 @@ func _set_door_rotation(new_state):
 	door_initial_rotation = new_state
 	if door:
 		door.rotation.y = deg_to_rad(new_state + door_angle_offset)
-		print('fuck tou')

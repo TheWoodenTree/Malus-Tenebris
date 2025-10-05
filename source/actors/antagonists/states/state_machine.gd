@@ -1,10 +1,17 @@
 class_name StateMachine
 extends Node
 
-@export var character: CharacterBody3D
-@export var initial_state: State
+signal state_updated(state: State)
 
-var current_state: State
+@export var character: Character
+@export var initial_state: State
+@export var initial_state_params: Dictionary
+
+var current_state: State : 
+	set(state): 
+		current_state = state
+		state_updated.emit(current_state)
+
 var states: Dictionary[String, State] = {}
 
 
@@ -14,10 +21,12 @@ func _ready() -> void:
 		if child is State:
 			states[child.name] = child
 			child.set_character(character)
-			child.transition.connect(_on_state_transition)
+			child.transitioned.connect(_on_state_transitioned)
+	
+	character.state_change_requested.connect(_on_state_change_requested)
 	
 	if initial_state:
-		initial_state.enter()
+		initial_state.enter({})
 		current_state = initial_state
 
 
@@ -31,17 +40,26 @@ func _physics_process(delta: float) -> void:
 		current_state.physics_update(delta)
 
 
-func _on_state_transition(from_state: State, to_state_name: String) -> void:
+func _on_state_transitioned(from_state: State, to_state_name: String, params: Dictionary = {}) -> void:
 	if from_state != current_state:
 		return
 	
 	var to_state: State = states[to_state_name]
-	if not to_state:
+	_change_state(to_state, params)
+
+
+func _on_state_change_requested(state_name: String, params: Dictionary = {}) -> void:
+	var state: State = states[state_name]
+	_change_state(state, params)
+
+
+func _change_state(new_state: State, params: Dictionary):
+	if new_state == current_state:
 		return
 	
 	if current_state:
 		current_state.exit()
 	
-	to_state.enter()
+	new_state.enter(params)
 	
-	current_state = to_state
+	current_state = new_state

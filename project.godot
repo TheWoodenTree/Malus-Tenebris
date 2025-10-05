@@ -207,6 +207,7 @@ journal={
 
 [physics]
 
+common/physics_interpolation=true
 common/enable_pause_aware_picking=true
 
 [rendering]

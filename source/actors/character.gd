@@ -1,6 +1,9 @@
 class_name Character
 extends CharacterBody3D
 
+@warning_ignore("unused_signal")
+signal state_change_requested(state_name: String)
+
 const GRAVITY = 25.0
 const ACCEL = 0.2
 

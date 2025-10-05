@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvj6jlk7qoghi"]
+[gd_scene load_steps=15 format=3 uid="uid://dvj6jlk7qoghi"]
 
 [ext_resource type="PackedScene" uid="uid://db0l5d6phwago" path="res://source/actors/building pieces/basic/stone_wall.tscn" id="1_ixv6x"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="2_0bmsq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dx1dvrbna6x6e" path="res://source/actors/building pieces/basic/water_plane.tscn" id="6_jhafq"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="7_orken"]
 [ext_resource type="PackedScene" uid="uid://c34gumwigw2jh" path="res://source/actors/building pieces/archways/archway_L_bend.tscn" id="9_tw5j5"]
+[ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="10_5lk3s"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="11_5mwuc"]
 [ext_resource type="ArrayOccluder3D" uid="uid://chrqurie50ind" path="res://source/actors/rooms/occluders/prison_depths_stairway_1.occ" id="12_admbv"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="13_2nvv3"]
@@ -141,7 +142,6 @@ nav_walkable = false
 [node name="CobbleFloor" parent="Floors" instance=ExtResource("3_6fmac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -13.5, -7)
 size = Vector3(50, 1, 30)
-nav_walkable = false
 
 [node name="StoneWall" parent="Floors" instance=ExtResource("1_ixv6x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, -7.5, -17.5)
@@ -206,25 +206,25 @@ transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -1, -13,
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="WaterPlane2" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, 0.25)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, 1.25)
 
 [node name="WaterPlane5" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, 10.25)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, 11.25)
 
 [node name="WaterPlane6" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, -12.625, 10.25)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, -12.625, 11.25)
 
 [node name="WaterPlane3" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, -9.75)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, -8.75)
 
 [node name="WaterPlane4" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, -19.75)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, -12.625, -18.75)
 
 [node name="WaterPlane7" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.5, -12.625, -19.75)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.5, -12.625, -18.75)
 
 [node name="WaterPlane8" parent="Water" instance=ExtResource("6_jhafq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.5, -12.625, -19.75)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.5, -12.625, -18.75)
 
 [node name="HangingLamp" parent="." instance=ExtResource("7_orken")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2, -13.25, 2.5)
@@ -241,6 +241,10 @@ occluder = ExtResource("12_admbv")
 
 [node name="SquareDoorway" parent="." instance=ExtResource("11_5mwuc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -13, 3)
+
+[node name="SquareCellDoor" parent="SquareDoorway" instance=ExtResource("10_5lk3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
+initial_rotation = 42.0
 
 [node name="Crawlway" parent="." instance=ExtResource("13_e8v6d")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -13, 3)
@@ -265,7 +269,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -13, 5.5)
 
 [node name="RegArchway" parent="." instance=ExtResource("13_2nvv3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, -13, 3)
-length = 7.0
+length = 8.0
 has_frame = false
 
 [node name="RegArchway2" parent="." instance=ExtResource("13_2nvv3")]

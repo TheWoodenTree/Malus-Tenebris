@@ -9,6 +9,8 @@ const EFFECT_MAX_DIST = 30
 @export var debug_no_title_screen: bool = false
 @export var debug_no_prologue: bool = false
 
+var fear_tween: Tween
+
 var player_dist_to_creature: float
 
 var enable_heartbeat = false
@@ -58,15 +60,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$Label.text = str(int(Engine.get_frames_per_second()))
-	if Input.is_action_just_pressed("debug2"):
-		Global.player.fear_player.play()
-		Global.player.fear_pulse_player.play()
-		var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from(-50.0)
-		tween.parallel().tween_property(Global.player.fear_pulse_player, "volume_db", 10.0, 1.5).from(-50.0)
-		tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from(20500)
-		tween.parallel().tween_property(Global.zoom_shader, "shader_parameter/intensity", 15.0, 1.5)
-		tween.parallel().tween_property(Global.vignette_shader, "shader_parameter/softness", 0.75, 1.5)
 	
 	if Input.is_action_just_pressed("tilde"):
 		if Global.mouse_locked:
@@ -171,16 +164,27 @@ func _calculate_effects_scale():
 	return scale * scale
 
 
-func fear_effect_timed(duration: float):
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.parallel().tween_property(zoom.material, "shader_parameter/intensity", 15.0, 1.0).from(0.0)
-	#tween.parallel().tween_property(vignette.material, "shader_parameter/softness", 1.0, 1.0).from(3.0)
-	
-	await get_tree().create_timer(duration, false).timeout
-	
-	var tween2 = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween2.parallel().tween_property(zoom.material, "shader_parameter/intensity", 0.0, 3.0).from(15.0)
-	#tween2.parallel().tween_property(vignette.material, "shader_parameter/softness", 3.0, 3.0).from(1.0)
+func set_fear_enabled(enabled: bool):
+	if enabled:
+		if fear_tween and fear_tween.is_running():
+			fear_tween.kill()
+		
+		Global.player.fear_player.play()
+		Global.player.fear_pulse_player.play()
+		fear_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		fear_tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from_current()
+		fear_tween.parallel().tween_property(Global.player.fear_pulse_player, "volume_db", 10.0, 1.5).from_current()
+		fear_tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from_current()
+		fear_tween.parallel().tween_property(Global.zoom_shader, "shader_parameter/intensity", 15.0, 1.5).from_current()
+	else:
+		if fear_tween and fear_tween.is_running():
+			fear_tween.kill()
+		fear_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		fear_tween.tween_property(Global.player.fear_player, "volume_db", -50, 15.0).from_current()
+		fear_tween.parallel().tween_property(Global.player.fear_pulse_player, "volume_db", -50, 15.0).from_current()
+		fear_tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 20500, 5.0).from_current()
+		fear_tween.parallel().tween_property(Global.zoom_shader, "shader_parameter/intensity", 0.0, 8.0).from_current()
+		fear_tween.tween_callback(func(): Global.player.fear_player.stop(); Global.player.fear_pulse_player.stop())
 
 
 func set_upside_down_sound(on: bool):

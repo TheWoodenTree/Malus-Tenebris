@@ -149,15 +149,15 @@ func _handle_input():
 		if is_instance_valid(draggable_being_dragged):
 			set_draggable_being_dragged(null)
 	
-	#if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
-	#	var instance: RigidBody3D = thrown_item.instantiate()
-	#	#instance.get_node("Mesh").mesh = held_item
-	#	Global.world.add_child(instance)
-	#	instance.global_transform = held_item.global_transform
-	#	delete_held_item()
-	#	await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
-	#	await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
-	#	instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
+	if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
+		var instance: RigidBody3D = thrown_item.instantiate()
+		#instance.get_node("Mesh").mesh = held_item
+		Global.world.add_child(instance)
+		instance.global_transform = held_item.global_transform
+		#delete_held_item()
+		await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
+		await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
+		instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
 
 
 func _handle_physics_input():

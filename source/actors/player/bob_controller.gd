@@ -1,7 +1,9 @@
 extends Node3D
 
+const BOB_CROUCH_AMP: float = 0.05
 const BOB_WALK_AMP: float = 0.05
 const BOB_SPRINT_AMP: float = 0.1
+const BOB_CROUCH_FREQ: float = (1 / 0.98) * TAU
 const BOB_WALK_FREQ: float = (1 / 0.65) * TAU
 const BOB_SPRINT_FREQ: float = (1 / 0.43) * TAU
 const DEF_CAM_STABILIZE_DIST: float = -3.0
@@ -46,6 +48,9 @@ func _bob():
 		if Global.player.sprinting and not Global.player.crouching:
 			bob_frequency = BOB_SPRINT_FREQ
 			bob_amplitude = BOB_SPRINT_AMP
+		elif not Global.player.sprinting and Global.player.crouching: # TODO: Fix not working when crouching while still holding sprint
+			bob_frequency = BOB_CROUCH_FREQ
+			bob_amplitude = BOB_CROUCH_AMP
 		else:
 			bob_frequency = BOB_WALK_FREQ
 			bob_amplitude = BOB_WALK_AMP
