@@ -16,6 +16,7 @@ func enter(_params: Dictionary) -> void:
 	character.suspicion = 1.0
 	Global.main.set_fear_enabled(true)
 	character.blend_to_new_anim("Run")
+	character.sound_player.play()
 
 
 func exit() -> void:
@@ -50,5 +51,4 @@ func physics_update(delta: float):
 		character.check_for_door_in_path()
 	
 	if character.global_position.distance_to(Global.player.global_position) < 3.0:
-		character.suspicion = 0.0
-		transitioned.emit(self, 'Wander')
+		transitioned.emit(self, 'SpitAttack')

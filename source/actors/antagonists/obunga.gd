@@ -59,6 +59,7 @@ func _ready():
 	footstep_sprint_vol += 10
 	
 	state_machine.state_updated.connect(func(state: State): current_state = state)
+	animation_player.animation_changed.connect(func(): print('test'))
 
 
 func _process(delta):
@@ -245,7 +246,7 @@ func play_sound_one_shot(sound: AudioStream):
 	sound_player.play()
 
 
-func blend_to_new_anim(anim_name: String, duration := 0.5):
+func blend_to_new_anim(anim_name: String, duration := 0.1):
 	var point := Vector2.ZERO
 	match anim_name:
 		"Walk":
@@ -254,9 +255,18 @@ func blend_to_new_anim(anim_name: String, duration := 0.5):
 			point = Vector2(0.0, 1.0)
 		"Idle":
 			point = Vector2(0.0, 0.0)
+		"SpitAttack":
+			point = Vector2(-1.0, 0.0)
 			
+	#if is_zero_approx(duration):
+		#animation_player.set("parameters/locomotion/blend_position", point)
+		#print(anim_name, point)
+		#return
+		
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(animation_tree, "parameters/locomotion/blend_position", point, duration)
+	if anim_name == "SpitAttack":
+		animation_tree.set("parameters/TimeSeek/seek_request", 0.0)
 
 
 func walk_in_servants_quarters_event(end_position: Vector3):
