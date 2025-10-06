@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddtj7ve0x7uxy"]
+
+[ext_resource type="Script" uid="uid://d1t2cnosnrjjv" path="res://source/actors/antagonists/states/idle.gd" id="1_ycwfc"]
+
+[node name="IdleState" type="Node"]
+script = ExtResource("1_ycwfc")

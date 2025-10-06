@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=24 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" uid="uid://dc83hot4enxya" path="res://source/main.gd" id="4"]
@@ -75,6 +75,8 @@ script/source = "extends Control
 shader = ExtResource("5_r5cia")
 shader_parameter/blurAmount = 0.0
 shader_parameter/colorScale = 1.0
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_r5lv5"]
 
 [node name="Main" type="Node"]
 script = ExtResource("4")
@@ -198,3 +200,6 @@ text = "Time Left:"
 [node name="Cursor" parent="." instance=ExtResource("12_7deiu")]
 process_mode = 3
 top_level = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_r5lv5")

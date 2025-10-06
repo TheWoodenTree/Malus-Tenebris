@@ -60,7 +60,7 @@ height = 0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.4339, 0, -44.5)
 priority = 1
 reverb_bus_enabled = true
-reverb_bus_name = &"General (big)"
+reverb_bus_name = &"General"
 reverb_bus_amount = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DefaultSound"]

@@ -20,6 +20,8 @@ var scripted_event: bool = false
 var look_at_player: bool = false
 var draggable_being_dragged: Draggable
 
+var door_nearby := false
+
 var suspicion := 0.0 : 
 	set(value): 
 		suspicion = clamp(value, 0.0, 1.0)
@@ -37,11 +39,14 @@ var look_at_pos: Vector3 = Vector3(0.0, 0.0, 1.0)
 var current_state: State
 
 @onready var nav_agent: NavigationAgent3D = $NavAgent
-@onready var skeleton = $Armature/Skeleton3D
 @onready var sound_player = $SoundPlayer
 @onready var footstep_player = $FootstepPlayer
 @onready var spear = $Spear
 @onready var state_machine: StateMachine = $StateMachine
+@onready var door_area: Area3D = $DoorArea
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 
 func _ready():
@@ -58,13 +63,15 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("enemy_pathfind"):
-		do_move = !do_move
-		rotation.y = 0.0
-		$AnimationPlayer2.play("armatureAction_001")
-	if look_at_player:
-		var bone_transform: Transform3D = skeleton.get_bone_global_pose_no_override(5)
-		bone_transform = bone_transform.looking_at(skeleton.to_local(Global.player.cam.global_position), Vector3.UP, true)
-		skeleton.set_bone_global_pose_override(5, bone_transform, 1.0, true)
+		do_move = not do_move
+		if not do_move:
+			state_change_requested.emit("Idle")
+		else:
+			state_change_requested.emit("Wander")
+	#if look_at_player:
+	#	var bone_transform: Transform3D = skeleton.get_bone_global_pose_no_override(5)
+	#	bone_transform = bone_transform.looking_at(skeleton.to_local(Global.player.cam.global_position), Vector3.UP, true)
+	#	skeleton.set_bone_global_pose_override(5, bone_transform, 1.0, true)
 	
 	if Input.is_action_just_pressed("debug2"):
 		state_change_requested.emit("Investigate", {InvestigateState.PARAM_INVESTIGATE_POSITION: Global.player.global_position})
@@ -72,20 +79,33 @@ func _process(delta):
 	if do_move:
 		pass
 	
-	var max_turn = PI * delta
-	var target_angle = Vector3.FORWARD.signed_angle_to((velocity * Vector3(1.0, 0.0, 1.0)).normalized(), Vector3.UP)
-	var diff = fposmod(target_angle - rotation.y + PI, TAU) - PI
-	rotation.y += clamp(diff, -max_turn, max_turn)
+	
+	if not is_zero_approx(velocity.length()):
+		var flat_vel = (velocity * Vector3(1.0, 0.0, 1.0)).normalized()
+		if flat_vel.length() > 0.01:
+			var target_angle = Vector3.FORWARD.signed_angle_to(flat_vel, Vector3.UP)
+			var diff = fposmod(target_angle - rotation.y + PI, TAU) - PI
+			var min_turn_speed = PI / 8.0
+			var max_turn_speed = 2.0 * TAU
+			var proportion = clamp(abs(diff) / PI, 0.0, 1.0)
+			var max_turn = lerp(min_turn_speed, max_turn_speed, proportion) * delta
+			rotation.y += clamp(diff, -max_turn, max_turn)
 
 
 
 func _physics_process(delta):
 	if draggable_being_dragged:
 		if draggable_being_dragged.draggable_body.rotation_degrees.y < 80:
+			blend_to_new_anim("Idle")
+			
 			var z_dist_sign: int = sign(draggable_being_dragged.get_character_z_dist(self))
 			var amount := 0.05 if current_state.name != 'Chase' else 0.2
 			draggable_being_dragged.add_torque_to_draggable_body(Vector2(amount * z_dist_sign, 0.0))
 		else:
+			if current_state is WanderState or current_state is InvestigateState:
+				blend_to_new_anim("Walk")
+			elif current_state is ChaseState:
+				blend_to_new_anim("Run")
 			draggable_being_dragged.set_being_dragged(null)
 			draggable_being_dragged = null
 			opened_door.emit()
@@ -94,6 +114,7 @@ func _physics_process(delta):
 	if do_move and not draggable_being_dragged:
 		#look_at_pos = lerp(look_at_pos, Vector3(velocity.x, $Armature.position.y, velocity.z).rotated(Vector3.UP, PI), 0.04)
 		#$Armature.look_at(to_global(look_at_pos), Vector3.UP, false)
+		
 		move_and_slide()
 		
 		velocity.y -= gravity * delta
@@ -109,6 +130,10 @@ func _physics_process(delta):
 			in_water = true
 		else:
 			in_water = false
+
+
+func is_near_door():
+	return door_area.has_overlapping_bodies()
 
 
 func check_for_door_in_path():
@@ -148,7 +173,7 @@ func check_for_door_in_path():
 
 
 func check_path_segment(from: Vector3, to: Vector3) -> Dictionary:
-	var door_collision_layer: int = 8
+	var door_collision_layer: int = 8 + 16
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query := PhysicsShapeQueryParameters3D.new()
 	
@@ -218,6 +243,20 @@ func play_footstep():
 func play_sound_one_shot(sound: AudioStream):
 	sound_player.stream = sound
 	sound_player.play()
+
+
+func blend_to_new_anim(anim_name: String, duration := 0.5):
+	var point := Vector2.ZERO
+	match anim_name:
+		"Walk":
+			point = Vector2(1.0, 0.0)
+		"Run":
+			point = Vector2(0.0, 1.0)
+		"Idle":
+			point = Vector2(0.0, 0.0)
+			
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(animation_tree, "parameters/locomotion/blend_position", point, duration)
 
 
 func walk_in_servants_quarters_event(end_position: Vector3):

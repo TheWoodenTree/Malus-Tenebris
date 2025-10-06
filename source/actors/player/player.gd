@@ -133,6 +133,7 @@ func _handle_input():
 		set_collision_layer_value(2, !noclip_on)
 		set_collision_mask_value(1, !noclip_on)
 		set_collision_mask_value(4, !noclip_on)
+		set_collision_mask_value(5, !noclip_on)
 	
 	var can_self_use: bool = held_item_data and held_item_data.self_useable and not targeted_interactable and not draggable_being_dragged
 	if Input.is_action_just_pressed("interact") and can_self_use and not in_menu:

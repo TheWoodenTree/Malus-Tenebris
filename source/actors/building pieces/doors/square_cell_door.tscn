@@ -150,6 +150,9 @@ shader_parameter/transparent = false
 
 [node name="SquareCellDoor" instance=ExtResource("1_1qg3c")]
 
+[node name="DraggableBody" parent="." index="0"]
+collision_layer = 16
+
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
 material_overlay = SubResource("ShaderMaterial_c6bch")
@@ -176,3 +179,6 @@ material_overlay = SubResource("ShaderMaterial_tb0ye")
 
 [node name="MovePlayer" parent="DraggableBody" index="9"]
 stream = ExtResource("4_87roi")
+
+[node name="ClosedBlockingVolume" parent="." index="4"]
+affect_navigation_mesh = false

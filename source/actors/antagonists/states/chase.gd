@@ -1,4 +1,4 @@
-class_name Chase
+class_name ChaseState
 extends State
 
 const PATH_UPDATE_INTERVAL := 0.15
@@ -15,7 +15,7 @@ func _ready() -> void:
 func enter(_params: Dictionary) -> void:
 	character.suspicion = 1.0
 	Global.main.set_fear_enabled(true)
-	character.get_node("AnimationPlayer2").speed_scale = 2.1
+	character.blend_to_new_anim("Run")
 
 
 func exit() -> void:
@@ -46,7 +46,8 @@ func physics_update(delta: float):
 	
 	character.velocity = direction.normalized() * move_speed
 	
-	character.check_for_door_in_path()
+	if character.is_near_door():
+		character.check_for_door_in_path()
 	
 	if character.global_position.distance_to(Global.player.global_position) < 3.0:
 		character.suspicion = 0.0

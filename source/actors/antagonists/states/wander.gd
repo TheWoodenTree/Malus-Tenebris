@@ -23,7 +23,7 @@ func _on_set_character(_character: CharacterBody3D):
 
 func enter(_params: Dictionary) -> void:
 	randomize_wander()
-	character.get_node("AnimationPlayer2").speed_scale = 1.0
+	character.blend_to_new_anim("Walk")
 
 
 func exit() -> void:
@@ -49,7 +49,8 @@ func physics_update(delta: float):
 	
 	nav_agent.set_velocity(new_velocity)
 	
-	character.check_for_door_in_path()
+	if character.is_near_door():
+		character.check_for_door_in_path()
 	
 	if nav_agent.is_target_reached():
 		randomize_wander()

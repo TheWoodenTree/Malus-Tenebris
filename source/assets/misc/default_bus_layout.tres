@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=12 format=3 uid="uid://b1ohsbg8gdgnb"]
+[gd_resource type="AudioBusLayout" load_steps=13 format=3 uid="uid://b1ohsbg8gdgnb"]
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_goou0"]
 resource_name = "Amplify"
@@ -7,6 +7,14 @@ volume_db = -22.0
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_5g3v8"]
 resource_name = "LowPassFilter"
 cutoff_hz = 20500.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_e7mde"]
+resource_name = "Reverb"
+predelay_msec = 70.0
+predelay_feedback = 0.6
+room_size = 0.3
+spread = 0.3
+hipass = 0.1
 
 [sub_resource type="AudioEffectReverb" id="2"]
 resource_name = "Reverb"
@@ -130,3 +138,11 @@ bus/9/volume_db = 0.0694828
 bus/9/send = &"Master"
 bus/9/effect/0/effect = SubResource("1")
 bus/9/effect/0/enabled = false
+bus/10/name = &"Test Water Hallway"
+bus/10/solo = false
+bus/10/mute = false
+bus/10/bypass_fx = false
+bus/10/volume_db = 0.0
+bus/10/send = &"Master"
+bus/10/effect/0/effect = SubResource("AudioEffectReverb_e7mde")
+bus/10/effect/0/enabled = true
