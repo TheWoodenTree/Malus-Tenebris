@@ -1,12 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene load_steps=25 format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" uid="uid://dc83hot4enxya" path="res://source/main.gd" id="4"]
 [ext_resource type="AudioStream" uid="uid://d157c1hdub448" path="res://source/assets/sounds/horror_sounds/play_sound.ogg" id="5_q5r8v"]
 [ext_resource type="Shader" uid="uid://c4kq3tb1xat2f" path="res://source/blackout_blur.gdshader" id="5_r5cia"]
+[ext_resource type="Script" uid="uid://pms2ru2vhgdr" path="res://source/post_processing.gd" id="6_7rnte"]
 [ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
 [ext_resource type="Material" uid="uid://faq68tr6wo04" path="res://source/assets/shaders/retro_shader_mat.tres" id="7_768vo"]
+[ext_resource type="Curve" uid="uid://8gfiahf2u0is" path="res://source/assets/misc/heartbeat_curve.tres" id="7_nfm2e"]
 [ext_resource type="AudioStream" uid="uid://brkutqft4kt3q" path="res://source/assets/sounds/misc/heartbeat.ogg" id="8"]
 [ext_resource type="Material" uid="uid://8ry3t1ttx3f4" path="res://source/assets/shaders/chrom_abb_shader_mat.tres" id="8_dshu8"]
 [ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
@@ -65,12 +67,6 @@ _data = {
 &"heartbeat": SubResource("3")
 }
 
-[sub_resource type="GDScript" id="GDScript_7dmx0"]
-script/source = "extends Control
-
-
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy6ro"]
 shader = ExtResource("5_r5cia")
 shader_parameter/blurAmount = 0.0
@@ -121,22 +117,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_7dmx0")
+script = ExtResource("6_7rnte")
+heartbeat_curve = ExtResource("7_nfm2e")
 
 [node name="BlackoutBlur" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_xy6ro")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
-
-[node name="BackBufCopy4" type="BackBufferCopy" parent="PostProcessing"]
-copy_mode = 2
-
-[node name="Vignette" type="ColorRect" parent="PostProcessing"]
-material = ExtResource("6_kj3sd")
-custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
 
 [node name="BackBufCopy" type="BackBufferCopy" parent="PostProcessing"]
 copy_mode = 2
@@ -148,9 +135,27 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
+[node name="BackBufCopy4" type="BackBufferCopy" parent="PostProcessing"]
+copy_mode = 2
+
+[node name="PainVignette" type="ColorRect" parent="PostProcessing"]
+material = ExtResource("6_kj3sd")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+
 [node name="BackBufCopy3" type="BackBufferCopy" parent="PostProcessing"]
 visible = false
 copy_mode = 2
+
+[node name="Vignette" type="ColorRect" parent="PostProcessing"]
+visible = false
+material = ExtResource("6_kj3sd")
+custom_minimum_size = Vector2(512, 288)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
 
 [node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing"]
 visible = false

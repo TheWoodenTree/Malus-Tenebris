@@ -8,6 +8,7 @@ const SPEED = 3.5
 const JUMP_VELOCITY = 4.5
 const MAX_DOOR_DISTANCE_ALONG_PATH := 3.0
 const EYE_POSITION := Vector3.UP
+const SPIT_ATTACK_COOLDOWN_TIME := 3.0
 
 @export var shape_cast_shape: Shape3D
 @export var shape_cast_transform: Transform3D
@@ -41,11 +42,12 @@ var current_state: State
 @onready var nav_agent: NavigationAgent3D = $NavAgent
 @onready var sound_player = $SoundPlayer
 @onready var footstep_player = $FootstepPlayer
-@onready var spear = $Spear
 @onready var state_machine: StateMachine = $StateMachine
 @onready var door_area: Area3D = $DoorArea
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var skeleton: Skeleton3D = $armature/Skeleton3D
+@onready var spit_attack: Node3D = $armature/Skeleton3D/SpitAttack
 
 
 
@@ -80,6 +82,10 @@ func _process(delta):
 	if do_move:
 		pass
 	
+	if current_state is SpitAttackState:
+		var head_global_position: Vector3 = skeleton.to_global(skeleton.get_bone_global_pose(skeleton.find_bone('head')).origin)
+		spit_attack.set_particles_and_sound_global_position(head_global_position)
+	
 	
 	if not is_zero_approx(velocity.length()):
 		var flat_vel = (velocity * Vector3(1.0, 0.0, 1.0)).normalized()
@@ -103,7 +109,7 @@ func _physics_process(delta):
 			var amount := 0.05 if current_state.name != 'Chase' else 0.2
 			draggable_being_dragged.add_torque_to_draggable_body(Vector2(amount * z_dist_sign, 0.0))
 		else:
-			if current_state is WanderState or current_state is InvestigateState:
+			if current_state is WanderState or current_state is InvestigateState or current_state is ChasePauseState:
 				blend_to_new_anim("Walk")
 			elif current_state is ChaseState:
 				blend_to_new_anim("Run")
@@ -246,7 +252,7 @@ func play_sound_one_shot(sound: AudioStream):
 	sound_player.play()
 
 
-func blend_to_new_anim(anim_name: String, duration := 0.1):
+func blend_to_new_anim(anim_name: String, duration := 0.5):
 	var point := Vector2.ZERO
 	match anim_name:
 		"Walk":
@@ -255,13 +261,6 @@ func blend_to_new_anim(anim_name: String, duration := 0.1):
 			point = Vector2(0.0, 1.0)
 		"Idle":
 			point = Vector2(0.0, 0.0)
-		"SpitAttack":
-			point = Vector2(-1.0, 0.0)
-			
-	#if is_zero_approx(duration):
-		#animation_player.set("parameters/locomotion/blend_position", point)
-		#print(anim_name, point)
-		#return
 		
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(animation_tree, "parameters/locomotion/blend_position", point, duration)
@@ -271,7 +270,7 @@ func blend_to_new_anim(anim_name: String, duration := 0.1):
 
 func walk_in_servants_quarters_event(end_position: Vector3):
 	rotation.y = 0.0
-	spear.visible = false
+	#spear.visible = false
 	scripted_event = true
 	do_move = true
 	var tween: Tween = get_tree().create_tween()

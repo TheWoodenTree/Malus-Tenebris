@@ -1,7 +1,14 @@
+class_name Player
 extends Character
 
 const NOCLIP_SPEED: float = 20.0
 const MAX_DIST_FROM_DRAGGABLE: float = 5.0
+const MAX_HP = 10.0
+const HEARTBEAT_HP_THRESHOLD = 3.333
+
+var health: float = 10.0 :
+	set(value):
+		health = clamp(value, 0.0, MAX_HP)
 
 var torch_range = 10.0
 var torch_energy = 0.75
@@ -35,20 +42,22 @@ var in_world: bool = false
 var gulp_sound: AudioStream = preload("res://source/assets/sounds/liquid/gulp.ogg")
 var sigh_of_relief_sound: AudioStream = preload("res://source/assets/sounds/player_character/sigh_of_relief.ogg")
 var thrown_item: Resource = preload("res://source/actors/misc/thrown_bottle.tscn")
+var pain_grunt_stream: AudioStreamRandomizer = preload("res://source/assets/sounds/player_character/pain_grunt.tres")
 
 @onready var head = $HeadController
-@onready var bob_controller = $HeadController/BobController
-@onready var cam = $HeadController/BobController/Camera
-@onready var torch_cam = $HeadController/BobController/Camera/ViewportCont/TorchCamViewport/TorchCam
-@onready var interact_ray = $HeadController/BobController/Camera/InteractRaycast
-@onready var torch_pos = $HeadController/BobController/Camera/TorchPos
-@onready var light = $HeadController/BobController/Camera/BaseLight
-@onready var held_item_marker = $HeadController/BobController/Camera/HeldItemMarker
-@onready var hourglass_marker: Marker3D = $HeadController/BobController/Camera/HourglassMarker
+@onready var camera_controller = $HeadController/CameraController
+@onready var cam = $HeadController/CameraController/Camera
+@onready var torch_cam = $HeadController/CameraController/Camera/ViewportCont/TorchCamViewport/TorchCam
+@onready var interact_ray = $HeadController/CameraController/Camera/InteractRaycast
+@onready var torch_pos = $HeadController/CameraController/Camera/TorchPos
+@onready var light = $HeadController/CameraController/Camera/BaseLight
+@onready var held_item_marker = $HeadController/CameraController/Camera/HeldItemMarker
+@onready var hourglass_marker: Marker3D = $HeadController/CameraController/Camera/HourglassMarker
 @onready var noise_player = $NoisePlayer
 @onready var rucksack_player = $RucksackPlayer
 @onready var fear_player = $FearPlayer
 @onready var fear_pulse_player = $FearPulsePlayer
+@onready var hurt_sound_player: AudioStreamPlayer3D = $HurtSoundPlayer
 
 @export var debug_has_torch: bool = false
 @export var debug_no_tutorials: bool = false
@@ -93,8 +102,8 @@ func _process(_delta: float) -> void:
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
 		time_when_started_moving = Time.get_ticks_msec()
-		bob_controller.bob_timer.seek(0.0)
-		bob_controller.bob_timer.play("timer")
+		camera_controller.bob_timer.seek(0.0)
+		camera_controller.bob_timer.play("timer")
 	
 	# Stop dragging if too far from draggable
 	if is_instance_valid(draggable_being_dragged):
@@ -298,6 +307,21 @@ func set_draggable_being_dragged(draggable: Draggable):
 	draggable_being_dragged = draggable
 
 
+func hurt(source: Attack):
+	if source is SpitAttack:
+		play_sound_one_shot(load("res://source/assets/sounds/monster/grunt/acid_burn.wav"))
+		health -= source.damage
+	
+	if is_zero_approx(health):
+		print('ded')
+	hurt_sound_player.play()
+	camera_controller.add_trauma(1.5)
+	
+	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_NEAR_FULL_HP_MULTIPLIER, get_normalized_health())
+	
+	Global.post_processing.blend_pain_vignette_multiplier(multiplier)
+
+
 func play_sound_one_shot(sound: AudioStream):
 	noise_player.stream = sound
 	noise_player.play()
@@ -386,6 +410,10 @@ func _get_input_dir():
 	dir.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
 	
 	return dir.normalized()
+
+
+func get_normalized_health() -> float:
+	return health / MAX_HP
 
 
 func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):

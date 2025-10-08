@@ -8,6 +8,18 @@ const BOB_WALK_FREQ: float = (1 / 0.65) * TAU
 const BOB_SPRINT_FREQ: float = (1 / 0.43) * TAU
 const DEF_CAM_STABILIZE_DIST: float = -3.0
 
+@export var trauma_noise: FastNoiseLite
+@export var trauma_speed: float = 1000.0
+@export var trauma_max_x: float = 10.0
+@export var trauma_max_y: float = 10.0
+@export var trauma_max_z: float = 5.0
+
+var trauma: float = 0.0
+var trauma_time: float = 0.0
+var trauma_reduction_rate: float = 3.0
+
+var initial_camera_rotation := Vector3.ZERO
+
 var bob_transition: bool = false
 
 var bob_frequency: float = BOB_WALK_FREQ
@@ -25,8 +37,7 @@ var stabilize_angle: float
 @onready var bob_timer = $BobTimer
 
 
-func _process(_delta):
-	
+func _process(delta):
 	if not Global.player.in_menu and not Global.player.scripted_event:
 		if Global.player.global_input_dir == Vector3.ZERO:
 			_reset_bob()
@@ -37,6 +48,12 @@ func _process(_delta):
 		elif Global.player.global_input_dir != Vector3.ZERO:
 			_bob()
 	
+	if not is_zero_approx(trauma):
+		trauma_time += delta
+		trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
+		camera.rotation_degrees.x = initial_camera_rotation.x + trauma_max_x * get_shake_intensity() * get_trauma_noise_from_seed(0)
+		camera.rotation_degrees.y = initial_camera_rotation.y + trauma_max_y * get_shake_intensity() * get_trauma_noise_from_seed(1)
+		camera.rotation_degrees.z = initial_camera_rotation.z + trauma_max_z * get_shake_intensity() * get_trauma_noise_from_seed(2)
 	#var facing_dir: Vector3 = get_facing_dir()
 	#cam_facing_pos = facing_dir * 3.0 + camera.position
 	#cam_stabilize_pos = cam_facing_pos - self.position
@@ -96,3 +113,16 @@ func get_facing_dir():
 func _set_bob_speed_multiplier(multiplier: float):
 	bob_speed_multiplier = multiplier
 	bob_timer.speed_scale = bob_speed_multiplier
+
+
+func add_trauma(trauma_amount: float):
+	trauma = clamp(trauma + trauma_amount, 0.0, 2.5)
+
+
+func get_trauma_noise_from_seed(seed_: int):
+	trauma_noise.seed = seed_
+	return trauma_noise.get_noise_1d(trauma_time * trauma_speed)
+
+
+func get_shake_intensity():
+	return trauma * trauma

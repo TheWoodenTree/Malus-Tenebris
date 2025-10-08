@@ -1,31 +1,25 @@
-class_name ChaseState
+class_name ChasePauseState
 extends State
-
-const PARAM_PLAY_SOUND = "play_sound"
 
 const PATH_UPDATE_INTERVAL := 0.15
 
-@export var move_speed := 6.5
+@export var move_speed := 2.775
 
 var time_since_last_update := 0.0
 
+@onready var state_timer: Timer = $StateTimer
+
 
 func _ready() -> void:
-	pass
+	state_timer.timeout.connect(transitioned.emit.bind(self, "Chase", {ChaseState.PARAM_PLAY_SOUND: false}))
 
 
-func enter(params: Dictionary) -> void:
-	character.suspicion = 1.0
-	character.blend_to_new_anim("Run")
-	
-	if params.has(PARAM_PLAY_SOUND) and not params[PARAM_PLAY_SOUND]:
-		return
-	
-	Global.main.set_fear_enabled(true)
-	character.sound_player.play()
+func enter(_params: Dictionary):
+	state_timer.start()
+	character.blend_to_new_anim("Walk")
 
 
-func exit() -> void:
+func exit():
 	pass
 
 
@@ -44,7 +38,7 @@ func physics_update(delta: float):
 			time_since_last_update = 0.0
 			nav_agent.target_position = Global.player.global_position
 	else:
-		character.suspicion -= delta * 0.1333
+		character.suspicion -= delta * 0.1
 		if character.is_min_suspicion():
 			transitioned.emit(self, 'Wander')
 			Global.main.set_fear_enabled(false)
@@ -56,6 +50,3 @@ func physics_update(delta: float):
 	
 	if character.is_near_door():
 		character.check_for_door_in_path()
-	
-	if character.global_position.distance_to(Global.player.global_position) < 3.0:
-		transitioned.emit(self, 'SpitAttack')

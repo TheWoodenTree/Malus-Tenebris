@@ -38,6 +38,7 @@ var obunga
 @onready var retro_shader = $PostProcessing/RetroShader
 @onready var chromatic_abberation = $PostProcessing/ChromaticAbberation
 @onready var vignette = $PostProcessing/Vignette
+@onready var pain_vignette: ColorRect = $PostProcessing/PainVignette
 @onready var zoom = $PostProcessing/Zoom
 @onready var blackout_blur = $PostProcessing/BlackoutBlur
 @onready var effects_player = $EffectsPlayer

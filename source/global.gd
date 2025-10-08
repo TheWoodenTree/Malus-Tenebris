@@ -6,7 +6,7 @@ extends Node
 var world: Node3D
 var world_environment: WorldEnvironment
 var nav_region: NavigationRegion3D
-var post_processing: Control
+var post_processing: PostProcessing
 var retro_shader: Material
 var chromatic_abberation_shader: Material
 var vignette_shader: Material

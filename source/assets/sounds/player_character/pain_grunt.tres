@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bvjbxmn1vkjgb"]
+
+[ext_resource type="AudioStream" uid="uid://slqrm04jt6o2" path="res://source/assets/sounds/player_character/pain_grunt_1.wav" id="1_5sl0c"]
+[ext_resource type="AudioStream" uid="uid://d3oadafss47xx" path="res://source/assets/sounds/player_character/pain_grunt_2.wav" id="2_akl8b"]
+[ext_resource type="AudioStream" uid="uid://c2j8t1s6nnyjm" path="res://source/assets/sounds/player_character/pain_grunt_3.wav" id="3_q31h3"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_5sl0c")
+stream_1/stream = ExtResource("2_akl8b")
+stream_2/stream = ExtResource("3_q31h3")

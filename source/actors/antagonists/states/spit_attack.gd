@@ -10,8 +10,7 @@ func enter(_params: Dictionary) -> void:
 	character.set_velocity(Vector3.ZERO)
 	character.animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	await get_tree().create_timer(0.833, false).timeout
-	transitioned.emit(self, "Chase")
-
+	transitioned.emit(self, "ChasePause")
 
 
 func exit() -> void:

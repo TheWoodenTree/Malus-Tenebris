@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=4 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=29 format=4 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/player/camera.tscn" id="2"]
-[ext_resource type="Script" uid="uid://c5vj02ndcwjhy" path="res://source/actors/player/bob_controller.gd" id="2_n0c15"]
+[ext_resource type="Script" uid="uid://c5vj02ndcwjhy" path="res://source/actors/player/camera_controller.gd" id="2_n0c15"]
 [ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="4"]
 [ext_resource type="Script" uid="uid://cjlbyr8yrs06d" path="res://source/actors/player/interact_raycast.gd" id="4_hbv3l"]
 [ext_resource type="Material" uid="uid://6l1ko2kw0opd" path="res://source/assets/particles/ambient_particles.tres" id="4_sn5wa"]
@@ -13,6 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://bq7tbm4dgtm2j" path="res://source/assets/sounds/rucksack/rucksack_5.ogg" id="9_un0ps"]
 [ext_resource type="AudioStream" uid="uid://d3pakvmqmjlr0" path="res://source/assets/sounds/rucksack/rucksack_6.ogg" id="10_vyll3"]
 [ext_resource type="AudioStream" uid="uid://c7bxvp10bg6g2" path="res://source/assets/sounds/horror_sounds/fear_pulse_loop.ogg" id="11_nxucy"]
+[ext_resource type="AudioStream" uid="uid://bvjbxmn1vkjgb" path="res://source/assets/sounds/player_character/pain_grunt.tres" id="14_kx8ox"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kx8ox"]
 
 [sub_resource type="Animation" id="Animation_dqclq"]
 resource_name = "timer"
@@ -35,7 +38,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeadController/BobController/Camera/BaseLight:spot_range")
+tracks/0/path = NodePath("HeadController/CameraController/Camera/BaseLight:spot_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +53,7 @@ resource_name = "torch_light_anim"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeadController/BobController/Camera/BaseLight:spot_range")
+tracks/0/path = NodePath("HeadController/CameraController/Camera/BaseLight:spot_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +123,7 @@ radius = 12.0
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 25
+collision_mask = 29
 slide_on_ceiling = false
 floor_constant_speed = true
 floor_max_angle = 0.872665
@@ -131,13 +134,14 @@ debug_has_torch = true
 [node name="HeadController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="BobController" type="Node3D" parent="HeadController"]
+[node name="CameraController" type="Node3D" parent="HeadController"]
 script = ExtResource("2_n0c15")
+trauma_noise = SubResource("FastNoiseLite_kx8ox")
 
-[node name="Camera" parent="HeadController/BobController" instance=ExtResource("2")]
+[node name="Camera" parent="HeadController/CameraController" instance=ExtResource("2")]
 cull_mask = 1048573
 
-[node name="ViewportCont" type="SubViewportContainer" parent="HeadController/BobController/Camera"]
+[node name="ViewportCont" type="SubViewportContainer" parent="HeadController/CameraController/Camera"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -146,31 +150,31 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="TorchCamViewport" type="SubViewport" parent="HeadController/BobController/Camera/ViewportCont"]
+[node name="TorchCamViewport" type="SubViewport" parent="HeadController/CameraController/Camera/ViewportCont"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(512, 288)
 render_target_update_mode = 4
 
-[node name="TorchCam" type="Camera3D" parent="HeadController/BobController/Camera/ViewportCont/TorchCamViewport"]
+[node name="TorchCam" type="Camera3D" parent="HeadController/CameraController/Camera/ViewportCont/TorchCamViewport"]
 cull_mask = 2
 
-[node name="InteractRaycast" type="RayCast3D" parent="HeadController/BobController/Camera"]
+[node name="InteractRaycast" type="RayCast3D" parent="HeadController/CameraController/Camera"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 32769
 collide_with_areas = true
 script = ExtResource("4_hbv3l")
 
-[node name="TorchPos" type="Marker3D" parent="HeadController/BobController/Camera"]
+[node name="TorchPos" type="Marker3D" parent="HeadController/CameraController/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252)
 
-[node name="HeldItemMarker" type="Marker3D" parent="HeadController/BobController/Camera"]
+[node name="HeldItemMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
 
-[node name="HourglassMarker" type="Marker3D" parent="HeadController/BobController/Camera"]
+[node name="HourglassMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="BaseLight" type="SpotLight3D" parent="HeadController/BobController/Camera"]
+[node name="BaseLight" type="SpotLight3D" parent="HeadController/CameraController/Camera"]
 layers = 3
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 light_energy = 3.0
@@ -182,7 +186,7 @@ spot_angle = 60.0
 spot_angle_attenuation = 1e-05
 script = ExtResource("4")
 
-[node name="BobTimer" type="AnimationPlayer" parent="HeadController/BobController"]
+[node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController"]
 libraries = {
 &"": SubResource("AnimationLibrary_crvps")
 }
@@ -255,3 +259,6 @@ monitoring = false
 
 [node name="CollisionShape" type="CollisionShape3D" parent="FireBurningSoundArea"]
 shape = SubResource("SphereShape3D_6dsv4")
+
+[node name="HurtSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_kx8ox")

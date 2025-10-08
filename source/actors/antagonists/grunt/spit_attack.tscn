@@ -1,0 +1,175 @@
+[gd_scene load_steps=15 format=4 uid="uid://boj2asue7bs5p"]
+
+[ext_resource type="Script" uid="uid://c1h6fbgjpmihk" path="res://source/actors/antagonists/grunt/spit_attack.gd" id="1_t0xr3"]
+[ext_resource type="Material" uid="uid://b8vbi3ceo4tlu" path="res://source/assets/materials/grunt_spit/spit.tres" id="1_vldb5"]
+[ext_resource type="AudioStream" uid="uid://co3wl08np758r" path="res://source/assets/sounds/monster/grunt/grunt_spit.ogg" id="2_no06r"]
+
+[sub_resource type="Curve" id="Curve_gy4qv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.47787607, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mui8c"]
+curve = SubResource("Curve_gy4qv")
+
+[sub_resource type="Curve" id="Curve_nbxx3"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.37078655), 0.0, 0.0, 0, 0, Vector2(0.2787611, 2), 0.0, 0.0, 0, 0, Vector2(0.86725664, 2), 0.0, 0.0, 0, 0, Vector2(1, 0.42696643), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_61ord"]
+curve = SubResource("Curve_nbxx3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61ord"]
+angle_min = -179.99998
+angle_max = 1.0728835e-05
+direction = Vector3(0, 0, -1)
+spread = 15.0
+initial_velocity_min = 10.0
+initial_velocity_max = 12.0
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_61ord")
+alpha_curve = SubResource("CurveTexture_mui8c")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_br3ns"]
+_surfaces = [{
+"aabb": AABB(-0.04479476, -0.0471, -3.383366e-09, 0.08958952, 0.0942, 1e-05),
+"format": 34359742465,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAwAAAAUABQAAAAYAAwAFAAcABwAFAAgAAwAHAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("tno3PdZ2bjzOgGixiMAKsO7rQD3yfH+w/criPK0THD0cMWaxtno3vdZ2bjwL3Jgx/crivK0THD1I5cww/criPK0THL3I2umvtno3Pdh2brzsBQSx/crivK0THL0ztJcxfsAKsO7rQL0kBqkxtno3vdh2brx8Gcsx")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mui8c"]
+resource_name = "snowflake_Circle"
+_surfaces = [{
+"aabb": AABB(-0.04479476, -0.0471, -3.383366e-09, 0.08958952, 0.0942, 1e-05),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8="),
+"format": 34359742487,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAwAAAAUABQAAAAYAAwAFAAcABwAFAAgAAwAHAAkA"),
+"material": ExtResource("1_vldb5"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("tno3PdZ2bjzOgGixiMAKsO7rQD3yfH+w/criPK0THD0cMWaxtno3vdZ2bjwL3Jgx/crivK0THD1I5cww/criPK0THL3I2umvtno3Pdh2brzsBQSx/crivK0THL0ztJcxfsAKsO7rQL0kBqkxtno3vdh2brx8Gcsx/3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_br3ns")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mui8c"]
+radius = 0.8
+height = 3.0
+
+[sub_resource type="Animation" id="Animation_1x5cp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpitAttackArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_t0xr3"]
+resource_name = "SpitAttack"
+length = 1.29
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticlesAndSound/SpitParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParticlesAndSound/SpitSoundPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_no06r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpitAttackArea:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.7), Vector3(0, 0, -7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpitAttackArea:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww1ev"]
+_data = {
+&"RESET": SubResource("Animation_1x5cp"),
+&"SpitAttack": SubResource("Animation_t0xr3")
+}
+
+[node name="SpitAttack" type="Node3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_t0xr3")
+
+[node name="ParticlesAndSound" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -0.25)
+
+[node name="SpitParticles" type="GPUParticles3D" parent="ParticlesAndSound"]
+emitting = false
+amount = 256
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_61ord")
+draw_pass_1 = SubResource("ArrayMesh_mui8c")
+
+[node name="SpitSoundPlayer" type="AudioStreamPlayer3D" parent="ParticlesAndSound"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.1855694e-08, 0, 0.5)
+
+[node name="SpitAttackArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpitAttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_mui8c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ww1ev")
+}
