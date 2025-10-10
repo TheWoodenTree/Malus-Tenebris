@@ -218,7 +218,8 @@ func can_see_player(max_distance: float = 0.0, fov_angle: float = 110.0) -> bool
 	if not is_equal_approx(max_distance, 0.0) and max_distance < global_position.distance_to(Global.player.global_position):
 		return false
 		
-	player_in_fov(fov_angle)
+	if not player_in_fov(fov_angle):
+		return false
 	
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.new()
