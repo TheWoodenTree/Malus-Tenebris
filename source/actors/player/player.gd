@@ -53,11 +53,11 @@ var pain_grunt_stream: AudioStreamRandomizer = preload("res://source/assets/soun
 @onready var light = $HeadController/CameraController/Camera/BaseLight
 @onready var held_item_marker = $HeadController/CameraController/Camera/HeldItemMarker
 @onready var hourglass_marker: Marker3D = $HeadController/CameraController/Camera/HourglassMarker
-@onready var noise_player = $NoisePlayer
+@onready var noise_player = $HeadController/NoisePlayer
 @onready var rucksack_player = $RucksackPlayer
 @onready var fear_player = $FearPlayer
 @onready var fear_pulse_player = $FearPulsePlayer
-@onready var hurt_sound_player: AudioStreamPlayer3D = $HurtSoundPlayer
+@onready var hurt_sound_player: AudioStreamPlayer3D = $HeadController/HurtSoundPlayer
 
 @export var debug_has_torch: bool = false
 @export var debug_no_tutorials: bool = false
@@ -314,12 +314,14 @@ func hurt(source: Attack):
 	
 	if is_zero_approx(health):
 		print('ded')
-	hurt_sound_player.play()
 	camera_controller.add_trauma(1.5)
 	
 	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_NEAR_FULL_HP_MULTIPLIER, get_normalized_health())
 	
 	Global.post_processing.blend_pain_vignette_multiplier(multiplier)
+	
+	await get_tree().create_timer(0.1, false).timeout
+	hurt_sound_player.play()
 
 
 func play_sound_one_shot(sound: AudioStream):

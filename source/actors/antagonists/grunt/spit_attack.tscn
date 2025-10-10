@@ -23,9 +23,9 @@ curve = SubResource("Curve_nbxx3")
 angle_min = -179.99998
 angle_max = 1.0728835e-05
 direction = Vector3(0, 0, -1)
-spread = 15.0
-initial_velocity_min = 10.0
-initial_velocity_max = 12.0
+spread = 10.0
+initial_velocity_min = 14.0
+initial_velocity_max = 16.0
 scale_min = 2.0
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_61ord")
@@ -82,7 +82,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_t0xr3"]
 resource_name = "SpitAttack"
-length = 1.29
+length = 1.69
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,40 +95,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/1/type = "audio"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ParticlesAndSound/SpitSoundPlayer")
+tracks/1/path = NodePath("SpitAttackArea:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("2_no06r")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SpitAttackArea:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, -0.7), Vector3(0, 0, -7)]
+"values": [Vector3(0, 0, -0.7), Vector3(0, 0, -9)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SpitAttackArea:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpitAttackArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -159,6 +144,7 @@ draw_pass_1 = SubResource("ArrayMesh_mui8c")
 
 [node name="SpitSoundPlayer" type="AudioStreamPlayer3D" parent="ParticlesAndSound"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.1855694e-08, 0, 0.5)
+stream = ExtResource("2_no06r")
 
 [node name="SpitAttackArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)

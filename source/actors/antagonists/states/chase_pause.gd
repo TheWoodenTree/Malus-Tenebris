@@ -15,6 +15,7 @@ func _ready() -> void:
 
 
 func enter(_params: Dictionary):
+	nav_agent.target_position = Global.player.global_position
 	state_timer.start()
 	character.blend_to_new_anim("Walk")
 
@@ -50,3 +51,7 @@ func physics_update(delta: float):
 	
 	if character.is_near_door():
 		character.check_for_door_in_path()
+	
+	#prints(character.global_position.distance_to(Global.player.global_position) < 3.0, character.player_in_fov(45))
+	if character.global_position.distance_to(Global.player.global_position) < 3.0 and character.player_in_fov(45):
+		transitioned.emit(self, 'SpitAttack')

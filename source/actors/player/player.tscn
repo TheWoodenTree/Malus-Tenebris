@@ -193,6 +193,14 @@ libraries = {
 
 [node name="RandomSoundManager" parent="HeadController" instance=ExtResource("5_8g41b")]
 
+[node name="NoisePlayer" type="AudioStreamPlayer3D" parent="HeadController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1887101, 0)
+stream = ExtResource("5_386p0")
+
+[node name="HurtSoundPlayer" type="AudioStreamPlayer3D" parent="HeadController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3, 0)
+stream = ExtResource("14_kx8ox")
+
 [node name="StandingCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8awoy")
 
@@ -227,10 +235,6 @@ collision_mask = 5
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="NoisePlayer" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
-stream = ExtResource("5_386p0")
-
 [node name="RucksackPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 stream = SubResource("AudioStreamRandomizer_v4sui")
@@ -259,6 +263,3 @@ monitoring = false
 
 [node name="CollisionShape" type="CollisionShape3D" parent="FireBurningSoundArea"]
 shape = SubResource("SphereShape3D_6dsv4")
-
-[node name="HurtSoundPlayer" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("14_kx8ox")

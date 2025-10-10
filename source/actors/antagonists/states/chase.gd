@@ -57,5 +57,5 @@ func physics_update(delta: float):
 	if character.is_near_door():
 		character.check_for_door_in_path()
 	
-	if character.global_position.distance_to(Global.player.global_position) < 3.0:
+	if character.global_position.distance_to(Global.player.global_position) < 3.0 and character.player_in_fov(30):
 		transitioned.emit(self, 'SpitAttack')

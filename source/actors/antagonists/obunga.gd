@@ -50,7 +50,6 @@ var current_state: State
 @onready var spit_attack: Node3D = $armature/Skeleton3D/SpitAttack
 
 
-
 func _ready():
 	add_child(footstep_timer)
 	footstep_timer.wait_time = footstep_walk_interval
@@ -87,16 +86,25 @@ func _process(delta):
 		spit_attack.set_particles_and_sound_global_position(head_global_position)
 	
 	
-	if not is_zero_approx(velocity.length()):
-		var flat_vel = (velocity * Vector3(1.0, 0.0, 1.0)).normalized()
-		if flat_vel.length() > 0.01:
-			var target_angle = Vector3.FORWARD.signed_angle_to(flat_vel, Vector3.UP)
+	if current_state is SpitAttackState and not spit_attack.particles_emitted:
+		var dir_to_player: Vector3 = (to_local(Global.player.global_position) * Vector3(1.0, 0.0, 1.0)).normalized()
+		var target_angle = Vector3.FORWARD.signed_angle_to(dir_to_player, Vector3.UP)
+		var diff = fposmod(target_angle + PI, TAU) - PI
+		var max_turn = PI * delta # TODO: Modify this if getting hit too often
+		rotation.y += clamp(diff, -max_turn, max_turn)
+	
+	elif not is_zero_approx(velocity.length()):
+		var direction: Vector3 = (velocity * Vector3(1.0, 0.0, 1.0)).normalized()
+		if direction.length() > 0.01:
+			var target_angle = Vector3.FORWARD.signed_angle_to(direction, Vector3.UP)
 			var diff = fposmod(target_angle - rotation.y + PI, TAU) - PI
 			var min_turn_speed = PI / 8.0
 			var max_turn_speed = 2.0 * TAU
 			var proportion = clamp(abs(diff) / PI, 0.0, 1.0)
 			var max_turn = lerp(min_turn_speed, max_turn_speed, proportion) * delta
 			rotation.y += clamp(diff, -max_turn, max_turn)
+	
+	
 
 
 
@@ -200,14 +208,17 @@ func check_path_segment(from: Vector3, to: Vector3) -> Dictionary:
 		return {}
 
 
-func can_see_player(max_distance: float = 0.0) -> bool:
+func player_in_fov(fov_angle: float = 110.0):
+	var direction_to_player: Vector3 = (global_position.direction_to(Global.player.global_position) * Vector3(1.0, 0.0, 1.0)).normalized()
+	var forward: Vector3 = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
+	return forward.dot(direction_to_player) > cos(deg_to_rad(fov_angle))
+
+
+func can_see_player(max_distance: float = 0.0, fov_angle: float = 110.0) -> bool:
 	if not is_equal_approx(max_distance, 0.0) and max_distance < global_position.distance_to(Global.player.global_position):
 		return false
 		
-	var direction_to_player: Vector3 = global_position.direction_to(Global.player.global_position)
-	var forward: Vector3 = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
-	if forward.dot(direction_to_player) < cos(11.0 * PI / 18.0):
-		return false
+	player_in_fov(fov_angle)
 	
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.new()
