@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dqppw8pqo3hs" path="res://source/actors/rooms/ritual_chamber_and_quarters_connector.tscn" id="25_g0g0n"]
 [ext_resource type="PackedScene" uid="uid://dq56ian4bntsp" path="res://source/actors/rooms/bigger_cells_hall.tscn" id="26_mq5sv"]
 [ext_resource type="PackedScene" uid="uid://dw8x78dpqdprb" path="res://source/actors/rooms/servants_quarters.tscn" id="26_qdr7n"]
-[ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/antagonists/obunga.tscn" id="26_wekw4"]
+[ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/characters/antagonists/obunga.tscn" id="26_wekw4"]
 [ext_resource type="PackedScene" uid="uid://cqcgnrdsde7ui" path="res://source/actors/rooms/itch_background_room.tscn" id="27_7hdn1"]
 [ext_resource type="PackedScene" uid="uid://o3yxx73wvr2m" path="res://source/actors/rooms/prison_servant_quaters_connector.tscn" id="27_rnurb"]
 [ext_resource type="PackedScene" uid="uid://45cjxiqxw67l" path="res://source/actors/rooms/records_room_storage.tscn" id="27_xk6td"]

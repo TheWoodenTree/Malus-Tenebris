@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4rpa5lp8mki"]
+
+[ext_resource type="Script" uid="uid://cfs0n83eq5ima" path="res://source/actors/characters/states/player_crouch_idle.gd" id="1_dg7jx"]
+
+[node name="PlayerCrouchIdle" type="Node"]
+script = ExtResource("1_dg7jx")

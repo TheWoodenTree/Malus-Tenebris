@@ -150,7 +150,7 @@ func attempt_unlock():
 		Global.monster.global_position = get_parent().get_parent().get_node("MonsterStartPoint").global_position
 		Global.monster.kitchen_encounter_event()
 		await get_tree().create_timer(1.0, false).timeout
-		Global.player.cam_look_at_over_time(get_parent().get_parent().get_node("LookAtMonsterPoint").global_position, 3.0)
+		Global.player.cam.look_at_over_time(get_parent().get_parent().get_node("LookAtMonsterPoint").global_position, 3.0)
 	
 	await key_anim_player.animation_finished
 	if correct_key and not is_prison_depths_key:

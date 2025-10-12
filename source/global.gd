@@ -25,7 +25,7 @@ var mouse_locked: bool
 var monster: CharacterBody3D
 
 @onready var main: Node = get_tree().root.get_node("Main")
-@onready var player: CharacterBody3D = load("res://source/actors/player/player.tscn").instantiate()
+@onready var player: CharacterBody3D = load("res://source/actors/characters/player/player.tscn").instantiate()
 
 
 #Init Globals

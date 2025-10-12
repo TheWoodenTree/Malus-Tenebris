@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="15_3d1r4"]
 [ext_resource type="PackedScene" uid="uid://dm1gll4fm0v1v" path="res://source/actors/decor/groups/lg_stacked_barrels.tscn" id="17_fj6dw"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="18_i1ehj"]
-[ext_resource type="PackedScene" uid="uid://cukgu0s353k08" path="res://source/actors/player/torch.tscn" id="19_3whah"]
+[ext_resource type="PackedScene" uid="uid://cukgu0s353k08" path="res://source/actors/characters/player/torch.tscn" id="19_3whah"]
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="21_dhvf3"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="22_847hg"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="23_ah2ej"]

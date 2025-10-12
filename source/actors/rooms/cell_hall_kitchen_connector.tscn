@@ -9,7 +9,8 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://c8atvn8pv381r" path="res://source/actors/rooms/occluders/cell_hall_kitchen_connector.occ" id="7_bsse8"]
 [ext_resource type="PackedScene" uid="uid://bmo0axv5ubxf4" path="res://source/actors/decor/furniture/low_shelf.tscn" id="9_irnkc"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="10_kr0du"]
-[ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/antagonists/obunga.tscn" id="11_xagm3"]
+[ext_resource type="PackedScene" uid="uid://b18kdjhnv6mwa" path="res://source/actors/characters/antagonists/obunga.tscn" id="11_xagm3"]
+
 
 [node name="CellHallKitchenConnector" instance=ExtResource("1_e1l2s")]
 

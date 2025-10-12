@@ -48,6 +48,8 @@ var crouching = false
 var crouch_trans = false
 var in_water = false
 
+var crouch_tween: Tween
+
 var rng = RandomNumberGenerator.new()
 
 var footstep_player_preload = preload("res://source/assets/sounds/walk/footstep_player.tscn")
@@ -135,3 +137,7 @@ func _play_footstep_sound():
 	footstep_player.position += Vector3.DOWN * 0.5 * standing_collision.shape.height
 	footstep_player.play()
 	footstep_timer.start()
+
+
+func is_crouch_tween_active() -> bool:
+	return crouch_tween and crouch_tween.is_running()

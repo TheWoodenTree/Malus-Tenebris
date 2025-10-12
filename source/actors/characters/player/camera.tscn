@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs8on8uwk6dd1"]
+
+[ext_resource type="Script" uid="uid://cp1qikj3srmp6" path="res://source/actors/characters/player/camera.gd" id="1"]
+
+
+[node name="Camera" type="Camera3D"]
+current = true
+script = ExtResource("1")

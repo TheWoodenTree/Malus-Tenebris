@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmtv8xessmxkc"]
+
+[ext_resource type="Script" uid="uid://cervhivc46rru" path="res://source/actors/characters/states/wander.gd" id="1_lqwg1"]
+
+[node name="Wander" type="Node"]
+script = ExtResource("1_lqwg1")

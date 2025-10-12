@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn38omxvvvmki"]
+
+[ext_resource type="Script" uid="uid://dve6b4tc40lt2" path="res://source/actors/characters/states/player_sprint.gd" id="1_ksxxu"]
+
+[node name="PlayerSprint" type="Node"]
+script = ExtResource("1_ksxxu")

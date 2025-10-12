@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://7ut1viddtie7"]
-
-[ext_resource type="Script" uid="uid://cqy4ujpetq5c4" path="res://source/actors/antagonists/states/investigate.gd" id="1_8tfcm"]
-
-[node name="Investigate" type="Node"]
-script = ExtResource("1_8tfcm")

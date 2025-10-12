@@ -15,7 +15,7 @@ var player_dist_to_creature: float
 
 var enable_heartbeat = false
 
-var player_preload = preload("res://source/actors/player/player.tscn")
+var player_preload = preload("res://source/actors/characters/player/player.tscn")
 
 var load_screen_res: Resource = preload("res://source/assets/ui/load_screen.tscn")
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")

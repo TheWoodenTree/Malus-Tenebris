@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5keu04qy0tfa"]
+
+[ext_resource type="Script" uid="uid://cqri1mdu3migm" path="res://source/actors/characters/states/player_crouch_walk.gd" id="1_katic"]
+
+[node name="PlayerCrouchWalk" type="Node"]
+script = ExtResource("1_katic")

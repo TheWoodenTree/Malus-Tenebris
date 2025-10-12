@@ -1,0 +1,32 @@
+@abstract
+class_name State
+extends Node
+
+@warning_ignore("unused_signal")
+signal transitioned(from_state: State, to_state_name: String)
+
+var character: Character
+
+
+@abstract func enter(params: Dictionary)
+@abstract func exit()
+
+
+@warning_ignore("unused_parameter")
+func update(delta: float):
+	pass
+
+
+@warning_ignore("unused_parameter")
+func physics_update(delta: float):
+	pass
+
+
+func set_character(character_: Character):
+	character = character_
+	_on_set_character(character)
+
+
+@warning_ignore("unused_parameter")
+func _on_set_character(character_: Character):
+	pass

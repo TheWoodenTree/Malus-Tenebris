@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4el0gp3v4mim"]
+
+[ext_resource type="Script" uid="uid://dbc1h4w830van" path="res://source/actors/characters/states/spit_attack.gd" id="1_xrexv"]
+
+[node name="SpitAttackState" type="Node"]
+script = ExtResource("1_xrexv")
