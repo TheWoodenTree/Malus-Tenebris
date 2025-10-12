@@ -1,49 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://c3rxkp6vaovuq"]
+[gd_scene load_steps=11 format=4 uid="uid://c3rxkp6vaovuq"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_lf2j4"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="1_uebo4"]
 [ext_resource type="Resource" uid="uid://8ou378eo38r2" path="res://source/assets/resources/item_datas/winch_crank.tres" id="2_4dbkw"]
+[ext_resource type="Material" uid="uid://13gbugw7ytck" path="res://source/assets/shaders/highlight_sheen_mat.tres" id="3_4dbkw"]
 [ext_resource type="AudioStream" uid="uid://1esobq86df0k" path="res://source/assets/sounds/pickup/metal_scrape.ogg" id="7_ew2w3"]
-
-[sub_resource type="Shader" id="Shader_y1sap"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode unshaded;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform bool enableSheen = false;
-uniform float sheenMaxCamDist = 7.5;
-uniform sampler2D whiteTex;
-
-
-void fragment() {
-	float newAlpha = 0.0;
-
-	if (enableSheen) {
-		// Black magic mask
-		float mask = floor(mod(TIME * floor(mod(TIME, 2)), 2));
-		vec4 tex = texture(whiteTex, SCREEN_UV + TIME + 0.5) * mask;
-		newAlpha = tex.r;
-		//newAlpha = sin(2.0 * PI * TIME) / 2.0 + 0.5;
-	}
-	ALPHA = newAlpha;
-}
-"
-
-[sub_resource type="Gradient" id="Gradient_rddky"]
-offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
-gradient = SubResource("Gradient_rddky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dbkw"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_y1sap")
-shader_parameter/enableSheen = true
-shader_parameter/sheenMaxCamDist = 7.5
-shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
 [sub_resource type="Shader" id="Shader_xru0x"]
 resource_local_to_scene = true
@@ -83,7 +44,7 @@ metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_olb5r"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_4dbkw")
+next_pass = ExtResource("3_4dbkw")
 shader = SubResource("Shader_xru0x")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.9607843, 0.60784316, 0.3529412, 1)

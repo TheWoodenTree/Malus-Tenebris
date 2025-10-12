@@ -33,7 +33,7 @@ script = ExtResource("9_440qv")
 name = "Cell Hall Key"
 texture = ExtResource("10_lpqka")
 pickup_sound = ExtResource("8_x4muf")
-hold_rotation_offset = Vector3(0, 200, 90)
+hold_rotation_offset = Vector3(0, 200, -90)
 hold_scale_multiplier = 0.5
 
 [node name="RecordsRoomStorage" instance=ExtResource("1_opylq")]

@@ -58,7 +58,6 @@ func _ready():
 	footstep_sprint_vol += 10
 	
 	state_machine.state_updated.connect(_on_state_updated)
-	nav_agent.target_reached.connect(func(): print('reached'))
 
 
 func _process(delta):
@@ -86,12 +85,14 @@ func _process(delta):
 		var head_global_position: Vector3 = skeleton.to_global(skeleton.get_bone_global_pose(skeleton.find_bone('head')).origin)
 		spit_attack.set_particles_and_sound_global_position(head_global_position)
 	
-	
-	if current_state is SpitAttackState and not spit_attack.particles_emitted:
+	# TODO: Fix cheesing by running around the enemy while super close
+	if current_state is SpitAttackState and not spit_attack.particles_emitted or \
+			(current_state is ChasePauseState and \
+			global_position.distance_to(Global.player.position) < current_state.nav_agent_target_desired_distance):
 		var dir_to_player: Vector3 = (to_local(Global.player.global_position) * Vector3(1.0, 0.0, 1.0)).normalized()
 		var target_angle = Vector3.FORWARD.signed_angle_to(dir_to_player, Vector3.UP)
 		var diff = fposmod(target_angle + PI, TAU) - PI
-		var max_turn = PI * delta # TODO: Modify this if getting hit too often
+		var max_turn = TAU * delta # TODO: Modify this if getting hit too often
 		rotation.y += clamp(diff, -max_turn, max_turn)
 	
 	elif not is_zero_approx(velocity.length()):

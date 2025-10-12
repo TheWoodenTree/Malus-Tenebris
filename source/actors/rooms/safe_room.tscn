@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=55 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ntfkh"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="22_dvdth"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="24_g1atn"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="26_rhjbl"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="27_lo8s1"]
 [ext_resource type="PackedScene" uid="uid://cwxs7uffbs0wu" path="res://source/assets/ui/notes/distillation_instructions.tscn" id="28_a1a56"]
 [ext_resource type="PackedScene" uid="uid://ii0e665jma4b" path="res://source/actors/building pieces/archways/small_archway.tscn" id="28_gg6p8"]
 [ext_resource type="AudioStream" uid="uid://b041olqq6sucl" path="res://source/assets/sounds/music/safe.ogg" id="29_02vm0"]
@@ -41,29 +40,13 @@
 [ext_resource type="PackedScene" uid="uid://dprey8cgl5ux2" path="res://source/actors/decor/misc/pots/sm_tall_pot.tscn" id="41_q63e3"]
 [ext_resource type="PackedScene" uid="uid://cx4g8tg3wsy7p" path="res://source/actors/decor/misc/pots/sm_fat_pot.tscn" id="42_6xnj5"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="43_0v6kg"]
+[ext_resource type="AudioStream" uid="uid://dh2kkntq5trgy" path="res://source/assets/sounds/pickup/hourglass_pickup.ogg" id="44_47idu"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="44_fvmec"]
 [ext_resource type="PackedScene" uid="uid://b0ulsvtx3b41t" path="res://source/actors/interactables/pickups/hourglass.tscn" id="44_ydufn"]
-[ext_resource type="AudioStream" uid="uid://dh2kkntq5trgy" path="res://source/assets/sounds/pickup/hourglass_pickup.ogg" id="45_0ilup"]
+[ext_resource type="Texture2D" uid="uid://cal01wqt1245e" path="res://source/assets/ui/inventory/hourglass.png" id="45_th1ig"]
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="46_0ilup"]
-[ext_resource type="Texture2D" uid="uid://cal01wqt1245e" path="res://source/assets/ui/inventory/hourglass.png" id="46_r3otd"]
 [ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="47_47idu"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="48_th1ig"]
-
-[sub_resource type="Resource" id="Resource_0ilup"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Ruboleum Vial"
-texture = ExtResource("27_lo8s1")
-pickup_sound = ExtResource("34_e2n1h")
-hold_rotation_offset = Vector3(0, 0, -90)
-
-[sub_resource type="Resource" id="Resource_r3otd"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Ruboleum Vial"
-texture = ExtResource("27_lo8s1")
-pickup_sound = ExtResource("34_e2n1h")
-hold_rotation_offset = Vector3(0, 0, -90)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cenn"]
 size = Vector3(19.5, 10, 13)
@@ -99,12 +82,13 @@ name = "Visolis"
 texture = ExtResource("39_y8yjx")
 pickup_sound = ExtResource("34_e2n1h")
 
-[sub_resource type="Resource" id="Resource_47idu"]
+[sub_resource type="Resource" id="Resource_dbihu"]
 resource_local_to_scene = true
 script = ExtResource("26_rhjbl")
 name = "Hourglass"
-texture = ExtResource("46_r3otd")
-pickup_sound = ExtResource("45_0ilup")
+texture = ExtResource("45_th1ig")
+pickup_sound = ExtResource("44_47idu")
+hold_rotation_offset = Vector3(0, -25, 0)
 metadata/_custom_type_script = "uid://c8rev6ihosd6u"
 
 [node name="SafeRoom" instance=ExtResource("1_ntfkh")]
@@ -128,27 +112,22 @@ nav_walkable = false
 [node name="StoneWall16" parent="Walls" index="3" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 3.5, -5)
 size = Vector3(7.5, 6, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall17" parent="Walls" index="4" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.5, -2.5)
 size = Vector3(1, 6, 4)
-show_nav_blocking_volume = null
 
 [node name="StoneWall19" parent="Walls" index="5" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, -5)
 size = Vector3(3, 6, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall20" parent="Walls" index="6" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3.5, -2.5)
 size = Vector3(1, 6, 4)
-show_nav_blocking_volume = null
 
 [node name="StoneWall21" parent="Walls" index="7" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 6, -0.25)
 size = Vector3(5.5, 1, 0.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall22" parent="Walls" index="8" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 5.5, 1.5)
@@ -158,23 +137,19 @@ nav_walkable = false
 [node name="StoneWall23" parent="Walls" index="9" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 3, 5)
 size = Vector3(5.5, 5, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall24" parent="Walls" index="10" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 3, 0)
 size = Vector3(1, 5, 9)
-show_nav_blocking_volume = null
 
 [node name="StoneWall25" parent="Walls" index="11" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 3, -5)
 size = Vector3(6.5, 5, 1)
-show_nav_blocking_volume = null
 global_triplanar = false
 
 [node name="WoodFloor" parent="Floors" index="0" instance=ExtResource("7_s44qe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 0)
 size = Vector3(18.5, 1, 11)
-show_nav_blocking_volume = null
 
 [node name="Books3" parent="Decor" index="0" instance=ExtResource("16_0k3ei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6702, 2.4, -3.01845)
@@ -245,11 +220,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 
 [node name="RuboleumVial" parent="Misc/Chest" index="4" instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
-item_data = SubResource("Resource_0ilup")
 
 [node name="RuboleumVial2" parent="Misc/Chest" index="5" instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
-item_data = SubResource("Resource_r3otd")
 
 [node name="Note2" parent="Misc" index="2" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
@@ -405,11 +378,10 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 [node name="StoneWall" parent="." index="45" instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 3, 4)
 size = Vector3(1, 5, 1)
-show_nav_blocking_volume = null
 
 [node name="Hourglass" parent="." index="46" instance=ExtResource("44_ydufn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25, 2.8, 1.5)
-item_data = SubResource("Resource_47idu")
+item_data = SubResource("Resource_dbihu")
 enable_highlight_light = true
 
 [node name="StoneWall2" parent="." index="47" instance=ExtResource("3_tctxl")]
@@ -433,7 +405,6 @@ size = Vector3(5.5, 1, 5)
 nav_walkable = false
 
 [node name="StoneWall6" parent="." index="51" instance=ExtResource("3_tctxl")]
-show_nav_blocking_volume = null
 
 [node name="Plank2" parent="." index="52" instance=ExtResource("46_0ilup")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.75, 6.4, -2)

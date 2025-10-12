@@ -35,33 +35,9 @@ height = 1.0
 
 [sub_resource type="Animation" id="Animation_wr2nm"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HeadController/CameraController/Camera/BaseLight:spot_range")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [12.0]
-}
 
 [sub_resource type="Animation" id="Animation_q2cha"]
 resource_name = "torch_light_anim"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HeadController/CameraController/Camera/BaseLight:spot_range")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [3.0, 12.0, 12.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ha0pu"]
 _data = {
@@ -166,24 +142,20 @@ collide_with_areas = true
 script = ExtResource("4_hbv3l")
 
 [node name="TorchPos" type="Marker3D" parent="HeadController/CameraController/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16893, -0.933719, -1.17252)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999997, 0, 1, 0, 0.9999997, 0, -4.3711385e-08, -0.35540822, -0.20182943, -0.36429355)
 
 [node name="HeldItemMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0096582, -0.5, -1.283)
 
-[node name="HourglassMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="BaseLight" type="SpotLight3D" parent="HeadController/CameraController/Camera"]
+[node name="BaseLight" type="OmniLight3D" parent="HeadController/CameraController/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35540822, -0.20182943, -0.36429355)
 layers = 3
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 light_energy = 3.0
 light_cull_mask = 4294967279
 shadow_enabled = true
 shadow_caster_mask = 4294967293
-spot_range = 12.0
-spot_angle = 60.0
-spot_angle_attenuation = 1e-05
+omni_range = 12.0
 script = ExtResource("4")
 
 [node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController"]

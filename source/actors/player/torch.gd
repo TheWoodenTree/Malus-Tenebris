@@ -135,7 +135,7 @@ func light_torch():
 	
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property(burning_player, "volume_db", -5.0, 3.0).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(player_light, "spot_range", default_range, 3.0).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(player_light, "omni_range", default_range, 3.0).set_ease(Tween.EASE_IN_OUT)
 	tween.parallel().tween_property(player_light, "default_energy", default_energy, 3.0)
 	tween.parallel().tween_property(self_light, "omni_range", 1.0, 3.0).set_ease(Tween.EASE_IN_OUT)
 	tween.parallel().tween_property(self_light, "default_energy", 1.0, 3.0)

@@ -247,6 +247,7 @@ size = Vector2(0.25, 0.25)
 orientation = 2
 
 [node name="Torch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2")
 default_energy = 3.0
 interact_areas = [NodePath("InteractArea")]
@@ -254,36 +255,47 @@ meshes = [NodePath("Mesh")]
 enable_highlight_light = true
 
 [node name="Mesh" parent="." index="0"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.09476934, 0)
 material_overlay = SubResource("ShaderMaterial_tquro")
 mesh = SubResource("ArrayMesh_bj70x")
+
+[node name="InteractArea" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07795638, 0)
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
 shape = SubResource("CapsuleShape3D_ukkaj")
 
+[node name="HighlightLight" parent="." index="2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.02473563, 0)
+
 [node name="FireParticles" parent="." index="3" instance=ExtResource("1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.230915, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.006540403, 0)
 layers = 2
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_k4obn")
 draw_pass_1 = SubResource("PlaneMesh_dm2kp")
 
 [node name="ParticlesPos" type="Marker3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368581, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29062462, 0)
 
 [node name="SwooshPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("8_6t08c")
 volume_db = -47.276
 max_db = 6.0
 
 [node name="TorchLightPlayer" type="AudioStreamPlayer3D" parent="." index="6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("8")
 volume_db = -21.022
 pitch_scale = 0.75
 
 [node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("10_6t08c")
 
 [node name="BurningPlayer" type="AudioStreamPlayer3D" parent="." index="8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("10_481dk")
 volume_db = -12.5
 autoplay = true
@@ -291,25 +303,27 @@ attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = 0.0
 
 [node name="LitFireParticles" parent="." index="9" instance=ExtResource("9")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2910436, 0)
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_8pplm")
 draw_pass_1 = SubResource("PlaneMesh_ikm4b")
 
 [node name="MovementParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18790506, 0)
 top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
 
 [node name="RotationParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18790506, 0)
 top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
 
 [node name="SelfLight" type="OmniLight3D" parent="." index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49522424, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.41726786, 0)
 layers = 2
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 light_energy = 0.0

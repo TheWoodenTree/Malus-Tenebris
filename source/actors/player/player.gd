@@ -27,6 +27,7 @@ var targeted_interactable: Interactable
 var held_item_data: ItemData = null
 var held_item: Pickup = null
 var draggable_being_dragged: Draggable = null
+var held_item_original_rotation: Vector3
 
 var has_torch: bool = false
 var in_menu: bool = false
@@ -52,7 +53,6 @@ var pain_grunt_stream: AudioStreamRandomizer = preload("res://source/assets/soun
 @onready var torch_pos = $HeadController/CameraController/Camera/TorchPos
 @onready var light = $HeadController/CameraController/Camera/BaseLight
 @onready var held_item_marker = $HeadController/CameraController/Camera/HeldItemMarker
-@onready var hourglass_marker: Marker3D = $HeadController/CameraController/Camera/HourglassMarker
 @onready var noise_player = $HeadController/NoisePlayer
 @onready var rucksack_player = $RucksackPlayer
 @onready var fear_player = $FearPlayer
@@ -75,7 +75,7 @@ func _ready() -> void:
 	if debug_has_torch:
 		debug_get_torch()
 	
-	light.spot_range = 3.0
+	light.omni_range = 3.0
 	light.default_energy = 1.0
 	
 	footstep_timer.wait_time = footstep_walk_interval
@@ -86,18 +86,18 @@ func _ready() -> void:
 	in_world = true
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	_handle_input()
-	#light.global_rotation = cam.global_rotation
 	torch_cam.global_transform = cam.global_transform
 	if held_item:
-		var held_item_pos: Vector3 = held_item_marker.global_position if held_item_data.name != "Hourglass" else hourglass_marker.global_position
-		held_item.global_position = lerp(held_item.global_position, held_item_pos, 0.025)
-		var rot_offset_x: float = deg_to_rad(held_item_data.hold_rotation_offset.x)
-		var rot_offset_y: float = deg_to_rad(held_item_data.hold_rotation_offset.y)
-		var rot_offset_z: float = deg_to_rad(held_item_data.hold_rotation_offset.z)
-		held_item.rotation = cam.rotation + Vector3(rot_offset_x, rot_offset_y, rot_offset_z)
+		var held_item_pos: Vector3 = held_item_marker.global_position
+		held_item.global_position = lerp(held_item.global_position, held_item_pos, delta * 75.0)
+		held_item.global_rotation = cam.global_rotation
+		held_item.rotate_object_local(Vector3.RIGHT, deg_to_rad(held_item_data.hold_rotation_offset.x))
+		held_item.rotate_object_local(Vector3.UP, deg_to_rad(held_item_data.hold_rotation_offset.y))
+		held_item.rotate_object_local(Vector3.FORWARD, deg_to_rad(held_item_data.hold_rotation_offset.z))
 		held_item.scale = Vector3.ONE * held_item_data.hold_scale_multiplier
+	
 	global_input_dir = _get_input_dir()
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
@@ -243,8 +243,6 @@ func inventory_remove_item(item_data: ItemData):
 func hold_item(item_data: ItemData):
 	held_item_data = item_data
 	held_item = item_data.item_instance
-	if is_holding_hourglass():
-		interact_ray.enabled = false
 	for mesh in held_item.meshes:
 		mesh.layers = 3
 	add_child(held_item)

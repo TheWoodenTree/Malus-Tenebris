@@ -10,4 +10,5 @@ script = ExtResource("1_8xs05")
 name = "Hourglass"
 texture = ExtResource("3_6dsub")
 pickup_sound = ExtResource("1_6dsub")
+hold_rotation_offset = Vector3(0, -25, 0)
 metadata/_custom_type_script = "uid://c8rev6ihosd6u"

@@ -885,7 +885,6 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_odnd1")
 shape_cast_shape = SubResource("BoxShape3D_okqxh")
-shape_cast_transform = null
 test_walk = SubResource("AudioStreamRandomizer_n00m0")
 test_water_walk = SubResource("AudioStreamRandomizer_61ord")
 
