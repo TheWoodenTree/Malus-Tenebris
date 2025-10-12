@@ -885,9 +885,9 @@ floor_constant_speed = true
 floor_max_angle = 0.872665
 script = ExtResource("1_odnd1")
 shape_cast_shape = SubResource("BoxShape3D_okqxh")
+shape_cast_transform = null
 test_walk = SubResource("AudioStreamRandomizer_n00m0")
 test_water_walk = SubResource("AudioStreamRandomizer_61ord")
-footstep_walk_interval = 0.54
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "initial_state")]
 script = ExtResource("2_yblmy")
@@ -897,24 +897,24 @@ initial_state = NodePath("Wander")
 [node name="Wander" parent="StateMachine" instance=ExtResource("3_okqxh")]
 
 [node name="Investigate" parent="StateMachine" instance=ExtResource("4_pvshn")]
-move_speed = 2.775
+move_speed = 2.1
 
 [node name="Chase" parent="StateMachine" instance=ExtResource("4_v27cd")]
+nav_agent_target_desired_distance = 3.0
 
 [node name="Idle" parent="StateMachine" instance=ExtResource("12_61ord")]
 
 [node name="SpitAttack" parent="StateMachine" instance=ExtResource("13_61ord")]
 
 [node name="ChasePause" parent="StateMachine" instance=ExtResource("14_mui8c")]
+nav_agent_target_desired_distance = 3.0
 
 [node name="StandingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_pvtq8")
 
 [node name="CrouchingCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35164, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_6cggd")
 
 [node name="WaterCheck" type="RayCast3D" parent="."]
@@ -926,11 +926,12 @@ collide_with_bodies = false
 
 [node name="NavAgent" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
-target_desired_distance = 2.0
+target_desired_distance = 3.0
 path_height_offset = 0.4
 radius = 0.6
 neighbor_distance = 5.0
 time_horizon_obstacles = 0.25
+debug_enabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 1.895, 0)
@@ -1091,7 +1092,7 @@ bones/13/parent = 12
 bones/13/rest = Transform3D(1, -2.1535322e-09, 7.790144e-11, 2.1535318e-09, 0.9973858, -0.07226051, 7.791754e-11, 0.07226051, 0.9973858, 3.4292542e-16, 0.2874376, 0)
 bones/13/enabled = true
 bones/13/position = Vector3(3.4292542e-16, 0.2874376, 0)
-bones/13/rotation = Quaternion(0.036153913, 2.2594354e-15, 1.0774688e-09, 0.9993463)
+bones/13/rotation = Quaternion(0.028468858, -0.00035916598, -0.0006666258, 0.9995944)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "neck"
 bones/14/parent = 13

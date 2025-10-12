@@ -1,9 +1,10 @@
 class_name ChaseState
-extends State
+extends NPCState
 
 const PARAM_PLAY_SOUND = "play_sound"
-
 const PATH_UPDATE_INTERVAL := 0.15
+
+const TARGET_DESIRED_DISTANCE = 3.0
 
 @export var move_speed := 7.0
 
@@ -57,5 +58,6 @@ func physics_update(delta: float):
 	if character.is_near_door():
 		character.check_for_door_in_path()
 	
-	if character.global_position.distance_to(Global.player.global_position) < 3.0 and character.player_in_fov(30):
+	if nav_agent.is_target_reached() and character.ray_to_player_valid():
+		
 		transitioned.emit(self, 'SpitAttack')

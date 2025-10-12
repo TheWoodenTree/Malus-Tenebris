@@ -1,5 +1,5 @@
 class_name IdleState
-extends State
+extends NPCState
 
 
 func _ready() -> void:

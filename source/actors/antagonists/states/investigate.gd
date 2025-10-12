@@ -1,5 +1,5 @@
 class_name InvestigateState
-extends State
+extends NPCState
 
 const PARAM_INVESTIGATE_POSITION = "investigate_position"
 

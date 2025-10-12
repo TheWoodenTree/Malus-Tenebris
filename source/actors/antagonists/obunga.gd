@@ -2,8 +2,6 @@ extends Character
 
 signal opened_door
 
-enum State {IDLE, WANDER, PATROL, CHASE, ATTACK, SCRIPTED_EVENT}
-
 const SPEED = 3.5
 const JUMP_VELOCITY = 4.5
 const MAX_DOOR_DISTANCE_ALONG_PATH := 3.0
@@ -37,7 +35,7 @@ var awareness := 0.0 :
 
 var look_at_pos: Vector3 = Vector3(0.0, 0.0, 1.0)
 
-var current_state: State
+var current_state: NPCState
 
 @onready var nav_agent: NavigationAgent3D = $NavAgent
 @onready var sound_player = $SoundPlayer
@@ -59,8 +57,8 @@ func _ready():
 	footstep_walk_vol += 10
 	footstep_sprint_vol += 10
 	
-	state_machine.state_updated.connect(func(state: State): current_state = state)
-	animation_player.animation_changed.connect(func(): print('test'))
+	state_machine.state_updated.connect(_on_state_updated)
+	nav_agent.target_reached.connect(func(): print('reached'))
 
 
 func _process(delta):
@@ -221,6 +219,10 @@ func can_see_player(max_distance: float = 0.0, fov_angle: float = 110.0) -> bool
 	if not player_in_fov(fov_angle):
 		return false
 	
+	return ray_to_player_valid()
+
+
+func ray_to_player_valid() -> bool:
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.new()
 	
@@ -278,6 +280,11 @@ func blend_to_new_anim(anim_name: String, duration := 0.5):
 	tween.tween_property(animation_tree, "parameters/locomotion/blend_position", point, duration)
 	if anim_name == "SpitAttack":
 		animation_tree.set("parameters/TimeSeek/seek_request", 0.0)
+
+
+func _on_state_updated(new_state: NPCState):
+	current_state = new_state
+	nav_agent.target_desired_distance = new_state.nav_agent_target_desired_distance
 
 
 func walk_in_servants_quarters_event(end_position: Vector3):
