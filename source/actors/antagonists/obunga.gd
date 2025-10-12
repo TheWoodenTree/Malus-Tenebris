@@ -78,8 +78,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("debug2"):
 		state_change_requested.emit("Investigate", {InvestigateState.PARAM_INVESTIGATE_POSITION: Global.player.global_position})
 	
-	if do_move:
-		pass
+	if Input.is_action_just_pressed("debug3"):
+		if is_equal_approx(Engine.time_scale, 1.0):
+			Engine.time_scale = 0.25
+		else:
+			Engine.time_scale = 1.0
 	
 	if current_state is SpitAttackState:
 		var head_global_position: Vector3 = skeleton.to_global(skeleton.get_bone_global_pose(skeleton.find_bone('head')).origin)
@@ -103,9 +106,6 @@ func _process(delta):
 			var proportion = clamp(abs(diff) / PI, 0.0, 1.0)
 			var max_turn = lerp(min_turn_speed, max_turn_speed, proportion) * delta
 			rotation.y += clamp(diff, -max_turn, max_turn)
-	
-	
-
 
 
 func _physics_process(delta):

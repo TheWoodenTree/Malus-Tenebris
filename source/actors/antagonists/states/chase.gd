@@ -5,7 +5,7 @@ const PARAM_PLAY_SOUND = "play_sound"
 
 const PATH_UPDATE_INTERVAL := 0.15
 
-@export var move_speed := 6.5
+@export var move_speed := 7.0
 
 var time_since_last_update := 0.0
 

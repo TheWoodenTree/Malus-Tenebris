@@ -1,7 +1,7 @@
 class_name WanderState
 extends State
 
-@export var move_speed := 3.5
+@export var move_speed := 2.1
 @export var max_wander_time := 20.0
 @export var min_wander_time := 5.0
 

@@ -3,7 +3,7 @@ extends State
 
 const PATH_UPDATE_INTERVAL := 0.15
 
-@export var move_speed := 2.775
+@export var move_speed := 2.1
 
 var time_since_last_update := 0.0
 

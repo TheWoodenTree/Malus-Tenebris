@@ -53,8 +53,8 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("debug3") and has_node("DeathScreen"):
-		remove_child(get_node("DeathScreen"))
+	#if Input.is_action_just_pressed("debug3") and has_node("DeathScreen"):
+		#remove_child(get_node("DeathScreen"))
 	if Input.is_action_just_pressed("toggle_inventory"):
 		if menus.num_menus == 0:
 			open_inventory()
