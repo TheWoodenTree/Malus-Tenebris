@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53t2tvawvpnu"
-path.s3tc="res://.godot/imported/inventory_left.png-89a52beab981c3ee67ff2322e4f802c6.s3tc.ctex"
+uid="uid://ckc82cbgnjpef"
+path.s3tc="res://.godot/imported/hessian_380_rough_1k.jpg-6ea326f7a731406e9503febf2e12d2d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://source/assets/ui/buttons/inventory_left.png"
-dest_files=["res://.godot/imported/inventory_left.png-89a52beab981c3ee67ff2322e4f802c6.s3tc.ctex"]
+source_file="res://source/assets/materials/bandage_cloth/hessian_380_rough_1k.jpg"
+dest_files=["res://.godot/imported/hessian_380_rough_1k.jpg-6ea326f7a731406e9503febf2e12d2d1.s3tc.ctex"]
 
 [params]
 

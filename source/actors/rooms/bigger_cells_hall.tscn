@@ -164,182 +164,146 @@ chain_length = 0
 [node name="StoneWall" parent="." index="33" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 4.5, -5.5)
 size = Vector3(4, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall3" parent="." index="34" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, -5.5)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall4" parent="." index="35" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 4.5, 5.5)
 size = Vector3(4, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall5" parent="." index="36" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 4.5, 5.5)
 size = Vector3(10, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall6" parent="." index="37" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, 5.5)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall7" parent="." index="38" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, 5.5)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall13" parent="." index="39" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 7, 5.5)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall14" parent="." index="40" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 7, -5.5)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall19" parent="." index="41" instance=ExtResource("4_24mv6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 7, 0)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall8" parent="." index="42" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, 5.5)
 size = Vector3(10, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall10" parent="." index="43" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 4.5, -5.5)
 size = Vector3(10, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall11" parent="." index="44" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -5.5)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall12" parent="." index="45" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, -5.5)
 size = Vector3(10, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall15" parent="." index="46" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 4.5, -5.5)
 size = Vector3(4, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall16" parent="." index="47" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 4.5, 5.5)
 size = Vector3(4, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall17" parent="." index="48" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 4.5, 4.25)
 size = Vector3(1, 8, 3.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall18" parent="." index="49" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 4.5, -4.25)
 size = Vector3(1, 8, 3.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall20" parent="." index="50" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 4.5, -4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall21" parent="." index="51" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 4.5, 4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall22" parent="." index="52" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, -4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall27" parent="." index="53" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 4.5, 4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall29" parent="." index="54" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 4.5, -4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall30" parent="." index="55" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 4.5, 4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall23" parent="." index="56" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4.5, 5.5)
 size = Vector3(5, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall24" parent="." index="57" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4.5, -5.5)
 size = Vector3(5, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall31" parent="." index="58" instance=ExtResource("4_24mv6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 7, 0)
 size = Vector3(5, 3, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall32" parent="." index="59" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 4.5, 4.25)
 size = Vector3(1, 8, 3.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall33" parent="." index="60" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 4.5, -4.25)
 size = Vector3(1, 8, 3.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall34" parent="." index="61" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4.5, 5.5)
 size = Vector3(5, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall35" parent="." index="62" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4.5, -5.5)
 size = Vector3(5, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall25" parent="." index="63" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 4.5, -2.5)
 size = Vector3(10, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneWall26" parent="." index="64" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 4.5, 2.5)
 size = Vector3(10, 8, 1)
-show_nav_blocking_volume = null
 
 [node name="StoneFloor" parent="." index="65" instance=ExtResource("1_e2mqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
 size = Vector3(7, 1, 5)
-show_nav_blocking_volume = null
 
 [node name="StoneFloor2" parent="." index="66" instance=ExtResource("1_e2mqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 size = Vector3(59, 1, 12)
-show_nav_blocking_volume = null
 
 [node name="StoneFloor4" parent="." index="67" instance=ExtResource("1_e2mqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -9.5)
 size = Vector3(5, 1, 7)
-show_nav_blocking_volume = null
 
 [node name="StoneFloor7" parent="." index="68" instance=ExtResource("1_e2mqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 0)
 size = Vector3(3, 1, 6)
-show_nav_blocking_volume = null
 
 [node name="Pillar" parent="." index="69" instance=ExtResource("4_gdnmn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1.5, -4.5)
@@ -446,12 +410,10 @@ transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 10.5, 
 [node name="StoneWall28" parent="." index="99" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 4.5, -4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="StoneWall36" parent="." index="100" instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 4.5, 4.75)
 size = Vector3(2, 8, 2.5)
-show_nav_blocking_volume = null
 
 [node name="BigArchway7" parent="." index="101" instance=ExtResource("30_42i3c")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -6.5, 0.5, 0)
@@ -519,7 +481,6 @@ nav_walkable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, -9.5)
 size = Vector3(5, 1, 7)
 nav_walkable = false
-show_nav_blocking_volume = null
 
 [node name="NavBlockingVolume" parent="." index="112" instance=ExtResource("29_u1wvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.25, -1, 0)

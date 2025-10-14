@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53t2tvawvpnu"
-path.s3tc="res://.godot/imported/inventory_left.png-89a52beab981c3ee67ff2322e4f802c6.s3tc.ctex"
+uid="uid://bi31qk2sspkvf"
+path.s3tc="res://.godot/imported/hessian_380_nor_gl_1k.jpg-e0f91e25749b9feee90215e2766382ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://source/assets/ui/buttons/inventory_left.png"
-dest_files=["res://.godot/imported/inventory_left.png-89a52beab981c3ee67ff2322e4f802c6.s3tc.ctex"]
+source_file="res://source/assets/materials/bandage_cloth/hessian_380_nor_gl_1k.jpg"
+dest_files=["res://.godot/imported/hessian_380_nor_gl_1k.jpg-e0f91e25749b9feee90215e2766382ec.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://source/assets/materials/bandage_cloth/hessian_380_nor_gl_1k.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

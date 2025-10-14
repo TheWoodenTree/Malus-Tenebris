@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b20lvfqmtgku1"]
+
+[ext_resource type="Texture2D" uid="uid://bdukoufox006" path="res://source/assets/materials/bandage_cloth/hessian_380_diff_1k.jpg" id="1_llv01"]
+[ext_resource type="Texture2D" uid="uid://bi31qk2sspkvf" path="res://source/assets/materials/bandage_cloth/hessian_380_nor_gl_1k.jpg" id="2_7gven"]
+[ext_resource type="Texture2D" uid="uid://ckc82cbgnjpef" path="res://source/assets/materials/bandage_cloth/hessian_380_rough_1k.jpg" id="3_w64ex"]
+
+[resource]
+albedo_color = Color(0.83137256, 0.7764706, 0.6392157, 1)
+albedo_texture = ExtResource("1_llv01")
+metallic_specular = 0.25
+roughness_texture = ExtResource("3_w64ex")
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = ExtResource("2_7gven")

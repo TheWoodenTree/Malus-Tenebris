@@ -172,6 +172,7 @@ theme_override_constants/margin_left = 0
 [node name="SlotGrid" type="GridContainer" parent="Cont/SlotCont"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/h_separation = 0
 columns = 15
 

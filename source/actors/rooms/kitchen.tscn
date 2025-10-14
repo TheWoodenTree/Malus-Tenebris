@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://7rhkd1sxw43r"]
+[gd_scene load_steps=74 format=3 uid="uid://7rhkd1sxw43r"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_r3ajh"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="2_xlfra"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://b8x6fq3iwrnwh" path="res://source/actors/decor/debris/plank_1.tscn" id="71_nldkq"]
 [ext_resource type="PackedScene" uid="uid://ctq38sap0lhcv" path="res://source/actors/decor/debris/plank_3.tscn" id="72_qyelt"]
 [ext_resource type="PackedScene" uid="uid://bqo52g6ow2hah" path="res://source/actors/decor/groups/sm_stacked_planks_3.tscn" id="73_hroi3"]
+[ext_resource type="PackedScene" uid="uid://ddhrrbrnk0uk" path="res://source/actors/interactables/pickups/bandage.tscn" id="73_ry72r"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="74_2s6w1"]
 [ext_resource type="PackedScene" uid="uid://di1wwxw78n6ba" path="res://source/actors/decor/misc/pots/fat_pot.tscn" id="75_jffkx"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="76_nldkq"]
@@ -662,3 +663,6 @@ nav_walkable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6, -0.5)
 size = Vector3(7, 1, 4)
 nav_walkable = false
+
+[node name="Bandage" parent="." index="163" instance=ExtResource("73_ry72r")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -23.5, 2, -9)

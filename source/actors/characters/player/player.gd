@@ -5,7 +5,6 @@ extends Character
 signal crouched
 signal interactable_targeted(interactable_type: Interactable.Type)
 signal interactable_untargeted
-signal holding_self_useable(interactable_type: Interactable.Type)
 
 const NOCLIP_SPEED: float = 20.0
 const MAX_DIST_FROM_DRAGGABLE: float = 5.0
@@ -66,6 +65,7 @@ var acid_burn_sound: AudioStream = preload("res://source/assets/sounds/monster/g
 @onready var light = $HeadController/CameraController/Camera/BaseLight
 @onready var held_item_marker = $HeadController/CameraController/Camera/HeldItemMarker
 @onready var noise_player = $HeadController/NoisePlayer
+@onready var thrown_item_origin_marker: Marker3D = $HeadController/CameraController/Camera/ThrownItemOriginMarker
 @onready var rucksack_player = $RucksackPlayer
 @onready var fear_player = $FearPlayer
 @onready var fear_pulse_player = $FearPulsePlayer
@@ -148,13 +148,6 @@ func _handle_input():
 		set_collision_mask_value(4, !noclip_on)
 		set_collision_mask_value(5, !noclip_on)
 	
-	var can_self_use: bool = held_item_data and held_item_data.self_useable and not targeted_interactable and not draggable_being_dragged
-	if Input.is_action_just_pressed("interact") and can_self_use and not in_menu:
-		if held_item_data.self_useable_script:
-			held_item.use()
-		else:
-			push_error("Self-useable has no attached script")
-	
 	if Input.is_action_just_pressed("interact"):
 		if targeted_interactable and not in_menu:
 			targeted_interactable.interact()
@@ -163,15 +156,23 @@ func _handle_input():
 		if is_instance_valid(draggable_being_dragged):
 			set_draggable_being_dragged(null)
 	
-	if Input.is_action_just_pressed("throw") and is_holding_item("Ruboleum Vial"):
-		var instance: RigidBody3D = thrown_item.instantiate()
-		#instance.get_node("Mesh").mesh = held_item
-		Global.world.add_child(instance)
-		instance.global_transform = held_item.global_transform
-		#delete_held_item()
-		await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
-		await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
-		instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
+	if Input.is_action_just_pressed("use") and not in_menu and held_item and held_item is SelfUseable:
+		held_item = held_item as SelfUseable
+		held_item.was_held_before = true
+		held_item.use()
+		if held_item:
+			held_item.was_used = true
+		
+		#var instance: RigidBody3D = thrown_item.instantiate()
+		##instance.get_node("Mesh").mesh = held_item
+		#Global.world.add_child(instance)
+		#instance.global_rotation = held_item.global_rotation
+		#instance.global_position = thrown_item_origin_marker.global_position
+		##instance.global_position = 
+		##delete_held_item()
+		#await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
+		#await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
+		#instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
 
 
 func _move(delta):
@@ -242,14 +243,7 @@ func hold_item(item_data: ItemData):
 	add_child(held_item)
 	held_item.position = Vector3.ZERO
 	held_item.scale *= item_data.hold_scale_multiplier
-	if held_item_data.self_useable:
-		held_item.material_overlay.set_shader_parameter("outlineOn", true)
-		holding_self_useable.emit(Interactable.Type.NOTE)
-	else:
-		pass
-		#if held_item.material_overlay:
-			#held_item.material_overlay.set_shader_parameter("outlineOn", false)
-		
+	
 	if not first_item_held and is_holding_key() and not debug_no_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
 		first_item_held = true
@@ -302,8 +296,7 @@ func set_targeted_interactable(interactable: Interactable):
 	if targeted_interactable:
 		interactable_targeted.emit(targeted_interactable.get_interactable_type())
 	else:
-		var is_holding_self_useable: bool = held_item_data and held_item_data.self_useable
-		interactable_untargeted.emit(is_holding_self_useable)
+		interactable_untargeted.emit(false)
 
 
 func set_draggable_being_dragged(draggable: Draggable):
@@ -324,17 +317,31 @@ func hurt(source: Attack):
 		print('ded')
 	camera_controller.add_trauma(1.5)
 	
-	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_NEAR_FULL_HP_MULTIPLIER, get_normalized_health())
-	
+	var weight: float = pow(get_normalized_health(), 1.25)
+	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_FULL_HP_MULTIPLIER, weight)
 	Global.post_processing.blend_pain_vignette_multiplier(multiplier)
 	
 	await get_tree().create_timer(0.1, false).timeout
 	hurt_sound_player.play()
 
 
+func heal(amount: float):
+	health += amount
+	
+	var weight: float = pow(get_normalized_health(), 1.25)
+	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_FULL_HP_MULTIPLIER, weight)
+	Global.post_processing.blend_pain_vignette_multiplier(multiplier, 1.0)
+	Global.post_processing.flash_heal_color_overlay()
+	await get_tree().create_timer(0.5, false).timeout
+	play_sound_one_shot(sigh_of_relief_sound)
+
+
 func play_sound_one_shot(sound: AudioStream):
-	noise_player.stream = sound
-	noise_player.play()
+	if not noise_player.playing:
+		noise_player.play()
+	var test = noise_player.get_stream_playback()
+	test.play_stream(sound)
+	await noise_player.finished
 
 
 # Check if the standing collision shape collides with the world

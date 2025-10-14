@@ -4,12 +4,15 @@ extends Control
 @export var heartbeat_curve: Curve
 
 const PAIN_VIGNETTE_FULL_HP_MULTIPLIER = 0.7
-const PAIN_VIGNETTE_NEAR_FULL_HP_MULTIPLIER = 0.42
 const PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER = 0.15
 
+const HEAL_COLOR_OVERLAY_MAX_ALPHA = 0.078
+
 @onready var pain_vignette: ColorRect = $PainVignette
+@onready var heal_color_overlay: ColorRect = $HealColorOverlay
 
 var pain_vignette_tween: Tween
+var heal_color_overlay_tween: Tween
 var time_since_start := 0.0
 
 
@@ -22,5 +25,12 @@ func _process(delta: float) -> void:
 
 
 func blend_pain_vignette_multiplier(multiplier: float, duration := 0.1):
-	pain_vignette_tween = get_tree().create_tween()
+	pain_vignette_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	pain_vignette_tween.tween_property(pain_vignette.material, "shader_parameter/multiplier", multiplier, duration)
+
+
+func flash_heal_color_overlay():
+	heal_color_overlay_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	heal_color_overlay_tween.tween_property(heal_color_overlay, "color:a", HEAL_COLOR_OVERLAY_MAX_ALPHA, 0.3)
+	heal_color_overlay_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	heal_color_overlay_tween.tween_property(heal_color_overlay, "color:a", 0.0, 1.5)

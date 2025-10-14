@@ -10,4 +10,4 @@ script = ExtResource("2_t2hia")
 name = "Winch Crank"
 texture = ExtResource("3_j2c28")
 pickup_sound = ExtResource("1_7cjfr")
-hold_rotation_offset = Vector3(90, 0, 180)
+hold_rotation_offset = Vector3(90, 0, 0)

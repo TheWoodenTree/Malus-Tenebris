@@ -1,3 +1,4 @@
+class_name ItemSlot
 extends MarginContainer
 
 var index: int
@@ -9,6 +10,7 @@ var on_edge: bool = false
 @onready var hover_sound_player = $HoverSoundPlayer
 @onready var slot_frame = $SlotFrame
 @onready var item_texture_rect = $ItemTextureRect
+@onready var slot_number: Label = $HBoxContainer/SlotNumber
 
 @export var item_data: ItemData
 
@@ -36,6 +38,10 @@ func set_button_disabled(disabled: bool):
 
 func set_item_visible(item_visible: bool):
 	item_texture_rect.visible = item_visible
+
+
+func set_slot_number(number: int):
+	slot_number.text = str(number)
 
 
 func _on_slot_button_mouse_entered():

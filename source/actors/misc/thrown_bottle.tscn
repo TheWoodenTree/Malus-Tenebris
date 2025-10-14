@@ -43,8 +43,8 @@ points = PackedVector3Array(-9.79006e-06, 0.249991, 0.05, -0.0353563, 0.249991, 
 collision_layer = 0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.17, 0)
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_kooua")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

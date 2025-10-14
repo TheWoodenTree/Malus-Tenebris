@@ -42,16 +42,18 @@ func _enter_tree():
 		else:
 			item_name_label.text = ""
 
+
 func _ready():
-	# Make first slot middle slot upon first opening inventory
+	for i in range(0, slot_grid.get_child_count()):
+		var slot: ItemSlot = slot_grid.get_child(i)
+		slot.index = i
+		slot.set_slot_number(i + 1)
+		
 	move_slot_to_back()
 	move_slot_to_back()
 	move_slot_to_back()
 	move_slot_to_back()
 	
-	for i in range(0, slot_grid.get_child_count()):
-		slot_grid.get_child(i).index = i
-		
 	if not Global.player.debug_no_tutorials:
 		tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
 

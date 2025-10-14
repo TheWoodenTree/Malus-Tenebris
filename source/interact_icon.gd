@@ -20,16 +20,11 @@ var icons_dict: Dictionary = {Interactable.Type.DOOR: grabbing_hand_icon,
 
 func _ready():
 	Global.player.interactable_targeted.connect(update_icon)
-	Global.player.holding_self_useable.connect(update_icon)
 	Global.player.interactable_untargeted.connect(set_icon_visible)
 
 
-func set_icon_visible(player_holding_self_useable: bool = false):
-	if not player_holding_self_useable:
-		visible = false
-	else:
-		visible = true
-		update_icon(Interactable.Type.NOTE)
+func set_icon_visible(visible_: bool):
+	visible = visible_
 
 
 func update_icon(interactable_type: Interactable.Type):
