@@ -332,8 +332,6 @@ func heal(amount: float):
 	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_FULL_HP_MULTIPLIER, weight)
 	Global.post_processing.blend_pain_vignette_multiplier(multiplier, 1.0)
 	Global.post_processing.flash_heal_color_overlay()
-	await get_tree().create_timer(0.5, false).timeout
-	play_sound_one_shot(sigh_of_relief_sound)
 
 
 func play_sound_one_shot(sound: AudioStream):
