@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=33 format=4 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/characters/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/characters/player/camera.tscn" id="2"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://5keu04qy0tfa" path="res://source/actors/characters/states/player_crouch_walk.tscn" id="18_ja5ts"]
 [ext_resource type="PackedScene" uid="uid://dn38omxvvvmki" path="res://source/actors/characters/states/player_sprint.tscn" id="19_fkc5f"]
 [ext_resource type="PackedScene" uid="uid://q4rpa5lp8mki" path="res://source/actors/characters/states/player_crouch_idle.tscn" id="20_4esr6"]
+[ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="20_4lx6p"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kx8ox"]
 
@@ -156,6 +157,10 @@ shadow_caster_mask = 4294967293
 omni_range = 12.0
 script = ExtResource("4")
 
+[node name="SaverLoader" parent="HeadController/CameraController/Camera" instance=ExtResource("20_4lx6p")]
+unique_id = &"VBFJMX,U-NeyVXFW"
+save_properties = Array[String](["rotation", "target_rotation"])
+
 [node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController"]
 libraries = {
 &"": SubResource("AnimationLibrary_crvps")
@@ -244,3 +249,7 @@ initial_state = NodePath("PlayerIdle")
 [node name="PlayerCrouchIdle" parent="StateMachine" instance=ExtResource("20_4esr6")]
 
 [node name="PlayerCrouchWalk" parent="StateMachine" instance=ExtResource("18_ja5ts")]
+
+[node name="SaverLoader" parent="." instance=ExtResource("20_4lx6p")]
+unique_id = &"Y!t6.EUXzf)g,l@j"
+save_properties = Array[String](["global_position"])

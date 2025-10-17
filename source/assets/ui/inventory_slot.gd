@@ -1,8 +1,7 @@
 class_name ItemSlot
 extends MarginContainer
 
-var index: int
-var has_item: bool = false
+var slot_number: int
 var selected: bool = false
 var on_edge: bool = false
 
@@ -10,22 +9,23 @@ var on_edge: bool = false
 @onready var hover_sound_player = $HoverSoundPlayer
 @onready var slot_frame = $SlotFrame
 @onready var item_texture_rect = $ItemTextureRect
-@onready var slot_number: Label = $HBoxContainer/SlotNumber
+@onready var slot_number_label: Label = $HBoxContainer/SlotNumber
 
 @export var item_data: ItemData
 
 
+func _ready() -> void:
+	set_slot_number(get_index() + 1)
+
+
 func set_item(new_item_data: ItemData):
-	# If item_data has name, assume new item is being added. If not, assume
-	# slot is being reset.
-	if new_item_data.name:
-		button.disabled = false
-		has_item = true
-	else:
-		button.disabled = true
-		has_item = false
-	item_texture_rect.texture = new_item_data.texture
 	item_data = new_item_data
+	if new_item_data:
+		button.disabled = false
+		item_texture_rect.texture = new_item_data.texture
+	else:
+		item_texture_rect.texture = null
+		button.disabled = true
 
 
 func set_selected(is_selected):
@@ -41,7 +41,12 @@ func set_item_visible(item_visible: bool):
 
 
 func set_slot_number(number: int):
-	slot_number.text = str(number)
+	slot_number = number
+	slot_number_label.text = str(number)
+
+
+func has_item() -> bool:
+	return item_data != null
 
 
 func _on_slot_button_mouse_entered():

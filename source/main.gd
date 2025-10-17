@@ -8,6 +8,7 @@ const EFFECT_MAX_DIST = 30
 @export var anim_vignette_softness: float
 @export var debug_no_title_screen: bool = false
 @export var debug_no_prologue: bool = false
+@export var debug_no_load_from_save: bool = false
 
 var fear_tween: Tween
 
@@ -61,6 +62,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$Label.text = str(int(Engine.get_frames_per_second()))
+	
+	if Input.is_action_just_pressed("debug4"):
+		SaveManager.save_game()
+	
+	if Input.is_action_just_pressed("debug_5"):
+		SaveManager.load_game()
 	
 	if Input.is_action_just_pressed("tilde"):
 		if Global.mouse_locked:
@@ -137,6 +144,9 @@ func load_world_and_player():
 		await tween3.finished
 		
 		Global.player.scripted_event = false
+	
+	if not debug_no_load_from_save and FileAccess.file_exists("user://savegame.bin"):
+		SaveManager.load_game()
 
 
 func _report_load_progress():

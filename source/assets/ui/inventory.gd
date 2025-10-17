@@ -1,3 +1,4 @@
+class_name Inventory
 extends Menu
 
 signal item_attached_to_cursor(item_data: ItemData)
@@ -6,8 +7,6 @@ const MAX_QUEUE_SIZE: int = 4
 const LEFT: int = 0
 const RIGHT: int = 1
 
-var item_list: Array[ItemData] = []
-var num_slots: int = 9
 var queued_scrolls: Array[int] = []
 var selected_slot: Node
 var slot_scroll_tween: Tween
@@ -31,23 +30,25 @@ var scrolling: bool = false
 
 func _enter_tree():
 	reset_slot_positions()
-	if slot_grid and not slot_grid.get_child(4).button.disabled:
-		set_selected_slot(slot_grid.get_child(4))
-	else:
-		set_selected_slot(null)
+	if slot_grid:
+		update_slots_item_datas()
+		if not slot_grid.get_child(4).button.disabled:
+			set_selected_slot(slot_grid.get_child(4))
+		else:
+			set_selected_slot(null)
 	requested_item = null # This is set BEFORE it is set in the request_item func
 	if item_name_label:
 		if selected_slot and selected_slot.item_data:
-			set_item_name_label_text(selected_slot.item_data.name, selected_slot.item_data.count)
+			set_item_name_label_text(selected_slot.item_data.name)
 		else:
 			item_name_label.text = ""
 
 
 func _ready():
-	for i in range(0, slot_grid.get_child_count()):
-		var slot: ItemSlot = slot_grid.get_child(i)
-		slot.index = i
-		slot.set_slot_number(i + 1)
+	update_slots_item_datas()
+	if not slot_grid.get_child(0).button.disabled:
+		set_selected_slot(slot_grid.get_child(0))
+		set_item_name_label_text(selected_slot.item_data.name)
 		
 	move_slot_to_back()
 	move_slot_to_back()
@@ -67,26 +68,12 @@ func _process(_delta):
 		_handle_drag()
 
 
-func add_item(item_data: ItemData):
-	for slot in item_slots:
-		if not slot.has_item:
-			slot.set_item(item_data)
-			break
-		elif slot.item_data.name == item_data.name:
-			slot.item_data.count += item_data.count
-			set_item_name_label_text(slot.item_data.name, slot.item_data.count)
-			break
+func add_item(item_data: ItemData, slot_number: int):
+	slot_grid.get_child(slot_number).set_item(item_data)
 
 
-func remove_item(item_data: ItemData):
-	for i in range(1, item_slots.size() + 1):
-		var slot = item_slots[-i]
-		if slot.item_data == item_data:
-			slot.item_data.count -= 1
-			if slot.item_data.count < 1:
-				slot.set_item(ItemData.new())
-				set_selected_slot(null)
-			break
+func remove_item(slot_number: int):
+	slot_grid.get_child(slot_number).set_item(null)
 
 
 func reset_slot_positions():
@@ -134,17 +121,13 @@ func queue_scroll(dir):
 func attach_item_to_cursor(item_data: ItemData):
 	Global.cursor.attached_item.texture = item_data.texture
 	item_attached_to_cursor.emit(item_data)
-	var count: int = item_data.count - 1
-	if count < 1:
-		selected_slot.set_item_visible(false)
-	set_item_name_label_text(item_data.name, count)
+	selected_slot.set_item_visible(false)
 	item_on_cursor = item_data
 	is_item_on_cursor = true
 
 
 func remove_item_from_cursor():
 	Global.cursor.attached_item.texture = null
-	set_item_name_label_text(selected_slot.item_data.name, selected_slot.item_data.count)
 	selected_slot.item_texture_rect.visible = true
 	block_scroll = false
 	item_on_cursor = null
@@ -176,7 +159,7 @@ func scroll_to_slot(slot: Node):
 		await slot_scroll_tween.finished
 	
 	@warning_ignore("integer_division")
-	var distance_to_middle: int = num_slots / 2 - slot.get_index()
+	var distance_to_middle: int = InventoryManager.num_slots / 2 - slot.get_index()
 	var dir: int = -1
 	if distance_to_middle > 0:
 		dir = RIGHT
@@ -204,7 +187,7 @@ func wrap_item_slots(dir):
 		move_slot_to_back()
 	slot_cont.add_theme_constant_override("margin_left", 0)
 	var slot_item_data: ItemData = slot_grid.get_child(4).item_data # Problematic line
-	set_item_name_label_text(slot_item_data.name, slot_item_data.count)
+	set_item_name_label_text(slot_item_data.name if slot_item_data else "")
 	if get_viewport():
 		get_viewport().update_mouse_cursor_state()
 		# Scuffed solution to update slot that is under cursor after animation
@@ -212,13 +195,8 @@ func wrap_item_slots(dir):
 		get_viewport().warp_mouse(get_viewport().get_mouse_position() - Vector2.ONE)
 
 
-func set_item_name_label_text(item_name: String, count: int):
-	var name_string: String = item_name
-	if count > 1:
-		name_string += " x%d" % count
-	elif count < 1:
-		name_string = ""
-	item_name_label.text = name_string
+func set_item_name_label_text(item_name: String):
+	item_name_label.text = item_name
 
 
 func set_tutorial_on(on: bool):
@@ -242,3 +220,11 @@ func _on_inventory_left_button_2_button_up():
 
 func _on_scroll_anim_player_animation_started(_anim_name):
 	slot_scroll_player.play()
+
+
+func update_slots_item_datas():
+	for slot: ItemSlot in slot_grid.get_children():
+		if InventoryManager.items.has(slot.slot_number):
+			slot.set_item(InventoryManager.items[slot.slot_number])
+		elif slot.has_item():
+			slot.set_item(null)

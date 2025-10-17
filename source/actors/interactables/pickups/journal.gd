@@ -10,7 +10,7 @@ func _enter_tree():
 
 
 func _on_interact() -> void:
+	added_to_inventory = true
 	super()
 	GlobalSignals.journal_picked_up.emit()
 	Global.journal_log.add_entry(LogEntry.LogEntryName.PICKED_UP_JOURNAL)
-	added_to_inventory = true

@@ -96,6 +96,7 @@ func disable_sheen():
 
 func interact() -> void:
 	enable_highlight_sheen = false
+	highlight_light.visible = false
 	disable_sheen()
 	_on_interact()
 

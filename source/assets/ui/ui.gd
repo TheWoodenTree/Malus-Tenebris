@@ -45,8 +45,6 @@ signal background_changed
 func _ready():
 	inventory_menu = inventory_menu_res.instantiate()
 	death_screen = death_screen_res.instantiate()
-	add_child(inventory_menu)
-	remove_child(inventory_menu)
 	
 	AfflictionTimer.timeout.connect(notify_hourglass_empty)
 	inventory_menu.item_attached_to_cursor.connect(play_inventory_item_click_sound)

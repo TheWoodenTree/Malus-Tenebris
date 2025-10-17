@@ -14,7 +14,7 @@ var key_dipped: bool = false
 
 func _ready():
 	super()
-	key_item_data.item_instance = key
+	#key_item_data.item_instance = key
 
 
 func _melt_fat():

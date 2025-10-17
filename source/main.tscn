@@ -79,6 +79,7 @@ script = ExtResource("4")
 anim_vignette_softness = 1.0
 debug_no_title_screen = true
 debug_no_prologue = true
+debug_no_load_from_save = true
 
 [node name="FearAnimPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EffectsPlayer")

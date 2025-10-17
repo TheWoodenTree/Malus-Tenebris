@@ -92,6 +92,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("debug"):
+		print(get("pain_grunt_stream/random_pitch"))
 	_handle_input()
 	torch_cam.global_transform = cam.global_transform
 	if held_item:
@@ -217,13 +219,13 @@ func start_crouch_transition(entering: bool):
 
 
 func inventory_add_item(item_data: ItemData):
-	Global.ui.inventory_menu.add_item(item_data)
+	InventoryManager.add_item(item_data)
 	if not first_item_picked_up:
 		first_item_picked_up = true
 
 
 func inventory_remove_item(item_data: ItemData):
-	Global.ui.inventory_menu.remove_item(item_data)
+	InventoryManager.remove_item(item_data)
 
 
 func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):
@@ -237,6 +239,8 @@ func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):
 
 func hold_item(item_data: ItemData):
 	held_item_data = item_data
+	if item_data.item_instance == null:
+		item_data.item_instance = load(item_data.item_scene_path).instantiate()
 	held_item = item_data.item_instance
 	for mesh in held_item.meshes:
 		mesh.layers = 3
