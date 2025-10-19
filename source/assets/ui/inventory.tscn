@@ -300,6 +300,7 @@ libraries = {
 
 [node name="SlotScrollPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_1ols8")
+volume_db = -5.0
 max_polyphony = 16
 
 [node name="ItemClickPlayer" type="AudioStreamPlayer" parent="."]
