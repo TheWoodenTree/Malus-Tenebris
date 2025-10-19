@@ -31,6 +31,7 @@ GlobalSignals="*res://source/global_signals.gd"
 AfflictionTimer="*res://source/affliction_timer.gd"
 SaveManager="*res://source/assets/global_scripts/save_manager.gd"
 InventoryManager="*res://source/assets/global_scripts/inventory_manager.gd"
+JournalManager="*res://source/assets/global_scripts/journal_manager.gd"
 
 [display]
 

@@ -1,12 +1,11 @@
 extends Interactable
 
+signal done_pouring
+
 var num_doses: int = 1
 var first_dose: bool = true
 
 @onready var pour_player = $PourPlayer
-
-
-signal done_pouring
 
 
 func _on_target():
@@ -41,7 +40,7 @@ func _on_interact() -> void:
 			var play_sigh: bool = AfflictionTimer.time_left < 60.0
 			
 			Global.player.play_sound_one_shot(Global.player.gulp_sound)
-			AfflictionTimer.add_time_mins(5.0)
+			AfflictionTimer.add_time_mins(1.0)
 			AfflictionEffectController.set_to_min_effect(2.0)
 			
 			set_interactable(false)
@@ -68,4 +67,4 @@ func distillation_started():
 
 func do_log_entry():
 	await get_tree().create_timer(2.0, false).timeout
-	Global.journal_log.add_entry(LogEntry.LogEntryName.FIRST_DOSE)
+	JournalManager.add_log_entry(LogEntry.LogEntryName.FIRST_DOSE)

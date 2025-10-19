@@ -158,7 +158,6 @@ omni_range = 12.0
 script = ExtResource("4")
 
 [node name="SaverLoader" parent="HeadController/CameraController/Camera" instance=ExtResource("20_4lx6p")]
-unique_id = &"VBFJMX,U-NeyVXFW"
 save_properties = Array[String](["rotation", "target_rotation"])
 
 [node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController"]
@@ -251,5 +250,4 @@ initial_state = NodePath("PlayerIdle")
 [node name="PlayerCrouchWalk" parent="StateMachine" instance=ExtResource("18_ja5ts")]
 
 [node name="SaverLoader" parent="." instance=ExtResource("20_4lx6p")]
-unique_id = &"Y!t6.EUXzf)g,l@j"
 save_properties = Array[String](["global_position"])

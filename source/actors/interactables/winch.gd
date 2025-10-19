@@ -58,6 +58,8 @@ func _physics_process(_delta):
 func _on_interact() -> void:
 	if interactable:
 		if Global.player.is_holding_item("Winch Crank") and not has_crank:
+			set_interactable(false)
+			
 			var initial_rot: Vector3 = crank.global_rotation
 			var initial_pos: Vector3 = crank_anim_player.get_animation("insert_crank").track_get_key_value(0, 0)
 			crank.global_transform = Global.player.held_item.meshes[0].global_transform
@@ -65,11 +67,14 @@ func _on_interact() -> void:
 			var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 			tween.tween_property(crank, "global_position", rotating_body.to_global(initial_pos), 0.5)
 			tween.parallel().tween_property(crank, "global_rotation", initial_rot, 0.5)
-			crank.layers = 2
+			crank.layers = 3
+			crank.force_update_transform()
 			
-			set_interactable(false)
-			crank.visible = true
+			await get_tree().process_frame
+			
+			_untarget()
 			Global.player.delete_held_item()
+			crank.visible = true
 			
 			await tween.finished
 			crank.layers = 1

@@ -6,6 +6,9 @@ extends Node3D
 @export var door1_to_angle: int = 0
 @export var door2_to_angle: int = 0
 
+var being_opened := false
+var being_closed := false
+
 @onready var door1_hinge: Marker3D = $Door1Hinge
 @onready var door2_hinge: Marker3D = $Door2Hinge
 @onready var door1_dust_particles: GPUParticles3D = $Door1Hinge/DustParticles
@@ -23,6 +26,8 @@ func _ready():
 	
 	if not Engine.is_editor_hint():
 		GlobalSignals.great_door_close_area_entered.connect(close)
+	
+	SaveManager.loaded.connect(_on_loaded_from_save)
 
 
 func _set_door1_angle(rot):
@@ -73,6 +78,7 @@ func on_winch_turn(winch_ang_vel_x: float):
 
 
 func open():
+	being_opened = true
 	var door1_budge_angle: int = -1
 	var door2_budge_angle: int = -1
 	if door1_to_angle - door1_angle > 0:
@@ -101,12 +107,14 @@ func open():
 		doors_open_tween.tween_property(door2_hinge, "rotation:y", -deg_to_rad(door2_to_angle), 5.5)
 	door_open_player.play()
 	await doors_open_tween.finished
+	being_opened = false
 	#door_closed_player.play()
 	door1_dust_particles.emitting = false
 	door2_dust_particles.emitting = false
 
 
 func close():
+	being_closed = true
 	var doors_open_tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).set_parallel()
 	if door1_angle != door1_to_angle:
 		doors_open_tween.tween_property(door1_hinge, "rotation:y", 0.0, 5.5)
@@ -116,6 +124,16 @@ func close():
 		doors_open_tween.tween_property(door2_hinge, "rotation:y", 0.0, 5.5)
 	door_open_player.play()
 	await doors_open_tween.finished
+	being_closed = false
 	#door_closed_player.play()
 	door1_dust_particles.emitting = false
 	door2_dust_particles.emitting = false
+
+
+func _on_loaded_from_save():
+	if being_closed:
+		door1_hinge.rotation.y = 0.0
+		door2_hinge.rotation.y = 0.0
+	elif being_opened:
+		door1_hinge.rotation.y = door1_to_angle
+		door2_hinge.rotation.y = door2_to_angle

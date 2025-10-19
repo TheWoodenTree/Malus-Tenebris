@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dq56ian4bntsp"]
+[gd_scene load_steps=33 format=3 uid="uid://dq56ian4bntsp"]
 
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_e2mqj"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ok18y"]
@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="18_le25o"]
 [ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="19_b2uug"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="23_jgj6y"]
+[ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="23_wc2ki"]
 [ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="24_gf34h"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="24_u1wvf"]
+[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="25_ggix4"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25_tn2h1"]
 [ext_resource type="Script" uid="uid://bdnadlu2tq2xk" path="res://source/actors/rooms/sprint_tutorial.gd" id="26_p45ll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://1sb83i8d2g" path="res://source/actors/rooms/occluders/bigger_cells_hall.occ" id="27_mmdhw"]
@@ -34,6 +37,15 @@ size = Vector3(54.25, 12, 13)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jf8do"]
 size = Vector3(1, 8, 10)
+
+[sub_resource type="Resource" id="Resource_wqnkx"]
+resource_local_to_scene = true
+script = ExtResource("24_u1wvf")
+name = "Old Journal"
+texture = ExtResource("25_ggix4")
+pickup_sound = ExtResource("23_wc2ki")
+hold_rotation_offset = Vector3(0, 0, 180)
+copy_properties = Array[String](["meshes", "added_to_inventory"])
 
 [node name="BiggerCellsHall" instance=ExtResource("1_ok18y")]
 
@@ -410,6 +422,7 @@ transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -4.5, 
 
 [node name="Journal" parent="." index="103" instance=ExtResource("31_f5jcr")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12.25, 0.5, 2)
+item_data = SubResource("Resource_wqnkx")
 enable_highlight_light = true
 enable_highlight_sheen = true
 

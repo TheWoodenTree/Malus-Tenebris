@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bl4ofupmcd1ag"]
+[gd_scene load_steps=14 format=4 uid="uid://bl4ofupmcd1ag"]
 
 [ext_resource type="Script" uid="uid://dea02c5pny335" path="res://source/actors/building pieces/archways/large_double_door.gd" id="1_ch00n"]
 [ext_resource type="Material" uid="uid://3olv0nbh64fb" path="res://source/assets/materials/old_bronze/old_bronze.tres" id="1_vhxxd"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bmmypvo8sk4cu" path="res://source/assets/sounds/move/stone_budge.ogg" id="3_1fbut"]
 [ext_resource type="AudioStream" uid="uid://dfceqcy24grh3" path="res://source/assets/sounds/move/stone_drag2.ogg" id="3_n56mf"]
 [ext_resource type="AudioStream" uid="uid://b7lb8stkjkgh7" path="res://source/assets/sounds/misc/loud_hit_screetch.mp3" id="6_rfktn"]
+[ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="7_bay6m"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qsd3o"]
 _surfaces = [{
@@ -133,3 +134,6 @@ max_db = 6.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.25, 0.5)
 stream = ExtResource("6_rfktn")
 unit_size = 35.0
+
+[node name="SaverLoader" parent="." instance=ExtResource("7_bay6m")]
+save_properties = Array[String](["door1_hinge:rotation", "door2_hinge:rotation", "being_opened", "being_closed"])

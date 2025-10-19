@@ -5,8 +5,8 @@ var item_instance: Pickup = null :
 	set(value):
 		item_instance = value
 		if item_instance:
-			item_instance.set_interactable(false) # TODO: Make this work
 			set_copied_properties()
+			item_instance.set_interactable(false)
 
 # Set by pickup script
 var item_scene_path: String = ""
@@ -18,7 +18,7 @@ var copied_properties: Dictionary[StringName, Variant] = {}
 @export var self_useable: bool = false # Item can be used when not looking at another interactable
 @export var hold_rotation_offset: Vector3 = Vector3.ZERO
 @export var hold_scale_multiplier: float = 1.0
-@export var copy_properties: Array[StringName] = []
+@export var copy_properties: Array[StringName] = ["meshes"]
 
 
 func _init() -> void:
@@ -34,5 +34,14 @@ func reset():
 
 
 func set_copied_properties():
-	for property: StringName in copied_properties.keys():
-		item_instance.set(property, copied_properties[property])
+	for property: String in copied_properties.keys():
+		if copied_properties[property] is Array:
+			var arr: Array = []
+			for value in copied_properties[property]:
+				if value is Resource:
+					arr.append(value.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
+				else:
+					arr.append(value)
+			item_instance.set(property, arr)
+		else:
+			item_instance.set(property, copied_properties[property])

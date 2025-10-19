@@ -49,7 +49,7 @@ func _on_untarget():
 
 func _on_interact() -> void:
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
-	if not Global.player.in_menu:	
+	if not Global.player.in_menu:
 		Global.ui.note_menu.set_note_text(pages[curr_page])
 		Global.ui.note_menu.note_name = note_name
 		Global.ui.note_menu.set_page_number_text("Page 1/" + str(num_pages))
@@ -60,7 +60,7 @@ func _on_interact() -> void:
 			Global.ui.hint_remove()
 		
 		if not read:
-			Global.found_notes.add_note(note_name, raw_text.replacen("[PAGE]", ""))
+			JournalManager.add_note(note_name, raw_text.replacen("[PAGE]", ""))
 		
 		read = true
 

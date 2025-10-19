@@ -4,7 +4,7 @@ extends Control
 @export var heartbeat_curve: Curve
 
 const PAIN_VIGNETTE_FULL_HP_MULTIPLIER = 0.7
-const PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER = 0.15
+const PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER = 0.3
 
 const HEAL_COLOR_OVERLAY_MAX_ALPHA = 0.078
 

@@ -92,8 +92,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug"):
-		print(get("pain_grunt_stream/random_pitch"))
 	_handle_input()
 	torch_cam.global_transform = cam.global_transform
 	if held_item:
@@ -242,6 +240,7 @@ func hold_item(item_data: ItemData):
 	if item_data.item_instance == null:
 		item_data.item_instance = load(item_data.item_scene_path).instantiate()
 	held_item = item_data.item_instance
+	held_item.being_held = true
 	for mesh in held_item.meshes:
 		mesh.layers = 3
 	add_child(held_item)
@@ -254,6 +253,7 @@ func hold_item(item_data: ItemData):
 
 
 func delete_held_item():
+	held_item.being_held = false
 	remove_child(held_item)
 	inventory_remove_item(held_item_data)
 	interact_ray.enabled = true
@@ -263,6 +263,7 @@ func delete_held_item():
 
 func stop_holding_item(play_sound: bool):
 	if held_item:
+		held_item.being_held = false
 		remove_child(held_item)
 	interact_ray.enabled = true
 	held_item_data = null

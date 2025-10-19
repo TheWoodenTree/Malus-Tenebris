@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://csrs2a5ulov1a"]
+[gd_scene load_steps=28 format=4 uid="uid://csrs2a5ulov1a"]
 
 [ext_resource type="Script" uid="uid://c1sng1fhyl8jm" path="res://source/actors/building pieces/doors/door.gd" id="1_03ck2"]
 [ext_resource type="Script" uid="uid://c1tcd1h0ewxfi" path="res://source/actors/building pieces/door_body.gd" id="1_ea760"]
@@ -17,9 +17,25 @@
 [ext_resource type="PackedScene" uid="uid://dlod6l5423wx1" path="res://source/actors/building pieces/basic/nav_blocking_volume.tscn" id="17_4lc3r"]
 [ext_resource type="Shader" uid="uid://dqtv12rd2pdiu" path="res://source/assets/shaders/outline_shader.tres" id="17_250pq"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="18_b0y0l"]
+[ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="18_ypt44"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3jrpb"]
 absorbent = true
+
+[sub_resource type="Animation" id="Animation_ypt44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Key/Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hf3yu"]
 resource_name = "insert_key"
@@ -42,26 +58,26 @@ tracks/0/use_blend = true
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Key:position")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Key/Mesh:position")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6),
+"times": PackedFloat32Array(0.099999994, 0.6),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [Vector3(-2.049, 1.154, -0.22), Vector3(-2.049, 1.154, 0.03)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.25)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Key:rotation")
-tracks/2/interp = 2
+tracks/2/path = NodePath("Key/Mesh:rotation")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.6, 0.95),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(0.3, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 3.1415927)]
 }
 
 [sub_resource type="Animation" id="Animation_rx25y"]
@@ -83,43 +99,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.6)
 }
 tracks/0/use_blend = true
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Key:position")
+tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6, 1.25, 1.75),
-"transitions": PackedFloat32Array(-2, 1, -2, 1),
-"update": 0,
-"values": [Vector3(-2.049, 1.154, -0.22), Vector3(-2.049, 1.154, 0.03), Vector3(-2.049, 1.154, 0.03), Vector3(-2.049, 1.154, -0.22)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Key:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.8, 0.9, 1, 1.25),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.309), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.5708)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"key_needs_lube_hint_popup"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Key/Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.6, 1.25, 1.75),
+"transitions": PackedFloat32Array(-2, 1, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.25), Vector3(0, 0, 0.25), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Key/Mesh:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 0.9, 1, 1.25),
+"transitions": PackedFloat32Array(0.3, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 2.0943952), Vector3(0, 0, 1.8325957), Vector3(0, 0, 2.0943952), Vector3(0, 0, 1.5708)]
 }
 
 [sub_resource type="Animation" id="Animation_kxxq5"]
@@ -141,37 +157,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.6)
 }
 tracks/0/use_blend = true
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Key:position")
+tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6, 1.25, 1.75),
-"transitions": PackedFloat32Array(-2, 1, -2, 1),
-"update": 0,
-"values": [Vector3(-2.049, 1.154, -0.22), Vector3(-2.049, 1.154, 0.03), Vector3(-2.049, 1.154, 0.03), Vector3(-2.049, 1.154, -0.22)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Key:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.8, 0.9, 1, 1.25),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.309), Vector3(0, 0, 1.0472), Vector3(0, 0, 1.5708)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -179,9 +171,34 @@ tracks/3/keys = {
 "method": &"wrong_key_hint_popup"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Key/Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.6, 1.2499999, 1.7499999),
+"transitions": PackedFloat32Array(-2, 1, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.25), Vector3(0, 0, 0.25), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Key/Mesh:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 0.9, 1, 1.25),
+"transitions": PackedFloat32Array(0.3, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 2.0943952), Vector3(0, 0, 1.8325957), Vector3(0, 0, 2.0943952), Vector3(0, 0, 1.5708)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pvi61"]
 _data = {
+&"RESET": SubResource("Animation_ypt44"),
 &"insert_key": SubResource("Animation_hf3yu"),
 &"insert_rusty_key": SubResource("Animation_rx25y"),
 &"insert_wrong_key": SubResource("Animation_kxxq5")
@@ -283,6 +300,7 @@ max_db = 6.0
 
 [node name="DoorUnlockPlayer" parent="DraggableBody" instance=ExtResource("12_ox66r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.23649, 1.71481, 0)
+stream = null
 
 [node name="ClosePlayer" parent="DraggableBody" instance=ExtResource("13_4adru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 1.75, 0)
@@ -294,11 +312,11 @@ libraries = {
 }
 
 [node name="Key" type="Node3D" parent="DraggableBody"]
-transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, -2.049, 1.154, -0.22)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.049, 1.154, -0.22)
 
 [node name="Mesh" type="MeshInstance3D" parent="DraggableBody/Key"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(-1.8099951e-06, -0.5, 0, 0.5, -1.8099951e-06, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 layers = 4
 material_overlay = SubResource("ShaderMaterial_gp8j4")
 mesh = SubResource("ArrayMesh_g70an")
@@ -328,4 +346,8 @@ size = Vector3(-2.25, 3.66, 0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 0, 0)
 height = 3.66
 vertices = PackedVector3Array(-1.125, 0, 0.1, 1.125, 0, 0.1, 1.125, 0, -0.1, -1.125, 0, -0.1)
+affect_navigation_mesh = false
 size = Vector3(-2.25, 3.66, 0.2)
+
+[node name="SaverLoader" parent="." instance=ExtResource("18_ypt44")]
+save_properties = Array[String](["interactable", "blocked", "tutorial_popup_shown", "unlocked", "draggable_body:rotation", "hinge:angular_limit/upper", "hinge:angular_limit/lower", "key_mesh:visible", "key_mesh:transform", "closed", "being_unlocked", "closed_blocking_volume:affect_navigation_mesh"])

@@ -118,7 +118,15 @@ func load_world_and_player():
 	add_child(world)
 	world_ready.emit()
 	
-	world.get_node("NavRegion").bake_navigation_mesh()
+	if debug_no_load_from_save:
+		world.get_node("NavRegion").bake_navigation_mesh()
+	else:
+		var bake_after_load: Callable = func():
+			await SaveManager.loaded
+			await get_tree().process_frame # Wait for any logic also running on loaded signal
+			world.get_node("NavRegion").bake_navigation_mesh()
+		
+		bake_after_load.call()
 	
 	Global.lock_mouse()
 	Global.player.position = world.get_node("PlayerSpawnPoint").global_position

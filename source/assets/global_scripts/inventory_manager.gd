@@ -1,7 +1,5 @@
 extends Node
 
-const SAVER_LOADER_UNIQUE_ID = "hRJ07t(&EG5hpu$3"
-
 var items: Dictionary = {}
 var num_slots: int = 9
 
@@ -10,9 +8,9 @@ var num_slots: int = 9
 
 
 func _ready() -> void:
-	saver_loader.unique_id = SAVER_LOADER_UNIQUE_ID
 	saver_loader.save_properties = ["items"]
 	add_child(saver_loader)
+	saver_loader.unique_id = saver_loader.get_path() as String
 
 
 func add_item(item_data: ItemData):

@@ -44,7 +44,7 @@ func _ready():
 			area.set_collision_layer_value(16, interactable)
 			area.interact_ray_collided.connect(_target)
 			area.interact_ray_stopped_colliding.connect(_untarget)
-			area.allow_sheen_area_entered.connect(enable_sheen)
+			area.allow_sheen_area_entered.connect(_on_allow_sheen_area_entered)
 			area.allow_sheen_area_exited.connect(disable_sheen)
 
 
@@ -96,7 +96,8 @@ func disable_sheen():
 
 func interact() -> void:
 	enable_highlight_sheen = false
-	highlight_light.visible = false
+	if highlight_light:
+		highlight_light.visible = false
 	disable_sheen()
 	_on_interact()
 
@@ -123,3 +124,9 @@ func _set_enable_highlight_light(enable: bool):
 
 func _set_enable_highlight_sheen(enable: bool):
 	enable_highlight_sheen = enable
+
+
+func _on_allow_sheen_area_entered():
+	if not interactable or (self is Pickup and (self as Pickup).being_held):
+		return
+	enable_sheen()

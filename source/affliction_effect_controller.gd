@@ -26,6 +26,14 @@ var cam_sens_mult: float
 var cam_bob_freq_mult: float
 var cam_soft_movement_weight: float
 
+@onready var saver_loader: SaverLoader = preload("res://source/actors/tools/saver_loader.tscn").instantiate()
+
+
+func _ready() -> void:
+	saver_loader.save_properties = ["first_dose_taken"]
+	add_child(saver_loader)
+	saver_loader.unique_id = saver_loader.get_path() as String
+
 
 func _process(_delta):
 	if not being_tweened and not override_effect_scale and first_dose_taken and AfflictionTimer:

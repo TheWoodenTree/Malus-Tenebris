@@ -6,6 +6,8 @@ signal picked_up
 @export var item_data: ItemData
 @export var name_override: String = ""
 
+var being_held := false
+
 @onready var pickup_player = $PickupPlayer
 
 
@@ -18,7 +20,7 @@ func _ready():
 		
 	if name_override:
 		item_data.name = name_override
-	
+		
 	pickup_player.stream = item_data.pickup_sound
 	
 	if shader_mode == ShaderMode.HIGHLIGHT:
@@ -46,7 +48,7 @@ func _on_interact():
 		
 		picked_up.emit()
 		
-		await Global.player.play_pickup_sound(pickup_player)
-		get_parent().remove_child(self)
-		visible = true
+		item_data.item_instance = load(item_data.item_scene_path).instantiate()
 		
+		await Global.player.play_pickup_sound(pickup_player)
+		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dijlshyjh0vla"]
+[gd_scene load_steps=55 format=3 uid="uid://dijlshyjh0vla"]
 
 [ext_resource type="Script" uid="uid://cutha0aae4q2v" path="res://source/actors/rooms/safe_room.gd" id="1_d3v5u"]
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_ntfkh"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="22_dvdth"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="24_g1atn"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="26_rhjbl"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="27_lo8s1"]
 [ext_resource type="PackedScene" uid="uid://cwxs7uffbs0wu" path="res://source/assets/ui/notes/distillation_instructions.tscn" id="28_a1a56"]
 [ext_resource type="PackedScene" uid="uid://ii0e665jma4b" path="res://source/actors/building pieces/archways/small_archway.tscn" id="28_gg6p8"]
 [ext_resource type="AudioStream" uid="uid://b041olqq6sucl" path="res://source/assets/sounds/music/safe.ogg" id="29_02vm0"]
@@ -48,23 +47,6 @@
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="46_0ilup"]
 [ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="47_47idu"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="48_th1ig"]
-[ext_resource type="PackedScene" uid="uid://ddhrrbrnk0uk" path="res://source/actors/interactables/pickups/bandage.tscn" id="49_th1ig"]
-
-[sub_resource type="Resource" id="Resource_g27mp"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Ruboleum Vial"
-texture = ExtResource("27_lo8s1")
-pickup_sound = ExtResource("34_e2n1h")
-hold_rotation_offset = Vector3(0, 0, -90)
-
-[sub_resource type="Resource" id="Resource_5nwb6"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Ruboleum Vial"
-texture = ExtResource("27_lo8s1")
-pickup_sound = ExtResource("34_e2n1h")
-hold_rotation_offset = Vector3(0, 0, -90)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cenn"]
 size = Vector3(19.5, 10, 13)
@@ -238,11 +220,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 
 [node name="RuboleumVial" parent="Misc/Chest" index="4" instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
-item_data = SubResource("Resource_g27mp")
 
 [node name="RuboleumVial2" parent="Misc/Chest" index="5" instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
-item_data = SubResource("Resource_5nwb6")
 
 [node name="Note2" parent="Misc" index="2" instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.33279, 2, -2.92512)
@@ -467,9 +447,6 @@ transform = Transform3D(0.47396526, 0, 0.88054353, 0, 1, 0, -0.88054353, 0, 0.47
 
 [node name="Books17" parent="." index="65" instance=ExtResource("36_2n11f")]
 transform = Transform3D(0.44213215, 0, -0.89694995, 0, 1, 0, 0.89694995, 0, 0.44213215, 5.0091386, 1.107919, 3.88831)
-
-[node name="Bandage" parent="." index="66" instance=ExtResource("49_th1ig")]
-transform = Transform3D(0.74579, 0, 0.666181, 0, 1, 0, -0.666181, 0, 0.74579, 3.9715466, 1.5068613, 3.8558464)
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]

@@ -10,5 +10,6 @@ script = ExtResource("2_u53a7")
 name = "Old Journal"
 texture = ExtResource("4_a0ous")
 pickup_sound = ExtResource("1_hffmc")
+self_useable = null
 hold_rotation_offset = Vector3(0, 0, 180)
-copy_properties = Array[StringName]([&"added_to_inventory"])
+hold_scale_multiplier = null

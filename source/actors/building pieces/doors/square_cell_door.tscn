@@ -172,13 +172,10 @@ stream = ExtResource("5_fnp10")
 stream = ExtResource("6_u5p70")
 
 [node name="Key" parent="DraggableBody" index="8"]
-transform = Transform3D(-3.6199901e-06, -1, 0, 1, -3.6199901e-06, 0, 0, 0, 1, -2.049, 1.154, -0.22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.025, 1.686, -0.22)
 
 [node name="Mesh" parent="DraggableBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_tb0ye")
 
 [node name="MovePlayer" parent="DraggableBody" index="9"]
 stream = ExtResource("4_87roi")
-
-[node name="ClosedBlockingVolume" parent="." index="4"]
-affect_navigation_mesh = false

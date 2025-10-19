@@ -2,6 +2,9 @@
 class_name Door
 extends Draggable
 
+const KEY_MESH_UNLOCKED_POS = Vector3(0.0, 0.0, 0.25)
+const KEY_MESH_UNLOCKED_ROT = Vector3(0.0, 0.0, PI)
+
 @export var blocked: bool = false
 @export var key_name: String = ""
 @export var locked_message: String = ""
@@ -16,6 +19,7 @@ var tutorial_popup_shown: bool = false
 var effects_scale: float = 0.0
 var player_interact_ray_col_normal: Vector3
 var player_facing_dir_xz: Vector2
+var being_unlocked := false # For loading from save if saved and quit during unlock anim
 
 var reverse_z_dist: bool = false
 
@@ -29,7 +33,8 @@ var open_attempted: bool = false
 @onready var door_attempt_player = $DraggableBody/DoorAttemptPlayer
 @onready var interact_area = $DraggableBody/InteractArea
 @onready var key_anim_player = $DraggableBody/KeyAnimPlayer
-@onready var key = $DraggableBody/Key # Parent necessary because of a bug relating to scale when setting global_rotation
+@onready var key = $DraggableBody/Key
+@onready var key_mesh = $DraggableBody/Key/Mesh
 @onready var collision_shape = $DraggableBody/CollisionShape
 @onready var mesh = $DraggableBody/Door
 @onready var closed_blocking_volume: NavigationObstacle3D = $ClosedBlockingVolume
@@ -44,6 +49,7 @@ func _ready():
 		set_hinge_limits(-close_threshold_angle, close_threshold_angle)
 	
 	closed_blocking_volume.affect_navigation_mesh = not unlocked
+	SaveManager.loaded.connect(_on_loaded_from_save)
 
 
 func _on_target():
@@ -89,7 +95,7 @@ func _on_interact() -> void:
 					message = "Need %s Key" % key_name.replace("Lubricated ", "")
 				
 				if log_entry_on_first_attempt and not open_attempted:
-					Global.journal_log.add_entry(log_entry_on_first_attempt)
+					JournalManager.add_log_entry(log_entry_on_first_attempt)
 				
 				Global.ui.hint_popup(message, 3.0)
 				
@@ -118,6 +124,7 @@ func attempt_unlock():
 		if key_name == "Larder":
 			Global.player.scripted_event = true
 			Global.ui.block_inventory_open = true
+		being_unlocked = true
 	else:
 		anim_name = "insert_wrong_key"
 		
@@ -125,22 +132,22 @@ func attempt_unlock():
 	if Global.ui.inventory_menu.tutorial_on:
 		Global.ui.inventory_menu.set_tutorial_on(false)
 	
-	var initial_rot: Vector3 = key.global_rotation
-	key.global_position = Global.player.held_item.global_position
-	key.global_rotation = Global.player.held_item.meshes[0].global_rotation
+	var initial_rot: Vector3 = key_mesh.global_rotation
+	key_mesh.global_position = Global.player.held_item.global_position
+	key_mesh.global_rotation = Global.player.held_item.meshes[0].global_rotation
 	var initial_pos: Vector3 = key_anim_player.get_animation(anim_name).track_get_key_value(1, 0)
 	
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-	tween.tween_property(key, "global_position", draggable_body.to_global(initial_pos), 0.35)
-	tween.parallel().tween_property(key, "global_rotation", initial_rot, 0.35)
+	tween.tween_property(key_mesh, "global_position", key.to_global(initial_pos), 0.35)
+	tween.parallel().tween_property(key_mesh, "global_rotation", initial_rot, 0.35)
 	
-	key.visible = true
-	key.get_node("Mesh").layers = 3
+	key_mesh.visible = true
+	key_mesh.layers = 3
 	Global.player.set_held_item_visibility(false)
 	set_interactable(false)
 	
 	await tween.finished
-	key.get_node("Mesh").layers = 1
+	key_mesh.layers = 1
 	key_anim_player.play(anim_name)
 	
 	# TODO: Remove
@@ -155,25 +162,28 @@ func attempt_unlock():
 	await key_anim_player.animation_finished
 	if correct_key and not is_prison_depths_key:
 		Global.player.delete_held_item()
-		unlocked = true
-		set_hinge_limits(min_rotation, max_rotation)
-		if not Global.player.first_door_unlocked:
-			Global.player.first_door_unlocked = false
-		# TODO: Remove
-		if not key_name == "Larder":
-			Global.ui.hint_popup("Unlocked", 2.0)
-		
-		if log_entry_on_first_attempt and Global.journal_log.has_entry(log_entry_on_first_attempt):
-			Global.journal_log.remove_entry(log_entry_on_first_attempt)
+		unlock()
+		closed_blocking_volume.affect_navigation_mesh = false
+		Global.nav_region.bake_navigation_mesh()
 	else:
-		Global.player.set_held_item_global_transform(key.global_transform)
+		Global.player.set_held_item_global_transform(key_mesh.global_transform)
 		Global.player.set_held_item_visibility(true)
-		key.visible = false
+		key_mesh.visible = false
 	Global.ui.block_inventory_open = false
 	set_interactable(true)
+
+
+func unlock():
+	unlocked = true
+	being_unlocked = false
 	
-	closed_blocking_volume.affect_navigation_mesh = false
-	Global.nav_region.bake_navigation_mesh()
+	set_hinge_limits(min_rotation, max_rotation)
+	
+	if not Global.player.first_door_unlocked:
+		Global.player.first_door_unlocked = false
+	
+	if log_entry_on_first_attempt and JournalManager.has_log_entry(log_entry_on_first_attempt):
+		JournalManager.remove_log_entry(log_entry_on_first_attempt)
 
 
 func open():
@@ -227,3 +237,13 @@ func get_character_z_dist(character: CharacterBody3D):
 	var z_dist: float = draggable_body.to_local(character.global_position).rotated(Vector3.UP, draggable_body.rotation.y).z
 	# Reverse z_dist for doors that are rotated
 	return z_dist if not reverse_z_dist else -1 * z_dist
+
+
+func _on_loaded_from_save():
+	if being_unlocked:
+		unlock()
+		set_interactable(true)
+		closed_blocking_volume.affect_navigation_mesh = false
+		key_mesh.position = KEY_MESH_UNLOCKED_POS
+		key_mesh.rotation = KEY_MESH_UNLOCKED_ROT
+		

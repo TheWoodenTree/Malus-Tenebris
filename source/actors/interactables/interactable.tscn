@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://7bbxdmeobxfs"]
+[gd_scene load_steps=4 format=3 uid="uid://7bbxdmeobxfs"]
 
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="2_143x3"]
 [ext_resource type="Script" uid="uid://c6u4diya4vu8v" path="res://source/actors/interactables/interactable_collision_area.gd" id="3_3f3on"]
+[ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="3_e37ou"]
 
 [node name="Interactable" type="Node3D"]
 
@@ -27,3 +28,6 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 omni_range = 2.0
 omni_attenuation = 0.2
+
+[node name="SaverLoader" parent="." instance=ExtResource("3_e37ou")]
+save_properties = Array[String](["interactable"])

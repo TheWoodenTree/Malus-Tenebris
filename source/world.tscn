@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c7jcrmxwgdp31"]
+[gd_scene load_steps=34 format=3 uid="uid://c7jcrmxwgdp31"]
 
 [ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
 [ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://o3yxx73wvr2m" path="res://source/actors/rooms/prison_servant_quaters_connector.tscn" id="27_rnurb"]
 [ext_resource type="PackedScene" uid="uid://45cjxiqxw67l" path="res://source/actors/rooms/records_room_storage.tscn" id="27_xk6td"]
 [ext_resource type="PackedScene" uid="uid://c314k8wgwc5sq" path="res://source/actors/rooms/prison_depths_jct_1.tscn" id="28_rnurb"]
+[ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="29_1h0dr"]
 [ext_resource type="PackedScene" uid="uid://bb7fcf6hjdsed" path="res://source/actors/rooms/upper_storage_room.tscn" id="30_scntj"]
 [ext_resource type="PackedScene" uid="uid://6740g18km7ny" path="res://source/actors/rooms/lower_cell_hall_3.tscn" id="32_yfpp8"]
 [ext_resource type="PackedScene" uid="uid://dkywpurj50vjl" path="res://source/actors/rooms/lower_cell_hall_2.tscn" id="33_ysjgv"]
@@ -171,3 +172,6 @@ mesh = SubResource("SphereMesh_w1q8a")
 
 [node name="Monster" parent="." instance=ExtResource("26_wekw4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -78, -14.5, -63.75)
+
+[node name="SaverLoader" parent="." instance=ExtResource("29_1h0dr")]
+unique_id = &"GUy-)0S6-rs*&kt4"

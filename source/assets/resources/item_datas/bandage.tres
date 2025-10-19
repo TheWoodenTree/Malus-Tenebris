@@ -11,4 +11,5 @@ texture = ExtResource("3_utqja")
 pickup_sound = ExtResource("1_utqja")
 self_useable = true
 hold_rotation_offset = Vector3(-90, 0, 180)
+hold_scale_multiplier = null
 metadata/_custom_type_script = "uid://c8rev6ihosd6u"

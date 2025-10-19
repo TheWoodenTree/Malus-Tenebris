@@ -8,20 +8,24 @@ extends Interactable
 # For when the player leaves the "no_interact_area" and interactable is supposed
 # to still be off
 var interactable_override: bool
+var being_moved := false # For saves (We don't want to load it back mid animation)
 
 @onready var static_body = $StaticBody
 @onready var moveable_collision_blocker = $MoveableCollisionBlocker
 @onready var moveable_collision_blocker_shape = $MoveableCollisionBlocker/CollisionShape
 @onready var no_interact_area = $NoInteractArea
 @onready var move_player = $StaticBody/MovePlayer
+@onready var starting_position: Vector3 = position
 
 
 func _ready():
 	super()
 	update_move_to_collision()
+	SaveManager.loaded.connect(_on_loaded_from_save)
 
 
 func _on_interact() -> void:
+	being_moved = true
 	moveable_collision_blocker.position = move_to_offset
 	moveable_collision_blocker_shape.disabled = false
 	moveable_collision_blocker.top_level = true
@@ -36,6 +40,7 @@ func _on_interact() -> void:
 	set_interactable(false)
 	
 	await tween.finished
+	being_moved = false
 	moveable_collision_blocker_shape.disabled = true
 	Global.nav_region.bake_navigation_mesh()
 
@@ -65,3 +70,8 @@ func set_interactable_override(interactable_override_: bool):
 	for area: InteractArea in interact_areas:
 		if area:
 			area.set_collision_layer_value(16, interactable_override and interactable)
+
+
+func _on_loaded_from_save():
+	if being_moved:
+		position = starting_position + move_to_offset.rotated(Vector3.UP, rotation.y)

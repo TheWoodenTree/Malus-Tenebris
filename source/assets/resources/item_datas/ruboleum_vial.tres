@@ -10,4 +10,6 @@ script = ExtResource("2_347tu")
 name = "Ruboleum Vial"
 texture = ExtResource("3_g4yff")
 pickup_sound = ExtResource("1_xobic")
-hold_rotation_offset = Vector3(0, 0, -90)
+self_useable = null
+hold_rotation_offset = Vector3(0, 0, 90)
+hold_scale_multiplier = null

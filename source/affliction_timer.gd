@@ -13,6 +13,14 @@ var wait_time := 0.0 : set = set_wait_time
 var time_left := 0.0 : set = _set_time_left
 var paused := false : set = set_paused
 
+@onready var saver_loader: SaverLoader = preload("res://source/actors/tools/saver_loader.tscn").instantiate()
+
+
+func _ready() -> void:
+	saver_loader.save_properties = ["time_scale", "wait_time", "time_left", "paused"]
+	add_child(saver_loader)
+	saver_loader.unique_id = saver_loader.get_path() as String
+
 
 func _process(delta):
 	if not paused and not is_equal_approx(time_left, 0.0):

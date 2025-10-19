@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bb7fcf6hjdsed"]
+[gd_scene load_steps=32 format=3 uid="uid://bb7fcf6hjdsed"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_pkrvc"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_u60pc"]
@@ -19,14 +19,25 @@
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="18_eyjvg"]
 [ext_resource type="PackedScene" uid="uid://bpbucejg2mbbm" path="res://source/actors/decor/furniture/stand.tscn" id="19_x5v3c"]
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="23_tnp87"]
+[ext_resource type="AudioStream" uid="uid://1esobq86df0k" path="res://source/assets/sounds/pickup/metal_scrape.ogg" id="24_4365d"]
 [ext_resource type="PackedScene" uid="uid://b8x6fq3iwrnwh" path="res://source/actors/decor/debris/plank_1.tscn" id="24_cyed5"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="25_aospn"]
 [ext_resource type="PackedScene" uid="uid://d1mwp4x3eptlc" path="res://source/actors/decor/groups/sm_stacked_planks2.tscn" id="25_l5dfm"]
 [ext_resource type="PackedScene" uid="uid://cd1cuilahjrn8" path="res://source/actors/decor/misc/sm_broken_crate.tscn" id="26_4g5ii"]
+[ext_resource type="Texture2D" uid="uid://45yokofo0yxn" path="res://source/assets/ui/inventory/winch_crank.png" id="26_6dvif"]
 [ext_resource type="PackedScene" uid="uid://c3rxkp6vaovuq" path="res://source/actors/interactables/pickups/winch_crank.tscn" id="26_gik4w"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_c6mxc"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="29_jsc7q"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bttg30gnl2j20" path="res://source/actors/rooms/occluders/upper_storage_room.occ" id="30_gitko"]
 [ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="30_jb1fk"]
+
+[sub_resource type="Resource" id="Resource_6wxwp"]
+resource_local_to_scene = true
+script = ExtResource("25_aospn")
+name = "Winch Crank"
+texture = ExtResource("26_6dvif")
+pickup_sound = ExtResource("24_4365d")
+hold_rotation_offset = Vector3(90, 0, 180)
 
 [node name="UpperStorageRoom" instance=ExtResource("1_pkrvc")]
 
@@ -184,6 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -3.75)
 
 [node name="WinchCrank" parent="Misc" index="0" instance=ExtResource("26_gik4w")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.75, 2.25, 13.5)
+item_data = SubResource("Resource_6wxwp")
 
 [node name="OccluderInstance" parent="." index="8"]
 occluder = ExtResource("30_gitko")

@@ -9,6 +9,13 @@ extends Pickup
 @onready var sand_bottom_cap_shader: ShaderMaterial = $SandBottomCap.mesh.surface_get_material(0)
 
 
+func _enter_tree() -> void:
+	if not is_node_ready():
+		await ready
+	
+	sand_particles.emitting = not AfflictionTimer.paused
+
+
 func _ready():
 	super()
 	AfflictionTimer.started.connect(func(): sand_particles.emitting = true)

@@ -5,30 +5,36 @@ extends Node
 const META_PREFIX_IS_RESOURCE_PATH = "_is_resource_path:"
 const META_KEY_RESOURCE_PATH = &"_resource_path"
 const META_KEY_SCRIPT_PATH = &"_script_path"
+const META_KEY_SCENE_PATH = &"_scene_path"
 
 static var unique_id_charset := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=;:,."
 
-@export var unique_id: StringName
+@export var unique_id: String
 @export_tool_button("Generate Unique ID") var generate_unique_id: Callable = _generate_unique_id
 @export var save_properties: Array[String]
-@export var is_dynamically_spawned: bool = false
+@export var is_dynamic: bool = false
 
-var new_save_data: Dictionary[StringName, Variant]
+var new_save_data: Dictionary[String, Variant]
 
 @onready var parent: Node = get_parent()
 
 
 func _ready() -> void:
-	SaveManager.register_saver_loader(self)
-	if not unique_id:
-		push_error(str(get_parent().get_path()) + " does not have a unique SaverLoader ID.")
+	if not Engine.is_editor_hint():
+		_generate_unique_id()
+		if not unique_id:
+			push_error(str(get_parent().get_path()) + " dynamic object does not have a unique SaverLoader ID.")
+		SaveManager.register_saver_loader(self)
 
 
-func save_data() -> Dictionary[StringName, Variant]:
-	new_save_data = {}
+func save_data() -> Dictionary[String, Variant]:
+	if is_dynamic:
+		new_save_data = { META_KEY_SCENE_PATH: scene_file_path }
+	else:
+		new_save_data = {}
 	
-	for property_path: StringName in save_properties:
-		var value: Variant = parent.get(property_path)
+	for property_path: String in save_properties:
+		var value: Variant = parent.get_indexed(property_path)
 		if value == null:
 			push_error(str(get_parent().get_path()) + " Has no property to save: " + property_path )
 			continue
@@ -37,9 +43,9 @@ func save_data() -> Dictionary[StringName, Variant]:
 	return new_save_data
 
 
-func load_data(data: Dictionary[StringName, Variant]):
-	for property_path: StringName in data.keys():
-		if parent.get(property_path) == null:
+func load_data(data: Dictionary[String, Variant]):
+	for property_path: String in data.keys():
+		if parent.get_indexed(property_path) == null:
 			push_error(str(get_parent().get_path()) + " Has no property to load: " + property_path )
 			continue
 		
@@ -57,7 +63,7 @@ func load_data(data: Dictionary[StringName, Variant]):
 			for item in deserialized:
 				current_value.append(item)
 		else:
-			parent.set(property_path, deserialized)
+			parent.set_indexed(property_path, deserialized)
 
 
 func serialize_data(value: Variant) -> Variant:
@@ -69,15 +75,15 @@ func serialize_data(value: Variant) -> Variant:
 			return META_PREFIX_IS_RESOURCE_PATH + value.resource_path
 		else:
 			var script: Script = value.get_script()
-			var dict: Dictionary[StringName, Variant] = {}
+			var dict: Dictionary[String, Variant] = {}
 			if script:
 				dict[META_KEY_SCRIPT_PATH] = script.resource_path
 			else:
 				dict[META_KEY_RESOURCE_PATH] = value.get_class()
 			for property: Variant in value.get_property_list():
-				var prop_name: StringName = property.name
+				var prop_name: String = property.name
 				var prop_value: Variant = value.get(prop_name)
-				if (ClassDB.is_parent_class(property.class_name, "Node")): # Do not serialize nodes
+				if (prop_value and prop_value is Node): # Do not serialize nodes
 					continue
 				dict[prop_name] = serialize_data(prop_value)
 			return dict
@@ -150,7 +156,10 @@ func deserialize_data(value: Variant) -> Variant:
 
 
 func _generate_unique_id():
-	var id := ""
-	for i in range(16):
-		id += unique_id_charset[randi() % unique_id_charset.length()]
-	unique_id = id as StringName
+	if is_dynamic:
+		var id := ""
+		for i in range(16):
+			id += unique_id_charset[randi() % unique_id_charset.length()]
+		unique_id = id as String
+	else:
+		unique_id = get_path() as String
