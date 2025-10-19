@@ -54,6 +54,7 @@ func _ready() -> void:
 	fire.particles.layers = 2
 	fire.light.do_visible_notifier_update = false
 	fire.light.omni_shadow_mode = OmniLight3D.SHADOW_CUBE
+	fire.light.layers = 3
 	self_light.visible = false
 	hit_sound_timer.wait_time = 0.2
 	hit_sound_timer.one_shot = true

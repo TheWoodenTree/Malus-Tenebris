@@ -243,7 +243,7 @@ func hold_item(item_data: ItemData):
 	held_item = item_data.item_instance
 	held_item.being_held = true
 	for mesh in held_item.meshes:
-		mesh.layers = 3
+		mesh.layers = 2
 	add_child(held_item)
 	held_item.position = Vector3.ZERO
 	held_item.scale *= item_data.hold_scale_multiplier
@@ -321,7 +321,7 @@ func hurt(source: Attack):
 	
 	if is_zero_approx(health):
 		print('ded')
-	camera.add_trauma(1.5)
+	camera.add_trauma(0.75)
 	
 	var weight: float = pow(get_normalized_health(), 1.25)
 	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_FULL_HP_MULTIPLIER, weight)

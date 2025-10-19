@@ -5,7 +5,7 @@ extends Pickup
 @onready var sand_top_shader: ShaderMaterial = $SandTop.mesh.surface_get_material(0)
 @onready var sand_bottom_shader: ShaderMaterial = $SandBottom.mesh.surface_get_material(0)
 @onready var sand_particles: CPUParticles3D = $SandParticles
-@onready var sand_top_cap_shader: ShaderMaterial = $SandBottomCap.mesh.surface_get_material(0)
+@onready var sand_top_cap_shader: ShaderMaterial = $SandTopCap.mesh.surface_get_material(0)
 @onready var sand_bottom_cap_shader: ShaderMaterial = $SandBottomCap.mesh.surface_get_material(0)
 
 
@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 	if not is_node_ready():
 		await ready
 	
-	sand_particles.emitting = not AfflictionTimer.paused
+	sand_particles.emitting = not AfflictionTimer.paused and not is_zero_approx(AfflictionTimer.time_left)
 
 
 func _ready():

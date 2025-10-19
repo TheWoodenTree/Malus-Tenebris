@@ -40,7 +40,7 @@ func _on_interact() -> void:
 			var play_sigh: bool = AfflictionTimer.time_left < 60.0
 			
 			Global.player.play_sound_one_shot(Global.player.gulp_sound)
-			AfflictionTimer.add_time_mins(5.0)
+			AfflictionTimer.add_time_mins(0.5)
 			AfflictionEffectController.set_to_min_effect(2.0)
 			
 			set_interactable(false)

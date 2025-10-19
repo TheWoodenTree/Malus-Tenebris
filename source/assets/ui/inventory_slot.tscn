@@ -45,6 +45,7 @@ stretch_mode = 2
 
 [node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_j7b4s")
+volume_db = -5.0
 pitch_scale = 2.0
 max_polyphony = 8
 

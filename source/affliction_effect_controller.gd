@@ -75,7 +75,7 @@ func set_to_min_effect(time: float):
 	tween.tween_property(Global.zoom_shader, "shader_parameter/intensity", ZOOM_INTENSITY_DEF, time)
 	tween.parallel().tween_property(Global.player, "speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.camera_controller, "sensitivity_multiplier", 1.0, time / 2.0)
-	tween.parallel().tween_property(Global.player.camera_controller, "bob_speed_multiplier", 1.0, time / 2.0)
+	tween.parallel().tween_property(Global.player.camera, "bob_speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.camera_controller, "soft_movement_weight", 1.0, time / 2.0)
 	tween.tween_callback(set.bind("being_tweened", false))
 
