@@ -1,19 +1,15 @@
-[gd_scene load_steps=35 format=4 uid="uid://cukgu0s353k08"]
+[gd_scene load_steps=19 format=4 uid="uid://cukgu0s353k08"]
 
-[ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_twpvw"]
 [ext_resource type="Script" uid="uid://ti5fa7nyemhr" path="res://source/actors/characters/player/torch.gd" id="2"]
 [ext_resource type="Material" uid="uid://dvtrckx2xk08r" path="res://source/assets/materials/wood/wood_alt.tres" id="3_3wk70"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_noxe7"]
 [ext_resource type="Material" uid="uid://b74f8weqx6mbn" path="res://source/assets/materials/cloth/cloth.tres" id="3_ohwtc"]
-[ext_resource type="Texture2D" uid="uid://dd8c8jqj8gip0" path="res://source/assets/particles/fire_sprite.png" id="4"]
 [ext_resource type="Material" uid="uid://ctkc38wtdaow" path="res://source/assets/materials/rope/rope.tres" id="5_2a4em"]
-[ext_resource type="AudioStream" uid="uid://cfon2el4gkbsp" path="res://source/assets/sounds/misc/fire_lit.ogg" id="8"]
+[ext_resource type="PackedScene" uid="uid://bybym4b32w5oy" path="res://source/actors/misc/fire.tscn" id="7_lfndj"]
 [ext_resource type="AudioStream" uid="uid://c6mn6ltfrx2jh" path="res://source/assets/sounds/fire/fire_swoosh.ogg" id="8_6t08c"]
 [ext_resource type="Script" uid="uid://bd5rvbjwgva61" path="res://source/actors/misc/fire_light.gd" id="8_xv4ds"]
-[ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="9"]
 [ext_resource type="AudioStream" uid="uid://cxddvt82st6h4" path="res://source/assets/sounds/pickup/torch_pickup.ogg" id="10_6t08c"]
-[ext_resource type="AudioStream" uid="uid://d4dmff8yloppm" path="res://source/assets/sounds/fire/fire_burning.ogg" id="10_481dk"]
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -160,92 +156,6 @@ shadow_mesh = SubResource("ArrayMesh_mnrkw")
 radius = 0.75
 height = 2.25
 
-[sub_resource type="Curve" id="Curve_481dk"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.494505, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_6t08c"]
-curve = SubResource("Curve_481dk")
-
-[sub_resource type="Curve" id="Curve_8etoi"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="6"]
-curve = SubResource("Curve_8etoi")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k4obn"]
-resource_local_to_scene = true
-lifetime_randomness = 0.75
-emission_shape = 1
-emission_sphere_radius = 0.1
-direction = Vector3(0, 1, 1)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("6")
-alpha_curve = SubResource("CurveTexture_6t08c")
-turbulence_noise_strength = 5.46
-turbulence_noise_speed = Vector3(0, 0.5, 0)
-turbulence_influence_max = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6hvc"]
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
-albedo_texture = ExtResource("4")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dm2kp"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_b6hvc")
-size = Vector2(0.25, 0.25)
-orientation = 2
-
-[sub_resource type="Curve" id="Curve_2o57u"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_d7ibf"]
-curve = SubResource("Curve_2o57u")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8pplm"]
-resource_local_to_scene = true
-lifetime_randomness = 0.25
-emission_shape = 1
-emission_sphere_radius = 0.1
-direction = Vector3(0, 1, 0)
-spread = 35.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_d7ibf")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktl6q"]
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-albedo_color = Color(1, 0.564706, 0.25098, 1)
-albedo_texture = ExtResource("4")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ikm4b"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ktl6q")
-size = Vector2(0.25, 0.25)
-orientation = 2
-
 [node name="Torch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2")
@@ -255,7 +165,7 @@ meshes = [NodePath("Mesh")]
 enable_highlight_light = true
 
 [node name="Mesh" parent="." index="0"]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.09476934, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.284911, 0)
 material_overlay = SubResource("ShaderMaterial_tquro")
 mesh = SubResource("ArrayMesh_bj70x")
 
@@ -263,66 +173,39 @@ mesh = SubResource("ArrayMesh_bj70x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07795638, 0)
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12565595, 0)
 shape = SubResource("CapsuleShape3D_ukkaj")
 
 [node name="HighlightLight" parent="." index="2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.02473563, 0)
 
-[node name="FireParticles" parent="." index="3" instance=ExtResource("1")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.006540403, 0)
-layers = 2
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_k4obn")
-draw_pass_1 = SubResource("PlaneMesh_dm2kp")
+[node name="Fire" parent="." index="3" instance=ExtResource("7_lfndj")]
 
-[node name="ParticlesPos" type="Marker3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29062462, 0)
-
-[node name="SwooshPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
+[node name="SwooshPlayer" type="AudioStreamPlayer3D" parent="." index="4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("8_6t08c")
 volume_db = -47.276
 max_db = 6.0
 
-[node name="TorchLightPlayer" type="AudioStreamPlayer3D" parent="." index="6"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
-stream = ExtResource("8")
-volume_db = -21.022
-pitch_scale = 0.75
-
-[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
+[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("10_6t08c")
 
-[node name="BurningPlayer" type="AudioStreamPlayer3D" parent="." index="8"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
-stream = ExtResource("10_481dk")
-volume_db = -12.5
-autoplay = true
-attenuation_filter_cutoff_hz = 20500.0
-attenuation_filter_db = 0.0
-
-[node name="LitFireParticles" parent="." index="9" instance=ExtResource("9")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2910436, 0)
-amount = 64
-process_material = SubResource("ParticleProcessMaterial_8pplm")
-draw_pass_1 = SubResource("PlaneMesh_ikm4b")
-
-[node name="MovementParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="10"]
+[node name="MovementParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18790506, 0)
 top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
 
-[node name="RotationParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="11"]
+[node name="RotationParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18790506, 0)
 top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
 
-[node name="SelfLight" type="OmniLight3D" parent="." index="12"]
+[node name="SelfLight" type="OmniLight3D" parent="." index="8"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.41726786, 0)
 layers = 2
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
@@ -332,3 +215,6 @@ light_cull_mask = 4293918722
 omni_range = 0.0
 omni_shadow_mode = 0
 script = ExtResource("8_xv4ds")
+
+[node name="SaverLoader" parent="." index="9"]
+save_properties = Array[String](["interactable", "mesh:scale", "mesh:position", "mesh:layers", "fire:particles:scale", "fire:particles:emitting", "fire:particles:local_coords", "fire:light:omni_range", "fire:light:default_energy", "self_light:visible", "held_by_player", "is_lit", "fire:burning_player:volume_db"])

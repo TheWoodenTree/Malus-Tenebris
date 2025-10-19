@@ -26,5 +26,6 @@ lifetime = 0.8
 randomness = 0.2
 fixed_fps = 60
 interpolate = false
+local_coords = true
 process_material = ExtResource("1")
 draw_pass_1 = SubResource("PlaneMesh_uow77")

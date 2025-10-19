@@ -62,7 +62,7 @@ var acid_burn_sound: AudioStream = preload("res://source/assets/sounds/monster/g
 @onready var torch_cam = $HeadController/CameraController/Camera/ViewportCont/TorchCamViewport/TorchCam
 @onready var interact_ray = $HeadController/CameraController/Camera/InteractRaycast
 @onready var torch_marker = $HeadController/CameraController/TorchMarker
-@onready var light = $HeadController/CameraController/BaseLight
+@onready var base_light = $HeadController/CameraController/BaseLight
 @onready var held_item_marker = $HeadController/CameraController/HeldItemMarker
 @onready var noise_player = $HeadController/NoisePlayer
 @onready var thrown_item_origin_marker: Marker3D = $HeadController/CameraController/ThrownItemOriginMarker
@@ -75,13 +75,11 @@ var acid_burn_sound: AudioStream = preload("res://source/assets/sounds/monster/g
 
 func _ready() -> void:
 	Global.ui.inventory_opened.connect(stop_holding_item.bind(false))
+	Global.torch.picked_up.connect(_on_torch_picked_up)
 	state_machine.state_updated.connect(func(state: State): current_state = state)
 	
 	if debug_has_torch:
 		debug_get_torch()
-	
-	light.omni_range = 3.0
-	light.default_energy = 1.0
 	
 	footstep_timer.wait_time = footstep_walk_interval
 	footstep_timer.one_shot = true
@@ -103,7 +101,10 @@ func _process(delta: float) -> void:
 		held_item.rotate_object_local(Vector3.FORWARD, deg_to_rad(held_item_data.hold_rotation_offset.z))
 		held_item.scale = Vector3.ONE * held_item_data.hold_scale_multiplier
 	
-	global_input_dir = _get_input_dir()
+	if torch:
+		torch.scale = Vector3.ONE * 4.0
+	
+	global_input_dir = get_input_dir()
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
 		time_when_started_moving = Time.get_ticks_msec()
@@ -320,7 +321,7 @@ func hurt(source: Attack):
 	
 	if is_zero_approx(health):
 		print('ded')
-	camera_controller.add_trauma(1.5)
+	camera.add_trauma(1.5)
 	
 	var weight: float = pow(get_normalized_health(), 1.25)
 	var multiplier: float = lerp(PostProcessing.PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER, PostProcessing.PAIN_VIGNETTE_FULL_HP_MULTIPLIER, weight)
@@ -374,7 +375,7 @@ func get_interact_raycast_collision_normal():
 	return interact_ray.get_collision_normal()
 
 
-func _get_input_dir():
+func get_input_dir():
 	var dir = Vector3.ZERO
 	dir.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	dir.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
@@ -389,3 +390,8 @@ func get_normalized_health() -> float:
 func debug_get_torch():
 	Global.torch.interact()
 	Global.player.torch.light_torch()
+
+
+func _on_torch_picked_up():
+	torch = Global.torch
+	has_torch = true

@@ -29,7 +29,9 @@ var scrolling: bool = false
 
 
 func _enter_tree():
-	reset_slot_positions()
+	if not is_node_ready():
+		await ready
+	
 	if slot_grid:
 		update_slots_item_datas()
 		if not slot_grid.get_child(4).button.disabled:
@@ -74,10 +76,6 @@ func add_item(item_data: ItemData, slot_number: int):
 
 func remove_item(slot_number: int):
 	slot_grid.get_child(slot_number).set_item(null)
-
-
-func reset_slot_positions():
-	pass
 
 
 func move_slot_to_front():

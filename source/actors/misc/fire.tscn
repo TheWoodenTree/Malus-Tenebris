@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bybym4b32w5oy"]
+[gd_scene load_steps=14 format=3 uid="uid://bybym4b32w5oy"]
 
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1"]
 [ext_resource type="Script" uid="uid://cdhh4pts24qxx" path="res://source/actors/misc/fire.gd" id="1_r4r8e"]
@@ -7,59 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://wf2mycies0sm" path="res://source/assets/particles/lit_fire_particles.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://d4dmff8yloppm" path="res://source/assets/sounds/fire/fire_burning.ogg" id="6_5vd8g"]
 
-[sub_resource type="Curve" id="Curve_481dk"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.494505, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_5vd8g"]
-curve = SubResource("Curve_481dk")
-
-[sub_resource type="Curve" id="Curve_5vd8g"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="6"]
-curve = SubResource("Curve_5vd8g")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ls2a"]
-resource_local_to_scene = true
-lifetime_randomness = 0.75
-emission_shape = 6
-emission_ring_axis = Vector3(0, 1, 0)
-emission_ring_height = 0.1
-emission_ring_radius = 0.0
-emission_ring_inner_radius = 0.1
-emission_ring_cone_angle = 90.0
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("6")
-alpha_curve = SubResource("CurveTexture_5vd8g")
-turbulence_noise_strength = 5.46
-turbulence_noise_speed = Vector3(0, 0.5, 0)
-turbulence_influence_max = 1.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6n1v"]
-load_path = "res://.godot/imported/fire_sprite.png-2acc16b9d0e0adcc3396820162410fa9.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbtr2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vd8g"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
-albedo_texture = SubResource("CompressedTexture2D_m6n1v")
+albedo_texture = ExtResource("3_4ki3m")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8gso6"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_m6n1v"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_dbtr2")
+material = SubResource("StandardMaterial3D_5vd8g")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
@@ -103,8 +66,7 @@ script = ExtResource("1_r4r8e")
 
 [node name="FireParticles" parent="." instance=ExtResource("1")]
 visibility_aabb = AABB(-1, -0.75, -1, 2, 2, 2)
-process_material = SubResource("ParticleProcessMaterial_8ls2a")
-draw_pass_1 = SubResource("PlaneMesh_8gso6")
+draw_pass_1 = SubResource("PlaneMesh_m6n1v")
 
 [node name="LitFireParticles" parent="." instance=ExtResource("4")]
 visibility_aabb = AABB(-1, -0.75, -1, 2, 2, 2)

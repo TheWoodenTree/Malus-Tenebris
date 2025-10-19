@@ -1,3 +1,4 @@
+class_name FireLight
 extends Light3D
 
 const FAST_FLICKER_VARIATION := 0.2
@@ -12,7 +13,8 @@ var flare_energy := 0.0
 
 var default_energy: float
 
-var enable_flicker: bool = false
+var enable_flicker := false
+var do_visible_notifier_update := true
 
 @onready var visible_notifier: VisibleOnScreenNotifier3D = $VisibleNotifier if has_node('VisibleNotifier') else null
 
@@ -29,7 +31,7 @@ func _process(_delta: float) -> void:
 
 func _set(attribute: StringName, value: Variant):
 	if attribute == 'omni_range':
-		if visible_notifier:
+		if visible_notifier and do_visible_notifier_update:
 			_update_visible_notifier_aabb(value)
 
 
@@ -40,7 +42,7 @@ func flicker():
 
 
 func _fast_flicker():
-	if not enable_flicker and visible_notifier:
+	if not enable_flicker and visible_notifier and do_visible_notifier_update:
 		await visible_notifier.screen_entered
 	var flicker_duration = randf_range(0.05, 0.1)
 	var intensity = pow(randf(), 2.0)
@@ -51,7 +53,7 @@ func _fast_flicker():
 
 
 func _slow_flicker():
-	if not enable_flicker and visible_notifier:
+	if not enable_flicker and visible_notifier and do_visible_notifier_update:
 		await visible_notifier.screen_entered
 	var flicker_duration = randf_range(0.5, 1.0)
 	var intensity = pow(randf(), 2.0)
@@ -62,7 +64,7 @@ func _slow_flicker():
 
 
 func _flare():
-	if not enable_flicker and visible_notifier:
+	if not enable_flicker and visible_notifier and do_visible_notifier_update:
 		await visible_notifier.screen_entered
 	var flicker_duration = randf_range(0.1, 0.2)
 	var flicker_variation = lerp(0.5, 1.2, randf_range(0.0, 1.0))
