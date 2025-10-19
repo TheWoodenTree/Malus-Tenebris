@@ -132,8 +132,8 @@ func load_world_and_player():
 	Global.player.position = world.get_node("PlayerSpawnPoint").global_position
 	if not Global.player.is_inside_tree():
 		add_child(Global.player)
-	Global.player.cam.rotation = Vector3.ZERO
-	Global.player.cam.target_rotation = Vector3.ZERO
+	Global.camera_controller.rotation = Vector3.ZERO
+	Global.camera_controller.target_rotation = Vector3.ZERO
 	
 	# Make sure the player is rendered before post-processing so torch is affected
 	# by post-processing
@@ -183,7 +183,7 @@ func _calculate_effects_scale():
 	return scale * scale
 
 
-func set_fear_enabled(enabled: bool):
+func set_fear_enabled(enabled: bool): # TODO: Add this to saver loader maybe?
 	if enabled:
 		if fear_tween and fear_tween.is_running():
 			fear_tween.kill()

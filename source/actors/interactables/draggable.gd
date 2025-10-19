@@ -103,15 +103,15 @@ func _on_interact() -> void:
 func set_player_dragging(dragging: bool):
 	if dragging:
 		_on_player_started_dragging()
-		Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
-		if not Global.player.cam.is_connected("cam_rotated", add_torque_to_draggable_body):
-			Global.player.cam.connect("cam_rotated", add_torque_to_draggable_body)
+		Global.camera_controller.sensitivity_multiplier = Global.camera_controller.DRAG_SENS_MULTIPLIER
+		if not Global.camera_controller.is_connected("cam_rotated", add_torque_to_draggable_body):
+			Global.camera_controller.connect("cam_rotated", add_torque_to_draggable_body)
 	else:
 		_on_player_stopped_dragging()
-		if Global.player.cam.is_connected("cam_rotated", add_torque_to_draggable_body):
-			Global.player.cam.disconnect("cam_rotated", add_torque_to_draggable_body)
+		if Global.camera_controller.is_connected("cam_rotated", add_torque_to_draggable_body):
+			Global.camera_controller.disconnect("cam_rotated", add_torque_to_draggable_body)
 		await get_tree().create_timer(0.1, false).timeout
-		Global.player.cam.sensitivity_multiplier = 1.0
+		Global.camera_controller.sensitivity_multiplier = 1.0
 
 
 func set_being_dragged(being_dragged_by_: Character):
@@ -160,7 +160,7 @@ func add_torque_to_draggable_body(offset: Vector2):
 		cam_rot_offset = offset
 		var torque: Vector3 = Vector3.LEFT * cam_rot_offset.x * 1000.0
 		draggable_body.apply_torque(torque.rotated(Vector3.UP, rotation.y))
-		Global.player.cam.set_sens_mult_to_drag_sens_mult()
+		Global.camera_controller.set_sens_mult_to_drag_sens_mult()
 		last_cam_rot_offset = offset
 
 

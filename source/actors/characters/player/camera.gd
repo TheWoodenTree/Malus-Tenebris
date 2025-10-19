@@ -1,147 +1,122 @@
-extends Camera3D
+extends Node3D
 
-const CONTROLLER_DZ = 0.25
+const BOB_CROUCH_AMP: float = 0.06
+const BOB_WALK_AMP: float = 0.06
+const BOB_SPRINT_AMP: float = 0.12
+const BOB_CROUCH_FREQ: float = TAU
+const BOB_WALK_FREQ: float = 2.0 * TAU
+const BOB_SPRINT_FREQ: float = 3.0 * TAU
+const DEF_CAM_STABILIZE_DIST: float = -3.0
 
-const SOFT_MOVEMENT_MIN_WEIGHT: float = 0.025
-const SOFT_MOVEMENT_MAX_WEIGHT: float = 1.0
+const BOB_STABILIZATION_SCALE = 0.2
 
-const DRAG_SENS_MULTIPLIER = 0.075
+@export var trauma_noise: FastNoiseLite
+@export var trauma_speed: float = 1000.0
+@export var trauma_max_x: float = 10.0
+@export var trauma_max_y: float = 10.0
+@export var trauma_max_z: float = 5.0
 
-var controller_sens = 1.0
-var controller_offset: Vector2 = Vector2.ZERO
-var rotation_offset: Vector2 = Vector2.ZERO
-var rotation_last_frame: Vector3 = Vector3.ZERO
-var target_rotation: Vector3 = rotation
+var trauma: float = 0.0
+var trauma_time: float = 0.0
+var trauma_reduction_rate: float = 3.0
 
-var upside_down_mode: bool = false
-var mouse_input_received: bool = false
-var can_rotate: bool = true
+var initial_rotation := Vector3.ZERO
+
 var bob_transition: bool = false
 
-var sensitivity_multiplier: float = 1.0
-var soft_movement_weight: float = SOFT_MOVEMENT_MAX_WEIGHT
+var bob_frequency: float = BOB_WALK_FREQ
+var bob_amplitude: float = BOB_WALK_AMP
+var bob_speed_multiplier: float = 1.0 : set = _set_bob_speed_multiplier
+var bob_transition_end_time: float
+var bob_height_last_frame: float = 0.0
+var target_amplitude: float = BOB_WALK_AMP
+var displayed_offset_y: float = 0.0
+var displayed_offset_x: float = 0.0
+var phase_last_frame: float = 0.0
 
-@onready var parent = get_parent()
-@onready var starting_pos: Vector3 = parent.position
+@onready var starting_pos: Vector3 = position
+@onready var starting_rot: Vector3 = rotation
+@onready var bob_timer = $BobTimer
 
-signal cam_rotated(offset: Vector2)
 
-
-func _process(_delta: float) -> void:
-	_controller_rotate()
+func _process(delta):
+	if not Global.player.in_menu and not Global.player.scripted_event:
+		if Global.player.global_input_dir == Vector3.ZERO:
+			_reset_bob(delta)
+		elif Global.player.global_input_dir != Vector3.ZERO:
+			_bob(delta)
 	
-	#if Input.is_action_just_pressed("debug4") and not upside_down_mode:
-		#var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-		#rot_tween.tween_property(self, "rotation:z", PI, 0.25)
-		##rotation.z = PI
-		#Global.main.set_upside_down_sound(true)
-		#upside_down_mode = true
-	#elif Input.is_action_just_pressed("debug4") and upside_down_mode:
-		#var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-		#rot_tween.tween_property(self, "rotation:z", 0.0, 0.25)
-		##rotation.z = 0.0
-		#Global.main.set_upside_down_sound(false)
-		#upside_down_mode = false
-	
-	if not Global.player.scripted_event:
-		rotation.x = lerp_angle(rotation.x, target_rotation.x, soft_movement_weight)
-		rotation.y = lerp_angle(rotation.y, target_rotation.y, soft_movement_weight)
-	
-	mouse_input_received = false
+	if not is_zero_approx(trauma):
+		trauma_time += delta
+		trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
+		rotation_degrees.x = initial_rotation.x + trauma_max_x * get_shake_intensity() * get_trauma_noise_from_seed(0)
+		rotation_degrees.y = initial_rotation.y + trauma_max_y * get_shake_intensity() * get_trauma_noise_from_seed(1)
+		rotation_degrees.z = initial_rotation.z + trauma_max_z * get_shake_intensity() * get_trauma_noise_from_seed(2)
 
 
-func _input(event: InputEvent) -> void:
-	if Global.mouse_locked and not Global.player.in_menu and not Global.player.scripted_event:
-		if event is InputEventMouseMotion:
-			var rot_sign = 1
-			if upside_down_mode:
-				rot_sign = -1
-			
-			var mouse_y_offset = event.relative.y * Global.mouse_sens * sensitivity_multiplier
-			var x_rot_offset = deg_to_rad(mouse_y_offset)
-			rotation_offset.x = x_rot_offset
-			if can_rotate:
-				target_rotation.x -= x_rot_offset * rot_sign
-				target_rotation.x = clamp(target_rotation.x, -PI/2, PI/2)
-				rotation.x = target_rotation.x
-				
-			
-			var mouse_x_offset = event.relative.x * Global.mouse_sens * sensitivity_multiplier
-			var y_rot_offset = deg_to_rad(mouse_x_offset)
-			rotation_offset.y = y_rot_offset
-			if can_rotate:
-				target_rotation.y -= y_rot_offset * rot_sign
-				target_rotation.y = wrapf(target_rotation.y, 0.0, TAU)
-				rotation.y = target_rotation.y
-			
-			cam_rotated.emit(rotation_offset / DRAG_SENS_MULTIPLIER)
-
-
-func _controller_rotate():
-	var axis_vec = Vector2.ZERO
-	axis_vec.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
-	axis_vec.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
-	
-	var rotated: bool = false
-	
-	if abs(axis_vec.y) > CONTROLLER_DZ:
-		rotated = true
-		if axis_vec.y > 0:
-			axis_vec.y -= CONTROLLER_DZ
-		else:
-			axis_vec.y += CONTROLLER_DZ
-		var joystick_y_offset: float = axis_vec.y * (1 + abs(axis_vec.y)) * controller_sens * sensitivity_multiplier
-		var x_rot_offset = deg_to_rad(joystick_y_offset)
-		rotation_offset.x = x_rot_offset
-		if can_rotate:
-			rotation.x -= deg_to_rad(joystick_y_offset)
-			rotation.x = clamp(rotation.x, -PI/2, PI/2)
+func _bob(delta):
+	if Global.player.sprinting and not Global.player.crouching:
+		bob_frequency = BOB_SPRINT_FREQ
+		target_amplitude = BOB_SPRINT_AMP
+	elif not Global.player.sprinting and Global.player.crouching:
+		bob_frequency = BOB_CROUCH_FREQ
+		target_amplitude = BOB_CROUCH_AMP
 	else:
-		controller_offset.y = 0.0
+		bob_frequency = BOB_WALK_FREQ
+		target_amplitude = BOB_WALK_AMP
 	
-	if abs(axis_vec.x) > CONTROLLER_DZ:
-		rotated = true
-		if axis_vec.x > 0:
-			axis_vec.x -= CONTROLLER_DZ
-		else:
-			axis_vec.x += CONTROLLER_DZ
-		var joystick_x_offset: float = axis_vec.x * (1 + abs(axis_vec.x)) * controller_sens * sensitivity_multiplier
-		var y_rot_offset = deg_to_rad(joystick_x_offset)
-		rotation_offset.y = y_rot_offset
-		if can_rotate:
-			rotation.y -= deg_to_rad(joystick_x_offset)
-			rotation.y = wrapf(rotation.y, 0.0, 2 * PI)
-	else:
-		controller_offset.x = 0.0
+	var phase: float = bob_frequency * bob_timer.current_animation_position
+	var wrapped_phase = fposmod(phase, TAU)
 	
-	if rotated:
-		cam_rotated.emit(rotation_offset)
+	var target_offset_y: float = sin(phase) * target_amplitude
+	var target_offset_x: float = sin(phase * 0.5) * target_amplitude * 0.5
+	
+	displayed_offset_y = lerp(displayed_offset_y, target_offset_y, delta * 8)
+	displayed_offset_x = lerp(displayed_offset_x, target_offset_x, delta * 8)
+	
+	position.y = starting_pos.y + displayed_offset_y
+	position.x = starting_pos.x + displayed_offset_x
+	rotation.x = -displayed_offset_y * BOB_STABILIZATION_SCALE
+	rotation.z = sin(phase * 0.5) * target_amplitude * 0.035
+	
+	if phase_last_frame < 3.0 * PI / 2.0 and wrapped_phase >= 3.0 * PI / 2.0:
+		Global.player._play_footstep_sound()
+	
+	phase_last_frame = wrapped_phase
 
 
-func look_at_over_time(pos: Vector3, time: float):
-	# Scuffed
-	var initial_rot = rotation
-	look_at(pos)
-	var after_rot = rotation
-	rotation = initial_rot
-	
-	var to_rot = after_rot - initial_rot
-	if abs(after_rot.x - initial_rot.x) < abs(after_rot.x - (initial_rot.x - TAU)):
-		to_rot.x = after_rot.x - initial_rot.x
-	else:
-		to_rot.x = after_rot.x - (initial_rot.x - TAU)
-
-	if abs(after_rot.y - initial_rot.y) < abs(after_rot.y - (initial_rot.y - TAU)):
-		to_rot.y = after_rot.y - initial_rot.y
-	else:
-		to_rot.y = after_rot.y - (initial_rot.y - TAU)
-	
-	var _anim_dur_scale = (abs(to_rot.x) + abs(to_rot.y)) / TAU
-	
-	if abs(to_rot.x) > PI / 6 or abs(to_rot.y) > PI / 3:
-		var tween: Tween = create_tween().set_trans(Tween.TRANS_QUINT)
-		tween.tween_property(self, "rotation", to_rot, time).as_relative()
+func _reset_bob(delta):
+	displayed_offset_y = lerp(displayed_offset_y, 0.0, delta * 8)
+	displayed_offset_x = lerp(displayed_offset_x, 0.0, delta * 8)
+	position.y = lerp(position.y, starting_pos.y, delta * 8)
+	position.x = lerp(position.x, starting_pos.x, delta * 8)
+	rotation.x = lerp(rotation.x, 0.0, delta * 8)
+	rotation.x = lerp(rotation.z, 0.0, delta * 8)
 
 
-func set_sens_mult_to_drag_sens_mult():
-	sensitivity_multiplier = DRAG_SENS_MULTIPLIER
+func get_facing_dir():
+	var vec = Vector3(1.0, 0.0, 0.0).rotated(Vector3.UP, rotation.y)
+	var xz_dir = Vector3(0.0, 0.0, -1.0).rotated(Vector3.LEFT, rotation.x).rotated(Vector3.UP, rotation.y)
+	var dir = xz_dir.rotated(vec, rotation.x)
+	return dir
+
+
+# TURBO SCUFFED: Using an animation player to track time because I can set the speed scale for the
+# time on it. Need to have this so I can slow down the speed of the head bobs. (Tweening the frequency
+# causes rapid bobbing briefly which is not intended)
+func _set_bob_speed_multiplier(multiplier: float):
+	bob_speed_multiplier = multiplier
+	bob_timer.speed_scale = bob_speed_multiplier
+
+
+func add_trauma(trauma_amount: float):
+	trauma = clamp(trauma + trauma_amount, 0.0, 2.5)
+
+
+func get_trauma_noise_from_seed(seed_: int):
+	trauma_noise.seed = seed_
+	return trauma_noise.get_noise_1d(trauma_time * trauma_speed)
+
+
+func get_shake_intensity():
+	return trauma * trauma

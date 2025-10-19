@@ -105,7 +105,7 @@ func update_movement_particle_attractor_transform():
 		
 		# Particle attractor is top level so that x and z rotation are not included
 		# because the y rotation is the only thing needed when walking around
-		movement_particle_attractor.rotation.y = Global.player.cam.rotation.y + angle
+		movement_particle_attractor.rotation.y = Global.camera_controller.rotation.y + angle
 	else:
 		movement_particle_attractor.strength = 0.0
 
@@ -113,7 +113,7 @@ func update_movement_particle_attractor_transform():
 func update_rotation_particle_attractor_transform(delta: float):
 	rotation_particle_attractor.global_position = self.global_position
 	
-	var cam_rot: Vector3 = Global.player.cam.rotation
+	var cam_rot: Vector3 = Global.camera_controller.rotation
 	var cam_rot_offset: Vector3 = (cam_rot - cam_rot_last_frame)
 	
 	# Compensate for cam rotation wrapping between -2PI and 
@@ -123,7 +123,7 @@ func update_rotation_particle_attractor_transform(delta: float):
 	print(cam_rot_offset.y)
 	if abs(rotation_velocity) > 0.0001:
 		rotation_particle_attractor.strength = rotation_velocity * 10# move_toward(rotation_particle_attractor.strength, rotation_velocity, delta * 1500.0)
-		rotation_particle_attractor.rotation.y = Global.player.cam.rotation.y - PI/2.0
+		rotation_particle_attractor.rotation.y = Global.camera_controller.rotation.y - PI/2.0
 	else:
 		rotation_particle_attractor.strength = 0.0# move_toward(rotation_particle_attractor.strength, 0.0, delta * 500.0)
 		

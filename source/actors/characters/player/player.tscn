@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cn620q1tuk8ha"]
+[gd_scene load_steps=32 format=4 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/characters/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/characters/player/camera.tscn" id="2"]
@@ -20,8 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://dn38omxvvvmki" path="res://source/actors/characters/states/player_sprint.tscn" id="19_fkc5f"]
 [ext_resource type="PackedScene" uid="uid://q4rpa5lp8mki" path="res://source/actors/characters/states/player_crouch_idle.tscn" id="20_4esr6"]
 [ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="20_4lx6p"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_kx8ox"]
 
 [sub_resource type="Animation" id="Animation_dqclq"]
 resource_name = "timer"
@@ -108,7 +106,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
 [node name="CameraController" type="Node3D" parent="HeadController"]
 script = ExtResource("2_n0c15")
-trauma_noise = SubResource("FastNoiseLite_kx8ox")
 
 [node name="Camera" parent="HeadController/CameraController" instance=ExtResource("2")]
 cull_mask = 1048573
@@ -137,16 +134,22 @@ collision_mask = 32769
 collide_with_areas = true
 script = ExtResource("4_hbv3l")
 
-[node name="TorchMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
+[node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController/Camera"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_crvps")
+}
+
+[node name="TorchMarker" type="Marker3D" parent="HeadController/CameraController"]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999997, 0, 1, 0, 0.9999997, 0, -4.3711385e-08, -0.35540822, -0.20182943, -0.36429355)
 
-[node name="ThrownItemOriginMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
+[node name="ThrownItemOriginMarker" type="Marker3D" parent="HeadController/CameraController"]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999997, 0, 1, 0, 0.9999997, 0, -4.3711385e-08, 0, -0.5, 0)
 
-[node name="HeldItemMarker" type="Marker3D" parent="HeadController/CameraController/Camera"]
+[node name="HeldItemMarker" type="Marker3D" parent="HeadController/CameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0096582, -0.5, -1.283)
 
-[node name="BaseLight" type="OmniLight3D" parent="HeadController/CameraController/Camera"]
+[node name="BaseLight" type="OmniLight3D" parent="HeadController/CameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35540822, -0.20182943, -0.36429355)
 layers = 3
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
@@ -156,14 +159,6 @@ shadow_enabled = true
 shadow_caster_mask = 4294967293
 omni_range = 12.0
 script = ExtResource("4")
-
-[node name="SaverLoader" parent="HeadController/CameraController/Camera" instance=ExtResource("20_4lx6p")]
-save_properties = Array[String](["rotation", "target_rotation"])
-
-[node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController"]
-libraries = {
-&"": SubResource("AnimationLibrary_crvps")
-}
 
 [node name="RandomSoundManager" parent="HeadController" instance=ExtResource("5_8g41b")]
 
@@ -250,4 +245,4 @@ initial_state = NodePath("PlayerIdle")
 [node name="PlayerCrouchWalk" parent="StateMachine" instance=ExtResource("18_ja5ts")]
 
 [node name="SaverLoader" parent="." instance=ExtResource("20_4lx6p")]
-save_properties = Array[String](["global_position"])
+save_properties = Array[String](["global_position", "camera_controller:rotation", "camera_controller:target_rotation"])

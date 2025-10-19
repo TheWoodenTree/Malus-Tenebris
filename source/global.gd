@@ -18,6 +18,8 @@ var journal_log: Control
 var found_notes: Control
 var cursor: Node2D
 var torch: Interactable
+var camera_controller: Node3D
+var camera: Node3D
 
 var mouse_sens: float = 0.4
 var mouse_locked: bool
@@ -44,7 +46,13 @@ func _ready() -> void:
 	journal_log = ui.log_entries_menu
 	found_notes = ui.found_notes_menu
 	cursor = main.get_node("Cursor")
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
+	
+	await player.ready
+	
+	camera_controller = player.camera_controller
+	camera = camera_controller.camera
 
 
 func lock_mouse() -> void:

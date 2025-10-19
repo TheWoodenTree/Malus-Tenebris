@@ -157,7 +157,7 @@ func attempt_unlock():
 		Global.monster.global_position = get_parent().get_parent().get_node("MonsterStartPoint").global_position
 		Global.monster.kitchen_encounter_event()
 		await get_tree().create_timer(1.0, false).timeout
-		Global.player.cam.look_at_over_time(get_parent().get_parent().get_node("LookAtMonsterPoint").global_position, 3.0)
+		Global.camera_controller.look_at_over_time(get_parent().get_parent().get_node("LookAtMonsterPoint").global_position, 3.0)
 	
 	await key_anim_player.animation_finished
 	if correct_key and not is_prison_depths_key:
@@ -211,7 +211,7 @@ func add_torque_to_draggable_body(offset: Vector2):
 		var torque: Vector3 = Vector3.UP * (offset.y + offset.x) * 100.0 * torque_sign
 		draggable_body.apply_torque(torque)
 		if being_dragged_by == Global.player:
-			Global.player.cam.sensitivity_multiplier = Global.player.cam.DRAG_SENS_MULTIPLIER
+			Global.camera_controller.sensitivity_multiplier = Global.camera_controller.DRAG_SENS_MULTIPLIER
 		last_cam_rot_offset = offset
 
 

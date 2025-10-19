@@ -24,7 +24,7 @@ func play_sound():
 
 
 func play_anim():
-	var direction: Vector3 = particles_and_sound.position.direction_to(to_local(Global.player.cam.global_position))
+	var direction: Vector3 = particles_and_sound.position.direction_to(to_local(Global.camera_controller.global_position))
 	spit_particles.process_material.direction.y = direction.y
 	spit_particles.process_material.direction.z = -abs(direction.z)
 	animation_player.play("SpitAttack") # TODO: Make hitbox affected by direction of particles

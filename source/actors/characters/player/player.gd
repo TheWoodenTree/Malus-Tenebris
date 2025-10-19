@@ -58,14 +58,14 @@ var acid_burn_sound: AudioStream = preload("res://source/assets/sounds/monster/g
 
 @onready var head = $HeadController
 @onready var camera_controller = $HeadController/CameraController
-@onready var cam = $HeadController/CameraController/Camera
+@onready var camera = $HeadController/CameraController/Camera
 @onready var torch_cam = $HeadController/CameraController/Camera/ViewportCont/TorchCamViewport/TorchCam
 @onready var interact_ray = $HeadController/CameraController/Camera/InteractRaycast
-@onready var torch_marker = $HeadController/CameraController/Camera/TorchMarker
-@onready var light = $HeadController/CameraController/Camera/BaseLight
-@onready var held_item_marker = $HeadController/CameraController/Camera/HeldItemMarker
+@onready var torch_marker = $HeadController/CameraController/TorchMarker
+@onready var light = $HeadController/CameraController/BaseLight
+@onready var held_item_marker = $HeadController/CameraController/HeldItemMarker
 @onready var noise_player = $HeadController/NoisePlayer
-@onready var thrown_item_origin_marker: Marker3D = $HeadController/CameraController/Camera/ThrownItemOriginMarker
+@onready var thrown_item_origin_marker: Marker3D = $HeadController/CameraController/ThrownItemOriginMarker
 @onready var rucksack_player = $RucksackPlayer
 @onready var fear_player = $FearPlayer
 @onready var fear_pulse_player = $FearPulsePlayer
@@ -93,11 +93,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_handle_input()
-	torch_cam.global_transform = cam.global_transform
+	torch_cam.global_transform = camera_controller.global_transform
 	if held_item:
 		var held_item_pos: Vector3 = held_item_marker.global_position
 		held_item.global_position = lerp(held_item.global_position, held_item_pos, delta * 75.0)
-		held_item.global_rotation = cam.global_rotation
+		held_item.global_rotation = camera_controller.global_rotation
 		held_item.rotate_object_local(Vector3.RIGHT, deg_to_rad(held_item_data.hold_rotation_offset.x))
 		held_item.rotate_object_local(Vector3.UP, deg_to_rad(held_item_data.hold_rotation_offset.y))
 		held_item.rotate_object_local(Vector3.FORWARD, deg_to_rad(held_item_data.hold_rotation_offset.z))
@@ -107,8 +107,8 @@ func _process(delta: float) -> void:
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
 		time_when_started_moving = Time.get_ticks_msec()
-		camera_controller.bob_timer.seek(0.0)
-		camera_controller.bob_timer.play("timer")
+		camera.bob_timer.seek(0.0)
+		camera.bob_timer.play("timer")
 	
 	# Stop dragging if too far from draggable
 	if is_instance_valid(draggable_being_dragged):
@@ -123,7 +123,7 @@ func _process(delta: float) -> void:
 			#set_draggable_being_dragged(null)
 		
 		var current_global_touch_position: Vector3 = draggable_being_dragged.draggable_body.to_global(draggable_local_touch_position)
-		var dist_from_touch_point: float = cam.global_position.distance_to(current_global_touch_position)
+		var dist_from_touch_point: float = camera_controller.global_position.distance_to(current_global_touch_position)
 		if dist_from_touch_point > MAX_DIST_FROM_DRAGGABLE:
 			set_draggable_being_dragged(null)
 
@@ -179,7 +179,7 @@ func _move(delta):
 	move_and_slide()
 	
 	# Rotate input direction to match head facing direction
-	input_dir = global_input_dir.rotated(Vector3.UP, cam.rotation.y)
+	input_dir = global_input_dir.rotated(Vector3.UP, camera_controller.rotation.y)
 	
 	if not noclip_on:
 		velocity.x = lerp(velocity.x, input_dir.x * max_speed * speed_multiplier, accel)
@@ -200,8 +200,8 @@ func _move(delta):
 		in_water = true
 	else:
 		in_water = false
-	if footstep_timer.time_left == 0 and moving:
-		_play_footstep_sound()
+	#if footstep_timer.time_left == 0 and moving:
+		#_play_footstep_sound()
 
 
 func start_crouch_transition(entering: bool):
@@ -360,14 +360,14 @@ func can_stand():
 
 
 func get_facing_dir():
-	var vec = Vector3(1, 0, 0).rotated(Vector3.UP, cam.rotation.y)
-	var xz_dir = Vector3(0, 0, -1).rotated(Vector3.UP, cam.rotation.y)
-	var dir = xz_dir.rotated(vec, cam.rotation.x)
+	var vec = Vector3(1, 0, 0).rotated(Vector3.UP, camera_controller.rotation.y)
+	var xz_dir = Vector3(0, 0, -1).rotated(Vector3.UP, camera_controller.rotation.y)
+	var dir = xz_dir.rotated(vec, camera_controller.rotation.x)
 	return dir
 
 
 func get_forward_dir():
-	return Vector3(0, 0, -1).rotated(Vector3.UP, cam.rotation.y)
+	return Vector3(0, 0, -1).rotated(Vector3.UP, camera_controller.rotation.y)
 
 
 func get_interact_raycast_collision_normal():
