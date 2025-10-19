@@ -42,15 +42,15 @@ var open_attempted: bool = false
 
 func _ready():
 	super()
-	if not Engine.is_editor_hint() and global_signal_allow_open:
-		GlobalSignals.connect(global_signal_allow_open, func(): blocked = false)
+	if not Engine.is_editor_hint():
+		SaveManager.loaded.connect(_on_loaded_from_save)
+		if global_signal_allow_open:
+			GlobalSignals.connect(global_signal_allow_open, func(): blocked = false)
 	
-	if not unlocked and (Global.player and not Global.player.is_omnipotent_door_god):
-		set_hinge_limits(-close_threshold_angle, close_threshold_angle)
+		if not unlocked and (Global.player and not Global.player.is_omnipotent_door_god):
+			set_hinge_limits(-close_threshold_angle, close_threshold_angle)
 	
 	closed_blocking_volume.affect_navigation_mesh = not unlocked
-	SaveManager.loaded.connect(_on_loaded_from_save)
-
 
 func _on_target():
 	if tutorial_popup and not tutorial_popup_shown and not Global.player.debug_no_tutorials \

@@ -25,9 +25,8 @@ func _ready():
 	door2_hinge.rotation.y = -deg_to_rad(door2_angle)
 	
 	if not Engine.is_editor_hint():
+		SaveManager.loaded.connect(_on_loaded_from_save)
 		GlobalSignals.great_door_close_area_entered.connect(close)
-	
-	SaveManager.loaded.connect(_on_loaded_from_save)
 
 
 func _set_door1_angle(rot):

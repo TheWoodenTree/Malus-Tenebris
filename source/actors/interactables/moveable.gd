@@ -21,7 +21,8 @@ var being_moved := false # For saves (We don't want to load it back mid animatio
 func _ready():
 	super()
 	update_move_to_collision()
-	SaveManager.loaded.connect(_on_loaded_from_save)
+	if not Engine.is_editor_hint():
+		SaveManager.loaded.connect(_on_loaded_from_save)
 
 
 func _on_interact() -> void:
