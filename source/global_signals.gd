@@ -11,3 +11,9 @@ signal kitchen_barrel_moved
 
 @warning_ignore("unused_signal")
 signal great_door_close_area_entered
+
+@warning_ignore("unused_signal")
+signal player_entered_safe_room
+
+@warning_ignore("unused_signal")
+signal player_exited_safe_room

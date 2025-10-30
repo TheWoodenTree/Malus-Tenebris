@@ -1,11 +1,73 @@
-[gd_scene load_steps=13 format=4 uid="uid://cjcxmmlyufmug"]
+[gd_scene load_steps=19 format=4 uid="uid://cjcxmmlyufmug"]
 
 [ext_resource type="PackedScene" uid="uid://csrs2a5ulov1a" path="res://source/actors/building pieces/doors/door_template.tscn" id="1_r6dx6"]
 [ext_resource type="Script" uid="uid://cqfhy6cypcn6l" path="res://source/actors/building pieces/doors/latched_door.gd" id="2_7g1um"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_ou0lw"]
 [ext_resource type="PackedScene" uid="uid://bh806ab5c7js6" path="res://source/actors/interactables/door_latch.tscn" id="4_7j8lg"]
 [ext_resource type="Material" uid="uid://h56gdt7iq7gt" path="res://source/assets/materials/rusty_metal/rusty_metal.tres" id="4_ou0lw"]
 [ext_resource type="Material" uid="uid://dqllpa5eiv4dr" path="res://source/assets/materials/dark_wood_planks/dark_wood_planks.tres" id="5_eqkwf"]
 [ext_resource type="PackedScene" uid="uid://byph0gw4elgnb" path="res://source/actors/misc/door_frame_latch_holder.tscn" id="5_rhct3"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqkwf"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_ou0lw")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_x3m8t"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform vec3 outlineColor : source_color = vec3(0.961, 0.608, 0.353);
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = outlineColor;
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygyrc"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_eqkwf")
+shader = SubResource("Shader_x3m8t")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3y01m"]
 _surfaces = [{
@@ -116,6 +178,7 @@ script = ExtResource("2_7g1um")
 
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
+material_overlay = SubResource("ShaderMaterial_ygyrc")
 mesh = SubResource("ArrayMesh_x3m8t")
 
 [node name="CollisionShape" parent="DraggableBody" index="1"]
@@ -134,3 +197,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94622, 2.20789, 0.195759)
 
 [node name="DoorFrameLatchHolder" parent="." index="1" instance=ExtResource("5_rhct3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.434, 2.174, 0.18)
+
+[node name="SaverLoader" parent="." index="6"]
+save_properties = Array[String](["interactable", "blocked", "tutorial_popup_shown", "unlocked", "draggable_body:rotation", "hinge:angular_limit/upper", "hinge:angular_limit/lower", "key_mesh:visible", "key_mesh:transform", "closed", "being_unlocked", "closed_blocking_volume:affect_navigation_mesh", "latch_locked"])

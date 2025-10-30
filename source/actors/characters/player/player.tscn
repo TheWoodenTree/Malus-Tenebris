@@ -41,6 +41,8 @@ height = 2.7
 height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr2nm"]
+transparency = 1
+vertex_color_use_as_albedo = true
 albedo_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 disable_receive_shadows = true
 billboard_mode = 3
@@ -154,6 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0096582, -0.5, -1.283)
 [node name="BaseLight" type="OmniLight3D" parent="HeadController/CameraController"]
 layers = 3
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
+light_volumetric_fog_energy = 0.0
 light_cull_mask = 4294967279
 shadow_caster_mask = 4294967293
 omni_range = 3.0
@@ -180,7 +183,7 @@ shape = SubResource("CapsuleShape3D_2fjcf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 cast_shadow = 0
 amount = 5000
-lifetime = 5.0
+lifetime = 8.0
 process_material = ExtResource("4_sn5wa")
 draw_pass_1 = SubResource("ArrayMesh_kx8ox")
 
@@ -243,4 +246,4 @@ initial_state = NodePath("PlayerIdle")
 [node name="PlayerCrouchWalk" parent="StateMachine" instance=ExtResource("18_ja5ts")]
 
 [node name="SaverLoader" parent="." instance=ExtResource("20_4lx6p")]
-save_properties = Array[String](["global_position", "camera_controller:rotation", "camera_controller:target_rotation", "has_torch", "in_world"])
+save_properties = Array[String](["global_position", "camera_controller:rotation", "camera_controller:target_rotation", "has_torch", "in_world", "in_safe_room"])

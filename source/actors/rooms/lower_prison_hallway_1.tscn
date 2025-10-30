@@ -211,6 +211,7 @@ shadow_mode = 1
 
 [node name="TorchHolder2" parent="." index="31" instance=ExtResource("15_2ryt6")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.25, 2.25, -4.625)
+lit = false
 shadow_mode = 1
 
 [node name="NarrowCurvedCeiling1" parent="." index="32" instance=ExtResource("16_gxsyu")]

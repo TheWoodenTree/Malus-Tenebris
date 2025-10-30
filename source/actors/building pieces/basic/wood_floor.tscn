@@ -5,7 +5,9 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_wjwk3"]
 resource_local_to_scene = true
+lightmap_size_hint = Vector2i(14, 21)
 material = ExtResource("2_c0wrl")
+add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="2"]
 resource_local_to_scene = true

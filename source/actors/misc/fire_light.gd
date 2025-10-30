@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if visible:
+	if visible and enable_flicker:
 		light_energy = default_energy + fast_flicker_energy + slow_flicker_energy + flare_energy
 
 
@@ -87,5 +87,5 @@ func _update_visible_notifier_aabb(light_range: float):
 
 func set_enable_flicker(enable_flicker_: bool):
 	enable_flicker = enable_flicker_
-	set_process(enable_flicker)
 	shadow_enabled = enable_flicker
+	set_process(enable_flicker)

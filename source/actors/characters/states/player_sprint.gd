@@ -17,7 +17,7 @@ func physics_update(_delta: float):
 	if character.in_menu or character.scripted_event:
 		return
 		
-	if not Input.is_action_pressed("sprint"):
+	if not Input.is_action_pressed("sprint") or character.is_walking_backward():
 		if not is_zero_approx(character.input_dir.length()):
 			transitioned.emit(self, "PlayerWalk")
 		else:

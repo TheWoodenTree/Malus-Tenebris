@@ -102,6 +102,7 @@ draw_pass_1 = SubResource("PlaneMesh_vddtw")
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0.8901961, 0.54901963, 0.1764706, 1)
+light_bake_mode = 0
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 script = ExtResource("2")

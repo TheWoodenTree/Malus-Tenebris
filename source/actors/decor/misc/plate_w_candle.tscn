@@ -1,9 +1,71 @@
-[gd_scene load_steps=11 format=4 uid="uid://fts1qwh5jkyj"]
+[gd_scene load_steps=17 format=4 uid="uid://fts1qwh5jkyj"]
 
 [ext_resource type="Material" uid="uid://dwbafqix0344q" path="res://source/assets/materials/plaster_2/plaster_2.tres" id="1"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_qn5b8"]
 [ext_resource type="PackedScene" uid="uid://deur3n06nl2p4" path="res://source/actors/misc/candle_fire.tscn" id="2"]
 [ext_resource type="Script" uid="uid://bgxy30m66div2" path="res://source/actors/decor/misc/fire_source.gd" id="3"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="3_qn5b8"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xij7w"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_qn5b8")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_imss8"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform vec3 outlineColor : source_color = vec3(0.961, 0.608, 0.353);
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = outlineColor;
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_82q4d"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xij7w")
+shader = SubResource("Shader_imss8")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sx8o"]
 albedo_color = Color(0.388235, 0.388235, 0.388235, 1)
@@ -83,6 +145,8 @@ interactable = false
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161, 0)
+layers = 8
+material_overlay = SubResource("ShaderMaterial_82q4d")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_qscbh")
 
@@ -94,8 +158,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149, 0)
 shape = SubResource("SphereShape3D_yqsqd")
 
 [node name="Mesh2" type="MeshInstance3D" parent="." index="3"]
-cast_shadow = 0
+layers = 8
 mesh = SubResource("ArrayMesh_alnvp")
 
 [node name="Fire" parent="." index="4" instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.348723, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3576929, 0)

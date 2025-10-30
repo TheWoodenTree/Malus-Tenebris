@@ -2,8 +2,8 @@
 class_name FireSource
 extends Interactable
 
-@export var default_range: float = 12.0
-@export var default_energy: float = 1.25
+@export var default_range: float = 12.0 : set = _set_default_range
+@export var default_energy: float = 1.25 : set = _set_default_energy
 @export var lit: bool = true : set = set_lit
 @export var shadow_mode: OmniLight3D.ShadowMode = OmniLight3D.ShadowMode.SHADOW_DUAL_PARABOLOID : set = set_shadow_mode
 @export var audio_fade_in_on_ready: bool = false
@@ -19,12 +19,17 @@ var burning_player: AudioStreamPlayer3D
 
 func _ready() -> void:
 	super()
+	particles.emitting = lit
+	light.visible = lit
+	light.omni_shadow_mode = shadow_mode
+	light.omni_range = default_range
 	if not Engine.is_editor_hint():
-		add_to_group("fire_sources")
-		light.omni_range = default_range
 		light.default_energy = default_energy
+		add_to_group("fire_sources")
+		
 		if lit:
 			light.flicker()
+			pass
 		set_interactable(lit and is_instance_valid(Global.player.torch) and not Global.player.torch.is_lit)
 		
 		interact_area.fire_burning_sound_area_entered.connect(_on_fire_burning_sound_area_entered)
@@ -33,10 +38,6 @@ func _ready() -> void:
 		if audio_fade_in_on_ready:
 			var tween = get_tree().create_tween()
 			tween.tween_property(fire.burning_player, 'volume_db', 6.0, 5.0).from(-15.0)
-			
-	particles.emitting = lit
-	light.visible = lit
-	light.omni_shadow_mode = shadow_mode
 
 
 func set_lit(is_lit):
@@ -77,3 +78,15 @@ func set_shadow_mode(new_shadow_mode: OmniLight3D.ShadowMode):
 
 func update_interactable():
 	set_interactable(lit and Global.player.torch and not Global.player.torch.is_lit)
+
+
+func _set_default_range(def_range: float):
+	default_range = def_range
+	if light:
+		light.omni_range = def_range
+
+
+func _set_default_energy(def_energy: float):
+	default_energy = def_energy
+	if light:
+		light.light_energy = def_energy

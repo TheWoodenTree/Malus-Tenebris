@@ -62,10 +62,10 @@ stream = ExtResource("3_0dsgc")
 [node name="ButtonHoverPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kn5pb")
 volume_db = -5.0
+pitch_scale = 2.0
 
 [node name="ButtonUpPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kn5pb")
-pitch_scale = 0.9
 
 [node name="ButtonDownPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kn5pb")

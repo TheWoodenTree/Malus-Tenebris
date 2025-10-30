@@ -6,8 +6,8 @@ const BOB_SPRINT_AMP: float = 0.12
 const BOB_CROUCH_FREQ: float = TAU
 const BOB_WALK_FREQ: float = 2.0 * TAU
 const BOB_SPRINT_FREQ: float = 3.0 * TAU
-const STRAFE_ROLL_WALK_MULT: float = 0.01
-const STRAFE_ROLL_SPRINT_MULT: float = 0.025
+const STRAFE_ROLL_WALK_MULT: float = 0.007
+const STRAFE_ROLL_SPRINT_MULT: float = 0.015
 
 const BOB_STABILIZATION_SCALE = 0.2
 

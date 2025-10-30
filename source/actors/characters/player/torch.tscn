@@ -217,4 +217,4 @@ omni_shadow_mode = 0
 script = ExtResource("8_xv4ds")
 
 [node name="SaverLoader" parent="." index="9"]
-save_properties = Array[String](["interactable", "mesh:scale", "mesh:position", "mesh:layers", "fire:particles:scale", "fire:particles:emitting", "fire:particles:local_coords", "fire:light:omni_range", "fire:light:default_energy", "self_light:visible", "held_by_player", "is_lit", "fire:burning_player:volume_db"])
+save_properties = Array[String](["interactable", "mesh:scale", "mesh:position", "mesh:layers", "fire:particles:scale", "fire:particles:emitting", "fire:particles:local_coords", "fire:light:omni_range", "fire:light:default_energy", "self_light:visible", "held_by_player", "is_lit", "fire:burning_player:volume_db", "fire:light:enable_flicker"])

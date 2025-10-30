@@ -3,7 +3,7 @@ extends Interactable
 const LOCKED_POS_X: float = -0.557
 const UNLOCKED_POS_X: float = -0.385
 
-var locked: bool = false
+var locked := false
 
 # Set by parent doro script
 var parent_door: Door

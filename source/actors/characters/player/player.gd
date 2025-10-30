@@ -47,6 +47,7 @@ var noclip_on: bool = false
 var picked_up_larder_key: bool = false
 var scripted_event: bool = false
 var in_world: bool = false
+var in_safe_room := false
 
 var current_state: State
 
@@ -74,6 +75,8 @@ var acid_burn_sound: AudioStream = preload("res://source/assets/sounds/monster/g
 
 
 func _ready() -> void:
+	GlobalSignals.player_entered_safe_room.connect(func(): in_safe_room = true)
+	GlobalSignals.player_exited_safe_room.connect(func(): in_safe_room = false)
 	Global.ui.inventory_opened.connect(stop_holding_item.bind(false))
 	Global.torch.picked_up.connect(_on_torch_picked_up)
 	state_machine.state_updated.connect(func(state: State): current_state = state)
@@ -381,6 +384,10 @@ func get_input_dir():
 	dir.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
 	
 	return dir.normalized()
+
+
+func is_walking_backward():
+	return sign(global_input_dir.z) == 1
 
 
 func get_normalized_health() -> float:

@@ -1,22 +1,21 @@
 [gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://6l1ko2kw0opd"]
 
-[sub_resource type="Curve" id="Curve_jovrq"]
-_data = [Vector2(0, 0.0818181), 0.0, 0.0, 0, 0, Vector2(0.19403, 1), 0.0, 0.0, 0, 0, Vector2(0.78607, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0727272), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_4053h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25099602, 1), 0.0, 0.0, 0, 0, Vector2(0.7529881, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_pl6tk"]
-curve = SubResource("Curve_jovrq")
+[sub_resource type="CurveTexture" id="CurveTexture_3w7qh"]
+curve = SubResource("Curve_4053h")
 
 [resource]
 emission_shape = 3
 emission_box_extents = Vector3(35, 25, 35)
 direction = Vector3(0, -1, 0)
-spread = 10.0
-initial_velocity_min = 0.5
-initial_velocity_max = 0.75
+spread = 180.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.29999998
 gravity = Vector3(0, 0, 0)
-scale_min = 0.75
-scale_max = 1.25
-scale_curve = SubResource("CurveTexture_pl6tk")
-turbulence_enabled = true
+alpha_curve = SubResource("CurveTexture_3w7qh")
 turbulence_noise_scale = 4.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0

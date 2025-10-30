@@ -15,11 +15,11 @@ func exit():
 func physics_update(_delta: float):
 	if character.in_menu or character.scripted_event:
 		return
-		
+	
 	if not is_zero_approx(character.input_dir.length()):
 		if Input.is_action_just_pressed("crouch") and not character.is_crouch_tween_active():
 			transitioned.emit(self, "PlayerCrouchWalk")
-		elif Input.is_action_just_pressed("sprint"):
+		elif Input.is_action_pressed("sprint") and not character.is_walking_backward():
 			transitioned.emit(self, "PlayerSprint")
 	else:
 		if Input.is_action_just_pressed("crouch") and not character.is_crouch_tween_active():

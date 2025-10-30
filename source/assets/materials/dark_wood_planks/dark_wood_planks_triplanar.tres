@@ -15,3 +15,4 @@ normal_texture = ExtResource("2_riqrg")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 uv1_world_triplanar = true
+uv2_world_triplanar = true

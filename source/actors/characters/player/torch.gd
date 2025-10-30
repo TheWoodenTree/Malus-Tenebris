@@ -157,6 +157,7 @@ func light_torch():
 	tween.parallel().tween_property(fire.particles.process_material, "initial_velocity", Vector2.ONE, 3.0).from(Vector2.ZERO)
 	tween.parallel().tween_property(fire.particles.process_material, "scale", Vector2.ONE, 3.0).from(Vector2.ZERO)
 	
+	fire.light.enable_flicker = true
 	fire.light.flicker()
 	fire.particles.emitting = true
 	is_lit = true

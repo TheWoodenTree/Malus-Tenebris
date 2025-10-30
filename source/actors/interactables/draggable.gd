@@ -51,9 +51,9 @@ func _ready():
 
 func _physics_process(_delta):
 	if not Engine.is_editor_hint():
-		var angular_speed: float = draggable_body.angular_velocity.length()
-		var angular_speed_last_frame: float = angular_velocity_last_frame.length()
 		if not draggable_body.sleeping and not closed:
+			var angular_speed: float = draggable_body.angular_velocity.length()
+			var angular_speed_last_frame: float = angular_velocity_last_frame.length()
 			if abs(angular_speed) > 0.1:
 				var large_ang_vel_change: bool = abs(angular_speed - angular_speed_last_frame) > 0.35
 				var ang_vel_dir_changed: bool = sign(angular_speed) != sign(angular_speed_last_frame)
