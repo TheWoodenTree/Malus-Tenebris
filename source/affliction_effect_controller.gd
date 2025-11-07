@@ -30,7 +30,6 @@ var cam_soft_movement_weight: float
 
 
 func _ready() -> void:
-	saver_loader.save_properties = ["first_dose_taken"]
 	add_child(saver_loader)
 	saver_loader.unique_id = saver_loader.get_path() as String
 
@@ -92,3 +91,8 @@ func release_override(time: float):
 	tween.parallel().tween_property(Global.player.camera_controller, "bob_speed_multiplier", 1.0, time / 2.0)
 	tween.parallel().tween_property(Global.camera_controller, "soft_movement_weight", 1.0, time / 2.0)
 	tween.tween_callback(func (): being_tweened = false; override_effect_scale = false)
+
+
+
+func get_save_properties():
+	return ["first_dose_taken"] as Array[String]

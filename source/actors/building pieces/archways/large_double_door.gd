@@ -144,4 +144,4 @@ func get_save_properties():
 		"door2_hinge:rotation",
 		"being_opened",
 		"being_closed",
-	] as Array[String];
+	] as Array[String]

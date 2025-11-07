@@ -8,6 +8,7 @@ const PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER = 0.3
 
 const HEAL_COLOR_OVERLAY_MAX_ALPHA = 0.078
 
+@onready var zoom: ColorRect = $Zoom
 @onready var pain_vignette: ColorRect = $PainVignette
 @onready var heal_color_overlay: ColorRect = $HealColorOverlay
 
@@ -34,3 +35,9 @@ func flash_heal_color_overlay():
 	heal_color_overlay_tween.tween_property(heal_color_overlay, "color:a", HEAL_COLOR_OVERLAY_MAX_ALPHA, 0.3)
 	heal_color_overlay_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	heal_color_overlay_tween.tween_property(heal_color_overlay, "color:a", 0.0, 1.5)
+
+
+func get_save_properties():
+	return [
+		"pain_vignette:material:shader_parameter/multiplier",
+	] as Array[String]

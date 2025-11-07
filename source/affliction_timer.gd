@@ -17,7 +17,6 @@ var paused := false : set = set_paused
 
 
 func _ready() -> void:
-	saver_loader.save_properties = ["time_scale", "wait_time", "time_left", "paused"]
 	add_child(saver_loader)
 	saver_loader.unique_id = saver_loader.get_path() as String
 
@@ -90,3 +89,12 @@ func set_time_secs(time_secs: float):
 
 func set_time_mins(time_mins: float):
 	self.wait_time = time_mins * 60.0
+
+
+func get_save_properties():
+	return [
+		"time_scale",
+		"wait_time",
+		"time_left",
+		"paused",
+	] as Array[String]

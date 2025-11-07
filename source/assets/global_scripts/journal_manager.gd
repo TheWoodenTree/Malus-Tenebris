@@ -9,7 +9,6 @@ var found_notes: Dictionary[String, String] = {}
 
 
 func _ready() -> void:
-	saver_loader.save_properties = ["log_entries", "found_notes", "show_note_tutorial"]
 	add_child(saver_loader)
 	saver_loader.unique_id = saver_loader.get_path() as String
 
@@ -39,3 +38,11 @@ func add_note(note_name: String, note_text: String):
 
 func has_log_entry(log_entry_name: LogEntry.LogEntryName) -> bool:
 	return log_entries.has(log_entry_name)
+
+
+func get_save_properties():
+	return [
+		"log_entries",
+		"found_notes",
+		"show_note_tutorial",
+	] as Array[String]

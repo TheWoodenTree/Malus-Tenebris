@@ -186,6 +186,8 @@ offset_right = 512.0
 offset_bottom = 299.0
 color = Color(0, 0.5021107, 0, 0)
 
+[node name="SaverLoader" parent="PostProcessing" instance=ExtResource("17_ks00e")]
+
 [node name="UI" parent="." instance=ExtResource("11_kc1x7")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

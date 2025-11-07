@@ -21,8 +21,6 @@ enum ShaderMode {
 const OUTLINE_MATERIAL: ShaderMaterial = preload("res://source/assets/shaders/outline_shader_mat.tres")
 const HIGHLIGHT_MATERIAL: ShaderMaterial = preload("res://source/assets/shaders/highlight_shader_mat.tres")
 
-static var default_save_properties: Array[String] = ["interactable", "enable_highlight_sheen"] 
-
 @export var interactable_type: Type = Type.MISC
 @export var interact_areas: Array[InteractArea]
 @export var meshes: Array[MeshInstance3D]
@@ -140,4 +138,4 @@ func get_save_properties():
 		"disable_highlight_shader",
 		"enable_highlight_light",
 		"enable_highlight_sheen",
-	] as Array[String];
+	] as Array[String]

@@ -406,10 +406,11 @@ func _on_torch_picked_up():
 
 func get_save_properties():
 	return [
+		"health",
 		"global_position",
 		"camera_controller:rotation",
 		"camera_controller:target_rotation",
 		"has_torch",
 		"in_world",
 		"in_safe_room",
-	] as Array[String];
+	] as Array[String]

@@ -13,7 +13,6 @@ static var unique_id_charset := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU
 @export var unique_id: String
 @export var is_dynamic: bool = false
 
-var save_properties: Array[String]
 var new_save_data: Dictionary[String, Variant]
 
 @onready var parent: Node = get_parent()

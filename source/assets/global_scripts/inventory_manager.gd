@@ -8,7 +8,6 @@ var num_slots: int = 9
 
 
 func _ready() -> void:
-	saver_loader.save_properties = ["items"]
 	add_child(saver_loader)
 	saver_loader.unique_id = saver_loader.get_path() as String
 
@@ -23,3 +22,7 @@ func add_item(item_data: ItemData):
 func remove_item(item_data: ItemData):
 	var slot_index: int = items.find_key(item_data)
 	items.erase(slot_index)
+
+
+func get_save_properties():
+	return ["items"] as Array[String]
