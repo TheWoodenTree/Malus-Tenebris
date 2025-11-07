@@ -192,6 +192,7 @@ color = Color(0, 0.5021107, 0, 0)
 environment = ExtResource("12_r5lv5")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 46.0
 offset_bottom = 44.0
 size_flags_horizontal = 0

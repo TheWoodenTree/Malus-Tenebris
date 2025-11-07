@@ -174,3 +174,23 @@ func _on_loaded_from_save():
 		picked_up.emit()
 		fire.light.flicker()
 		get_tree().call_group("fire_sources", "update_interactable")
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"mesh:scale",
+		"mesh:position",
+		"mesh:layers",
+		"fire:particles:scale",
+		"fire:particles:emitting",
+		"fire:particles:local_coords",
+		"fire:light:omni_range",
+		"fire:light:default_energy",
+		"self_light:visible",
+		"held_by_player",
+		"is_lit",
+		"fire:burning_player:volume_db",
+		"fire:light:enable_flicker",
+	])
+	return props

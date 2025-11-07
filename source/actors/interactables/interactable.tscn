@@ -30,4 +30,7 @@ omni_range = 2.0
 omni_attenuation = 0.2
 
 [node name="SaverLoader" parent="." instance=ExtResource("3_e37ou")]
-save_properties = Array[String](["interactable"])
+_property_count = 3
+save_props_1 = PackedStringArray("testttt")
+save_props_2 = PackedStringArray()
+save_props_3 = PackedStringArray()

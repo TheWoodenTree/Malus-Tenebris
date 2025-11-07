@@ -78,3 +78,14 @@ func _on_loaded_from_save():
 		smoke_material_3.set_shader_parameter("smokeHeight", 1.0)
 		smoke_material_4.set_shader_parameter("smokeHeight", 1.0)
 		smoke_material_5.set_shader_parameter("smokeHeight", 1.0)
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"can_reset",
+		"lid_closed",
+		"lid:position",
+		"lid:rotation",
+	])
+	return props

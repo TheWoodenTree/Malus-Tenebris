@@ -44,3 +44,12 @@ func set_locked(locked_: bool):
 			mesh.position.x = LOCKED_POS_X
 		else:
 			mesh.position.x = UNLOCKED_POS_X
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"mesh:position",
+		"locked",
+	])
+	return props

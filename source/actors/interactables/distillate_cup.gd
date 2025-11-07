@@ -68,3 +68,12 @@ func distillation_started():
 func do_log_entry():
 	await get_tree().create_timer(2.0, false).timeout
 	JournalManager.add_log_entry(LogEntry.LogEntryName.FIRST_DOSE)
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"num_doses",
+		"first_dose",
+	])
+	return props

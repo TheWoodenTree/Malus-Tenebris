@@ -131,3 +131,15 @@ func set_player_dragging(dragging: bool):
 func _on_chain_player_finished():
 	if not rotating_body.sleeping:
 		chain_player.play()
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"can_crank",
+		"has_crank",
+		"is_broken",
+		"crank:visible",
+		"crank:position",
+	])
+	return props

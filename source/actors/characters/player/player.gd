@@ -402,3 +402,14 @@ func debug_get_torch():
 func _on_torch_picked_up():
 	torch = Global.torch
 	has_torch = true
+
+
+func get_save_properties():
+	return [
+		"global_position",
+		"camera_controller:rotation",
+		"camera_controller:target_rotation",
+		"has_torch",
+		"in_world",
+		"in_safe_room",
+	] as Array[String];

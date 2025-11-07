@@ -49,11 +49,20 @@ visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
+[node name="LoadFromLastSaveButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
+layout_mode = 2
+text = "Load from last save"
+
+[node name="Separator3" type="HSeparator" parent="Cont/VBoxCont"]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
 [node name="SettingsButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Settings"
 
-[node name="Separator3" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="Separator4" type="HSeparator" parent="Cont/VBoxCont"]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -64,5 +73,6 @@ text = "Quit"
 
 [connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_close_menu_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/LoadFromLastSaveButton" to="." method="_on_load_from_last_save_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/QuitButton" to="." method="_on_quit_button_pressed"]

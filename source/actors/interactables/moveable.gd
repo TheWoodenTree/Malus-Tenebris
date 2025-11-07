@@ -76,3 +76,14 @@ func set_interactable_override(interactable_override_: bool):
 func _on_loaded_from_save():
 	if being_moved:
 		position = starting_position + move_to_offset.rotated(Vector3.UP, rotation.y)
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"being_moved",
+		"position",
+		"starting_position",
+		"moveable_collision_blocker:global_position",
+	])
+	return props

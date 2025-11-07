@@ -32,3 +32,9 @@ func on_latch_toggle(latch_locked_: bool):
 		var tween = get_tree().create_tween()
 		tween.tween_property(draggable_body, "rotation_degrees:y", 0.0, 0.1)
 	set_interactable(not latch_locked)
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array(["latch_locked"])
+	return props

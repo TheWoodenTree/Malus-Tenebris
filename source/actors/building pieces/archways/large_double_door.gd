@@ -136,3 +136,12 @@ func _on_loaded_from_save():
 	elif being_opened:
 		door1_hinge.rotation.y = door1_to_angle
 		door2_hinge.rotation.y = door2_to_angle
+
+
+func get_save_properties():
+	return [
+		"door1_hinge:rotation",
+		"door2_hinge:rotation",
+		"being_opened",
+		"being_closed",
+	] as Array[String];

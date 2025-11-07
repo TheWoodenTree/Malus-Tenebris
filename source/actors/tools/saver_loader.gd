@@ -9,11 +9,11 @@ const META_KEY_SCENE_PATH = &"_scene_path"
 
 static var unique_id_charset := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=;:,."
 
-@export var unique_id: String
 @export_tool_button("Generate Unique ID") var generate_unique_id: Callable = _generate_unique_id
-@export var save_properties: Array[String]
+@export var unique_id: String
 @export var is_dynamic: bool = false
 
+var save_properties: Array[String]
 var new_save_data: Dictionary[String, Variant]
 
 @onready var parent: Node = get_parent()
@@ -33,12 +33,13 @@ func save_data() -> Dictionary[String, Variant]:
 	else:
 		new_save_data = {}
 	
-	for property_path: String in save_properties:
-		var value: Variant = parent.get_indexed(property_path)
-		if value == null:
-			push_error(str(get_parent().get_path()) + " Has no property to save: " + property_path )
-			continue
-		new_save_data[property_path] = serialize_data(value)
+	if parent.has_method("get_save_properties"):
+		for property_path: String in parent.get_save_properties():
+			var value: Variant = parent.get_indexed(property_path)
+			if value == null:
+				push_error(str(get_parent().get_path()) + " Has no property to save: " + property_path )
+				continue
+			new_save_data[property_path] = serialize_data(value)
 		
 	return new_save_data
 

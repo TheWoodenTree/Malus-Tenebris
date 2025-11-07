@@ -246,4 +246,21 @@ func _on_loaded_from_save():
 		closed_blocking_volume.affect_navigation_mesh = false
 		key_mesh.position = KEY_MESH_UNLOCKED_POS
 		key_mesh.rotation = KEY_MESH_UNLOCKED_ROT
-		
+
+
+func get_save_properties():
+	var props: Array[String] = super()
+	props.append_array([
+		"blocked",
+		"tutorial_popup_shown",
+		"unlocked",
+		"draggable_body:rotation",
+		"hinge:angular_limit/upper",
+		"hinge:angular_limit/lower",
+		"key_mesh:visible",
+		"key_mesh:transform",
+		"closed",
+		"being_unlocked",
+		"closed_blocking_volume:affect_navigation_mesh",
+	])
+	return props

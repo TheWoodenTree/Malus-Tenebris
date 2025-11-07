@@ -187,3 +187,8 @@ shape = SubResource("BoxShape3D_hwyut")
 
 [node name="Mesh" parent="DraggableBody/Key" index="0"]
 material_overlay = SubResource("ShaderMaterial_hwyut")
+
+[node name="SaverLoader" parent="." index="5"]
+_property_count = 2
+save_props_1 = PackedStringArray()
+save_props_2 = Array[String](["blocked", "tutorial_popup_shown", "unlocked", "draggable_body:rotation", "hinge:angular_limit/upper", "hinge:angular_limit/lower", "key_mesh:visible", "key_mesh:transform", "closed", "being_unlocked", "closed_blocking_volume:affect_navigation_mesh"])
