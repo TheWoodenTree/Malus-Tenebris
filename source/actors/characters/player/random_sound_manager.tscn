@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://dd6u11rvnpa6s" path="res://source/assets/sounds/ambience/random_sounds/distant_impacts/distant_impact_streams.tres" id="3_icr7q"]
 [ext_resource type="AudioStream" uid="uid://b1oi667x753yu" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_streams.tres" id="4_xxnts"]
 
-
 [node name="RandomSoundManager" type="Node3D"]
 
 [node name="WoodCreak" parent="." instance=ExtResource("1_m88es")]

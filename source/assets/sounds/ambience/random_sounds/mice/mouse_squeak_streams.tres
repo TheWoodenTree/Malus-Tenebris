@@ -1,14 +1,22 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://b1oi667x753yu"]
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3 uid="uid://b1oi667x753yu"]
 
 [ext_resource type="AudioStream" uid="uid://dq8dqfcr4bpb2" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_1.ogg" id="1_0s0lw"]
 [ext_resource type="AudioStream" uid="uid://plm2ahvwohkj" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_2.ogg" id="2_3hf3i"]
 [ext_resource type="AudioStream" uid="uid://bxhvan8j8a0eh" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_3.ogg" id="3_s7j2c"]
 [ext_resource type="AudioStream" uid="uid://b0k5r2s6v5ow4" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_4.ogg" id="3_sqdhj"]
+[ext_resource type="AudioStream" uid="uid://cgrw4i7uwafdw" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_5.wav" id="5_1dfle"]
+[ext_resource type="AudioStream" uid="uid://bqphvk1iixn17" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_6.wav" id="6_nloyy"]
+[ext_resource type="AudioStream" uid="uid://doku2mdvvolv6" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_7.wav" id="7_l66nk"]
+[ext_resource type="AudioStream" uid="uid://dnn8hni78vhoe" path="res://source/assets/sounds/ambience/random_sounds/mice/mouse_squeak_8.wav" id="8_0n70p"]
 
 [resource]
 random_pitch = 1.1
-streams_count = 4
+streams_count = 8
 stream_0/stream = ExtResource("1_0s0lw")
 stream_1/stream = ExtResource("2_3hf3i")
 stream_2/stream = ExtResource("3_s7j2c")
 stream_3/stream = ExtResource("3_sqdhj")
+stream_4/stream = ExtResource("5_1dfle")
+stream_5/stream = ExtResource("6_nloyy")
+stream_6/stream = ExtResource("7_l66nk")
+stream_7/stream = ExtResource("8_0n70p")
