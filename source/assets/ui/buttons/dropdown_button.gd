@@ -13,6 +13,7 @@ var selected_option: String
 
 
 func _ready():
+	super()
 	dropdown_menu.set_option_names(dropdown_option_names)
 	dropdown_menu.visible = false
 	dropdown_menu.mouse_filter = MOUSE_FILTER_IGNORE

@@ -27,8 +27,6 @@ size_flags_vertical = 4
 
 [node name="AreYouSureLabel" type="Label" parent="Cont/VBoxCont"]
 layout_mode = 2
-text = "Are you sure you want to quit?
-Any progress since your last save will be lost."
 horizontal_alignment = 1
 
 [node name="Separator" type="HSeparator" parent="Cont/VBoxCont"]

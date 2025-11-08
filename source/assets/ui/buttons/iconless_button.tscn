@@ -23,7 +23,3 @@ pitch_scale = 0.8
 stream = ExtResource("3_b1tbu")
 volume_db = -5.0
 pitch_scale = 2.0
-
-[connection signal="button_down" from="." to="." method="_on_button_down"]
-[connection signal="button_up" from="." to="." method="_on_button_up"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
