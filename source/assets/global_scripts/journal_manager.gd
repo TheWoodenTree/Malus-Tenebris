@@ -4,7 +4,6 @@ var log_entries: Array[LogEntry.LogEntryName] = []
 var found_notes: Dictionary[String, String] = {}
 
 @onready var saver_loader: SaverLoader = preload("res://source/actors/tools/saver_loader.tscn").instantiate()
-@onready var inventory_menu: Inventory = Global.ui.inventory_menu
 @onready var show_note_tutorial: bool = not Global.player.debug_no_tutorials
 
 

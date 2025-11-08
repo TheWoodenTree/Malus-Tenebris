@@ -19,5 +19,4 @@ func _on_quit_button_pressed():
 
 
 func _on_load_from_last_save_button_pressed() -> void:
-	Global.ui.remove_menu()
-	SaveManager.load_game()
+	Global.reset_game()

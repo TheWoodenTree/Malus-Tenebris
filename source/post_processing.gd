@@ -8,13 +8,24 @@ const PAIN_VIGNETTE_NEAR_DEATH_MUTLIPLIER = 0.3
 
 const HEAL_COLOR_OVERLAY_MAX_ALPHA = 0.078
 
+@onready var blackout_blur: ColorRect = $BlackoutBlur
 @onready var zoom: ColorRect = $Zoom
 @onready var pain_vignette: ColorRect = $PainVignette
+@onready var vignette: ColorRect = $Vignette
+@onready var retro_shader: ColorRect = $RetroShader
 @onready var heal_color_overlay: ColorRect = $HealColorOverlay
+
 
 var pain_vignette_tween: Tween
 var heal_color_overlay_tween: Tween
 var time_since_start := 0.0
+
+
+func _ready() -> void:
+	Global.retro_shader = retro_shader.material
+	Global.zoom_shader = zoom.material
+	Global.vignette_shader = vignette.material
+	Global.blackout_blur_shader = blackout_blur.material
 
 
 func _process(delta: float) -> void:

@@ -16,9 +16,5 @@ func _on_body_entered(body):
 		AfflictionEffectController.set_to_max_effect(2.0)
 
 
-func set_chromatic_abberation_offset(offset: float):
-	Global.chromatic_abberation_shader.set_shader_parameter("offset", offset)
-
-
 func set_vignette_softness(softness: float):
 	Global.vignette_shader.set_shader_parameter("softness", softness)

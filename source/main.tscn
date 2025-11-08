@@ -122,13 +122,11 @@ script = ExtResource("6_7rnte")
 heartbeat_curve = ExtResource("7_nfm2e")
 
 [node name="BlackoutBlur" type="ColorRect" parent="PostProcessing"]
-visible = false
 material = SubResource("ShaderMaterial_xy6ro")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 
 [node name="BackBufCopy" type="BackBufferCopy" parent="PostProcessing"]
-visible = false
 copy_mode = 2
 
 [node name="Zoom" type="ColorRect" parent="PostProcessing"]

@@ -1,3 +1,4 @@
+class_name Main
 extends Node
 
 # Distances at which max/min effect intensity is achieved
@@ -47,12 +48,22 @@ var obunga
 @onready var heartbeat_player = $HeartbeatPlayer
 @onready var ui = $UI
 @onready var debug_affliction_time_left = $TimerLabel
+@onready var world_environment: WorldEnvironment = $WorldEnvironment
+@onready var post_processing: PostProcessing = $PostProcessing
+@onready var cursor: Node2D = $Cursor
 
 signal world_loaded
 signal world_ready
 
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	Global.main = self
+	Global.world_environment = world_environment
+	Global.post_processing = post_processing
+	Global.cursor = cursor
+	
 	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(0.1225)
 	if debug_no_title_screen:
 		load_world_and_player()

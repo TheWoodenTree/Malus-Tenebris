@@ -10,9 +10,13 @@ const SAVE_FILE = "user://savegame.bin"
 var save_data: Dictionary[String, Dictionary]
 var saver_loaders: Array[SaverLoader]
 
+var is_saving := false
+var is_loading := false
+
 
 func save_game():
 	save_started.emit()
+	is_saving = true
 	
 	var new_save_data: Dictionary[String, Dictionary]
 	
@@ -26,11 +30,13 @@ func save_game():
 	
 	save_data = new_save_data
 	
+	is_saving = false
 	saved.emit()
 
 
 func load_game():
 	load_started.emit()
+	is_loading = true
 	
 	if not FileAccess.file_exists(SAVE_FILE):
 		return
@@ -50,6 +56,7 @@ func load_game():
 		var instance_save_data: Dictionary[String, Variant] = save_data[saver_loader.unique_id]
 		saver_loader.load_data(instance_save_data)
 	
+	is_loading = false
 	loaded.emit()
 
 

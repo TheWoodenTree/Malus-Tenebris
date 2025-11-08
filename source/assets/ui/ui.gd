@@ -1,3 +1,4 @@
+class_name UI
 extends Control
 
 const BLUR_TIME: float = 0.1
@@ -48,6 +49,11 @@ func _ready():
 	
 	AfflictionTimer.timeout.connect(notify_hourglass_empty)
 	inventory_menu.item_attached_to_cursor.connect(play_inventory_item_click_sound)
+	
+	Global.ui = self
+	Global.inventory = inventory_menu
+	Global.journal_log = log_entries_menu
+	Global.found_notes = found_notes_menu
 
 
 func _process(_delta):
@@ -173,6 +179,9 @@ func notify_new_log_entry():
 
 
 func notify_hourglass_empty():
+	if SaveManager.is_loading: # Don't play this on loeading a save with no time left
+		return
+	
 	hourglass_empty_player.play()
 	await get_tree().create_timer(1.0, false).timeout
 	var tween1: Tween = get_tree().create_tween()

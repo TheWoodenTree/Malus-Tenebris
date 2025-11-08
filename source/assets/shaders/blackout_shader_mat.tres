@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cghkxoyp8h53j"]
+
+[ext_resource type="Shader" uid="uid://ush2fw243vul" path="res://source/assets/shaders/blackout_shader.gdshader" id="1_ev7bx"]
+
+[resource]
+shader = ExtResource("1_ev7bx")
+shader_parameter/alpha = 0.0

@@ -4,7 +4,6 @@ var items: Dictionary = {}
 var num_slots: int = 9
 
 @onready var saver_loader: SaverLoader = preload("res://source/actors/tools/saver_loader.tscn").instantiate()
-@onready var inventory_menu: Inventory = Global.ui.inventory_menu
 
 
 func _ready() -> void:

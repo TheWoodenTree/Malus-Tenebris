@@ -79,6 +79,8 @@ func _ready() -> void:
 	GlobalSignals.player_exited_safe_room.connect(func(): in_safe_room = false)
 	Global.ui.inventory_opened.connect(stop_holding_item.bind(false))
 	Global.torch.picked_up.connect(_on_torch_picked_up)
+	Global.camera = camera
+	Global.camera_controller = camera_controller
 	state_machine.state_updated.connect(func(state: State): current_state = state)
 	
 	if debug_has_torch:

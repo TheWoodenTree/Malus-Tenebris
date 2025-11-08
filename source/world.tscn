@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://c7jcrmxwgdp31"]
+[gd_scene load_steps=35 format=3 uid="uid://c7jcrmxwgdp31"]
 
+[ext_resource type="Script" uid="uid://ceqo51yfdji12" path="res://source/world.gd" id="1_x1hjs"]
 [ext_resource type="PackedScene" uid="uid://6obgg8cmtaxr" path="res://source/actors/rooms/big_cell2.tscn" id="2_7yt8k"]
 [ext_resource type="PackedScene" uid="uid://dji8r6dqmhn6e" path="res://source/actors/rooms/starting_room.tscn" id="2_nvqo1"]
 [ext_resource type="PackedScene" uid="uid://bd4v75xinikem" path="res://source/actors/rooms/lower_prison_stairway.tscn" id="8_pef6q"]
@@ -54,6 +55,7 @@ radius = 0.1
 height = 0.2
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_x1hjs")
 
 [node name="DefaultSound" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.4339, 0, -44.5)
