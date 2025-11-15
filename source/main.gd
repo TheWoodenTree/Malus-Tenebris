@@ -202,9 +202,9 @@ func set_fear_enabled(enabled: bool): # TODO: Add this to saver loader maybe?
 		Global.player.fear_player.play()
 		Global.player.fear_pulse_player.play()
 		fear_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-		fear_tween.tween_property(Global.player.fear_player, "volume_db", 0.0, 1.5).from_current()
+		fear_tween.tween_property(Global.player.fear_player, "volume_db", -10.0, 1.5).from_current()
 		fear_tween.parallel().tween_property(Global.player.fear_pulse_player, "volume_db", 5.0, 1.5).from_current()
-		fear_tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from_current()
+		#fear_tween.parallel().tween_property(AudioServer.get_bus_effect(1, 0), "cutoff_hz", 1000, 1.5).from_current()
 		fear_tween.parallel().tween_property(Global.zoom_shader, "shader_parameter/intensity", 15.0, 1.5).from_current()
 	else:
 		if fear_tween and fear_tween.is_running():

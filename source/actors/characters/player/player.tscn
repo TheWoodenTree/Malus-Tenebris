@@ -246,4 +246,3 @@ initial_state = NodePath("PlayerIdle")
 [node name="PlayerCrouchWalk" parent="StateMachine" instance=ExtResource("18_ja5ts")]
 
 [node name="SaverLoader" parent="." instance=ExtResource("20_4lx6p")]
-save_properties = Array[String](["global_position", "camera_controller:rotation", "camera_controller:target_rotation", "has_torch", "in_world", "in_safe_room"])

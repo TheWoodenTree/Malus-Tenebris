@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cy75uome0f8gs"]
+
+[ext_resource type="AudioStream" uid="uid://bhku5k4lt7hgt" path="res://source/assets/sounds/walk/monster/stone_footstep_1.wav" id="1_kp684"]
+[ext_resource type="AudioStream" uid="uid://dwx6g8lldvfgv" path="res://source/assets/sounds/walk/monster/stone_footstep_2.wav" id="2_mtsqs"]
+[ext_resource type="AudioStream" uid="uid://dgsx55rp4s6s4" path="res://source/assets/sounds/walk/monster/stone_footstep_3.wav" id="3_n87ad"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("1_kp684")
+stream_1/stream = ExtResource("2_mtsqs")
+stream_2/stream = ExtResource("3_n87ad")
