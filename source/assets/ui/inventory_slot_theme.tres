@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dq0fbwjx1psc"]
+[gd_resource type="Theme" format=3 uid="uid://dq0fbwjx1psc"]
 
 [ext_resource type="Texture2D" uid="uid://dkhyvvyy6y5sq" path="res://source/assets/ui/buttons/inventory_slot.png" id="1_hmucw"]
 [ext_resource type="Texture2D" uid="uid://ba41ffjykwftc" path="res://source/assets/ui/buttons/inventory_slot_disabled.png" id="1_k4pyw"]

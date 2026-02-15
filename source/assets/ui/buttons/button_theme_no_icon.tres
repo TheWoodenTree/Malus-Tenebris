@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=41 format=3 uid="uid://cuilhrwln20t4"]
+[gd_resource type="Theme" format=3 uid="uid://cuilhrwln20t4"]
 
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="1_t5wm4"]
 [ext_resource type="Texture2D" uid="uid://cr08ki5bnqgsa" path="res://source/assets/ui/slider/grabber_horizontal.png" id="2_1vh27"]

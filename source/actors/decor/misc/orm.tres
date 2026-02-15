@@ -1,4 +1,4 @@
-[gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://dcvyav5le6j38"]
+[gd_resource type="GradientTexture1D" format=3 uid="uid://dcvyav5le6j38"]
 
 [sub_resource type="Gradient" id="Gradient_g5slu"]
 interpolation_mode = 1
