@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwlelyi72q35"]
+[gd_scene format=3 uid="uid://bwlelyi72q35"]
 
 [ext_resource type="Script" uid="uid://8nwur2phr8k7" path="res://source/actors/building pieces/basic/block.gd" id="1_mwxld"]
 [ext_resource type="Material" uid="uid://t2en08h4s72k" path="res://source/assets/materials/bricks_2/bricks_2.tres" id="2_qxr2j"]
@@ -10,14 +10,14 @@ material = ExtResource("2_qxr2j")
 [sub_resource type="BoxShape3D" id="2"]
 resource_local_to_scene = true
 
-[node name="TileWall" type="StaticBody3D"]
+[node name="TileWall" type="StaticBody3D" unique_id=1260809392]
 collision_layer = 8193
 collision_mask = 2
 script = ExtResource("1_mwxld")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=854613311]
 mesh = SubResource("1")
 
-[node name="CollisionBox" type="CollisionShape3D" parent="."]
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=510039351]
 visible = false
 shape = SubResource("2")

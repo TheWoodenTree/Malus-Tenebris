@@ -51,7 +51,8 @@ func _ready() -> void:
 	
 	self_light.default_energy = 1.0
 	fire.particles.emitting = false
-	fire.particles.layers = 2
+	fire.particles.layers = 1 << 5
+	#fire.mesh_instance_3d.get_node("MeshInstance3D").layers = 1 << 5
 	fire.light.do_visible_notifier_update = false
 	fire.light.omni_shadow_mode = OmniLight3D.SHADOW_CUBE
 	fire.light.layers = 3

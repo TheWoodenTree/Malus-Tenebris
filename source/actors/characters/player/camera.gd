@@ -41,7 +41,8 @@ var torch_marker_starting_pos: Vector3 = Vector3.ZERO
 @onready var starting_pos: Vector3 = position
 @onready var starting_rot: Vector3 = rotation
 @onready var bob_timer = $BobTimer
-@onready var torch_cam: Camera3D = $ViewportCont/TorchCamViewport/TorchCam
+@onready var torch_cam: Camera3D = $SubViewportContainer/TorchCamViewport/TorchCam
+@onready var flame_cam: Camera3D = $SubViewportContainer2/TorchCamViewport/FlameCam
 
 
 func _ready() -> void:
@@ -64,6 +65,7 @@ func _process(delta):
 		rotation_degrees.z = initial_rotation.z + trauma_max_z * get_shake_intensity() * get_trauma_noise_from_seed(2)
 	
 	torch_cam.global_transform = global_transform
+	flame_cam.global_transform = global_transform
 
 
 func _bob(delta):

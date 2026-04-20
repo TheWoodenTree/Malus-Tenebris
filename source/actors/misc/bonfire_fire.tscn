@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvkn3et73ympv"]
+[gd_scene format=3 uid="uid://bvkn3et73ympv"]
 
 [ext_resource type="Script" uid="uid://cdhh4pts24qxx" path="res://source/actors/misc/fire.gd" id="1_7b1g1"]
 [ext_resource type="PackedScene" uid="uid://dts8smidqdm24" path="res://source/assets/particles/fire_particles.tscn" id="1_t8nnb"]
@@ -14,14 +14,22 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_rxdtn"]
 curve = SubResource("Curve_481dk")
 
-[sub_resource type="Curve" id="10"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244565, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
+[sub_resource type="Gradient" id="Gradient_je305"]
+offsets = PackedFloat32Array(0, 0.26232395, 0.70246476)
+colors = PackedColorArray(0.29685357, 0.506936, 0.9999793, 1, 0.8509804, 0.47843137, 0.17254902, 1, 0.52, 0.15166667, 0.07799999, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxdtn"]
+gradient = SubResource("Gradient_je305")
+
+[sub_resource type="Curve" id="Curve_e808u"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.49612403), 0.0, 0.0, 0, 0, Vector2(0.23974763, 1.2840332), 0.0, 0.0, 0, 0, Vector2(1, 0.167045), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="6"]
-curve = SubResource("10")
+[sub_resource type="CurveTexture" id="CurveTexture_kttsb"]
+curve = SubResource("Curve_e808u")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_66r14"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h87fm"]
 resource_local_to_scene = true
 lifetime_randomness = 0.75
 emission_shape = 6
@@ -37,31 +45,39 @@ initial_velocity_max = 1.5
 gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 1.5
-scale_curve = SubResource("6")
+scale_curve = SubResource("CurveTexture_kttsb")
+color_ramp = SubResource("GradientTexture1D_rxdtn")
 alpha_curve = SubResource("CurveTexture_rxdtn")
 turbulence_noise_strength = 5.46
 turbulence_noise_speed = Vector3(0, 0.5, 0)
 turbulence_influence_max = 1.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q7cig"]
-load_path = "res://.godot/imported/fire_sprite.png-2acc16b9d0e0adcc3396820162410fa9.s3tc.ctex"
+[sub_resource type="Gradient" id="Gradient_egy1h"]
+offsets = PackedFloat32Array(0, 0.5519031, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.82, 0.82, 0.82, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbtr2"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mbakq"]
+gradient = SubResource("Gradient_egy1h")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vd8g"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
-albedo_texture = SubResource("CompressedTexture2D_q7cig")
+vertex_color_is_srgb = true
+albedo_texture = SubResource("GradientTexture2D_mbakq")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8ci4t"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_7bj0g"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_dbtr2")
+material = SubResource("StandardMaterial3D_5vd8g")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
@@ -72,7 +88,7 @@ point_count = 3
 [sub_resource type="CurveTexture" id="14"]
 curve = SubResource("13")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4s5b"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5iwyq"]
 resource_local_to_scene = true
 lifetime_randomness = 0.25
 emission_shape = 1
@@ -94,25 +110,25 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0pb01"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_6qb76"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
 orientation = 2
 
-[node name="Fire" type="Node3D"]
+[node name="Fire" type="Node3D" unique_id=2096954032]
 script = ExtResource("1_7b1g1")
 
-[node name="FireParticles" parent="." instance=ExtResource("1_t8nnb")]
-amount = 128
-process_material = SubResource("ParticleProcessMaterial_66r14")
-draw_pass_1 = SubResource("PlaneMesh_8ci4t")
+[node name="FireParticles" parent="." unique_id=1097056800 instance=ExtResource("1_t8nnb")]
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_h87fm")
+draw_pass_1 = SubResource("PlaneMesh_7bj0g")
 
-[node name="LitFireParticles" parent="." instance=ExtResource("2_4dpfu")]
-process_material = SubResource("ParticleProcessMaterial_o4s5b")
-draw_pass_1 = SubResource("PlaneMesh_0pb01")
+[node name="LitFireParticles" parent="." unique_id=1692223101 instance=ExtResource("2_4dpfu")]
+process_material = SubResource("ParticleProcessMaterial_5iwyq")
+draw_pass_1 = SubResource("PlaneMesh_6qb76")
 
-[node name="Light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="." unique_id=529741090]
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
@@ -120,7 +136,7 @@ shadow_enabled = true
 shadow_caster_mask = 4294967293
 script = ExtResource("4_28q5t")
 
-[node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="Light"]
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="Light" unique_id=1445481855]
 
-[node name="BurningPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="BurningPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1614346013]
 stream = ExtResource("6_rxdtn")

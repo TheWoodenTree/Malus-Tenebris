@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cn620q1tuk8ha"]
+[gd_scene format=4 uid="uid://cn620q1tuk8ha"]
 
 [ext_resource type="Script" uid="uid://bbuo2b7djtklg" path="res://source/actors/characters/player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cs8on8uwk6dd1" path="res://source/actors/characters/player/camera.tscn" id="2"]
@@ -31,6 +31,12 @@ loop_mode = 1
 _data = {
 &"timer": SubResource("Animation_dqclq")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4esr6"]
+blend_mode = 4
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4lx6p"]
+blend_mode = 1
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_fkc5f"]
 
@@ -94,7 +100,10 @@ radius = 8.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_6dsv4"]
 radius = 12.0
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fkc5f"]
+blend_mode = 1
+
+[node name="Player" type="CharacterBody3D" unique_id=607448424]
 collision_layer = 2
 collision_mask = 29
 slide_on_ceiling = false
@@ -104,56 +113,65 @@ floor_snap_length = 1.0
 script = ExtResource("1")
 debug_has_torch = true
 
-[node name="HeadController" type="Node3D" parent="."]
+[node name="HeadController" type="Node3D" parent="." unique_id=525273039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="CameraController" type="Node3D" parent="HeadController"]
+[node name="CameraController" type="Node3D" parent="HeadController" unique_id=483955756]
 script = ExtResource("2_n0c15")
 
-[node name="Camera" parent="HeadController/CameraController" instance=ExtResource("2")]
+[node name="Camera" parent="HeadController/CameraController" unique_id=1824952475 instance=ExtResource("2")]
 cull_mask = 1048573
 trauma_noise = SubResource("FastNoiseLite_4esr6")
 
-[node name="ViewportCont" type="SubViewportContainer" parent="HeadController/CameraController/Camera"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="TorchCamViewport" type="SubViewport" parent="HeadController/CameraController/Camera/ViewportCont"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(512, 288)
-render_target_update_mode = 4
-
-[node name="TorchCam" type="Camera3D" parent="HeadController/CameraController/Camera/ViewportCont/TorchCamViewport"]
-cull_mask = 2
-
-[node name="InteractRaycast" type="RayCast3D" parent="HeadController/CameraController/Camera"]
+[node name="InteractRaycast" type="RayCast3D" parent="HeadController/CameraController/Camera" unique_id=120242315]
 target_position = Vector3(0, 0, -3)
 collision_mask = 32769
 collide_with_areas = true
 script = ExtResource("4_hbv3l")
 
-[node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController/Camera"]
+[node name="BobTimer" type="AnimationPlayer" parent="HeadController/CameraController/Camera" unique_id=410405943]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_crvps")
-}
+libraries/ = SubResource("AnimationLibrary_crvps")
 
-[node name="TorchMarker" type="Marker3D" parent="HeadController/CameraController"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HeadController/CameraController/Camera" unique_id=895104320]
+material = SubResource("CanvasItemMaterial_4esr6")
+offset_right = 512.0
+offset_bottom = 288.0
+
+[node name="TorchCamViewport" type="SubViewport" parent="HeadController/CameraController/Camera/SubViewportContainer" unique_id=567968534]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(512, 288)
+render_target_update_mode = 4
+
+[node name="TorchCam" type="Camera3D" parent="HeadController/CameraController/Camera/SubViewportContainer/TorchCamViewport" unique_id=357208848]
+cull_mask = 2
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HeadController/CameraController/Camera" unique_id=708729382]
+material = SubResource("CanvasItemMaterial_4lx6p")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TorchCamViewport" type="SubViewport" parent="HeadController/CameraController/Camera/SubViewportContainer2" unique_id=1357577087]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(512, 288)
+render_target_update_mode = 4
+
+[node name="FlameCam" type="Camera3D" parent="HeadController/CameraController/Camera/SubViewportContainer2/TorchCamViewport" unique_id=554164289]
+top_level = true
+cull_mask = 32
+
+[node name="TorchMarker" type="Marker3D" parent="HeadController/CameraController" unique_id=1118882698]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999997, 0, 1, 0, 0.9999997, 0, -4.3711385e-08, -0.35540822, -0.20182943, -0.36429355)
 
-[node name="ThrownItemOriginMarker" type="Marker3D" parent="HeadController/CameraController"]
+[node name="ThrownItemOriginMarker" type="Marker3D" parent="HeadController/CameraController" unique_id=1262546679]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999997, 0, 1, 0, 0.9999997, 0, -4.3711385e-08, 0, -0.5, 0)
 
-[node name="HeldItemMarker" type="Marker3D" parent="HeadController/CameraController"]
+[node name="HeldItemMarker" type="Marker3D" parent="HeadController/CameraController" unique_id=2091566678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0096582, -0.5, -1.283)
 
-[node name="BaseLight" type="OmniLight3D" parent="HeadController/CameraController"]
+[node name="BaseLight" type="OmniLight3D" parent="HeadController/CameraController" unique_id=1676523765]
 layers = 3
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
 light_volumetric_fog_energy = 0.0
@@ -161,25 +179,25 @@ light_cull_mask = 4294967279
 shadow_caster_mask = 4294967293
 omni_range = 3.0
 
-[node name="RandomSoundManager" parent="HeadController" instance=ExtResource("5_8g41b")]
+[node name="RandomSoundManager" parent="HeadController" unique_id=279876344 instance=ExtResource("5_8g41b")]
 
-[node name="NoisePlayer" type="AudioStreamPlayer3D" parent="HeadController"]
+[node name="NoisePlayer" type="AudioStreamPlayer3D" parent="HeadController" unique_id=507112961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1887101, 0)
 stream = SubResource("AudioStreamPolyphonic_fkc5f")
 max_polyphony = 5
 
-[node name="HurtSoundPlayer" type="AudioStreamPlayer3D" parent="HeadController"]
+[node name="HurtSoundPlayer" type="AudioStreamPlayer3D" parent="HeadController" unique_id=379826856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3, 0)
 stream = ExtResource("14_kx8ox")
 
-[node name="StandingCollision" type="CollisionShape3D" parent="."]
+[node name="StandingCollision" type="CollisionShape3D" parent="." unique_id=666355525]
 shape = SubResource("CapsuleShape3D_8awoy")
 
-[node name="CrouchingCollision" type="CollisionShape3D" parent="."]
+[node name="CrouchingCollision" type="CollisionShape3D" parent="." unique_id=84091403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852, 0)
 shape = SubResource("CapsuleShape3D_2fjcf")
 
-[node name="AmbientParticles" type="GPUParticles3D" parent="."]
+[node name="AmbientParticles" type="GPUParticles3D" parent="." unique_id=796048471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 cast_shadow = 0
 amount = 5000
@@ -187,62 +205,73 @@ lifetime = 8.0
 process_material = ExtResource("4_sn5wa")
 draw_pass_1 = SubResource("ArrayMesh_kx8ox")
 
-[node name="FloorTypeCheck" type="RayCast3D" parent="."]
+[node name="FloorTypeCheck" type="RayCast3D" parent="." unique_id=1619035859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 target_position = Vector3(0, -3, 0)
 collision_mask = 8192
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="WaterCheck" type="RayCast3D" parent="."]
+[node name="WaterCheck" type="RayCast3D" parent="." unique_id=374759652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 target_position = Vector3(0, -2.65, 0)
 collision_mask = 5
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RucksackPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="RucksackPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1126156348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48871, 0)
 stream = SubResource("AudioStreamRandomizer_v4sui")
 max_polyphony = 5
 
-[node name="FearPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FearPlayer" type="AudioStreamPlayer" parent="." unique_id=939432085]
 stream = ExtResource("8_ulhip")
 volume_db = -50.0
 
-[node name="FearPulsePlayer" type="AudioStreamPlayer" parent="."]
+[node name="FearPulsePlayer" type="AudioStreamPlayer" parent="." unique_id=2084715166]
 stream = ExtResource("11_nxucy")
 volume_db = -50.0
 
-[node name="AllowInteractableSheenArea" type="Area3D" parent="."]
+[node name="AllowInteractableSheenArea" type="Area3D" parent="." unique_id=486036327]
 collision_layer = 2048
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape" type="CollisionShape3D" parent="AllowInteractableSheenArea"]
+[node name="CollisionShape" type="CollisionShape3D" parent="AllowInteractableSheenArea" unique_id=2108218977]
 shape = SubResource("SphereShape3D_helq8")
 
-[node name="FireBurningSoundArea" type="Area3D" parent="."]
+[node name="FireBurningSoundArea" type="Area3D" parent="." unique_id=68825349]
 collision_layer = 16384
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape" type="CollisionShape3D" parent="FireBurningSoundArea"]
+[node name="CollisionShape" type="CollisionShape3D" parent="FireBurningSoundArea" unique_id=542188849]
 shape = SubResource("SphereShape3D_6dsv4")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1088935210 node_paths=PackedStringArray("character", "initial_state")]
 script = ExtResource("15_u2hm4")
 character = NodePath("..")
 initial_state = NodePath("PlayerIdle")
 
-[node name="PlayerIdle" parent="StateMachine" instance=ExtResource("17_4bgui")]
+[node name="PlayerIdle" parent="StateMachine" unique_id=122876919 instance=ExtResource("17_4bgui")]
 
-[node name="PlayerWalk" parent="StateMachine" instance=ExtResource("16_uvj58")]
+[node name="PlayerWalk" parent="StateMachine" unique_id=576838491 instance=ExtResource("16_uvj58")]
 
-[node name="PlayerSprint" parent="StateMachine" instance=ExtResource("19_fkc5f")]
+[node name="PlayerSprint" parent="StateMachine" unique_id=887686404 instance=ExtResource("19_fkc5f")]
 
-[node name="PlayerCrouchIdle" parent="StateMachine" instance=ExtResource("20_4esr6")]
+[node name="PlayerCrouchIdle" parent="StateMachine" unique_id=1032115380 instance=ExtResource("20_4esr6")]
 
-[node name="PlayerCrouchWalk" parent="StateMachine" instance=ExtResource("18_ja5ts")]
+[node name="PlayerCrouchWalk" parent="StateMachine" unique_id=298071484 instance=ExtResource("18_ja5ts")]
 
-[node name="SaverLoader" parent="." instance=ExtResource("20_4lx6p")]
+[node name="SaverLoader" parent="." unique_id=1696755287 instance=ExtResource("20_4lx6p")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1435435049]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2019034621]
+material = SubResource("CanvasItemMaterial_fkc5f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

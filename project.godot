@@ -23,7 +23,7 @@ config/icon="res://source/assets/misc/ex5.png"
 
 [audio]
 
-buses/default_bus_layout="res://source/assets/misc/default_bus_layout.tres"
+buses/default_bus_layout="uid://b1ohsbg8gdgnb"
 mix_rate=48000
 
 [autoload]
@@ -197,6 +197,7 @@ debug_5={
 3d_render/layer_3="interactables"
 3d_render/layer_4="no occlude"
 3d_render/layer_5="hourglass"
+3d_render/layer_6="torch flame"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
 3d_physics/layer_3="monster"

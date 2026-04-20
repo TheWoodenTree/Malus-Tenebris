@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://csjrgcxhntrg"]
+[gd_scene format=3 uid="uid://csjrgcxhntrg"]
 
 [ext_resource type="Script" uid="uid://8nwur2phr8k7" path="res://source/actors/building pieces/basic/block.gd" id="1"]
 [ext_resource type="Material" uid="uid://bwnfoxerqh6yq" path="res://source/assets/materials/flagstone/flagstone.tres" id="2_l7hhi"]
@@ -10,14 +10,14 @@ material = ExtResource("2_l7hhi")
 [sub_resource type="BoxShape3D" id="2"]
 resource_local_to_scene = true
 
-[node name="StoneFloor" type="StaticBody3D"]
+[node name="StoneFloor" type="StaticBody3D" unique_id=1501196785]
 collision_layer = 8193
 collision_mask = 2
 script = ExtResource("1")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1684479107]
 mesh = SubResource("1")
 
-[node name="CollisionBox" type="CollisionShape3D" parent="."]
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=2066493675]
 visible = false
 shape = SubResource("2")

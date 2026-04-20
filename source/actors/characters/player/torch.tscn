@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cukgu0s353k08"]
+[gd_scene format=4 uid="uid://cukgu0s353k08"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_twpvw"]
 [ext_resource type="Script" uid="uid://ti5fa7nyemhr" path="res://source/actors/characters/player/torch.gd" id="2"]
@@ -18,7 +18,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkghg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfndj"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_noxe7")
@@ -27,7 +27,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_sspou"]
+[sub_resource type="Shader" id="Shader_vyco1"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -62,11 +62,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tquro"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7ga4"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_lkghg")
-shader = SubResource("Shader_sspou")
+next_pass = SubResource("ShaderMaterial_lfndj")
+shader = SubResource("Shader_vyco1")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -156,7 +156,7 @@ shadow_mesh = SubResource("ArrayMesh_mnrkw")
 radius = 0.75
 height = 2.25
 
-[node name="Torch" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
+[node name="Torch" unique_id=498605304 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_twpvw")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2")
 default_energy = 3.0
@@ -166,7 +166,7 @@ enable_highlight_light = true
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.284911, 0)
-material_overlay = SubResource("ShaderMaterial_tquro")
+material_overlay = SubResource("ShaderMaterial_q7ga4")
 mesh = SubResource("ArrayMesh_bj70x")
 
 [node name="InteractArea" parent="." index="1"]
@@ -179,33 +179,33 @@ shape = SubResource("CapsuleShape3D_ukkaj")
 [node name="HighlightLight" parent="." index="2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.02473563, 0)
 
-[node name="Fire" parent="." index="3" instance=ExtResource("7_lfndj")]
+[node name="Fire" parent="." index="3" unique_id=287501977 instance=ExtResource("7_lfndj")]
 
-[node name="SwooshPlayer" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="SwooshPlayer" type="AudioStreamPlayer3D" parent="." index="4" unique_id=53488535]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("8_6t08c")
 volume_db = -47.276
 max_db = 6.0
 
-[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
+[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="5" unique_id=907225627]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("10_6t08c")
 
-[node name="MovementParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="6"]
+[node name="MovementParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="6" unique_id=1749772899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18790506, 0)
 top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
 
-[node name="RotationParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="7"]
+[node name="RotationParticleAttractor" type="GPUParticlesAttractorSphere3D" parent="." index="7" unique_id=52771012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18790506, 0)
 top_level = true
 layers = 3
 strength = 0.0
 directionality = 1.0
 
-[node name="SelfLight" type="OmniLight3D" parent="." index="8"]
+[node name="SelfLight" type="OmniLight3D" parent="." index="8" unique_id=371271909]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.41726786, 0)
 layers = 2
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
@@ -215,6 +215,3 @@ light_cull_mask = 4293918722
 omni_range = 0.0
 omni_shadow_mode = 0
 script = ExtResource("8_xv4ds")
-
-[node name="SaverLoader" parent="." index="9"]
-save_properties = Array[String](["interactable", "mesh:scale", "mesh:position", "mesh:layers", "fire:particles:scale", "fire:particles:emitting", "fire:particles:local_coords", "fire:light:omni_range", "fire:light:default_energy", "self_light:visible", "held_by_player", "is_lit", "fire:burning_player:volume_db", "fire:light:enable_flicker"])

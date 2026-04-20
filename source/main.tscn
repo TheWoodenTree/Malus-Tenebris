@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cirivl3wn7ipl"]
+[gd_scene format=3 uid="uid://cirivl3wn7ipl"]
 
 [ext_resource type="AudioStream" uid="uid://bdyspkd0krq5t" path="res://source/assets/sounds/ambience/drones/low_drone.ogg" id="3_qtdgl"]
 [ext_resource type="Script" uid="uid://dc83hot4enxya" path="res://source/main.gd" id="4"]
@@ -75,44 +75,40 @@ shader_parameter/colorScale = 1.0
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_r5lv5"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=997128761]
 script = ExtResource("4")
 anim_vignette_softness = 1.0
 debug_no_title_screen = true
 debug_no_prologue = true
 debug_no_load_from_save = true
 
-[node name="FearAnimPlayer" type="AnimationPlayer" parent="."]
+[node name="FearAnimPlayer" type="AnimationPlayer" parent="." unique_id=252838600]
 root_node = NodePath("../EffectsPlayer")
-libraries = {
-&"": SubResource("AnimationLibrary_7rnte")
-}
+libraries/ = SubResource("AnimationLibrary_7rnte")
 
-[node name="EffectsPlayer" type="AnimationPlayer" parent="."]
+[node name="EffectsPlayer" type="AnimationPlayer" parent="." unique_id=1054821373]
 root_node = NodePath("../PostProcessing")
-libraries = {
-&"": SubResource("AnimationLibrary_211kc")
-}
+libraries/ = SubResource("AnimationLibrary_211kc")
 
-[node name="DronePlayer" type="AudioStreamPlayer" parent="."]
+[node name="DronePlayer" type="AudioStreamPlayer" parent="." unique_id=1556559135]
 stream = ExtResource("3_qtdgl")
 bus = &"Global"
 
-[node name="HeartbeatPlayer" type="AudioStreamPlayer" parent="."]
+[node name="HeartbeatPlayer" type="AudioStreamPlayer" parent="." unique_id=642316226]
 stream = ExtResource("8")
 volume_db = -30.0
 autoplay = true
 
-[node name="DripPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DripPlayer" type="AudioStreamPlayer" parent="." unique_id=1313727844]
 stream = ExtResource("10")
 volume_db = -16.0
 bus = &"Global"
 
-[node name="PlayGameSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PlayGameSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=428636141]
 stream = ExtResource("5_q5r8v")
 volume_db = 5.0
 
-[node name="PostProcessing" type="Control" parent="."]
+[node name="PostProcessing" type="Control" parent="." unique_id=82483335]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,36 +118,36 @@ grow_vertical = 2
 script = ExtResource("6_7rnte")
 heartbeat_curve = ExtResource("7_nfm2e")
 
-[node name="BlackoutBlur" type="ColorRect" parent="PostProcessing"]
+[node name="BlackoutBlur" type="ColorRect" parent="PostProcessing" unique_id=517752773]
 material = SubResource("ShaderMaterial_xy6ro")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 
-[node name="BackBufCopy" type="BackBufferCopy" parent="PostProcessing"]
+[node name="BackBufCopy" type="BackBufferCopy" parent="PostProcessing" unique_id=117233323]
 copy_mode = 2
 
-[node name="Zoom" type="ColorRect" parent="PostProcessing"]
+[node name="Zoom" type="ColorRect" parent="PostProcessing" unique_id=544771782]
 material = ExtResource("6_d62xx")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="BackBufCopy4" type="BackBufferCopy" parent="PostProcessing"]
+[node name="BackBufCopy4" type="BackBufferCopy" parent="PostProcessing" unique_id=1618371363]
 copy_mode = 2
 
-[node name="PainVignette" type="ColorRect" parent="PostProcessing"]
+[node name="PainVignette" type="ColorRect" parent="PostProcessing" unique_id=885084091]
 material = ExtResource("6_kj3sd")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="BackBufCopy3" type="BackBufferCopy" parent="PostProcessing"]
+[node name="BackBufCopy3" type="BackBufferCopy" parent="PostProcessing" unique_id=1773861415]
 visible = false
 copy_mode = 2
 
-[node name="Vignette" type="ColorRect" parent="PostProcessing"]
+[node name="Vignette" type="ColorRect" parent="PostProcessing" unique_id=1597173339]
 visible = false
 material = ExtResource("6_kj3sd")
 custom_minimum_size = Vector2(512, 288)
@@ -159,7 +155,7 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing"]
+[node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing" unique_id=681324538]
 visible = false
 material = ExtResource("8_dshu8")
 custom_minimum_size = Vector2(512, 288)
@@ -167,11 +163,11 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="BackBufCopy1" type="BackBufferCopy" parent="PostProcessing"]
+[node name="BackBufCopy1" type="BackBufferCopy" parent="PostProcessing" unique_id=1830682787]
 visible = false
 copy_mode = 2
 
-[node name="RetroShader" type="ColorRect" parent="PostProcessing"]
+[node name="RetroShader" type="ColorRect" parent="PostProcessing" unique_id=1094413560]
 visible = false
 material = ExtResource("7_768vo")
 custom_minimum_size = Vector2(512, 288)
@@ -179,20 +175,20 @@ layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 
-[node name="HealColorOverlay" type="ColorRect" parent="PostProcessing"]
+[node name="HealColorOverlay" type="ColorRect" parent="PostProcessing" unique_id=1333998994]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 299.0
 color = Color(0, 0.5021107, 0, 0)
 
-[node name="SaverLoader" parent="PostProcessing" instance=ExtResource("17_ks00e")]
+[node name="SaverLoader" parent="PostProcessing" unique_id=1221516097 instance=ExtResource("17_ks00e")]
 
-[node name="UI" parent="." instance=ExtResource("11_kc1x7")]
+[node name="UI" parent="." unique_id=44888025 instance=ExtResource("11_kc1x7")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2099504247]
 environment = ExtResource("12_r5lv5")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=922649334]
 offset_right = 46.0
 offset_bottom = 44.0
 size_flags_horizontal = 0
@@ -202,7 +198,7 @@ theme_override_fonts/font = ExtResource("10_8mkgv")
 theme_override_font_sizes/font_size = 12
 text = "FPS:"
 
-[node name="TimerLabel" type="Label" parent="."]
+[node name="TimerLabel" type="Label" parent="." unique_id=880882648]
 visible = false
 offset_left = 87.0
 offset_top = 1.0
@@ -212,11 +208,11 @@ theme_override_fonts/font = ExtResource("10_8mkgv")
 theme_override_font_sizes/font_size = 16
 text = "Time Left:"
 
-[node name="Cursor" parent="." instance=ExtResource("12_7deiu")]
+[node name="Cursor" parent="." unique_id=418677810 instance=ExtResource("12_7deiu")]
 process_mode = 3
 top_level = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1362639933]
 stream = SubResource("AudioStreamPolyphonic_r5lv5")
 
-[node name="SaverLoader" parent="." instance=ExtResource("17_ks00e")]
+[node name="SaverLoader" parent="." unique_id=1202337839 instance=ExtResource("17_ks00e")]
