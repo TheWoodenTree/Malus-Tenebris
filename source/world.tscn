@@ -69,7 +69,7 @@ visible = false
 shape = SubResource("BoxShape3D_jlowy")
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="." unique_id=1856649203]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.25, -12.9, -46.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 7.8500004, 48.5)
 
 [node name="NavRegion" type="NavigationRegion3D" parent="." unique_id=531065450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 28.5)

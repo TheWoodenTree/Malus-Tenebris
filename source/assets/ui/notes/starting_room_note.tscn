@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cvhwjelug7bvn"]
 
-[node name="Text" type="Label"]
+[node name="Text" type="Label" unique_id=84731282]
 custom_minimum_size = Vector2(800, 0)
 size_flags_horizontal = 4
 text = "Entry 1:
 
 To whoever may read my writing:
 
-My suspicions of this prison aren't unfounded. I know there's something more sinister here than simple executions. The guards wear strange attire I've never seen before, and they refuse to acknowledge my attempts to communicate.
+I feel now that my suspicions of this prison aren't unfounded; there's something more going on here than simple executions. The guards wear strange attire I've never seen before, and whisper about things just out of earshot. I can only make out a few words, and I don't like them.
 
 Entry 2:
 
@@ -17,7 +17,7 @@ The only thing preventing me from succumbing is the prospect of uncovering what 
 
 Entry 3:
 
-I've seen other prisoners being taken from their cells, though not toward where we came in. Some return, others do not. I've yet to be taken, and I can't decide if I would rather leave this wretched cell and likely meet my demise or stay here and rot.
+I've seen other prisoners being taken from their cells, deeper into the prison. Some return, others do not. I've yet to be taken, and I can't decide if I would rather be taken from this wretched cell and likely meet my demise or stay here and rot.
 
 Entry 4:
 
@@ -25,6 +25,6 @@ The hunger pains have subsided as I haven't seen anybody in what feels like days
 
 I discovered a small passage just big enough for me to fit through behind the shelf in the corner of the room. I don't know what lies on the other side, but I cannot bear being left alone with my thoughts much longer.
 
-This may be my chance. Perhaps I won't die here after all.
+Now is my chance. This may be the only opporunity to uncover what the preator has been hiding down here. If I don't find out now, no one ever will.
 "
 autowrap_mode = 2
