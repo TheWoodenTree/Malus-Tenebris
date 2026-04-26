@@ -2,9 +2,10 @@ extends Menu
 
 signal new_note_added(note_button: Button, note_text: String)
 
+const FOUND_NOTE_BUTTON = preload("uid://bmic1mjx57wev")
+
 var button_count: int = 0
 var buttons: Array[Control]
-var button_res: Resource = preload("res://source/assets/ui/buttons/iconless_button.tscn")
 
 @onready var buttons_cont = $Cont/ScrollCont/ButtonsCont
 @onready var tutorial_label = $Cont/TutorialLabel
@@ -30,7 +31,7 @@ func _ready() -> void:
 
 
 func _add_note(note_name: String, note_text: String):
-	var new_button: Control = button_res.instantiate()
+	var new_button: Control = FOUND_NOTE_BUTTON.instantiate()
 	new_button.text = note_name
 	new_button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	new_button.pressed.connect(turn_off_tutorial)
