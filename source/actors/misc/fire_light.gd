@@ -33,6 +33,8 @@ func _set(attribute: StringName, value: Variant):
 	if attribute == 'omni_range':
 		if visible_notifier and do_visible_notifier_update:
 			_update_visible_notifier_aabb(value)
+		return true
+	return false
 
 
 func flicker():
