@@ -1,8 +1,70 @@
-[gd_scene load_steps=10 format=4 uid="uid://c0b82x1nvse65"]
+[gd_scene format=4 uid="uid://c0b82x1nvse65"]
 
 [ext_resource type="PackedScene" uid="uid://csrs2a5ulov1a" path="res://source/actors/building pieces/doors/door_template.tscn" id="1_esbqd"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_2riid"]
 [ext_resource type="Material" uid="uid://cm2ps40hrqn4r" path="res://source/assets/materials/polished_wood/polished_wood.tres" id="2_nu2qq"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="3_pbg2x"]
+
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1w2l"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_2riid")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_jsmqu"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode cull_front;
+
+uniform float outlineSize = 0.02;
+uniform vec3 outlineColor : source_color = vec3(0.961, 0.608, 0.353);
+uniform bool outlineOn = false;
+uniform bool transparent = false;
+
+void vertex()
+{
+	if (outlineOn)
+		VERTEX += NORMAL * outlineSize;
+}
+
+
+void fragment()
+{
+	if (outlineOn)
+		ALBEDO = outlineColor;
+	if (transparent && !outlineOn)
+		ALPHA = 0.0;
+}
+
+
+void light()
+{
+	if (outlineOn)
+	{
+		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
+	}
+}"
+metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbxrl"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_u1w2l")
+shader = SubResource("Shader_jsmqu")
+shader_parameter/outlineSize = 0.02
+shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/outlineOn = false
+shader_parameter/transparent = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0qulm"]
 _surfaces = [{
@@ -68,7 +130,7 @@ size = Vector3(2.25, 3.6, 0.25)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xbxrl"]
 size = Vector3(2.5, 4, 0.5)
 
-[sub_resource type="Shader" id="Shader_2riid"]
+[sub_resource type="Shader" id="Shader_a28tj"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -102,18 +164,19 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajpkn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2riid"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("Shader_2riid")
+shader = SubResource("Shader_a28tj")
 shader_parameter/outlineSize = 0.04
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="CleanWoodDoor" instance=ExtResource("1_esbqd")]
+[node name="CleanWoodDoor" unique_id=9701702 instance=ExtResource("1_esbqd")]
 
 [node name="Door" parent="DraggableBody" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1.125, 0, 0)
+material_overlay = SubResource("ShaderMaterial_xbxrl")
 mesh = SubResource("ArrayMesh_2riid")
 
 [node name="CollisionShape" parent="DraggableBody" index="1"]
@@ -125,4 +188,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83, -0.453)
 shape = SubResource("BoxShape3D_xbxrl")
 
 [node name="Mesh" parent="DraggableBody/Key" index="0"]
-material_overlay = SubResource("ShaderMaterial_ajpkn")
+material_overlay = SubResource("ShaderMaterial_2riid")
