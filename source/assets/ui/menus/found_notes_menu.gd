@@ -1,13 +1,14 @@
 extends Menu
 
-signal new_note_added(note_button: Button, note_text: String)
+signal new_note_added(note_button: Button, note_data: NoteData)
 
-const FOUND_NOTE_BUTTON = preload("uid://bmic1mjx57wev")
+const FOUND_NOTE_ROW = preload("uid://cyar0lqn7nke0")
+const STARTING_ROOM_NOTE = preload("uid://dfrb81cwf31fs")
 
-var button_count: int = 0
-var buttons: Array[Control]
+var row_count: int = 0
+var rows: Array[FoundNoteRow]
 
-@onready var buttons_cont = $Cont/ScrollCont/ButtonsCont
+@onready var rows_cont = $Cont/ScrollCont/RowsCont
 @onready var tutorial_label = $Cont/TutorialLabel
 
 
@@ -15,31 +16,36 @@ func _enter_tree():
 	if not is_node_ready():
 		await ready # Allow onready var to be assigned for the first time
 	
-	for note_name: String in JournalManager.found_notes.keys():
-		var button_exists := false
-		for button: Button in buttons_cont.get_children():
-			if button.text == note_name:
-				button_exists = true
+	for note_data: NoteData in JournalManager.found_notes:
+		var row_exists := false
+		for row: FoundNoteRow in rows_cont.get_children():
+			if row.note_data == note_data:
+				row_exists = true
 				break
 		
-		if not button_exists:
-			_add_note(note_name, JournalManager.found_notes[note_name])
+		if not row_exists:
+			_add_note(note_data)
 
 
 func _ready() -> void:
+	_add_note(STARTING_ROOM_NOTE)
 	tutorial_label.visible = JournalManager.show_note_tutorial
 
 
-func _add_note(note_name: String, note_text: String):
-	var new_button: Control = FOUND_NOTE_BUTTON.instantiate()
-	new_button.text = note_name
-	new_button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	new_button.pressed.connect(turn_off_tutorial)
-	buttons.append(new_button)
-	buttons_cont.add_child(new_button)
-	buttons_cont.move_child(new_button, 0)
-	button_count += 1
-	new_note_added.emit(new_button, note_text)
+func _add_note(note_data: NoteData):
+	var new_row: FoundNoteRow = FOUND_NOTE_ROW.instantiate()
+	new_row.note_data = note_data
+	rows_cont.add_child(new_row)
+	rows_cont.move_child(new_row, 0)
+	
+	if not new_row.is_node_ready():
+		await new_row.ready
+		
+	var button: FoundNoteButton = new_row.found_note_button
+	button.pressed.connect(turn_off_tutorial)
+	rows.append(new_row)
+	row_count += 1
+	new_note_added.emit(button, note_data)
 
 
 func turn_off_tutorial():

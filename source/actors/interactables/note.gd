@@ -4,9 +4,10 @@ const BLUR_TIME = 0.1
 const BACKWARD = 0
 const FORWARD = 1
 
+const PICKUP_SOUND = preload("uid://joprbalclo82")
+
 @export var display_help: bool = false
-@export var note_name: String = "Note"
-@export var label: PackedScene
+@export var note_data: NoteData
 
 var pages: Array
 var num_pages: int
@@ -31,10 +32,6 @@ func _ready() -> void:
 	note_mat = mesh.mesh.surface_get_material(0)
 	
 	Global.ui.note_menu.note = self
-	raw_text = label.instantiate().text
-	pages = raw_text.split("\n[PAGE]\n")
-	num_pages = pages.size()
-	curr_page = 0
 
 
 func _on_target():
@@ -50,19 +47,26 @@ func _on_untarget():
 func _on_interact() -> void:
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
 	if not Global.player.in_menu:
-		Global.ui.note_menu.set_note_text(pages[curr_page])
-		Global.ui.note_menu.note_name = note_name
-		Global.ui.note_menu.set_page_number_text("Page 1/" + str(num_pages))
-		Global.ui.display_menu(Global.ui.note_menu)
+		#Global.ui.note_menu.note_data = note_data
+		#Global.ui.display_menu(Global.ui.note_menu)
 	
 		was_read.emit()
 		if display_help:
 			Global.ui.hint_remove()
 		
 		if not read:
-			JournalManager.add_note(note_name, raw_text.replacen("[PAGE]", ""))
+			JournalManager.add_note(note_data)
 		
 		read = true
+		
+		visible = false
+		for area: InteractArea in interact_areas:
+			area.set_collision_layer_value(16, false)
+		
+		page_turn_player.play()
+		await page_turn_player.finished
+		
+		queue_free()
 
 
 #DEPRECATED

@@ -12,11 +12,14 @@
 [ext_resource type="Script" uid="uid://cp802cbeswiwk" path="res://source/actors/interactables/starting_room_shelf.gd" id="17_7et05"]
 [ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="18_dmy2p"]
 [ext_resource type="PackedScene" uid="uid://fts1qwh5jkyj" path="res://source/actors/decor/misc/plate_w_candle.tscn" id="20_ecudg"]
+[ext_resource type="PackedScene" uid="uid://bjcdhkttl3bub" path="res://source/actors/interactables/pickups/journal.tscn" id="21_k5l6w"]
 [ext_resource type="PackedScene" uid="uid://c1kffo1qignb8" path="res://source/actors/building pieces/basic/corner_trim.tscn" id="21_m0uc5"]
 [ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="22_586v8"]
+[ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="22_sxk03"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="23_x8c7n"]
 [ext_resource type="Script" uid="uid://d1t7xf6d2xtes" path="res://source/actors/rooms/crouch_tutorial.gd" id="24_5ouff"]
+[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="24_us0dx"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25"]
-[ext_resource type="PackedScene" uid="uid://cvuemxunf1nna" path="res://source/actors/interactables/note.tscn" id="25_j1bmi"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dpuxvodfnon0f" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="29_8j33o"]
@@ -24,6 +27,16 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1tr0"]
 size = Vector3(3.5, 3, 2)
+
+[sub_resource type="Resource" id="Resource_vm6ap"]
+resource_local_to_scene = true
+script = ExtResource("23_x8c7n")
+name = "Old Journal"
+texture = ExtResource("24_us0dx")
+pickup_sound = ExtResource("22_sxk03")
+self_useable = null
+hold_rotation_offset = Vector3(0, 0, 180)
+hold_scale_multiplier = null
 
 [node name="StartingRoom" unique_id=1705467340 instance=ExtResource("1_37jl1")]
 
@@ -83,57 +96,52 @@ script = ExtResource("24_5ouff")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.25)
 shape = SubResource("BoxShape3D_f1tr0")
 
-[node name="Note" parent="." index="22" unique_id=242359268 instance=ExtResource("25_j1bmi")]
-unique_name_in_owner = true
-transform = Transform3D(0.689759, 0, 0.724039, 0, 1, 0, -0.724039, 0, 0.689759, -0.799832, 2, -18.1627)
-note_name = "Cell Note"
-
-[node name="RegArchway" parent="." index="23" unique_id=1128904678 instance=ExtResource("29_8j33o")]
+[node name="RegArchway" parent="." index="22" unique_id=1128904678 instance=ExtResource("29_8j33o")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, -12)
 
-[node name="CornerTrim" parent="." index="24" unique_id=954688156 instance=ExtResource("21_m0uc5")]
+[node name="CornerTrim" parent="." index="23" unique_id=954688156 instance=ExtResource("21_m0uc5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -12)
 length1 = 5.5
 length2 = 2.0
 type = "Convex"
 
-[node name="CornerTrim2" parent="." index="25" unique_id=2024011428 instance=ExtResource("21_m0uc5")]
+[node name="CornerTrim2" parent="." index="24" unique_id=2024011428 instance=ExtResource("21_m0uc5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 0.5, -19)
 length1 = 9.0
 length2 = 1.5
 type = "Convex"
 
-[node name="CornerTrim3" parent="." index="26" unique_id=1251771922 instance=ExtResource("21_m0uc5")]
+[node name="CornerTrim3" parent="." index="25" unique_id=1251771922 instance=ExtResource("21_m0uc5")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 4.5, 0.5, -12)
 length1 = 2.0
 length2 = 4.5
 type = "Convex"
 
-[node name="CobbleWall" parent="." index="27" unique_id=1515738047 instance=ExtResource("22_586v8")]
+[node name="CobbleWall" parent="." index="26" unique_id=1515738047 instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 3, -18.75)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="CobbleWall5" parent="." index="28" unique_id=953778984 instance=ExtResource("22_586v8")]
+[node name="CobbleWall5" parent="." index="27" unique_id=953778984 instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -18.75)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="CobbleWall2" parent="." index="29" unique_id=2028935871 instance=ExtResource("22_586v8")]
+[node name="CobbleWall2" parent="." index="28" unique_id=2028935871 instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 3, -12.25)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="CobbleWall3" parent="." index="30" unique_id=1305431108 instance=ExtResource("22_586v8")]
+[node name="CobbleWall3" parent="." index="29" unique_id=1305431108 instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 3, -12.25)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="CobbleWall4" parent="." index="31" unique_id=1902180286 instance=ExtResource("22_586v8")]
+[node name="CobbleWall4" parent="." index="30" unique_id=1902180286 instance=ExtResource("22_586v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 3, -18.75)
 size = Vector3(0.5, 5, 0.5)
 
-[node name="StoneWall2" parent="." index="32" unique_id=406593796 instance=ExtResource("3")]
+[node name="StoneWall2" parent="." index="31" unique_id=406593796 instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -18.75)
 size = Vector3(1, 5, 0.5)
 
-[node name="MoveableShelf1" parent="." index="33" unique_id=726092909 instance=ExtResource("16_crdny")]
+[node name="MoveableShelf1" parent="." index="32" unique_id=726092909 instance=ExtResource("16_crdny")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, -16.8643)
 script = ExtResource("17_7et05")
 move_to_offset = Vector3(2.75, 0, 0)
@@ -145,28 +153,32 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.635
 [node name="FatPot" parent="MoveableShelf1" index="7" unique_id=568099125 instance=ExtResource("9")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.864311, 0.25, 0.25)
 
-[node name="WallShelf" parent="." index="34" unique_id=1560237737 instance=ExtResource("18_dmy2p")]
+[node name="WallShelf" parent="." index="33" unique_id=1560237737 instance=ExtResource("18_dmy2p")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.5, 1.75, -15.5)
 
-[node name="PlateWCandle" parent="." index="35" unique_id=1602194906 instance=ExtResource("20_ecudg")]
+[node name="PlateWCandle" parent="." index="34" unique_id=1602194906 instance=ExtResource("20_ecudg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 2, -18.25)
 default_range = 5.0
 default_energy = 0.25
 lit = false
 shadow_mode = 1
 
-[node name="HangingLamp" parent="." index="36" unique_id=1113786808 instance=ExtResource("28")]
+[node name="HangingLamp" parent="." index="35" unique_id=1113786808 instance=ExtResource("28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -16.5)
 default_range = 8.0
 default_energy = 2.5
 shadow_mode = 1
 
-[node name="Crawlway" parent="." index="37" unique_id=994143671 instance=ExtResource("13")]
+[node name="Crawlway" parent="." index="36" unique_id=994143671 instance=ExtResource("13")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.5, 0.5, -17.5)
 
-[node name="StoneWall" parent="." index="38" unique_id=138971979 instance=ExtResource("3")]
+[node name="StoneWall" parent="." index="37" unique_id=138971979 instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -15.5)
 size = Vector3(11, 1, 9)
 nav_walkable = false
+
+[node name="Journal" parent="." index="38" unique_id=746080816 instance=ExtResource("21_k5l6w")]
+transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, -1, 2, -18.5)
+item_data = SubResource("Resource_vm6ap")
 
 [connection signal="body_entered" from="CrouchTutorial" to="CrouchTutorial" method="_on_body_entered"]

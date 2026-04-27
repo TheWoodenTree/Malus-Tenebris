@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckyx6qrn408pv"]
+[gd_scene format=3 uid="uid://ckyx6qrn408pv"]
 
 [ext_resource type="Script" uid="uid://dhxo4frbgv38m" path="res://source/assets/ui/menus/found_notes_menu.gd" id="1_xdb0a"]
 
-[node name="FoundNotesMenu" type="Control"]
+[node name="FoundNotesMenu" type="Control" unique_id=901960531]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xdb0a")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=1412266844]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,13 +23,13 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ScrollCont" type="ScrollContainer" parent="Cont"]
+[node name="ScrollCont" type="ScrollContainer" parent="Cont" unique_id=1543814595]
 layout_mode = 2
 
-[node name="ButtonsCont" type="VBoxContainer" parent="Cont/ScrollCont"]
+[node name="RowsCont" type="VBoxContainer" parent="Cont/ScrollCont" unique_id=757665128]
 layout_mode = 2
 
-[node name="TutorialLabel" type="Label" parent="Cont"]
+[node name="TutorialLabel" type="Label" parent="Cont" unique_id=2144143611]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Click on the title of a note to read it"

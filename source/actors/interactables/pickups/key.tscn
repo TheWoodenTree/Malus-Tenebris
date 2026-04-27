@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dqlc1s8bbnegp"]
+[gd_scene format=4 uid="uid://dqlc1s8bbnegp"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_wh2hv"]
 [ext_resource type="AudioStream" uid="uid://d2vdsl61h1lnr" path="res://source/assets/sounds/pickup/key_pickup.ogg" id="2_bp65t"]
@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="5_mnwov"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_ndi6h"]
 
-[sub_resource type="Resource" id="Resource_53vmw"]
+[sub_resource type="Resource" id="Resource_ndi6h"]
 resource_local_to_scene = true
 script = ExtResource("3_fvu66")
 name = "Key"
@@ -112,9 +112,9 @@ shadow_mesh = SubResource("ArrayMesh_p2g6y")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6680"]
 height = 1.5
 
-[node name="Key" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_wh2hv")]
+[node name="Key" unique_id=1728693114 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_wh2hv")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item_data = SubResource("Resource_53vmw")
+item_data = SubResource("Resource_ndi6h")
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("Mesh")]
 

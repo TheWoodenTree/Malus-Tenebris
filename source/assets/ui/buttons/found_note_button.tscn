@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dgd4xjl8xregb" path="res://source/assets/ui/buttons/found_note_button.gd" id="2_1fqna"]
 
 [node name="FoundNoteButton" unique_id=293139800 instance=ExtResource("1_dyjwv")]
+offset_right = 34.0
+offset_bottom = 21.0
 size_flags_horizontal = 0
 offset_transform_enabled = true
 script = ExtResource("2_1fqna")

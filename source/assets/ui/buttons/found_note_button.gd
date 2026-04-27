@@ -1,7 +1,7 @@
 class_name FoundNoteButton
 extends IconlessButton
 
-var note_text: String
+var note_data: NoteData
 
 
 func _ready():

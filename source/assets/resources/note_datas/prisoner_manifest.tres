@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://cb8yg3bimqnfx"]
+[gd_resource type="Resource" script_class="NoteData" format=3 uid="uid://bpqcip6hxedlp"]
 
-[node name="PrisonerManifest" type="Label" unique_id=1257568636]
-custom_minimum_size = Vector2(800, 0)
+[ext_resource type="Script" uid="uid://c47e3n15issfv" path="res://source/assets/resources/note_datas/note_data.gd" id="1_he5q5"]
+
+[resource]
+script = ExtResource("1_he5q5")
+title = "Prisoner Manifest"
 text = "Prisoner Manifest
 XXXI May, MCXVIII
 
@@ -12,4 +15,4 @@ Cell A2: Healthy female, age 27. Minor behavioral issues, can be corrected at a 
 Cell A3: Relatively healthy male, age 19. Exceptionally volatile. Futher correction will not prove useful. Disposed of.
 
 Cell A4: Recently aquired healthy male, age unknown, likely 40s. Delayed recommendation until testing can be performed."
-autowrap_mode = 2
+metadata/_custom_type_script = "uid://c47e3n15issfv"

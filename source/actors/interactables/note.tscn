@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://cvuemxunf1nna"]
+[gd_scene format=4 uid="uid://cvuemxunf1nna"]
 
 [ext_resource type="Script" uid="uid://g30cjaos4rle" path="res://source/actors/interactables/note.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_fvl0x"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_8fymt"]
-[ext_resource type="Material" uid="uid://dmm640qoa0ufe" path="res://source/assets/materials/paper/paper.tres" id="3"]
 [ext_resource type="AudioStream" uid="uid://joprbalclo82" path="res://source/assets/sounds/paper/page_turn1.ogg" id="3_jfep5"]
-[ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="3_u3nc3"]
+[ext_resource type="Texture2D" uid="uid://dfy3cq0dqkagy" path="res://source/assets/materials/paper/2Paper001_1K_Color.jpg" id="4_pa7mw"]
 [ext_resource type="AudioStream" uid="uid://doo8csxbtqqq3" path="res://source/assets/sounds/paper/page_turn2.ogg" id="4_uvg2r"]
 [ext_resource type="AudioStream" uid="uid://d3pcryiv1fe37" path="res://source/assets/sounds/paper/page_turn3.ogg" id="5_c7kx5"]
+[ext_resource type="Texture2D" uid="uid://1hk6hqrwi6el" path="res://source/assets/materials/paper/Paper001_1K_NormalGL.jpg" id="5_kdain"]
+[ext_resource type="Texture2D" uid="uid://dgeyiftqc52q6" path="res://source/assets/materials/paper/Paper001_1K_Roughness.jpg" id="6_6l7u0"]
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -16,15 +17,16 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3nc3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6f5y"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_8fymt")
 shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_pa7mw"]
+[sub_resource type="Shader" id="Shader_nhq67"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -58,14 +60,23 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdain"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdw4i"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_u3nc3")
-shader = SubResource("Shader_pa7mw")
+next_pass = SubResource("ShaderMaterial_b6f5y")
+shader = SubResource("Shader_nhq67")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3m51"]
+resource_local_to_scene = true
+albedo_color = Color(0.662745, 0.662745, 0.662745, 1)
+albedo_texture = ExtResource("4_pa7mw")
+roughness_texture = ExtResource("6_6l7u0")
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("5_kdain")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c3nkf"]
 _surfaces = [{
@@ -81,7 +92,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6l7u0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5brbf"]
 resource_local_to_scene = true
 resource_name = "note_Plane"
 _surfaces = [{
@@ -91,7 +102,7 @@ _surfaces = [{
 "index_count": 480,
 "index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABAAHAAYACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFwAWABQAGAAaABkAGwAaABgAHAAeAB0AHAAfAB4AIAAiACEAIAAjACIAJAAmACUAJAAnACYAKAAqACkAKAArACoALAAuAC0ALAAvAC4AMAAyADEAMAAzADIANAA2ADUANwA2ADQAOAA6ADkAOAA7ADoAPAA+AD0APwA+ADwAPQA4ADwAPQA7ADgADgA7AD0ADgARADsADQA9AD4ADQAOAD0AOQAwADEAOQA6ADAAOgAJADAAEgAJADoAOwASADoAEQASADsABgA3ADQABwA3AAYAQAAxAEEAQAA5ADEAQgA5AEAAQgA4ADkAMwAsADIAMwAvACwACgAvADMACgAdAC8ACQAzADAACQAKADMALgBDAC0ALgBEAEMAHgBEAC4AHgBFAEQALwAeAC4AHQAeAC8ARgArACgARgBHACsAQwBIAC0ASQBIAEMASgAtAEgASgAsAC0AJwAhACYAJwAgACEASwAgACcASwBMACAATQAnACQATQBLACcAIwBOACIATwBOACMAUABPACMAUQBPAFAATAAjACAAUAAjAEwAHwBFAB4AHwBSAEUAIgBSAB8AIgBOAFIAIQAfABwAIQAiAB8AFQAbABgAFgAbABUAUwAYAFQAFQAYAFMAVAAZAFUAGAAZAFQAFAAlABcAFAAkACUAVgAkABQAVgBNACQAVgAVAFMAVgAUABUAEwAJABIAEwAIAAkAFwAIABMAFwAlAAgAFgATABAAFgAXABMADwARAA4ADwAQABEAGwAQAA8AGwAWABAAGwAMABoADwAMABsACwAdAAoACwAcAB0AJgAcAAsAJgAhABwAJQALAAgAJQAmAAsAKQAEAAUAKgAEACkAMgBKAFcAMgAsAEoAMQBXAEEAMQAyAFcANgABADUANgAAAAEAPABCAFgAPAA4AEIAWQA8AFgAWQA/ADwAWgBYAEIAWwBYAFoAVwBdAFwAVwBKAF0ASQBeAEgASQBfAF4AYABBAGEAYABAAEEAWgBAAGAAWgBCAEAASABdAEoAXgBdAEgAQQBcAGEAQQBXAFwAYgBYAFsAYgBZAFgAAQBaADUAWwBaAAEABQBdACkAXABdAAUAXwAoAF4AXwBGACgAYAAGADQAYABhAAYAWgA0ADUAWgBgADQAXQAoACkAXgAoAF0AYQAFAAYAYQBcAAUAAgBbAAEAAgBiAFsA"),
 "lods": [0.012636, PackedByteArray("AAADAAIAAgBiAAAAYgBCAAAAYgBZAEIAAABCADUANgAAADUANAA2ADUAQgA0ADUANwA2ADQABgA3ADQABwA3AAYABAAHAAYAYAAGADQAQgBgADQABAAGAAUAYAAFAAYAKQAEAAUAKgAEACkABQBdACkAYABdAAUAKAAqACkAXQAoACkAKAArACoARgArACgARgBHACsAXwBGACgAXwAoAF4AXgAoAF0ASQBfAF4ASQBeAEMAXQBDAF4AXQBEAEMAYABEAF0AUgBFAEQAIQBSAEQAIQBEAGAAIQBOAFIAIQBPAE4AUQBPAFAAUABPAEwATABPACEASwBMACEATQBLACEAVgBNACEAEAAhAGAAVgAhABAAQgAQAGAAVgAQABUAVgAVAFMADQAQAEIAFQBUAFMADAAQAA0AEAAbABUAGwAQAAwAFQAbAFQAGwAMABoAGwAaAFQAVAAaABkAVAAZAFUADQBCADwAPABCAFkADQA8AD4AWQA/ADwAPwA+ADwA"), 0.017022, PackedByteArray("VQAaABkAVgAaAFUAVgBFABoAVgBNAEUATQBLAEUASwBRAEUAUABRAEsARQBEABoAKgAaAEQARABHACoARwArACoAYgAaACoAYgAqADcABwA3ACoAAwBiADcAAgBiAAMA"), 0.0334613, PackedByteArray("BwBiAEQARAArAAcAAwBiAAcAAgBiAAMATQBEAGIAYwBNAGIATQBFAEQATQBRAEUA"), 0.134406, PackedByteArray("BwBiAEkASQBHAAcATQBJAGIATQBRAEkA")],
-"material": ExtResource("3"),
+"material": SubResource("StandardMaterial3D_q3m51"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 100,
@@ -109,10 +120,9 @@ stream_0/stream = ExtResource("3_jfep5")
 stream_1/stream = ExtResource("4_uvg2r")
 stream_2/stream = ExtResource("5_c7kx5")
 
-[node name="Note" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_fvl0x")]
+[node name="Note" unique_id=2146633354 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_fvl0x")]
 script = ExtResource("1")
 display_help = true
-label = ExtResource("3_u3nc3")
 interactable_type = 4
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh")]
@@ -121,14 +131,14 @@ shader_mode = 1
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.005, 0)
-material_overlay = SubResource("ShaderMaterial_kdain")
-mesh = SubResource("ArrayMesh_6l7u0")
+material_overlay = SubResource("ShaderMaterial_qdw4i")
+mesh = SubResource("ArrayMesh_5brbf")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
 shape = SubResource("BoxShape3D_b6f5y")
 
-[node name="PageTurnPlayer" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="PageTurnPlayer" type="AudioStreamPlayer3D" parent="." index="3" unique_id=1952215327]
 stream = SubResource("AudioStreamRandomizer_nhq67")
 attenuation_model = 3
 max_polyphony = 5

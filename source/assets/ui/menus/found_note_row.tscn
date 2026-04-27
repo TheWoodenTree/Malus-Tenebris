@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cyar0lqn7nke0"]
+
+[ext_resource type="Script" uid="uid://dbisnmtj5tyni" path="res://source/assets/ui/menus/found_note_row.gd" id="1_yeits"]
+[ext_resource type="Texture2D" uid="uid://dsbo2ckm6xtwh" path="res://source/assets/ui/misc/important_marker.png" id="2_vy7rg"]
+[ext_resource type="PackedScene" uid="uid://bmic1mjx57wev" path="res://source/assets/ui/buttons/found_note_button.tscn" id="3_qjwxb"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=773853768]
+offset_right = 70.0
+offset_bottom = 40.0
+script = ExtResource("1_yeits")
+
+[node name="ImportantIcon" type="TextureRect" parent="." unique_id=1188863306]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -1)
+texture = ExtResource("2_vy7rg")
+stretch_mode = 2
+
+[node name="FoundNoteButton" parent="." unique_id=293139800 instance=ExtResource("3_qjwxb")]
+layout_mode = 2

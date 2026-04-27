@@ -1,14 +1,11 @@
 extends Menu
 
 var note # Set by the note object in-game that summons this note screen
-var note_name: String
-var note_text: String
-var page_number_text: String
+var note_data: NoteData
 
 @onready var note_name_label = $Cont/VBoxCont/PanelCont/NoteName
-@onready var left_button: Button = $Cont/VBoxCont/HBoxCont/LeftButton
-@onready var right_button: Button = $Cont/VBoxCont/HBoxCont/RightButton
 @onready var scroll_cont: ScrollContainer = $Cont/VBoxCont/ScrollCont
+@onready var text_label: Label = $Cont/VBoxCont/ScrollCont/Text
 
 
 func _enter_tree():
@@ -16,14 +13,7 @@ func _enter_tree():
 		await ready
 	
 	scroll_cont.scroll_vertical = 0
-	update_note_name()
-
-
-func _ready():
-	set_note_text(note_text)
-	left_button.disabled = true
-	if note.num_pages == 1:
-		right_button.disabled = true
+	update()
 
 
 #func _process(_delta):
@@ -33,18 +23,9 @@ func _ready():
 #		note.turn_page(note.BACKWARD)
 
 
-func set_note_text(text):
-	note_text = text
-	$Cont/VBoxCont/ScrollCont/Text.text = note_text
-
-
-func update_note_name():
-	note_name_label.text = note_name
-
-
-func set_page_number_text(text):
-	page_number_text = text
-	$Cont/VBoxCont/HBoxCont/PageNumber.text = page_number_text
+func update():
+	note_name_label.text = note_data.title
+	text_label.text = note_data.text
 
 
 func _on_close_button_pressed():

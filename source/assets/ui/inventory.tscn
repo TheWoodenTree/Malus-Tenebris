@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://daiit8sip3qoj"]
+[gd_scene format=3 uid="uid://daiit8sip3qoj"]
 
 [ext_resource type="Script" uid="uid://ceymoomowpskj" path="res://source/assets/ui/inventory.gd" id="1_0pmc3"]
 [ext_resource type="Texture2D" uid="uid://bok3qh5mh0w5o" path="res://source/assets/ui/inventory/inventory_bag.png" id="2_0xxye"]
@@ -136,7 +136,7 @@ _data = {
 &"scroll_right": SubResource("Animation_pswr1")
 }
 
-[node name="Inventory" type="Control"]
+[node name="Inventory" type="Control" unique_id=1196994950]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -147,7 +147,7 @@ script = ExtResource("1_0pmc3")
 open_sound = SubResource("AudioStreamRandomizer_0gcld")
 close_sound = SubResource("AudioStreamRandomizer_crqe2")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=1125532384]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
@@ -156,7 +156,7 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="SackTexture" type="TextureRect" parent="Cont"]
+[node name="SackTexture" type="TextureRect" parent="Cont" unique_id=1198717277]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -164,50 +164,50 @@ mouse_filter = 2
 texture = ExtResource("2_0xxye")
 stretch_mode = 2
 
-[node name="SlotCont" type="MarginContainer" parent="Cont"]
+[node name="SlotCont" type="MarginContainer" parent="Cont" unique_id=24668376]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/margin_left = 0
 
-[node name="SlotGrid" type="GridContainer" parent="Cont/SlotCont"]
+[node name="SlotGrid" type="GridContainer" parent="Cont/SlotCont" unique_id=1488990509]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 0
 columns = 15
 
-[node name="ItemSlot1" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot1" parent="Cont/SlotCont/SlotGrid" unique_id=2015589895 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot2" parent="Cont/SlotCont/SlotGrid" unique_id=2027018282 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot3" parent="Cont/SlotCont/SlotGrid" unique_id=1572367877 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot4" parent="Cont/SlotCont/SlotGrid" unique_id=211681867 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot5" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot5" parent="Cont/SlotCont/SlotGrid" unique_id=145860863 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot6" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot6" parent="Cont/SlotCont/SlotGrid" unique_id=1822461397 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot7" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot7" parent="Cont/SlotCont/SlotGrid" unique_id=91080911 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot8" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot8" parent="Cont/SlotCont/SlotGrid" unique_id=1743919429 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="ItemSlot9" parent="Cont/SlotCont/SlotGrid" groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
+[node name="ItemSlot9" parent="Cont/SlotCont/SlotGrid" unique_id=164732530 groups=["inventory_item_slots"] instance=ExtResource("2_7krhi")]
 layout_mode = 2
 
-[node name="VboxCont" type="VBoxContainer" parent="Cont"]
+[node name="VboxCont" type="VBoxContainer" parent="Cont" unique_id=242536675]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="TutorialLabel" type="Label" parent="Cont/VboxCont"]
+[node name="TutorialLabel" type="Label" parent="Cont/VboxCont" unique_id=1507700137]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 3
@@ -216,12 +216,12 @@ theme_override_fonts/font = ExtResource("7_wltyg")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="Cont/VboxCont"]
+[node name="HSeparator2" type="HSeparator" parent="Cont/VboxCont" unique_id=7297954]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gq48e")
 
-[node name="ItemNameLabel" type="Label" parent="Cont/VboxCont"]
+[node name="ItemNameLabel" type="Label" parent="Cont/VboxCont" unique_id=967409757]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
@@ -230,33 +230,33 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="HboxCont" type="HBoxContainer" parent="Cont/VboxCont"]
+[node name="HboxCont" type="HBoxContainer" parent="Cont/VboxCont" unique_id=1291068839]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 alignment = 1
 
-[node name="InventoryLeftButton" parent="Cont/VboxCont/HboxCont" instance=ExtResource("3_ggwby")]
+[node name="InventoryLeftButton" parent="Cont/VboxCont/HboxCont" unique_id=1543984984 instance=ExtResource("3_ggwby")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="Separator" type="TextureRect" parent="Cont/VboxCont/HboxCont"]
+[node name="Separator" type="TextureRect" parent="Cont/VboxCont/HboxCont" unique_id=180860289]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("4_dgkkr")
 stretch_mode = 2
 flip_h = true
 
-[node name="Spacer1" type="VSeparator" parent="Cont/VboxCont/HboxCont"]
+[node name="Spacer1" type="VSeparator" parent="Cont/VboxCont/HboxCont" unique_id=197456620]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 68
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rg58c")
 
-[node name="SelectSlotFrame" type="TextureRect" parent="Cont/VboxCont/HboxCont"]
+[node name="SelectSlotFrame" type="TextureRect" parent="Cont/VboxCont/HboxCont" unique_id=1539324818]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -264,46 +264,44 @@ mouse_filter = 2
 texture = ExtResource("10_kr08j")
 stretch_mode = 2
 
-[node name="Spacer2" type="VSeparator" parent="Cont/VboxCont/HboxCont"]
+[node name="Spacer2" type="VSeparator" parent="Cont/VboxCont/HboxCont" unique_id=472251615]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 68
 theme_override_styles/separator = SubResource("StyleBoxEmpty_kq73y")
 
-[node name="Separator2" type="TextureRect" parent="Cont/VboxCont/HboxCont"]
+[node name="Separator2" type="TextureRect" parent="Cont/VboxCont/HboxCont" unique_id=1552196217]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("4_dgkkr")
 stretch_mode = 2
 
-[node name="InventoryRightButton" parent="Cont/VboxCont/HboxCont" instance=ExtResource("5_mw4ew")]
+[node name="InventoryRightButton" parent="Cont/VboxCont/HboxCont" unique_id=1195055121 instance=ExtResource("5_mw4ew")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="HSeparator" type="HSeparator" parent="Cont/VboxCont"]
+[node name="HSeparator" type="HSeparator" parent="Cont/VboxCont" unique_id=925338144]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 100
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ylphs")
 
-[node name="CloseMenuButton" parent="Cont" instance=ExtResource("12_gp61h")]
+[node name="CloseMenuButton" parent="Cont" unique_id=1683048404 instance=ExtResource("12_gp61h")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="ScrollAnimPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xph6x")
-}
+[node name="ScrollAnimPlayer" type="AnimationPlayer" parent="." unique_id=409418451]
+libraries/ = SubResource("AnimationLibrary_xph6x")
 
-[node name="SlotScrollPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SlotScrollPlayer" type="AudioStreamPlayer" parent="." unique_id=1685821178]
 stream = ExtResource("7_1ols8")
 volume_db = -5.0
 max_polyphony = 16
 
-[node name="ItemClickPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ItemClickPlayer" type="AudioStreamPlayer" parent="." unique_id=469357690]
 bus = &"General (lite)"
 
 [connection signal="button_up" from="Cont/VboxCont/HboxCont/InventoryLeftButton" to="." method="_on_inventory_left_button_button_up"]

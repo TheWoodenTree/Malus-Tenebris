@@ -8,11 +8,20 @@ extends Menu
 @onready var submenu_cont = $Cont/VBoxCont/SubmenuCont
 
 
+func _enter_tree() -> void:
+	if not is_node_ready():
+		await ready
+	
+	var has_log_entries: bool = JournalManager.log_entries.size() > 0
+	log_entries_button.visible = has_log_entries
+	v_sep_1.visible = has_log_entries
+
+
 func _ready():
 	Global.ui.found_notes_menu.new_note_added.connect(connect_note_button)
 	Global.ui.in_journal_note_menu.back_button_pressed.connect(change_menu.bind(Global.ui.found_notes_menu))
-	submenu_cont.add_child(Global.ui.log_entries_menu)
-	log_entries_button.select()
+	submenu_cont.add_child(Global.ui.found_notes_menu)
+	found_notes_button.select()
 
 
 func _exit_tree():
@@ -32,13 +41,13 @@ func _on_found_notes_button_pressed():
 	log_entries_button.deselect()
 
 
-func connect_note_button(note_button: Button, note_text: String):
-	note_button.pressed.connect(note_button_pressed.bind(note_text))
+func connect_note_button(note_button: Button, note_data: NoteData):
+	note_button.pressed.connect(note_button_pressed.bind(note_data))
 
 
-func note_button_pressed(note_text: String):
-	Global.ui.in_journal_note_menu.note_text = note_text.replacen("[PAGE]", "")
-	#Global.ui.in_journal_note_menu.set_page_number_text("Page 1/" + str(3))
+func note_button_pressed(note_data: NoteData):
+	Global.ui.in_journal_note_menu.note_data = note_data
+	note_data.was_read = true
 	change_menu(Global.ui.in_journal_note_menu)
 
 

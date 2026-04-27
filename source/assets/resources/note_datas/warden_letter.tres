@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://d8vsesbsx5ns"]
+[gd_resource type="Resource" script_class="NoteData" format=3 uid="uid://b6gemig21enyu"]
 
-[node name="WardenNote" type="Label" unique_id=1295584678]
-custom_minimum_size = Vector2(800, 0)
+[ext_resource type="Script" uid="uid://c47e3n15issfv" path="res://source/assets/resources/note_datas/note_data.gd" id="1_8hotr"]
+
+[resource]
+script = ExtResource("1_8hotr")
+title = "Letter to Praetor"
 text = "Praetor,
 
 I regret to inform you that conditions have been deteriorating since the recent rainfall. Diversion of the flood waters to the depths became critical. It being an ancient sewer system, however old, this made the most sense.
@@ -15,4 +18,4 @@ While my apothecary has been working to create a cure, the circumstances surroun
 In the interest of good faith, we have begun to expedite the Atonement rituals despite the current conditions. Perhaps He will reward us.
 
 Gloria Mars Ultor"
-autowrap_mode = 2
+metadata/_custom_type_script = "uid://c47e3n15issfv"

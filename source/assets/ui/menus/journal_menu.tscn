@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://be0iw55afdwry"]
+[gd_scene format=3 uid="uid://be0iw55afdwry"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_04k3r"]
 [ext_resource type="Script" uid="uid://bk0tl52vy2062" path="res://source/assets/ui/menus/journal_menu.gd" id="2_js0g1"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://btkdnefp2h41d" path="res://source/assets/sounds/ui/journal_close.ogg" id="4_hgs1l"]
 [ext_resource type="PackedScene" uid="uid://1hcg08j1wd6k" path="res://source/assets/ui/buttons/tab_button.tscn" id="6_v2h2v"]
 
-[node name="JournalMenu" type="Control"]
+[node name="JournalMenu" type="Control" unique_id=1266064359]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,60 +21,62 @@ navigation_sound = ExtResource("3_mnjjw")
 open_sound = ExtResource("3_2t6h2")
 close_sound = ExtResource("4_hgs1l")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=464205905]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont" unique_id=2104536371]
 layout_mode = 2
 
-[node name="Cont" type="MarginContainer" parent="Cont/VBoxCont"]
+[node name="Cont" type="MarginContainer" parent="Cont/VBoxCont" unique_id=1179505912]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 
-[node name="PanelCont" type="PanelContainer" parent="Cont/VBoxCont/Cont"]
+[node name="PanelCont" type="PanelContainer" parent="Cont/VBoxCont/Cont" unique_id=54709900]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont/Cont/PanelCont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont/Cont/PanelCont" unique_id=199588278]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="LogEntriesButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" instance=ExtResource("6_v2h2v")]
+[node name="FoundNotesButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" unique_id=220204207 instance=ExtResource("6_v2h2v")]
+layout_mode = 2
+text = "Notes"
+
+[node name="VSep1" type="VSeparator" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" unique_id=1950152396]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="LogEntriesButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" unique_id=858933112 instance=ExtResource("6_v2h2v")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Log Entries"
 
-[node name="VSep1" type="VSeparator" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont"]
+[node name="VSep2" type="VSeparator" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" unique_id=1515648435]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="FoundNotesButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" instance=ExtResource("6_v2h2v")]
-layout_mode = 2
-text = "Found Notes"
-
-[node name="VSep2" type="VSeparator" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont"]
-custom_minimum_size = Vector2(16, 0)
+[node name="CloseMenuButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" unique_id=1602449740 instance=ExtResource("4_eysq1")]
 layout_mode = 2
 
-[node name="CloseMenuButton" parent="Cont/VBoxCont/Cont/PanelCont/HBoxCont" instance=ExtResource("4_eysq1")]
-layout_mode = 2
-
-[node name="JournalLabel" type="Label" parent="Cont/VBoxCont/Cont"]
+[node name="JournalLabel" type="Label" parent="Cont/VBoxCont/Cont" unique_id=1235275453]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 28
 text = "Journal"
 
-[node name="SubmenuCont" type="MarginContainer" parent="Cont/VBoxCont"]
+[node name="SubmenuCont" type="MarginContainer" parent="Cont/VBoxCont" unique_id=822423620]
 layout_mode = 2
 size_flags_vertical = 3
 
-[connection signal="pressed" from="Cont/VBoxCont/Cont/PanelCont/HBoxCont/LogEntriesButton" to="." method="_on_log_entries_button_pressed"]
 [connection signal="pressed" from="Cont/VBoxCont/Cont/PanelCont/HBoxCont/FoundNotesButton" to="." method="_on_found_notes_button_pressed"]
+[connection signal="pressed" from="Cont/VBoxCont/Cont/PanelCont/HBoxCont/LogEntriesButton" to="." method="_on_log_entries_button_pressed"]

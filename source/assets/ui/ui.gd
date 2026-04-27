@@ -73,7 +73,6 @@ func _process(_delta):
 		elif Global.player.in_world:
 			display_menu(pause_menu)
 	
-	
 	#elif Input.is_action_just_pressed("journal"):
 	#	display_menu(journal_menu)
 

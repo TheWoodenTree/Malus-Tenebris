@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cta7frnp42d7n"]
+[gd_scene format=3 uid="uid://cta7frnp42d7n"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_ekkxf"]
 [ext_resource type="Script" uid="uid://cova4eatqdniw" path="res://source/assets/ui/notes/note_menu.gd" id="2_gbm8k"]
@@ -7,11 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cvhwjelug7bvn" path="res://source/assets/ui/notes/starting_room_note.tscn" id="5_1mbmv"]
 [ext_resource type="FontFile" uid="uid://c1wdfxdb26j27" path="res://source/assets/fonts/Quikhand.ttf" id="6_0cqhn"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="7_n1fh4"]
-[ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="8_bs6yc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnnfj"]
-
-[node name="NoteMenu" type="Control"]
+[node name="NoteMenu" type="Control" unique_id=1647263198]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +23,7 @@ script = ExtResource("2_gbm8k")
 open_sound = ExtResource("3_dntnp")
 close_sound = ExtResource("4_0y1tx")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=622257512]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,29 +35,29 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont" unique_id=1864131705]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PanelCont" type="PanelContainer" parent="Cont/VBoxCont"]
+[node name="PanelCont" type="PanelContainer" parent="Cont/VBoxCont" unique_id=1379553831]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_ekkxf")
 
-[node name="NoteName" type="Label" parent="Cont/VBoxCont/PanelCont"]
+[node name="NoteName" type="Label" parent="Cont/VBoxCont/PanelCont" unique_id=230005303]
 layout_mode = 2
 text = "To Whom it May Concern"
 
-[node name="HSeparator" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="HSeparator" type="HSeparator" parent="Cont/VBoxCont" unique_id=1047516489]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 
-[node name="ScrollCont" type="ScrollContainer" parent="Cont/VBoxCont"]
+[node name="ScrollCont" type="ScrollContainer" parent="Cont/VBoxCont" unique_id=1347145494]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_ekkxf")
 
-[node name="Text" parent="Cont/VBoxCont/ScrollCont" instance=ExtResource("5_1mbmv")]
+[node name="Text" parent="Cont/VBoxCont/ScrollCont" unique_id=1699192866 instance=ExtResource("5_1mbmv")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -73,55 +70,12 @@ Though my attempts to synthesize a cure have been progressing at a steady rate, 
 [PAGE]
 I fear the plague will spread faster than I can work to contain it, as even the most recent iteration of the cure is only effective for a very brief duration, after which the symptoms begin to manifest themselves again."
 
-[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont" unique_id=1787168175]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("1_ekkxf")
 alignment = 1
 
-[node name="CloseMenuButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("7_n1fh4")]
+[node name="CloseMenuButton" parent="Cont/VBoxCont/HBoxCont" unique_id=1446428108 instance=ExtResource("7_n1fh4")]
 layout_mode = 2
-
-[node name="Separator" type="VSeparator" parent="Cont/VBoxCont/HBoxCont"]
-visible = false
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
-
-[node name="LeftButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("8_bs6yc")]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Prev"
-
-[node name="Separator2" type="VSeparator" parent="Cont/VBoxCont/HBoxCont"]
-visible = false
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
-
-[node name="RightButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("8_bs6yc")]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Next"
-
-[node name="PageNumber" type="Label" parent="Cont/VBoxCont/HBoxCont"]
-visible = false
-custom_minimum_size = Vector2(75, 0)
-layout_direction = 2
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Page 1/2"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="Cont/VBoxCont/HBoxCont"]
-visible = false
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_qnnfj")
-
-[connection signal="pressed" from="Cont/VBoxCont/HBoxCont/LeftButton" to="." method="_on_left_button_pressed"]
-[connection signal="pressed" from="Cont/VBoxCont/HBoxCont/RightButton" to="." method="_on_right_button_pressed"]

@@ -2,7 +2,7 @@ extends Menu
 
 signal back_button_pressed
 
-var note_text: String
+var note_data: NoteData
 
 @onready var note_text_label: Label = $Cont/VBoxCont/ScrollCont/Text
 @onready var back_button = $Cont/VBoxCont/HBoxCont/BackButton
@@ -14,7 +14,7 @@ func _enter_tree():
 		await ready
 	
 	scroll_cont.scroll_vertical = 0
-	note_text_label.text = note_text
+	note_text_label.text = note_data.text
 
 
 func _on_back_button_pressed():
