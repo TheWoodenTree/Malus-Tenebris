@@ -139,7 +139,7 @@ func _physics_process(delta: float) -> void:
 
 #TODO: Fix camera bobbing for sprint affecting crouch camera bobbing
 func _handle_input():
-	if Input.is_action_just_pressed("cancel") and held_item_data and not Global.ui.block_inventory_open:
+	if Input.is_action_just_pressed("cancel") and held_item_data and not Global.ui.block_inventory_open and not in_menu:
 		stop_holding_item(true)
 	
 	if Input.is_action_just_pressed("noclip"):
@@ -258,6 +258,9 @@ func hold_item(item_data: ItemData, play_sound: bool = false):
 	held_item.scale *= item_data.hold_scale_multiplier
 	if play_sound:
 		rucksack_player.play()
+	
+	if not GameState.has_flag(GameState.Flag.HELD_FIRST_ITEM):
+		GameState.set_flag(GameState.Flag.HELD_FIRST_ITEM)
 	
 	if not GameState.has_flag(GameState.Flag.HELD_CELL_HALL_KEY) \
 			and is_holding_item(ItemRegistry.ID.CELL_HALL_KEY) \

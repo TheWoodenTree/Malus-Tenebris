@@ -30,6 +30,9 @@ func _enter_tree():
 	if not is_node_ready():
 		await ready
 	
+	if GameState.has_flag(GameState.Flag.HELD_FIRST_ITEM):
+		set_tutorial_on(false)
+	
 	if slot_grid:
 		update_slots_item_datas()
 		update_slot_hotkey_symbols()
@@ -56,7 +59,7 @@ func _ready():
 	move_slot_to_back()
 	move_slot_to_back()
 	
-	if not Global.player.debug_no_tutorials:
+	if tutorial_on and not Global.player.debug_no_tutorials:
 		tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
 	
 	for slot: ItemSlot in slot_grid.get_children():

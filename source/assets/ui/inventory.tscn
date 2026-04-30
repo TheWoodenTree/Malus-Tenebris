@@ -146,7 +146,6 @@ grow_vertical = 2
 script = ExtResource("1_0pmc3")
 open_sound = SubResource("AudioStreamRandomizer_0gcld")
 close_sound = SubResource("AudioStreamRandomizer_crqe2")
-close_action = null
 
 [node name="Cont" type="MarginContainer" parent="." unique_id=1125532384]
 layout_mode = 0
