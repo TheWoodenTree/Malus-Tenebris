@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://baapn46f55fhe" path="res://source/actors/building pieces/pillar.tscn" id="5_7mnj0"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="7_2fqkl"]
 [ext_resource type="PackedScene" uid="uid://dd46328ws5rmd" path="res://source/actors/decor/furniture/standing_lamp.tscn" id="10_20fdr"]
-[ext_resource type="PackedScene" uid="uid://d8vsesbsx5ns" path="res://source/assets/ui/notes/warden_note.tscn" id="10_l0rlp"]
 [ext_resource type="PackedScene" uid="uid://e1yqv4j55g10" path="res://source/actors/decor/furniture/large_table.tscn" id="10_m581c"]
 [ext_resource type="PackedScene" uid="uid://cjbokef3jjder" path="res://source/actors/decor/furniture/chair.tscn" id="11_lk0u3"]
 [ext_resource type="PackedScene" uid="uid://i5hrnoctaqf8" path="res://source/actors/decor/kitchen/plate_2.tscn" id="12_2q1xt"]
@@ -26,11 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="29_6nf2q"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="30_yxp60"]
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/interactables/pickups/key.tscn" id="31_4l2yx"]
-[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="32_2l4ou"]
 [ext_resource type="PackedScene" uid="uid://df2cwwndarx36" path="res://source/actors/decor/furniture/shelf_2.tscn" id="33_cstxe"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="33_xtbsr"]
 [ext_resource type="PackedScene" uid="uid://bx4c82xi8bksb" path="res://source/actors/decor/groups/books_1.tscn" id="34_agt8x"]
-[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="34_ho68n"]
 [ext_resource type="PackedScene" uid="uid://cid4xuq72t4q7" path="res://source/actors/decor/groups/books_3.tscn" id="35_5at0i"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="35_l61dk"]
 [ext_resource type="PackedScene" uid="uid://crsbreiuabhvi" path="res://source/actors/decor/groups/books_6.tscn" id="36_ngbtd"]
@@ -41,14 +37,6 @@
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="40_3p52f"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="40_r25ax"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="40_slg03"]
-
-[sub_resource type="Resource" id="Resource_wwn82"]
-script = ExtResource("33_xtbsr")
-name = "Sump Tunnels Key"
-texture = ExtResource("34_ho68n")
-pickup_sound = ExtResource("32_2l4ou")
-hold_rotation_offset = Vector3(0, 200, 90)
-hold_scale_multiplier = 0.5
 
 [node name="WardenChamber" unique_id=1602969756 instance=ExtResource("1_f6ds1")]
 
@@ -265,8 +253,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2, -13.75)
 
 [node name="Scroll1" parent="." index="62" unique_id=406964970 instance=ExtResource("20_38yva")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1.81549, 2, -12.5819)
-note_name = "Letter to the Praetor"
-label = ExtResource("10_l0rlp")
 note_data = ExtResource("21_g5x0j")
 
 [node name="Scroll2" parent="." index="63" unique_id=2038336960 instance=ExtResource("21_hc1k4")]
@@ -296,7 +282,7 @@ shadow_mode = 1
 
 [node name="Key" parent="." index="71" unique_id=2010575980 instance=ExtResource("31_4l2yx")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 1, 2, -12)
-item_data = SubResource("Resource_wwn82")
+item_id = 8
 
 [node name="WoodFloor2" parent="." index="72" unique_id=776943192 instance=ExtResource("35_l61dk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -11.75)

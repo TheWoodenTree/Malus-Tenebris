@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://drvjrexbrri0j"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://drvjrexbrri0j"]
 
 [ext_resource type="Shader" uid="uid://cxunvbp71lvtd" path="res://source/assets/ui/inventory_slot.gdshader" id="1_kggyp"]
 
 [resource]
 shader = ExtResource("1_kggyp")
+shader_parameter/enabled = true
 shader_parameter/num_slots = 3

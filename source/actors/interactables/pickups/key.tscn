@@ -2,19 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_wh2hv"]
 [ext_resource type="AudioStream" uid="uid://d2vdsl61h1lnr" path="res://source/assets/sounds/pickup/key_pickup.ogg" id="2_bp65t"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_fvu66"]
-[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="4_hhjbt"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="5_mnwov"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_ndi6h"]
-
-[sub_resource type="Resource" id="Resource_ndi6h"]
-resource_local_to_scene = true
-script = ExtResource("3_fvu66")
-name = "Key"
-texture = ExtResource("4_hhjbt")
-pickup_sound = ExtResource("2_bp65t")
-hold_rotation_offset = Vector3(0, 200, -90)
-hold_scale_multiplier = 0.5
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -23,7 +12,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_40320"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dmpj"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_ndi6h")
@@ -32,7 +21,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_n2kun"]
+[sub_resource type="Shader" id="Shader_qw420"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -67,11 +56,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrdpc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndi6h"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_40320")
-shader = SubResource("Shader_n2kun")
+next_pass = SubResource("ShaderMaterial_6dmpj")
+shader = SubResource("Shader_qw420")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -114,17 +103,17 @@ height = 1.5
 
 [node name="Key" unique_id=1728693114 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_wh2hv")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item_data = SubResource("Resource_ndi6h")
+item_id = 7
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_xrdpc")
+material_overlay = SubResource("ShaderMaterial_ndi6h")
 mesh = SubResource("ArrayMesh_bith5")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.333875)
 shape = SubResource("CapsuleShape3D_q6680")
 
-[node name="PickupPlayer" parent="." index="2"]
+[node name="PickupPlayer" parent="." index="2" unique_id=1511346552]
 stream = ExtResource("2_bp65t")

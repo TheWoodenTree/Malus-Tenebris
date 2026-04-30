@@ -17,12 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://co8wmy3bgkhpy" path="res://source/actors/decor/groups/books_4.tscn" id="20_c6t8m"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="21_mju78"]
 [ext_resource type="PackedScene" uid="uid://db57xmqhrdyrg" path="res://source/actors/decor/furniture/corner_table.tscn" id="22_5kyhp"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="22_47idu"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="22_dvdth"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="24_g1atn"]
 [ext_resource type="Resource" uid="uid://ondk7t6tuy0u" path="res://source/assets/resources/note_datas/ruboleum_distillation_instructions.tres" id="26_dbihu"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="26_rhjbl"]
-[ext_resource type="PackedScene" uid="uid://cwxs7uffbs0wu" path="res://source/assets/ui/notes/distillation_instructions.tscn" id="28_a1a56"]
 [ext_resource type="PackedScene" uid="uid://ii0e665jma4b" path="res://source/actors/building pieces/archways/small_archway.tscn" id="28_gg6p8"]
 [ext_resource type="AudioStream" uid="uid://b041olqq6sucl" path="res://source/assets/sounds/music/safe.ogg" id="29_02vm0"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cpyxk2qr6pjkr" path="res://source/actors/rooms/occluders/safe_room.occ" id="32_bdtjo"]
@@ -31,88 +28,27 @@
 [ext_resource type="PackedScene" uid="uid://ijd8uaep4lbk" path="res://source/actors/decor/groups/books_5.tscn" id="33_q6ph1"]
 [ext_resource type="Script" uid="uid://cnfn10pygaikr" path="res://source/actors/rooms/tutorial_popup_area.gd" id="33_x680n"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="34_6pa4g"]
-[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="34_e2n1h"]
 [ext_resource type="PackedScene" uid="uid://xo1jmmirryt" path="res://source/actors/decor/misc/ink_pot_w_pen.tscn" id="34_jabgf"]
 [ext_resource type="PackedScene" uid="uid://d04entq5n5n3m" path="res://source/actors/decor/groups/books_7.tscn" id="35_30nki"]
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="36_2n11f"]
 [ext_resource type="PackedScene" uid="uid://dafxw7skruo3p" path="res://source/actors/decor/groups/books_9.tscn" id="37_35dm6"]
 [ext_resource type="PackedScene" uid="uid://btbw0ox4avnkm" path="res://source/actors/interactables/pickups/visolis_bottle.tscn" id="38_d6ou4"]
 [ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="38_tjs2y"]
-[ext_resource type="Texture2D" uid="uid://clhsusibnxp3v" path="res://source/assets/ui/inventory/visolis_bottle.png" id="39_y8yjx"]
 [ext_resource type="PackedScene" uid="uid://dprey8cgl5ux2" path="res://source/actors/decor/misc/pots/sm_tall_pot.tscn" id="41_q63e3"]
 [ext_resource type="PackedScene" uid="uid://cx4g8tg3wsy7p" path="res://source/actors/decor/misc/pots/sm_fat_pot.tscn" id="42_6xnj5"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="43_0v6kg"]
-[ext_resource type="AudioStream" uid="uid://dh2kkntq5trgy" path="res://source/assets/sounds/pickup/hourglass_pickup.ogg" id="44_47idu"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="44_fvmec"]
 [ext_resource type="PackedScene" uid="uid://b0ulsvtx3b41t" path="res://source/actors/interactables/pickups/hourglass.tscn" id="44_ydufn"]
-[ext_resource type="Texture2D" uid="uid://cal01wqt1245e" path="res://source/assets/ui/inventory/hourglass.png" id="45_th1ig"]
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="46_0ilup"]
 [ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="47_47idu"]
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="48_th1ig"]
 [ext_resource type="PackedScene" uid="uid://crfc5k6gpgd1j" path="res://source/actors/interactables/censer.tscn" id="49_th1ig"]
-
-[sub_resource type="Resource" id="Resource_g27mp"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Ruboleum Vial"
-texture = ExtResource("22_47idu")
-pickup_sound = ExtResource("34_e2n1h")
-self_useable = null
-hold_rotation_offset = Vector3(0, 0, 90)
-hold_scale_multiplier = null
-
-[sub_resource type="Resource" id="Resource_5nwb6"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Ruboleum Vial"
-texture = ExtResource("22_47idu")
-pickup_sound = ExtResource("34_e2n1h")
-self_useable = null
-hold_rotation_offset = Vector3(0, 0, 90)
-hold_scale_multiplier = null
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cenn"]
 size = Vector3(19, 10, 16.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cncr"]
 size = Vector3(1, 4, 3)
-
-[sub_resource type="Resource" id="Resource_xtq3k"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Visolis"
-texture = ExtResource("39_y8yjx")
-pickup_sound = ExtResource("34_e2n1h")
-
-[sub_resource type="Resource" id="Resource_o1xnq"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Visolis"
-texture = ExtResource("39_y8yjx")
-pickup_sound = ExtResource("34_e2n1h")
-
-[sub_resource type="Resource" id="Resource_m6j4a"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Visolis"
-texture = ExtResource("39_y8yjx")
-pickup_sound = ExtResource("34_e2n1h")
-
-[sub_resource type="Resource" id="Resource_h6kts"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Visolis"
-texture = ExtResource("39_y8yjx")
-pickup_sound = ExtResource("34_e2n1h")
-
-[sub_resource type="Resource" id="Resource_4q1a2"]
-resource_local_to_scene = true
-script = ExtResource("26_rhjbl")
-name = "Hourglass"
-texture = ExtResource("45_th1ig")
-pickup_sound = ExtResource("44_47idu")
-hold_rotation_offset = Vector3(0, -25, 0)
-metadata/_custom_type_script = "uid://c8rev6ihosd6u"
 
 [node name="SafeRoom" unique_id=1316510478 instance=ExtResource("1_ntfkh")]
 script = ExtResource("1_d3v5u")
@@ -259,17 +195,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 
 [node name="RuboleumVial" parent="Misc/Chest" index="4" unique_id=713403480 instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
-item_data = SubResource("Resource_g27mp")
 
 [node name="RuboleumVial2" parent="Misc/Chest" index="5" unique_id=334622645 instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
-item_data = SubResource("Resource_5nwb6")
 
 [node name="Note2" parent="Misc" index="2" unique_id=1650506187 instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.649919, 2, -7.9251204)
 display_help = false
-note_name = "Ruboleum Distillation Instructions"
-label = ExtResource("28_a1a56")
 note_data = ExtResource("26_dbihu")
 
 [node name="SafeRoomArea" type="Area3D" parent="." index="8" unique_id=885811984]
@@ -380,11 +312,9 @@ transform = Transform3D(-0.943628, 0, 0.33100802, 0, 1, 0, -0.33100802, 0, -0.94
 
 [node name="VisolisBottle" parent="WallShelf" index="4" unique_id=2117836574 instance=ExtResource("38_d6ou4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.9055302, 0, -0.55138016)
-item_data = SubResource("Resource_xtq3k")
 
 [node name="VisolisBottle2" parent="WallShelf" index="5" unique_id=180548729 instance=ExtResource("38_d6ou4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.7570803, 0, -0.2472701)
-item_data = SubResource("Resource_o1xnq")
 
 [node name="SmFatPot" parent="WallShelf" index="6" unique_id=402845114 instance=ExtResource("42_6xnj5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8500402, 0, 0.10474014)
@@ -397,11 +327,9 @@ transform = Transform3D(-0.877565, 0, 0.47945803, 0, 1, 0, -0.47945803, 0, -0.87
 
 [node name="VisolisBottle3" parent="WallShelf2" index="3" unique_id=7266046 instance=ExtResource("38_d6ou4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8676598, 0, -1.3428998)
-item_data = SubResource("Resource_m6j4a")
 
 [node name="VisolisBottle4" parent="WallShelf2" index="4" unique_id=1622760902 instance=ExtResource("38_d6ou4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.27294016, 0, 1.2601805)
-item_data = SubResource("Resource_h6kts")
 
 [node name="SmTallPot" parent="WallShelf2" index="5" unique_id=1033235144 instance=ExtResource("41_q63e3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.7588601, 0, 0.033670425)
@@ -418,7 +346,6 @@ size = Vector3(1, 5, 1)
 
 [node name="Hourglass" parent="." index="36" unique_id=22442346 instance=ExtResource("44_ydufn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.25, 2.8, 1.5)
-item_data = SubResource("Resource_4q1a2")
 
 [node name="StoneWall2" parent="." index="37" unique_id=1310841752 instance=ExtResource("3_tctxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 6, 2.25)

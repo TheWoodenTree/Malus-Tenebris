@@ -1,5 +1,6 @@
 shader_type canvas_item;
 
+uniform bool enabled = true;
 uniform int num_slots = 3;
 
 varying vec2 world_pos;
@@ -10,7 +11,9 @@ void vertex() {
 }
 
 void fragment() {
-	if (world_pos.x < (254.0 - (36.0 * float(num_slots))) || world_pos.x > (258.0 + (36.0 * float(num_slots)))) {
-		COLOR.a = 0.0;
+	if (enabled) {
+		if (world_pos.x < (254.0 - (36.0 * float(num_slots))) || world_pos.x > (258.0 + (36.0 * float(num_slots)))) {
+			COLOR.a = 0.0;
+		}
 	}
 }

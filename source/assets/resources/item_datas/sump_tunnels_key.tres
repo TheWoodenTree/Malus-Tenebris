@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ddwrs221n0xxx"]
+
+[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="1_ae3yc"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="2_6c7e4"]
+[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="3_68kt6"]
+
+[resource]
+script = ExtResource("2_6c7e4")
+id = 8
+name = "Sump Tunnels Key"
+texture = ExtResource("3_68kt6")
+pickup_sound = ExtResource("1_ae3yc")
+hold_rotation_offset = Vector3(0, 200, 90)
+hold_scale_multiplier = 0.5

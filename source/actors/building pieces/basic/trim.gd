@@ -18,5 +18,4 @@ func _set_length(length_):
 		collision_shape.shape.size.z = length
 	if mesh:
 		mesh.mesh.size.z = length
-		print(mesh.mesh.size.z)
 	

@@ -1,3 +1,4 @@
+class_name Menus
 extends Control
 
 var num_menus: int = 0

@@ -1,0 +1,14 @@
+extends Node
+
+enum ID {
+	NONE = 0,
+	RUBOLEUM_VIAL = 1,
+	BANDAGE = 2,
+	HOURGLASS = 3,
+	JOURNAL = 4,
+	WINCH_CRANK = 5,
+	BEEF_FAT = 6,
+	CELL_HALL_KEY = 7,
+	SUMP_TUNNELS_KEY = 8,
+	LARDER_KEY = 9,
+}

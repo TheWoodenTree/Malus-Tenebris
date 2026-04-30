@@ -25,7 +25,6 @@
 [ext_resource type="Resource" uid="uid://cc1xxd7e3vdch" path="res://source/assets/resources/note_datas/kitchen_note.tres" id="27_rhdxn"]
 [ext_resource type="PackedScene" uid="uid://323mb2ynq3gu" path="res://source/actors/decor/furniture/large_table_2.tscn" id="27_sh7he"]
 [ext_resource type="PackedScene" uid="uid://ctcrs3lo5h6fa" path="res://source/actors/interactables/scroll_1.tscn" id="28_5dbn1"]
-[ext_resource type="PackedScene" uid="uid://d03ytoqavjeld" path="res://source/assets/ui/notes/kitchen_note.tscn" id="29_r0ce2"]
 [ext_resource type="PackedScene" uid="uid://dprey8cgl5ux2" path="res://source/actors/decor/misc/pots/sm_tall_pot.tscn" id="31_upow3"]
 [ext_resource type="PackedScene" uid="uid://cx4g8tg3wsy7p" path="res://source/actors/decor/misc/pots/sm_fat_pot.tscn" id="32_2vlt2"]
 [ext_resource type="PackedScene" uid="uid://dgn84cdkpu41o" path="res://source/actors/decor/furniture/bench.tscn" id="33_vwrne"]
@@ -288,8 +287,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22, 0
 
 [node name="Scroll3" parent="." index="57" unique_id=1271025532 instance=ExtResource("28_5dbn1")]
 transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -21.2189, 2, -11.3343)
-note_name = "Rusted Lock"
-label = ExtResource("29_r0ce2")
 note_data = ExtResource("27_rhdxn")
 
 [node name="TorchHolder" parent="." index="58" unique_id=1371027960 instance=ExtResource("22_12ae0")]

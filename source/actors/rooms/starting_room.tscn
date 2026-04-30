@@ -15,10 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bjcdhkttl3bub" path="res://source/actors/interactables/pickups/journal.tscn" id="21_k5l6w"]
 [ext_resource type="PackedScene" uid="uid://c1kffo1qignb8" path="res://source/actors/building pieces/basic/corner_trim.tscn" id="21_m0uc5"]
 [ext_resource type="PackedScene" uid="uid://bxq4gml6j7f01" path="res://source/actors/building pieces/basic/cobble_wall.tscn" id="22_586v8"]
-[ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="22_sxk03"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="23_x8c7n"]
 [ext_resource type="Script" uid="uid://d1t7xf6d2xtes" path="res://source/actors/rooms/crouch_tutorial.gd" id="24_5ouff"]
-[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="24_us0dx"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="25"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="28"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dpuxvodfnon0f" path="res://source/actors/rooms/occluders/starting_room.occ" id="28_6h45y"]
@@ -27,16 +24,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1tr0"]
 size = Vector3(3.5, 3, 2)
-
-[sub_resource type="Resource" id="Resource_vm6ap"]
-resource_local_to_scene = true
-script = ExtResource("23_x8c7n")
-name = "Old Journal"
-texture = ExtResource("24_us0dx")
-pickup_sound = ExtResource("22_sxk03")
-self_useable = null
-hold_rotation_offset = Vector3(0, 0, 180)
-hold_scale_multiplier = null
 
 [node name="StartingRoom" unique_id=1705467340 instance=ExtResource("1_37jl1")]
 
@@ -179,6 +166,6 @@ nav_walkable = false
 
 [node name="Journal" parent="." index="38" unique_id=746080816 instance=ExtResource("21_k5l6w")]
 transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, -1, 2, -18.5)
-item_data = SubResource("Resource_vm6ap")
+enable_highlight_sheen = true
 
 [connection signal="body_entered" from="CrouchTutorial" to="CrouchTutorial" method="_on_body_entered"]

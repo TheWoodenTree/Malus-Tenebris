@@ -58,6 +58,9 @@ func physics_update(delta: float):
 	if character.is_near_door():
 		character.check_for_door_in_path()
 	
-	if nav_agent.is_target_reached() and character.ray_to_player_valid():
-		
-		transitioned.emit(self, 'SpitAttack')
+	if nav_agent.is_target_reached():
+		if character.ray_to_player_valid():
+			transitioned.emit(self, 'SpitAttack')
+		else:
+			transitioned.emit(self, 'Wander')
+			Global.main.set_fear_enabled(false)

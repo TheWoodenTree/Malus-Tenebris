@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6c7xxmin6mg5"]
+[gd_scene format=3 uid="uid://c6c7xxmin6mg5"]
 
 [ext_resource type="Script" uid="uid://bbx7s8nskwiv1" path="res://source/assets/ui/inventory_slot.gd" id="1_8hijp"]
 [ext_resource type="Material" uid="uid://drvjrexbrri0j" path="res://source/assets/ui/inventory_slot_mat.tres" id="1_10oea"]
@@ -13,21 +13,21 @@ script = ExtResource("2_svwre")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2psli"]
 
-[node name="ItemSlot" type="MarginContainer"]
+[node name="ItemSlot" type="MarginContainer" unique_id=1169551992]
 custom_minimum_size = Vector2(36, 36)
 offset_right = 36.0
 offset_bottom = 36.0
 script = ExtResource("1_8hijp")
 item_data = SubResource("Resource_be26v")
 
-[node name="SlotButton" type="Button" parent="."]
+[node name="SlotButton" type="Button" parent="." unique_id=1850225157]
 material = ExtResource("1_10oea")
 layout_mode = 2
 theme = ExtResource("3_3xp1c")
 disabled = true
 keep_pressed_outside = true
 
-[node name="SlotFrame" type="TextureRect" parent="."]
+[node name="SlotFrame" type="TextureRect" parent="." unique_id=15196479]
 visible = false
 material = ExtResource("1_10oea")
 layout_mode = 2
@@ -35,7 +35,7 @@ mouse_filter = 2
 texture = ExtResource("5_ye2p5")
 stretch_mode = 2
 
-[node name="ItemTextureRect" type="TextureRect" parent="."]
+[node name="ItemTextureRect" type="TextureRect" parent="." unique_id=872358133]
 material = ExtResource("1_10oea")
 layout_mode = 2
 size_flags_horizontal = 4
@@ -43,28 +43,27 @@ size_flags_vertical = 4
 mouse_filter = 2
 stretch_mode = 2
 
-[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=646737135]
 stream = ExtResource("7_j7b4s")
 volume_db = -5.0
 pitch_scale = 2.0
 max_polyphony = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1510354567]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=458318873]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_2psli")
 
-[node name="SlotNumber" type="Label" parent="HBoxContainer"]
+[node name="Hotkey" type="Label" parent="HBoxContainer" unique_id=59064143]
 material = ExtResource("1_10oea")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("7_2psli")
-text = "1"
 
 [connection signal="button_down" from="SlotButton" to="." method="_on_slot_button_button_down"]
 [connection signal="button_up" from="SlotButton" to="." method="_on_slot_button_button_up"]

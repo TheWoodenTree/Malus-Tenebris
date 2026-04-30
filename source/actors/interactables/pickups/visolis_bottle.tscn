@@ -1,19 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://btbw0ox4avnkm"]
+[gd_scene format=4 uid="uid://btbw0ox4avnkm"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_v001e"]
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_va2my"]
 [ext_resource type="Material" uid="uid://cewo0s05w426w" path="res://source/assets/materials/wood/wood.tres" id="2_2wexg"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="3_j8owv"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="4_ipjbm"]
-[ext_resource type="Texture2D" uid="uid://clhsusibnxp3v" path="res://source/assets/ui/inventory/visolis_bottle.png" id="5_tjuu2"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="6_u32wv"]
-
-[sub_resource type="Resource" id="Resource_rwkh1"]
-resource_local_to_scene = true
-script = ExtResource("4_ipjbm")
-name = "Visolis"
-texture = ExtResource("5_tjuu2")
-pickup_sound = ExtResource("3_j8owv")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x2wa2"]
 _surfaces = [{
@@ -54,7 +45,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_umaaf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58nut"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("6_u32wv")
@@ -63,7 +54,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_r387v"]
+[sub_resource type="Shader" id="Shader_cuskc"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -98,11 +89,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq0gh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u32wv"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_umaaf")
-shader = SubResource("Shader_r387v")
+next_pass = SubResource("ShaderMaterial_58nut")
+shader = SubResource("Shader_cuskc")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -144,20 +135,16 @@ shadow_mesh = SubResource("ArrayMesh_gql6q")
 radius = 0.301234
 height = 0.913681
 
-[node name="VisolisBottle" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_v001e")]
-item_data = SubResource("Resource_rwkh1")
-interact_areas = [NodePath("InteractArea")]
-meshes = [NodePath("Mesh"), NodePath("Mesh")]
-interactable = false
-enable_highlight_sheen = false
+[node name="VisolisBottle" unique_id=1291625024 instance=ExtResource("1_v001e")]
+script = null
 
-[node name="Mesh2" type="MeshInstance3D" parent="." index="0"]
+[node name="Mesh2" type="MeshInstance3D" parent="." index="0" unique_id=2140080053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.455, 0)
 layers = 4
 mesh = SubResource("ArrayMesh_s8mut")
 
 [node name="Mesh" parent="." index="1"]
-material_overlay = SubResource("ShaderMaterial_sq0gh")
+material_overlay = SubResource("ShaderMaterial_u32wv")
 mesh = SubResource("ArrayMesh_i60oo")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://bjcdhkttl3bub"]
+[gd_scene format=4 uid="uid://bjcdhkttl3bub"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_fhkke"]
 [ext_resource type="Script" uid="uid://bpuvvyhus2ovm" path="res://source/actors/interactables/pickups/journal.gd" id="2_6rghn"]
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="2_22kfu"]
-[ext_resource type="Resource" uid="uid://bqtcwaf610b65" path="res://source/assets/resources/item_datas/journal.tres" id="3_50jo0"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="4_bx4ac"]
 [ext_resource type="Material" uid="uid://b5r5gddichoqf" path="res://source/assets/materials/leather/leather.tres" id="6_owwqv"]
 [ext_resource type="Material" uid="uid://fiek73taac83" path="res://source/assets/materials/pages/pages.tres" id="7_p6hbf"]
@@ -15,7 +14,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdqkh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxjk5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_bx4ac")
@@ -24,7 +23,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_j0s7d"]
+[sub_resource type="Shader" id="Shader_yhkmm"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -59,11 +58,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvfa7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx4ac"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_mdqkh")
-shader = SubResource("Shader_j0s7d")
+next_pass = SubResource("ShaderMaterial_fxjk5")
+shader = SubResource("Shader_yhkmm")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -130,19 +129,19 @@ shadow_mesh = SubResource("ArrayMesh_a8aic")
 [sub_resource type="BoxShape3D" id="BoxShape3D_j77l4"]
 size = Vector3(1, 0.75, 1.1)
 
-[node name="Journal" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_fhkke")]
+[node name="Journal" unique_id=1883789174 node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_fhkke")]
 script = ExtResource("2_6rghn")
-item_data = ExtResource("3_50jo0")
+item_id = 4
 interact_areas = [NodePath("InteractArea")]
 enable_highlight_sheen = false
 
 [node name="Mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_pvfa7")
+material_overlay = SubResource("ShaderMaterial_bx4ac")
 mesh = SubResource("ArrayMesh_ckoxl")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_j77l4")
 
-[node name="PickupPlayer" parent="." index="2"]
+[node name="PickupPlayer" parent="." index="2" unique_id=1511346552]
 stream = ExtResource("2_22kfu")

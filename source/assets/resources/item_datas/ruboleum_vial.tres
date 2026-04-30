@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dq2xpjjilobj"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dq2xpjjilobj"]
 
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="1_xobic"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="2_347tu"]
@@ -7,9 +7,8 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_347tu")
+id = 1
 name = "Ruboleum Vial"
 texture = ExtResource("3_g4yff")
 pickup_sound = ExtResource("1_xobic")
-self_useable = null
 hold_rotation_offset = Vector3(0, 0, 90)
-hold_scale_multiplier = null

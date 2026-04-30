@@ -1,8 +1,7 @@
-[gd_scene load_steps=42 format=4 uid="uid://b0ulsvtx3b41t"]
+[gd_scene format=4 uid="uid://b0ulsvtx3b41t"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_duhgt"]
 [ext_resource type="Script" uid="uid://vctbew5s5hmw" path="res://source/actors/interactables/pickups/hourglass.gd" id="2_duhgt"]
-[ext_resource type="Resource" uid="uid://binua2vubahmw" path="res://source/assets/resources/item_datas/hourglass.tres" id="3_dllta"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="4_kakmt"]
 [ext_resource type="Material" uid="uid://d0n6av8hafihu" path="res://source/assets/materials/wood_3/wood_3.tres" id="5_6ea1l"]
 [ext_resource type="Curve" uid="uid://co1n052t7l7cu" path="res://source/assets/misc/hourglass_volume_curve.tres" id="5_l7c4g"]
@@ -612,10 +611,10 @@ blend_shape_mode = 0
 custom_aabb = AABB(-0.15, -0.25, -0.15, 0.3, 0.5, 0.3)
 shadow_mesh = SubResource("ArrayMesh_7qti0")
 
-[node name="Hourglass" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_duhgt")]
+[node name="Hourglass" unique_id=2037018184 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_duhgt")]
 script = ExtResource("2_duhgt")
 test_time_scale = 1.0
-item_data = ExtResource("3_dllta")
+item_id = 3
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("BaseAndTop"), NodePath("Supports"), NodePath("SandTop"), NodePath("SandBottom"), NodePath("SandTopCap"), NodePath("SandBottomCap")]
 
@@ -632,7 +631,7 @@ light_energy = 0.2
 light_cull_mask = 4294967295
 omni_range = 3.0
 
-[node name="SandParticles" type="CPUParticles3D" parent="." index="4"]
+[node name="SandParticles" type="CPUParticles3D" parent="." index="4" unique_id=636081355]
 layers = 2
 emitting = false
 amount = 3
@@ -644,35 +643,33 @@ emission_shape = 3
 emission_box_extents = Vector3(0.002, 0, 0.002)
 direction = Vector3(0, -1, 0)
 
-[node name="BaseAndTop" type="MeshInstance3D" parent="." index="5"]
+[node name="BaseAndTop" type="MeshInstance3D" parent="." index="5" unique_id=14105039]
 layers = 4
 material_overlay = ExtResource("4_kakmt")
 mesh = SubResource("ArrayMesh_l7c4g")
 
-[node name="Supports" type="MeshInstance3D" parent="." index="6"]
+[node name="Supports" type="MeshInstance3D" parent="." index="6" unique_id=489081868]
 layers = 4
 material_overlay = ExtResource("4_kakmt")
 mesh = SubResource("ArrayMesh_n77bs")
 
-[node name="SandTop" type="MeshInstance3D" parent="." index="7"]
+[node name="SandTop" type="MeshInstance3D" parent="." index="7" unique_id=392169413]
 layers = 4
 mesh = SubResource("ArrayMesh_bpl1k")
 skeleton = NodePath("../Supports")
 
-[node name="SandBottom" type="MeshInstance3D" parent="." index="8"]
+[node name="SandBottom" type="MeshInstance3D" parent="." index="8" unique_id=1745646904]
 layers = 4
 mesh = SubResource("ArrayMesh_duhgt")
 skeleton = NodePath("../Supports")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
-libraries = {
-&"": SubResource("AnimationLibrary_kw41q")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9" unique_id=940564640]
+libraries/ = SubResource("AnimationLibrary_kw41q")
 
-[node name="SandTopCap" type="MeshInstance3D" parent="." index="10"]
+[node name="SandTopCap" type="MeshInstance3D" parent="." index="10" unique_id=1601937949]
 layers = 4
 mesh = SubResource("ArrayMesh_ga24v")
 
-[node name="SandBottomCap" type="MeshInstance3D" parent="." index="11"]
+[node name="SandBottomCap" type="MeshInstance3D" parent="." index="11" unique_id=1242503093]
 layers = 4
 mesh = SubResource("ArrayMesh_i1p2e")

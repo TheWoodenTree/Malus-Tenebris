@@ -29,6 +29,11 @@ func _exit_tree():
 		Global.player.stop_holding_item(false)
 
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("journal"):
+		Global.ui.remove_menu()
+
+
 func _on_log_entries_button_pressed():
 	change_menu(Global.ui.log_entries_menu)
 	log_entries_button.select()

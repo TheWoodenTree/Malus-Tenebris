@@ -1,21 +1,23 @@
 class_name ItemSlot
 extends MarginContainer
 
-var slot_number: int
-var selected: bool = false
+var hotkey_symbol: String :
+	set(value):
+		hotkey_symbol = value
+		hotkey.text = value
+
 var on_edge: bool = false
 
-@onready var button = $SlotButton
+@onready var button: Button = $SlotButton
 @onready var hover_sound_player = $HoverSoundPlayer
 @onready var slot_frame = $SlotFrame
 @onready var item_texture_rect = $ItemTextureRect
-@onready var slot_number_label: Label = $HBoxContainer/SlotNumber
+@onready var hotkey: Label = $HBoxContainer/Hotkey
+
+@onready var slot_number: int = get_index() + 1
 
 @export var item_data: ItemData
-
-
-func _ready() -> void:
-	set_slot_number(get_index() + 1)
+@export var display_slot_number: bool = true
 
 
 func set_item(new_item_data: ItemData):
@@ -28,21 +30,12 @@ func set_item(new_item_data: ItemData):
 		button.disabled = true
 
 
-func set_selected(is_selected):
-	selected = is_selected
-
-
 func set_button_disabled(disabled: bool):
 	button.disabled = disabled
 
 
 func set_item_visible(item_visible: bool):
 	item_texture_rect.visible = item_visible
-
-
-func set_slot_number(number: int):
-	slot_number = number
-	slot_number_label.text = str(number)
 
 
 func has_item() -> bool:
@@ -52,12 +45,3 @@ func has_item() -> bool:
 func _on_slot_button_mouse_entered():
 	if not button.disabled:
 		hover_sound_player.play()
-
-
-func _on_slot_button_button_up():
-	Global.ui.inventory_menu.scroll_to_slot(self)
-
-
-func _on_slot_button_button_down():
-	if selected and not Global.ui.inventory_menu.scrolling:
-		Global.ui.inventory_menu.attach_item_to_cursor(item_data)

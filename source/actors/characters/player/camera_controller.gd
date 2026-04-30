@@ -93,7 +93,6 @@ func _controller_rotate():
 			axis_vec.y += CONTROLLER_DZ
 		var joystick_y_offset: float = axis_vec.y * (1 + abs(axis_vec.y)) * controller_sens * sensitivity_multiplier
 		var x_rot_offset = deg_to_rad(joystick_y_offset)
-		print(x_rot_offset)
 		rotation_offset.x = x_rot_offset
 		if can_rotate:
 			rotation.x -= deg_to_rad(joystick_y_offset)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bqtcwaf610b65"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bqtcwaf610b65"]
 
 [ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="1_hffmc"]
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="2_u53a7"]
@@ -7,9 +7,8 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_u53a7")
+id = 4
 name = "Old Journal"
 texture = ExtResource("4_a0ous")
 pickup_sound = ExtResource("1_hffmc")
-self_useable = null
 hold_rotation_offset = Vector3(0, 0, 180)
-hold_scale_multiplier = null

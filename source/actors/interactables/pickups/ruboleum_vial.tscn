@@ -1,12 +1,27 @@
-[gd_scene load_steps=11 format=4 uid="uid://cykavwbds5y1f"]
+[gd_scene format=4 uid="uid://cykavwbds5y1f"]
 
 [ext_resource type="Material" uid="uid://cghu4c47h06v8" path="res://source/assets/materials/yellow_metal/yellow_metal.tres" id="1_55ctl"]
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_lbm0b"]
-[ext_resource type="Resource" uid="uid://dq2xpjjilobj" path="res://source/assets/resources/item_datas/ruboleum_vial.tres" id="2_owc37"]
 [ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="2_oxcjt"]
-[ext_resource type="Material" uid="uid://13gbugw7ytck" path="res://source/assets/shaders/highlight_sheen_mat.tres" id="3_owc37"]
+[ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_urabk"]
 
-[sub_resource type="Shader" id="Shader_f0bmd"]
+[sub_resource type="Gradient" id="Gradient_rddky"]
+offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
+gradient = SubResource("Gradient_rddky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwcrk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_urabk")
+shader_parameter/enableSheen = false
+shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
+shader_parameter/sheenMaxCamDist = 7.5
+shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
+
+[sub_resource type="Shader" id="Shader_owc37"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -41,11 +56,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6acy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0bmd"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = ExtResource("3_owc37")
-shader = SubResource("Shader_f0bmd")
+next_pass = SubResource("ShaderMaterial_qwcrk")
+shader = SubResource("Shader_owc37")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.9607843, 0.60784316, 0.3529412, 1)
 shader_parameter/outlineOn = false
@@ -87,15 +102,15 @@ shadow_mesh = SubResource("ArrayMesh_6v3id")
 radius = 0.204578
 height = 0.669671
 
-[node name="RuboleumVial" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_lbm0b")]
-item_data = ExtResource("2_owc37")
+[node name="RuboleumVial" unique_id=926297497 node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_lbm0b")]
+item_id = 1
 interactable_type = 3
 interact_areas = [NodePath("InteractArea")]
 shader_mode = 1
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.152624, 0.0491482, 0)
-material_overlay = SubResource("ShaderMaterial_d6acy")
+material_overlay = SubResource("ShaderMaterial_f0bmd")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_77jp7")
 
@@ -106,6 +121,6 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.1526
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142862, 0)
 shape = SubResource("CapsuleShape3D_qekfs")
 
-[node name="PickupPlayer" parent="." index="2"]
+[node name="PickupPlayer" parent="." index="2" unique_id=1511346552]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.152624, 0.201655, 0)
 stream = ExtResource("2_oxcjt")

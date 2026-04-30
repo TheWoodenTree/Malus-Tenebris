@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t4bgwd6hxfib"]
+[gd_scene format=3 uid="uid://t4bgwd6hxfib"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_gjmcy"]
 [ext_resource type="Script" uid="uid://bc1weg0qa6hh6" path="res://source/actors/interactables/pickups/pickup.gd" id="2_8rstg"]
@@ -11,7 +11,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_47u34"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxp18"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3jfg2")
@@ -20,7 +20,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_ngasv"]
+[sub_resource type="Shader" id="Shader_3jfg2"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -55,23 +55,23 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vr7y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqyqm"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_47u34")
-shader = SubResource("Shader_ngasv")
+next_pass = SubResource("ShaderMaterial_kxp18")
+shader = SubResource("Shader_3jfg2")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
 shader_parameter/transparent = false
 
-[node name="Pickup" node_paths=PackedStringArray("meshes") instance=ExtResource("1_gjmcy")]
+[node name="Pickup" unique_id=206449402 node_paths=PackedStringArray("meshes") instance=ExtResource("1_gjmcy")]
 script = ExtResource("2_8rstg")
 meshes = [NodePath("Mesh")]
 enable_highlight_sheen = true
 
 [node name="Mesh" parent="." index="0"]
 layers = 4
-material_overlay = SubResource("ShaderMaterial_5vr7y")
+material_overlay = SubResource("ShaderMaterial_sqyqm")
 
-[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
+[node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="2" unique_id=1511346552]

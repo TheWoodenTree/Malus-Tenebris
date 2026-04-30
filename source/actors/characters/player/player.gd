@@ -168,7 +168,7 @@ func _handle_input():
 		held_item.use()
 		if held_item:
 			held_item.was_used = true
-		
+	
 		#var instance: RigidBody3D = thrown_item.instantiate()
 		##instance.get_node("Mesh").mesh = held_item
 		#Global.world.add_child(instance)
@@ -179,6 +179,21 @@ func _handle_input():
 		#await get_tree().physics_frame # Two awaits needed for impulse to be correctly applied
 		#await get_tree().physics_frame # since it is being applied the frame the instance is added to tree
 		#instance.apply_impulse(facing_dir * 15.0 + velocity, Vector3(0.0, 0.185, 0.0))
+
+
+func _input(event: InputEvent) -> void:
+	if not in_menu and event is InputEventKey:
+		for action: String in InventoryManager.hotkeys.keys():
+			if event.is_action_pressed(action):
+				var item_id: ItemRegistry.ID = InventoryManager.hotkeys[action]
+				var item_data: ItemData = InventoryManager.get_item_by_id(item_id)
+				if held_item_data:
+					if held_item_data.id == item_data.id:
+						break
+					stop_holding_item(true)
+					
+				if item_data:
+					hold_item(item_data, true)
 
 
 func _move(delta):
@@ -241,7 +256,7 @@ func play_pickup_sound(pickup_sound_player: AudioStreamPlayer3D):
 	await pickup_sound_player.finished
 
 
-func hold_item(item_data: ItemData):
+func hold_item(item_data: ItemData, play_sound: bool = false):
 	held_item_data = item_data
 	if item_data.item_instance == null:
 		item_data.item_instance = load(item_data.item_scene_path).instantiate()
@@ -252,6 +267,8 @@ func hold_item(item_data: ItemData):
 	add_child(held_item)
 	held_item.position = Vector3.ZERO
 	held_item.scale *= item_data.hold_scale_multiplier
+	if play_sound:
+		rucksack_player.play()
 	
 	if not first_item_held and is_holding_key() and not debug_no_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
@@ -267,7 +284,7 @@ func delete_held_item():
 	held_item = null
 
 
-func stop_holding_item(play_sound: bool):
+func stop_holding_item(play_sound: bool = false):
 	if held_item:
 		held_item.being_held = false
 		remove_child(held_item)

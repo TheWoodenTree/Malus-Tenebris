@@ -12,6 +12,7 @@ var item_instance: Pickup = null :
 var item_scene_path: String = ""
 var copied_properties: Dictionary[StringName, Variant] = {} 
 
+@export var id: ItemRegistry.ID
 @export var name: String = ""
 @export var texture: CompressedTexture2D = null
 @export var pickup_sound: AudioStream = null

@@ -8,11 +8,9 @@ const LEFT: int = 0
 const RIGHT: int = 1
 
 var queued_scrolls: Array[int] = []
-var selected_slot: Node
+var selected_slot: ItemSlot
 var slot_scroll_tween: Tween
 var requested_item: ItemData = null
-var item_on_cursor: ItemData = null
-var is_item_on_cursor: bool = false
 var block_scroll: bool = false
 var tutorial_on: bool = true
 var scrolling: bool = false
@@ -59,15 +57,42 @@ func _ready():
 	
 	if not Global.player.debug_no_tutorials:
 		tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"
+	
+	for slot: ItemSlot in slot_grid.get_children():
+		slot.button.button_down.connect(_on_slot_button_down.bind(slot))
+		slot.button.button_up.connect(_on_slot_button_up.bind(slot))
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("scroll_up"):
-		queue_scroll(LEFT)
-	elif Input.is_action_just_pressed("left") or Input.is_action_just_pressed("scroll_down"):
-		queue_scroll(RIGHT)
-	if is_item_on_cursor:
+	if Global.cursor.has_attached_item():
 		_handle_drag()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventMouseButton:
+		if event.is_action_pressed("right") or event.is_action_pressed("scroll_up"):
+			queue_scroll(LEFT)
+		elif event.is_action_pressed("left") or event.is_action_pressed("scroll_down"):
+			queue_scroll(RIGHT)
+		
+		var hotkey_actions: Array[String] = [
+			"inventory_hotkey_1",
+			"inventory_hotkey_2",
+			"inventory_hotkey_3",
+			"inventory_hotkey_4",
+		]
+		for action: String in hotkey_actions:
+			if event.is_action_pressed(action):
+				InventoryManager.add_hotkey(action, selected_slot.item_data.id)
+				update_slot_hotkey_symbols()
+
+
+func update_slot_hotkey_symbols():
+	for slot: ItemSlot in slot_grid.get_children():
+		if slot.item_data and InventoryManager.hotkeys.values().has(slot.item_data.id):
+			slot.hotkey_symbol = InventoryManager.get_hotkey_symbol_from_id(slot.item_data.id)
+		else:
+			slot.hotkey_symbol = ""
 
 
 func add_item(item_data: ItemData, slot_number: int):
@@ -116,20 +141,16 @@ func queue_scroll(dir):
 			_scroll_slots()
 
 
-func attach_item_to_cursor(item_data: ItemData):
-	Global.cursor.attached_item.texture = item_data.texture
-	item_attached_to_cursor.emit(item_data)
+func attach_item_to_cursor(item_slot: ItemSlot):
+	Global.cursor.attach_item(item_slot.item_data, item_slot)
+	item_attached_to_cursor.emit(item_slot.item_data)
 	selected_slot.set_item_visible(false)
-	item_on_cursor = item_data
-	is_item_on_cursor = true
 
 
 func remove_item_from_cursor():
-	Global.cursor.attached_item.texture = null
+	Global.cursor.detatch_item()
 	selected_slot.item_texture_rect.visible = true
 	block_scroll = false
-	item_on_cursor = null
-	is_item_on_cursor = false
 
 
 func _handle_drag():
@@ -143,7 +164,7 @@ func _handle_drag():
 			var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 			var mouse_inside_slot_grid: bool = slot_grid_global_rect.has_point(mouse_pos)
 			if not mouse_inside_slot_grid:
-				Global.player.hold_item(item_on_cursor)
+				Global.player.hold_item(Global.cursor.attached_item_data)
 				Global.ui.remove_menu()
 		remove_item_from_cursor()
 		if tutorial_on and not Global.player.debug_no_tutorials:
@@ -168,14 +189,9 @@ func scroll_to_slot(slot: Node):
 
 
 func set_selected_slot(slot: Node):
-	if selected_slot:
-		selected_slot.set_selected(false)
 	selected_slot = slot
-	if selected_slot:
-		selected_slot.set_selected(true)
-	else:
-		if item_name_label:
-			item_name_label.text = ""
+	if not selected_slot and item_name_label:
+		item_name_label.text = ""
 
 
 func wrap_item_slots(dir):
@@ -204,7 +220,7 @@ func set_tutorial_on(on: bool):
 
 
 func on_close():
-	if is_item_on_cursor:
+	if Global.cursor.has_attached_item():
 		remove_item_from_cursor()
 
 
@@ -218,6 +234,15 @@ func _on_inventory_left_button_2_button_up():
 
 func _on_scroll_anim_player_animation_started(_anim_name):
 	slot_scroll_player.play()
+
+
+func _on_slot_button_down(slot: ItemSlot):
+	if slot == selected_slot:
+		attach_item_to_cursor(slot)
+
+
+func _on_slot_button_up(slot: ItemSlot):
+	scroll_to_slot(slot)
 
 
 func update_slots_item_datas():

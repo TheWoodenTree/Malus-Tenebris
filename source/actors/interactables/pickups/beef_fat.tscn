@@ -1,17 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://kixyva1bs3gf"]
+[gd_scene format=3 uid="uid://kixyva1bs3gf"]
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_wg1mq"]
 [ext_resource type="AudioStream" uid="uid://bw87ir2c7afbs" path="res://source/assets/sounds/misc/fat_pickup.ogg" id="2_l8woq"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="3_10d7e"]
-[ext_resource type="Texture2D" uid="uid://1bopmhso37fg" path="res://source/assets/ui/inventory/beef_fat.png" id="4_ywort"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="5_2mwci"]
-
-[sub_resource type="Resource" id="Resource_hf70l"]
-script = ExtResource("3_10d7e")
-name = "Beef Fat"
-texture = ExtResource("4_ywort")
-pickup_sound = ExtResource("2_l8woq")
-hold_rotation_offset = Vector3(0, 45, 0)
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -20,7 +11,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glefw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukogy"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_2mwci")
@@ -29,7 +20,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_2vfyf"]
+[sub_resource type="Shader" id="Shader_0jw64"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -64,11 +55,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kp87n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2mwci"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_glefw")
-shader = SubResource("Shader_2vfyf")
+next_pass = SubResource("ShaderMaterial_ukogy")
+shader = SubResource("Shader_0jw64")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -80,18 +71,18 @@ size = Vector3(0.15, 0.15, 0.15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vk7qb"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="BeefFat" node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_wg1mq")]
-item_data = SubResource("Resource_hf70l")
+[node name="BeefFat" unique_id=871336149 node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_wg1mq")]
+item_id = 6
 interact_areas = [NodePath("InteractArea")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-material_overlay = SubResource("ShaderMaterial_kp87n")
+material_overlay = SubResource("ShaderMaterial_2mwci")
 mesh = SubResource("BoxMesh_igp70")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
 shape = SubResource("BoxShape3D_vk7qb")
 
-[node name="PickupPlayer" parent="." index="2"]
+[node name="PickupPlayer" parent="." index="2" unique_id=1511346552]
 stream = ExtResource("2_l8woq")

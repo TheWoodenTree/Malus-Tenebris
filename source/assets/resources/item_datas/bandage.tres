@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://d26ds3d235e2e"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d26ds3d235e2e"]
 
 [ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="1_upn8f"]
 [ext_resource type="AudioStream" uid="uid://dl7brijcqehxo" path="res://source/assets/sounds/pickup/bandage_pickup.wav" id="1_utqja"]
@@ -6,10 +6,10 @@
 
 [resource]
 script = ExtResource("1_upn8f")
+id = 2
 name = "Bandage"
 texture = ExtResource("3_utqja")
 pickup_sound = ExtResource("1_utqja")
 self_useable = true
 hold_rotation_offset = Vector3(-90, 0, 180)
-hold_scale_multiplier = null
 metadata/_custom_type_script = "uid://c8rev6ihosd6u"

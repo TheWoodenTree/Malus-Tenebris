@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bm4qj337mcios"]
+
+[ext_resource type="AudioStream" uid="uid://bw87ir2c7afbs" path="res://source/assets/sounds/misc/fat_pickup.ogg" id="1_bj71a"]
+[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="2_e42n5"]
+[ext_resource type="Texture2D" uid="uid://1bopmhso37fg" path="res://source/assets/ui/inventory/beef_fat.png" id="3_kvxdu"]
+
+[resource]
+script = ExtResource("2_e42n5")
+id = 6
+name = "Beef Fat"
+texture = ExtResource("3_kvxdu")
+pickup_sound = ExtResource("1_bj71a")
+hold_rotation_offset = Vector3(0, 45, 0)

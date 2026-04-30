@@ -19,7 +19,7 @@ var ui: UI
 var inventory: Control
 var journal_log: Control
 var found_notes: Control
-var cursor: Node2D
+var cursor: Cursor
 var torch: PlayerTorch
 var camera_controller: Node3D
 var camera: Node3D
