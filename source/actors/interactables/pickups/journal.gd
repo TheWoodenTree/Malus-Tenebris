@@ -22,4 +22,6 @@ func _on_untarget():
 func _on_interact() -> void:
 	super()
 	GlobalSignals.journal_picked_up.emit()
+	await get_tree().process_frame
+	await get_tree().process_frame
 	Global.ui.hint_popup("Press 'E' to open your inventory", 5.0)

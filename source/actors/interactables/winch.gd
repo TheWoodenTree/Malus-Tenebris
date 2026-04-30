@@ -57,7 +57,7 @@ func _physics_process(_delta):
 
 func _on_interact() -> void:
 	if interactable:
-		if Global.player.is_holding_item("Winch Crank") and not has_crank:
+		if Global.player.is_holding_item(ItemRegistry.ID.WINCH_CRANK) and not has_crank:
 			set_interactable(false)
 			
 			var initial_rot: Vector3 = crank.global_rotation

@@ -6,7 +6,7 @@ const KEY_MESH_UNLOCKED_POS = Vector3(0.0, 0.0, 0.25)
 const KEY_MESH_UNLOCKED_ROT = Vector3(0.0, 0.0, PI)
 
 @export var blocked: bool = false
-@export var key_name: String = ""
+@export var key_item_id: ItemRegistry.ID = ItemRegistry.ID.NONE
 @export var locked_message: String = ""
 @export var tutorial_popup: bool = false
 @export var global_signal_allow_open: String
@@ -25,7 +25,7 @@ var reverse_z_dist: bool = false
 
 var open_attempted: bool = false
 
-@onready var unlocked = key_name.is_empty()
+@onready var unlocked = key_item_id == ItemRegistry.ID.NONE
 
 @onready var door = $DraggableBody/Door
 @onready var door_full_open_player = $DraggableBody/DoorFullOpenPlayer
@@ -51,6 +51,7 @@ func _ready():
 			set_hinge_limits(-close_threshold_angle, close_threshold_angle)
 	
 	closed_blocking_volume.affect_navigation_mesh = not unlocked
+
 
 func _on_target():
 	if tutorial_popup and not tutorial_popup_shown and not Global.player.debug_no_tutorials \
@@ -92,7 +93,7 @@ func _on_interact() -> void:
 				elif blocked:
 					message = "Blocked by something"
 				elif player_on_openable_side:
-					message = "Need %s Key" % key_name.replace("Lubricated ", "")
+					message = "Need %s" % ItemRegistry.item_data_resources[key_item_id].name
 				
 				if log_entry_on_first_attempt and not open_attempted:
 					JournalManager.add_log_entry(log_entry_on_first_attempt)
@@ -113,15 +114,15 @@ func _on_interact() -> void:
 
 
 func attempt_unlock():
-	var correct_key: bool = Global.player.is_holding_item(key_name + " Key")
-	var is_prison_depths_key: bool = Global.player.is_holding_item("Sump Tunnels Key")
+	var correct_key: bool = Global.player.is_holding_item(key_item_id)
+	var is_sump_tunnels_key: bool = Global.player.is_holding_item(ItemRegistry.ID.SUMP_TUNNELS_KEY)
 	var anim_name: String
 	
-	if is_prison_depths_key and key_name == "Lubricated Sump Tunnels":
+	if is_sump_tunnels_key and key_item_id == ItemRegistry.ID.SUMP_TUNNELS_KEY:
 		anim_name = "insert_rusty_key"
 	elif correct_key:
 		anim_name = "insert_key"
-		if key_name == "Larder":
+		if key_item_id == ItemRegistry.ID.LARDER_KEY:
 			Global.player.scripted_event = true
 			Global.ui.block_inventory_open = true
 		being_unlocked = true
@@ -129,8 +130,6 @@ func attempt_unlock():
 		anim_name = "insert_wrong_key"
 		
 	Global.ui.block_inventory_open = true
-	if Global.ui.inventory_menu.tutorial_on:
-		Global.ui.inventory_menu.set_tutorial_on(false)
 	
 	var initial_rot: Vector3 = key_mesh.global_rotation
 	key_mesh.global_position = Global.player.held_item.global_position
@@ -151,7 +150,7 @@ func attempt_unlock():
 	key_anim_player.play(anim_name)
 	
 	# TODO: Remove
-	if correct_key and key_name == "Larder":
+	if correct_key and key_item_id == ItemRegistry.ID.LARDER_KEY:
 		get_parent().get_parent().get_parent().get_node("LowerPrisonHallway2/Misc/ArchwayWDoorNoWindow/Door/DraggableBody").rotation_degrees.y = 85.0
 		await get_tree().create_timer(1.0, false).timeout
 		Global.monster.global_position = get_parent().get_parent().get_node("MonsterStartPoint").global_position
@@ -160,7 +159,7 @@ func attempt_unlock():
 		Global.camera_controller.look_at_over_time(get_parent().get_parent().get_node("LookAtMonsterPoint").global_position, 3.0)
 	
 	await key_anim_player.animation_finished
-	if correct_key and not is_prison_depths_key:
+	if correct_key and not is_sump_tunnels_key:
 		Global.player.delete_held_item()
 		unlock()
 		closed_blocking_volume.affect_navigation_mesh = false
@@ -178,9 +177,6 @@ func unlock():
 	being_unlocked = false
 	
 	set_hinge_limits(min_rotation, max_rotation)
-	
-	if not Global.player.first_door_unlocked:
-		Global.player.first_door_unlocked = false
 	
 	if log_entry_on_first_attempt and JournalManager.has_log_entry(log_entry_on_first_attempt):
 		JournalManager.remove_log_entry(log_entry_on_first_attempt)

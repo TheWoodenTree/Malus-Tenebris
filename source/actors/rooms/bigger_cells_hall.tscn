@@ -11,18 +11,14 @@
 [ext_resource type="AudioStream" uid="uid://dv6sskdi2c7qt" path="res://source/assets/sounds/ambience/general/low_rumble.ogg" id="11_h27ph"]
 [ext_resource type="PackedScene" uid="uid://dgk5jc33rhc4k" path="res://source/actors/building pieces/doors/wood_door.tscn" id="19_b2uug"]
 [ext_resource type="PackedScene" uid="uid://br17y22d380wd" path="res://source/actors/building pieces/archways/square_doorway.tscn" id="23_jgj6y"]
-[ext_resource type="AudioStream" uid="uid://h1mjadx5rgv8" path="res://source/assets/sounds/pickup/book_pickup.ogg" id="23_wc2ki"]
 [ext_resource type="PackedScene" uid="uid://bs3u1nk2gihsj" path="res://source/actors/building pieces/doors/square_cell_door.tscn" id="24_gf34h"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="24_u1wvf"]
 [ext_resource type="PackedScene" uid="uid://dhgtewb4rn1it" path="res://source/actors/interactables/entrance_light.tscn" id="25_6st3b"]
-[ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="25_ggix4"]
 [ext_resource type="Script" uid="uid://bdnadlu2tq2xk" path="res://source/actors/rooms/sprint_tutorial.gd" id="26_p45ll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://1sb83i8d2g" path="res://source/actors/rooms/occluders/bigger_cells_hall.occ" id="27_mmdhw"]
 [ext_resource type="PackedScene" uid="uid://c34gumwigw2jh" path="res://source/actors/building pieces/archways/archway_L_bend.tscn" id="28_0dj71"]
 [ext_resource type="Script" uid="uid://cmdshovf2x0iu" path="res://source/actors/building pieces/doors/upper_cell_hall_door.gd" id="29_cexpk"]
 [ext_resource type="PackedScene" uid="uid://dlod6l5423wx1" path="res://source/actors/building pieces/basic/nav_blocking_volume.tscn" id="29_u1wvf"]
 [ext_resource type="PackedScene" uid="uid://cde0mlew1cmil" path="res://source/actors/building pieces/archways/big_tall_archway.tscn" id="30_42i3c"]
-[ext_resource type="PackedScene" uid="uid://bjcdhkttl3bub" path="res://source/actors/interactables/pickups/journal.tscn" id="31_f5jcr"]
 [ext_resource type="PackedScene" uid="uid://ksshpnp700s7" path="res://source/actors/interactables/sign.tscn" id="31_hcaqw"]
 [ext_resource type="PackedScene" uid="uid://uhbqrrigshhm" path="res://source/actors/building pieces/archways/reg_doorway.tscn" id="32_c2run"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="32_osmw1"]
@@ -35,15 +31,6 @@ size = Vector3(54.25, 12, 13)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jf8do"]
 size = Vector3(1, 8, 10)
-
-[sub_resource type="Resource" id="Resource_6st3b"]
-resource_local_to_scene = true
-script = ExtResource("24_u1wvf")
-name = "Old Journal"
-texture = ExtResource("25_ggix4")
-pickup_sound = ExtResource("23_wc2ki")
-hold_rotation_offset = Vector3(0, 0, 180)
-copy_properties = Array[StringName]([&"meshes", &"added_to_inventory"])
 
 [node name="BiggerCellsHall" unique_id=1260084618 instance=ExtResource("1_ok18y")]
 
@@ -381,7 +368,6 @@ door_custom_script = ExtResource("29_cexpk")
 
 [node name="WoodDoor" parent="RegDoorway2" index="3" unique_id=1660047536 instance=ExtResource("19_b2uug")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-script = ExtResource("29_cexpk")
 
 [node name="RegArchway5" parent="." index="92" unique_id=899009630 instance=ExtResource("32_osmw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, -5)
@@ -423,18 +409,12 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -6.5, 0.
 [node name="BigArchway8" parent="." index="103" unique_id=1461213289 instance=ExtResource("30_42i3c")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -4.5, 0.5, 0)
 
-[node name="Journal" parent="." index="104" unique_id=13409668 instance=ExtResource("31_f5jcr")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12.25, 0.5, 2)
-item_data = SubResource("Resource_6st3b")
-enable_highlight_light = true
-enable_highlight_sheen = true
-
-[node name="Sign5" parent="." index="105" unique_id=1582765633 instance=ExtResource("31_hcaqw")]
+[node name="Sign5" parent="." index="104" unique_id=1582765633 instance=ExtResource("31_hcaqw")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.5, 2.5, -5)
 text = "Cell A2"
 chain_length = 0
 
-[node name="SquareDoorway" parent="." index="106" unique_id=1832778823 instance=ExtResource("23_jgj6y")]
+[node name="SquareDoorway" parent="." index="105" unique_id=1832778823 instance=ExtResource("23_jgj6y")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, 0.5, -5.5)
 door_interactable_override = 2
 
@@ -442,7 +422,7 @@ door_interactable_override = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 interactable = false
 
-[node name="SquareDoorway2" parent="." index="107" unique_id=1504793044 instance=ExtResource("23_jgj6y")]
+[node name="SquareDoorway2" parent="." index="106" unique_id=1504793044 instance=ExtResource("23_jgj6y")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0.5, -5.5)
 door_locked_message = "It's Locked"
 
@@ -450,7 +430,7 @@ door_locked_message = "It's Locked"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 locked_message = "It's locked"
 
-[node name="SquareDoorway3" parent="." index="108" unique_id=1047996610 instance=ExtResource("23_jgj6y")]
+[node name="SquareDoorway3" parent="." index="107" unique_id=1047996610 instance=ExtResource("23_jgj6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 5.5)
 door_interactable_override = 2
 
@@ -458,7 +438,7 @@ door_interactable_override = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 interactable = false
 
-[node name="SquareDoorway5" parent="." index="109" unique_id=1476852889 instance=ExtResource("23_jgj6y")]
+[node name="SquareDoorway5" parent="." index="108" unique_id=1476852889 instance=ExtResource("23_jgj6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, 5.5)
 door_interactable_override = 2
 
@@ -466,7 +446,7 @@ door_interactable_override = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 interactable = false
 
-[node name="SquareDoorway4" parent="." index="110" unique_id=84667736 instance=ExtResource("23_jgj6y")]
+[node name="SquareDoorway4" parent="." index="109" unique_id=84667736 instance=ExtResource("23_jgj6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 5.5)
 door_interactable_override = 2
 
@@ -474,46 +454,48 @@ door_interactable_override = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
 interactable = false
 
-[node name="StoneWall2" parent="." index="111" unique_id=822683393 instance=ExtResource("4_24mv6")]
+[node name="StoneWall2" parent="." index="110" unique_id=822683393 instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 9, 0)
 size = Vector3(59, 1, 12)
 nav_walkable = false
 
-[node name="EntranceLight" parent="." index="112" unique_id=25970807 instance=ExtResource("25_6st3b")]
+[node name="EntranceLight" parent="." index="111" unique_id=25970807 instance=ExtResource("25_6st3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 8.375, 0)
 
-[node name="StoneWall9" parent="." index="113" unique_id=345798845 instance=ExtResource("4_24mv6")]
+[node name="StoneWall9" parent="." index="112" unique_id=345798845 instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, -9.5)
 size = Vector3(5, 1, 7)
 nav_walkable = false
 
-[node name="NavBlockingVolume" parent="." index="114" unique_id=1554414395 instance=ExtResource("29_u1wvf")]
+[node name="NavBlockingVolume" parent="." index="113" unique_id=1554414395 instance=ExtResource("29_u1wvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.25, -1, 0)
 height = 10.0
 vertices = PackedVector3Array(5.5, 0, 4, -5.5, 0, 4, -5.5, 0, -4, 5.5, 0, -4)
 affect_navigation_mesh = false
 size = Vector3(11, 10, 8)
 
-[node name="StoneWall37" parent="." index="115" unique_id=698616919 instance=ExtResource("4_24mv6")]
+[node name="StoneWall37" parent="." index="114" unique_id=698616919 instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 10, 2.5)
 size = Vector3(6, 3, 1)
 
-[node name="StoneWall38" parent="." index="116" unique_id=1084243850 instance=ExtResource("4_24mv6")]
+[node name="StoneWall38" parent="." index="115" unique_id=1084243850 instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 10, -2.5)
 size = Vector3(6, 3, 1)
 
-[node name="StoneWall39" parent="." index="117" unique_id=1488202761 instance=ExtResource("4_24mv6")]
+[node name="StoneWall39" parent="." index="116" unique_id=1488202761 instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 12, 0)
 size = Vector3(6, 1, 6)
 
-[node name="StoneFloor3" parent="." index="118" unique_id=1501196785 instance=ExtResource("1_e2mqj")]
+[node name="StoneFloor3" parent="." index="117" unique_id=1501196785 instance=ExtResource("1_e2mqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 6, 0)
 size = Vector3(1, 1, 4)
 
-[node name="RegDoorway3" parent="." index="119" unique_id=1316978571 instance=ExtResource("32_c2run")]
+[node name="RegDoorway3" parent="." index="118" unique_id=1316978571 instance=ExtResource("32_c2run")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 41, 6.5, 0)
 has_frame = false
 
-[node name="StoneWall40" parent="." index="120" unique_id=566267648 instance=ExtResource("4_24mv6")]
+[node name="StoneWall40" parent="." index="119" unique_id=566267648 instance=ExtResource("4_24mv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 11, 0)
 size = Vector3(1, 1, 4)
+
+[connection signal="body_entered" from="SprintTutorial" to="SprintTutorial" method="_on_body_entered"]

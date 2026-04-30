@@ -25,7 +25,7 @@ func _ready():
 
 
 func _exit_tree():
-	if Global.player.is_holding_item("Old Journal"):
+	if Global.player.is_holding_item(ItemRegistry.ID.JOURNAL):
 		Global.player.stop_holding_item(false)
 
 
@@ -53,6 +53,10 @@ func connect_note_button(note_button: Button, note_data: NoteData):
 func note_button_pressed(note_data: NoteData):
 	Global.ui.in_journal_note_menu.note_data = note_data
 	note_data.was_read = true
+	
+	if note_data.title == "Cell Note":
+		GlobalSignals.cell_note_read.emit()
+	
 	change_menu(Global.ui.in_journal_note_menu)
 
 

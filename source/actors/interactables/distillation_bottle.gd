@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _on_interact() -> void:
-	if Global.player.is_holding_item("Ruboleum Vial"):
+	if Global.player.is_holding_item(ItemRegistry.ID.RUBOLEUM_VIAL):
 		set_interactable(false)
 		
 		var initial_pos: Vector3 = vial.global_position

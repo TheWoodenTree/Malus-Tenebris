@@ -112,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 2.75)
 visible = false
 
 [node name="InventoryTutorial" type="Area3D" parent="." index="10" unique_id=1778416400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 11.989911)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("8_mcups")
@@ -220,7 +220,7 @@ door_key_name = "Cell Hall"
 
 [node name="WoodDoor" parent="RegDoorway" index="3" unique_id=818689339 instance=ExtResource("26_6vwom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-key_name = "Cell Hall"
+key_item_id = 7
 
 [node name="RegDoorway2" parent="." index="28" unique_id=1117518780 instance=ExtResource("38_wylgf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.25, 0.5, -9.25)

@@ -2,7 +2,6 @@ class_name Player
 extends Character
 
 @warning_ignore("unused_signal")
-signal crouched
 signal interactable_targeted(interactable_type: Interactable.Type)
 signal interactable_untargeted
 
@@ -40,11 +39,7 @@ var held_item_original_rotation: Vector3
 
 var has_torch: bool = false
 var in_menu: bool = false
-var first_item_picked_up: bool = false
-var first_item_held: bool = false
-var first_door_unlocked: bool = false
 var noclip_on: bool = false
-var picked_up_larder_key: bool = false
 var scripted_event: bool = false
 var in_world: bool = false
 var in_safe_room := false
@@ -237,12 +232,6 @@ func start_crouch_transition(entering: bool):
 	get_tree().call_group("player_detection_areas", "set_process_mode", Node.PROCESS_MODE_INHERIT)
 
 
-func inventory_add_item(item_data: ItemData):
-	InventoryManager.add_item(item_data)
-	if not first_item_picked_up:
-		first_item_picked_up = true
-
-
 func inventory_remove_item(item_data: ItemData):
 	InventoryManager.remove_item(item_data)
 
@@ -270,9 +259,11 @@ func hold_item(item_data: ItemData, play_sound: bool = false):
 	if play_sound:
 		rucksack_player.play()
 	
-	if not first_item_held and is_holding_key() and not debug_no_tutorials:
+	if not GameState.has_flag(GameState.Flag.HELD_CELL_HALL_KEY) \
+			and is_holding_item(ItemRegistry.ID.CELL_HALL_KEY) \
+			and not debug_no_tutorials:
 		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
-		first_item_held = true
+		GameState.set_flag(GameState.Flag.HELD_CELL_HALL_KEY)
 
 
 func delete_held_item():
@@ -303,8 +294,8 @@ func set_held_item_global_transform(new_transform: Transform3D):
 	held_item.global_transform = new_transform
 
 
-func is_holding_item(item_name: String):
-	return held_item_data and held_item_data.name == item_name
+func is_holding_item(item_id: ItemRegistry.ID):
+	return held_item_data and held_item_data.id == item_id
 
 
 func is_holding_key():

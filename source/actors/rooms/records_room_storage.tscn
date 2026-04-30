@@ -10,11 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/interactables/pickups/key.tscn" id="7_5geft"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="7_ex7hr"]
 [ext_resource type="PackedScene" uid="uid://cqw8mrrrb6cc8" path="res://source/actors/building pieces/half_wood_support.tscn" id="8_i52jy"]
-[ext_resource type="AudioStream" uid="uid://kf0n4pfopots" path="res://source/assets/sounds/misc/key_pickup.ogg" id="8_x4muf"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="9_440qv"]
+[ext_resource type="Script" uid="uid://dateyr01h0nrd" path="res://source/actors/interactables/pickups/cell_hall_key.gd" id="8_ml6dj"]
 [ext_resource type="PackedScene" uid="uid://b7xuqil3lfc14" path="res://source/actors/decor/furniture/large_half_table.tscn" id="9_niu4p"]
 [ext_resource type="PackedScene" uid="uid://mria7ic3vfe5" path="res://source/actors/decor/groups/books_8.tscn" id="10_gis0h"]
-[ext_resource type="Texture2D" uid="uid://xnufeie5j8rn" path="res://source/assets/ui/inventory/key.png" id="10_lpqka"]
 [ext_resource type="PackedScene" uid="uid://dafxw7skruo3p" path="res://source/actors/decor/groups/books_9.tscn" id="11_i5dfl"]
 [ext_resource type="PackedScene" uid="uid://d04entq5n5n3m" path="res://source/actors/decor/groups/books_7.tscn" id="12_rdl6s"]
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="13_morru"]
@@ -27,14 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="20_imf5o"]
 [ext_resource type="PackedScene" uid="uid://b1k5l8caeklwy" path="res://source/actors/decor/furniture/wall_shelf.tscn" id="22_d5r6w"]
 [ext_resource type="PackedScene" uid="uid://co8wmy3bgkhpy" path="res://source/actors/decor/groups/books_4.tscn" id="23_eh08h"]
-
-[sub_resource type="Resource" id="Resource_s084f"]
-script = ExtResource("9_440qv")
-name = "Cell Hall Key"
-texture = ExtResource("10_lpqka")
-pickup_sound = ExtResource("8_x4muf")
-hold_rotation_offset = Vector3(0, 200, -90)
-hold_scale_multiplier = 0.5
 
 [node name="RecordsRoomStorage" unique_id=321997683 instance=ExtResource("1_opylq")]
 
@@ -97,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -0.75)
 
 [node name="Key" parent="Chest" index="4" unique_id=301794960 instance=ExtResource("7_5geft")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0.25, 0.25, 0)
-item_data = SubResource("Resource_s084f")
+script = ExtResource("8_ml6dj")
 enable_highlight_light = true
 
 [node name="SmStackedBarrels" parent="." index="23" unique_id=2111852555 instance=ExtResource("6_0206u")]

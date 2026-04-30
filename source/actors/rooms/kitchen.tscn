@@ -455,7 +455,7 @@ door_key_name = "Larder"
 
 [node name="WoodDoorNoWindow" parent="RegDoorway2" index="3" unique_id=941494324 instance=ExtResource("47_x7baa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, 0.1)
-key_name = "Larder"
+key_item_id = 9
 
 [node name="RegArchway" parent="." index="109" unique_id=498722786 instance=ExtResource("49_ifubp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28, 0.5, -12)

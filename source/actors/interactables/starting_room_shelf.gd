@@ -5,4 +5,4 @@ func _ready() -> void:
 	super()
 	
 	if not Engine.is_editor_hint():
-		GlobalSignals.journal_picked_up.connect(set_interactable.bind(true))
+		GlobalSignals.cell_note_read.connect(set_interactable.bind(true))

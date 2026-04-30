@@ -4,7 +4,6 @@ var player_entered_area: bool = false
 
 
 func _on_body_entered(body):
-	if body == Global.player and Global.player.first_item_picked_up and not player_entered_area:
-		Global.ui.hint_popup("Press 'E' to open your inventory", 5.0)
-		Global.ui.block_inventory_open = false
+	if body == Global.player and GameState.has_flag(GameState.Flag.PICKED_UP_CELL_HALL_KEY) and not player_entered_area:
+		Global.ui.hint_popup("Open your inventory and pull out the key", 5.0)
 		player_entered_area = true
