@@ -32,6 +32,7 @@ func _enter_tree():
 	
 	if slot_grid:
 		update_slots_item_datas()
+		update_slot_hotkey_symbols()
 		if not slot_grid.get_child(4).button.disabled:
 			set_selected_slot(slot_grid.get_child(4))
 		else:
@@ -165,6 +166,8 @@ func _handle_drag():
 			var mouse_inside_slot_grid: bool = slot_grid_global_rect.has_point(mouse_pos)
 			if not mouse_inside_slot_grid:
 				Global.player.hold_item(Global.cursor.attached_item_data)
+				if tutorial_on:
+					set_tutorial_on(false)
 				Global.ui.remove_menu()
 		remove_item_from_cursor()
 		if tutorial_on and not Global.player.debug_no_tutorials:
