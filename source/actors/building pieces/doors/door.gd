@@ -132,12 +132,12 @@ func attempt_unlock():
 	Global.ui.block_inventory_open = true
 	
 	var initial_rot: Vector3 = key_mesh.global_rotation
+	var initial_pos: Vector3 = key_mesh.global_position
 	key_mesh.global_position = Global.player.held_item.global_position
 	key_mesh.global_rotation = Global.player.held_item.meshes[0].global_rotation
-	var initial_pos: Vector3 = key_anim_player.get_animation(anim_name).track_get_key_value(1, 0)
 	
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-	tween.tween_property(key_mesh, "global_position", key.to_global(initial_pos), 0.35)
+	tween.tween_property(key_mesh, "global_position", initial_pos, 0.35)
 	tween.parallel().tween_property(key_mesh, "global_rotation", initial_rot, 0.35)
 	
 	key_mesh.visible = true
