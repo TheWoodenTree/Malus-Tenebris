@@ -2,6 +2,8 @@ extends Menu
 
 @export var navigation_sound: AudioStream
 
+var current_submenu: Menu
+
 @onready var log_entries_button = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/LogEntriesButton
 @onready var v_sep_1 = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/VSep1
 @onready var found_notes_button = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/FoundNotesButton
@@ -15,6 +17,15 @@ func _enter_tree() -> void:
 	var has_log_entries: bool = JournalManager.log_entries.size() > 0
 	log_entries_button.visible = has_log_entries
 	v_sep_1.visible = has_log_entries
+	
+	if JournalManager.recent_note_data and JournalManager.use_recent_note_data:
+		if not found_notes_button.selected:
+			found_notes_button.pressed.emit()
+		note_button_pressed(JournalManager.recent_note_data)
+		JournalManager.use_recent_note_data = false
+	
+	elif current_submenu == Global.ui.in_journal_note_menu:
+		change_menu(Global.ui.found_notes_menu)
 
 
 func _ready():
@@ -52,6 +63,7 @@ func connect_note_button(note_button: Button, note_data: NoteData):
 
 func note_button_pressed(note_data: NoteData):
 	Global.ui.in_journal_note_menu.note_data = note_data
+	print(note_data.was_read)
 	note_data.was_read = true
 	
 	if note_data.title == "Cell Note":
@@ -65,4 +77,5 @@ func change_menu(menu: Menu):
 		for child in submenu_cont.get_children():
 			submenu_cont.remove_child.call_deferred(child)
 	submenu_cont.add_child.call_deferred(menu)
+	current_submenu = menu
 	Global.ui.menus.play_sound_one_shot(navigation_sound)

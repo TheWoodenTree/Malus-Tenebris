@@ -5,4 +5,4 @@ extends Resource
 @export_multiline var text: String
 @export var important: bool = false
 
-var was_read: bool = false
+@export_storage var was_read: bool = false

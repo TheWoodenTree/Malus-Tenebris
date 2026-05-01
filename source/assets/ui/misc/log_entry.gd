@@ -3,7 +3,10 @@ class_name LogEntry
 extends HBoxContainer
 
 enum LogEntryName {
-	TEST, PICKED_UP_JOURNAL, FIRST_DOSE, FIND_SUMP_KEY
+	TEST, 
+	PICKED_UP_JOURNAL, 
+	FIRST_DOSE, 
+	FIND_SUMP_KEY,
 }
 
 var log_entry_dict: Dictionary = {

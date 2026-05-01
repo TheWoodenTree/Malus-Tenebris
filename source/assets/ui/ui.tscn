@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jeo2tjikugy2"]
+[gd_scene format=3 uid="uid://jeo2tjikugy2"]
 
 [ext_resource type="Shader" uid="uid://dsfdhbps2vm08" path="res://source/assets/ui/death_screen.gdshader" id="1_exnrw"]
 [ext_resource type="Script" uid="uid://bb1relxjf2odc" path="res://source/assets/ui/ui.gd" id="2_b66td"]
@@ -39,7 +39,7 @@ shader = ExtResource("7_0le81")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwvjw"]
 shader = ExtResource("7_8lxju")
 
-[node name="Ui" type="Control"]
+[node name="Ui" type="Control" unique_id=274635795]
 process_mode = 3
 material = SubResource("ShaderMaterial_153xn")
 layout_mode = 3
@@ -50,45 +50,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_b66td")
 
-[node name="InventoryItemSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="InventoryItemSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=1659416376]
 bus = &"General (lite)"
 
-[node name="HourglassEmptyPlayer" type="AudioStreamPlayer" parent="."]
+[node name="HourglassEmptyPlayer" type="AudioStreamPlayer" parent="." unique_id=1707791340]
 stream = ExtResource("3_4ltw5")
 
-[node name="GenericAudioPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GenericAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1315308484]
 stream = ExtResource("3_0dsgc")
 
-[node name="ButtonHoverPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ButtonHoverPlayer" type="AudioStreamPlayer" parent="." unique_id=160740156]
 stream = ExtResource("4_kn5pb")
 volume_db = -5.0
 pitch_scale = 2.0
 
-[node name="ButtonUpPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ButtonUpPlayer" type="AudioStreamPlayer" parent="." unique_id=1106142049]
 stream = ExtResource("4_kn5pb")
 
-[node name="ButtonDownPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ButtonDownPlayer" type="AudioStreamPlayer" parent="." unique_id=2103128915]
 stream = ExtResource("4_kn5pb")
 pitch_scale = 0.8
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=1906617218]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HourglassEmptyNotification" type="MarginContainer" parent="Cont"]
+[node name="HourglassEmptyNotification" type="MarginContainer" parent="Cont" unique_id=930184193]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="HourglassIcon" type="TextureRect" parent="Cont/HourglassEmptyNotification"]
+[node name="HourglassIcon" type="TextureRect" parent="Cont/HourglassEmptyNotification" unique_id=278054523]
 material = SubResource("ShaderMaterial_b67d2")
 layout_mode = 2
 texture = ExtResource("8_0le81")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="InteractIcon" type="TextureRect" parent="Cont"]
+[node name="InteractIcon" type="TextureRect" parent="Cont" unique_id=2090675126]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -96,7 +96,10 @@ size_flags_vertical = 4
 texture = ExtResource("5_q4lwx")
 script = ExtResource("6_1mva4")
 
-[node name="LogEntryNotification" type="HBoxContainer" parent="Cont"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Cont" unique_id=1703162000]
+layout_mode = 2
+
+[node name="LogEntryNotification" type="HBoxContainer" parent="Cont/VBoxContainer" unique_id=297389402]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_mwvjw")
 layout_mode = 2
@@ -104,25 +107,43 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("7_3urtd")
 
-[node name="Label" type="Label" parent="Cont/LogEntryNotification"]
+[node name="Label" type="Label" parent="Cont/VBoxContainer/LogEntryNotification" unique_id=1875472851]
 use_parent_material = true
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
 text = "New log entry"
 
-[node name="Icon" type="TextureRect" parent="Cont/LogEntryNotification"]
+[node name="Icon" type="TextureRect" parent="Cont/VBoxContainer/LogEntryNotification" unique_id=1938893352]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("7_oykh5")
 
-[node name="DraggableMoveProgressBar" parent="." instance=ExtResource("7_rljn5")]
+[node name="FoundNoteNotification" type="HBoxContainer" parent="Cont/VBoxContainer" unique_id=1881845391]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_mwvjw")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("7_3urtd")
+
+[node name="Label" type="Label" parent="Cont/VBoxContainer/FoundNoteNotification" unique_id=160386193]
+use_parent_material = true
+layout_mode = 2
+text = "New note, press 'R'"
+
+[node name="Icon" type="TextureRect" parent="Cont/VBoxContainer/FoundNoteNotification" unique_id=1498386321]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("7_oykh5")
+
+[node name="DraggableMoveProgressBar" parent="." unique_id=1406070607 instance=ExtResource("7_rljn5")]
 visible = false
 layout_mode = 1
 
-[node name="Menus" type="Control" parent="."]
+[node name="Menus" type="Control" parent="." unique_id=494363982]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,11 +152,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_werd2")
 
-[node name="Background" type="ColorRect" parent="Menus"]
+[node name="Background" type="ColorRect" parent="Menus" unique_id=737918696]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 color = Color(0, 0, 0, 0)
 
-[node name="MenuPlayer" type="AudioStreamPlayer3D" parent="Menus"]
+[node name="MenuPlayer" type="AudioStreamPlayer3D" parent="Menus" unique_id=1091795686]
 max_polyphony = 5

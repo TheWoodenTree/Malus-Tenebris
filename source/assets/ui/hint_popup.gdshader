@@ -4,7 +4,7 @@ uniform float freq = 3.0;
 uniform float speed = 20.0;
 
 //void vertex() {
-//	VERTEX.y += sin(3.0 * TIME + UV.x * 20.0) * 2.0;
+    //VERTEX.y += sin(3.0 * TIME + VERTEX.x * 0.1) * 2.0;
 //}
 
 void fragment() {

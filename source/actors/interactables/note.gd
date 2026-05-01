@@ -63,6 +63,9 @@ func _on_interact() -> void:
 		for area: InteractArea in interact_areas:
 			area.set_collision_layer_value(16, false)
 		
+		#Global.ui.hint_popup("New note, %s\nCheck your journal" % note_data.title, 3.0)
+		Global.ui.notify_new_found_note()
+		
 		page_turn_player.play()
 		await page_turn_player.finished
 		

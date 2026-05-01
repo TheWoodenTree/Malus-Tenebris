@@ -39,7 +39,7 @@ func save_data() -> Dictionary[String, Variant]:
 				push_error(str(get_parent().get_path()) + " Has no property to save: " + property_path )
 				continue
 			new_save_data[property_path] = serialize_data(value)
-		
+	
 	return new_save_data
 
 
@@ -71,22 +71,21 @@ func serialize_data(value: Variant) -> Variant:
 		return null
 	
 	elif value is Resource:
+		var dict: Dictionary[String, Variant] = {}
 		if value.resource_path != "":
-			return META_PREFIX_IS_RESOURCE_PATH + value.resource_path
-		else:
-			var script: Script = value.get_script()
-			var dict: Dictionary[String, Variant] = {}
-			if script:
-				dict[META_KEY_SCRIPT_PATH] = script.resource_path
-			else:
-				dict[META_KEY_RESOURCE_PATH] = value.get_class()
-			for property: Variant in value.get_property_list():
-				var prop_name: String = property.name
-				var prop_value: Variant = value.get(prop_name)
-				if (prop_value and prop_value is Node): # Do not serialize nodes
-					continue
-				dict[prop_name] = serialize_data(prop_value)
-			return dict
+			dict[META_KEY_RESOURCE_PATH] = value.resource_path
+		var script: Script = value.get_script()
+		if script:
+			dict[META_KEY_SCRIPT_PATH] = script.resource_path
+		for property in value.get_property_list():
+			var prop_name: String = property.name
+			if property.usage & PROPERTY_USAGE_STORAGE == 0:
+				continue
+			var prop_value: Variant = value.get(prop_name)
+			if prop_value is Node:
+				continue
+			dict[prop_name] = serialize_data(prop_value)
+		return dict
 	
 	elif value is Array:
 		var array: Array[Variant] = []
@@ -123,25 +122,27 @@ func deserialize_data(value: Variant) -> Variant:
 		return array
 	
 	elif value is Dictionary:
-		var is_built_in_resource: bool = META_KEY_RESOURCE_PATH in value
-		var is_custom_resource: bool = META_KEY_SCRIPT_PATH in value
-		if is_built_in_resource || is_custom_resource:
-			var res: Resource
-			if is_built_in_resource:
-				var cls_name: String = value[META_KEY_RESOURCE_PATH]
-				if ClassDB.class_exists(cls_name):
-					res = ClassDB.instantiate(cls_name)
-				else:
-					push_error(str(parent.get_path()) + " Cannot find class: " + cls_name)
-			else:
-				var script_path: String = value[META_KEY_SCRIPT_PATH]
-				var script: Script = load(script_path)
-				if script:
-					res = script.new()
-				else:
-					push_error(str(parent.get_path()) + " Cannot load script as resource: " + script_path)
+		var has_resource_path: bool = META_KEY_RESOURCE_PATH in value
+		var is_custom_resource: bool = META_KEY_SCRIPT_PATH in value and not has_resource_path
+
+		if has_resource_path:
+			var res: Resource = load(value[META_KEY_RESOURCE_PATH])
 			for k: Variant in value.keys():
 				if k == META_KEY_RESOURCE_PATH or k == META_KEY_SCRIPT_PATH:
+					continue
+				res.set(k, deserialize_data(value[k]))
+			return res
+
+		elif is_custom_resource:
+			var script_path: String = value[META_KEY_SCRIPT_PATH]
+			var script: Script = load(script_path)
+			var res: Resource
+			if script:
+				res = script.new()
+			else:
+				push_error(str(parent.get_path()) + " Cannot load script as resource: " + script_path)
+			for k: Variant in value.keys():
+				if k == META_KEY_SCRIPT_PATH:
 					continue
 				res.set(k, deserialize_data(value[k]))
 			return res

@@ -36,8 +36,9 @@ var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_jou
 @onready var button_hover_player = $ButtonHoverPlayer
 @onready var button_up_player = $ButtonUpPlayer
 @onready var button_down_player = $ButtonDownPlayer
-@onready var log_entry_notification: HBoxContainer = $Cont/LogEntryNotification
+@onready var log_entry_notification: HBoxContainer = $Cont/VBoxContainer/LogEntryNotification
 @onready var hourglass_empty_notification: MarginContainer = $Cont/HourglassEmptyNotification
+@onready var found_note_notification: HBoxContainer = $Cont/VBoxContainer/FoundNoteNotification
 
 signal inventory_opened
 signal background_changed
@@ -175,6 +176,15 @@ func notify_new_log_entry():
 	await get_tree().create_timer(7.5, false).timeout
 	var tween2: Tween = get_tree().create_tween()
 	tween2.tween_property(log_entry_notification, "modulate:a", 0.0, 0.5).from(1.0)
+
+
+func notify_new_found_note():
+	var tween1: Tween = get_tree().create_tween()
+	tween1.tween_property(found_note_notification, "modulate:a", 1.0, 0.5).from(0.0)
+	
+	await get_tree().create_timer(JournalManager.AUTO_OPEN_TO_READ_TIME, false).timeout
+	var tween2: Tween = get_tree().create_tween()
+	tween2.tween_property(found_note_notification, "modulate:a", 0.0, 0.5).from(1.0)
 
 
 func notify_hourglass_empty():

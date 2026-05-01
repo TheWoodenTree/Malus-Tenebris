@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://diqov8ypoh6kd"]
+[gd_scene format=3 uid="uid://diqov8ypoh6kd"]
 
 [ext_resource type="Theme" uid="uid://da41v4hs6h8oo" path="res://source/assets/themes/text_theme.tres" id="1_as0b4"]
 [ext_resource type="Script" uid="uid://bmbxfxsu5micq" path="res://source/assets/ui/hint_popup.gd" id="2"]
@@ -9,7 +9,7 @@ shader = ExtResource("2_l8bde")
 shader_parameter/freq = 3.0
 shader_parameter/speed = 20.0
 
-[node name="HintPopup" type="Control"]
+[node name="HintPopup" type="Control" unique_id=513733484]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +20,13 @@ size_flags_horizontal = 4
 theme = ExtResource("1_as0b4")
 script = ExtResource("2")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=16420871]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 288.0
 theme_override_constants/margin_bottom = -320
 
-[node name="Text" type="Label" parent="Cont"]
+[node name="Text" type="Label" parent="Cont" unique_id=1087296075]
 material = SubResource("ShaderMaterial_0mtx4")
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -37,5 +37,5 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="InstTimer" type="Timer" parent="."]
+[node name="InstTimer" type="Timer" parent="." unique_id=1540559821]
 one_shot = true
