@@ -28,7 +28,7 @@ func _enter_tree():
 
 
 func _ready() -> void:
-	_add_note(STARTING_ROOM_NOTE)
+	JournalManager.add_note(STARTING_ROOM_NOTE)
 	tutorial_label.visible = JournalManager.show_note_tutorial
 
 
