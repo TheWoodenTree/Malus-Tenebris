@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_lf2j4"]
 [ext_resource type="Material" uid="uid://co60o2b1xyyqt" path="res://source/assets/materials/metal_bar/metal_bar.tres" id="1_uebo4"]
+[ext_resource type="Resource" uid="uid://8ou378eo38r2" path="res://source/assets/resources/item_datas/winch_crank.tres" id="2_4dbkw"]
 [ext_resource type="Shader" uid="uid://cxqos0qhd4u5q" path="res://source/assets/shaders/highlight_sheen.gdshader" id="2_y1sap"]
 [ext_resource type="AudioStream" uid="uid://1esobq86df0k" path="res://source/assets/sounds/pickup/metal_scrape.ogg" id="7_ew2w3"]
 
@@ -12,7 +13,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1sap"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xru0x"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_y1sap")
@@ -21,7 +22,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_4dbkw"]
+[sub_resource type="Shader" id="Shader_olb5r"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -56,11 +57,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xru0x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh383"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_y1sap")
-shader = SubResource("Shader_4dbkw")
+next_pass = SubResource("ShaderMaterial_xru0x")
+shader = SubResource("Shader_olb5r")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.9607843, 0.60784316, 0.3529412, 1)
 shader_parameter/outlineOn = false
@@ -101,12 +102,12 @@ shadow_mesh = SubResource("ArrayMesh_h6ebl")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_msbx5"]
 
 [node name="WinchCrank" unique_id=1015035664 node_paths=PackedStringArray("interact_areas") instance=ExtResource("1_lf2j4")]
-item_id = 5
+item_data = ExtResource("2_4dbkw")
 interact_areas = [NodePath("InteractArea")]
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.540983, 0.068, 0.115531)
-material_overlay = SubResource("ShaderMaterial_xru0x")
+material_overlay = SubResource("ShaderMaterial_uh383")
 mesh = SubResource("ArrayMesh_q3oai")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

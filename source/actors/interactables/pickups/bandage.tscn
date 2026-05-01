@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cfs47twoynhii" path="res://source/actors/interactables/pickups/bandage.gd" id="2_tvcw2"]
 [ext_resource type="Material" uid="uid://b20lvfqmtgku1" path="res://source/assets/materials/bandage_cloth/bandage_cloth.tres" id="3_4xgxy"]
 [ext_resource type="AudioStream" uid="uid://cvvgpcas8mofm" path="res://source/assets/sounds/item_use/use_bandage.wav" id="3_ec7we"]
+[ext_resource type="Resource" uid="uid://d26ds3d235e2e" path="res://source/assets/resources/item_datas/bandage.tres" id="4_ec7we"]
 
 [sub_resource type="Gradient" id="Gradient_rddky"]
 offsets = PackedFloat32Array(0.424731, 0.510753, 0.602151)
@@ -13,7 +14,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvcw2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skiaf"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_4xgxy")
@@ -22,7 +23,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_ec7we"]
+[sub_resource type="Shader" id="Shader_bq72g"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -57,11 +58,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_skiaf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inymq"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tvcw2")
-shader = SubResource("Shader_ec7we")
+next_pass = SubResource("ShaderMaterial_skiaf")
+shader = SubResource("Shader_bq72g")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -106,11 +107,12 @@ radius = 0.3
 script = ExtResource("2_tvcw2")
 use_sound = ExtResource("3_ec7we")
 item_id = 2
+item_data = ExtResource("4_ec7we")
 interactable_type = 3
 interact_areas = [NodePath("InteractArea")]
 
 [node name="Mesh" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_skiaf")
+material_overlay = SubResource("ShaderMaterial_inymq")
 mesh = SubResource("ArrayMesh_6sh1q")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]

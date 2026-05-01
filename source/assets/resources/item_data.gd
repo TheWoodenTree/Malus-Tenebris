@@ -9,7 +9,7 @@ var item_instance: Pickup = null :
 			item_instance.set_interactable(false)
 
 # Set by pickup script
-var item_scene_path: String = ""
+@export_storage var item_scene_path: String = ""
 var copied_properties: Dictionary[StringName, Variant] = {} 
 
 @export var id: ItemRegistry.ID

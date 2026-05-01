@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://b6gemig21enyu" path="res://source/assets/resources/note_datas/warden_letter.tres" id="21_g5x0j"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="21_hc1k4"]
 [ext_resource type="PackedScene" uid="uid://1utcwmaim5js" path="res://source/actors/decor/furniture/torture_chair.tscn" id="26_ytxxv"]
+[ext_resource type="Resource" uid="uid://ddwrs221n0xxx" path="res://source/assets/resources/item_datas/sump_tunnels_key.tres" id="28_e0siw"]
 [ext_resource type="PackedScene" uid="uid://samn2dje0fbg" path="res://source/actors/decor/misc/rope/laying_rope_1.tscn" id="28_fmbn5"]
 [ext_resource type="PackedScene" uid="uid://bfj41shy37gn5" path="res://source/actors/decor/misc/barrel.tscn" id="29_6nf2q"]
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="30_yxp60"]
@@ -283,6 +284,7 @@ shadow_mode = 1
 [node name="Key" parent="." index="71" unique_id=2010575980 instance=ExtResource("31_4l2yx")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 1, 2, -12)
 item_id = 8
+item_data = ExtResource("28_e0siw")
 
 [node name="WoodFloor2" parent="." index="72" unique_id=776943192 instance=ExtResource("35_l61dk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -11.75)

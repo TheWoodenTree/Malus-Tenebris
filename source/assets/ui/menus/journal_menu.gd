@@ -63,7 +63,6 @@ func connect_note_button(note_button: Button, note_data: NoteData):
 
 func note_button_pressed(note_data: NoteData):
 	Global.ui.in_journal_note_menu.note_data = note_data
-	print(note_data.was_read)
 	note_data.was_read = true
 	
 	if note_data.title == "Cell Note":

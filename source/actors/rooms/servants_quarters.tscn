@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cx0vwjgdcwwar" path="res://source/actors/decor/misc/torch_holder.tscn" id="12_hka4e"]
 [ext_resource type="PackedScene" uid="uid://cffojy8sonot2" path="res://source/actors/building pieces/basic/wood_floor.tscn" id="13_a81w4"]
 [ext_resource type="PackedScene" uid="uid://dxilow4owel0j" path="res://source/actors/building pieces/archways/crawlway.tscn" id="14_xyna2"]
+[ext_resource type="Resource" uid="uid://bqar0bonuyvsp" path="res://source/assets/resources/item_datas/larder_key.tres" id="16_aj8xw"]
 [ext_resource type="PackedScene" uid="uid://dwftqrh553lc1" path="res://source/actors/decor/furniture/sm_table.tscn" id="16_npych"]
 [ext_resource type="PackedScene" uid="uid://dqlc1s8bbnegp" path="res://source/actors/interactables/pickups/key.tscn" id="17_bfsaw"]
 [ext_resource type="Script" uid="uid://c2sft0428kuia" path="res://source/actors/interactables/pickups/larder_key.gd" id="18_d0k2i"]
@@ -408,6 +409,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.25, 0.5, 28.5)
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 17.75, 2, 28.25)
 script = ExtResource("18_d0k2i")
 item_id = 9
+item_data = ExtResource("16_aj8xw")
 
 [node name="SmallBed" parent="." index="97" unique_id=907410135 instance=ExtResource("22_l21oh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.75, 0.5, 32.25)

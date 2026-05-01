@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://t4bgwd6hxfib" path="res://source/actors/interactables/pickups/pickup.tscn" id="1_duhgt"]
 [ext_resource type="Script" uid="uid://vctbew5s5hmw" path="res://source/actors/interactables/pickups/hourglass.gd" id="2_duhgt"]
+[ext_resource type="Resource" uid="uid://binua2vubahmw" path="res://source/assets/resources/item_datas/hourglass.tres" id="3_6ea1l"]
 [ext_resource type="Material" uid="uid://cnmhob8uonjij" path="res://source/assets/shaders/outline_shader_mat.tres" id="4_kakmt"]
 [ext_resource type="Material" uid="uid://d0n6av8hafihu" path="res://source/assets/materials/wood_3/wood_3.tres" id="5_6ea1l"]
 [ext_resource type="Curve" uid="uid://co1n052t7l7cu" path="res://source/assets/misc/hourglass_volume_curve.tres" id="5_l7c4g"]
@@ -615,6 +616,7 @@ shadow_mesh = SubResource("ArrayMesh_7qti0")
 script = ExtResource("2_duhgt")
 test_time_scale = 1.0
 item_id = 3
+item_data = ExtResource("3_6ea1l")
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("BaseAndTop"), NodePath("Supports"), NodePath("SandTop"), NodePath("SandBottom"), NodePath("SandTopCap"), NodePath("SandBottomCap")]
 

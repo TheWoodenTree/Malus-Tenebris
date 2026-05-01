@@ -21,9 +21,6 @@ func _ready() -> void:
 	auto_open_to_read_timer.wait_time = AUTO_OPEN_TO_READ_TIME
 	auto_open_to_read_timer.one_shot = true
 	auto_open_to_read_timer.timeout.connect(func(): recent_note_data = null; use_recent_note_data = false)
-	
-	await get_tree().process_frame
-	print(JournalManager.found_notes.map(func(note_data: NoteData): return note_data.was_read))
 
 
 func _process(_delta: float) -> void:

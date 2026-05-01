@@ -3,10 +3,9 @@ extends Interactable
 
 signal picked_up
 
-@export var item_id := ItemRegistry.ID.NONE
+@export var item_data: ItemData
 
 var being_held := false
-var item_data: ItemData
 
 @onready var pickup_player = $PickupPlayer
 
@@ -14,7 +13,6 @@ var item_data: ItemData
 func _ready():
 	super()
 	
-	item_data = ItemRegistry.item_data_resources[item_id]
 	if item_data:
 		item_data.item_scene_path = scene_file_path
 	else:
