@@ -17,7 +17,6 @@ func _enter_tree():
 			if existing_entry.hint_name == log_entry_name:
 				log_entry_exists = true
 				break
-			existing_entry.queue_free()
 		
 		if not log_entry_exists:
 			_add_entry(log_entry_name)

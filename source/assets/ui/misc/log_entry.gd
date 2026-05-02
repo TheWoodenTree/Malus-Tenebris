@@ -3,15 +3,19 @@ class_name LogEntry
 extends HBoxContainer
 
 enum LogEntryName {
-	TEST, 
-	PICKED_UP_JOURNAL, 
-	FIRST_DOSE, 
-	FIND_SUMP_KEY,
+	TEST = 0, 
+	PICKED_UP_JOURNAL = 1, 
+	ESCAPED_TO_ENTRANCE = 4,
+	GREAT_DOOR_CLOSED = 5,
+	FIRST_DOSE = 2, 
+	FIND_SUMP_KEY = 3,
 }
 
 var log_entry_dict: Dictionary = {
 	LogEntryName.TEST: "This is a test log entry",
 	LogEntryName.PICKED_UP_JOURNAL: "Useful information will be written here and notes found throughout the prison will be kept in the Found Notes tab",
+	LogEntryName.ESCAPED_TO_ENTRANCE: "Investigate the prison",
+	LogEntryName.GREAT_DOOR_CLOSED: "Find another way out of the prison",
 	LogEntryName.FIRST_DOSE: "Find and distill more Ruboleum to stop the onset of Vitriscet",
 	LogEntryName.FIND_SUMP_KEY: "Find the key and access the Sump Tunnels",
 }

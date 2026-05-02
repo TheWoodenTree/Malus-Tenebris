@@ -39,6 +39,7 @@ JournalManager="*res://source/assets/global_scripts/journal_manager.gd"
 Blackout="*res://source/assets/global_scripts/blackout.gd"
 ItemRegistry="*uid://bcd548lg0t2na"
 GameState="*uid://bh1vwsrqvku54"
+SoundManager="*uid://ce8t6eyy4jsha"
 
 [display]
 
