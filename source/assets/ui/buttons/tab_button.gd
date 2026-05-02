@@ -1,3 +1,4 @@
+class_name TabButton
 extends IconlessButton
 
 @export var select_color: Color

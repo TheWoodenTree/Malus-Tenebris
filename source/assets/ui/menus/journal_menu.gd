@@ -9,6 +9,8 @@ var current_submenu: Menu
 @onready var found_notes_button = $Cont/VBoxCont/Cont/PanelCont/HBoxCont/FoundNotesButton
 @onready var submenu_cont = $Cont/VBoxCont/SubmenuCont
 
+@onready var tab_buttons: Array[TabButton] = [found_notes_button, log_entries_button]
+
 
 func _enter_tree() -> void:
 	if not is_node_ready():
@@ -19,8 +21,7 @@ func _enter_tree() -> void:
 	v_sep_1.visible = has_log_entries
 	
 	if JournalManager.recent_note_data and JournalManager.use_recent_note_data:
-		if not found_notes_button.selected:
-			found_notes_button.pressed.emit()
+		select_tab(found_notes_button)
 		note_button_pressed(JournalManager.recent_note_data)
 		JournalManager.use_recent_note_data = false
 	
@@ -32,7 +33,7 @@ func _ready():
 	Global.ui.found_notes_menu.new_note_added.connect(connect_note_button)
 	Global.ui.in_journal_note_menu.back_button_pressed.connect(change_menu.bind(Global.ui.found_notes_menu))
 	submenu_cont.add_child(Global.ui.found_notes_menu)
-	found_notes_button.select()
+	select_tab(found_notes_button)
 
 
 func _exit_tree():
@@ -47,14 +48,20 @@ func _input(_event: InputEvent) -> void:
 
 func _on_log_entries_button_pressed():
 	change_menu(Global.ui.log_entries_menu)
-	log_entries_button.select()
-	found_notes_button.deselect()
+	select_tab(log_entries_button)
 
 
 func _on_found_notes_button_pressed():
 	change_menu(Global.ui.found_notes_menu)
-	found_notes_button.select()
-	log_entries_button.deselect()
+	select_tab(found_notes_button)
+
+
+func select_tab(selected_button: TabButton):
+	for button: TabButton in tab_buttons:
+		if button == selected_button:
+			button.select()
+		else:
+			button.deselect()
 
 
 func connect_note_button(note_button: Button, note_data: NoteData):
@@ -73,8 +80,11 @@ func note_button_pressed(note_data: NoteData):
 
 func change_menu(menu: Menu):
 	if submenu_cont.get_child_count() > 0:
+		var children_to_remove: Array[Control]
 		for child in submenu_cont.get_children():
-			submenu_cont.remove_child.call_deferred(child)
+			children_to_remove.append(child)
+		for child: Control in children_to_remove:
+			submenu_cont.remove_child(child)
 	submenu_cont.add_child.call_deferred(menu)
 	current_submenu = menu
 	Global.ui.menus.play_sound_one_shot(navigation_sound)
