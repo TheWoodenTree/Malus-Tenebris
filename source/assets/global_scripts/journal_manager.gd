@@ -1,6 +1,7 @@
 extends Node
 
 const AUTO_OPEN_TO_READ_TIME = 8.5
+const _STARTING_ROOM_NOTE = preload("uid://dfrb81cwf31fs")
 
 var log_entries: Array[LogEntry.LogEntryName] = []
 var found_notes: Array[NoteData]
@@ -21,6 +22,8 @@ func _ready() -> void:
 	auto_open_to_read_timer.wait_time = AUTO_OPEN_TO_READ_TIME
 	auto_open_to_read_timer.one_shot = true
 	auto_open_to_read_timer.timeout.connect(func(): recent_note_data = null; use_recent_note_data = false)
+	
+	add_note(_STARTING_ROOM_NOTE)
 
 
 func _process(_delta: float) -> void:

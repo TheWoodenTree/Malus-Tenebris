@@ -3,7 +3,6 @@ extends Menu
 signal new_note_added(note_button: Button, note_data: NoteData)
 
 const FOUND_NOTE_ROW = preload("uid://cyar0lqn7nke0")
-const STARTING_ROOM_NOTE = preload("uid://dfrb81cwf31fs")
 
 var row_count: int = 0
 var rows: Array[FoundNoteRow]
@@ -28,7 +27,6 @@ func _enter_tree():
 
 
 func _ready() -> void:
-	JournalManager.add_note(STARTING_ROOM_NOTE)
 	tutorial_label.visible = JournalManager.show_note_tutorial
 
 
