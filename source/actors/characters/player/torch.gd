@@ -95,7 +95,7 @@ func _on_interact() -> void:
 	mesh.position.y = HOLD_Y_POS
 	
 	if not Global.player.debug_has_torch:
-		Global.ui.hint_popup("Find a way to light the torch", 5.0)
+		Global.ui.show_hint("Find a way to light the torch", 5.0)
 	
 	picked_up.emit()
 	get_tree().call_group("fire_sources", "update_interactable")

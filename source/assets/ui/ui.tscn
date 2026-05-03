@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cit2uy3arg158" path="res://source/assets/ui/inventory/book.png" id="7_oykh5"]
 [ext_resource type="PackedScene" uid="uid://difwtbkkvagxy" path="res://source/assets/ui/progress_bars/draggable_move_progress_bar.tscn" id="7_rljn5"]
 [ext_resource type="Texture2D" uid="uid://ujlgemxkdr6v" path="res://source/assets/ui/inventory/hourglass-finished.png" id="8_0le81"]
-[ext_resource type="Script" uid="uid://ckawedpfheija" path="res://source/assets/ui/menus.gd" id="8_werd2"]
+[ext_resource type="Script" uid="uid://ckawedpfheija" path="res://source/assets/ui/menus/menus.gd" id="8_werd2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_153xn"]
 shader = ExtResource("1_exnrw")
@@ -39,7 +39,7 @@ shader = ExtResource("7_0le81")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwvjw"]
 shader = ExtResource("7_8lxju")
 
-[node name="Ui" type="Control" unique_id=274635795]
+[node name="UI" type="Control" unique_id=274635795]
 process_mode = 3
 material = SubResource("ShaderMaterial_153xn")
 layout_mode = 3
@@ -160,3 +160,15 @@ color = Color(0, 0, 0, 0)
 
 [node name="MenuPlayer" type="AudioStreamPlayer3D" parent="Menus" unique_id=1091795686]
 max_polyphony = 5
+
+[node name="Popups" type="Control" parent="." unique_id=579388502]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="Popups" unique_id=1512565758]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

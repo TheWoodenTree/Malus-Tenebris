@@ -70,19 +70,19 @@ func _on_interact() -> void:
 		if Global.player.is_holding_item(ItemRegistry.ID.BEEF_FAT):
 			_melt_fat()
 		else:
-			Global.ui.hint_popup("Not holding anything to cook", 3.0)
+			Global.ui.show_hint("Not holding anything to cook", 3.0)
 	elif fat_being_melted and not fat_melted and not key_dipped:
-		Global.ui.hint_popup("The fat will take a while to be rendered", 3.0)
+		Global.ui.show_hint("The fat will take a while to be rendered", 3.0)
 	elif fat_melted and not key_dipped:
 		if Global.player.is_holding_item(ItemRegistry.ID.SUMP_TUNNELS_KEY):
 			_lube_key()
 		else:
 			if Global.player.held_item_data:
-				Global.ui.hint_popup("There's no point to dipping that in the tallow", 3.0)
+				Global.ui.show_hint("There's no point to dipping that in the tallow", 3.0)
 			else:
-				Global.ui.hint_popup("Not holding anything to dip in the tallow", 3.0)
+				Global.ui.show_hint("Not holding anything to dip in the tallow", 3.0)
 	elif fat_melted and key_dipped:
 		InventoryManager.add_item(key_item_data)
-		Global.ui.hint_popup("Picked up %s" % key_item_data.name, 3.0)
+		Global.ui.show_hint("Picked up %s" % key_item_data.name, 3.0)
 		Global.player.play_pickup_sound(key_pickup_player)
 		set_interactable(false)

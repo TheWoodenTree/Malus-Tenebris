@@ -36,7 +36,7 @@ func _on_interact() -> void:
 		vial.layers = 1
 		pour_anim_player.play("pour")
 	else:
-		Global.ui.hint_popup("Need Ruboleum for distillation", 3.0)
+		Global.ui.show_hint("Need Ruboleum for distillation", 3.0)
 
 
 func distillation_complete():

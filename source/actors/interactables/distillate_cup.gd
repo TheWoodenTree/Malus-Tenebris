@@ -12,18 +12,18 @@ func _on_target():
 	if num_doses > 0:
 		if not first_dose:
 			var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
-			Global.ui.hint_popup(doses_left_string, -1)
+			Global.ui.show_hint(doses_left_string, -1)
 		else:
-			Global.ui.hint_popup("Contains a dose of a temporary inhibitor for Vitriscet", -1)
+			Global.ui.show_hint("Contains a dose of a temporary inhibitor for Vitriscet", -1)
 
 
 func _on_untarget():
-	Global.ui.hint_remove()
+	Global.ui.remove_hint()
 
 
 func _on_interact() -> void:
 	if first_dose:
-		Global.ui.hint_remove()
+		Global.ui.remove_hint()
 		first_dose = false
 		AfflictionEffectController.first_dose_taken = true
 		do_log_entry()
@@ -33,9 +33,9 @@ func _on_interact() -> void:
 			num_doses -= 1
 			if num_doses > 0:
 				var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
-				Global.ui.hint_popup(doses_left_string, -1)
+				Global.ui.show_hint(doses_left_string, -1)
 			else:
-				Global.ui.hint_remove()
+				Global.ui.remove_hint()
 			
 			var play_sigh: bool = AfflictionTimer.time_left < 60.0
 			
@@ -50,10 +50,10 @@ func _on_interact() -> void:
 			if play_sigh:
 				Global.player.play_sound_one_shot(Global.player.sigh_of_relief_sound)
 		else:
-			Global.ui.hint_popup("Drinking any more won't be effective", 3.0)
+			Global.ui.show_hint("Drinking any more won't be effective", 3.0)
 		
 	else:
-		Global.ui.hint_popup("It's empty", 3.0)
+		Global.ui.show_hint("It's empty", 3.0)
 
 
 func distillation_started():

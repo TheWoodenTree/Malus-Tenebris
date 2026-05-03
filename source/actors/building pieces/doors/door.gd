@@ -56,7 +56,7 @@ func _ready():
 func _on_target():
 	if tutorial_popup and not tutorial_popup_shown and not Global.player.debug_no_tutorials \
 	and Global.player.has_torch and Global.player.torch.is_lit:
-		Global.ui.hint_popup("Press and hold 'Left Click' and drag to open the door", 5.0)
+		Global.ui.show_hint("Press and hold 'Left Click' and drag to open the door", 5.0)
 		tutorial_popup_shown = true
 	
 	if interactable:
@@ -74,7 +74,7 @@ func _on_interact() -> void:
 		
 		# Player tries to open the door in the records room but doesn't have a lit torch
 		elif tutorial_popup and (not Global.player.has_torch or Global.player.has_torch and not Global.player.torch.is_lit):
-			Global.ui.hint_popup("It's too dark; find a light source", 3.0)
+			Global.ui.show_hint("It's too dark; find a light source", 3.0)
 		
 		# Player drags an unlocked door
 		elif (unlocked and not blocked and locked_message.is_empty()) or Global.player.is_omnipotent_door_god:
@@ -98,7 +98,7 @@ func _on_interact() -> void:
 				if log_entry_on_first_attempt and not open_attempted:
 					JournalManager.add_log_entry(log_entry_on_first_attempt)
 				
-				Global.ui.hint_popup(message, 3.0)
+				Global.ui.show_hint(message, 3.0)
 				
 				var door_tween = get_tree().create_tween()
 				
@@ -221,12 +221,12 @@ func set_closed(closed_: bool):
 		super(closed_)
 
 
-func wrong_key_hint_popup():
-	Global.ui.hint_popup("Wrong key", 3.0)
+func show_wrong_key_show_hint():
+	Global.ui.show_hint("Wrong key", 3.0)
 
 
-func key_needs_lube_hint_popup():
-	Global.ui.hint_popup("It's too rusty; perhaps it can be lubricated", 3.0)
+func show_key_needs_lube_show_hint():
+	Global.ui.show_hint("It's too rusty; perhaps it can be lubricated", 3.0)
 
 
 func get_character_z_dist(character: CharacterBody3D):

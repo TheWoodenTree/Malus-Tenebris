@@ -13,7 +13,8 @@ var curr_popup_wr: WeakRef = null
 var inventory_open: bool = false
 
 var prologue: Control = preload("res://source/assets/prologue/prologue.tscn").instantiate()
-var ui_hint_popup: Resource = preload("res://source/assets/ui/hint_popup.tscn")
+var ui_hint_popup: Resource = preload("res://source/assets/ui/hint.tscn")
+var blocking_hint_popup: BlockingHintPopup = preload("res://source/assets/ui/popups/hint_popup.tscn").instantiate()
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
 var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
 var are_you_sure_popup: AreYouSurePopup = preload("res://source/assets/ui/menus/are_you_sure_popup.tscn").instantiate()
@@ -78,12 +79,12 @@ func _process(_delta):
 	#	display_menu(journal_menu)
 
 
-func hint_remove():
+func remove_hint():
 	if curr_popup_wr and curr_popup_wr.get_ref():
 		curr_popup.disappear()
 
 
-func hint_popup(msg: String, dur: float):
+func show_hint(msg: String, dur: float):
 	var popup = ui_hint_popup.instantiate()
 	var popup_wr = weakref(popup)
 	
@@ -107,6 +108,17 @@ func hint_popup(msg: String, dur: float):
 	# this popup frees itself
 	if popup_wr and popup_wr.get_ref():
 		popup.disappear()
+
+
+func remove_hint_popup():
+	
+	remove_child(blocking_hint_popup)
+
+
+func show_hint_popup(msg: String):
+	blocking_hint_popup.hint_text_label.text = msg
+	add_child(blocking_hint_popup)
+	Global.player.in_menu = true
 
 
 func open_inventory():

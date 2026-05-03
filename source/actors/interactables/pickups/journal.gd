@@ -12,11 +12,11 @@ func _enter_tree():
 
 
 func _on_target():
-	Global.ui.hint_popup("Press 'Left Click' to interact with highlighted objects", -1)
+	Global.ui.show_hint("Press 'Left Click' to interact with highlighted objects", -1)
 
 
 func _on_untarget():
-	Global.ui.hint_remove()
+	Global.ui.remove_hint()
 
 
 func _on_interact() -> void:
@@ -24,4 +24,4 @@ func _on_interact() -> void:
 	GlobalSignals.journal_picked_up.emit()
 	await get_tree().process_frame
 	await get_tree().process_frame
-	Global.ui.hint_popup("Press 'E' to open your inventory", 5.0)
+	Global.ui.show_hint("Press 'E' to open your inventory", 5.0)

@@ -12,5 +12,5 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body == Global.player and not triggered and not Global.player.debug_no_tutorials:
-		Global.ui.hint_popup(message, duration)
+		Global.ui.show_hint(message, duration)
 		triggered = true

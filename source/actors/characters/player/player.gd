@@ -265,7 +265,7 @@ func hold_item(item_data: ItemData, play_sound: bool = false):
 	if not GameState.has_flag(GameState.Flag.HELD_CELL_HALL_KEY) \
 			and is_holding_item(ItemRegistry.ID.CELL_HALL_KEY) \
 			and not debug_no_tutorials:
-		Global.ui.hint_popup("Interact with the door while holding the key", 5.0)
+		Global.ui.show_hint("Interact with the door while holding the key", 5.0)
 		GameState.set_flag(GameState.Flag.HELD_CELL_HALL_KEY)
 
 

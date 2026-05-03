@@ -33,7 +33,7 @@ func _on_interact() -> void:
 		set_interactable(true)
 	
 	SaveManager.save_game()
-	Global.ui.hint_popup("Progress saved", 3.0)
+	Global.ui.show_hint("Progress saved", 3.0)
 	var tween: Tween = create_tween()
 	tween.tween_property(smoke_material_1, "shader_parameter/smokeHeight", 1.0, 7.5).from(0.0)
 	tween.parallel().tween_property(smoke_material_2, "shader_parameter/smokeHeight", 1.0, 7.5).from(0.0)

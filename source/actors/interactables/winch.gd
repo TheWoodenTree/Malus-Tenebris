@@ -90,9 +90,9 @@ func _on_interact() -> void:
 				set_interactable(false)
 				#being_dragged = true
 			else:
-				Global.ui.hint_popup("It won't budge", 3.0)
+				Global.ui.show_hint("It won't budge", 3.0)
 		else:
-			Global.ui.hint_popup("It's missing a crank", 3.0)
+			Global.ui.show_hint("It's missing a crank", 3.0)
 
 
 func add_torque_to_handle(offset: Vector2):

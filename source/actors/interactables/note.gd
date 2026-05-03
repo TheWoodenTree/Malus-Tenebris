@@ -36,12 +36,12 @@ func _ready() -> void:
 
 func _on_target():
 	if display_help and not read:
-		Global.ui.hint_popup("Press 'Left Click' to interact with highlighted objects", -1)
+		Global.ui.show_hint("Press 'Left Click' to interact with highlighted objects", -1)
 
 
 func _on_untarget():
 	if display_help:
-		Global.ui.hint_remove()
+		Global.ui.remove_hint()
 
 
 func _on_interact() -> void:
@@ -52,7 +52,7 @@ func _on_interact() -> void:
 	
 		was_read.emit()
 		if display_help:
-			Global.ui.hint_remove()
+			Global.ui.remove_hint()
 		
 		if not read:
 			JournalManager.add_note(note_data)
@@ -63,7 +63,7 @@ func _on_interact() -> void:
 		for area: InteractArea in interact_areas:
 			area.set_collision_layer_value(16, false)
 		
-		#Global.ui.hint_popup("New note, %s\nCheck your journal" % note_data.title, 3.0)
+		#Global.ui.show_hint("New note, %s\nCheck your journal" % note_data.title, 3.0)
 		Global.ui.notify_new_found_note()
 		
 		page_turn_player.play()

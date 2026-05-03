@@ -19,14 +19,14 @@ func _ready():
 
 func _on_target():
 	if interactable:
-		Global.ui.hint_popup(text, -1)
+		Global.ui.show_hint(text, -1)
 		if enable_highlight_sheen:
 			enable_highlight_sheen = false
 			disable_sheen()
 
 
 func _on_untarget():
-	Global.ui.hint_remove()
+	Global.ui.remove_hint()
 
 
 func _on_interact() -> void:

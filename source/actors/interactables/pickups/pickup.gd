@@ -37,7 +37,7 @@ func _on_interact():
 		InventoryManager.add_item(item_data)
 		
 		var pickup_string: String = "Picked up %s" % item_data.name
-		Global.ui.hint_popup(pickup_string, 3.0)
+		Global.ui.show_hint(pickup_string, 3.0)
 		
 		highlight_light.visible = false
 		visible = false

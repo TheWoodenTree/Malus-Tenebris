@@ -12,6 +12,6 @@ func _ready():
 
 func _on_interact() -> void:
 	if not player_picked_up_journal:
-		Global.ui.hint_popup("What was that book on the ground?", 3.0)
+		Global.ui.show_hint("What was that book on the ground?", 3.0)
 	else:
 		super()
