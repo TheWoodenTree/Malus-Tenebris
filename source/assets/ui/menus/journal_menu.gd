@@ -43,7 +43,7 @@ func _exit_tree():
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("journal"):
-		Global.ui.remove_menu()
+		Global.ui.menu_manager.remove_menu()
 
 
 func _on_log_entries_button_pressed():
@@ -87,4 +87,4 @@ func change_menu(menu: Menu):
 			submenu_cont.remove_child(child)
 	submenu_cont.add_child.call_deferred(menu)
 	current_submenu = menu
-	Global.ui.menus.play_sound_one_shot(navigation_sound)
+	Global.ui.menu_manager.play_sound_one_shot(navigation_sound)

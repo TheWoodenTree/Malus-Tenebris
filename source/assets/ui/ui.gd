@@ -1,5 +1,5 @@
 class_name UI
-extends Control
+extends CanvasLayer
 
 const BLUR_TIME: float = 0.1
 
@@ -13,11 +13,11 @@ var curr_popup_wr: WeakRef = null
 var inventory_open: bool = false
 
 var prologue: Control = preload("res://source/assets/prologue/prologue.tscn").instantiate()
-var ui_hint_popup: Resource = preload("res://source/assets/ui/hint.tscn")
-var blocking_hint_popup: BlockingHintPopup = preload("res://source/assets/ui/popups/hint_popup.tscn").instantiate()
+var hint_res: Resource = preload("res://source/assets/ui/hint.tscn")
+var hint_popup: HintPopup = preload("res://source/assets/ui/popups/hint_popup.tscn").instantiate()
 var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
 var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
-var are_you_sure_popup: AreYouSurePopup = preload("res://source/assets/ui/menus/are_you_sure_popup.tscn").instantiate()
+var are_you_sure_menu: AreYouSureMenu = preload("res://source/assets/ui/menus/are_you_sure_menu.tscn").instantiate()
 var pause_menu: Control = preload("res://source/assets/ui/menus/pause_menu.tscn").instantiate()
 var settings_menu: Control = preload("res://source/assets/ui/menus/settings_menu.tscn").instantiate()
 var journal_menu: Control = preload("res://source/assets/ui/menus/journal_menu.tscn").instantiate()
@@ -26,10 +26,10 @@ var found_notes_menu: Control = preload("res://source/assets/ui/menus/found_note
 var note_menu: Control = preload("res://source/assets/ui/menus/note_menu.tscn").instantiate()
 var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_journal_note_menu.tscn").instantiate()
 
-@onready var background = $Menus/Background
+@onready var background = $MenuManager/Background
 @onready var interact_icon = $Cont/InteractIcon
-@onready var draggable_move_progress_bar = $DraggableMoveProgressBar
-@onready var menus: Menus = $Menus
+@onready var menu_manager: MenuManager = $MenuManager
+@onready var popup_manager: PopupManager = $PopupManager
 @onready var block_inventory_open: bool = false
 @onready var generic_audio_player = $GenericAudioPlayer
 @onready var hourglass_empty_player: AudioStreamPlayer = $HourglassEmptyPlayer
@@ -42,7 +42,6 @@ var in_journal_note_menu: Control = preload("res://source/assets/ui/menus/in_jou
 @onready var found_note_notification: HBoxContainer = $Cont/VBoxContainer/FoundNoteNotification
 
 signal inventory_opened
-signal background_changed
 
 
 func _ready():
@@ -58,25 +57,21 @@ func _ready():
 	Global.found_notes = found_notes_menu
 
 
-func _process(_delta):
-	#if Input.is_action_just_pressed("debug3") and has_node("DeathScreen"):
-		#remove_child(get_node("DeathScreen"))
-	if Input.is_action_just_pressed("toggle_inventory"):
-		if menus.num_menus == 0:
-			open_inventory()
-		elif menus.back() == inventory_menu:
-			remove_menu()
-	
-	elif Input.is_action_just_pressed("pause"):
-		if menus.open_menus.size() > 0 and menus.back() != Global.main.title_screen:
-			if menus.back() == pause_menu:
-				get_tree().paused = false
-			remove_menu()
-		elif Global.player.in_world:
-			display_menu(pause_menu)
-	
-	#elif Input.is_action_just_pressed("journal"):
-	#	display_menu(journal_menu)
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventJoypadButton:
+		if event.is_action_pressed("toggle_inventory"):
+			if menu_manager.num_menus == 0:
+				open_inventory()
+			elif menu_manager.back() == inventory_menu:
+				menu_manager.remove_menu()
+		
+		elif event.is_action_pressed("pause"):
+			if menu_manager.open_menus.size() > 0 and menu_manager.back() != Global.main.title_screen:
+				if menu_manager.back() == pause_menu:
+					get_tree().paused = false
+				menu_manager.remove_menu()
+			elif Global.player.in_world:
+				menu_manager.display_menu(pause_menu)
 
 
 func remove_hint():
@@ -85,7 +80,7 @@ func remove_hint():
 
 
 func show_hint(msg: String, dur: float):
-	var popup = ui_hint_popup.instantiate()
+	var popup = hint_res.instantiate()
 	var popup_wr = weakref(popup)
 	
 	# Free any popup already on screen when this function is called
@@ -110,70 +105,20 @@ func show_hint(msg: String, dur: float):
 		popup.disappear()
 
 
-func remove_hint_popup():
-	
-	remove_child(blocking_hint_popup)
-
-
 func show_hint_popup(msg: String):
-	blocking_hint_popup.hint_text_label.text = msg
-	add_child(blocking_hint_popup)
-	Global.player.in_menu = true
+	hint_popup.text = msg
+	popup_manager.display_popup(hint_popup)
 
 
 func open_inventory():
 	if not block_inventory_open and not Global.player.in_menu:
-		display_menu(inventory_menu)
+		menu_manager.display_menu(inventory_menu)
 		inventory_opened.emit()
 
 
-func set_blur_background(on: bool):
-	var blur_tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	var background_alpha: float
-	var background_blur: float
-	if on:
-		background_alpha = 0.75
-		background_blur = 0.9
-	else:
-		background_alpha = 0.0
-		background_blur = 0.0
-	blur_tween.tween_property(background, "color:a", background_alpha, BLUR_TIME)
-	blur_tween.parallel().tween_property(Global.retro_shader, "shader_parameter/blurAmount", background_blur, BLUR_TIME)
-	blur_tween.tween_callback(background_changed.emit)
-
-
-func toggle_draggable_progress_bar(_on: bool):
-	#draggable_move_progress_bar.visible = on
-	pass
-
-
 func display_death_screen():
-	if menus.num_menus == 0 and menus.add_menu(death_screen):
+	if menu_manager.num_menus == 0 and menu_manager.add_menu(death_screen):
 		Global.player.in_menu = true
-
-
-func display_menu(menu: Control):
-	var success: bool = menus.add_menu(menu)
-	if (menus.num_menus == 1 or menus.front() == Global.main.title_screen) and success:
-		set_blur_background(true)
-		Global.unlock_mouse()
-		Global.player.in_menu = true
-
-
-func remove_menu():
-	var menu_removed: bool = false
-	if menus.num_menus > 0:
-		if menus.back() == pause_menu:
-			get_tree().paused = false
-		menus.pop_menu()
-		menu_removed = true
-		
-	if (menus.num_menus == 0 or menus.front() == Global.main.title_screen) and menu_removed:
-		set_blur_background(false)
-		await Global.ui.background_changed
-		if not Global.main.title_screen or menus.front() != Global.main.title_screen:
-			Global.lock_mouse()
-		Global.player.in_menu = false
 
 
 func do_prologue():

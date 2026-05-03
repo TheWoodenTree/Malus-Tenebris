@@ -50,7 +50,6 @@ var obunga
 @onready var debug_affliction_time_left = $TimerLabel
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
 @onready var post_processing: PostProcessing = $PostProcessing
-@onready var cursor: Node2D = $Cursor
 
 signal world_loaded
 signal world_ready
@@ -62,7 +61,6 @@ func _ready() -> void:
 	Global.main = self
 	Global.world_environment = world_environment
 	Global.post_processing = post_processing
-	Global.cursor = cursor
 	
 	AudioServer.get_bus_effect(0, 0).volume_db = linear_to_db(0.1225)
 	if debug_no_title_screen:
@@ -96,7 +94,7 @@ func _process(_delta: float) -> void:
 func load_title_screen():
 	title_screen = title_screen_res.instantiate()
 	title_screen_room = title_screen_room_res.instantiate()
-	ui.menus.add_menu(title_screen)
+	ui.menu_manager.add_menu(title_screen)
 	add_child(title_screen_room)
 	Global.unlock_mouse()
 	title_screen_room.get_node("Camera").current = true

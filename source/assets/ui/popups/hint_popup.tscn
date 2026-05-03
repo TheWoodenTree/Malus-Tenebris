@@ -1,27 +1,28 @@
 [gd_scene format=3 uid="uid://wmgp77rleo6j"]
 
-[ext_resource type="Script" uid="uid://y0un0foy37m1" path="res://source/assets/ui/popups/hint_popup.gd" id="1_acjab"]
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="2_f2uhr"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_1vw2c"]
+[ext_resource type="Script" uid="uid://y0un0foy37m1" path="res://source/assets/ui/popups/hint_popup.gd" id="2_wyt14"]
 
-[node name="BlockingHintPopup" type="Control" unique_id=216478424]
+[node name="HintPopup" type="Control" unique_id=216478424]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_f2uhr")
-script = ExtResource("1_acjab")
+theme = ExtResource("1_1vw2c")
+script = ExtResource("2_wyt14")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=14187013]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -69.5
-offset_right = 69.5
-offset_bottom = 71.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_right = 106.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1653225552]
 layout_mode = 2
@@ -35,9 +36,21 @@ horizontal_alignment = 1
 [node name="HintTextLabel" type="Label" parent="VBoxContainer" unique_id=1739514636]
 layout_mode = 2
 text = "Hint text goes here"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=2051666447]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="PressAnyButtonLabel" type="Label" parent="VBoxContainer" unique_id=1966215640]
 layout_mode = 2
+size_flags_vertical = 8
+text = "(Press any button to continue)"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer" unique_id=2001167171]
+layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Background" type="ColorRect" parent="." unique_id=1355857107]
 layout_mode = 1

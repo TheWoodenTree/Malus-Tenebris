@@ -48,7 +48,7 @@ func _on_interact() -> void:
 	# Minor bug: blur does not go away sometimes if interact and close are spammed
 	if not Global.player.in_menu:
 		#Global.ui.note_menu.note_data = note_data
-		#Global.ui.display_menu(Global.ui.note_menu)
+		#Global.ui.menu_manager.display_menu(Global.ui.note_menu)
 	
 		was_read.emit()
 		if display_help:

@@ -1,4 +1,4 @@
-class_name AreYouSurePopup
+class_name AreYouSureMenu
 extends Menu
 
 var label_text: String
@@ -19,7 +19,7 @@ func _on_yes_button_pressed():
 
 
 func _on_no_button_pressed():
-	Global.ui.remove_menu()
+	Global.ui.menu_manager.remove_menu()
 
 
 func set_label_text(text: String):

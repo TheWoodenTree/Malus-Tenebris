@@ -2,4 +2,4 @@ extends IconlessButton
 
 
 func _on_pressed():
-	Global.ui.remove_menu()
+	Global.ui.menu_manager.remove_menu()

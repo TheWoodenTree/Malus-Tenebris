@@ -5,10 +5,10 @@ func _enter_tree():
 	if being_held:
 		await get_tree().create_timer(0.35, false).timeout
 		
-		if Global.ui.menus.open_menus.has(Global.ui.journal_menu):
+		if Global.ui.menu_manager.open_menus.has(Global.ui.journal_menu):
 			return
 		
-		Global.ui.display_menu(Global.ui.journal_menu)
+		Global.ui.menu_manager.display_menu(Global.ui.journal_menu)
 
 
 func _on_target():

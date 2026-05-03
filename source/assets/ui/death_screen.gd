@@ -15,7 +15,7 @@ func _on_title_screen_button_pressed():
 	Global.vignette_shader.set_shader_parameter("softness", 2.0)
 	Global.zoom_shader.set_shader_parameter("intensity", 0.0)
 	Global.world.queue_free()
-	Global.ui.remove_menu()
+	Global.ui.menu_manager.remove_menu()
 	Global.main.load_title_screen()
 
 

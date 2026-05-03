@@ -171,7 +171,7 @@ func _handle_drag():
 				Global.player.hold_item(Global.cursor.attached_item_data)
 				if tutorial_on:
 					set_tutorial_on(false)
-				Global.ui.remove_menu()
+				Global.ui.menu_manager.remove_menu()
 		remove_item_from_cursor()
 		if tutorial_on and not Global.player.debug_no_tutorials:
 			tutorial_label.text = "Press and hold 'Left Click' on the selected item to pick it up"

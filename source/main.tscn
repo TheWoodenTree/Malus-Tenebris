@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dc83hot4enxya" path="res://source/main.gd" id="4"]
 [ext_resource type="AudioStream" uid="uid://d157c1hdub448" path="res://source/assets/sounds/horror_sounds/play_sound.ogg" id="5_q5r8v"]
 [ext_resource type="Shader" uid="uid://c4kq3tb1xat2f" path="res://source/blackout_blur.gdshader" id="5_r5cia"]
-[ext_resource type="Script" uid="uid://pms2ru2vhgdr" path="res://source/post_processing.gd" id="6_7rnte"]
+[ext_resource type="Script" uid="uid://pms2ru2vhgdr" path="res://source/autoloads/post_processing.gd" id="6_7rnte"]
 [ext_resource type="Material" uid="uid://b1lrpiy2i5dmj" path="res://source/assets/shaders/zoom_shader_mat.tres" id="6_d62xx"]
 [ext_resource type="Material" uid="uid://c3rubs6mqbfk4" path="res://source/assets/shaders/vignette_shader_mat.tres" id="6_kj3sd"]
 [ext_resource type="Material" uid="uid://faq68tr6wo04" path="res://source/assets/shaders/retro_shader_mat.tres" id="7_768vo"]
@@ -14,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
 [ext_resource type="PackedScene" uid="uid://jeo2tjikugy2" path="res://source/assets/ui/ui.tscn" id="11_kc1x7"]
-[ext_resource type="PackedScene" uid="uid://dh2pvbfrukany" path="res://source/assets/ui/cursor.tscn" id="12_7deiu"]
 [ext_resource type="Environment" uid="uid://eiomq46f2kvo" path="res://source/default_environment.tres" id="12_r5lv5"]
 [ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="17_ks00e"]
 
@@ -207,10 +206,6 @@ offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("10_8mkgv")
 theme_override_font_sizes/font_size = 16
 text = "Time Left:"
-
-[node name="Cursor" parent="." unique_id=418677810 instance=ExtResource("12_7deiu")]
-process_mode = 3
-top_level = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1362639933]
 stream = SubResource("AudioStreamPolyphonic_r5lv5")

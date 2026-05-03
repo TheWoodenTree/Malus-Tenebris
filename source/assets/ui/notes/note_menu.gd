@@ -29,7 +29,7 @@ func update():
 
 
 func _on_close_button_pressed():
-	Global.ui.remove_menu()
+	Global.ui.menu_manager.remove_menu()
 
 
 func _on_left_button_pressed():

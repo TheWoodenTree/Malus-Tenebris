@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn872o546o8ch"]
+[gd_scene format=3 uid="uid://cn872o546o8ch"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_p80nw"]
-[ext_resource type="Script" uid="uid://dh030gw5dl0xv" path="res://source/assets/ui/menus/are_you_sure_popup.gd" id="2_bjvqg"]
+[ext_resource type="Script" uid="uid://dh030gw5dl0xv" path="res://source/assets/ui/menus/are_you_sure_menu.gd" id="2_bjvqg"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_y7m6p"]
 
-[node name="AreYouSurePopup" type="Control"]
+[node name="AreYouSureMenu" type="Control" unique_id=1091919052]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,39 +14,39 @@ grow_vertical = 2
 theme = ExtResource("1_p80nw")
 script = ExtResource("2_bjvqg")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=29392535]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont" unique_id=696667068]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AreYouSureLabel" type="Label" parent="Cont/VBoxCont"]
+[node name="AreYouSureLabel" type="Label" parent="Cont/VBoxCont" unique_id=874262638]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Separator" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont" unique_id=771354341]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont" unique_id=1385127747]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="YesButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("3_y7m6p")]
+[node name="YesButton" parent="Cont/VBoxCont/HBoxCont" unique_id=2031370308 instance=ExtResource("3_y7m6p")]
 layout_mode = 2
 text = "Yes"
 
-[node name="Separator" type="VSeparator" parent="Cont/VBoxCont/HBoxCont"]
+[node name="Separator" type="VSeparator" parent="Cont/VBoxCont/HBoxCont" unique_id=1433872701]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="NoButton" parent="Cont/VBoxCont/HBoxCont" instance=ExtResource("3_y7m6p")]
+[node name="NoButton" parent="Cont/VBoxCont/HBoxCont" unique_id=619400695 instance=ExtResource("3_y7m6p")]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "No"

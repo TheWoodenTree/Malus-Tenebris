@@ -28,11 +28,11 @@ mix_rate=48000
 
 [autoload]
 
-Global="*res://source/global.gd"
-Sound="*res://source/sound.gd"
-AfflictionEffectController="*res://source/affliction_effect_controller.gd"
-GlobalSignals="*res://source/global_signals.gd"
-AfflictionTimer="*res://source/affliction_timer.gd"
+Global="*res://source/autoloads/global.gd"
+Sound="*res://source/autoloads/sound.gd"
+AfflictionEffectController="*res://source/autoloads/affliction_effect_controller.gd"
+GlobalSignals="*res://source/autoloads/global_signals.gd"
+AfflictionTimer="*res://source/autoloads/affliction_timer.gd"
 SaveManager="*res://source/assets/global_scripts/save_manager.gd"
 InventoryManager="*res://source/assets/global_scripts/inventory_manager.gd"
 JournalManager="*res://source/assets/global_scripts/journal_manager.gd"
