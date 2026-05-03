@@ -40,7 +40,7 @@ func has_popup():
 func set_blur_background(on: bool):
 	if on:
 		var blur_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		var background_alpha := 0.75
+		var background_alpha := 0.5
 		var background_blur := 0.9
 		blur_tween.tween_property(background, "color:a", background_alpha, 0.35)
 		blur_tween.parallel().tween_property(Global.retro_shader, "shader_parameter/blurAmount", background_blur, 0.35)
