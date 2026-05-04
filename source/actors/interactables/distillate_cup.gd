@@ -2,7 +2,7 @@ extends Interactable
 
 signal done_pouring
 
-var num_doses: int = 1
+var num_doses: int = 0
 var first_dose: bool = true
 
 @onready var pour_player = $PourPlayer
@@ -10,25 +10,22 @@ var first_dose: bool = true
 
 func _on_target():
 	if num_doses > 0:
-		if not first_dose:
-			var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
-			Global.ui.show_hint(doses_left_string, -1)
-		else:
-			Global.ui.show_hint("Contains a dose of a temporary inhibitor for Vitriscet", -1)
+		var doses_left_string: String = ("Contains %d " % num_doses) + ("dose" if num_doses == 1 else "doses")
+		Global.ui.show_hint(doses_left_string, -1)
 
 
 func _on_untarget():
 	Global.ui.remove_hint()
 
 
-func _on_interact() -> void:
-	if first_dose:
-		Global.ui.remove_hint()
-		first_dose = false
-		AfflictionEffectController.first_dose_taken = true
-		do_log_entry()
-		
+func _on_interact() -> void:	
 	if num_doses > 0:
+		if first_dose:
+			Global.ui.remove_hint()
+			first_dose = false
+			AfflictionEffectController.first_dose_taken = true
+			do_log_entry()
+			
 		if AfflictionTimer.time_left < AfflictionTimer.MAX_AFFLICTION_TIMER_ALLOW_DRINK:
 			num_doses -= 1
 			if num_doses > 0:

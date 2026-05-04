@@ -3,7 +3,7 @@ extends UIPopup
 
 var text: String
 
-@onready var hint_text_label: Label = $VBoxContainer/HintTextLabel
+@onready var hint_text_label: Label = $MarginContainer/VBoxContainer/PanelContainer/HintTextLabel
 
 
 func _enter_tree() -> void:
@@ -14,5 +14,6 @@ func _enter_tree() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey or event is InputEventJoypadButton:
-		Global.ui.popup_manager.remove_popup()
+	if (event is InputEventKey and not event.is_echo()) or event is InputEventJoypadButton:
+		if event.is_pressed():
+			Global.ui.popup_manager.remove_popup()

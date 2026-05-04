@@ -1,11 +1,13 @@
 extends Interactable
 
+@warning_ignore("unused_signal")
+signal vial_used
+
+var has_been_interacted_with: bool = false
+
 @onready var pour_particles = $PourParticles
 @onready var pour_anim_player = $PourAnimPlayer
 @onready var vial = $Vial
-
-@warning_ignore("unused_signal")
-signal vial_used
 
 
 func _ready() -> void:
@@ -14,6 +16,8 @@ func _ready() -> void:
 
 func _on_interact() -> void:
 	if Global.player.is_holding_item(ItemRegistry.ID.RUBOLEUM_VIAL):
+		has_been_interacted_with = true
+		
 		set_interactable(false)
 		
 		var initial_pos: Vector3 = vial.global_position
@@ -35,6 +39,8 @@ func _on_interact() -> void:
 		await tween.finished
 		vial.layers = 1
 		pour_anim_player.play("pour")
+	elif not has_been_interacted_with:
+		Global.ui.show_hint_popup("Distill ruboleum found throughout the\nprison to reduce the effects of Vitriscet")
 	else:
 		Global.ui.show_hint("Need Ruboleum for distillation", 3.0)
 

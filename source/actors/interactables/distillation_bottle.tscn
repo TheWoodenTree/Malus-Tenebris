@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://l0xp3jg0klev"]
+[gd_scene format=4 uid="uid://l0xp3jg0klev"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_nmm65"]
 [ext_resource type="Script" uid="uid://b5dh11ncvk3yy" path="res://source/actors/interactables/distillation_bottle.gd" id="2_2eusd"]
@@ -20,7 +20,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkucb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8tvr"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_x8tvr")
@@ -29,7 +29,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_is606"]
+[sub_resource type="Shader" id="Shader_dkucb"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -64,11 +64,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jluif"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_is606"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_dkucb")
-shader = SubResource("Shader_is606")
+next_pass = SubResource("ShaderMaterial_x8tvr")
+shader = SubResource("Shader_dkucb")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -370,21 +370,22 @@ _data = {
 &"pour": SubResource("Animation_jlkag")
 }
 
-[node name="DistillationBottle" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_nmm65")]
+[node name="DistillationBottle" unique_id=1147489121 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_nmm65")]
 script = ExtResource("2_2eusd")
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("TransferTube")]
+enable_highlight_sheen = true
 
 [node name="Mesh" parent="." index="0"]
 layers = 4
-material_overlay = SubResource("ShaderMaterial_jluif")
+material_overlay = SubResource("ShaderMaterial_is606")
 mesh = SubResource("ArrayMesh_q3gl4")
 
-[node name="PourPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="0"]
+[node name="PourPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="0" unique_id=445374581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.734305, 0)
 unit_size = 3.0
 
-[node name="BoilingPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="1"]
+[node name="BoilingPlayer" type="AudioStreamPlayer3D" parent="Mesh" index="1" unique_id=1777870052]
 volume_db = -2.0
 unit_size = 2.0
 
@@ -393,12 +394,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02792, 0)
 visible = false
 shape = SubResource("CylinderShape3D_7m5fd")
 
-[node name="TransferTube" type="MeshInstance3D" parent="." index="2"]
+[node name="TransferTube" type="MeshInstance3D" parent="." index="2" unique_id=2109170872]
 layers = 8
 material_overlay = ExtResource("4_a8vca")
 mesh = SubResource("ArrayMesh_pb6k6")
 
-[node name="PourParticles" type="GPUParticles3D" parent="." index="3"]
+[node name="PourParticles" type="GPUParticles3D" parent="." index="3" unique_id=1076329960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00154, 0.962411, 0)
 emitting = false
 amount = 16
@@ -407,11 +408,11 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bsi86")
 draw_pass_1 = SubResource("PlaneMesh_g85ib")
 
-[node name="Vial" type="MeshInstance3D" parent="." index="4"]
+[node name="Vial" type="MeshInstance3D" parent="." index="4" unique_id=1392846284]
 transform = Transform3D(0.6427877, 0.76604515, 0, -0.76604515, 0.6427877, 0, 0, 0, 1, -0.305099, 1.57814, 0)
 mesh = SubResource("ArrayMesh_tuns3")
 
-[node name="VialPourParticles" type="GPUParticles3D" parent="Vial" index="0"]
+[node name="VialPourParticles" type="GPUParticles3D" parent="Vial" index="0" unique_id=98964202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012778, 0.309754, 0)
 emitting = false
 amount = 64
@@ -419,8 +420,6 @@ lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_07wqi")
 draw_pass_1 = SubResource("PlaneMesh_xiwoo")
 
-[node name="PourAnimPlayer" type="AnimationPlayer" parent="." index="5"]
+[node name="PourAnimPlayer" type="AnimationPlayer" parent="." index="5" unique_id=558174585]
 root_node = NodePath("../Vial")
-libraries = {
-&"": SubResource("AnimationLibrary_to3x4")
-}
+libraries/ = SubResource("AnimationLibrary_to3x4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dbo03i4tpprsp"]
+[gd_scene format=4 uid="uid://dbo03i4tpprsp"]
 
 [ext_resource type="PackedScene" uid="uid://7bbxdmeobxfs" path="res://source/actors/interactables/interactable.tscn" id="1_g2huc"]
 [ext_resource type="Material" uid="uid://bbxinauebawlp" path="res://source/assets/materials/dark_metal/dark_metal.tres" id="2_adk2c"]
@@ -13,7 +13,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_cpg01"]
 gradient = SubResource("Gradient_rddky")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yah6r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1hmi"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_h1hmi")
@@ -22,7 +22,7 @@ shader_parameter/sheenColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/sheenMaxCamDist = 7.5
 shader_parameter/whiteTex = SubResource("GradientTexture1D_cpg01")
 
-[sub_resource type="Shader" id="Shader_7r2hv"]
+[sub_resource type="Shader" id="Shader_yah6r"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode cull_front;
@@ -57,11 +57,11 @@ void light()
 }"
 metadata/_edit_res_path = "res://source/assets/shaders/outline_shader.tres"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlf4i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7r2hv"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_yah6r")
-shader = SubResource("Shader_7r2hv")
+next_pass = SubResource("ShaderMaterial_h1hmi")
+shader = SubResource("Shader_yah6r")
 shader_parameter/outlineSize = 0.02
 shader_parameter/outlineColor = Color(0.961, 0.608, 0.353, 1)
 shader_parameter/outlineOn = false
@@ -102,14 +102,14 @@ shadow_mesh = SubResource("ArrayMesh_0dnb3")
 [sub_resource type="SphereShape3D" id="SphereShape3D_nc51l"]
 radius = 0.341322
 
-[node name="DistillateCup" node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_g2huc")]
+[node name="DistillateCup" unique_id=1795008742 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_g2huc")]
 script = ExtResource("2_qq4d4")
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh")]
 
 [node name="Mesh" parent="." index="0"]
 layers = 4
-material_overlay = SubResource("ShaderMaterial_mlf4i")
+material_overlay = SubResource("ShaderMaterial_7r2hv")
 mesh = SubResource("ArrayMesh_ccb6t")
 
 [node name="CollisionShape" parent="InteractArea" index="0"]
@@ -117,10 +117,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05119, 0.63969, 0)
 visible = false
 shape = SubResource("SphereShape3D_nc51l")
 
-[node name="PourPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
+[node name="PourPlayer" type="AudioStreamPlayer3D" parent="." index="2" unique_id=1994699533]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05638, 0.584891, 0)
 stream = ExtResource("4_gai3w")
 unit_size = 3.0
-
-[node name="SaverLoader" parent="." index="4"]
-save_properties = Array[String](["interactable", "num_doses", "first_dose"])

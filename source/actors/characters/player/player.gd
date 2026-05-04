@@ -101,9 +101,6 @@ func _process(delta: float) -> void:
 		held_item.rotate_object_local(Vector3.FORWARD, deg_to_rad(held_item_data.hold_rotation_offset.z))
 		held_item.scale = Vector3.ONE * held_item_data.hold_scale_multiplier
 	
-	if torch:
-		torch.scale = Vector3.ONE * 4.0
-	
 	global_input_dir = get_input_dir()
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
