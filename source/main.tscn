@@ -120,7 +120,12 @@ heartbeat_curve = ExtResource("7_nfm2e")
 [node name="BlackoutBlur" type="ColorRect" parent="PostProcessing" unique_id=517752773]
 material = SubResource("ShaderMaterial_xy6ro")
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackBufCopy" type="BackBufferCopy" parent="PostProcessing" unique_id=117233323]
 copy_mode = 2
@@ -128,9 +133,12 @@ copy_mode = 2
 [node name="Zoom" type="ColorRect" parent="PostProcessing" unique_id=544771782]
 material = ExtResource("6_d62xx")
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackBufCopy4" type="BackBufferCopy" parent="PostProcessing" unique_id=1618371363]
 copy_mode = 2
@@ -138,9 +146,12 @@ copy_mode = 2
 [node name="PainVignette" type="ColorRect" parent="PostProcessing" unique_id=885084091]
 material = ExtResource("6_kj3sd")
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackBufCopy3" type="BackBufferCopy" parent="PostProcessing" unique_id=1773861415]
 visible = false
@@ -150,17 +161,23 @@ copy_mode = 2
 visible = false
 material = ExtResource("6_kj3sd")
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing" unique_id=681324538]
 visible = false
 material = ExtResource("8_dshu8")
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackBufCopy1" type="BackBufferCopy" parent="PostProcessing" unique_id=1830682787]
 visible = false
@@ -170,14 +187,20 @@ copy_mode = 2
 visible = false
 material = ExtResource("7_768vo")
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HealColorOverlay" type="ColorRect" parent="PostProcessing" unique_id=1333998994]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 299.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.5021107, 0, 0)
 
 [node name="SaverLoader" parent="PostProcessing" unique_id=1221516097 instance=ExtResource("17_ks00e")]

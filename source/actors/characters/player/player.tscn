@@ -141,7 +141,7 @@ offset_bottom = 288.0
 [node name="TorchCamViewport" type="SubViewport" parent="HeadController/CameraController/Camera/SubViewportContainer" unique_id=567968534]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(512, 288)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="TorchCam" type="Camera3D" parent="HeadController/CameraController/Camera/SubViewportContainer/TorchCamViewport" unique_id=357208848]
@@ -154,7 +154,7 @@ offset_bottom = 288.0
 
 [node name="TorchCamViewport" type="SubViewport" parent="HeadController/CameraController/Camera/SubViewportContainer2" unique_id=1357577087]
 handle_input_locally = false
-size = Vector2i(512, 288)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="FlameCam" type="Camera3D" parent="HeadController/CameraController/Camera/SubViewportContainer2/TorchCamViewport" unique_id=554164289]

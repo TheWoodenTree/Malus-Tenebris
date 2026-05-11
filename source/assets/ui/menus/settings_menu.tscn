@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dva57wtcmu4p1"]
+[gd_scene format=3 uid="uid://dva57wtcmu4p1"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_oy3ig"]
 [ext_resource type="PackedScene" uid="uid://cpt3macrqfk7s" path="res://source/assets/ui/buttons/dropdown_button.tscn" id="2_3txbk"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="5_bn2ys"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="5_vt8yh"]
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" unique_id=126456379]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,55 +17,58 @@ grow_vertical = 2
 theme = ExtResource("1_oy3ig")
 script = ExtResource("2_ifcx8")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=989281302]
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont" unique_id=1974877681]
 layout_mode = 2
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont/VBoxCont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont/VBoxCont" unique_id=1522029364]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Settings" type="Label" parent="Cont/VBoxCont/VBoxCont"]
+[node name="Settings" type="Label" parent="Cont/VBoxCont/VBoxCont" unique_id=271374318]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Separator" type="HSeparator" parent="Cont/VBoxCont/VBoxCont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont/VBoxCont" unique_id=1221745931]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont/VBoxCont"]
+[node name="HBoxCont" type="HBoxContainer" parent="Cont/VBoxCont/VBoxCont" unique_id=2012245922]
 layout_mode = 2
 
-[node name="ScreenModeDropdown" parent="Cont/VBoxCont/VBoxCont/HBoxCont" instance=ExtResource("2_3txbk")]
+[node name="ScreenModeDropdown" parent="Cont/VBoxCont/VBoxCont/HBoxCont" unique_id=886299611 instance=ExtResource("2_3txbk")]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Screen Mode"
 script = ExtResource("4_0g71k")
 dropdown_option_names = Array[String](["Windowed", "Fullscreen", "Borderless Fullscreen"])
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont/VBoxCont/VBoxCont/HBoxCont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont/VBoxCont/VBoxCont/HBoxCont" unique_id=490263087]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MasterVolume" type="Label" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont"]
+[node name="MasterVolume" type="Label" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont" unique_id=1444795684]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Master Volume"
 
-[node name="VolumeSlider" type="HSlider" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont"]
+[node name="VolumeSlider" type="HSlider" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont" unique_id=68477114]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -74,11 +77,11 @@ max_value = 1.0
 step = 0.01
 value = 0.3
 
-[node name="SliderClickPlayer" type="AudioStreamPlayer" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont"]
+[node name="SliderClickPlayer" type="AudioStreamPlayer" parent="Cont/VBoxCont/VBoxCont/HBoxCont/VBoxCont" unique_id=432862216]
 stream = ExtResource("5_bn2ys")
 max_polyphony = 10
 
-[node name="CloseMenuButton" parent="Cont/VBoxCont" instance=ExtResource("5_vt8yh")]
+[node name="CloseMenuButton" parent="Cont/VBoxCont" unique_id=1456425533 instance=ExtResource("5_vt8yh")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8

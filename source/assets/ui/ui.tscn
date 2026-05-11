@@ -48,8 +48,11 @@ pitch_scale = 0.8
 
 [node name="Cont" type="MarginContainer" parent="." unique_id=1906617218]
 custom_minimum_size = Vector2(512, 288)
-offset_right = 512.0
-offset_bottom = 288.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HourglassEmptyNotification" type="MarginContainer" parent="Cont" unique_id=930184193]
 modulate = Color(1, 1, 1, 0)
@@ -123,9 +126,12 @@ grow_vertical = 2
 script = ExtResource("8_werd2")
 
 [node name="Background" type="ColorRect" parent="MenuManager" unique_id=737918696]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
 [node name="MenuPlayer" type="AudioStreamPlayer3D" parent="MenuManager" unique_id=1091795686]
@@ -142,9 +148,12 @@ mouse_filter = 2
 script = ExtResource("14_b67d2")
 
 [node name="Background" type="ColorRect" parent="PopupManager" unique_id=1512565758]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 

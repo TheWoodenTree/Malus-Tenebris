@@ -7,8 +7,8 @@ var top_open_menu: Control = null
 
 var inventory_menu: Control
 var death_screen: Control
-var curr_popup: Control
-var curr_popup_wr: WeakRef = null
+var curr_hint: Control
+var curr_hint_wr: WeakRef = null
 
 var inventory_open: bool = false
 
@@ -75,34 +75,34 @@ func _input(event: InputEvent) -> void:
 
 
 func remove_hint():
-	if curr_popup_wr and curr_popup_wr.get_ref():
-		curr_popup.disappear()
+	if curr_hint_wr and curr_hint_wr.get_ref():
+		curr_hint.disappear()
 
 
 func show_hint(msg: String, dur: float):
-	var popup = hint_res.instantiate()
-	var popup_wr = weakref(popup)
+	var hint = hint_res.instantiate()
+	var hint_wr = weakref(hint)
 	
-	# Free any popup already on screen when this function is called
-	if curr_popup_wr and curr_popup_wr.get_ref():
-		curr_popup.queue_free()
+	# Free any hint already on screen when this function is called
+	if curr_hint_wr and curr_hint_wr.get_ref():
+		curr_hint.queue_free()
 		
-	add_child(popup)
-	move_child(popup, 0)
-	curr_popup = popup
-	curr_popup_wr = weakref(popup)
-	popup.appear(msg)
+	add_child(hint)
+	move_child(hint, 0)
+	curr_hint = hint
+	curr_hint_wr = weakref(hint)
+	hint.appear(msg)
 	
-	# Return if dur is negative to allow popups that will stay on the screen
+	# Return if dur is negative to allow hints that will stay on the screen
 	if dur < 0:
 		return
 	
 	await get_tree().create_timer(dur, false).timeout
 	
-	# Ensure this popup was not freed by another call to this function before
-	# this popup frees itself
-	if popup_wr and popup_wr.get_ref():
-		popup.disappear()
+	# Ensure this hint was not freed by another call to this function before
+	# this hint frees itself
+	if hint_wr and hint_wr.get_ref():
+		hint.disappear()
 
 
 func show_hint_popup(msg: String):

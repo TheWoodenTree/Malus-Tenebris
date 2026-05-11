@@ -43,8 +43,8 @@ SoundManager="*uid://ce8t6eyy4jsha"
 
 [display]
 
-window/size/viewport_width=512
-window/size/viewport_height=288
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/always_on_top=true
 window/size/window_width_override=1366
 window/size/window_height_override=768

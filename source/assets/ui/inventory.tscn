@@ -148,9 +148,12 @@ open_sound = SubResource("AudioStreamRandomizer_0gcld")
 close_sound = SubResource("AudioStreamRandomizer_crqe2")
 
 [node name="Cont" type="MarginContainer" parent="." unique_id=1125532384]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 288.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -159,7 +162,9 @@ theme_override_constants/margin_bottom = 16
 [node name="SackTexture" type="TextureRect" parent="Cont" unique_id=1198717277]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 36)
 mouse_filter = 2
 texture = ExtResource("2_0xxye")
 stretch_mode = 2
@@ -210,7 +215,7 @@ mouse_filter = 2
 [node name="TutorialLabel" type="Label" parent="Cont/VboxCont" unique_id=1507700137]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
 theme_override_fonts/font = ExtResource("7_wltyg")
 horizontal_alignment = 1
@@ -218,7 +223,7 @@ autowrap_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="Cont/VboxCont" unique_id=7297954]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 53
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gq48e")
 
 [node name="ItemNameLabel" type="Label" parent="Cont/VboxCont" unique_id=967409757]
@@ -226,6 +231,7 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
 theme_override_fonts/font = ExtResource("7_wltyg")
+theme_override_font_sizes/font_size = 20
 text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 2

@@ -485,7 +485,7 @@ transform = Transform3D(-0.8208303, 0, 0.5711722, 0, 1, 0, -0.5711722, 0, -0.820
 transform = Transform3D(0.62154436, 0, 0.78337896, 0, 1, 0, -0.78337896, 0, 0.62154436, 7.0945873, 2, -1.3846595)
 
 [node name="EventTriggerArea" parent="." index="69" unique_id=244349463 instance=ExtResource("46_th1ig")]
-transform = Transform3D(0.70710677, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.70710677, 6.25, 0.5, -0.25)
+transform = Transform3D(0.70710677, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.70710677, 5.5, 0.5, 0.75)
 events = Array[ExtResource("47_th1ig")]([SubResource("Resource_47idu")])
 collision_shape_size = Vector3(10, 5, 1)
 

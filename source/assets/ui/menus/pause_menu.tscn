@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6cjmtln0dues"]
+[gd_scene format=3 uid="uid://c6cjmtln0dues"]
 
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_cvp73"]
 [ext_resource type="Script" uid="uid://4col1j323sys" path="res://source/assets/ui/menus/pause_menu.gd" id="2_x24sp"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="3_q3ba8"]
 [ext_resource type="PackedScene" uid="uid://d1ul7yhvnry3x" path="res://source/assets/ui/buttons/close_menu_button.tscn" id="4_g4plg"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1062060068]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,59 +15,62 @@ grow_vertical = 2
 theme = ExtResource("1_cvp73")
 script = ExtResource("2_x24sp")
 
-[node name="Cont" type="MarginContainer" parent="."]
+[node name="Cont" type="MarginContainer" parent="." unique_id=2052622864]
 custom_minimum_size = Vector2(512, 288)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxCont" type="VBoxContainer" parent="Cont"]
+[node name="VBoxCont" type="VBoxContainer" parent="Cont" unique_id=1124840335]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseLabel" type="Label" parent="Cont/VBoxCont"]
+[node name="PauseLabel" type="Label" parent="Cont/VBoxCont" unique_id=912400735]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Separator" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="Separator" type="HSeparator" parent="Cont/VBoxCont" unique_id=2107780908]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ContinueButton" parent="Cont/VBoxCont" instance=ExtResource("4_g4plg")]
+[node name="ContinueButton" parent="Cont/VBoxCont" unique_id=718523534 instance=ExtResource("4_g4plg")]
 layout_mode = 2
 text = "Continue"
 
-[node name="Separator2" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="Separator2" type="HSeparator" parent="Cont/VBoxCont" unique_id=1049262685]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="LoadFromLastSaveButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
+[node name="LoadFromLastSaveButton" parent="Cont/VBoxCont" unique_id=526436802 instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Load from last save"
 
-[node name="Separator3" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="Separator3" type="HSeparator" parent="Cont/VBoxCont" unique_id=517739152]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="SettingsButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
+[node name="SettingsButton" parent="Cont/VBoxCont" unique_id=1322606931 instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Settings"
 
-[node name="Separator4" type="HSeparator" parent="Cont/VBoxCont"]
+[node name="Separator4" type="HSeparator" parent="Cont/VBoxCont" unique_id=1316587186]
 visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="QuitButton" parent="Cont/VBoxCont" instance=ExtResource("3_q3ba8")]
+[node name="QuitButton" parent="Cont/VBoxCont" unique_id=44356376 instance=ExtResource("3_q3ba8")]
 layout_mode = 2
 text = "Quit"
 
