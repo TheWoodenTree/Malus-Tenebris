@@ -60,7 +60,7 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	
-	float fresnel = pow(1.0 - dot(NORMAL, VIEW), 2.0);
+	float fresnel = pow(1.0 - dot(NORMAL, VIEW), 4.0);
 	
 	ALPHA = (1.0 - (0.9 * (1.0 - fresnel)));
 }"
@@ -68,7 +68,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u7lcb"]
 render_priority = 0
 shader = SubResource("Shader_ga24v")
-shader_parameter/albedo = Color(0.47, 0.46013, 0.40420002, 0.07450981)
+shader_parameter/albedo = Color(0.47, 0.46013, 0.40420002, 0.05882353)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.30000001425
@@ -207,7 +207,7 @@ shader = ExtResource("6_ewq06")
 shader_parameter/fill_proportion = 0.0
 shader_parameter/volume_curve = SubResource("CurveTexture_n77bs")
 shader_parameter/albedo_texture = ExtResource("5_n77bs")
-shader_parameter/albedo_modulate = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/albedo_modulate = Color(1, 1, 1, 1)
 shader_parameter/normal_texture = ExtResource("6_kw41q")
 shader_parameter/normal_scale = 1.0
 shader_parameter/is_top_half = true
@@ -257,7 +257,7 @@ shader = ExtResource("6_ewq06")
 shader_parameter/fill_proportion = 0.0
 shader_parameter/volume_curve = SubResource("CurveTexture_l7c4g")
 shader_parameter/albedo_texture = ExtResource("5_n77bs")
-shader_parameter/albedo_modulate = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/albedo_modulate = Color(1, 1, 1, 1)
 shader_parameter/normal_texture = ExtResource("6_kw41q")
 shader_parameter/normal_scale = 1.0
 shader_parameter/is_top_half = false
@@ -493,7 +493,7 @@ shader_parameter/fill_proportion = 0.0
 shader_parameter/volume_curve = SubResource("CurveTexture_6ea1l")
 shader_parameter/radius_curve = SubResource("CurveTexture_i1p2e")
 shader_parameter/albedo_texture = ExtResource("5_n77bs")
-shader_parameter/albedo_modulate = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/albedo_modulate = Color(1, 1, 1, 1)
 shader_parameter/normal_texture = ExtResource("6_kw41q")
 shader_parameter/normal_scale = 1.0
 shader_parameter/is_top_half = true
@@ -587,7 +587,7 @@ shader_parameter/fill_proportion = 1.0
 shader_parameter/volume_curve = SubResource("CurveTexture_6ea1l")
 shader_parameter/radius_curve = SubResource("CurveTexture_i1p2e")
 shader_parameter/albedo_texture = ExtResource("5_n77bs")
-shader_parameter/albedo_modulate = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/albedo_modulate = Color(1, 1, 1, 1)
 shader_parameter/normal_texture = ExtResource("6_kw41q")
 shader_parameter/normal_scale = 1.0
 shader_parameter/is_top_half = false
@@ -615,7 +615,6 @@ shadow_mesh = SubResource("ArrayMesh_7qti0")
 [node name="Hourglass" unique_id=2037018184 node_paths=PackedStringArray("interact_areas", "meshes") instance=ExtResource("1_duhgt")]
 script = ExtResource("2_duhgt")
 test_time_scale = 1.0
-item_id = 3
 item_data = ExtResource("3_6ea1l")
 interact_areas = [NodePath("InteractArea")]
 meshes = [NodePath("Mesh"), NodePath("BaseAndTop"), NodePath("Supports"), NodePath("SandTop"), NodePath("SandBottom"), NodePath("SandTopCap"), NodePath("SandBottomCap")]

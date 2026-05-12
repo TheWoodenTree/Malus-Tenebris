@@ -168,24 +168,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing" unique_id=681324538]
-visible = false
-material = ExtResource("8_dshu8")
+[node name="BackBufCopy1" type="BackBufferCopy" parent="PostProcessing" unique_id=1830682787]
+copy_mode = 2
+
+[node name="RetroShader" type="ColorRect" parent="PostProcessing" unique_id=1094413560]
+material = ExtResource("7_768vo")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 312.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackBufCopy1" type="BackBufferCopy" parent="PostProcessing" unique_id=1830682787]
+[node name="ChromaticAbberation" type="ColorRect" parent="PostProcessing" unique_id=681324538]
 visible = false
-copy_mode = 2
-
-[node name="RetroShader" type="ColorRect" parent="PostProcessing" unique_id=1094413560]
-visible = false
-material = ExtResource("7_768vo")
+material = ExtResource("8_dshu8")
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 1
 anchors_preset = 15

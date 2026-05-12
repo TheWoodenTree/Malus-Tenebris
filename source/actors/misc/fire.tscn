@@ -146,7 +146,7 @@ draw_pass_1 = SubResource("PlaneMesh_ubqf8")
 
 [node name="Light" type="OmniLight3D" parent="." unique_id=57551242]
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
-light_volumetric_fog_energy = 0.0
+light_volumetric_fog_energy = 0.75
 light_bake_mode = 0
 shadow_enabled = true
 shadow_caster_mask = 4294967293

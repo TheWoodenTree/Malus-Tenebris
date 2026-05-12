@@ -29,7 +29,7 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_kttsb"]
 curve = SubResource("Curve_e808u")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h87fm"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rxdtn"]
 resource_local_to_scene = true
 lifetime_randomness = 0.75
 emission_shape = 6
@@ -75,7 +75,7 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_7bj0g"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_kttsb"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_5vd8g")
 size = Vector2(0.25, 0.25)
@@ -88,7 +88,7 @@ point_count = 3
 [sub_resource type="CurveTexture" id="14"]
 curve = SubResource("13")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5iwyq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h87fm"]
 resource_local_to_scene = true
 lifetime_randomness = 0.25
 emission_shape = 1
@@ -110,7 +110,7 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_6qb76"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_7bj0g"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_b6hvc")
 size = Vector2(0.25, 0.25)
@@ -121,16 +121,15 @@ script = ExtResource("1_7b1g1")
 
 [node name="FireParticles" parent="." unique_id=1097056800 instance=ExtResource("1_t8nnb")]
 amount = 256
+process_material = SubResource("ParticleProcessMaterial_rxdtn")
+draw_pass_1 = SubResource("PlaneMesh_kttsb")
+
+[node name="LitFireParticles" parent="." unique_id=1692223101 instance=ExtResource("2_4dpfu")]
 process_material = SubResource("ParticleProcessMaterial_h87fm")
 draw_pass_1 = SubResource("PlaneMesh_7bj0g")
 
-[node name="LitFireParticles" parent="." unique_id=1692223101 instance=ExtResource("2_4dpfu")]
-process_material = SubResource("ParticleProcessMaterial_5iwyq")
-draw_pass_1 = SubResource("PlaneMesh_6qb76")
-
 [node name="Light" type="OmniLight3D" parent="." unique_id=529741090]
 light_color = Color(0.8509804, 0.47843137, 0.17254902, 1)
-light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 shadow_enabled = true
 shadow_caster_mask = 4294967293
