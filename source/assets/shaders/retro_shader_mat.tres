@@ -4,11 +4,8 @@
 
 [resource]
 shader = ExtResource("1")
-shader_parameter/ditherMultiplier = 0.0
-shader_parameter/ditherDarkCutoff = 0.04
-shader_parameter/ditherDarkRamp = 0.25
+shader_parameter/ditherMultiplier = 0.35
 shader_parameter/blurAmount = 0.0
-shader_parameter/downScale = 3.75
 shader_parameter/darkestThreshold = 0.045
 shader_parameter/darkerThreshold = 0.07
 shader_parameter/darkMidThreshold = 0.1
