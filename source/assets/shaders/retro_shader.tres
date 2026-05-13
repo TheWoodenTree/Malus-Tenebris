@@ -6,12 +6,14 @@ code = "shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 uniform float ditherMultiplier = 0.02;
+uniform float ditherDarkCutoff = 0.04;  // below this luminance, no dither
+uniform float ditherDarkRamp = 0.25;    // by this luminance, full dither
 uniform float blurAmount = 0.0;
 uniform float downScale = 3.75;
 
 uniform float darkestThreshold = 0.045;
 uniform float darkerThreshold = 0.07;
-uniform float midDarkThreshold = 0.1;
+uniform float darkMidThreshold = 0.1;
 uniform float darkThreshold = 0.15;
 uniform float midThreshold = 0.2;
 uniform float lightThreshold = 0.29;
@@ -22,7 +24,7 @@ uniform float contrast;
 
 uniform vec4 darkestColor : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 darkerColor: source_color = vec4(0.078, 0.024, 0.059, 1.0);
-uniform vec4 midDarkColor : source_color = vec4(0.157, 0.039, 0.055, 1.0);
+uniform vec4 darkMidColor : source_color = vec4(0.157, 0.039, 0.055, 1.0);
 uniform vec4 darkColor : source_color = vec4(0.243, 0.067, 0.067, 1.0);
 uniform vec4 midColor : source_color = vec4(0.431, 0.145, 0.078, 1.0);
 uniform vec4 lightColor : source_color = vec4(0.639, 0.235, 0.047, 1.0);
@@ -45,11 +47,37 @@ float bayer4x4(vec2 pos) {
 }
 
 
+float distanceToUpperThreshold(float lum) {
+	if (lum < darkestThreshold) return darkestThreshold - lum;
+	else if (lum < darkerThreshold) return darkerThreshold - lum;
+	else if (lum < darkMidThreshold) return darkMidThreshold - lum;
+	else if (lum < darkThreshold) return darkThreshold - lum;
+	else if (lum < midThreshold) return midThreshold - lum;
+	else if (lum < lightThreshold)return lightThreshold - lum;
+	else if (lum < lightMidThreshold) return lightMidThreshold - lum;
+	else if (lum < lighterThreshold) return lighterThreshold - lum;
+	else return 0.0;
+}
+
+
+float distanceToLowerThreshold(float lum) {
+	if (lum < darkestThreshold) return 0.0;  // distance from 0
+	else if (lum < darkerThreshold) return lum - darkestThreshold;
+	else if (lum < darkMidThreshold) return lum - darkerThreshold;
+	else if (lum < darkThreshold) return lum - darkMidThreshold;
+	else if (lum < midThreshold) return lum - darkThreshold;
+	else if (lum < lightThreshold) return lum - midThreshold;
+	else if (lum < lightMidThreshold) return lum - lightThreshold;
+	else if (lum < lighterThreshold) return lum - lightMidThreshold;
+	else return lum - lighterThreshold;
+}
+
+
 vec4 toRetro(float luminance)
 {
 	if (luminance < darkestThreshold) return darkestColor;
 	else if (luminance < darkerThreshold) return darkerColor;
-	else if (luminance < midDarkThreshold) return midDarkColor;
+	else if (luminance < darkMidThreshold) return darkMidColor;
 	else if (luminance < darkThreshold) return darkColor;
 	else if (luminance < midThreshold) return midColor;
 	else if (luminance < lightThreshold) return lightColor;
@@ -63,7 +91,13 @@ void fragment()
 {
 	vec4 tex = textureLod(SCREEN_TEXTURE, SCREEN_UV, blurAmount);
 	float luminance = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
-	float dither = bayer4x4(FRAGCOORD.xy) * ditherMultiplier;
+	float bayerOffset = bayer4x4(FRAGCOORD.xy);
+	
+	float gap = (bayerOffset > 0.0)
+		? distanceToUpperThreshold(luminance)
+		: distanceToLowerThreshold(luminance);
+	
+	float dither = bayerOffset * gap * ditherMultiplier;
 	luminance += dither;
 	vec4 retroTex = toRetro(luminance);
 	COLOR = retroTex;

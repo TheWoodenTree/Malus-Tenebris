@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cx6oocqccfcc0" path="res://source/assets/sounds/ambience/general/drip_ambience.ogg" id="10"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="10_8mkgv"]
 [ext_resource type="PackedScene" uid="uid://jeo2tjikugy2" path="res://source/assets/ui/ui.tscn" id="11_kc1x7"]
+[ext_resource type="Material" uid="uid://bhhf1pvn4uku1" path="res://source/assets/shaders/retro_shader_mat_OLD.tres" id="12_ks00e"]
 [ext_resource type="Environment" uid="uid://eiomq46f2kvo" path="res://source/default_environment.tres" id="12_r5lv5"]
 [ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="17_ks00e"]
 
@@ -180,6 +181,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 312.0
 offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufCopy2" type="BackBufferCopy" parent="PostProcessing" unique_id=2030084967]
+visible = false
+copy_mode = 2
+
+[node name="OldRetroShader" type="ColorRect" parent="PostProcessing" unique_id=941487897]
+visible = false
+material = ExtResource("12_ks00e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
