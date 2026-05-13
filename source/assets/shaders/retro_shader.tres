@@ -5,7 +5,7 @@ code = "shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
-uniform float ditherMultiplier = 0.35;
+uniform float ditherMultiplier = 0.5;
 uniform float blurAmount = 0.0;
 
 uniform float darkestThreshold = 0.045;
