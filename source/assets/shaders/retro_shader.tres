@@ -43,7 +43,7 @@ float bayer4x4(vec2 pos) {
 
 
 float bandGapAmount(float lum) {
-	if (lum < darkestThreshold) return darkestThreshold;
+	if (lum < darkestThreshold) return 0.0;
 	else if (lum < darkerThreshold) return darkerThreshold - darkestThreshold;
 	else if (lum < darkMidThreshold) return darkMidThreshold - darkerThreshold;
 	else if (lum < darkThreshold) return darkThreshold - darkMidThreshold;
