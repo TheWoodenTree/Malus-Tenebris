@@ -12,7 +12,7 @@ void vertex() {
 
 void fragment() {
 	if (enabled) {
-		if (world_pos.x < (316.0 - (36.0 * float(num_slots))) || world_pos.x > (324.0 + (36.0 * float(num_slots)))) {
+		if (world_pos.x < (286.0 - (36.0 * float(num_slots))) || world_pos.x > (354.0 + (36.0 * float(num_slots)))) {
 			COLOR.a = 0.0;
 		}
 	}

@@ -73,7 +73,10 @@ func _process(_delta: float) -> void:
 	$Label.text = str(int(Engine.get_frames_per_second()))
 	
 	if Input.is_action_just_pressed("debug4"):
-		SaveManager.save_game()
+		#SaveManager.save_game() 
+		retro_shader.visible = not retro_shader.visible
+		$PostProcessing/OldRetroShader.visible = not $PostProcessing/OldRetroShader.visible
+		world_environment.environment.volumetric_fog_enabled = not world_environment.environment.volumetric_fog_enabled
 	
 	if Input.is_action_just_pressed("debug_5"):
 		SaveManager.load_game()

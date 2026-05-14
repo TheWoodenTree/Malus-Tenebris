@@ -14,9 +14,9 @@ script = ExtResource("2_svwre")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2psli"]
 
 [node name="ItemSlot" type="MarginContainer" unique_id=1169551992]
-custom_minimum_size = Vector2(36, 36)
-offset_right = 36.0
-offset_bottom = 36.0
+custom_minimum_size = Vector2(46, 46)
+offset_right = 5.0
+offset_bottom = 27.0
 script = ExtResource("1_8hijp")
 item_data = SubResource("Resource_be26v")
 

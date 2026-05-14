@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://1n3030usnmaw" path="res://source/assets/ui/buttons/separator.png" id="4_dgkkr"]
 [ext_resource type="AudioStream" uid="uid://d3pakvmqmjlr0" path="res://source/assets/sounds/rucksack/rucksack_6.ogg" id="4_eojqe"]
 [ext_resource type="PackedScene" uid="uid://dnhynfku0mctc" path="res://source/assets/ui/buttons/inventory_right_button.tscn" id="5_mw4ew"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="7_0mkm0"]
 [ext_resource type="AudioStream" uid="uid://1qsvpsnbjyyj" path="res://source/assets/sounds/ui/inventory_scroll_click.ogg" id="7_1ols8"]
 [ext_resource type="FontFile" uid="uid://b3dns32ajwdof" path="res://source/assets/fonts/IMFellEnglishSC-Regular.ttf" id="7_wltyg"]
 [ext_resource type="Texture2D" uid="uid://crcq45hwhctvi" path="res://source/assets/ui/buttons/inventory_slot_selected.png" id="10_kr08j"]
@@ -159,12 +160,24 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
+[node name="TutorialLabel" type="Label" parent="Cont" unique_id=1507700137]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("7_0mkm0")
+theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
+theme_override_fonts/font = ExtResource("7_wltyg")
+text = "
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="SackTexture" type="TextureRect" parent="Cont" unique_id=1198717277]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, 36)
+offset_transform_position = Vector2(0, 42)
 mouse_filter = 2
 texture = ExtResource("2_0xxye")
 stretch_mode = 2
@@ -212,18 +225,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="TutorialLabel" type="Label" parent="Cont/VboxCont" unique_id=1507700137]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.811765, 0.517647, 0.294118, 1)
-theme_override_fonts/font = ExtResource("7_wltyg")
-horizontal_alignment = 1
-autowrap_mode = 2
-
 [node name="HSeparator2" type="HSeparator" parent="Cont/VboxCont" unique_id=7297954]
 layout_mode = 2
-theme_override_constants/separation = 53
+theme_override_constants/separation = 106
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gq48e")
 
 [node name="ItemNameLabel" type="Label" parent="Cont/VboxCont" unique_id=967409757]
@@ -244,6 +248,7 @@ mouse_filter = 2
 alignment = 1
 
 [node name="InventoryLeftButton" parent="Cont/VboxCont/HboxCont" unique_id=1543984984 instance=ExtResource("3_ggwby")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -259,7 +264,7 @@ flip_h = true
 [node name="Spacer1" type="VSeparator" parent="Cont/VboxCont/HboxCont" unique_id=197456620]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 68
+theme_override_constants/separation = 88
 theme_override_styles/separator = SubResource("StyleBoxEmpty_rg58c")
 
 [node name="SelectSlotFrame" type="TextureRect" parent="Cont/VboxCont/HboxCont" unique_id=1539324818]
@@ -273,7 +278,7 @@ stretch_mode = 2
 [node name="Spacer2" type="VSeparator" parent="Cont/VboxCont/HboxCont" unique_id=472251615]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 68
+theme_override_constants/separation = 88
 theme_override_styles/separator = SubResource("StyleBoxEmpty_kq73y")
 
 [node name="Separator2" type="TextureRect" parent="Cont/VboxCont/HboxCont" unique_id=1552196217]
@@ -283,6 +288,7 @@ texture = ExtResource("4_dgkkr")
 stretch_mode = 2
 
 [node name="InventoryRightButton" parent="Cont/VboxCont/HboxCont" unique_id=1195055121 instance=ExtResource("5_mw4ew")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -291,7 +297,7 @@ mouse_filter = 1
 [node name="HSeparator" type="HSeparator" parent="Cont/VboxCont" unique_id=925338144]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 100
+theme_override_constants/separation = 137
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ylphs")
 
 [node name="CloseMenuButton" parent="Cont" unique_id=1683048404 instance=ExtResource("12_gp61h")]

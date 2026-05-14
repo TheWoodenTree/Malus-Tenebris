@@ -20,7 +20,7 @@ var scrolling: bool = false
 @onready var item_slots: Array[Node] = slot_grid.get_children()
 @onready var scroll_anim_player = $ScrollAnimPlayer
 @onready var slot_scroll_player = $SlotScrollPlayer
-@onready var tutorial_label = $Cont/VboxCont/TutorialLabel
+@onready var tutorial_label = $Cont/TutorialLabel
 @onready var item_name_label = $Cont/VboxCont/ItemNameLabel
 @onready var select_slot_frame = $Cont/VboxCont/HboxCont/SelectSlotFrame
 @onready var item_click_player = $ItemClickPlayer
@@ -121,9 +121,9 @@ func _scroll_slots():
 		var dir = queued_scrolls.back()
 		var margin: int
 		if dir == LEFT:
-			margin = -72
+			margin = -92
 		elif dir == RIGHT:
-			margin = 72
+			margin = 92
 		slot_scroll_player.play()
 		slot_scroll_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD)
 		slot_scroll_tween.tween_property(slot_cont, "theme_override_constants/margin_left", margin, 0.15)
