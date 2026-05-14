@@ -44,6 +44,7 @@ text = "Hint text goes here"
 horizontal_alignment = 1
 
 [node name="PressAnyButtonLabel" type="Label" parent="MarginContainer" unique_id=1966215640]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 offset_transform_enabled = true
