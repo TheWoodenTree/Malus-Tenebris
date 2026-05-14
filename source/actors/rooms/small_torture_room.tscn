@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dw4xwroyayfdv"]
+[gd_scene format=3 uid="uid://dw4xwroyayfdv"]
 
 [ext_resource type="PackedScene" uid="uid://coyfxhlkcko0r" path="res://source/actors/rooms/room_template.tscn" id="1_3sot7"]
 [ext_resource type="PackedScene" uid="uid://csjrgcxhntrg" path="res://source/actors/building pieces/basic/stone_floor.tscn" id="1_jlmsx"]
@@ -9,114 +9,102 @@
 [ext_resource type="PackedScene" uid="uid://i3byua7eq2yc" path="res://source/actors/decor/furniture/stool.tscn" id="7_u0vsv"]
 [ext_resource type="PackedScene" uid="uid://bo4luppq7sv50" path="res://source/actors/decor/misc/chain_loop.tscn" id="8_qyfwj"]
 [ext_resource type="PackedScene" uid="uid://crmw1mps0n051" path="res://source/actors/decor/misc/wall_rack.tscn" id="10_n87qg"]
-[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="11_4oab0"]
 [ext_resource type="ArrayOccluder3D" uid="uid://c8da74ump72ny" path="res://source/actors/rooms/occluders/small_torture_room.occ" id="11_e68t4"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="12_t481b"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="13_3serb"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="13_j0ecg"]
 [ext_resource type="PackedScene" uid="uid://byxksghti1col" path="res://source/actors/decor/tools/saw.tscn" id="17_bvf6q"]
 [ext_resource type="PackedScene" uid="uid://bntulg3rjloal" path="res://source/actors/building pieces/archways/reg_archway.tscn" id="17_nsor2"]
 [ext_resource type="PackedScene" uid="uid://jvnfjk0l83vw" path="res://source/assets/particles/fly_swarm.tscn" id="18_ctpme"]
 [ext_resource type="PackedScene" uid="uid://1f7kquwbkp1q" path="res://source/actors/decor/tools/knife.tscn" id="18_y5udt"]
 [ext_resource type="PackedScene" uid="uid://bs610kmgvo2qi" path="res://source/actors/building pieces/pillars/small_pillar.tscn" id="19_8vryn"]
 
-[sub_resource type="Resource" id="Resource_q7v16"]
-resource_local_to_scene = true
-script = ExtResource("12_t481b")
-name = "Ruboleum Vial"
-texture = ExtResource("13_j0ecg")
-pickup_sound = ExtResource("11_4oab0")
-hold_rotation_offset = Vector3(0, 0, 90)
+[node name="SmallTortureRoom" unique_id=1969486763 instance=ExtResource("1_3sot7")]
 
-[node name="SmallTortureRoom" instance=ExtResource("1_3sot7")]
-
-[node name="StoneWall" parent="Walls" index="0" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall" parent="Walls" index="0" unique_id=2125816441 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 4.5)
 size = Vector3(10, 6, 1)
 
-[node name="StoneWall2" parent="Walls" index="1" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall2" parent="Walls" index="1" unique_id=561059634 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -4.5)
 size = Vector3(10, 6, 1)
 
-[node name="StoneWall3" parent="Walls" index="2" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall3" parent="Walls" index="2" unique_id=297137339 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3.5, 3.25)
 size = Vector3(1, 6, 1.5)
 
-[node name="StoneWall6" parent="Walls" index="3" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall6" parent="Walls" index="3" unique_id=825378662 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3.5, -3.25)
 size = Vector3(1, 6, 1.5)
 
-[node name="StoneWall4" parent="Walls" index="4" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall4" parent="Walls" index="4" unique_id=918510322 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.5, 0)
 size = Vector3(1, 6, 8)
 
-[node name="StoneWall5" parent="Walls" index="5" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall5" parent="Walls" index="5" unique_id=1107424130 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 6, 0)
 size = Vector3(1, 1, 5)
 
-[node name="StoneFloor" parent="Floors" index="0" instance=ExtResource("1_jlmsx")]
+[node name="StoneFloor" parent="Floors" index="0" unique_id=1218581699 instance=ExtResource("1_jlmsx")]
 size = Vector3(10, 1, 10)
 
-[node name="HangingLamp" parent="Decor" index="0" instance=ExtResource("4_buubx")]
+[node name="HangingLamp" parent="Decor" index="0" unique_id=1157005913 instance=ExtResource("4_buubx")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 interactable = false
 
-[node name="TortureChair" parent="Decor" index="1" instance=ExtResource("5_eqndu")]
+[node name="TortureChair" parent="Decor" index="1" unique_id=1212391178 instance=ExtResource("5_eqndu")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.25, 0.5, 1)
 
-[node name="SmTable" parent="Decor" index="2" instance=ExtResource("6_gfmsw")]
+[node name="SmTable" parent="Decor" index="2" unique_id=976364796 instance=ExtResource("6_gfmsw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.25, 0.5, -0.75)
 
-[node name="Stool" parent="Decor" index="3" instance=ExtResource("7_u0vsv")]
+[node name="Stool" parent="Decor" index="3" unique_id=446890986 instance=ExtResource("7_u0vsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, -2)
 
-[node name="ChainLoop" parent="Decor" index="4" instance=ExtResource("8_qyfwj")]
+[node name="ChainLoop" parent="Decor" index="4" unique_id=567854128 instance=ExtResource("8_qyfwj")]
 transform = Transform3D(0.5, -7.54979e-08, -4.37114e-08, -7.54979e-08, -0.5, 4.37114e-08, -4.37114e-08, -4.37114e-08, -0.5, -0.5, 0.5, 1.5)
 
-[node name="ChainLoop2" parent="Decor" index="5" instance=ExtResource("8_qyfwj")]
+[node name="ChainLoop2" parent="Decor" index="5" unique_id=54843345 instance=ExtResource("8_qyfwj")]
 transform = Transform3D(0.5, -7.54979e-08, -4.37114e-08, -7.54979e-08, -0.5, 4.37114e-08, -4.37114e-08, -4.37114e-08, -0.5, -0.5, 0.5, 0.5)
 
-[node name="WallRack" parent="Decor" index="6" instance=ExtResource("10_n87qg")]
+[node name="WallRack" parent="Decor" index="6" unique_id=21337227 instance=ExtResource("10_n87qg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 2, 0)
 
-[node name="ChainLoop3" parent="Decor" index="7" instance=ExtResource("8_qyfwj")]
+[node name="ChainLoop3" parent="Decor" index="7" unique_id=1476007991 instance=ExtResource("8_qyfwj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.25, -1.25)
 
-[node name="ChainLoop4" parent="Decor" index="8" instance=ExtResource("8_qyfwj")]
+[node name="ChainLoop4" parent="Decor" index="8" unique_id=1271594379 instance=ExtResource("8_qyfwj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 3.25, 1.25)
 
-[node name="RuboleumVial" parent="Misc" index="0" instance=ExtResource("13_3serb")]
+[node name="RuboleumVial" parent="Misc" index="0" unique_id=1264022659 instance=ExtResource("13_3serb")]
 transform = Transform3D(-0.753884, 0.657007, 2.87187e-08, -1.44114e-15, -4.37114e-08, 1, 0.657007, 0.753884, 3.29533e-08, -0.63256, 2.04474, -1.25988)
-item_data = SubResource("Resource_q7v16")
 
 [node name="OccluderInstance" parent="." index="8"]
 occluder = ExtResource("11_e68t4")
 
-[node name="Saw" parent="." index="9" instance=ExtResource("17_bvf6q")]
+[node name="Saw" parent="." index="9" unique_id=411001625 instance=ExtResource("17_bvf6q")]
 transform = Transform3D(-0.932626, 0, 0.360843, 0, 1, 0, -0.360843, 0, -0.932626, -0.143549, 2, -0.385682)
 
-[node name="Knife" parent="." index="10" instance=ExtResource("18_y5udt")]
+[node name="Knife" parent="." index="10" unique_id=1252590160 instance=ExtResource("18_y5udt")]
 transform = Transform3D(-0.788666, 0, 0.614822, 0, 1, 0, -0.614822, 0, -0.788666, -0.0763487, 2, -0.743711)
 
-[node name="RegArchway" parent="." index="11" instance=ExtResource("17_nsor2")]
+[node name="RegArchway" parent="." index="11" unique_id=763519091 instance=ExtResource("17_nsor2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0.5, 0)
 
-[node name="FlySwarm" parent="." index="12" instance=ExtResource("18_ctpme")]
+[node name="FlySwarm" parent="." index="12" unique_id=310105139 instance=ExtResource("18_ctpme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.75, 1)
 
-[node name="SmallPillar" parent="." index="13" instance=ExtResource("19_8vryn")]
+[node name="SmallPillar" parent="." index="13" unique_id=510021468 instance=ExtResource("19_8vryn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -3.5)
 
-[node name="SmallPillar4" parent="." index="14" instance=ExtResource("19_8vryn")]
+[node name="SmallPillar4" parent="." index="14" unique_id=2067054234 instance=ExtResource("19_8vryn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, -3.5)
 
-[node name="SmallPillar2" parent="." index="15" instance=ExtResource("19_8vryn")]
+[node name="SmallPillar2" parent="." index="15" unique_id=1395765576 instance=ExtResource("19_8vryn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, 3.5)
 
-[node name="SmallPillar3" parent="." index="16" instance=ExtResource("19_8vryn")]
+[node name="SmallPillar3" parent="." index="16" unique_id=1793012202 instance=ExtResource("19_8vryn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, 3.5)
 
-[node name="StoneWall" parent="." index="17" instance=ExtResource("3_ss4ja")]
+[node name="StoneWall" parent="." index="17" unique_id=1095413671 instance=ExtResource("3_ss4ja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 size = Vector3(10, 1, 10)
 nav_walkable = false

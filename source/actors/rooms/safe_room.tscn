@@ -15,12 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bldplijh1bq7g" path="res://source/actors/decor/groups/books_2.tscn" id="18_jwqkr"]
 [ext_resource type="PackedScene" uid="uid://crsbreiuabhvi" path="res://source/actors/decor/groups/books_6.tscn" id="19_0wdpu"]
 [ext_resource type="PackedScene" uid="uid://co8wmy3bgkhpy" path="res://source/actors/decor/groups/books_4.tscn" id="20_c6t8m"]
-[ext_resource type="AudioStream" uid="uid://s8yhuv4exfix" path="res://source/assets/sounds/misc/bottle_pickup.ogg" id="21_0ilup"]
 [ext_resource type="PackedScene" uid="uid://c5owsbr3aaf6x" path="res://source/actors/decor/misc/scroll_2.tscn" id="21_mju78"]
 [ext_resource type="PackedScene" uid="uid://db57xmqhrdyrg" path="res://source/actors/decor/furniture/corner_table.tscn" id="22_5kyhp"]
 [ext_resource type="PackedScene" uid="uid://ciqhcdlogy3np" path="res://source/actors/decor/misc/hanging_lamp.tscn" id="22_dvdth"]
-[ext_resource type="Script" uid="uid://c8rev6ihosd6u" path="res://source/assets/resources/item_data.gd" id="22_r3otd"]
-[ext_resource type="Texture2D" uid="uid://dlswrwa6p5k41" path="res://source/assets/ui/inventory/ruboleum_vial.png" id="23_47idu"]
 [ext_resource type="PackedScene" uid="uid://cykavwbds5y1f" path="res://source/actors/interactables/pickups/ruboleum_vial.tscn" id="24_g1atn"]
 [ext_resource type="Resource" uid="uid://ondk7t6tuy0u" path="res://source/assets/resources/note_datas/ruboleum_distillation_instructions.tres" id="26_dbihu"]
 [ext_resource type="PackedScene" uid="uid://ii0e665jma4b" path="res://source/actors/building pieces/archways/small_archway.tscn" id="28_gg6p8"]
@@ -49,24 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://b122fw871cljx" path="res://source/actors/decor/groups/sm_stacked_planks.tscn" id="48_th1ig"]
 [ext_resource type="PackedScene" uid="uid://crfc5k6gpgd1j" path="res://source/actors/interactables/censer.tscn" id="49_th1ig"]
 
-[sub_resource type="Resource" id="Resource_th1ig"]
-resource_local_to_scene = true
-script = ExtResource("22_r3otd")
-id = 1
-name = "Ruboleum Vial"
-texture = ExtResource("23_47idu")
-pickup_sound = ExtResource("21_0ilup")
-hold_rotation_offset = Vector3(0, 0, 90)
-
-[sub_resource type="Resource" id="Resource_dbihu"]
-resource_local_to_scene = true
-script = ExtResource("22_r3otd")
-id = 1
-name = "Ruboleum Vial"
-texture = ExtResource("23_47idu")
-pickup_sound = ExtResource("21_0ilup")
-hold_rotation_offset = Vector3(0, 0, 90)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cenn"]
 size = Vector3(19, 10, 16.75)
 
@@ -75,15 +54,6 @@ script = ExtResource("48_dbihu")
 text = "Interact with the censer to save your progress.
 Lock the door behind you to stay safe."
 metadata/_custom_type_script = "uid://c8luainh0w2i3"
-
-[sub_resource type="Resource" id="Resource_g27mp"]
-resource_local_to_scene = true
-script = ExtResource("22_r3otd")
-id = 1
-name = "Ruboleum Vial"
-texture = ExtResource("23_47idu")
-pickup_sound = ExtResource("21_0ilup")
-hold_rotation_offset = Vector3(0, 0, 90)
 
 [node name="SafeRoom" unique_id=1316510478 instance=ExtResource("1_ntfkh")]
 script = ExtResource("1_d3v5u")
@@ -230,11 +200,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.25,
 
 [node name="RuboleumVial" parent="Misc/Chest" index="4" unique_id=713403480 instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.161707, 0, 0.986839, 0, 1, 0, -0.986839, 0, 0.161707, 0.377059, 0.16, 0.0659707)
-item_data = SubResource("Resource_th1ig")
 
 [node name="RuboleumVial2" parent="Misc/Chest" index="5" unique_id=334622645 instance=ExtResource("24_g1atn")]
 transform = Transform3D(-0.606641, 0, 0.794976, 0, 1, 0, -0.794976, 0, -0.606641, -0.335284, 0.16, 0.096612)
-item_data = SubResource("Resource_dbihu")
 
 [node name="Note2" parent="Misc" index="2" unique_id=1650506187 instance=ExtResource("14_bjogf")]
 transform = Transform3D(0.741871, 0, 0.670543, 0, 1, 0, -0.670543, 0, 0.741871, 5.149919, 2, -7.9251204)
@@ -305,7 +273,7 @@ shadow_enabled = true
 omni_range = 12.0
 
 [node name="DistillationStation" parent="." index="23" unique_id=780046054 instance=ExtResource("33_7s2y7")]
-transform = Transform3D(0.969497, 0, -0.245104, 0, 1, 0, 0.245104, 0, 0.969497, 6.29792, 2, -8.45364)
+transform = Transform3D(0.96949697, 0, -0.24510399, 0, 1, 0, 0.24510399, 0, 0.96949697, 6.29792, 2, -8.45364)
 
 [node name="InkPotWPen" parent="." index="24" unique_id=1507896941 instance=ExtResource("34_jabgf")]
 transform = Transform3D(-0.08918986, 0, 0.9960144, 0, 1, 0, -0.9960144, 0, -0.08918986, 5.3098016, 2, -8.549934)
@@ -491,7 +459,6 @@ collision_shape_size = Vector3(10, 5, 1)
 
 [node name="RuboleumVial" parent="." index="70" unique_id=926297497 instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 6, 2, -8)
-item_data = SubResource("Resource_g27mp")
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]
