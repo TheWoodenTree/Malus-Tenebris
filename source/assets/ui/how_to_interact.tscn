@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://tpexhv33nwtq"]
+[gd_scene format=3 uid="uid://bbs4m8nturta3"]
 
 [ext_resource type="Theme" uid="uid://da41v4hs6h8oo" path="res://source/assets/themes/text_theme.tres" id="1_psd65"]
 
-[node name="HowToInteract" type="Control"]
+[node name="HowToInteract" type="Control" unique_id=1875944612]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,17 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_psd65")
 
-[node name="Cont" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2i(1920, 1080)
+[node name="Cont" type="MarginContainer" parent="." unique_id=1755956025]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 896
 theme_override_constants/margin_bottom = 848
 
-[node name="Label" type="Label" parent="Cont"]
-offset_left = 896.0
-offset_top = 83.0
-offset_right = 1920.0
-offset_bottom = 148.0
+[node name="Label" type="Label" parent="Cont" unique_id=1788593838]
+layout_mode = 2
 text = "'E' to interact with highlighted objects"
 horizontal_alignment = 1

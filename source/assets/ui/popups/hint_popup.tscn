@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wmgp77rleo6j"]
 
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_1vw2c"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_1vw2c"]
 [ext_resource type="Script" uid="uid://y0un0foy37m1" path="res://source/assets/ui/popups/hint_popup.gd" id="2_wyt14"]
 
 [node name="HintPopup" type="Control" unique_id=216478424]

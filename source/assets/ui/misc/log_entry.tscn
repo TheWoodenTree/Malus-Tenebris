@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://do8t7q7gsv76g"]
+[gd_scene format=3 uid="uid://do8t7q7gsv76g"]
 
 [ext_resource type="Texture2D" uid="uid://baqveak4oh8f3" path="res://source/assets/ui/accents/bullet_point.png" id="1_4j4lj"]
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_8av5c"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_8av5c"]
 [ext_resource type="Script" uid="uid://c0yabbyhff46r" path="res://source/assets/ui/misc/log_entry.gd" id="1_coh86"]
 
 [node name="LogEntry" type="HBoxContainer"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://w2q47r4lwlqg"]
+[gd_scene format=3 uid="uid://w2q47r4lwlqg"]
 
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_mhdtq"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_mhdtq"]
+
 
 [node name="SplashScreen" type="Control"]
 layout_mode = 3

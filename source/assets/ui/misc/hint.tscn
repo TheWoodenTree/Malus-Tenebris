@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://diqov8ypoh6kd"]
 
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_xga7k"]
-[ext_resource type="Script" uid="uid://bmbxfxsu5micq" path="res://source/assets/ui/hint.gd" id="2"]
-[ext_resource type="Shader" uid="uid://daec5skwmxhhn" path="res://source/assets/ui/hint.gdshader" id="2_l8bde"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_xga7k"]
+[ext_resource type="Script" uid="uid://bmbxfxsu5micq" path="res://source/assets/ui/misc/hint.gd" id="2"]
+[ext_resource type="Shader" uid="uid://daec5skwmxhhn" path="res://source/assets/ui/misc/hint.gdshader" id="2_l8bde"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0mtx4"]
 shader = ExtResource("2_l8bde")

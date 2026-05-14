@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dva57wtcmu4p1"]
 
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_oy3ig"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_oy3ig"]
 [ext_resource type="PackedScene" uid="uid://cpt3macrqfk7s" path="res://source/assets/ui/buttons/dropdown_button.tscn" id="2_3txbk"]
 [ext_resource type="Script" uid="uid://daektwcl3nwg" path="res://source/assets/ui/menus/settings_menu.gd" id="2_ifcx8"]
 [ext_resource type="Script" uid="uid://boyux4yp5bwri" path="res://source/assets/ui/buttons/screen_mode_dropdown.gd" id="4_0g71k"]

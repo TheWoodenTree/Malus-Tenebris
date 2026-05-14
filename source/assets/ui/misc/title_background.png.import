@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu3h1kem32716"
-path="res://.godot/imported/splash.png-cb949226193d5d48108d7ecbaebc3fae.ctex"
+uid="uid://d1mimetup7pkk"
+path.s3tc="res://.godot/imported/title_background.png-a732ae8b4e85724b8c96b5bfdc562aed.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://source/assets/ui/splash.png"
-dest_files=["res://.godot/imported/splash.png-cb949226193d5d48108d7ecbaebc3fae.ctex"]
+source_file="res://source/assets/ui/misc/title_background.png"
+dest_files=["res://.godot/imported/title_background.png-a732ae8b4e85724b8c96b5bfdc562aed.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

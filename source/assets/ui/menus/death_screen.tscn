@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cn2lmv4kxle5o"]
+[gd_scene format=3 uid="uid://cn2lmv4kxle5o"]
 
-[ext_resource type="Script" uid="uid://v3dsgllb2kd5" path="res://source/assets/ui/death_screen.gd" id="1_5yg6d"]
-[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/buttons/button_theme_no_icon.tres" id="1_l644d"]
-[ext_resource type="Shader" uid="uid://dsfdhbps2vm08" path="res://source/assets/ui/death_screen.gdshader" id="2_13v23"]
+[ext_resource type="Script" uid="uid://v3dsgllb2kd5" path="res://source/assets/ui/menus/death_screen.gd" id="1_5yg6d"]
+[ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_l644d"]
+[ext_resource type="Shader" uid="uid://dsfdhbps2vm08" path="res://source/assets/ui/menus/death_screen.gdshader" id="2_13v23"]
 [ext_resource type="PackedScene" uid="uid://g0y4eb2el458" path="res://source/assets/ui/buttons/iconless_button.tscn" id="4_imk2y"]
 
 [sub_resource type="Animation" id="Animation_mi60y"]

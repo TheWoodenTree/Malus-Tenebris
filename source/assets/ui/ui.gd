@@ -13,10 +13,10 @@ var curr_hint_wr: WeakRef = null
 var inventory_open: bool = false
 
 var prologue: Control = preload("res://source/assets/prologue/prologue.tscn").instantiate()
-var hint_res: Resource = preload("res://source/assets/ui/hint.tscn")
+var hint_res: Resource = preload("res://source/assets/ui/misc/hint.tscn")
 var hint_popup: HintPopup = preload("res://source/assets/ui/popups/hint_popup.tscn").instantiate()
-var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
-var inventory_menu_res: Resource = preload("res://source/assets/ui/inventory.tscn")
+var death_screen_res: Resource = preload("res://source/assets/ui/menus/death_screen.tscn")
+var inventory_menu_res: Resource = preload("res://source/assets/ui/menus/inventory.tscn")
 var are_you_sure_menu: AreYouSureMenu = preload("res://source/assets/ui/menus/are_you_sure_menu.tscn").instantiate()
 var pause_menu: Control = preload("res://source/assets/ui/menus/pause_menu.tscn").instantiate()
 var settings_menu: Control = preload("res://source/assets/ui/menus/settings_menu.tscn").instantiate()

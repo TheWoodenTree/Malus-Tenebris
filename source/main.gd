@@ -19,9 +19,9 @@ var enable_heartbeat = false
 
 var player_preload = preload("res://source/actors/characters/player/player.tscn")
 
-var load_screen_res: Resource = preload("res://source/assets/ui/load_screen.tscn")
-var death_screen_res: Resource = preload("res://source/assets/ui/death_screen.tscn")
-var title_screen_res: Resource = preload("res://source/assets/ui/title_screen.tscn")
+var load_screen_res: Resource = preload("res://source/assets/ui/menus/load_screen.tscn")
+var death_screen_res: Resource = preload("res://source/assets/ui/menus/death_screen.tscn")
+var title_screen_res: Resource = preload("res://source/assets/ui/menus/title_screen.tscn")
 var world_res: Resource = preload("res://source/world.tscn")
 var title_screen_room_res: Resource = preload("res://source/actors/rooms/title_screen_room.tscn")
 
