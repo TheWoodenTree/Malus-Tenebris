@@ -29,6 +29,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not auto_open_to_read_timer.is_stopped() and Input.is_action_just_pressed("read_now"):
 		use_recent_note_data = true
+		if Global.player.held_item:
+			Global.player.stop_holding_item()
 		Global.player.hold_item(InventoryManager.get_item_by_id(ItemRegistry.ID.JOURNAL))
 
 
