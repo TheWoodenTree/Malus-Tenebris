@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dnhhutbmyu1ew" path="res://source/actors/decor/debris/rubble_1.tscn" id="26_0x21u"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cje5wpu2xnpbr" path="res://source/actors/rooms/occluders/lower_prison_stairway.occ" id="26_k5rsv"]
 [ext_resource type="Script" uid="uid://sen6fvle82em" path="res://source/assets/resources/events/log_entry_event.gd" id="26_o36d0"]
+[ext_resource type="Script" uid="uid://cg61u6x2tt70s" path="res://source/assets/resources/events/resolve_log_entry_event.gd" id="27_cq055"]
 [ext_resource type="PackedScene" uid="uid://dtgqm415q82gw" path="res://source/actors/decor/debris/rubble_3.tscn" id="27_f42cs"]
 [ext_resource type="PackedScene" uid="uid://clhxehvbj2k6m" path="res://source/actors/decor/debris/rubble_2.tscn" id="28_gxb6r"]
 [ext_resource type="PackedScene" uid="uid://cyh3d86iqwioi" path="res://source/actors/decor/misc/double_crate.tscn" id="31_kmqvv"]
@@ -38,6 +39,11 @@ script = ExtResource("26_o36d0")
 log_entry_name = 5
 delay = 7.0
 metadata/_custom_type_script = "uid://sen6fvle82em"
+
+[sub_resource type="Resource" id="Resource_au2uu"]
+script = ExtResource("27_cq055")
+log_entry_name = 4
+metadata/_custom_type_script = "uid://cg61u6x2tt70s"
 
 [sub_resource type="Resource" id="Resource_o36d0"]
 script = ExtResource("25_t43sq")
@@ -670,7 +676,7 @@ nav_walkable = false
 
 [node name="DoorCloseArea" parent="." index="103" unique_id=555514388 instance=ExtResource("7_y8csa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.25, -16.75)
-events = Array[ExtResource("24_t43sq")]([SubResource("Resource_cq055"), SubResource("Resource_rkaij")])
+events = Array[ExtResource("24_t43sq")]([SubResource("Resource_cq055"), SubResource("Resource_rkaij"), SubResource("Resource_au2uu")])
 collision_shape_size = Vector3(5, 8, 1)
 
 [node name="FirstExposureArea" parent="." index="104" unique_id=244349463 instance=ExtResource("7_y8csa")]

@@ -11,6 +11,10 @@ func _enter_tree():
 	if not is_node_ready():
 		await ready # Allow onready var to be assigned for the first time
 	
+	for existing_entry: LogEntry in entries_cont.get_children():
+		if existing_entry.hint_name not in JournalManager.log_entries:
+			existing_entry.queue_free()
+	
 	for log_entry_name: LogEntry.LogEntryName in JournalManager.log_entries:
 		var log_entry_exists := false
 		for existing_entry: LogEntry in entries_cont.get_children():

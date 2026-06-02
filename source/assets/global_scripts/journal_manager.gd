@@ -47,7 +47,7 @@ func remove_log_entry(log_entry_name: LogEntry.LogEntryName):
 	if log_entries.has(log_entry_name):
 		log_entries.erase(log_entry_name)
 	else:
-		push_error("Tried remove an log entry when there are none")
+		push_error("Tried remove an log entry that is not in the log")
 
 
 func add_note(note_data: NoteData):
