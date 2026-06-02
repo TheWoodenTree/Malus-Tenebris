@@ -152,7 +152,7 @@ func is_near_door():
 
 func check_for_door_in_path():
 	var found_door: Door = null
-	var path_points = nav_agent.get_current_navigation_path()
+	var path_points: PackedVector3Array = nav_agent.get_current_navigation_path()
 	var nav_path_index: int = nav_agent.get_current_navigation_path_index()
 	
 	if path_points.size() < 2 or nav_path_index >= path_points.size():
