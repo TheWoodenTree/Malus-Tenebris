@@ -50,7 +50,7 @@ func _ready() -> void:
 	torch_marker_starting_pos = Global.player.torch_marker.position
 
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if not Global.player.in_menu and not Global.player.scripted_event:
 		if Global.player.global_input_dir == Vector3.ZERO:
 			_reset_bob(delta)

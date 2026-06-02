@@ -66,15 +66,15 @@ func _ready() -> void:
 	SaveManager.loaded.connect(_on_loaded_from_save)
 
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	calculate_fire_up_dir()
 	update_movement_particle_attractor_transform()
-	#update_rotation_particle_attractor_transform(delta) ## TODO: Come back to this
+	update_rotation_particle_attractor_transform(delta) ## TODO: Come back to this
 	
-	if held_by_player:
-		#global_position = Global.player.torch_marker.global_position
-		#global_rotation = Global.player.torch_marker.global_rotation
-		global_transform = Global.player.torch_marker.global_transform
+	#if held_by_player:
+		##global_position = Global.player.torch_marker.global_position
+		##global_rotation = Global.player.torch_marker.global_rotation
+		#global_transform = Global.player.torch_marker.global_transform
 
 
 func _on_interact() -> void:
@@ -90,9 +90,14 @@ func _on_interact() -> void:
 	set_interactable(false)
 	_untarget()
 	
+	position = Vector3.ZERO
+	rotation = Vector3.ZERO
+	
 	mesh.scale = HOLD_SCALE
 	fire.particles.scale = HOLD_SCALE
 	mesh.position.y = HOLD_Y_POS
+	
+	reparent(Global.player.torch_marker, false)
 	
 	if not Global.player.debug_has_torch:
 		Global.ui.show_hint("Find a way to light the torch", 5.0)
@@ -131,18 +136,21 @@ func update_rotation_particle_attractor_transform(delta: float):
 	rotation_particle_attractor.global_position = self.global_position
 	
 	var cam_rot: Vector3 = Global.camera_controller.rotation
-	var cam_rot_offset: Vector3 = (cam_rot - cam_rot_last_frame)
+	var cam_rot_y_offset: float = wrapf(cam_rot.y, 0, TAU) - wrapf(cam_rot_last_frame.y, 0, TAU)
 	
-	# Compensate for cam rotation wrapping between -2PI and 
+	cam_rot_y_offset = wrapf(cam_rot_y_offset, -PI, PI)
 	
-	var rotation_velocity: float = cam_rot_offset.y / delta
-		
-	if abs(rotation_velocity) > 0.0001:
-		rotation_particle_attractor.strength = rotation_velocity * 10# move_toward(rotation_particle_attractor.strength, rotation_velocity, delta * 1500.0)
+	var y_rot_vel: float = cam_rot_y_offset / delta
+	
+	if not is_zero_approx(abs(y_rot_vel)):
+		rotation_particle_attractor.strength = clamp(y_rot_vel, -6.0, 6.0)
 		rotation_particle_attractor.rotation.y = Global.camera_controller.rotation.y - PI/2.0
 	else:
-		rotation_particle_attractor.strength = 0.0# move_toward(rotation_particle_attractor.strength, 0.0, delta * 500.0)
-		
+		rotation_particle_attractor.strength = 0.0
+	
+	#fire.burning_player.volume_db = lerp(-12.5, 3.0, abs(y_rot_vel)/20.0)
+	#print(fire.burning_player.volume_db)
+	
 	cam_rot_last_frame = cam_rot
 
 

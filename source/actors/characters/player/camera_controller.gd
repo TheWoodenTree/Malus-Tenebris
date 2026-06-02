@@ -29,8 +29,6 @@ signal cam_rotated(offset: Vector2)
 
 
 func _process(_delta: float) -> void:
-	_controller_rotate()
-	
 	#if Input.is_action_just_pressed("debug4") and not upside_down_mode:
 		#var rot_tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 		#rot_tween.tween_property(self, "rotation:z", PI, 0.25)
@@ -44,11 +42,15 @@ func _process(_delta: float) -> void:
 		#Global.main.set_upside_down_sound(false)
 		#upside_down_mode = false
 	
-	if not Global.player.scripted_event:
-		rotation.x = lerp_angle(rotation.x, target_rotation.x, soft_movement_weight)
-		rotation.y = lerp_angle(rotation.y, target_rotation.y, soft_movement_weight)
-	
 	mouse_input_received = false
+
+
+func _physics_process(delta: float) -> void:
+	_controller_rotate()
+	
+	if not Global.player.scripted_event:
+		rotation.x = target_rotation.x#lerp_angle(rotation.x, target_rotation.x, soft_movement_weight)
+		rotation.y = target_rotation.y#lerp_angle(rotation.y, target_rotation.y, soft_movement_weight)
 
 
 func _input(event: InputEvent) -> void:
@@ -64,7 +66,7 @@ func _input(event: InputEvent) -> void:
 			if can_rotate:
 				target_rotation.x -= x_rot_offset * rot_sign
 				target_rotation.x = clamp(target_rotation.x, -PI/2, PI/2)
-				rotation.x = target_rotation.x
+				#rotation.x = target_rotation.x
 				
 			
 			var mouse_x_offset = event.relative.x * Global.mouse_sens * sensitivity_multiplier
@@ -73,7 +75,7 @@ func _input(event: InputEvent) -> void:
 			if can_rotate:
 				target_rotation.y -= y_rot_offset * rot_sign
 				target_rotation.y = wrapf(target_rotation.y, 0.0, TAU)
-				rotation.y = target_rotation.y
+				#rotation.y = target_rotation.y
 			
 			cam_rotated.emit(rotation_offset / DRAG_SENS_MULTIPLIER)
 

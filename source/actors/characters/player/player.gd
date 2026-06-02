@@ -91,7 +91,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_handle_input()
-	torch_cam.global_transform = camera_controller.global_transform
 	if held_item:
 		var held_item_pos: Vector3 = held_item_marker.global_position
 		held_item.global_position = lerp(held_item.global_position, held_item_pos, delta * 75.0)

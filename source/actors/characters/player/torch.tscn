@@ -184,7 +184,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.02473563, 0)
 [node name="SwooshPlayer" type="AudioStreamPlayer3D" parent="." index="4" unique_id=53488535]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.07795638, 0)
 stream = ExtResource("8_6t08c")
-volume_db = -47.276
 max_db = 6.0
 
 [node name="PickupPlayer" type="AudioStreamPlayer3D" parent="." index="5" unique_id=907225627]
