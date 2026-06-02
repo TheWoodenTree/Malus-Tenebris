@@ -72,14 +72,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	$Label.text = str(int(Engine.get_frames_per_second()))
 	
+	if Input.is_action_just_pressed("debug_screenshot"):
+		await RenderingServer.frame_post_draw
+		var image = get_viewport().get_texture().get_image()
+		var path = OS.get_environment("USERPROFILE") + "/Desktop/screenshot.png"
+		image.save_png(path)
+	
+	if Input.is_action_just_pressed("debug_save_game"):
+		SaveManager.save_game() 
+	
+	if Input.is_action_just_pressed("debug_load_game"):
+		SaveManager.load_game() 
+	
 	if Input.is_action_just_pressed("debug4"):
-		#SaveManager.save_game() 
 		retro_shader.visible = not retro_shader.visible
 		$PostProcessing/OldRetroShader.visible = not $PostProcessing/OldRetroShader.visible
 		world_environment.environment.volumetric_fog_enabled = not world_environment.environment.volumetric_fog_enabled
-	
-	if Input.is_action_just_pressed("debug_5"):
-		SaveManager.load_game()
 	
 	if Input.is_action_just_pressed("tilde"):
 		if Global.mouse_locked:
