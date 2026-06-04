@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://cq0xi66roalva" path="res://source/actors/decor/misc/sm_crate.tscn" id="44_fvmec"]
 [ext_resource type="PackedScene" uid="uid://b0ulsvtx3b41t" path="res://source/actors/interactables/pickups/hourglass.tscn" id="44_ydufn"]
 [ext_resource type="PackedScene" uid="uid://cc0tty3w5igex" path="res://source/actors/decor/debris/plank_2.tscn" id="46_0ilup"]
+[ext_resource type="Resource" uid="uid://tyxi6frssjs0" path="res://source/assets/resources/note_datas/apothecarys_doubts.tres" id="46_r3otd"]
 [ext_resource type="PackedScene" uid="uid://dicfvnrwgb3h4" path="res://source/actors/misc/event_trigger_area.tscn" id="46_th1ig"]
 [ext_resource type="PackedScene" uid="uid://m6153tv2dy2t" path="res://source/actors/decor/cobweb.tscn" id="47_47idu"]
 [ext_resource type="Script" uid="uid://bdn4b2olxxvn8" path="res://source/assets/resources/events/event.gd" id="47_th1ig"]
@@ -459,6 +460,10 @@ collision_shape_size = Vector3(10, 5, 1)
 
 [node name="RuboleumVial" parent="." index="70" unique_id=926297497 instance=ExtResource("24_g1atn")]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 6, 2, -8)
+
+[node name="Note" parent="." index="71" unique_id=2146633354 instance=ExtResource("14_bjogf")]
+transform = Transform3D(0.8473923, 0, -0.5309673, 0, 1, 0, 0.5309673, 0, 0.8473923, 15.924358, 2.4, 2.257085)
+note_data = ExtResource("46_r3otd")
 
 [connection signal="body_entered" from="SafeRoomArea" to="." method="_on_safe_room_area_body_entered"]
 [connection signal="body_exited" from="SafeRoomArea" to="." method="_on_safe_room_area_body_exited"]

@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_a4a53")
 title = "Ruboleum Distillation Instructions"
-text = "Trial #13: First Successful Cure
+text = "Trial #13: First Successful Inhibitor
 
-Distill Ruboleum by pouring a vial into an opaque flask. Heat the flask with an open flame and wait for the substance to vaporize. When the vapor returns to a purified liquid form and drains into the cup, it should be potent enough to temporarily remedy the effects of Vitriscet.
+Distill Ruboleum by pouring a vial into an opaque flask. Heat the flask with an open flame and wait for the substance to vaporize. When the vapor returns to a purified liquid form and drains into the cup, it should be potent enough to temporarily remedy the delirium caused by Vitriscet.
 
 The substance is fast acting, though the amount of time it remains effective is rather short, only a few minutes. Vorrumos willing, this may save us.
 

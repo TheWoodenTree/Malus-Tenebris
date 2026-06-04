@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NoteData" format=3 uid="uid://tyxi6frssjs0"]
+
+[ext_resource type="Script" uid="uid://c47e3n15issfv" path="res://source/assets/resources/note_datas/note_data.gd" id="1_xuj8i"]
+
+[resource]
+script = ExtResource("1_xuj8i")
+title = "Apothecary's Doubts"
+text = "The warden has directed me to treat as much of the Vitriscet as I can and that we must prevent the spread by any means necessary. Is that why he's sealed us down here? I think he's deliberately withholding information from me and others. Brother Aldric convinced me I should go and rummage through the warden's chamber in search of any information. Though he's been more delirious as of late, he's right.
+
+Staying down here like the warden directed might as well make this prison our tomb. This plague Vitriscet is spreading faster than I can work to contain it, if containment is even possible. It seems not to spread from body to body but from the very air we breathe.
+
+Could this be divine punishment? Why He would decide to punish us is an enticing thought, though it is not my place to question His actions. I expel the thought so that it may rot on this page rather than pollute my mind."
+important = true
+metadata/_custom_type_script = "uid://c47e3n15issfv"
