@@ -1,6 +1,13 @@
 [gd_resource type="Resource" script_class="NoteData" format=3 uid="uid://dfrb81cwf31fs"]
 
 [ext_resource type="Script" uid="uid://c47e3n15issfv" path="res://source/assets/resources/note_datas/note_data.gd" id="1_jpmu8"]
+[ext_resource type="Script" uid="uid://bdn4b2olxxvn8" path="res://source/assets/resources/events/event.gd" id="1_ubny4"]
+[ext_resource type="Script" uid="uid://dlj7iyym2yilu" path="res://source/assets/resources/events/signal_event.gd" id="2_pqahd"]
+
+[sub_resource type="Resource" id="Resource_dxiyk"]
+script = ExtResource("2_pqahd")
+global_signal_name = "cell_note_read"
+metadata/_custom_type_script = "uid://dlj7iyym2yilu"
 
 [resource]
 script = ExtResource("1_jpmu8")
@@ -29,4 +36,5 @@ I discovered a small passage just big enough for me to fit through behind the sh
 
 Now is my chance. This may be the only opporunity to uncover what the preator has been hiding down here. If I don't find out now, no one ever will.
 "
+on_read_events = Array[ExtResource("1_ubny4")]([SubResource("Resource_dxiyk")])
 metadata/_custom_type_script = "uid://c47e3n15issfv"

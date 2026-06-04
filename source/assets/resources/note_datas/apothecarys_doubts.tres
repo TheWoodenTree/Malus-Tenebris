@@ -1,6 +1,20 @@
 [gd_resource type="Resource" script_class="NoteData" format=3 uid="uid://tyxi6frssjs0"]
 
+[ext_resource type="Script" uid="uid://bdn4b2olxxvn8" path="res://source/assets/resources/events/event.gd" id="1_52s38"]
 [ext_resource type="Script" uid="uid://c47e3n15issfv" path="res://source/assets/resources/note_datas/note_data.gd" id="1_xuj8i"]
+[ext_resource type="Script" uid="uid://sen6fvle82em" path="res://source/assets/resources/events/log_entry_event.gd" id="2_pmevd"]
+[ext_resource type="Script" uid="uid://cg61u6x2tt70s" path="res://source/assets/resources/events/resolve_log_entry_event.gd" id="3_pmevd"]
+
+[sub_resource type="Resource" id="Resource_s4bio"]
+script = ExtResource("2_pmevd")
+log_entry_name = 6
+delay = 2.0
+metadata/_custom_type_script = "uid://sen6fvle82em"
+
+[sub_resource type="Resource" id="Resource_nhsix"]
+script = ExtResource("3_pmevd")
+log_entry_name = 5
+metadata/_custom_type_script = "uid://cg61u6x2tt70s"
 
 [resource]
 script = ExtResource("1_xuj8i")
@@ -11,4 +25,5 @@ Staying down here like the warden directed might as well make this prison our to
 
 Could this be divine punishment? Why He would decide to punish us is an enticing thought, though it is not my place to question His actions. I expel the thought so that it may rot on this page rather than pollute my mind."
 important = true
+on_read_events = Array[ExtResource("1_52s38")]([SubResource("Resource_s4bio"), SubResource("Resource_nhsix")])
 metadata/_custom_type_script = "uid://c47e3n15issfv"

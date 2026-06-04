@@ -29,6 +29,7 @@ const HIGHLIGHT_MATERIAL: ShaderMaterial = preload("res://source/assets/shaders/
 @export var enable_highlight_light: bool = false : set = _set_enable_highlight_light
 @export var enable_highlight_sheen: bool = false : set = _set_enable_highlight_sheen
 @export var shader_mode: ShaderMode = ShaderMode.OUTLINE
+@export var on_interact_events: Array[Event]
 
 var is_targeted: bool = false
 
@@ -98,8 +99,12 @@ func interact() -> void:
 	enable_highlight_sheen = false
 	if highlight_light:
 		highlight_light.visible = false
+	
 	disable_sheen()
 	_on_interact()
+	
+	for event: Event in on_interact_events:
+		await event.execute()
 
 
 @abstract func _on_interact() -> void

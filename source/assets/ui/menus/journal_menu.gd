@@ -72,10 +72,10 @@ func note_button_pressed(note_data: NoteData):
 	Global.ui.in_journal_note_menu.note_data = note_data
 	note_data.was_read = true
 	
-	if note_data.title == "Cell Note":
-		GlobalSignals.cell_note_read.emit()
-	
 	change_menu(Global.ui.in_journal_note_menu)
+	
+	for event: Event in note_data.on_read_events:
+		await event.execute()
 
 
 func change_menu(menu: Menu):

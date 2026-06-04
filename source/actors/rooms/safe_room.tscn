@@ -149,7 +149,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39727, 0.5, -3.25)
 
 [node name="PlateWCandle" parent="Decor" index="9" unique_id=1786472873 instance=ExtResource("12_i4x8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.416501, 2.4, 3.6559486)
-default_range = 5.0
 default_energy = 2.0
 shadow_mode = 1
 
@@ -170,13 +169,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 4)
 
 [node name="PlateWCandle2" parent="Decor/Stool2" index="2" unique_id=591813944 instance=ExtResource("12_i4x8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6731634, 1.5, -11.999535)
-default_range = 5.0
 default_energy = 2.0
 shadow_mode = 1
 
 [node name="HangingLamp2" parent="Decor" index="15" unique_id=1044694510 instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, -0.5, -1.375)
-default_range = 6.0
 lit = false
 shadow_mode = 1
 
@@ -188,7 +185,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.25
 
 [node name="PlateWCandle2" parent="Decor" index="18" unique_id=1088953918 instance=ExtResource("12_i4x8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.573351, 1.9763689, -0.8158946)
-default_range = 7.0
 default_energy = 2.25
 shadow_mode = 1
 
@@ -230,7 +226,6 @@ volume_db = -15.0
 
 [node name="HangingLamp" parent="." index="11" unique_id=1052731754 instance=ExtResource("22_dvdth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.25, -0.5, -1.5)
-default_range = 8.0
 default_energy = 2.0
 lit = false
 shadow_mode = 1
