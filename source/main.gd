@@ -88,6 +88,8 @@ func _process(_delta: float) -> void:
 		retro_shader.visible = not retro_shader.visible
 		$PostProcessing/OldRetroShader.visible = not $PostProcessing/OldRetroShader.visible
 		world_environment.environment.volumetric_fog_enabled = not world_environment.environment.volumetric_fog_enabled
+		world_environment.environment.glow_enabled = not world_environment.environment.glow_enabled
+		world_environment.environment.adjustment_brightness = 1.0 if retro_shader.visible else 0.65
 	
 	if Input.is_action_just_pressed("tilde"):
 		if Global.mouse_locked:

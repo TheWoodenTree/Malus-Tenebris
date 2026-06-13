@@ -49,3 +49,9 @@ func _add_note(note_data: NoteData):
 func turn_off_tutorial():
 	JournalManager.show_note_tutorial = false
 	tutorial_label.visible = false
+
+
+func on_returned_to():
+	_enter_tree()
+	for row: FoundNoteRow in rows_cont.get_children():
+		row.update_important_icon_visibility()

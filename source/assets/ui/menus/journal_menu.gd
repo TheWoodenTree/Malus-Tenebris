@@ -31,9 +31,9 @@ func _enter_tree() -> void:
 
 func _ready():
 	Global.ui.found_notes_menu.new_note_added.connect(connect_note_button)
-	Global.ui.in_journal_note_menu.back_button_pressed.connect(change_menu.bind(Global.ui.found_notes_menu))
 	submenu_cont.add_child(Global.ui.found_notes_menu)
 	select_tab(found_notes_button)
+	current_submenu = Global.ui.found_notes_menu
 
 
 func _exit_tree():
@@ -72,7 +72,7 @@ func note_button_pressed(note_data: NoteData):
 	Global.ui.in_journal_note_menu.note_data = note_data
 	note_data.was_read = true
 	
-	change_menu(Global.ui.in_journal_note_menu)
+	Global.ui.menu_manager.display_menu(Global.ui.in_journal_note_menu)
 	
 	for event: Event in note_data.on_read_events:
 		await event.execute()
@@ -88,3 +88,8 @@ func change_menu(menu: Menu):
 	submenu_cont.add_child.call_deferred(menu)
 	current_submenu = menu
 	Global.ui.menu_manager.play_sound_one_shot(navigation_sound)
+
+
+func on_returned_to():
+	if current_submenu == Global.ui.found_notes_menu:
+		Global.ui.found_notes_menu.on_returned_to()

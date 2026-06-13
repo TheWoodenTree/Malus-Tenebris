@@ -11,8 +11,12 @@ func _enter_tree() -> void:
 	if not is_node_ready():
 		await ready
 	
-	important_icon.modulate = Color.TRANSPARENT if note_data.was_read else Color.WHITE
+	update_important_icon_visibility()
 
 
 func _ready() -> void:
 	found_note_button.text = note_data.title
+
+
+func update_important_icon_visibility():
+	important_icon.modulate = Color.TRANSPARENT if note_data.was_read else Color.WHITE

@@ -6,11 +6,11 @@ extends Control
 @export_enum("Remove", "Free") var close_action: String = "Remove"
 
 
-# Overriden by child if action needs to be taken on open
 func on_open():
 	pass
 
+func on_returned_to():
+	pass
 
-# Overriden by child if action needs to be taken on close
 func on_close():
 	pass

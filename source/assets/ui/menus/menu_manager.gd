@@ -5,7 +5,7 @@ signal background_changed
 
 var num_menus: int = 0
 
-var open_menus: Array[Control]
+var open_menus: Array[Menu]
 
 var inside_tree: bool = false
 
@@ -79,6 +79,7 @@ func _pop_menu():
 		
 	if not open_menus.is_empty():
 		open_menus.back().visible = true
+		open_menus.back().on_returned_to()
 		
 	num_menus -= 1
 

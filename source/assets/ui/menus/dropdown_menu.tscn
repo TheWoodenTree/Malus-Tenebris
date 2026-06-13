@@ -3,22 +3,21 @@
 [ext_resource type="Theme" uid="uid://cuilhrwln20t4" path="res://source/assets/ui/general_ui_theme.tres" id="1_n78m5"]
 [ext_resource type="Script" uid="uid://cs2qqpmtyr7b5" path="res://source/assets/ui/menus/dropdown_menu.gd" id="2_7077d"]
 
-
-[node name="DropdownMenu" type="Control"]
+[node name="DropdownMenu" type="Control" unique_id=2121522874]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_n78m5")
 script = ExtResource("2_7077d")
 
-[node name="PanelCont" type="PanelContainer" parent="."]
+[node name="PanelCont" type="PanelContainer" parent="." unique_id=821770713]
 layout_mode = 1
 offset_right = 28.0
 offset_bottom = 24.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxCont" type="VBoxContainer" parent="PanelCont"]
+[node name="VBoxCont" type="VBoxContainer" parent="PanelCont" unique_id=84251401]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
