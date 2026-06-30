@@ -145,7 +145,7 @@ func notify_new_found_note():
 
 
 func notify_hourglass_empty():
-	if SaveManager.is_loading: # Don't play this on loeading a save with no time left
+	if SaveManager.is_loading or not GameState.has_flag(GameState.Flag.FIRST_EXPOSURE_OCCURRED):
 		return
 	
 	hourglass_empty_player.play()

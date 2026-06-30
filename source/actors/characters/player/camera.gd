@@ -50,6 +50,11 @@ func _ready() -> void:
 	torch_marker_starting_pos = Global.player.torch_marker.position
 
 
+func _process(_delta: float) -> void:
+	torch_cam.global_transform = get_global_transform_interpolated()
+	flame_cam.global_transform = get_global_transform_interpolated()
+
+
 func _physics_process(delta: float) -> void:
 	if not Global.player.in_menu and not Global.player.scripted_event:
 		if Global.player.global_input_dir == Vector3.ZERO:
@@ -63,9 +68,6 @@ func _physics_process(delta: float) -> void:
 		rotation_degrees.x = initial_rotation.x + trauma_max_x * get_shake_intensity() * get_trauma_noise_from_seed(0)
 		rotation_degrees.y = initial_rotation.y + trauma_max_y * get_shake_intensity() * get_trauma_noise_from_seed(1)
 		rotation_degrees.z = initial_rotation.z + trauma_max_z * get_shake_intensity() * get_trauma_noise_from_seed(2)
-	
-	torch_cam.global_transform = global_transform
-	flame_cam.global_transform = global_transform
 
 
 func _bob(delta):

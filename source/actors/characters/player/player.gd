@@ -89,17 +89,9 @@ func _ready() -> void:
 	in_world = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_handle_input()
-	if held_item:
-		var held_item_pos: Vector3 = held_item_marker.global_position
-		held_item.global_position = lerp(held_item.global_position, held_item_pos, delta * 75.0)
-		held_item.global_rotation = camera_controller.global_rotation
-		held_item.rotate_object_local(Vector3.RIGHT, deg_to_rad(held_item_data.hold_rotation_offset.x))
-		held_item.rotate_object_local(Vector3.UP, deg_to_rad(held_item_data.hold_rotation_offset.y))
-		held_item.rotate_object_local(Vector3.FORWARD, deg_to_rad(held_item_data.hold_rotation_offset.z))
-		held_item.scale = Vector3.ONE * held_item_data.hold_scale_multiplier
-	
+
 	global_input_dir = get_input_dir()
 	
 	if global_input_dir != Vector3.ZERO and global_input_dir_last_frame == Vector3.ZERO:
@@ -218,7 +210,7 @@ func _move(delta):
 
 func start_crouch_transition(entering: bool):
 	var dist: float = crouch_dist if entering else -crouch_dist
-	crouch_tween = create_tween()
+	crouch_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	crouch_tween.tween_property(head, "position:y", dist, crouch_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).as_relative()
 
@@ -249,9 +241,14 @@ func hold_item(item_data: ItemData, play_sound: bool = false):
 	held_item.being_held = true
 	for mesh in held_item.meshes:
 		mesh.layers = 2
-	add_child(held_item)
+	held_item_marker.add_child(held_item)
 	held_item.position = Vector3.ZERO
-	held_item.scale *= item_data.hold_scale_multiplier
+	held_item.rotation = Vector3.ZERO
+	held_item.rotate_object_local(Vector3.RIGHT, deg_to_rad(item_data.hold_rotation_offset.x))
+	held_item.rotate_object_local(Vector3.UP, deg_to_rad(item_data.hold_rotation_offset.y))
+	held_item.rotate_object_local(Vector3.FORWARD, deg_to_rad(item_data.hold_rotation_offset.z))
+	held_item.scale = Vector3.ONE * item_data.hold_scale_multiplier
+	held_item.reset_physics_interpolation()
 	if play_sound:
 		rucksack_player.play()
 	
@@ -267,7 +264,7 @@ func hold_item(item_data: ItemData, play_sound: bool = false):
 
 func delete_held_item():
 	held_item.being_held = false
-	remove_child(held_item)
+	held_item_marker.remove_child(held_item)
 	inventory_remove_item(held_item_data)
 	interact_ray.enabled = true
 	held_item_data = null
@@ -277,7 +274,7 @@ func delete_held_item():
 func stop_holding_item(play_sound: bool = false):
 	if held_item:
 		held_item.being_held = false
-		remove_child(held_item)
+		held_item_marker.remove_child(held_item)
 	interact_ray.enabled = true
 	held_item_data = null
 	held_item = null

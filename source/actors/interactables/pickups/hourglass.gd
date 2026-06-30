@@ -26,7 +26,7 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if Global.player.is_holding_hourglass:
-		var fill_proportion: float = AfflictionTimer.time_left / AfflictionTimer.MAX_AFFLICTION_TIMER_VALUE
+		var fill_proportion: float = AfflictionTimer.time_left / AfflictionTimer.MAX_WAIT_TIME
 		sand_top_shader.set_shader_parameter('fill_proportion', fill_proportion)
 		sand_bottom_shader.set_shader_parameter('fill_proportion', 1.0 - fill_proportion)
 		sand_top_cap_shader.set_shader_parameter('fill_proportion', fill_proportion)

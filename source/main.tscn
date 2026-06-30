@@ -17,6 +17,8 @@
 [ext_resource type="Material" uid="uid://bhhf1pvn4uku1" path="res://source/assets/shaders/retro_shader_mat_OLD.tres" id="12_ks00e"]
 [ext_resource type="Environment" uid="uid://eiomq46f2kvo" path="res://source/default_environment.tres" id="12_r5lv5"]
 [ext_resource type="PackedScene" uid="uid://oaf5qph41nqg" path="res://source/actors/tools/saver_loader.tscn" id="17_ks00e"]
+[ext_resource type="AudioStream" uid="uid://b1gukvupcy78c" path="res://source/assets/sounds/ambience/drones/cello_drone.ogg" id="18_d4qgt"]
+[ext_resource type="Script" uid="uid://8mpauogcthld" path="res://source/affliction_player.gd" id="19_sm8so"]
 
 [sub_resource type="Animation" id="Animation_r5lv5"]
 resource_name = "fear"
@@ -248,3 +250,11 @@ text = "Time Left:"
 stream = SubResource("AudioStreamPolyphonic_r5lv5")
 
 [node name="SaverLoader" parent="." unique_id=1202337839 instance=ExtResource("17_ks00e")]
+
+[node name="Music" type="Node" parent="." unique_id=668860783]
+
+[node name="AfflictionPlayer" type="AudioStreamPlayer" parent="Music" unique_id=318688552]
+stream = ExtResource("18_d4qgt")
+script = ExtResource("19_sm8so")
+min_volume_affliction_timer_threshold = 30.0
+max_volume_affliction_timer_threshold = 0.0

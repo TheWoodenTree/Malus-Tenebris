@@ -4,6 +4,7 @@ enum Flag {
 	HELD_FIRST_ITEM,
 	PICKED_UP_CELL_HALL_KEY,
 	HELD_CELL_HALL_KEY,
+	FIRST_EXPOSURE_OCCURRED,
 }
 
 var flags: Dictionary[Flag, bool] = {}

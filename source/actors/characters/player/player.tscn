@@ -145,6 +145,8 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="TorchCam" type="Camera3D" parent="HeadController/CameraController/Camera/SubViewportContainer/TorchCamViewport" unique_id=357208848]
+physics_interpolation_mode = 2
+top_level = true
 cull_mask = 2
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="HeadController/CameraController/Camera" unique_id=708729382]
@@ -158,6 +160,7 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="FlameCam" type="Camera3D" parent="HeadController/CameraController/Camera/SubViewportContainer2/TorchCamViewport" unique_id=554164289]
+physics_interpolation_mode = 2
 top_level = true
 cull_mask = 32
 
